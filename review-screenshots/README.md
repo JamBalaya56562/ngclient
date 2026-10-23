@@ -16,3 +16,11 @@ Screenshots only; this branch is not intended for merging.
 - Same synthetic jobs in each capture: a versioned backup and a completed Sync job (OperationType Sync, BackupListCount 2). Filesystem validation is mocked as successful.
 - Restore opens /restore. Deletion opens the Sync job menu on Home and selects Delete; no deletion is performed.
 - Headless Chromium, 1280 x 900, en-US, UTC, light theme, service workers blocked. Unmodified full-page screenshots. No unexpected API requests or page errors in any capture; no live Duplicati server used.
+
+## Weekly Monday start date (2026-10-24)
+
+- Before: main f7c2e0ee2e687d5278eb615e60b1ef577bdccb7f; production artifact from run 39981424728.
+- After: 51f033f7d406b4c5933bccdb1b4c62d2c7728190; production artifact from run 39981652763.
+- Headless Chromium, 1280 x 800, en-US, Asia/Tokyo, light theme, service workers blocked. Date is fixed at 2026-10-12 10:00 JST (Monday); timers keep running.
+- Open the schedule editor of the same synthetic backup, select Weekly monday 13:00, then select Custom to expose the computed start date without changing it. No save or backup execution is performed. Before shows 2026-10-19; after shows 2026-10-12. Both retain 13:00 and Monday-only weekly recurrence.
+- API responses are mocked, including an empty fallback response for /api/v2/connection-strings; no live Duplicati server is used. No page errors were observed. Unmodified full-page screenshots.
