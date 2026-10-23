@@ -24,3 +24,10 @@ Screenshots only; this branch is not intended for merging.
 - Headless Chromium, 1280 x 800, en-US, Asia/Tokyo, light theme, service workers blocked. Date is fixed at 2026-10-12 10:00 JST (Monday); timers keep running.
 - Open the schedule editor of the same synthetic backup, select Weekly monday 13:00, then select Custom to expose the computed start date without changing it. No save or backup execution is performed. Before shows 2026-10-19; after shows 2026-10-12. Both retain 13:00 and Monday-only weekly recurrence.
 - API responses are mocked, including an empty fallback response for /api/v2/connection-strings; no live Duplicati server is used. No page errors were observed. Unmodified full-page screenshots.
+
+## Stored server-log initial load (2026-10-24)
+
+- Before: main 4c2cb9a067d41e86359e7dcbcb10d8768342dbb5 (0.0.244), production artifact from run 40035546912.
+- After: 06476a7f5b9258824c3b32a8f8386e35e7d2a3bb, production artifact from run 40035749431.
+- Open /about/logs/stored with the same synthetic log API response containing one event. Before: two initial GET /api/v1/logdata/log requests and two identical rendered rows. After: one request and one row. No Load more or other action is clicked.
+- Headless Chromium, 1280 x 800, en-US, UTC, light theme, service workers blocked. All API responses mocked; no live Duplicati server used. No unexpected requests or page errors in either capture. Unmodified full-page screenshots.
