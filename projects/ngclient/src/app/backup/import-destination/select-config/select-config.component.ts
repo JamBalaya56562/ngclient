@@ -1,3 +1,4 @@
+import { KeyboardActionDirective } from '../../../core/directives/keyboard-action.directive';
 import { ChangeDetectionStrategy, Component, computed, inject, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -27,6 +28,7 @@ type ConfigOption = RestoreTaskConfigElementDto & {
 @Component({
   selector: 'app-import-destination-select-config',
   imports: [
+    KeyboardActionDirective,
     ShipButton,
     ShipCard,
     ShipToggle,
@@ -148,23 +150,23 @@ export default class SelectConfigComponent implements OnInit {
           },
         })
       ).subscribe({
-          next: (res) => {
-            if (!isDirect) {
-              this.isImporting.set(false);
-              const draftId = this.#backupsState.addDraftBackup(res.data as BackupDraft);
-              this.#router.navigate(['/backup-draft', draftId]);
-            } else {
-              this.configs.update((configs) => {
-                return configs.filter((c) => c.BackupId !== item.BackupId);
-              });
-              importNext(index + 1);
-            }
-          },
-          error: (err) => {
+        next: (res) => {
+          if (!isDirect) {
             this.isImporting.set(false);
-            this.#importState.showErrorDialog(`Failed to import ${item.Name}: ${err.message}`);
-          },
-        });
+            const draftId = this.#backupsState.addDraftBackup(res.data as BackupDraft);
+            this.#router.navigate(['/backup-draft', draftId]);
+          } else {
+            this.configs.update((configs) => {
+              return configs.filter((c) => c.BackupId !== item.BackupId);
+            });
+            importNext(index + 1);
+          }
+        },
+        error: (err) => {
+          this.isImporting.set(false);
+          this.#importState.showErrorDialog(`Failed to import ${item.Name}: ${err.message}`);
+        },
+      });
     };
 
     importNext(0);
