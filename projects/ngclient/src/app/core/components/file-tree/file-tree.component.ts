@@ -39,7 +39,7 @@ import { BytesPipe } from '../../pipes/byte.pipe';
 import { FileTreeState } from '../../states/file-tree.state';
 import { SysinfoState } from '../../states/sysinfo.state';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
-import { globMatchesPath, regexMatchesPath } from './file-tree-filter-matcher';
+import { evaluateFileTreeFilters, isFileTreeFolderPath } from './file-tree-filter-matcher';
 import { BackupSettings, RemoteSource, PagedListResult, FileTreeListingService } from './file-tree-listing.service';
 export type { BackupSettings } from './file-tree-listing.service';
 
@@ -61,10 +61,7 @@ export const getInheritedExclusionState = (
   return null;
 };
 
-export const isFolderPath = (path: string): boolean =>
-  (path.startsWith('%') && path.endsWith('%') && !path.includes('/') && !path.includes('\\')) ||
-  path.endsWith('/') ||
-  path.endsWith('\\');
+export const isFolderPath = isFileTreeFolderPath;
 
 // Filters only ever apply to paths that the backup enumerates, i.e. the selected
 // sources and everything below a selected source folder. A node outside every
@@ -863,98 +860,10 @@ export default class FileTreeComponent {
 
     if (filters.length === 0) return result;
 
-    // Filters only apply to paths the backup enumerates, so a node outside every
-    // selected source keeps its state no matter what the filters match (#580)
+    // Keep the upstream source-scope guard before evaluating local filters (#580).
     if (!isPathWithinSources(nodeId, resolvedNodeId, sources)) return result;
-
-    for (let i = 0; i < filters.length; i++) {
-      const pathPart = filters[i];
-      const x = pathPart.slice(1);
-      const dir = pathPart.startsWith('-') ? TreeEvalEnum.Excluded : TreeEvalEnum.Included;
-
-      if (this.#isFolder(x)) {
-        // Works - Folder
-        if (nodeType !== 'folder') continue;
-        const res = nodeId === x || resolvedNodeId == x;
-
-        if (res) {
-          result = dir;
-
-          break;
-        }
-      }
-
-      if (x.startsWith('*') && (x.endsWith(`*\\`) || x.endsWith('*/'))) {
-        // Works - FolderNameIncludes
-        if (nodeType !== 'folder') continue;
-        const trimmedX = x.slice(1, -2);
-
-        if (trimmedX === '') break;
-
-        const res = nodeId?.includes(trimmedX + '\\') || nodeId?.includes(trimmedX + '/');
-
-        if (res) {
-          result = dir;
-          break;
-        }
-      }
-
-      if (x.startsWith('[.*') && (x.endsWith(`[^\\/]*]`) || x.endsWith(`[^\\\\]*]`))) {
-        // Works - FileNameIncludes
-        if (nodeType !== 'file') continue;
-
-        const regexPattern = x.slice(3, -7);
-        const regex = new RegExp(regexPattern);
-        const res = regex.test(nodeId!);
-
-        if (res) {
-          result = dir;
-          break;
-        }
-      }
-
-      if (x.startsWith('[') && x.endsWith(']')) {
-        // Works - Regex
-        const regexPattern = x.slice(1, -1);
-        const res = regexMatchesPath(nodeId!, regexPattern);
-
-        if (res) {
-          result = dir;
-          break;
-        }
-      }
-
-      if (x.startsWith('*.')) {
-        // Works - File Extension globbing
-        if (nodeType !== 'file') continue;
-        if (x.replace('*.', '').length === 0) continue;
-
-        const res = globMatchesPath(nodeId!, x);
-
-        if (res) {
-          result = dir;
-          break;
-        }
-      }
-
-      // Works - Expression
-      if (x === '') continue;
-
-      // Matching file or folder
-      if (x === nodeId) {
-        result = dir;
-        break;
-      }
-
-      const res = globMatchesPath(nodeId!, x);
-
-      if (res) {
-        result = dir;
-        break;
-      }
-    }
-
-    return result;
+    const included = evaluateFileTreeFilters(filters, { path: nodeId, resolvedPath: resolvedNodeId, kind: nodeType });
+    return included === undefined ? result : included ? TreeEvalEnum.Included : TreeEvalEnum.Excluded;
   }
 
   // A folder is partially selected when any selected path (folder or file) lies inside it.
@@ -1599,7 +1508,7 @@ export default class FileTreeComponent {
   }
 
   #isFolder(path: string): boolean {
-    return isFolderPath(path);
+    return isFileTreeFolderPath(path);
   }
 
   #isFilter(path: string): boolean {
