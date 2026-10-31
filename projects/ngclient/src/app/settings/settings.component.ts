@@ -24,6 +24,7 @@ import AdvancedOptionsSettingsComponent from './advanced-options-settings/advanc
 import { RemoteControlComponent } from './remote-control/remote-control.component';
 import { RemoteControlState } from './remote-control/remote-control.state';
 import { ServerSettingsService } from './server-settings.service';
+import { ServerTimezoneSettingsComponent } from './server-timezone-settings.component';
 
 import { CreateSignalOptions, WritableSignal } from '@angular/core';
 import { createSignal, SIGNAL, SignalGetter, signalSetFn, signalUpdateFn } from '@angular/core/primitives/signals';
@@ -93,6 +94,7 @@ type TimeTypes = (typeof TIME_OPTIONS)[number]['value'];
     StatusBarComponent,
     RemoteControlComponent,
     AdvancedOptionsSettingsComponent,
+    ServerTimezoneSettingsComponent,
     ShipButton,
     ShipRadio,
     ShipRangeSlider,

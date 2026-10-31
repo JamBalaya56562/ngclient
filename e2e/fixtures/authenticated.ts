@@ -6,7 +6,8 @@ export const persistentNonceKey = 'v1:persist:duplicati:refreshNonce';
 async function setupAuthentication(
   page: Page,
   initialBackups: unknown[],
-  initialServerSettings: Record<string, string>
+  initialServerSettings: Record<string, string>,
+  initialSystemInfo: Record<string, unknown>
 ) {
   const loginRequests: Route[] = [];
   const refreshRequests: Route[] = [];
@@ -59,6 +60,7 @@ async function setupAuthentication(
         'v1:subscribe:notifications',
         'v1:subscribe:remotecontrol',
       ],
+      ...initialSystemInfo,
     },
     '/api/v1/systeminfo/filtergroups': { FilterGroups: {} },
     '/api/v1/webmodules': [],
@@ -164,11 +166,13 @@ export const test = base.extend<{
   authenticatedPage: Page;
   initialBackups: unknown[];
   initialServerSettings: Record<string, string>;
+  initialSystemInfo: Record<string, unknown>;
 }>({
   initialBackups: [[], { option: true }],
   initialServerSettings: [{}, { option: true }],
-  serverApi: async ({ page, initialBackups, initialServerSettings }, use) => {
-    const api = await setupAuthentication(page, initialBackups, initialServerSettings);
+  initialSystemInfo: [{}, { option: true }],
+  serverApi: async ({ page, initialBackups, initialServerSettings, initialSystemInfo }, use) => {
+    const api = await setupAuthentication(page, initialBackups, initialServerSettings, initialSystemInfo);
     await use(api);
     expect(api.unexpectedRequests, 'Unexpected API or WebSocket requests').toEqual([]);
     expect(api.pageErrors, 'Unhandled browser errors').toEqual([]);
