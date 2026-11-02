@@ -38,3 +38,11 @@ The same mocked settings request is held pending in both images. Before: no visi
 
 - [Before](usage-statistics-saving-before.png)
 - [After](usage-statistics-saving-after.png)
+
+## Long selected source paths (2026-11-02)
+
+- Before: main 59568a2114778760f8b0e54d973a84c5e116ddeb; production artifact from run 41425624625.
+- After: codex/wrap-source-paths deb60e28070b40258f85e428c629ba23fcc9deb2; production artifact from run 41425604857.
+- Identical synthetic POSIX, Windows and UNC source strings on backup 42. The same existing authenticated API fixture is used for both builds. Navigate to /backup/42/source-data; at mobile width, open the existing Options panel and wait for its slide-in transform to settle.
+- Headless Chromium, 1280x850 and 390x850, en-US, UTC, light theme, service workers blocked. Unmodified screenshots. The path list remains scrollable; captures show its top. No unexpected API requests or browser page errors were observed. No live server or real user data was used.
+- Images: source-paths-1280-before.png / source-paths-1280-after.png and source-paths-390-before.png / source-paths-390-after.png.
