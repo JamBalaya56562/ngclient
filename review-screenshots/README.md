@@ -46,3 +46,11 @@ The same mocked settings request is held pending in both images. Before: no visi
 - Identical synthetic POSIX, Windows and UNC source strings on backup 42. The same existing authenticated API fixture is used for both builds. Navigate to /backup/42/source-data; at mobile width, open the existing Options panel and wait for its slide-in transform to settle.
 - Headless Chromium, 1280x850 and 390x850, en-US, UTC, light theme, service workers blocked. Unmodified screenshots. The path list remains scrollable; captures show its top. No unexpected API requests or browser page errors were observed. No live server or real user data was used.
 - Images: source-paths-1280-before.png / source-paths-1280-after.png and source-paths-390-before.png / source-paths-390-after.png.
+
+## Job execution log pagination (2026-11-06)
+
+- Before: main 3d8e66730df0133aa14e28c924a2b3d2f4003cda, production artifact from run 42021942035. Its general-log source files are identical to the current main a057c9ae599b17d94c21c4faf6692798b04b0ae5 (jj diff: 0 files changed).
+- After: 8a7f50d569561479978ccca23db2fe25a978211d, production artifact from run 42083866493.
+- Same 102 synthetic Event log rows with ID gaps in both captures. The initial request returns 100 rows. Before/after images show the bottom of that initial page; only after has page navigation. The third image shows the two remaining rows after requesting offset=1307, with Log 1300 expanded.
+- Chromium headless, 1280x850, en-US, UTC, light theme, service workers blocked. API responses are fixtures; no live server or user data. No unexpected API requests or page errors were observed. Unmodified screenshots.
+- job-log-pagination-before.png / job-log-pagination-after.png / job-log-pagination-older.png.
