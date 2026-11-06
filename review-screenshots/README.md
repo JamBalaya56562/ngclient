@@ -54,3 +54,7 @@ The same mocked settings request is held pending in both images. Before: no visi
 - Same 102 synthetic Event log rows with ID gaps in both captures. The initial request returns 100 rows. Before/after images show the bottom of that initial page; only after has page navigation. The third image shows the two remaining rows after requesting offset=1307, with Log 1300 expanded.
 - Chromium headless, 1280x850, en-US, UTC, light theme, service workers blocked. API responses are fixtures; no live server or user data. No unexpected API requests or page errors were observed. Unmodified screenshots.
 - job-log-pagination-before.png / job-log-pagination-after.png / job-log-pagination-older.png.
+
+## Keyboard focus (2026-11-07)
+Main 36903b95 and candidate 68b22810 production artifacts, Chromium 1280x800 en-US/UTC. home-before-* and home-* show the same keyboard sequence ending on the Restores card. Existing home nested-button tab removal is already in main; this comparison illustrates the focus treatment. general-* shows the candidate's first route step focused. Authentication/API data are fixtures. Local capture checks passed in both themes. Main production job succeeded before its overall workflow was cancelled; this is not a claim that the cancelled main workflow passed.
+
