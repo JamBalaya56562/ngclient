@@ -261,12 +261,13 @@ export class FilterComponent {
         return `${dir}${value.expression}`;
       }
 
+      // Add only the separator that is missing
       if (hasLeadingSlash) {
-        return `${dir}${pathDelimiter}${value.expression}`;
+        return `${dir}${value.expression}${pathDelimiter}`;
       }
 
       if (hasTrailingSlash) {
-        return `${dir}${value.expression}${pathDelimiter}`;
+        return `${dir}${pathDelimiter}${value.expression}`;
       }
 
       return `${dir}${pathDelimiter}${value.expression}${pathDelimiter}`;
