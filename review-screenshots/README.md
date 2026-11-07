@@ -58,3 +58,7 @@ The same mocked settings request is held pending in both images. Before: no visi
 ## Keyboard focus (2026-11-07)
 Main 36903b95 and candidate 68b22810 production artifacts, Chromium 1280x800 en-US/UTC. home-before-* and home-* show the same keyboard sequence ending on the Restores card. Existing home nested-button tab removal is already in main; this comparison illustrates the focus treatment. general-* shows the candidate's first route step focused. Authentication/API data are fixtures. Local capture checks passed in both themes. Main production job succeeded before its overall workflow was cancelled; this is not a claim that the cancelled main workflow passed.
 
+
+## Crash-log failure and recovery (2026-11-07)
+Chromium 1280x800 en-US/UTC; main 626f10a3 and candidate 2053393f production builds. The same fixture returns HTTP503 on the first crash-log request and a valid log on retry. Main reports an empty log and an unhandled observable error (expected baseline failure); the candidate shows an explicit failure and Retry, then renders the recovered log. No real server failure is claimed. Main production artifact was built locally during the #492 verification; candidate artifact is from production workflow 42356853934.
+
