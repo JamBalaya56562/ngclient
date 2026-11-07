@@ -62,3 +62,12 @@ Main 36903b95 and candidate 68b22810 production artifacts, Chromium 1280x800 en-
 ## Crash-log failure and recovery (2026-11-07)
 Chromium 1280x800 en-US/UTC; main 626f10a3 and candidate 2053393f production builds. The same fixture returns HTTP503 on the first crash-log request and a valid log on retry. Main reports an empty log and an unhandled observable error (expected baseline failure); the candidate shows an explicit failure and Retry, then renders the recovered log. No real server failure is claimed. Main production artifact was built locally during the #492 verification; candidate artifact is from production workflow 42356853934.
 
+
+## Command arguments and folder type selection (2026-11-08)
+
+- commandline-arguments/before.png: main 23d377df8d7b3c801627790a54ad3be447fd0ce4, selecting test leaves the backup sources in arguments.
+- commandline-arguments/after.png and user-arguments.png: b5462483155eb640137c4da9646bc9e4c5f9d708, auto-filled sources clear for test; explicitly typed 5 is retained. Native Chromium screenshots of production builds with synthetic/mocked API responses; no server command was executed.
+- filter-type-selection/before.png: main 23d377df8d7b3c801627790a54ad3be447fd0ce4, Add filter -> Excludes folder returns to Excludes expression.
+- filter-type-selection/after.png: a90b43235464a7d9261727c82a4b666e7769c976, the same selection retains Excludes folder. Native Chromium screenshots of production builds during isolated real Windows server verification. Settings persistence and actual backup exclusion were checked separately through the real API. Test-only data, no user jobs.
+
+Images are unedited browser screenshots, stored separately from the implementation branches.
