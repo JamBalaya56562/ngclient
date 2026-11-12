@@ -16,7 +16,7 @@
 
 1. [タスク台帳](tasks.md)の固定ID・状態・依存を確認し、記録の日付・main SHAを確認し、`jj git fetch --all-remotes`とghでIssue、open PR、originブックマークを再取得する。
 2. バグ対応を優先し、既存PR・準備済みブランチとの重複と本体API依存を確認する。後段スタックは前段マージまでPRを出さない。
-3. 独自Signalラッパーの整理NGT-001はpush済み・未PR（[検証記録](2026-11-12-ngt-001-signal-helpers.md)）。ServiceHubのタイマー管理NGT-002もpush済み・未PR（[検証記録](2026-11-12-ngt-002-async-lifecycle.md)）。サイドバーナビゲーションNGT-003もpush済み・未PR（[検証記録](2026-11-12-ngt-003-sidebar-navigation.md)）。Add Backup入口リンクNGT-057もpush済み・未PR（[検証記録](2026-11-12-ngt-057-add-backup-navigation.md)）。残る監査はNGT-056・058を参照する。具体的な契約・検証方法を決めてから着手する。
+3. 独自Signalラッパーの整理NGT-001はpush済み・未PR（[検証記録](2026-11-12-ngt-001-signal-helpers.md)）。ServiceHubのタイマー管理NGT-002もpush済み・未PR（[検証記録](2026-11-12-ngt-002-async-lifecycle.md)）。サイドバーナビゲーションNGT-003もpush済み・未PR（[検証記録](2026-11-12-ngt-003-sidebar-navigation.md)）。Add Backup入口リンクNGT-057もpush済み・未PR（[検証記録](2026-11-12-ngt-057-add-backup-navigation.md)）。接続ステータスNGT-058もpush済み・未PR（[検証記録](2026-11-12-ngt-058-connectivity-navigation.md)）。残る監査はNGT-056・059を参照する。具体的な契約・検証方法を決めてから着手する。
 4. 実装は最新mainから別ブランチを作る。triageを親にしない。既存ブランチを無断で書き換えない。
 5. 赤→緑、関係するテスト・ビルド、必要な実サーバー確認の証拠を残す。検証済み／ドキュメント根拠／推測を区別し、確認できていないものは未検証と書く。
 6. Issue全体を満たす場合だけFixes/Closesを使う。部分移行はRefsと残件を明記する。再現しない場合は確認範囲付きのコメント・再確認依頼を検討する。
