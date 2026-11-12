@@ -19,7 +19,7 @@
 ## 今着手できる候補
 
 NGT-001はpush済み・未PR。再実装せず、公開指示を待つ。証拠は[実装記録](2026-11-12-ngt-001-signal-helpers.md)。
-2. **NGT-002**: 長寿命timer/subscriptionのライフサイクル監査。まず再現と所有者を確定する。
+2. **NGT-056**: 非同期読み取り・購読監査の残り。ServiceHub対応NGT-002を繰り返さず、別の対象と契約を確定する。
 3. **NGT-003**: ナビゲーションの意味・操作の監査。既存フォーム移行と同じファイルなら範囲を分ける。
 4. **NGT-049〜055のINVESTIGATE行**: バグ対応優先で残件を確認。未再現・未調査を即実装しない。
 5. 明確な不具合候補がない場合は**NGT-006**の実サーバーE2E整備を小さく進める。
@@ -33,7 +33,7 @@ NGT-001はpush済み・未PR。再実装せず、公開指示を待つ。証拠�
 | ID | 内容 | 状態 | 依存・重複回避 | 次の行動 | 更新 |
 | --- | --- | --- | --- | --- | --- |
 | NGT-001 | 独自Signalラッパー整理 | PUSHED | codex/public-signal-helpers。main独立、本体依存なし | [検証記録](2026-11-12-ngt-001-signal-helpers.md)。公開指示待ち | 2026-11-12 |
-| NGT-002 | 非同期読み取り・破棄処理 | READY | 本体依存なし。既存rxResourceを尊重 | timer所有者・破棄・古い応答を確認 | 2026-11-12 |
+| NGT-002 | 非同期読み取り・破棄処理（ServiceHub timer） | PUSHED | codex/service-hub-timer-lifecycle。独立main、本体依存なし | [検証記録](2026-11-12-ngt-002-async-lifecycle.md)。未PR、残る監査はNGT-056 | 2026-11-12 |
 | NGT-003 | Routerとナビゲーションの意味 | READY | フォーム移行の編集ファイルと重なる部分は除外 | Ctrl/Tab/Enter・履歴の現状確認 | 2026-11-12 |
 | NGT-004 | 動的リストの安定したtrack | BLOCKED | NGT-026、NGT-028のマージ待ち（編集範囲重複） | 先行マージ後にIDとフォーカスを検証 | 2026-11-12 |
 | NGT-005 | Aria/CDKの適合評価 | BLOCKED | NGT-030、NGT-033のマージ後にfile-treeを評価 | 現在の操作契約を基準に小範囲評価 | 2026-11-12 |
@@ -94,11 +94,13 @@ NGT-001はpush済み・未PR。再実装せず、公開指示を待つ。証拠�
 | NGT-054 | #462 secondary delete | INVESTIGATE | 本体依存の有無から確認 |
 | NGT-055 | #126 validation schema | INVESTIGATE | 既存Signal Forms・検証との境界を確認 |
 
+| NGT-056 | 非同期読み取り・購読監査の残り | INVESTIGATE | NGT-002で再現したServiceHub timerは対応済み。別の対象・所有者・古い応答の契約から確認 |
+
 ## 更新手順と履歴
 
 作業開始時にIDをACTIVEへ変え、担当チャット識別子・ブックマーク・着手日を記載する。終了時は証拠への参照、次の行動、更新日も同時に更新する。PR作成・マージ後はghで実状態を確認し、対応IDの状態を変更する。依存のマージだけで自動的にDONEにはせず、統合後の検証と要求充足を確認する。
 
-依存先が完了したらBLOCKED行を再評価し、着手可能一覧も更新する。完了行は履歴として残す。今回のIDには欠番を設けているが既存IDを詰め直さず、新規はNGT-056から付番する。
+依存先が完了したらBLOCKED行を再評価し、着手可能一覧も更新する。完了行は履歴として残す。今回のIDには欠番を設けているが既存IDを詰め直さず、新規はNGT-057から付番する。
 
 - 2026-11-12: 初回台帳を追加。固定ID、状態、依存、着手候補を既存の調査記録から整理。新しいバグ再現・コード変更・テスト実行はしていない。
 
@@ -113,6 +115,7 @@ gh pr view 7772 --repo duplicati/duplicati --json number,state,mergedAt
 gh pr view 7775 --repo duplicati/duplicati --json number,state,mergedAt
 gh pr view 7776 --repo duplicati/duplicati --json number,state,mergedAt
 ```
+
 
 
 
