@@ -1,6 +1,6 @@
 # タスク台帳
 
-更新: 2026-11-12。基準main: `d788d0c592306dffe8105ae5f4c357156f94a38c`。
+更新: 2026-11-12。基準main: `8edaeee84c0c0f4a48e75ae917195cb1047b15a5`。
 
 このファイルが**現在の状態の正本**。日付付き調査文書は根拠・検証範囲・履歴として参照する。Beadsや別のDBは導入しない。GitHubのIssue/PRの状態はGitHubが正本で、この台帳は作業判断用スナップショット。
 
@@ -43,18 +43,18 @@ NGT-001はpush済み・未PR。再実装せず、公開指示を待つ。証拠�
 
 ## 実装済み・レビュー待ち
 
-**検証済み（今回）**: ghで下記PRのopen状態を確認。jjでブックマークを取得。各実装のテストは今回再実行していない。SHA・既存の検証証拠は[移行一覧](2026-11-12-angular-modernization.md)を参照。共通更新日は2026-11-12。
+**検証済み（今回）**: #684〜#694はマージ済み。対応する11ブックマークをローカル・originから削除した。残る20実装ブランチとtriageは最新mainへローカルrebase済み。PUSHED行のoriginはrebase前のSHAであり、再pushしていない。過去の検証記録を新mainで再実行済みとは扱わない。詳細は[整理記録](2026-11-12-merged-pr-maintenance.md)。
 
 | ID | 範囲 | 状態 | PR / ブックマーク（codex/以下） | 依存・次の行動 |
 | --- | --- | --- | --- | --- |
-| NGT-010 | Schedule / Options | PR_OPEN | #687 / migrate-schedule-options-signal-forms | 独立mainベース。レビュー待ち |
-| NGT-011 | Source data | PR_OPEN | #688 / migrate-source-data-signal-forms | 独立mainベース。レビュー待ち |
-| NGT-012 | 詳細オプション値 | PR_OPEN | #689 / migrate-option-values-signal-forms | 独立mainベース。レビュー待ち |
-| NGT-013 | Import encryption | PR_OPEN | #690 / migrate-import-encryption-signal-forms | 独立mainベース。レビュー待ち |
-| NGT-014 | Restore encryption | PR_OPEN | #691 / migrate-restore-encryption-signal-forms | 独立mainベース。レビュー待ち |
-| NGT-015 | Restore config | PR_OPEN | #692 / migrate-restore-config-signal-forms | 独立mainベース。レビュー待ち |
-| NGT-016 | Login | PR_OPEN | #693 / migrate-login-signal-forms | 独立mainベース。レビュー待ち |
-| NGT-017 | Import file | PR_OPEN | #694 / migrate-import-file-signal-forms | 独立mainベース。レビュー待ち |
+| NGT-010 | Schedule / Options | DONE | #687 / migrate-schedule-options-signal-forms | mainへマージ済み。ブックマーク削除済み |
+| NGT-011 | Source data | DONE | #688 / migrate-source-data-signal-forms | mainへマージ済み。ブックマーク削除済み |
+| NGT-012 | 詳細オプション値 | DONE | #689 / migrate-option-values-signal-forms | mainへマージ済み。ブックマーク削除済み |
+| NGT-013 | Import encryption | DONE | #690 / migrate-import-encryption-signal-forms | mainへマージ済み。ブックマーク削除済み |
+| NGT-014 | Restore encryption | DONE | #691 / migrate-restore-encryption-signal-forms | mainへマージ済み。ブックマーク削除済み |
+| NGT-015 | Restore config | DONE | #692 / migrate-restore-config-signal-forms | mainへマージ済み。ブックマーク削除済み |
+| NGT-016 | Login | DONE | #693 / migrate-login-signal-forms | mainへマージ済み。ブックマーク削除済み |
+| NGT-017 | Import file | DONE | #694 / migrate-import-file-signal-forms | mainへマージ済み。ブックマーク削除済み |
 | NGT-020 | Export | PUSHED | migrate-export-signal-forms | 必須依存なし。公開指示待ち |
 | NGT-021 | Throttle | PUSHED | migrate-throttle-signal-forms | 必須依存なし。公開指示待ち |
 | NGT-022 | Database path | PUSHED | migrate-database-path-signal-forms | 必須依存なし。公開指示待ち |
@@ -65,10 +65,10 @@ NGT-001はpush済み・未PR。再実装せず、公開指示を待つ。証拠�
 | NGT-027 | Initial passphrase | PUSHED | migrate-initial-passphrase-signal-forms | 必須依存なし。公開指示待ち |
 | NGT-028 | Restore search | PUSHED | migrate-restore-search-signal-forms | 必須依存なし。公開指示待ち |
 | NGT-029 | Version labels | PUSHED | migrate-version-labels-signal-forms | 必須依存なし。公開指示待ち |
-| NGT-030 | locked展開防止・Access denied | PR_OPEN | #684 / prevent-locked-folder-expansion | 旧本体でも展開防止。関連: duplicati/duplicati#7772（403改善）はopen |
-| NGT-031 | Pause E2E | PR_OPEN | #685 / test-server-pause | レビュー待ち |
-| NGT-032 | Job deletion E2E | PR_OPEN | #686 / test-job-deletion | レビュー待ち |
-| NGT-033 | リンク先表示 | BLOCKED | show-file-tree-link-target（push済み未PR） | duplicati/duplicati#7775はopen。マージ後の本体で再確認して公開判断 |
+| NGT-030 | locked展開防止・Access denied | DONE | #684 / prevent-locked-folder-expansion | mainへマージ済み。ブックマーク削除済み |
+| NGT-031 | Pause E2E | DONE | #685 / test-server-pause | mainへマージ済み。ブックマーク削除済み |
+| NGT-032 | Job deletion E2E | DONE | #686 / test-job-deletion | mainへマージ済み。ブックマーク削除済み |
+| NGT-033 | リンク先表示 | PUSHED | show-file-tree-link-target（originはrebase前） | duplicati/duplicati#7775はマージ済み。ローカルrebase競合解消済み。本体統合の再確認と再pushは次回 |
 | NGT-034 | 旧folder filter候補 | DEFERRED | fix/folder-filter-separators | #663のNewFilter修正と区別し、必要性から再調査 |
 
 ## Issueの残件・回答待ち
