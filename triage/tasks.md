@@ -20,7 +20,7 @@
 
 NGT-001はpush済み・未PR。再実装せず、公開指示を待つ。証拠は[実装記録](2026-11-12-ngt-001-signal-helpers.md)。
 2. **NGT-056**: 非同期読み取り・購読監査の残り。ServiceHub対応NGT-002を繰り返さず、別の対象と契約を確定する。
-3. **NGT-060**: About tabs・ホームカード・他のroute入力の適合評価。バックアップ編集のルートID入力NGT-059はpush済み。未選定部分の契約と重複を確認する。
+3. **NGT-061**: About tabs・ホームカード・他のroute入力の適合評価。ジョブログのルートID入力NGT-060はpush済み。未選定部分の契約と重複を確認する。
 4. **NGT-049〜055のINVESTIGATE行**: バグ対応優先で残件を確認。未再現・未調査を即実装しない。
 5. 明確な不具合候補がない場合は**NGT-006**の実サーバーE2E整備を小さく進める。
 
@@ -102,13 +102,15 @@ NGT-001はpush済み・未PR。再実装せず、公開指示を待つ。証拠�
 
 | NGT-059 | バックアップ編集のルートID入力 | PUSHED | codex/backup-route-input-binding。独立main、本体依存なし。[検証記録](2026-11-12-ngt-059-backup-route-input.md)。未PR、残る評価はNGT-060 |
 
-| NGT-060 | About tabs・ホームカード・他のroute入力の適合評価 | INVESTIGATE | About/ShipTabsのキーボード契約を実画面で確認し、カードや他のroute入力は個別に評価。NGT-003/057/058/059は再実装しない。ホーム/復元の準備済み移行と重なる実装はマージ待ち |
+| NGT-060 | ジョブログのルートID入力 | PUSHED | codex/job-log-route-input-binding。独立main、本体依存なし。[検証記録](2026-11-12-ngt-060-job-log-route-input.md)。未PR、残る評価はNGT-061 |
+
+| NGT-061 | About tabs・ホームカード・他のroute入力の適合評価 | INVESTIGATE | About/ShipTabsのキーボード契約を実画面で確認し、カードや他のroute入力は個別に評価。NGT-003/057/058/059/060は再実装しない。ホーム/復元の準備済み移行と重なる実装はマージ待ち |
 
 ## 更新手順と履歴
 
 作業開始時にIDをACTIVEへ変え、担当チャット識別子・ブックマーク・着手日を記載する。終了時は証拠への参照、次の行動、更新日も同時に更新する。PR作成・マージ後はghで実状態を確認し、対応IDの状態を変更する。依存のマージだけで自動的にDONEにはせず、統合後の検証と要求充足を確認する。
 
-依存先が完了したらBLOCKED行を再評価し、着手可能一覧も更新する。完了行は履歴として残す。今回のIDには欠番を設けているが既存IDを詰め直さず、新規はNGT-061から付番する。
+依存先が完了したらBLOCKED行を再評価し、着手可能一覧も更新する。完了行は履歴として残す。今回のIDには欠番を設けているが既存IDを詰め直さず、新規はNGT-062から付番する。
 
 - 2026-11-12: 初回台帳を追加。固定ID、状態、依存、着手候補を既存の調査記録から整理。新しいバグ再現・コード変更・テスト実行はしていない。
 
@@ -123,6 +125,7 @@ gh pr view 7772 --repo duplicati/duplicati --json number,state,mergedAt
 gh pr view 7775 --repo duplicati/duplicati --json number,state,mergedAt
 gh pr view 7776 --repo duplicati/duplicati --json number,state,mergedAt
 ```
+
 
 
 
