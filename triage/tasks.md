@@ -18,7 +18,7 @@
 
 ## 今着手できる候補
 
-1. **NGT-001**: 独自Signalラッパーの契約テストと公開APIへの整理。構造改善の第一候補。
+NGT-001はpush済み・未PR。再実装せず、公開指示を待つ。証拠は[実装記録](2026-11-12-ngt-001-signal-helpers.md)。
 2. **NGT-002**: 長寿命timer/subscriptionのライフサイクル監査。まず再現と所有者を確定する。
 3. **NGT-003**: ナビゲーションの意味・操作の監査。既存フォーム移行と同じファイルなら範囲を分ける。
 4. **NGT-049〜055のINVESTIGATE行**: バグ対応優先で残件を確認。未再現・未調査を即実装しない。
@@ -32,7 +32,7 @@
 
 | ID | 内容 | 状態 | 依存・重複回避 | 次の行動 | 更新 |
 | --- | --- | --- | --- | --- | --- |
-| NGT-001 | 独自Signalラッパー整理 | READY | 本体依存なし。新着PRとの重複を再確認 | storage・rollback・debounceの契約をテスト化し対象を限定 | 2026-11-12 |
+| NGT-001 | 独自Signalラッパー整理 | PUSHED | codex/public-signal-helpers。main独立、本体依存なし | [検証記録](2026-11-12-ngt-001-signal-helpers.md)。公開指示待ち | 2026-11-12 |
 | NGT-002 | 非同期読み取り・破棄処理 | READY | 本体依存なし。既存rxResourceを尊重 | timer所有者・破棄・古い応答を確認 | 2026-11-12 |
 | NGT-003 | Routerとナビゲーションの意味 | READY | フォーム移行の編集ファイルと重なる部分は除外 | Ctrl/Tab/Enter・履歴の現状確認 | 2026-11-12 |
 | NGT-004 | 動的リストの安定したtrack | BLOCKED | NGT-026、NGT-028のマージ待ち（編集範囲重複） | 先行マージ後にIDとフォーカスを検証 | 2026-11-12 |
@@ -113,4 +113,6 @@ gh pr view 7772 --repo duplicati/duplicati --json number,state,mergedAt
 gh pr view 7775 --repo duplicati/duplicati --json number,state,mergedAt
 gh pr view 7776 --repo duplicati/duplicati --json number,state,mergedAt
 ```
+
+
 
