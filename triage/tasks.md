@@ -21,8 +21,9 @@
 NGT-001はpush済み・未PR。再実装せず、公開指示を待つ。証拠は[実装記録](2026-11-12-ngt-001-signal-helpers.md)。
 2. **NGT-056**: 非同期読み取り・購読監査の残り。ServiceHub対応NGT-002を繰り返さず、別の対象と契約を確定する。
 3. **NGT-062**: About tabs・ホームカード・他のroute入力の適合評価。コマンド実行結果のルート入力NGT-061はpush済み。未選定部分の契約と重複を確認する。
-4. **NGT-049〜055のINVESTIGATE行**: バグ対応優先で残件を確認。未再現・未調査を即実装しない。
-5. 明確な不具合候補がない場合は**NGT-006**の実サーバーE2E整備を小さく進める。
+4. **NGT-045**: 本体#7776はマージ済み。cross-OS復元の両方向の一覧と別restoreエラーを再確認する。
+5. **NGT-049〜055のINVESTIGATE行**: バグ対応優先で残件を確認。未再現・未調査を即実装しない。
+6. 明確な不具合候補がない場合は**NGT-006**の実サーバーE2E整備を小さく進める。
 
 共通の着手条件: 最新main・全ブックマーク・open PRの差分を確認し、同じ変更が準備済みでないことを確認する。READYは無条件の実装許可やPR作成許可ではない。PUSHEDの公開や既存ブランチの書き換えは指示された範囲で行う。
 
@@ -43,7 +44,7 @@ NGT-001はpush済み・未PR。再実装せず、公開指示を待つ。証拠�
 
 ## 実装済み・レビュー待ち
 
-**検証済み（今回）**: #684〜#694はマージ済み。対応する11ブックマークをローカル・originから削除した。残る20実装ブランチとtriageは最新mainへローカルrebase済み。PUSHED行のoriginはrebase前のSHAであり、再pushしていない。過去の検証記録を新mainで再実行済みとは扱わない。詳細は[整理記録](2026-11-12-merged-pr-maintenance.md)。
+**検証済み（今回）**: #684〜#694はマージ済み。残る20実装ブランチとtriageで全単体テスト・本番ビルドが成功し、変更したE2Eも成功した。rebase後のorigin同期を準備済み。SHA・コマンドと結果・再試行の内容は[全ブランチ検証記録](2026-11-12-rebase-validation.md)を参照。記録の追記はMarkdownのみで、検証後にアプリのソース変更はない。
 
 | ID | 範囲 | 状態 | PR / ブックマーク（codex/以下） | 依存・次の行動 |
 | --- | --- | --- | --- | --- |
@@ -68,12 +69,12 @@ NGT-001はpush済み・未PR。再実装せず、公開指示を待つ。証拠�
 | NGT-030 | locked展開防止・Access denied | DONE | #684 / prevent-locked-folder-expansion | mainへマージ済み。ブックマーク削除済み |
 | NGT-031 | Pause E2E | DONE | #685 / test-server-pause | mainへマージ済み。ブックマーク削除済み |
 | NGT-032 | Job deletion E2E | DONE | #686 / test-job-deletion | mainへマージ済み。ブックマーク削除済み |
-| NGT-033 | リンク先表示 | PUSHED | show-file-tree-link-target（originはrebase前） | duplicati/duplicati#7775はマージ済み。ローカルrebase競合解消済み。本体統合の再確認と再pushは次回 |
+| NGT-033 | リンク先表示 | PUSHED | show-file-tree-link-target | duplicati/duplicati#7775はマージ済み。rebase後の全単体テスト・ビルド成功。本体との実サーバー統合再確認は未実施 |
 | NGT-034 | 旧folder filter候補 | DEFERRED | fix/folder-filter-separators | #663のNewFilter修正と区別し、必要性から再調査 |
 
 ## Issueの残件・回答待ち
 
-詳細と公開コメント: [Issue対応表](2026-11-10-bug-triage.md)。**検証済み（今回）**: 下記Issueはopen。本体#7772/#7775/#7776もopen。既存の実サーバー証拠の範囲を超える解決宣言はしない。共通更新日は2026-11-12。
+詳細と公開コメント: [Issue対応表](2026-11-10-bug-triage.md)。**検証済み（今回）**: Issueの状態は前回調査時のスナップショット。本体#7772/#7775/#7776は今回ghでMERGEDを確認。既存の実サーバー証拠の範囲を超える解決宣言はしない。共通更新日は2026-11-12。
 
 | ID | Issue / 内容 | 状態 | 依存・次の行動 |
 | --- | --- | --- | --- |
@@ -82,7 +83,7 @@ NGT-001はpush済み・未PR。再実装せず、公開指示を待つ。証拠�
 | NGT-042 | #492 時差・DST | WAITING | 日次全曜日の検証済み。報告者確認待ち。全設定は未検証 |
 | NGT-043 | #217 破損ファイル削除 | WAITING | データvolume欠損の検証とclose提案済み |
 | NGT-044 | #401 Windows宛先パス | WAITING | 実サーバー保存・再読込確認済み。報告者確認待ち |
-| NGT-045 | #449 cross-OS復元 | BLOCKED | duplicati/duplicati#7776マージ後、両方向の一覧と別restoreエラーを再確認 |
+| NGT-045 | #449 cross-OS復元 | READY | duplicati/duplicati#7776はマージ済み。両方向の一覧と別restoreエラーを再確認（今回は未実施） |
 | NGT-046 | #636 junction | BLOCKED | NGT-030、NGT-033。本体#7772/#7775も踏まえ最終確認 |
 | NGT-047 | #328 URL再構築 | BLOCKED | 本体側へ依頼済み。対応PR番号は未記録、次回取得。UIだけでは完結しない |
 | NGT-048 | #466 pCloud | WAITING | 追加情報待ち。報告環境は未検証 |
