@@ -44,7 +44,7 @@ NGT-001はpush済み・未PR。再実装せず、公開指示を待つ。証拠�
 
 ## 実装済み・レビュー待ち
 
-**検証済み（今回）**: #684〜#694はマージ済み。残る20実装ブランチとtriageで全単体テスト・本番ビルドが成功し、変更したE2Eも成功した。rebase後のorigin同期を準備済み。SHA・コマンドと結果・再試行の内容は[全ブランチ検証記録](2026-11-12-rebase-validation.md)を参照。記録の追記はMarkdownのみで、検証後にアプリのソース変更はない。
+**検証済み（今回）**: #684〜#694はマージ済み。残る20実装ブランチとtriageで全単体テスト・本番ビルドが成功し、変更したE2Eも成功した。全21ブックマークのoriginとのSHA一致を確認済み。NGT-020〜029の10件をPR #695〜#704として公開した。SHA・コマンドと結果・再試行の内容は[全ブランチ検証記録](2026-11-12-rebase-validation.md)を参照。記録の追記はMarkdownのみで、検証後にアプリのソース変更はない。
 
 | ID | 範囲 | 状態 | PR / ブックマーク（codex/以下） | 依存・次の行動 |
 | --- | --- | --- | --- | --- |
@@ -56,16 +56,16 @@ NGT-001はpush済み・未PR。再実装せず、公開指示を待つ。証拠�
 | NGT-015 | Restore config | DONE | #692 / migrate-restore-config-signal-forms | mainへマージ済み。ブックマーク削除済み |
 | NGT-016 | Login | DONE | #693 / migrate-login-signal-forms | mainへマージ済み。ブックマーク削除済み |
 | NGT-017 | Import file | DONE | #694 / migrate-import-file-signal-forms | mainへマージ済み。ブックマーク削除済み |
-| NGT-020 | Export | PUSHED | migrate-export-signal-forms | 必須依存なし。公開指示待ち |
-| NGT-021 | Throttle | PUSHED | migrate-throttle-signal-forms | 必須依存なし。公開指示待ち |
-| NGT-022 | Database path | PUSHED | migrate-database-path-signal-forms | 必須依存なし。公開指示待ち |
-| NGT-023 | Remote registration | PUSHED | migrate-remote-registration-signal-forms | 必須依存なし。公開指示待ち |
-| NGT-024 | Restore URL | PUSHED | migrate-restore-url-signal-forms | 必須依存なし。公開指示待ち |
-| NGT-025 | Import selection | PUSHED | migrate-import-selection-signal-forms | 必須依存なし。公開指示待ち |
-| NGT-026 | Home search | PUSHED | migrate-home-search-signal-forms | 必須依存なし。公開指示待ち |
-| NGT-027 | Initial passphrase | PUSHED | migrate-initial-passphrase-signal-forms | 必須依存なし。公開指示待ち |
-| NGT-028 | Restore search | PUSHED | migrate-restore-search-signal-forms | 必須依存なし。公開指示待ち |
-| NGT-029 | Version labels | PUSHED | migrate-version-labels-signal-forms | 必須依存なし。公開指示待ち |
+| NGT-020 | Export | PR_OPEN | [#696](https://github.com/duplicati/ngclient/pull/696) / migrate-export-signal-forms | 独立main。本体依存なし。レビュー待ち |
+| NGT-021 | Throttle | PR_OPEN | [#703](https://github.com/duplicati/ngclient/pull/703) / migrate-throttle-signal-forms | 独立main。本体依存なし。レビュー待ち |
+| NGT-022 | Database path | PR_OPEN | [#695](https://github.com/duplicati/ngclient/pull/695) / migrate-database-path-signal-forms | 独立main。本体依存なし。レビュー待ち |
+| NGT-023 | Remote registration | PR_OPEN | [#700](https://github.com/duplicati/ngclient/pull/700) / migrate-remote-registration-signal-forms | 独立main。本体依存なし。レビュー待ち |
+| NGT-024 | Restore URL | PR_OPEN | [#702](https://github.com/duplicati/ngclient/pull/702) / migrate-restore-url-signal-forms | 独立main。本体依存なし。レビュー待ち |
+| NGT-025 | Import selection | PR_OPEN | [#698](https://github.com/duplicati/ngclient/pull/698) / migrate-import-selection-signal-forms | 独立main。本体依存なし。レビュー待ち |
+| NGT-026 | Home search | PR_OPEN | [#697](https://github.com/duplicati/ngclient/pull/697) / migrate-home-search-signal-forms | 独立main。本体依存なし。レビュー待ち |
+| NGT-027 | Initial passphrase | PR_OPEN | [#699](https://github.com/duplicati/ngclient/pull/699) / migrate-initial-passphrase-signal-forms | 独立main。本体依存なし。レビュー待ち |
+| NGT-028 | Restore search | PR_OPEN | [#701](https://github.com/duplicati/ngclient/pull/701) / migrate-restore-search-signal-forms | 独立main。本体依存なし。レビュー待ち |
+| NGT-029 | Version labels | PR_OPEN | [#704](https://github.com/duplicati/ngclient/pull/704) / migrate-version-labels-signal-forms | 独立main。本体依存なし。レビュー待ち |
 | NGT-030 | locked展開防止・Access denied | DONE | #684 / prevent-locked-folder-expansion | mainへマージ済み。ブックマーク削除済み |
 | NGT-031 | Pause E2E | DONE | #685 / test-server-pause | mainへマージ済み。ブックマーク削除済み |
 | NGT-032 | Job deletion E2E | DONE | #686 / test-job-deletion | mainへマージ済み。ブックマーク削除済み |

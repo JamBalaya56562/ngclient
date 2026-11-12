@@ -39,3 +39,21 @@
 PowerShellでの再現コマンド: $env:VITEST_MAX_WORKERS = '1'; & <mise管理のbun.exe> run test:ci
 
 triageの初回はworker起動の固定60秒タイムアウトでno tests / 1 error（60.56秒）。再試行では全テスト成功。START_TIMEOUT / WORKER_START_TIMEOUTとnode_modulesの内容は変更しなかった。
+
+## origin同期と公開（検証済み）
+
+20実装ブランチとtriageをoriginへpushし、全21件のローカル・origin SHA一致を確認した。全20実装ブランチの先端は検証開始時から不変。PR作成前にupstream/mainが同じSHAでopen PRが0件であることを再確認した。
+
+次の10件は全てmainを直接の親とし、相互にも他の準備済みブランチにも変更ファイルの重複がない。全体移行の完了ではないためRefs #497とし、Fixesは付けていない。
+- [codex/migrate-database-path-signal-forms](https://github.com/duplicati/ngclient/pull/695)
+- [codex/migrate-export-signal-forms](https://github.com/duplicati/ngclient/pull/696)
+- [codex/migrate-home-search-signal-forms](https://github.com/duplicati/ngclient/pull/697)
+- [codex/migrate-import-selection-signal-forms](https://github.com/duplicati/ngclient/pull/698)
+- [codex/migrate-initial-passphrase-signal-forms](https://github.com/duplicati/ngclient/pull/699)
+- [codex/migrate-remote-registration-signal-forms](https://github.com/duplicati/ngclient/pull/700)
+- [codex/migrate-restore-search-signal-forms](https://github.com/duplicati/ngclient/pull/701)
+- [codex/migrate-restore-url-signal-forms](https://github.com/duplicati/ngclient/pull/702)
+- [codex/migrate-throttle-signal-forms](https://github.com/duplicati/ngclient/pull/703)
+- [codex/migrate-version-labels-signal-forms](https://github.com/duplicati/ngclient/pull/704)
+
+triageの検証後の変更はMarkdownの記録のみ。画像保存用ブランチは固定SHAのまま保持した。
