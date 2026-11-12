@@ -1,3 +1,5 @@
+> 現在の作業状態・依存関係・着手候補は[タスク台帳](tasks.md)を正本とします。この文書は調査根拠と日付時点の記録です。
+
 # Angular公式機能の活用と構造改善 — 2026-11-12
 
 ## この記録の位置付け
@@ -105,3 +107,4 @@ rg -n 'rxResource|httpResource|takeUntilDestroyed|provideZonelessChangeDetection
 ```
 
 実際にはjj/ghのmise管理下実体を直接使用。GitHubの状態やmainが変われば、この表を先に更新してから実装候補を選ぶ。Issueの要求全体を満たして検証できたPRにだけFixesを付け、部分対応はRefsと残件を明記する。
+
