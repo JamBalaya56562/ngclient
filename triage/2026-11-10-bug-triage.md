@@ -1,3 +1,33 @@
+# 現在のIssue対応表 — 2026-11-12更新
+
+**検証済み（GitHub状態の再取得）**: 下表のIssueは全てopen。調査時の最新mainは`d788d0c592306dffe8105ae5f4c357156f94a38c`。以下の過去の実サーバー検証を、このmainで再実行したという意味ではない。以前の「次に再現する」指示より、この表を優先する。
+
+| Issue | 現在の証拠・状態 | 次の行動 |
+| --- | --- | --- |
+| #215 | 選択した中間世代のみ削除、Compact on/offを実サーバーで確認。[close提案済み](https://github.com/duplicati/ngclient/issues/215#issuecomment-6779794381) | メンテナ判断待ち。同じ検証を未実施扱いにしない |
+| #283 | 期限切れ・一時的なrefresh失敗後、WSとlong pollingがreloadなしで復帰。[再確認依頼・close提案済み](https://github.com/duplicati/ngclient/issues/283#issuecomment-6779880314) | 報告者の現行版結果待ち |
+| #492 | DST開始・終了を含む6回の日次自動起動で表示・保存・予定・実行一致。[追記済み](https://github.com/duplicati/ngclient/issues/492#issuecomment-6779919691) | 全曜日有効の日次設定に限定。曜日除外、曖昧/存在しない時刻、元のWindows環境は未検証 |
+| #217 | データvolume欠損、確認前の非変更、削除後の正常旧世代復元を確認。[close提案済み](https://github.com/duplicati/ngclient/issues/217#issuecomment-6780101822) | 他の破損条件まで解決済みとはしない |
+| #401 | WindowsでC→C:→C:\→C:\Backup入力と保存・再読込を確認。[再確認依頼済み](https://github.com/duplicati/ngclient/issues/401#issuecomment-6780391498) | 現行版での報告者の結果待ち |
+| #449 | 両方向cross-OSでrootは返るが子一覧が空。既知パスのrestoreには別エラーも観測。`tmp/restore449/verification.md` | 本体[#7776](https://github.com/duplicati/duplicati/pull/7776)はopen。マージ後に両方向の一覧と復元を別々に再検証 |
+| #636 | Windows互換junctionのアクセス拒否。ngclient[#684](https://github.com/duplicati/ngclient/pull/684)はopen、locked展開防止と読み上げ対応。link-targetは別準備ブランチ | 本体[#7772](https://github.com/duplicati/duplicati/pull/7772)、[#7775](https://github.com/duplicati/duplicati/pull/7775)はopen。403とsymlinkTargetを分けて検証。通常リンクの選択・展開も維持 |
+| #328 | main d788d0c5の実サーバーで6種類×3回の保存。送信URLは直前GETと一致したが、GETオブジェクトの無変更PUTだけでも本体が一部URLを再構築。`tmp/destination328/verification.md` | 本体へ依頼済み。ブラウザーなし再現と本体修正の状態を確認。全体をcloseしない |
+| #497 | Generalは#682でmain反映。8PR open、10ブランチpush済み未PR | [現在の移行範囲と依存表](2026-11-12-angular-modernization.md)を先に読む。部分対応にFixesを付けない |
+| #273 | unit/E2E追加は進んでいるがテスト整備全体の完了基準は未確定 | 実サーバーE2Eの範囲、継続実行、失敗時証拠を揃えてからclose方針を相談 |
+| #466 | pCloud固有環境の情報待ち | 追加情報と再現環境を確認。未検証環境で解決済みとしない |
+| #627 / #637 / #311 / #409 / #460 / #462 / #126 | openであることを今回再確認。全要求の現行版再現は今回未実施 | Issue本文・返信と現在コードを読んで残件を特定してから着手 |
+
+上記#215/#283/#492/#217/#401の実サーバー検証はmain `20d6c2128e6c5166ced84784385064b7ff788157`、server `2.4.1.101_canary_2026-11-07`の記録に基づく。詳細・対象OS・限界は各公開コメントを参照する。これらは今回の再実行ではなく、過去の検証結果の照合。
+
+本体#7734はmergedで、ngclient#675のCompact設定もmain反映済み。#394全版検索も#674でmain反映済み。言語ヘッダー#681もmain反映済みであり、下記の古い未着手表をそのまま使わない。Syncのrestoreには現在mainに対応があり、旧来の「Syncは全て復元不可」という前提を再利用せず、対応機能フラグとAPI契約を確認する。
+
+**今回の調査限界**: GitHubのopen状態・PR依存・既存証拠を更新した。フォーラムの再巡回、全Issueの再現、全サーバー修正版の実行は未実施。以下のフォーラム一覧は2026-11-10時点の履歴で、現在の優先候補の確定表ではない。
+
+---
+
+## 以下は2026-11-10時点の調査履歴
+
+古い優先順位・未実施表は当時の記録として残す。次の作業は上の更新表と最新のGitHub状態から選ぶ。
 # バグ調査とIssueを閉じるための計画
 
 調査日 2026-11-10（JST）。ngclient upstream main は [20d6c2128e6c5166ced84784385064b7ff788157](https://github.com/duplicati/ngclient/commit/20d6c2128e6c5166ced84784385064b7ff788157)。
@@ -50,3 +80,4 @@
 2. 報告ごとに再現手順・UI版・本体版・OS・ブラウザー・経路・期待値・最小の伏字済み証拠を残す。同じ症状を既存Issue・PR・forkブランチ・同梱版に結び付ける。
 3. 復元不能、誤った対象への削除、保存値の破損、通常操作の停止を優先する。隔離した実サーバーでHTTPまたはWSの境界を観測し、APIが正しいのに表示や送信が違う場合にngclient修正を進める。
 4. 修正前の失敗、修正後の成功、関連テストとビルドを揃える。報告条件を満たす修正には `Fixes`、部分対応には `Refs` を使う。修正済みとみられる古いIssueは、検証範囲と未検証の条件を示してcloseを提案する。
+
