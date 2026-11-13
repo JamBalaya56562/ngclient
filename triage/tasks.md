@@ -1,6 +1,6 @@
 # タスク台帳
 
-更新: 2026-11-13。基準main: `4da4c83a6aa0879413f3d2e765cf84b95a417ad8`。
+更新: 2026-11-14。基準main: `f217ce91146c6be358f054f32f030e2503ad3005`。
 
 このファイルが**現在の状態の正本**。日付付き調査文書は根拠・検証範囲・履歴として参照する。Beadsや別のDBは導入しない。GitHubのIssue/PRの状態はGitHubが正本で、この台帳は作業判断用スナップショット。
 
@@ -18,9 +18,9 @@
 
 ## 今着手できる候補
 
-NGT-001はPR公開済み。再実装せず、レビューを待つ。今回の公開・マージ状態は[一括検証記録](2026-11-13-maintenance-validation.md)を参照。
+NGT-001〜003・057〜063はmainへマージ済み。今回の整理・公開・検証は[一括記録](2026-11-14-maintenance-validation.md)を参照。
 2. **NGT-077**: ServerStatusWebSocketServiceの接続・再接続timer・非同期認証処理の寿命を監査する。既存差分と現行呼出しを確認してから独立した対象を選び、未検証を不具合と断定しない。StatusBarStateの追加変更はNGT-076の先行マージを待つ。
-3. **NGT-071はマージ待ち**: ホーム#697・接続画面#700はマージ済み。コマンドID用NGT-059と重なる範囲は先行マージ後に再監査し、それ以外も既存差分との重複を確認する。NGT-070のログアウト補助リンクを再実装しない。disabled付き・状態変更付き操作を無理にリンク化せず、待っている間は他のバグ候補やNGT-006を優先する。
+3. **NGT-071は再監査可能**: ホーム#697・接続画面#700・ルートID #711はマージ済み。NGT-064〜070など公開済み・準備済みの変更を重複実装せず、現行mainから独立した残件を選ぶ。disabledや状態変更付きの操作は維持する。
 4. **NGT-045**: 本体#7776はマージ済み。cross-OS復元の両方向の一覧と別restoreエラーを再確認する。
 5. **NGT-049〜055のINVESTIGATE行**: バグ対応優先で残件を確認。未再現・未調査を即実装しない。
 6. 明確な不具合候補がない場合は**NGT-006**の実サーバーE2E整備を小さく進める。
@@ -33,9 +33,9 @@ NGT-001はPR公開済み。再実装せず、レビューを待つ。今回の�
 
 | ID | 内容 | 状態 | 依存・重複回避 | 次の行動 | 更新 |
 | --- | --- | --- | --- | --- | --- |
-| NGT-001 | 独自Signalラッパー整理 | PR_OPEN | codex/public-signal-helpers。main独立、本体依存なし | [検証記録](2026-11-12-ngt-001-signal-helpers.md)。PR #706 レビュー待ち | 2026-11-13 |
-| NGT-002 | 非同期読み取り・破棄処理（ServiceHub timer） | PR_OPEN | codex/service-hub-timer-lifecycle。独立main、本体依存なし | [検証記録](2026-11-12-ngt-002-async-lifecycle.md)。PR #707 公開済み、残る監査はNGT-056 | 2026-11-13 |
-| NGT-003 | Routerとナビゲーションの意味（サイドバー） | PR_OPEN | codex/sidebar-router-links。独立main、本体依存なし | [検証記録](2026-11-12-ngt-003-sidebar-navigation.md)。PR #708 公開済み、残る監査はNGT-057 | 2026-11-13 |
+| NGT-001 | 独自Signalラッパー整理 | DONE | codex/public-signal-helpers。main独立、本体依存なし | [検証記録](2026-11-12-ngt-001-signal-helpers.md)。PR #706 マージ済み。ブックマーク削除済み | 2026-11-14 |
+| NGT-002 | 非同期読み取り・破棄処理（ServiceHub timer） | DONE | codex/service-hub-timer-lifecycle。独立main、本体依存なし | [検証記録](2026-11-12-ngt-002-async-lifecycle.md)。PR #707 マージ済み（ブックマーク削除済み）、残る監査はNGT-056 | 2026-11-14 |
+| NGT-003 | Routerとナビゲーションの意味（サイドバー） | DONE | codex/sidebar-router-links。独立main、本体依存なし | [検証記録](2026-11-12-ngt-003-sidebar-navigation.md)。PR #708 マージ済み（ブックマーク削除済み）、残る監査はNGT-057 | 2026-11-14 |
 | NGT-004 | 動的リストの安定したtrack | READY | NGT-026、NGT-028はマージ済み。着手時に準備済み差分を再確認 | 現行mainのIDとフォーカスを検証 | 2026-11-13 |
 | NGT-005 | Aria/CDKの適合評価 | BLOCKED | NGT-030、NGT-033のマージ後にfile-treeを評価 | 現在の操作契約を基準に小範囲評価 | 2026-11-12 |
 | NGT-006 | 実サーバーE2E整備 / #273 | READY | NGT-031、NGT-032と同じケースを重複追加しない | 次の未被覆フローと継続実行方法を選ぶ。全体closeは保留 | 2026-11-12 |
@@ -69,7 +69,7 @@ NGT-001はPR公開済み。再実装せず、レビューを待つ。今回の�
 | NGT-030 | locked展開防止・Access denied | DONE | #684 / prevent-locked-folder-expansion | mainへマージ済み。ブックマーク削除済み |
 | NGT-031 | Pause E2E | DONE | #685 / test-server-pause | mainへマージ済み。ブックマーク削除済み |
 | NGT-032 | Job deletion E2E | DONE | #686 / test-job-deletion | mainへマージ済み。ブックマーク削除済み |
-| NGT-033 | リンク先表示 | PUSHED | show-file-tree-link-target | duplicati/duplicati#7775はマージ済み。rebase後の全単体テスト・ビルド成功。本体との実サーバー統合再確認は未実施 |
+| NGT-033 | リンク先表示 | PUSHED | show-file-tree-link-target | 本体#7775はマージ済み。11/14 rebase後のAPI二重定義(TS2300)を解消し、関連spec・ビルド成功。[記録](2026-11-14-maintenance-validation.md)。実サーバー統合は未再確認 |
 | NGT-034 | 旧folder filter候補 | DEFERRED | fix/folder-filter-separators | #663のNewFilter修正と区別し、必要性から再調査 |
 
 ## Issueの残件・回答待ち
@@ -95,36 +95,36 @@ NGT-001はPR公開済み。再実装せず、レビューを待つ。今回の�
 | NGT-054 | #462 secondary delete | INVESTIGATE | 本体依存の有無から確認 |
 | NGT-055 | #126 validation schema | INVESTIGATE | 既存Signal Forms・検証との境界を確認 |
 
-| NGT-056 | 長ポーリングの購読・破棄ライフサイクル | PUSHED | codex/longpoll-service-lifecycle。最新main独立、本体依存なし。[赤→緑・ビルドの記録](2026-11-13-ngt-056-longpoll-lifecycle.md)。未PR。非同期監査全体の残りはNGT-072 |
+| NGT-056 | 長ポーリングの購読・破棄ライフサイクル | PR_OPEN | codex/longpoll-service-lifecycle。最新main独立、本体依存なし。[赤→緑・ビルドの記録](2026-11-13-ngt-056-longpoll-lifecycle.md)。PR #723 公開済み。非同期監査全体の残りはNGT-072 |
 
-| NGT-057 | ナビゲーション監査（Add Backup入口） | PR_OPEN | codex/add-backup-router-links。独立main、本体依存なし。[検証記録](2026-11-12-ngt-057-add-backup-navigation.md)。PR #709 公開済み、残る評価はNGT-058 |
+| NGT-057 | ナビゲーション監査（Add Backup入口） | DONE | codex/add-backup-router-links。独立main、本体依存なし。[検証記録](2026-11-12-ngt-057-add-backup-navigation.md)。PR #709 マージ済み（ブックマーク削除済み）、残る評価はNGT-058 |
 
-| NGT-058 | 接続ステータスのナビゲーション | PR_OPEN | codex/console-connection-router-links。独立main、本体依存なし。[検証記録](2026-11-12-ngt-058-connectivity-navigation.md)。PR #710 公開済み、残る評価はNGT-059 |
+| NGT-058 | 接続ステータスのナビゲーション | DONE | codex/console-connection-router-links。独立main、本体依存なし。[検証記録](2026-11-12-ngt-058-connectivity-navigation.md)。PR #710 マージ済み（ブックマーク削除済み）、残る評価はNGT-059 |
 
-| NGT-059 | バックアップ編集のルートID入力 | PR_OPEN | codex/backup-route-input-binding。独立main、本体依存なし。[検証記録](2026-11-12-ngt-059-backup-route-input.md)。PR #711 公開済み、残る評価はNGT-060 |
+| NGT-059 | バックアップ編集のルートID入力 | DONE | codex/backup-route-input-binding。独立main、本体依存なし。[検証記録](2026-11-12-ngt-059-backup-route-input.md)。PR #711 マージ済み（ブックマーク削除済み）、残る評価はNGT-060 |
 
-| NGT-060 | ジョブログのルートID入力 | PR_OPEN | codex/job-log-route-input-binding。独立main、本体依存なし。[検証記録](2026-11-12-ngt-060-job-log-route-input.md)。PR #712 公開済み、残る評価はNGT-061 |
+| NGT-060 | ジョブログのルートID入力 | DONE | codex/job-log-route-input-binding。独立main、本体依存なし。[検証記録](2026-11-12-ngt-060-job-log-route-input.md)。PR #712 マージ済み（ブックマーク削除済み）、残る評価はNGT-061 |
 
-| NGT-061 | コマンド実行結果のルート入力 | PR_OPEN | codex/command-result-route-input-binding。独立main、本体依存なし。[検証記録](2026-11-12-ngt-061-command-result-input.md)。PR #713 公開済み、残る評価はNGT-062 |
+| NGT-061 | コマンド実行結果のルート入力 | DONE | codex/command-result-route-input-binding。独立main、本体依存なし。[検証記録](2026-11-12-ngt-061-command-result-input.md)。PR #713 マージ済み（ブックマーク削除済み）、残る評価はNGT-062 |
 
-| NGT-062 | ナビゲーション監査（復元進捗taskid入力） | PR_OPEN | codex/restore-progress-route-input。main独立、本体依存なし。[変更前後の契約テスト・ビルド・E2E](2026-11-12-ngt-062-restore-progress-input.md)。PR #714 公開済み。残る評価はNGT-064 |
+| NGT-062 | ナビゲーション監査（復元進捗taskid入力） | DONE | codex/restore-progress-route-input。main独立、本体依存なし。[変更前後の契約テスト・ビルド・E2E](2026-11-12-ngt-062-restore-progress-input.md)。PR #714 マージ済み（ブックマーク削除済み）。残る評価はNGT-064 |
 
-| NGT-063 | ログ画面のRouter購読の破棄 | PR_OPEN | codex/logs-router-subscription-lifecycle。main独立、本体依存なし。PR #715 公開済み。[赤→緑・ビルド・E2Eの記録](2026-11-12-ngt-063-logs-router-lifecycle.md) |
+| NGT-063 | ログ画面のRouter購読の破棄 | DONE | codex/logs-router-subscription-lifecycle。main独立、本体依存なし。PR #715 マージ済み（ブックマーク削除済み）。[赤→緑・ビルド・E2Eの記録](2026-11-12-ngt-063-logs-router-lifecycle.md) |
 
-| NGT-064 | Aboutのnativeリンク・選択同期 | PUSHED | codex/about-navigation-links。main独立、本体依存なし。[赤→緑・実画面・ビルドの記録](2026-11-12-ngt-064-about-navigation.md)。未PR。ホーム・route入力の残りはNGT-065 |
+| NGT-064 | Aboutのnativeリンク・選択同期 | PR_OPEN | codex/about-navigation-links。main独立、本体依存なし。[赤→緑・実画面・ビルドの記録](2026-11-12-ngt-064-about-navigation.md)。PR #716 公開済み。ホーム・route入力の残りはNGT-065 |
 
-| NGT-065 | 復元オプションの戻るリンク | PUSHED | codex/restore-options-back-link。main独立、本体依存なし。[赤→緑・ビルド・E2Eの記録](2026-11-13-ngt-065-restore-options-back.md)。未PR。ホーム・Router使用箇所の残りはNGT-066 |
+| NGT-065 | 復元オプションの戻るリンク | PR_OPEN | codex/restore-options-back-link。main独立、本体依存なし。[赤→緑・ビルド・E2Eの記録](2026-11-13-ngt-065-restore-options-back.md)。PR #717 公開済み。ホーム・Router使用箇所の残りはNGT-066 |
 
-| NGT-066 | ジョブ削除画面のナビゲーション | PUSHED | codex/delete-backup-navigation-links。main独立、本体依存なし。[赤→緑・ビルド・E2Eの記録](2026-11-13-ngt-066-delete-navigation.md)。未PR。残る評価はNGT-067 |
+| NGT-066 | ジョブ削除画面のナビゲーション | PR_OPEN | codex/delete-backup-navigation-links。main独立、本体依存なし。[赤→緑・ビルド・E2Eの記録](2026-11-13-ngt-066-delete-navigation.md)。PR #718 公開済み。残る評価はNGT-067 |
 
-| NGT-067 | 復元設定・ファイル削除のホーム移動リンク | PUSHED | codex/wizard-home-navigation-links。main独立、本体依存なし。[赤→緑・ビルド・E2Eの記録](2026-11-13-ngt-067-wizard-home-links.md)。未PR。残りはNGT-068 |
+| NGT-067 | 復元設定・ファイル削除のホーム移動リンク | PR_OPEN | codex/wizard-home-navigation-links。main独立、本体依存なし。[赤→緑・ビルド・E2Eの記録](2026-11-13-ngt-067-wizard-home-links.md)。PR #719 公開済み。残りはNGT-068 |
 
-| NGT-068 | 設定インポートのホーム移動リンク | PUSHED | codex/import-home-navigation-link。main独立、本体依存なし。[赤→緑・ビルド・E2Eの記録](2026-11-13-ngt-068-import-home-link.md)。未PR。残る監査はNGT-069 |
-| NGT-069 | コマンド画面のホーム移動リンク | PUSHED | codex/commandline-home-link。最新main独立、本体依存なし。[赤→緑・ビルド・E2Eの記録](2026-11-13-ngt-069-commandline-home-link.md)。未PR。残る監査はNGT-070 |
-| NGT-070 | ログアウト完了画面の移動リンク | PUSHED | codex/logout-navigation-link。最新main独立、本体依存なし。[赤→緑・ビルド・E2Eの記録](2026-11-13-ngt-070-logout-link.md)。未PR。既知の残件はNGT-071へ集約 |
-| NGT-071 | 先行マージ後のナビゲーション再監査 | BLOCKED | ホーム#697・接続画面#700はマージ済み。コマンドIDの型はNGT-059のPR待ち。準備済み範囲と重ならない対象を選んで再監査する。disabled/状態変更を持つ操作は維持し、準備済みNGT-057〜070を再実装しない。待機中は他領域のバグ/E2Eを優先 |
-| NGT-072 | タスク完了購読・待機の破棄ライフサイクル | PUSHED | codex/task-waiter-service-lifecycle。最新main独立、本体依存なし。[赤→緑・ビルドの記録](2026-11-13-ngt-072-task-waiter-lifecycle.md)。未PR。残る非同期監査はNGT-073 |
-| NGT-073 | About更新確認の非同期処理・破棄 | PUSHED | codex/update-check-lifecycle。最新main独立、本体依存なし。[赤→緑・ビルド・E2Eの記録](2026-11-13-ngt-073-update-check-lifecycle.md)。未PR。Promise APIの通信自体は中断せずUI購読を終了。残る監査はNGT-074 |
+| NGT-068 | 設定インポートのホーム移動リンク | PR_OPEN | codex/import-home-navigation-link。main独立、本体依存なし。[赤→緑・ビルド・E2Eの記録](2026-11-13-ngt-068-import-home-link.md)。PR #720 公開済み。残る監査はNGT-069 |
+| NGT-069 | コマンド画面のホーム移動リンク | PR_OPEN | codex/commandline-home-link。最新main独立、本体依存なし。[赤→緑・ビルド・E2Eの記録](2026-11-13-ngt-069-commandline-home-link.md)。PR #721 公開済み。残る監査はNGT-070 |
+| NGT-070 | ログアウト完了画面の移動リンク | PR_OPEN | codex/logout-navigation-link。最新main独立、本体依存なし。[赤→緑・ビルド・E2Eの記録](2026-11-13-ngt-070-logout-link.md)。PR #722 公開済み。既知の残件はNGT-071へ集約 |
+| NGT-071 | 先行マージ後のナビゲーション再監査 | READY | ホーム#697・接続画面#700・ルートID #711はマージ済み。公開済みNGT-064〜070と重ならない範囲を現行mainで再監査する。disabled/状態変更付き操作は維持 |
+| NGT-072 | タスク完了購読・待機の破棄ライフサイクル | PR_OPEN | codex/task-waiter-service-lifecycle。最新main独立、本体依存なし。[赤→緑・ビルドの記録](2026-11-13-ngt-072-task-waiter-lifecycle.md)。PR #724 公開済み。残る非同期監査はNGT-073 |
+| NGT-073 | About更新確認の非同期処理・破棄 | PR_OPEN | codex/update-check-lifecycle。最新main独立、本体依存なし。[赤→緑・ビルド・E2Eの記録](2026-11-13-ngt-073-update-check-lifecycle.md)。PR #725 公開済み。Promise APIの通信自体は中断せずUI購読を終了。残る監査はNGT-074 |
 | NGT-074 | Status停止・中断要求の状態と破棄 | PUSHED | codex/status-task-action-lifecycle。最新main独立、本体依存なし。[赤→緑・ビルド・E2Eの記録](2026-11-13-ngt-074-status-task-actions.md)。未PR。Stop待ち中のAbortを維持。残る監査はNGT-075 |
 | NGT-075 | Status snapshot取得セッションの寿命 | PUSHED | codex/status-snapshot-lifecycle。最新main独立、本体依存なし。[赤→緑・ビルド・E2Eの記録](2026-11-13-ngt-075-status-snapshot-lifecycle.md)。未PR。旧応答と追加ループを分離。残る監査はNGT-076 |
 | NGT-076 | StatusBar進捗取得の重複・応答寿命 | PUSHED | codex/statusbar-progress-lifecycle。最新main独立、本体依存なし。[赤→緑・ビルド・E2Eの記録](2026-11-13-ngt-076-statusbar-progress-lifecycle.md)。未PR。二段階取得の重複と旧応答を分離。残る監査はNGT-077 |
@@ -162,3 +162,5 @@ gh pr view 7776 --repo duplicati/duplicati --json number,state,mergedAt
 
 
 - 2026-11-13: #695〜#705のマージを照合し、11ブランチを整理。残存26実装とtriageをmainへrebaseし、関連テスト・全本番ビルド・変更E2Eを検証。10件をPR公開。[証拠とSHA一覧](2026-11-13-maintenance-validation.md)。
+
+- 2026-11-14: #706〜#715のMERGED/headを照合し10ブランチを整理。16実装とtriageを最新mainへrebase・pushし、関連テスト・本番ビルド・変更E2Eを検証。10件を公開。[記録](2026-11-14-maintenance-validation.md)。
