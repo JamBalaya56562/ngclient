@@ -21,7 +21,7 @@
 NGT-001〜003・057〜063はmainへマージ済み。今回の整理・公開・検証は[一括記録](2026-11-14-maintenance-validation.md)を参照。
 2. **NGT-077**: ServerStatusWebSocketServiceの接続・再接続timer・非同期認証処理の寿命を監査する。既存差分と現行呼出しを確認してから独立した対象を選び、未検証を不具合と断定しない。StatusBarStateの追加変更はNGT-076の先行マージを待つ。
 3. **NGT-071は再監査可能**: ホーム#697・接続画面#700・ルートID #711はマージ済み。NGT-064〜070など公開済み・準備済みの変更を重複実装せず、現行mainから独立した残件を選ぶ。disabledや状態変更付きの操作は維持する。
-4. **NGT-045**: 本体#7776はマージ済み。cross-OS復元の両方向の一覧と別restoreエラーを再確認する。
+4. **NGT-045は検証完了**: 本体修正後、両方向の一覧・通常UI復元を実データで確認。追加ngclient修正なし。公開報告は未実施。
 5. **NGT-049〜055のINVESTIGATE行**: バグ対応優先で残件を確認。未再現・未調査を即実装しない。
 6. 明確な不具合候補がない場合は**NGT-006**の実サーバーE2E整備を小さく進める。
 
@@ -83,7 +83,7 @@ NGT-001〜003・057〜063はmainへマージ済み。今回の整理・公開・
 | NGT-042 | #492 時差・DST | WAITING | 日次全曜日の検証済み。報告者確認待ち。全設定は未検証 |
 | NGT-043 | #217 破損ファイル削除 | WAITING | データvolume欠損の検証とclose提案済み |
 | NGT-044 | #401 Windows宛先パス | WAITING | 実サーバー保存・再読込確認済み。報告者確認待ち |
-| NGT-045 | #449 cross-OS復元 | READY | duplicati/duplicati#7776はマージ済み。両方向の一覧と別restoreエラーを再確認（今回は未実施） |
+| NGT-045 | #449 cross-OS復元 | DONE | 本体#7776後のDebugビルドで両方向の一覧・UI復元・内容一致を確認。ngclient修正不要。[検証記録](2026-11-14-ngt-045-cross-os-restore.md)。公開報告未実施。独立したfresh直接API復元は未検証 |
 | NGT-046 | #636 junction | BLOCKED | NGT-030、NGT-033。本体#7772/#7775も踏まえ最終確認 |
 | NGT-047 | #328 URL再構築 | BLOCKED | 本体側へ依頼済み。対応PR番号は未記録、次回取得。UIだけでは完結しない |
 | NGT-048 | #466 pCloud | WAITING | 追加情報待ち。報告環境は未検証 |
@@ -165,4 +165,5 @@ gh pr view 7776 --repo duplicati/duplicati --json number,state,mergedAt
 - 2026-11-13: #695〜#705のマージを照合し、11ブランチを整理。残存26実装とtriageをmainへrebaseし、関連テスト・全本番ビルド・変更E2Eを検証。10件をPR公開。[証拠とSHA一覧](2026-11-13-maintenance-validation.md)。
 
 - 2026-11-14: #706〜#715のMERGED/headを照合し10ブランチを整理。16実装とtriageを最新mainへrebase・pushし、関連テスト・本番ビルド・変更E2Eを検証。10件を公開。[記録](2026-11-14-maintenance-validation.md)。
+
 
