@@ -36,7 +36,7 @@ NGT-001〜003・057〜063はmainへマージ済み。今回の整理・公開・
 | NGT-001 | 独自Signalラッパー整理 | DONE | codex/public-signal-helpers。main独立、本体依存なし | [検証記録](2026-11-12-ngt-001-signal-helpers.md)。PR #706 マージ済み。ブックマーク削除済み | 2026-11-14 |
 | NGT-002 | 非同期読み取り・破棄処理（ServiceHub timer） | DONE | codex/service-hub-timer-lifecycle。独立main、本体依存なし | [検証記録](2026-11-12-ngt-002-async-lifecycle.md)。PR #707 マージ済み（ブックマーク削除済み）、残る監査はNGT-056 | 2026-11-14 |
 | NGT-003 | Routerとナビゲーションの意味（サイドバー） | DONE | codex/sidebar-router-links。独立main、本体依存なし | [検証記録](2026-11-12-ngt-003-sidebar-navigation.md)。PR #708 マージ済み（ブックマーク削除済み）、残る監査はNGT-057 | 2026-11-14 |
-| NGT-004 | 動的リストの安定したtrack | READY | NGT-026、NGT-028はマージ済み。着手時に準備済み差分を再確認 | 現行mainのIDとフォーカスを検証 | 2026-11-13 |
+| NGT-004 | 動的リストの安定したtrack | PUSHED | codex/stable-backup-list-tracking。最新main独立、本体依存なし | [赤3件→緑・E2E9件・単体28件・ビルド](2026-11-14-ngt-004-stable-tracking.md)。未PR。任意の並替でのフォーカス復元はNGT-079 | 2026-11-14 |
 | NGT-005 | Aria/CDKの適合評価 | BLOCKED | NGT-030、NGT-033のマージ後にfile-treeを評価 | 現在の操作契約を基準に小範囲評価 | 2026-11-12 |
 | NGT-006 | 実サーバーE2E整備 / #273 | READY | NGT-031、NGT-032と同じケースを重複追加しない | 次の未被覆フローと継続実行方法を選ぶ。全体closeは保留 | 2026-11-12 |
 | NGT-007 | Signal Forms全体 / #497 | INVESTIGATE | NGT-010〜029が部分対応。単独の実装担当を意味しない親タスク | 残存フォームを再棚卸し。全完了までRefs | 2026-11-12 |
@@ -131,11 +131,13 @@ NGT-001〜003・057〜063はmainへマージ済み。今回の整理・公開・
 | NGT-078 | 詳細オプション追加アクションの無効状態 | PUSHED | codex/advanced-options-actions。main独立、本体依存なし。[赤→緑・実サーバー記録](2026-11-14-advanced-option-actions.md)。未PR |
 | NGT-077 | WebSocket接続・非同期認証の寿命監査 | PUSHED | codex/websocket-connection-lifecycle。最新main独立、本体依存なし。[赤8件→緑・型チェック・ビルド・E2E](2026-11-14-ngt-077-websocket-lifecycle.md)。未PR。隔離Canaryで実JWT期限切れ・更新503→200後のWS購読復帰を確認（再読込0）。StatusBar等の準備済み変更を含まない |
 
+| NGT-079 | リスト並替時のフォーカス保持 | BLOCKED | NGT-004のマージ待ち。キー修正後もDOM移動でChromiumのfocusが外れることを観測。[証拠と範囲](2026-11-14-ngt-004-stable-tracking.md)。移動・削除・ユーザーの意図を区別して設計し、既存フォーカス改善と重複させない |
+
 ## 更新手順と履歴
 
 作業開始時にIDをACTIVEへ変え、担当チャット識別子・ブックマーク・着手日を記載する。終了時は証拠への参照、次の行動、更新日も同時に更新する。PR作成・マージ後はghで実状態を確認し、対応IDの状態を変更する。依存のマージだけで自動的にDONEにはせず、統合後の検証と要求充足を確認する。
 
-依存先が完了したらBLOCKED行を再評価し、着手可能一覧も更新する。完了行は履歴として残す。今回のIDには欠番を設けているが既存IDを詰め直さず、新規はNGT-079から付番する。
+依存先が完了したらBLOCKED行を再評価し、着手可能一覧も更新する。完了行は履歴として残す。今回のIDには欠番を設けているが既存IDを詰め直さず、新規はNGT-080から付番する。
 
 - 2026-11-12: 初回台帳を追加。固定ID、状態、依存、着手候補を既存の調査記録から整理。新しいバグ再現・コード変更・テスト実行はしていない。
 
@@ -165,6 +167,7 @@ gh pr view 7776 --repo duplicati/duplicati --json number,state,mergedAt
 - 2026-11-13: #695〜#705のマージを照合し、11ブランチを整理。残存26実装とtriageをmainへrebaseし、関連テスト・全本番ビルド・変更E2Eを検証。10件をPR公開。[証拠とSHA一覧](2026-11-13-maintenance-validation.md)。
 
 - 2026-11-14: #706〜#715のMERGED/headを照合し10ブランチを整理。16実装とtriageを最新mainへrebase・pushし、関連テスト・本番ビルド・変更E2Eを検証。10件を公開。[記録](2026-11-14-maintenance-validation.md)。
+
 
 
 
