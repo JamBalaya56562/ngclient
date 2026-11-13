@@ -87,7 +87,7 @@ NGT-001〜003・057〜063はmainへマージ済み。今回の整理・公開・
 | NGT-046 | #636 junction | BLOCKED | NGT-030、NGT-033。本体#7772/#7775も踏まえ最終確認 |
 | NGT-047 | #328 URL再構築 | BLOCKED | 本体側へ依頼済み。対応PR番号は未記録、次回取得。UIだけでは完結しない |
 | NGT-048 | #466 pCloud | WAITING | 追加情報待ち。報告環境は未検証 |
-| NGT-049 | #627 editor tabs/save | INVESTIGATE | 現行の残件と既存移行の重複を調査 |
+| NGT-049 | #627 editor tabs/save | WAITING | mainで全5ページの直接移動・保存・再読込を実サーバー確認。追加修正なし。[検証記録](2026-11-14-ngt-049-editor-save.md)。タブ外観・ツアーの要否は報告者との確認待ち。コメント未投稿 |
 | NGT-050 | #637 hidden/system設定 | WAITING | 意図的な削除を確認。コメント6866136054への返信待ち。追加ボタンの別問題はNGT-078 |
 | NGT-051 | #311 flat file restore | INVESTIGATE | 本体API対応と現行画面の残件を調査 |
 | NGT-052 | #409 suggestions | INVESTIGATE | 要求と再現条件を確認 |
@@ -165,3 +165,4 @@ gh pr view 7776 --repo duplicati/duplicati --json number,state,mergedAt
 - 2026-11-13: #695〜#705のマージを照合し、11ブランチを整理。残存26実装とtriageをmainへrebaseし、関連テスト・全本番ビルド・変更E2Eを検証。10件をPR公開。[証拠とSHA一覧](2026-11-13-maintenance-validation.md)。
 
 - 2026-11-14: #706〜#715のMERGED/headを照合し10ブランチを整理。16実装とtriageを最新mainへrebase・pushし、関連テスト・本番ビルド・変更E2Eを検証。10件を公開。[記録](2026-11-14-maintenance-validation.md)。
+
