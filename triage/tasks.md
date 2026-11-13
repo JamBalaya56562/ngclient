@@ -19,7 +19,7 @@
 ## 今着手できる候補
 
 NGT-001はpush済み・未PR。再実装せず、公開指示を待つ。証拠は[実装記録](2026-11-12-ngt-001-signal-helpers.md)。
-2. **NGT-076**: StatusBarStateの進捗読取の寿命を監査する。NGT-075のsnapshotやNGT-074の操作要求を繰り返さず、既存差分・現行呼出し・Promise/Observableの契約を確認してから変更を選ぶ。未検証を不具合と断定しない。
+2. **NGT-077**: ServerStatusWebSocketServiceの接続・再接続timer・非同期認証処理の寿命を監査する。既存差分と現行呼出しを確認してから独立した対象を選び、未検証を不具合と断定しない。StatusBarStateの追加変更はNGT-076の先行マージを待つ。
 3. **NGT-071はマージ待ち**: ホーム#697・接続画面#700・コマンドID用NGT-059と重なる既知の残件は、先行マージ後に再監査する。NGT-070のログアウト補助リンクを再実装しない。disabled付き・状態変更付き操作を無理にリンク化せず、待っている間は他のバグ候補やNGT-006を優先する。
 4. **NGT-045**: 本体#7776はマージ済み。cross-OS復元の両方向の一覧と別restoreエラーを再確認する。
 5. **NGT-049〜055のINVESTIGATE行**: バグ対応優先で残件を確認。未再現・未調査を即実装しない。
@@ -127,13 +127,14 @@ NGT-001はpush済み・未PR。再実装せず、公開指示を待つ。証拠�
 | NGT-073 | About更新確認の非同期処理・破棄 | PUSHED | codex/update-check-lifecycle。最新main独立、本体依存なし。[赤→緑・ビルド・E2Eの記録](2026-11-13-ngt-073-update-check-lifecycle.md)。未PR。Promise APIの通信自体は中断せずUI購読を終了。残る監査はNGT-074 |
 | NGT-074 | Status停止・中断要求の状態と破棄 | PUSHED | codex/status-task-action-lifecycle。最新main独立、本体依存なし。[赤→緑・ビルド・E2Eの記録](2026-11-13-ngt-074-status-task-actions.md)。未PR。Stop待ち中のAbortを維持。残る監査はNGT-075 |
 | NGT-075 | Status snapshot取得セッションの寿命 | PUSHED | codex/status-snapshot-lifecycle。最新main独立、本体依存なし。[赤→緑・ビルド・E2Eの記録](2026-11-13-ngt-075-status-snapshot-lifecycle.md)。未PR。旧応答と追加ループを分離。残る監査はNGT-076 |
-| NGT-076 | StatusBar進捗読取の非同期寿命監査 | INVESTIGATE | StatusBarStateの進捗取得・タスク情報取得・timer等の現行呼出しと破棄契約を検証。NGT-074/075と別候補だが既存PR/ブランチを着手時に照合する。StatusPageStateの追加変更はNGT-075のマージ待ち。未検証を不具合と断定しない |
+| NGT-076 | StatusBar進捗取得の重複・応答寿命 | PUSHED | codex/statusbar-progress-lifecycle。最新main独立、本体依存なし。[赤→緑・ビルド・E2Eの記録](2026-11-13-ngt-076-statusbar-progress-lifecycle.md)。未PR。二段階取得の重複と旧応答を分離。残る監査はNGT-077 |
+| NGT-077 | WebSocket接続・非同期認証の寿命監査 | INVESTIGATE | ServerStatusWebSocketServiceの接続/再接続timer/認証応答を候補に、既存PR/ブランチ・現行呼出し・破棄契約を検証。StatusBarState等の準備済み変更を繰り返さない。未検証を不具合と断定しない |
 
 ## 更新手順と履歴
 
 作業開始時にIDをACTIVEへ変え、担当チャット識別子・ブックマーク・着手日を記載する。終了時は証拠への参照、次の行動、更新日も同時に更新する。PR作成・マージ後はghで実状態を確認し、対応IDの状態を変更する。依存のマージだけで自動的にDONEにはせず、統合後の検証と要求充足を確認する。
 
-依存先が完了したらBLOCKED行を再評価し、着手可能一覧も更新する。完了行は履歴として残す。今回のIDには欠番を設けているが既存IDを詰め直さず、新規はNGT-077から付番する。
+依存先が完了したらBLOCKED行を再評価し、着手可能一覧も更新する。完了行は履歴として残す。今回のIDには欠番を設けているが既存IDを詰め直さず、新規はNGT-078から付番する。
 
 - 2026-11-12: 初回台帳を追加。固定ID、状態、依存、着手候補を既存の調査記録から整理。新しいバグ再現・コード変更・テスト実行はしていない。
 
