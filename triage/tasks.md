@@ -33,10 +33,10 @@ NGT-001はPR公開済み。再実装せず、レビューを待つ。今回の�
 
 | ID | 内容 | 状態 | 依存・重複回避 | 次の行動 | 更新 |
 | --- | --- | --- | --- | --- | --- |
-| NGT-001 | 独自Signalラッパー整理 | PR_OPEN | codex/public-signal-helpers。main独立、本体依存なし | [検証記録](2026-11-12-ngt-001-signal-helpers.md)。PR #706 レビュー待ち | 2026-11-12 |
-| NGT-002 | 非同期読み取り・破棄処理（ServiceHub timer） | PR_OPEN | codex/service-hub-timer-lifecycle。独立main、本体依存なし | [検証記録](2026-11-12-ngt-002-async-lifecycle.md)。PR #707 公開済み、残る監査はNGT-056 | 2026-11-12 |
-| NGT-003 | Routerとナビゲーションの意味（サイドバー） | PR_OPEN | codex/sidebar-router-links。独立main、本体依存なし | [検証記録](2026-11-12-ngt-003-sidebar-navigation.md)。PR #708 公開済み、残る監査はNGT-057 | 2026-11-12 |
-| NGT-004 | 動的リストの安定したtrack | READY | NGT-026、NGT-028はマージ済み。着手時に準備済み差分を再確認 | 現行mainのIDとフォーカスを検証 | 2026-11-12 |
+| NGT-001 | 独自Signalラッパー整理 | PR_OPEN | codex/public-signal-helpers。main独立、本体依存なし | [検証記録](2026-11-12-ngt-001-signal-helpers.md)。PR #706 レビュー待ち | 2026-11-13 |
+| NGT-002 | 非同期読み取り・破棄処理（ServiceHub timer） | PR_OPEN | codex/service-hub-timer-lifecycle。独立main、本体依存なし | [検証記録](2026-11-12-ngt-002-async-lifecycle.md)。PR #707 公開済み、残る監査はNGT-056 | 2026-11-13 |
+| NGT-003 | Routerとナビゲーションの意味（サイドバー） | PR_OPEN | codex/sidebar-router-links。独立main、本体依存なし | [検証記録](2026-11-12-ngt-003-sidebar-navigation.md)。PR #708 公開済み、残る監査はNGT-057 | 2026-11-13 |
+| NGT-004 | 動的リストの安定したtrack | READY | NGT-026、NGT-028はマージ済み。着手時に準備済み差分を再確認 | 現行mainのIDとフォーカスを検証 | 2026-11-13 |
 | NGT-005 | Aria/CDKの適合評価 | BLOCKED | NGT-030、NGT-033のマージ後にfile-treeを評価 | 現在の操作契約を基準に小範囲評価 | 2026-11-12 |
 | NGT-006 | 実サーバーE2E整備 / #273 | READY | NGT-031、NGT-032と同じケースを重複追加しない | 次の未被覆フローと継続実行方法を選ぶ。全体closeは保留 | 2026-11-12 |
 | NGT-007 | Signal Forms全体 / #497 | INVESTIGATE | NGT-010〜029が部分対応。単独の実装担当を意味しない親タスク | 残存フォームを再棚卸し。全完了までRefs | 2026-11-12 |

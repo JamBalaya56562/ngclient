@@ -104,3 +104,7 @@
 - [#713](https://github.com/duplicati/ngclient/pull/713) `codex/command-result-route-input-binding`
 - [#714](https://github.com/duplicati/ngclient/pull/714) `codex/restore-progress-route-input`
 - [#715](https://github.com/duplicati/ngclient/pull/715) `codex/logs-router-subscription-lifecycle`
+
+## 最終照合
+
+**検証済み**: 26実装を `jj git push --remote origin -b <各ブックマーク>` でpushし、triageも更新・pushした。main・triage・画像保管用を含む全29ローカル/originブックマークのSHAが一致した。PR #706〜#715の10件は検証済みhead SHA・base main・本文の完全SHAリンクと指定の最終行をghで照合済み。GitHub CIには待機・実行中のチェックがあり、完了は未検証。作業ツリーはcleanで、作業用ワークスペースは整理済み。
