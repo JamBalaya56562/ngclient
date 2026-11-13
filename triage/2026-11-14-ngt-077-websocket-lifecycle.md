@@ -44,8 +44,28 @@ Direct mise Node/Bun executables were used with their directories on PATH:
 - `bun run test:e2e e2e/authenticated-page.spec.ts e2e/authenticated-login.spec.ts`: **6 passed**, exit 0 (e2e.log), including recovery without reload after rejected socket/transient refresh failure and Remember Me reload checks.
 - Prettier --check on both changed files: exit 0 (prettier.log). No dedicated lint target exists in package scripts; no lint-pass claim.
 
-Browser tests use the existing mocked server/WebSocket fixtures and a real Chromium browser against the production build. 未検証: a new real-server token-expiry or network-loss experiment for this commit; actual users experiencing injector teardown in production; underlying shared HTTP cancellation. The verified defect is resource ownership/cleanup, not a claim that #283 has newly regressed.
+Browser tests use the existing mocked server/WebSocket fixtures and a real Chromium browser against the production build. The initial pass used fixtures; real-server expiry/refresh recovery was subsequently verified in the follow-up below. 未検証: actual users experiencing injector teardown in production; underlying shared HTTP cancellation. The verified defect is resource ownership/cleanup, not a claim that #283 has newly regressed.
 
 ## Publication and cleanup
 
 Source branch pushed with `jj git push --remote origin -b codex/websocket-connection-lifecycle`. No PR or Issue comment. Tests/previews exited; no new real server or container was started for this task. Evidence stays ignored under tmp/ngt077-20261114. Existing bookmarks were not changed. Triage records pushed separately.
+
+## Follow-up: isolated real-server token expiry and refresh failure (2026-11-14)
+
+検証済み: No additional product change was needed. The production UI was built from the unchanged implementation commit `9872f7cc5c65c4acf1ba691379f785e657498f1a`, connected to the official Windows **2.4.1.101 Canary (2026-11-07)** server. Only a newly initialized, isolated server-datafolder was used; no user jobs or user authentication data were accessed. Its JWT configuration was set to a one-minute access-token lifetime while the server was stopped, then restarted.
+
+Command: `./tmp/ngt077-20261114/live/run.ps1`, exit **0**. The harness ran two sequential scenarios in separate browser documents. JWT exp-nbf was asserted to be 60 seconds. In both scenarios, an actual request to the real server seven seconds after expiry returned **401**. The test proxy then cut the existing socket to exercise reconnect with the expired token; the real server rejected that authentication with **4401 Invalid token**. This was not an assertion that a still-open socket automatically closes at token expiry.
+
+| Scenario | Refresh HTTP statuses | Recovered socket | Received after reconnect | Reloads |
+| --- | --- | --- | --- | --- |
+| Expiry only | 200 from real server | 3 | legacystatus, backuplist, notifications | 0 |
+| Expiry + one transient failure | injected 503, then real-server 200 | 4 | legacystatus, backuplist, notifications | 0 |
+
+The recovered sockets sent subscriptions for legacystatus, taskcompleted, notifications, serversettings, remotecontrol, backuplist, progress and taskqueue. Actual frame receipt was asserted for the three services above; event delivery for every other subscription was not separately generated. Real server pause/resume operations then produced Running -> Paused -> Running in the same document. The harness asserted unchanged performance.timeOrigin and no browser page errors. Both scenarios ended with `verified`, reloads=0, finalState=Running.
+
+Evidence: `tmp/ngt077-20261114/live/live.log` (browser close codes, frames, subscriptions, 401 probe, refreshes, final assertions), `ws-proxy.log` (injected=true only on the single 503; subsequent refresh injected=false), server logs and live.mjs/proxy.mjs/seed.mjs/run.ps1/live.ps1. JWT values are not printed to the verification logs. The one 503 is deliberate fault injection, not a naturally failing server response; all other authentication and subscription responses are real.
+
+No additional application changes were made after the existing 68 passing unit tests, 6 passing fixture E2E tests, app/spec tsc and production build. Those original logs and source SHA remain unchanged. Injector destruction cleanup is covered by the unit tests, not by this live token-recovery experiment. Service shutdown and token-recovery are distinct checks.
+
+Cleanup: the seed server, test server and proxy were stopped. Evidence and disposable DBs remain ignored under tmp. An initial empty fixture DB prevented setup; only that zero-byte disposable file was removed before successful initialization. No PR or public Issue comment was posted.
+
