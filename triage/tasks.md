@@ -19,7 +19,7 @@
 ## 今着手できる候補
 
 NGT-001〜003・057〜063はmainへマージ済み。今回の整理・公開・検証は[一括記録](2026-11-14-maintenance-validation.md)を参照。
-2. **NGT-077**: ServerStatusWebSocketServiceの接続・再接続timer・非同期認証処理の寿命を監査する。既存差分と現行呼出しを確認してから独立した対象を選び、未検証を不具合と断定しない。StatusBarStateの追加変更はNGT-076の先行マージを待つ。
+2. **NGT-077は実装・push済み**: WebSocketのInjector破棄・接続終了時の後片付けを追加。未PR。[検証記録](2026-11-14-ngt-077-websocket-lifecycle.md)。追加のStatusBar変更はNGT-076の先行マージを待つ。
 3. **NGT-071は再監査可能**: ホーム#697・接続画面#700・ルートID #711はマージ済み。NGT-064〜070など公開済み・準備済みの変更を重複実装せず、現行mainから独立した残件を選ぶ。disabledや状態変更付きの操作は維持する。
 4. **NGT-045は検証完了**: 本体修正後、両方向の一覧・通常UI復元を実データで確認。追加ngclient修正なし。公開報告は未実施。
 5. **NGT-049〜055のINVESTIGATE行**: バグ対応優先で残件を確認。未再現・未調査を即実装しない。
@@ -129,7 +129,7 @@ NGT-001〜003・057〜063はmainへマージ済み。今回の整理・公開・
 | NGT-075 | Status snapshot取得セッションの寿命 | PUSHED | codex/status-snapshot-lifecycle。最新main独立、本体依存なし。[赤→緑・ビルド・E2Eの記録](2026-11-13-ngt-075-status-snapshot-lifecycle.md)。未PR。旧応答と追加ループを分離。残る監査はNGT-076 |
 | NGT-076 | StatusBar進捗取得の重複・応答寿命 | PUSHED | codex/statusbar-progress-lifecycle。最新main独立、本体依存なし。[赤→緑・ビルド・E2Eの記録](2026-11-13-ngt-076-statusbar-progress-lifecycle.md)。未PR。二段階取得の重複と旧応答を分離。残る監査はNGT-077 |
 | NGT-078 | 詳細オプション追加アクションの無効状態 | PUSHED | codex/advanced-options-actions。main独立、本体依存なし。[赤→緑・実サーバー記録](2026-11-14-advanced-option-actions.md)。未PR |
-| NGT-077 | WebSocket接続・非同期認証の寿命監査 | INVESTIGATE | ServerStatusWebSocketServiceの接続/再接続timer/認証応答を候補に、既存PR/ブランチ・現行呼出し・破棄契約を検証。StatusBarState等の準備済み変更を繰り返さない。未検証を不具合と断定しない |
+| NGT-077 | WebSocket接続・非同期認証の寿命監査 | PUSHED | codex/websocket-connection-lifecycle。最新main独立、本体依存なし。[赤8件→緑・型チェック・ビルド・E2E](2026-11-14-ngt-077-websocket-lifecycle.md)。未PR。StatusBar等の準備済み変更を含まない |
 
 ## 更新手順と履歴
 
@@ -165,5 +165,6 @@ gh pr view 7776 --repo duplicati/duplicati --json number,state,mergedAt
 - 2026-11-13: #695〜#705のマージを照合し、11ブランチを整理。残存26実装とtriageをmainへrebaseし、関連テスト・全本番ビルド・変更E2Eを検証。10件をPR公開。[証拠とSHA一覧](2026-11-13-maintenance-validation.md)。
 
 - 2026-11-14: #706〜#715のMERGED/headを照合し10ブランチを整理。16実装とtriageを最新mainへrebase・pushし、関連テスト・本番ビルド・変更E2Eを検証。10件を公開。[記録](2026-11-14-maintenance-validation.md)。
+
 
 
