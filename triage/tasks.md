@@ -88,7 +88,7 @@ NGT-001〜003・057〜063はmainへマージ済み。今回の整理・公開・
 | NGT-047 | #328 URL再構築 | BLOCKED | 本体側へ依頼済み。対応PR番号は未記録、次回取得。UIだけでは完結しない |
 | NGT-048 | #466 pCloud | WAITING | 追加情報待ち。報告環境は未検証 |
 | NGT-049 | #627 editor tabs/save | INVESTIGATE | 現行の残件と既存移行の重複を調査 |
-| NGT-050 | #637 hidden/system設定 | INVESTIGATE | mainの属性修正との差分・再現を調査 |
+| NGT-050 | #637 hidden/system設定 | WAITING | 意図的な削除を確認。コメント6866136054への返信待ち。追加ボタンの別問題はNGT-078 |
 | NGT-051 | #311 flat file restore | INVESTIGATE | 本体API対応と現行画面の残件を調査 |
 | NGT-052 | #409 suggestions | INVESTIGATE | 要求と再現条件を確認 |
 | NGT-053 | #460 secondary restore | INVESTIGATE | 本体依存の有無から確認 |
@@ -128,13 +128,14 @@ NGT-001〜003・057〜063はmainへマージ済み。今回の整理・公開・
 | NGT-074 | Status停止・中断要求の状態と破棄 | PUSHED | codex/status-task-action-lifecycle。最新main独立、本体依存なし。[赤→緑・ビルド・E2Eの記録](2026-11-13-ngt-074-status-task-actions.md)。未PR。Stop待ち中のAbortを維持。残る監査はNGT-075 |
 | NGT-075 | Status snapshot取得セッションの寿命 | PUSHED | codex/status-snapshot-lifecycle。最新main独立、本体依存なし。[赤→緑・ビルド・E2Eの記録](2026-11-13-ngt-075-status-snapshot-lifecycle.md)。未PR。旧応答と追加ループを分離。残る監査はNGT-076 |
 | NGT-076 | StatusBar進捗取得の重複・応答寿命 | PUSHED | codex/statusbar-progress-lifecycle。最新main独立、本体依存なし。[赤→緑・ビルド・E2Eの記録](2026-11-13-ngt-076-statusbar-progress-lifecycle.md)。未PR。二段階取得の重複と旧応答を分離。残る監査はNGT-077 |
+| NGT-078 | 詳細オプション追加アクションの無効状態 | PUSHED | codex/advanced-options-actions。main独立、本体依存なし。[赤→緑・実サーバー記録](2026-11-14-advanced-option-actions.md)。未PR |
 | NGT-077 | WebSocket接続・非同期認証の寿命監査 | INVESTIGATE | ServerStatusWebSocketServiceの接続/再接続timer/認証応答を候補に、既存PR/ブランチ・現行呼出し・破棄契約を検証。StatusBarState等の準備済み変更を繰り返さない。未検証を不具合と断定しない |
 
 ## 更新手順と履歴
 
 作業開始時にIDをACTIVEへ変え、担当チャット識別子・ブックマーク・着手日を記載する。終了時は証拠への参照、次の行動、更新日も同時に更新する。PR作成・マージ後はghで実状態を確認し、対応IDの状態を変更する。依存のマージだけで自動的にDONEにはせず、統合後の検証と要求充足を確認する。
 
-依存先が完了したらBLOCKED行を再評価し、着手可能一覧も更新する。完了行は履歴として残す。今回のIDには欠番を設けているが既存IDを詰め直さず、新規はNGT-078から付番する。
+依存先が完了したらBLOCKED行を再評価し、着手可能一覧も更新する。完了行は履歴として残す。今回のIDには欠番を設けているが既存IDを詰め直さず、新規はNGT-079から付番する。
 
 - 2026-11-12: 初回台帳を追加。固定ID、状態、依存、着手候補を既存の調査記録から整理。新しいバグ再現・コード変更・テスト実行はしていない。
 
