@@ -19,11 +19,11 @@
 ## 今着手できる候補
 
 NGT-001〜003・057〜063はmainへマージ済み。今回の整理・公開・検証は[一括記録](2026-11-14-maintenance-validation.md)を参照。
-2. **NGT-077は実装・push済み**: WebSocketのInjector破棄・接続終了時の後片付けを追加。未PR。[検証記録](2026-11-14-ngt-077-websocket-lifecycle.md)。追加のStatusBar変更はNGT-076の先行マージを待つ。
+2. **NGT-077はPR公開済み**: WebSocketのInjector破棄・接続終了時の後片付けを追加。[公開・再検証](2026-11-14-rebased-branches-prs.md)。[検証記録](2026-11-14-ngt-077-websocket-lifecycle.md)。追加のStatusBar変更はNGT-076の先行マージを待つ。
 3. **NGT-071は再監査可能**: ホーム#697・接続画面#700・ルートID #711はマージ済み。NGT-064〜070などマージ済み・準備済みの変更を重複実装せず、現行mainから独立した残件を選ぶ。disabledや状態変更付きの操作は維持する。
 4. **NGT-045は検証完了**: 本体修正後、両方向の一覧・通常UI復元を実データで確認。追加ngclient修正なし。公開報告は未実施。
 5. **NGT-049〜055のINVESTIGATE行**: バグ対応優先で残件を確認。未再現・未調査を即実装しない。
-6. **NGT-006はrunner・編集保存・非暗号化/AESバックアップ復元の実サーバーE2Eを準備済み**。未PR。runnerの重複実装を避け、マージ後に次のフローを追加する。
+6. **NGT-006はrunner・編集保存・非暗号化/AESバックアップ復元の実サーバーE2EをPR公開済み**。[公開・再検証](2026-11-14-rebased-branches-prs.md)。runnerの重複実装を避け、マージ後に次のフローを追加する。
 
 共通の着手条件: 最新main・全ブックマーク・open PRの差分を確認し、同じ変更が準備済みでないことを確認する。READYは無条件の実装許可やPR作成許可ではない。PUSHEDの公開や既存ブランチの書き換えは指示された範囲で行う。
 
@@ -36,9 +36,9 @@ NGT-001〜003・057〜063はmainへマージ済み。今回の整理・公開・
 | NGT-001 | 独自Signalラッパー整理 | DONE | codex/public-signal-helpers。main独立、本体依存なし | [検証記録](2026-11-12-ngt-001-signal-helpers.md)。PR #706 マージ済み。ブックマーク削除済み | 2026-11-14 |
 | NGT-002 | 非同期読み取り・破棄処理（ServiceHub timer） | DONE | codex/service-hub-timer-lifecycle。独立main、本体依存なし | [検証記録](2026-11-12-ngt-002-async-lifecycle.md)。PR #707 マージ済み（ブックマーク削除済み）、残る監査はNGT-056 | 2026-11-14 |
 | NGT-003 | Routerとナビゲーションの意味（サイドバー） | DONE | codex/sidebar-router-links。独立main、本体依存なし | [検証記録](2026-11-12-ngt-003-sidebar-navigation.md)。PR #708 マージ済み（ブックマーク削除済み）、残る監査はNGT-057 | 2026-11-14 |
-| NGT-004 | 動的リストの安定したtrack | PUSHED | codex/stable-backup-list-tracking。最新main独立、本体依存なし | [赤3件→緑・E2E9件・単体28件・ビルド](2026-11-14-ngt-004-stable-tracking.md)。未PR。NGT-079も同じブランチで対応済み | 2026-11-14 |
+| NGT-004 | 動的リストの安定したtrack | PR_OPEN | codex/stable-backup-list-tracking。最新main独立、本体依存なし | [赤3件→緑・E2E9件・単体28件・ビルド](2026-11-14-ngt-004-stable-tracking.md)。PR #729 公開済み。NGT-079も同じブランチで対応済み | 2026-11-14 |
 | NGT-005 | Aria/CDKの適合評価 | BLOCKED | NGT-030、NGT-033のマージ後にfile-treeを評価 | 現在の操作契約を基準に小範囲評価 | 2026-11-12 |
-| NGT-006 | 実サーバーE2E整備 / #273 | PUSHED | codex/live-editor-persistence-e2e。最新main独立。設定は既存playwright.config.tsのliveモードへ統合 | [実サーバー6件（保存・通常/AES・直接復元・誤入力/空欄回復）・ビルド](2026-11-14-ngt-006-live-editor-e2e.md)。未PR。全体closeは保留。同じブランチへ非暗号化/AESのローカルbackup/restoreと、設定なし・画面パスフレーズ入力の直接復元と誤入力・空欄からの回復を追加済み。runnerマージ後に次のフローを追加 | 2026-11-14 |
+| NGT-006 | 実サーバーE2E整備 / #273 | PR_OPEN | codex/live-editor-persistence-e2e。最新main独立。設定は既存playwright.config.tsのliveモードへ統合 | [実サーバー6件（保存・通常/AES・直接復元・誤入力/空欄回復）・ビルド](2026-11-14-ngt-006-live-editor-e2e.md)。PR #735 公開済み。全体closeは保留。同じブランチへ非暗号化/AESのローカルbackup/restoreと、設定なし・画面パスフレーズ入力の直接復元と誤入力・空欄からの回復を追加済み。runnerマージ後に次のフローを追加 | 2026-11-14 |
 | NGT-007 | Signal Forms全体 / #497 | INVESTIGATE | NGT-010〜029が部分対応。単独の実装担当を意味しない親タスク | 残存フォームを再棚卸し。全完了までRefs | 2026-11-12 |
 | NGT-008 | SSR・画像最適化等 | DEFERRED | 導入根拠となる課題が未観測 | 性能・UX課題が観測された場合のみ再評価 | 2026-11-12 |
 
@@ -69,8 +69,8 @@ NGT-001〜003・057〜063はmainへマージ済み。今回の整理・公開・
 | NGT-030 | locked展開防止・Access denied | DONE | #684 / prevent-locked-folder-expansion | mainへマージ済み。ブックマーク削除済み |
 | NGT-031 | Pause E2E | DONE | #685 / test-server-pause | mainへマージ済み。ブックマーク削除済み |
 | NGT-032 | Job deletion E2E | DONE | #686 / test-job-deletion | mainへマージ済み。ブックマーク削除済み |
-| NGT-033 | リンク先表示 | PUSHED | show-file-tree-link-target | 本体#7775はマージ済み。11/14 rebase後のAPI二重定義(TS2300)を解消し、関連spec・ビルド成功。[記録](2026-11-14-maintenance-validation.md)。実サーバー統合は未再確認 |
-| NGT-034 | 旧folder filter候補 | DEFERRED | fix/folder-filter-separators | #663のNewFilter修正と区別し、必要性から再調査 |
+| NGT-033 | リンク先表示 | PR_OPEN | show-file-tree-link-target | 本体#7775はマージ済み。11/14 rebase後のAPI二重定義(TS2300)を解消し、関連spec・ビルド成功。[記録](2026-11-14-maintenance-validation.md)。実サーバー統合は未再確認  PR #728 公開済み |
+| NGT-034 | 旧folder filter候補 | DEFERRED | fix/folder-filter-separators | #663のNewFilter修正と区別。旧FilterComponentは現行画面で未使用と確認しPR保留（再検証・ビルド成功） |
 
 ## Issueの残件・回答待ち
 
@@ -125,13 +125,13 @@ NGT-001〜003・057〜063はmainへマージ済み。今回の整理・公開・
 | NGT-071 | 先行マージ後のナビゲーション再監査 | READY | ホーム#697・接続画面#700・ルートID #711はマージ済み。マージ済みNGT-064〜070と重ならない範囲を現行mainで再監査する。disabled/状態変更付き操作は維持 |
 | NGT-072 | タスク完了購読・待機の破棄ライフサイクル | DONE | codex/task-waiter-service-lifecycle。最新main独立、本体依存なし。[赤→緑・ビルドの記録](2026-11-13-ngt-072-task-waiter-lifecycle.md)。PR #724 マージ済み（ブックマーク削除済み）。残る非同期監査はNGT-073 |
 | NGT-073 | About更新確認の非同期処理・破棄 | DONE | codex/update-check-lifecycle。最新main独立、本体依存なし。[赤→緑・ビルド・E2Eの記録](2026-11-13-ngt-073-update-check-lifecycle.md)。PR #725 マージ済み（ブックマーク削除済み）。Promise APIの通信自体は中断せずUI購読を終了。残る監査はNGT-074 |
-| NGT-074 | Status停止・中断要求の状態と破棄 | PUSHED | codex/status-task-action-lifecycle。最新main独立、本体依存なし。[赤→緑・ビルド・E2Eの記録](2026-11-13-ngt-074-status-task-actions.md)。未PR。Stop待ち中のAbortを維持。残る監査はNGT-075 |
-| NGT-075 | Status snapshot取得セッションの寿命 | PUSHED | codex/status-snapshot-lifecycle。最新main独立、本体依存なし。[赤→緑・ビルド・E2Eの記録](2026-11-13-ngt-075-status-snapshot-lifecycle.md)。未PR。旧応答と追加ループを分離。残る監査はNGT-076 |
-| NGT-076 | StatusBar進捗取得の重複・応答寿命 | PUSHED | codex/statusbar-progress-lifecycle。最新main独立、本体依存なし。[赤→緑・ビルド・E2Eの記録](2026-11-13-ngt-076-statusbar-progress-lifecycle.md)。未PR。二段階取得の重複と旧応答を分離。残る監査はNGT-077 |
-| NGT-078 | 詳細オプション追加アクションの無効状態 | PUSHED | codex/advanced-options-actions。main独立、本体依存なし。[赤→緑・実サーバー記録](2026-11-14-advanced-option-actions.md)。未PR |
-| NGT-077 | WebSocket接続・非同期認証の寿命監査 | PUSHED | codex/websocket-connection-lifecycle。最新main独立、本体依存なし。[赤8件→緑・型チェック・ビルド・E2E](2026-11-14-ngt-077-websocket-lifecycle.md)。未PR。隔離Canaryで実JWT期限切れ・更新503→200後のWS購読復帰を確認（再読込0）。StatusBar等の準備済み変更を含まない |
+| NGT-074 | Status停止・中断要求の状態と破棄 | PR_OPEN | codex/status-task-action-lifecycle。最新main独立、本体依存なし。[赤→緑・ビルド・E2Eの記録](2026-11-13-ngt-074-status-task-actions.md)。PR #731 公開済み。Stop待ち中のAbortを維持。残る監査はNGT-075 |
+| NGT-075 | Status snapshot取得セッションの寿命 | PR_OPEN | codex/status-snapshot-lifecycle。最新main独立、本体依存なし。[赤→緑・ビルド・E2Eの記録](2026-11-13-ngt-075-status-snapshot-lifecycle.md)。PR #730 公開済み。旧応答と追加ループを分離。残る監査はNGT-076 |
+| NGT-076 | StatusBar進捗取得の重複・応答寿命 | PR_OPEN | codex/statusbar-progress-lifecycle。最新main独立、本体依存なし。[赤→緑・ビルド・E2Eの記録](2026-11-13-ngt-076-statusbar-progress-lifecycle.md)。PR #732 公開済み。二段階取得の重複と旧応答を分離。残る監査はNGT-077 |
+| NGT-078 | 詳細オプション追加アクションの無効状態 | PR_OPEN | codex/advanced-options-actions。main独立、本体依存なし。[赤→緑・実サーバー記録](2026-11-14-advanced-option-actions.md)。PR #727 公開済み |
+| NGT-077 | WebSocket接続・非同期認証の寿命監査 | PR_OPEN | codex/websocket-connection-lifecycle。最新main独立、本体依存なし。[赤8件→緑・型チェック・ビルド・E2E](2026-11-14-ngt-077-websocket-lifecycle.md)。PR #733 公開済み。隔離Canaryで実JWT期限切れ・更新503→200後のWS購読復帰を確認（再読込0）。StatusBar等の準備済み変更を含まない |
 
-| NGT-079 | リスト並替時のフォーカス保持 | PUSHED | 利用者指示でNGT-004と同じcodex/stable-backup-list-trackingに追加。並替後の同一ジョブfocus、明示blur・削除・検索をChromiumで確認。隔離実Canaryの追加・削除・名前順更新も3表示で成功。[赤3件→緑・ビルドの記録](2026-11-14-ngt-079-reorder-focus.md)。未PR |
+| NGT-079 | リスト並替時のフォーカス保持 | PR_OPEN | 利用者指示でNGT-004と同じcodex/stable-backup-list-trackingに追加。並替後の同一ジョブfocus、明示blur・削除・検索をChromiumで確認。隔離実Canaryの追加・削除・名前順更新も3表示で成功。[赤3件→緑・ビルドの記録](2026-11-14-ngt-079-reorder-focus.md)。PR #729 公開済み |
 
 ## 更新手順と履歴
 
