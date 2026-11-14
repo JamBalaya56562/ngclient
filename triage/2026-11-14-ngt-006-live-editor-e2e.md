@@ -65,3 +65,26 @@ Initial run: the new test timed out waiting five seconds for post-login navigati
 Real jobs/files/server data are confined to the fixture's newly created output directory. Schedule=null; snapshot-policy=off; unencrypted local file backend. The backup/restore job cleanup deletes its own local DB and job settings with delete-remote-files=false. Retained isolated backup volumes provide diagnostic evidence; no user remote data is deleted. Worker teardown stopped its server/proxy; process inspection found no remaining Duplicati.Server.exe carrying this fixture's live-server path. Raw successful artifacts were copied to tmp/ngt006-roundtrip-20261114/live-results before any future Playwright cleanup.
 
 README now distinguishes the settings-only case from the real backup/restore case. This covers local same-OS Windows backup/restore, not cross-OS, encrypted/remote providers, backup creation through every wizard page, or all of #273. No PR/Issue comment; other implementation bookmarks untouched. Source and triage pushed separately.
+
+## Follow-up: AES-encrypted backup and restore (2026-11-14)
+
+Status: PUSHED on the same `codex/live-editor-persistence-e2e` bookmark. Commit `54cdb1ea40726712f31092a122e033fc19bc9124`, parent `fbce07898852c974021b5b6f3a21219bdb62249b`. No application, runner configuration or dependency changes.
+
+The existing round-trip spec is parameterized for unencrypted and AES-encrypted backups, with separate fixture directories and generated job names. The AES case generates a random passphrase, saves it using the server's canonical encryption-module/passphrase setting names, starts the backup through the Home UI and verifies every resulting backup volume ends with .aes. Restore uses the passphrase stored on this isolated job; it does not exercise interactive entry of a forgotten/missing passphrase.
+
+検証済み: Both cases change source text and binary files after successful backup, then restore the selected folder through the UI to a new directory. Exactly message.txt and bytes.bin are restored; both buffers equal the backup-time contents, not the changed sources, and sibling unselected.txt is absent. No API/WebSocket mocking is used. The server is the same official isolated Windows 2.4.1.101 Canary executable used in previous slices.
+
+Commands/results (direct mise executables; evidence under tmp/ngt006-encrypted-20261114):
+
+- `PLAYWRIGHT_MODE=live DUPLICATI_SERVER_PATH=<local executable> bun run test:e2e`: **3 passed**, exit 0 (live.log): unencrypted round trip, AES-encrypted round trip, editor persistence.
+- `node node_modules/typescript/bin/tsc --noEmit -p e2e/tsconfig.json`: exit 0 (tsc.log).
+- Prettier --check on README.md and the shared round-trip spec: exit 0 (prettier.log).
+- Default `bun run test:e2e --list`: unchanged **164 tests / 53 files** (default-list.log); live tests remain opt-in.
+- `bun run build:prod`: exit 0 (build.log).
+- Offline `node tmp/ngt006-encrypted-20261114/verify-evidence.mjs`: exit 0 (content-and-cleanup.json). Both cases have matching expected/restored SHA256 and different changed-source hashes. AES remote storage contains 3 .aes volumes, each beginning with the AES format header. remainingJobs=0.
+
+Initial AES attempt returned HTTP 400 Missing passphrase before any backup. The test had passed --passphrase/--encryption-module names to the configuration API; the existing application serializer uses bare passphrase/encryption-module. Correcting the fixture to the canonical API names resolved this setup error. Initial-setting-name-error.log retains the attempt; no backend/application regression is claimed.
+
+Successful server data and volumes are retained under tmp/ngt006-encrypted-20261114/live-results. Test-created jobs/local backup DBs were removed with delete-remote-files=false; isolated backup volumes are kept as diagnostic evidence. Process inspection found no remaining Duplicati.Server.exe with a live-server fixture path. No user jobs/data were used.
+
+README documents the generated stored passphrase and encrypted-volume checks. Previously unverified encrypted backup/restore is now covered for local same-OS Windows AES with a saved key. Wrong/missing keys, direct restore without saved configuration, Linux/MacOS and other encryption/storage modules remain unverified. No PR, Issue comment or Fixes #273 claim. Triage pushed separately; source bookmark on origin is 54cdb1ea40726712f31092a122e033fc19bc9124.
