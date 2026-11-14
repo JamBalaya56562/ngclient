@@ -36,7 +36,7 @@ NGT-001〜003・057〜063はmainへマージ済み。今回の整理・公開・
 | NGT-001 | 独自Signalラッパー整理 | DONE | codex/public-signal-helpers。main独立、本体依存なし | [検証記録](2026-11-12-ngt-001-signal-helpers.md)。PR #706 マージ済み。ブックマーク削除済み | 2026-11-14 |
 | NGT-002 | 非同期読み取り・破棄処理（ServiceHub timer） | DONE | codex/service-hub-timer-lifecycle。独立main、本体依存なし | [検証記録](2026-11-12-ngt-002-async-lifecycle.md)。PR #707 マージ済み（ブックマーク削除済み）、残る監査はNGT-056 | 2026-11-14 |
 | NGT-003 | Routerとナビゲーションの意味（サイドバー） | DONE | codex/sidebar-router-links。独立main、本体依存なし | [検証記録](2026-11-12-ngt-003-sidebar-navigation.md)。PR #708 マージ済み（ブックマーク削除済み）、残る監査はNGT-057 | 2026-11-14 |
-| NGT-004 | 動的リストの安定したtrack | PUSHED | codex/stable-backup-list-tracking。最新main独立、本体依存なし | [赤3件→緑・E2E9件・単体28件・ビルド](2026-11-14-ngt-004-stable-tracking.md)。未PR。任意の並替でのフォーカス復元はNGT-079 | 2026-11-14 |
+| NGT-004 | 動的リストの安定したtrack | PUSHED | codex/stable-backup-list-tracking。最新main独立、本体依存なし | [赤3件→緑・E2E9件・単体28件・ビルド](2026-11-14-ngt-004-stable-tracking.md)。未PR。NGT-079も同じブランチで対応済み | 2026-11-14 |
 | NGT-005 | Aria/CDKの適合評価 | BLOCKED | NGT-030、NGT-033のマージ後にfile-treeを評価 | 現在の操作契約を基準に小範囲評価 | 2026-11-12 |
 | NGT-006 | 実サーバーE2E整備 / #273 | READY | NGT-031、NGT-032と同じケースを重複追加しない | 次の未被覆フローと継続実行方法を選ぶ。全体closeは保留 | 2026-11-12 |
 | NGT-007 | Signal Forms全体 / #497 | INVESTIGATE | NGT-010〜029が部分対応。単独の実装担当を意味しない親タスク | 残存フォームを再棚卸し。全完了までRefs | 2026-11-12 |
@@ -131,7 +131,7 @@ NGT-001〜003・057〜063はmainへマージ済み。今回の整理・公開・
 | NGT-078 | 詳細オプション追加アクションの無効状態 | PUSHED | codex/advanced-options-actions。main独立、本体依存なし。[赤→緑・実サーバー記録](2026-11-14-advanced-option-actions.md)。未PR |
 | NGT-077 | WebSocket接続・非同期認証の寿命監査 | PUSHED | codex/websocket-connection-lifecycle。最新main独立、本体依存なし。[赤8件→緑・型チェック・ビルド・E2E](2026-11-14-ngt-077-websocket-lifecycle.md)。未PR。隔離Canaryで実JWT期限切れ・更新503→200後のWS購読復帰を確認（再読込0）。StatusBar等の準備済み変更を含まない |
 
-| NGT-079 | リスト並替時のフォーカス保持 | BLOCKED | NGT-004のマージ待ち。キー修正後もDOM移動でChromiumのfocusが外れることを観測。[証拠と範囲](2026-11-14-ngt-004-stable-tracking.md)。移動・削除・ユーザーの意図を区別して設計し、既存フォーカス改善と重複させない |
+| NGT-079 | リスト並替時のフォーカス保持 | PUSHED | 利用者指示でNGT-004と同じcodex/stable-backup-list-trackingに追加。並替後の同一ジョブfocus、明示blur・削除・検索をChromiumで確認。[赤3件→緑・ビルドの記録](2026-11-14-ngt-079-reorder-focus.md)。未PR |
 
 ## 更新手順と履歴
 
@@ -167,6 +167,7 @@ gh pr view 7776 --repo duplicati/duplicati --json number,state,mergedAt
 - 2026-11-13: #695〜#705のマージを照合し、11ブランチを整理。残存26実装とtriageをmainへrebaseし、関連テスト・全本番ビルド・変更E2Eを検証。10件をPR公開。[証拠とSHA一覧](2026-11-13-maintenance-validation.md)。
 
 - 2026-11-14: #706〜#715のMERGED/headを照合し10ブランチを整理。16実装とtriageを最新mainへrebase・pushし、関連テスト・本番ビルド・変更E2Eを検証。10件を公開。[記録](2026-11-14-maintenance-validation.md)。
+
 
 
 
