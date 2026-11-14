@@ -88,3 +88,24 @@ Initial AES attempt returned HTTP 400 Missing passphrase before any backup. The 
 Successful server data and volumes are retained under tmp/ngt006-encrypted-20261114/live-results. Test-created jobs/local backup DBs were removed with delete-remote-files=false; isolated backup volumes are kept as diagnostic evidence. Process inspection found no remaining Duplicati.Server.exe with a live-server fixture path. No user jobs/data were used.
 
 README documents the generated stored passphrase and encrypted-volume checks. Previously unverified encrypted backup/restore is now covered for local same-OS Windows AES with a saved key. Wrong/missing keys, direct restore without saved configuration, Linux/MacOS and other encryption/storage modules remain unverified. No PR, Issue comment or Fixes #273 claim. Triage pushed separately; source bookmark on origin is 54cdb1ea40726712f31092a122e033fc19bc9124.
+
+## Follow-up: encrypted direct restore without saved settings (2026-11-14)
+
+Status: PUSHED on the same `codex/live-editor-persistence-e2e` bookmark. Commit `495e055ee0ff2b0b73faa927bb1779fe1596ed1d`, parent `54cdb1ea40726712f31092a122e033fc19bc9124`. Application and runner configuration remain unchanged.
+
+検証済み: A third mode in the shared round-trip spec creates an AES backup through the real Home Start action, changes original file contents, deletes the original job with delete-local-db=true / delete-remote-files=false, and asserts GET /api/v1/backups returns an empty list. It reloads the app to discard in-memory state, opens Direct restore from backup files, enters the target URL, skips the optional destination probe, and fills the passphrase field on screen. The temporary-job POST must contain exactly that UI-entered passphrase and return an ID different from the original job. The normal UI copytotemp -> restore path runs against the actual server; both temporary IDs are tracked for cleanup.
+
+After selecting Documents and a fresh restore location, Restore completed is required. Exactly message.txt and bytes.bin must be restored; their buffers match the backup-time values, not the changed source files. The unselected sibling is absent. There is no saved job selection, imported configuration, API-supplied restore passphrase, or mocked response in this restore flow. API calls arrange the original backup job, confirm its deletion and clean up only fixture-owned IDs.
+
+Commands/results (direct mise binaries, tmp/ngt006-direct-20261114):
+
+- `PLAYWRIGHT_MODE=live DUPLICATI_SERVER_PATH=<isolated official Windows 2.4.1.101 Canary executable> bun run test:e2e`: **4 passed**, exit 0 (live.log): unencrypted, AES with saved settings, AES without saved settings, editor persistence.
+- `node node_modules/typescript/bin/tsc --noEmit -p e2e/tsconfig.json`: exit 0 (tsc.log).
+- Prettier --check on README.md and the shared spec: exit 0 (prettier.log).
+- Default `bun run test:e2e --list`: unchanged **164 tests / 53 files** (default-list.log); live cases remain opt-in.
+- `bun run build:prod`: exit 0 (build.log).
+- Offline `node tmp/ngt006-direct-20261114/verify-evidence.mjs`: exit 0. All three round-trip directories have matching expected/restored SHA256, changed-source hashes differ, encrypted volumes have AES headers, and remainingJobs=0 (content-and-cleanup.json).
+
+The initial discovery attempt had a duplicate test title and was corrected before server execution (duplicate-title-attempt.log); no product failure is claimed. Successful artifacts were copied to live-results under the evidence directory. Generated passphrases belong only to these disposable fixture backups; no user data/configuration was used. All test-created jobs/local DBs, including the two direct-restore temporary jobs, were cleaned up. Backup volumes remain as ignored diagnostics; delete-remote-files=false throughout. Process inspection found no remaining Duplicati.Server.exe using the live-server fixture path.
+
+README now describes the direct-restore case. Earlier lack of interactive passphrase/direct-restore coverage is superseded by this result. Wrong/missing passphrase recovery, other operating systems/providers and all wizard creation pages remain unverified. No PR/Issue comment or automatic Issue-close claim. Source and triage pushed separately.
