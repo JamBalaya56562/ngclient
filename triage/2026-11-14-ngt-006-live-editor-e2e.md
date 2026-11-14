@@ -39,3 +39,29 @@ Live output was copied before subsequent Playwright runs cleaned test-results: t
 Source pushed with `jj git push --remote origin -b codex/live-editor-persistence-e2e`. No PR/Issue comment or Fixes #273 claim. Existing implementation bookmarks unchanged; triage records pushed separately.
 
 未検証: running this fixture on Linux/MacOS, full CI execution, external destination backends, encrypted backup/restore round trips, multiple live tests sharing a worker, forced process termination. The first real-server runner and one persistence flow are prepared; add broader backup/restore coverage after this infrastructure is merged, rather than duplicating the launcher across independent branches.
+
+## Follow-up: real backup -> selected-folder restore (2026-11-14)
+
+Status: PUSHED on the same `codex/live-editor-persistence-e2e` bookmark. New commit `fbce07898852c974021b5b6f3a21219bdb62249b`, parent `f2a73b7f33edbfd134d139339e35852a3b123436`. No application code or Playwright configuration change in this follow-up.
+
+検証済み: e2e/live/backup-restore.spec.ts arranges a disposable job through the real API, starts the actual backup from the Home UI, polls the real task to Completed and asserts one fileset plus a remote dlist volume. It then changes both original source files, opens the saved job in Restore, expands/selects Documents, chooses a new fixture-only restore location and submits through the UI. Restore completed is required before examining the destination.
+
+The restored folder contains exactly message.txt and bytes.bin, not sibling unselected.txt. Both buffers must equal their backup-time contents (UTF-8 Japanese/Czech text and binary bytes including 0/255), while the current source text differs. A separate offline evidence check confirms BOTH restored files differ from the changed sources and match the backup-time SHA256 values:
+
+- message.txt: `b9f997c00f9012fc6bd5d576adf12fc67f9593781c95886eeedbd2f1482f3b83`
+- bytes.bin: `f607c04ee6f29f9041f5d1dc9062d696fd8f10f75b0205724b1fe1cd124410de`
+
+Commands/results (direct mise binaries; logs under tmp/ngt006-roundtrip-20261114):
+
+- `PLAYWRIGHT_MODE=live DUPLICATI_SERVER_PATH=<same isolated official Windows 2.4.1.101 Canary executable> bun run test:e2e`: **2 passed**, exit 0 (live.log), including the previous editor-persistence case. Real local HTTP/WebSocket traffic, no route mocking.
+- `node node_modules/typescript/bin/tsc --noEmit -p e2e/tsconfig.json`: exit 0 (tsc.log).
+- Prettier --check on the three changed files: exit 0 (prettier.log).
+- Default `bun run test:e2e --list`: unchanged **164 tests / 53 files** (default-list.log); the two live cases remain opt-in.
+- `bun run build:prod`: exit 0 (build.log).
+- `node tmp/ngt006-roundtrip-20261114/verify-evidence.mjs`: exit 0; matching content hashes, remainingJobs=0, backupVolumes=3 (content-and-cleanup.json).
+
+Initial run: the new test timed out waiting five seconds for post-login navigation, although trace showed auth/login=200 and systeminfo=200 taking about four seconds. Both live tests now wait conditionally up to 20 seconds for that navigation. The final two-test run passes. Initial-navigation-timeout.log retains the failed attempt; no application auth fix or artificial product red/green claim is made.
+
+Real jobs/files/server data are confined to the fixture's newly created output directory. Schedule=null; snapshot-policy=off; unencrypted local file backend. The backup/restore job cleanup deletes its own local DB and job settings with delete-remote-files=false. Retained isolated backup volumes provide diagnostic evidence; no user remote data is deleted. Worker teardown stopped its server/proxy; process inspection found no remaining Duplicati.Server.exe carrying this fixture's live-server path. Raw successful artifacts were copied to tmp/ngt006-roundtrip-20261114/live-results before any future Playwright cleanup.
+
+README now distinguishes the settings-only case from the real backup/restore case. This covers local same-OS Windows backup/restore, not cross-OS, encrypted/remote providers, backup creation through every wizard page, or all of #273. No PR/Issue comment; other implementation bookmarks untouched. Source and triage pushed separately.
