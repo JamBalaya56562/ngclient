@@ -109,3 +109,25 @@ Commands/results (direct mise binaries, tmp/ngt006-direct-20261114):
 The initial discovery attempt had a duplicate test title and was corrected before server execution (duplicate-title-attempt.log); no product failure is claimed. Successful artifacts were copied to live-results under the evidence directory. Generated passphrases belong only to these disposable fixture backups; no user data/configuration was used. All test-created jobs/local DBs, including the two direct-restore temporary jobs, were cleaned up. Backup volumes remain as ignored diagnostics; delete-remote-files=false throughout. Process inspection found no remaining Duplicati.Server.exe using the live-server fixture path.
 
 README now describes the direct-restore case. Earlier lack of interactive passphrase/direct-restore coverage is superseded by this result. Wrong/missing passphrase recovery, other operating systems/providers and all wizard creation pages remain unverified. No PR/Issue comment or automatic Issue-close claim. Source and triage pushed separately.
+
+## Follow-up: wrong passphrase -> correction -> direct restore (2026-11-14)
+
+Status: PUSHED on `codex/live-editor-persistence-e2e`. Commit `c8c1ca9895099d03a024701988c6310e44453344`, parent `495e055ee0ff2b0b73faa927bb1779fe1596ed1d`. Only the shared live spec and README changed; no application fix was necessary.
+
+検証済み: The new aes-retry mode follows the existing encrypted direct-restore setup (original job/local DB deleted, empty saved-job list, application state reloaded). It enters a newly generated wrong passphrase in the actual screen and verifies the temporary-job request uses that value. The real server can list filesets with that value, but its subsequent only_paths database-repair task fails. The test waits for the **Restore database repair failed** dialog and checks the task error contains decryption/passphrase/password/key wording. At that point there must be zero POST restore requests and the destination directory must still be empty.
+
+Recovery uses UI actions: Cancel the error dialog, browser Back, return through the destination/encryption screens (re-entering the target URL if needed), and type the correct passphrase. A fresh temporary job is created with the corrected value. The same document reaches the file list (unchanged performance.timeOrigin), then selection and actual restore succeed. Exactly one restore request is sent, and only message.txt/bytes.bin are restored, matching the original buffers rather than the changed source. All failed/corrected/copied temporary IDs are tracked and deleted in finally. No API request injects a corrected credential into an existing job and no mocked responses are used.
+
+Checks, direct mise executables, evidence tmp/ngt006-retry-20261114:
+
+- Targeted `PLAYWRIGHT_MODE=live DUPLICATI_SERVER_PATH=<official isolated Windows 2.4.1.101 Canary executable> bun run test:e2e --grep correcting`: **1 passed**, exit 0 (targeted.log).
+- Same live command without grep: **5 passed**, exit 0 (live.log): unencrypted, saved-key AES, direct AES, corrected-key direct AES, editor persistence.
+- `node node_modules/typescript/bin/tsc --noEmit -p e2e/tsconfig.json`: exit 0 (tsc.log).
+- Prettier --check on README.md and the shared spec: exit 0 (prettier.log).
+- Default `bun run test:e2e --list`: unchanged **164 tests / 53 files** (default-list.log).
+- `bun run build:prod`: exit 0 (build.log).
+- Offline `node tmp/ngt006-retry-20261114/verify-evidence.mjs`: exit 0. All four round trips have matching expected/restored hashes and different changed-source hashes; encrypted volumes have AES headers; remainingJobs=0 (content-and-cleanup.json).
+
+Initial harness attempts were corrected: a duplicate test title prevented discovery, and an assumption that list-filesets itself would reject the wrong key was false (Success=true). The final test targets the observed repair failure instead. These are test-development observations, not an application bug fix or a product red/green claim. Attempt logs are retained separately.
+
+The successful live-results copy preserves isolated server data, source/restore files and local encrypted volumes. Process inspection found no remaining Duplicati.Server.exe for this fixture. Test-created jobs and temporary jobs were cleaned up, remote deletion remained false, and no user server/data was used. The README explains this recovery scope. Wrong-key recovery is now covered for the tested local Windows AES flow; other providers/OSes and different recovery paths remain unverified. No PR/Issue comment or Fixes #273 claim. Source and triage pushed separately.
