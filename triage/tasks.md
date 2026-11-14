@@ -131,7 +131,7 @@ NGT-001〜003・057〜063はmainへマージ済み。今回の整理・公開・
 | NGT-078 | 詳細オプション追加アクションの無効状態 | PUSHED | codex/advanced-options-actions。main独立、本体依存なし。[赤→緑・実サーバー記録](2026-11-14-advanced-option-actions.md)。未PR |
 | NGT-077 | WebSocket接続・非同期認証の寿命監査 | PUSHED | codex/websocket-connection-lifecycle。最新main独立、本体依存なし。[赤8件→緑・型チェック・ビルド・E2E](2026-11-14-ngt-077-websocket-lifecycle.md)。未PR。隔離Canaryで実JWT期限切れ・更新503→200後のWS購読復帰を確認（再読込0）。StatusBar等の準備済み変更を含まない |
 
-| NGT-079 | リスト並替時のフォーカス保持 | PUSHED | 利用者指示でNGT-004と同じcodex/stable-backup-list-trackingに追加。並替後の同一ジョブfocus、明示blur・削除・検索をChromiumで確認。[赤3件→緑・ビルドの記録](2026-11-14-ngt-079-reorder-focus.md)。未PR |
+| NGT-079 | リスト並替時のフォーカス保持 | PUSHED | 利用者指示でNGT-004と同じcodex/stable-backup-list-trackingに追加。並替後の同一ジョブfocus、明示blur・削除・検索をChromiumで確認。隔離実Canaryの追加・削除・名前順更新も3表示で成功。[赤3件→緑・ビルドの記録](2026-11-14-ngt-079-reorder-focus.md)。未PR |
 
 ## 更新手順と履歴
 
@@ -167,6 +167,7 @@ gh pr view 7776 --repo duplicati/duplicati --json number,state,mergedAt
 - 2026-11-13: #695〜#705のマージを照合し、11ブランチを整理。残存26実装とtriageをmainへrebaseし、関連テスト・全本番ビルド・変更E2Eを検証。10件をPR公開。[証拠とSHA一覧](2026-11-13-maintenance-validation.md)。
 
 - 2026-11-14: #706〜#715のMERGED/headを照合し10ブランチを整理。16実装とtriageを最新mainへrebase・pushし、関連テスト・本番ビルド・変更E2Eを検証。10件を公開。[記録](2026-11-14-maintenance-validation.md)。
+
 
 
 
