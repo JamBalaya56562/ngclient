@@ -131,3 +131,25 @@ Checks, direct mise executables, evidence tmp/ngt006-retry-20261114:
 Initial harness attempts were corrected: a duplicate test title prevented discovery, and an assumption that list-filesets itself would reject the wrong key was false (Success=true). The final test targets the observed repair failure instead. These are test-development observations, not an application bug fix or a product red/green claim. Attempt logs are retained separately.
 
 The successful live-results copy preserves isolated server data, source/restore files and local encrypted volumes. Process inspection found no remaining Duplicati.Server.exe for this fixture. Test-created jobs and temporary jobs were cleaned up, remote deletion remained false, and no user server/data was used. The README explains this recovery scope. Wrong-key recovery is now covered for the tested local Windows AES flow; other providers/OSes and different recovery paths remain unverified. No PR/Issue comment or Fixes #273 claim. Source and triage pushed separately.
+
+## Follow-up: empty passphrase -> correction -> direct restore (2026-11-14)
+
+Status: PUSHED on `codex/live-editor-persistence-e2e`. Commit `5a34b5e038274eacf7eec69700d47438ed9351ca`, parent `c8c1ca9895099d03a024701988c6310e44453344`. Only the shared live spec and README changed; application code is unchanged.
+
+検証済み: The new aes-empty mode creates an AES backup, deletes its saved job/local DB, confirms an empty saved-job list and reloads application state. It advances the direct-restore encryption screen with an empty field. The temporary-job POST must omit passphrase and contain no-encryption=true, as the current UI sends for empty input. The real list-filesets response is Success=false / StatusCode=EncryptedStorageNoPassphrase, and the Failed to load backup filesets dialog appears. There are no restore requests and no restored files at this stage.
+
+After acknowledging the error, the user proceeds through the destination/encryption screens and enters the correct passphrase. A new temporary job contains that screen-entered value; file listing and the normal copytotemp/restore flow succeed. Unchanged performance.timeOrigin confirms no browser reload during recovery. Exactly one restore request is made, only the two selected files are restored, and text/binary buffers match their backup-time values rather than the changed sources.
+
+An observed fixture race was also fixed: DELETE backup returns HTTP 200 with an asynchronous task (trace response Status=OK, Reason=null, ID=31), so an immediate list read once still contained the original job. The shared deletion helper now requires Status=OK and awaits the returned task's Completed state. Direct-restore setup additionally polls until the saved-job list is empty; teardown uses the same helper. This is a test synchronization correction to the existing API contract, not an application bug fix. The earlier failed suite is retained in deletion-race-attempt.log.
+
+Commands/results, direct mise executables; tmp/ngt006-empty-20261114:
+
+- Targeted missing-passphrase case during development: **1 passed**, exit 0 (targeted.log; the final title was clarified afterward).
+- `PLAYWRIGHT_MODE=live DUPLICATI_SERVER_PATH=<official isolated Windows 2.4.1.101 Canary executable> bun run test:e2e`: **6 passed**, exit 0 (live.log): unencrypted, saved-key AES, direct AES, wrong-key recovery, empty-key recovery, editor persistence.
+- `node node_modules/typescript/bin/tsc --noEmit -p e2e/tsconfig.json`: exit 0 (tsc.log).
+- Prettier --check on README.md and shared spec: exit 0 (prettier.log).
+- Default `bun run test:e2e --list`: unchanged **164 tests / 53 files** (default-list.log).
+- `bun run build:prod`: exit 0 (build.log).
+- Offline `node tmp/ngt006-empty-20261114/verify-evidence.mjs`: exit 0. All five round trips have matching expected/restored hashes and differing changed-source hashes; encrypted volumes have AES headers; remainingJobs=0 (content-and-cleanup.json).
+
+The successful live-results copy preserves fixture-only data and backup volumes. Test-created original/temporary jobs were removed after their deletion tasks completed; remote deletion stayed false. Process inspection found no remaining Duplicati.Server.exe for this fixture. No user jobs or files were used. The README describes both recovery cases. Other OSes/providers and password UI paths outside these local AES scenarios remain unverified. No PR/Issue comment or Fixes #273 claim. Source and triage pushed separately.
