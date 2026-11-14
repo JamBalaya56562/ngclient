@@ -23,7 +23,7 @@ NGT-001〜003・057〜063はmainへマージ済み。今回の整理・公開・
 3. **NGT-071は再監査可能**: ホーム#697・接続画面#700・ルートID #711はマージ済み。NGT-064〜070など公開済み・準備済みの変更を重複実装せず、現行mainから独立した残件を選ぶ。disabledや状態変更付きの操作は維持する。
 4. **NGT-045は検証完了**: 本体修正後、両方向の一覧・通常UI復元を実データで確認。追加ngclient修正なし。公開報告は未実施。
 5. **NGT-049〜055のINVESTIGATE行**: バグ対応優先で残件を確認。未再現・未調査を即実装しない。
-6. **NGT-006は初回runnerと編集保存の実サーバーE2Eを準備済み**。未PR。runnerの重複実装を避け、マージ後に次のフローを追加する。
+6. **NGT-006はrunner・編集保存・バックアップ復元の実サーバーE2Eを準備済み**。未PR。runnerの重複実装を避け、マージ後に次のフローを追加する。
 
 共通の着手条件: 最新main・全ブックマーク・open PRの差分を確認し、同じ変更が準備済みでないことを確認する。READYは無条件の実装許可やPR作成許可ではない。PUSHEDの公開や既存ブランチの書き換えは指示された範囲で行う。
 
@@ -38,7 +38,7 @@ NGT-001〜003・057〜063はmainへマージ済み。今回の整理・公開・
 | NGT-003 | Routerとナビゲーションの意味（サイドバー） | DONE | codex/sidebar-router-links。独立main、本体依存なし | [検証記録](2026-11-12-ngt-003-sidebar-navigation.md)。PR #708 マージ済み（ブックマーク削除済み）、残る監査はNGT-057 | 2026-11-14 |
 | NGT-004 | 動的リストの安定したtrack | PUSHED | codex/stable-backup-list-tracking。最新main独立、本体依存なし | [赤3件→緑・E2E9件・単体28件・ビルド](2026-11-14-ngt-004-stable-tracking.md)。未PR。NGT-079も同じブランチで対応済み | 2026-11-14 |
 | NGT-005 | Aria/CDKの適合評価 | BLOCKED | NGT-030、NGT-033のマージ後にfile-treeを評価 | 現在の操作契約を基準に小範囲評価 | 2026-11-12 |
-| NGT-006 | 実サーバーE2E整備 / #273 | PUSHED | codex/live-editor-persistence-e2e。最新main独立。設定は既存playwright.config.tsのliveモードへ統合 | [実サーバー編集保存1件・通常8件・ビルド](2026-11-14-ngt-006-live-editor-e2e.md)。未PR。全体closeは保留。runnerマージ後に次の実サーバーフローを追加 | 2026-11-14 |
+| NGT-006 | 実サーバーE2E整備 / #273 | PUSHED | codex/live-editor-persistence-e2e。最新main独立。設定は既存playwright.config.tsのliveモードへ統合 | [実サーバー編集保存＋バックアップ復元2件・通常8件・ビルド](2026-11-14-ngt-006-live-editor-e2e.md)。未PR。全体closeは保留。同じブランチへローカルbackup/restoreと内容一致を追加済み。runnerマージ後に次のフローを追加 | 2026-11-14 |
 | NGT-007 | Signal Forms全体 / #497 | INVESTIGATE | NGT-010〜029が部分対応。単独の実装担当を意味しない親タスク | 残存フォームを再棚卸し。全完了までRefs | 2026-11-12 |
 | NGT-008 | SSR・画像最適化等 | DEFERRED | 導入根拠となる課題が未観測 | 性能・UX課題が観測された場合のみ再評価 | 2026-11-12 |
 
@@ -167,6 +167,7 @@ gh pr view 7776 --repo duplicati/duplicati --json number,state,mergedAt
 - 2026-11-13: #695〜#705のマージを照合し、11ブランチを整理。残存26実装とtriageをmainへrebaseし、関連テスト・全本番ビルド・変更E2Eを検証。10件をPR公開。[証拠とSHA一覧](2026-11-13-maintenance-validation.md)。
 
 - 2026-11-14: #706〜#715のMERGED/headを照合し10ブランチを整理。16実装とtriageを最新mainへrebase・pushし、関連テスト・本番ビルド・変更E2Eを検証。10件を公開。[記録](2026-11-14-maintenance-validation.md)。
+
 
 
 
