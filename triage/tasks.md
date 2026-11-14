@@ -70,7 +70,7 @@ NGT-001〜003・057〜063はmainへマージ済み。今回の整理・公開・
 | NGT-031 | Pause E2E | DONE | #685 / test-server-pause | mainへマージ済み。ブックマーク削除済み |
 | NGT-032 | Job deletion E2E | DONE | #686 / test-job-deletion | mainへマージ済み。ブックマーク削除済み |
 | NGT-033 | リンク先表示 | PR_OPEN | show-file-tree-link-target | 本体#7775はマージ済み。11/14 rebase後のAPI二重定義(TS2300)を解消し、関連spec・ビルド成功。[記録](2026-11-14-maintenance-validation.md)。実サーバー統合は未再確認  PR #728 公開済み |
-| NGT-034 | 旧folder filter候補 | DEFERRED | fix/folder-filter-separators | #663のNewFilter修正と区別。旧FilterComponentは現行画面で未使用と確認しPR保留（再検証・ビルド成功） |
+| NGT-034 | 旧folder filter候補の取り下げ | DONE | fix/folder-filter-separatorsはローカル・originから削除済み | 旧FilterComponentは現行画面で未使用のため利用者指示で候補を取り下げ。専用コミットもabandon。機能修正の完了やIssue解決を意味しない。[整理記録](2026-11-14-drop-unused-filter-candidate.md) |
 
 ## Issueの残件・回答待ち
 
