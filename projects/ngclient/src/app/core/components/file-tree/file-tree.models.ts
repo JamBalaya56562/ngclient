@@ -29,6 +29,8 @@ export type TreeNode = TreeNodeDto & {
 
 export type FileTreeNode = TreeNode & {
   children: FileTreeNode[];
+  /** Local source attribute exclusion, separate from path-filter selection. */
+  attributeExclusion?: string;
   evalState: TreeEvalEnum;
   isIndeterminate: boolean;
   isSearchMatch?: boolean;
