@@ -40,3 +40,23 @@ Screenshots are local ignored evidence: tmp/ngt079-20261114/list-reordered.png, 
 - `jj git push --remote origin -b codex/stable-backup-list-tracking`: moved origin from e07fbeaf to 69f42c12.
 
 No PR or Issue comment. Other implementation bookmarks unchanged. Test preview/browser processes exited. No real server/container or Vitest package edits were used in this follow-up. Evidence remains under tmp/ngt079-20261114; triage updated separately.
+
+## Follow-up: real-server additions, deletions and sorting (2026-11-14)
+
+検証済み: The unchanged production UI from `69f42c12b41af5acfb8a0aad265370c5ccc978ea` was connected to an isolated official Windows Duplicati **2.4.1.101 Canary (2026-11-07)** server. `./tmp/ngt079-20261114/live/live.ps1 verified` exited **0**. No API/WebSocket mocking or fault injection: the local proxy only served the production UI and forwarded the real server traffic.
+
+Each of home list, home details and Restore was tested in a fresh browser context. Four disposable jobs were created via POST /api/v1/backups, with Schedule=null. After selecting name order in the real UI, the harness focused Photos via focus plus actual Tab / Shift+Tab and marked its DOM row with the real job ID. Separate API requests then performed these real server operations while browser focus stayed in the job list:
+
+| Operation | List focused ID | Details focused ID | Restore focused ID |
+| --- | --- | --- | --- |
+| Add Archive before Photos | 2 | 7 | 12 |
+| Delete the preceding Music job | 2 | 7 | 12 |
+| Rename Documents to ZZZ Documents, changing server name order | 2 | 7 | 12 |
+
+For all nine operation/view pairs, the real backuplist WebSocket frames arrived, the row retained its ID/DOM identity, toBeFocused passed on the same action, and performance.timeOrigin was unchanged (reloads=0). Each view also verified that a focused search input is not overridden by another name-sort update, explicitly blurred actions are not refocused, and removing the focused Photos job leaves focus on body rather than another job. All three view-complete records have errors=[]. The final record is completed.
+
+Evidence: tmp/ngt079-20261114/live/verified-live.log and events.json contain real list IDs/names, the nine focus-preserved records, other-focus-preserved, explicit-blur-respected and focused-job-removed. Scripts live.mjs/live.ps1 and server/proxy logs remain in that directory. Screenshots: list-real-reordered.png, details-real-reordered.png and restore-real-reordered.png. The Restore screenshot was visually inspected and shows the focus ring on Photos after reordering.
+
+No backup task or restore task was executed. All test-only job settings were deleted with delete-local-db=false and delete-remote-files=false. Offline read-only SQLite cleanup check `node tmp/ngt079-20261114/live/check-cleanup.mjs` exited 0 with remainingTestJobs=0 (cleanup.log). Own server/proxy processes stopped; no listeners remained on 8720/8721. Original user jobs/data were not used.
+
+No additional application fix was necessary, so the existing successful unit tests (28), fixture E2E (9), type checks and production build for this same source commit remain applicable; they were not rerun merely for record changes. Real-server coverage above supersedes the earlier unverified real-server note. Other browsers and arbitrary unrelated dynamic lists remain unverified. Source bookmark remains at 69f42c12b41af5acfb8a0aad265370c5ccc978ea on origin; triage evidence pushed separately. No PR or public comment.

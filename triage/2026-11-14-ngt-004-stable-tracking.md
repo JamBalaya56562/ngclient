@@ -39,3 +39,5 @@ The final tests explicitly check identity after reorder and re-focus the action 
 Source pushed with `jj git push --remote origin -b codex/stable-backup-list-tracking`. No PR or Issue comment. Existing implementation bookmarks unchanged. Test preview processes exited; no isolated real server/container was started and no Vitest package edits were made. Triage records pushed separately.
 
 Follow-up (2026-11-14): the user authorized NGT-079 on the same branch. The separate reorder-focus limitation above is now fixed by commit `69f42c12b41af5acfb8a0aad265370c5ccc978ea`; see [NGT-079 evidence](2026-11-14-ngt-079-reorder-focus.md). The final browser tests assert reorder focus without manual refocusing. Historical failing observations above remain as before-fix evidence.
+
+Real-server follow-up (2026-11-14): the combined NGT-004/079 branch at 69f42c12b41af5acfb8a0aad265370c5ccc978ea passed additions, deletions and name-order updates in all three views using an isolated official 2.4.1.101 Canary server. See the real-server follow-up in [NGT-079](2026-11-14-ngt-079-reorder-focus.md) for IDs, raw evidence and cleanup. No further code changes.
