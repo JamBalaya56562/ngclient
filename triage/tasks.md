@@ -18,7 +18,7 @@
 
 ## 今後の実装方針・作業順
 
-**検証済み（2026-11-14の取得）**: mainは上記SHA、open PRは#727〜#736の10件。準備済み実装ブランチもこの10件だけで、未PRの実装候補は0件。triageと画像URL保存用ブランチは実装数に含めない。旧FilterComponent候補NGT-034は削除・取り下げ済み。[照合記録](2026-11-14-triage-reconciliation.md)。
+**検証済み（2026-11-14の取得）**: mainは上記SHA、open PRは#727〜#736の10件。実装ブランチは11件（公開済み10件とNGT-050の未PR 1件）。未PRのNGT-050は#727のマージ待ち。triageと画像URL保存用ブランチは実装数に含めない。旧FilterComponent候補NGT-034は削除・取り下げ済み。[照合記録](2026-11-14-triage-reconciliation.md)。
 
 基本方針は、**再現できる不具合の修正 → 回帰を防ぐ検証 → 動作を保った構造改善**。機能/APIの導入や移行件数自体を目標にしない。以下の順序は実装候補を選ぶ方針であり、未検証の問題が存在するという宣言や、全候補への一括実装・公開の許可ではない。
 
@@ -48,7 +48,7 @@
 
 ### 返信・判断待ちと公開ルール
 
-#215/#283/#492/#217/#401/#449/#627は既に検証範囲付きの公開コメントがある。#637も方針確認済みで返信待ち。同じコメント・検証を未実施として繰り返さず、新しい再現条件や返信があれば再開する。#636/#466はclose済みで、追加機能のPR待ちとIssue未解決を混同しない。
+#215/#283/#492/#217/#401/#449/#627は既に検証範囲付きの公開コメントがある。#637は返信を受けてNGT-050を実装・push済み。公開は#727のマージ待ち。同じコメント・検証を未実施として繰り返さず、新しい再現条件や返信があれば再開する。#636/#466はclose済みで、追加機能のPR待ちとIssue未解決を混同しない。
 
 実装は最新mainから独立ブランチを作り、triageを親にしない。既存PR・準備済み差分・本体依存を先に照合する。修正では赤→緑、関連spec・型・本番ビルドと、必要な実サーバー確認を残す。PR作成は明示の指示がある場合だけ。先行PRに積む場合はそのマージまで後段PRを出さない。Issue全体の受け入れ条件を満たす場合のみFixes/Closes、部分対応はRefsと残件を明記する。
 
@@ -113,7 +113,7 @@
 | NGT-047 | #328 URL再構築         | BLOCKED     | 本体[PR #7832](https://github.com/duplicati/duplicati/pull/7832)（fix/keep-target-url-when-masking）がopen。マージ後にブラウザーなしGET→PUTとUI保存を再確認。#618のUI対策を繰り返さず、Issue全体を先にcloseしない                                                                                                                                                          |
 | NGT-048 | #466 pCloud            | DONE        | GitHubはclosed/completed。[報告者が2.4.0.1で正常動作と返信](https://github.com/duplicati/ngclient/issues/466#issuecomment-6830293591)。ローカルで全OAuth環境を再検証したという意味ではない                                                                                                                                                                                 |
 | NGT-049 | #627 editor tabs/save  | WAITING     | main UIで5ページの直接移動・保存・再読込を確認。[コメント投稿・訂正済み](https://github.com/duplicati/ngclient/issues/627#issuecomment-6867035192)。Save changesは公式2.4.1.101 Canaryに収録確認、実画面検証はmain UI。タブ外観・ツアーの残要望と報告者の再確認待ち                                                                                                        |
-| NGT-050 | #637 hidden/system設定 | WAITING     | 意図的な削除を確認。[方針確認コメント](https://github.com/duplicati/ngclient/issues/637#issuecomment-6866136054)への返信なし。先に旧チェックボックスを戻さない。追加操作の不具合はNGT-078 / #727 の別範囲                                                                                                                                                                  |
+| NGT-050 | #637 hidden/system設定 | BLOCKED     | 実装push済み: codex/source-attribute-exclusion-feedback。最新main独立。本体変更不要。報告者の返信を踏まえて属性除外表示・既存設定への導線を追加。赤3→緑333、実サーバー6条件・本番E2E2件・ビルド成功。PRは#727のマージ待ち（未設定時のAddがdisabledであることを実画面確認）。新旧画像・Fixes #637下書き準備済み。[検証記録](2026-11-14-ngt-050-source-attributes.md)        |
 | NGT-051 | #311 flat file restore | PR_OPEN     | [PR #736](https://github.com/duplicati/ngclient/pull/736) / codex/restore-individual-file-groups。main独立、本体依存なし。表示専用File groupで保存済みの個別ファイルだけを選択し、実フォルダーと区別。赤5→緑6、全2317件、本番E2E12件、実サーバー3ケース成功。新旧4画像を本文へ掲載。Fixes #311はマージ時のclose指定。[記録](2026-11-14-ngt-051-individual-file-restore.md) |
 | NGT-052 | #409 suggestions       | INVESTIGATE | 要求と再現条件を確認                                                                                                                                                                                                                                                                                                                                                       |
 | NGT-053 | #460 secondary restore | INVESTIGATE | 本体依存の有無から確認                                                                                                                                                                                                                                                                                                                                                     |
@@ -182,3 +182,5 @@ gh pr view 7776 --repo duplicati/duplicati --json number,state,mergedAt
 - 2026-11-14（NGT-051）: #311を最新mainの本番UIと隔離Windows Canaryで確認。個別/混在/フォルダーの3ケースでAPIとDOMが一致、選択復元も成功。意図的な平坦表示は変更せず、仮想グループの仕様判断を残した。関連38 specと本番ビルド成功。[記録](2026-11-14-ngt-051-individual-file-restore.md)。
 
 - 2026-11-14（NGT-051実装）: 利用者の公開指示により表示専用グループを実装しPR #736を公開。open 10件・未PR実装0件。画像専用codex/pr-311-screenshotsは実装候補に数えず保持。[証拠](2026-11-14-ngt-051-individual-file-restore.md)。
+
+- 2026-11-14（NGT-050）: 報告者の返信を受けて属性除外の表示と既存Optionsへの導線を実装・push。未PR実装1件を追加。公開は#727待ちで、スタックしたPRは作らない。[結果と下書き](2026-11-14-ngt-050-source-attributes.md)。
