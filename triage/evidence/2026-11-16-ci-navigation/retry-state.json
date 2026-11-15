@@ -1,0 +1,57 @@
+{
+  "checked_at_jst": "2026-11-16",
+  "main": "8f401edd337bf53a963fc4e80a47d3db4d52fc3d",
+  "prs": [
+    {
+      "pr": 727,
+      "runs": [
+        {
+          "id": 43735257120,
+          "name": "Unit Tests",
+          "status": "queued",
+          "conclusion": null,
+          "run_number": 728,
+          "jobs_url": "https://api.github.com/repos/duplicati/ngclient/actions/runs/43735257120/jobs",
+          "logs_url": "https://api.github.com/repos/duplicati/ngclient/actions/runs/43735257120/logs",
+          "workflow_id": 318537990
+        },
+        {
+          "id": 43735256382,
+          "name": "Production Build",
+          "status": "queued",
+          "conclusion": null,
+          "run_number": 646,
+          "jobs_url": "https://api.github.com/repos/duplicati/ngclient/actions/runs/43735256382/jobs",
+          "logs_url": "https://api.github.com/repos/duplicati/ngclient/actions/runs/43735256382/logs",
+          "workflow_id": 345331032
+        }
+      ]
+    },
+    {
+      "pr": 733,
+      "runs": [
+        {
+          "id": 43735257089,
+          "name": "Production Build",
+          "status": "queued",
+          "conclusion": null,
+          "run_number": 647,
+          "jobs_url": "https://api.github.com/repos/duplicati/ngclient/actions/runs/43735257089/jobs",
+          "logs_url": "https://api.github.com/repos/duplicati/ngclient/actions/runs/43735257089/logs",
+          "workflow_id": 345331032
+        },
+        {
+          "id": 43735257755,
+          "name": "Unit Tests",
+          "status": "queued",
+          "conclusion": null,
+          "run_number": 729,
+          "jobs_url": "https://api.github.com/repos/duplicati/ngclient/actions/runs/43735257755/jobs",
+          "logs_url": "https://api.github.com/repos/duplicati/ngclient/actions/runs/43735257755/logs",
+          "workflow_id": 318537990
+        }
+      ]
+    }
+  ],
+  "note": "Source trees unchanged; queued is not a successful result."
+}

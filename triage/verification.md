@@ -1,18 +1,22 @@
 # 検証記録の索引
 
+## NGT-103 別タブE2EのCI失敗（2026-11-16）
+
+#727・#733の失敗ログ/traceを調査。コード差分なしでコミットを再作成してpushしCIを再実行。新headはそれぞれ`018692b3aab5f2c5a88a387b78f73c6963d81147`・`780c2e31a2baaef344966bd15b231fc1b691ef67`。以下の過去SHAでの試験結果は引き続き同一ソースを対象とする。[今回の検証・CI結果](evidence/2026-11-16-ci-navigation/verification.md)。根本原因を特定するまで修正PRは出さない。
+
 2026-11-15にGitHubの状態・head SHAを照合。以下は過去の試験結果への入口で、整理時の追試ではない。現在の状態は[tasks.md](tasks.md)。
 
 ## 公開済み・公開待ちの記録
 
 | PR / ID                                                | 現在のhead SHA                             | 証拠                                                                                                                                                                                                              |
 | ------------------------------------------------------ | ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [#727](https://github.com/duplicati/ngclient/pull/727) | `4d50af9684de8c8d5b2f61a3097e06551ecbcba0` | [過去の実行詳細](evidence/previous-runs/2026-11-14-advanced-option-actions.md)。現在SHAでの結果はPR本文と[rebase後の検証表](evidence/previous-runs/2026-11-14-rebased-branches-prs.md)を区別して参照              |
+| [#727](https://github.com/duplicati/ngclient/pull/727) | `018692b3aab5f2c5a88a387b78f73c6963d81147` | [過去の実行詳細](evidence/previous-runs/2026-11-14-advanced-option-actions.md)。現在SHAでの結果はPR本文と[rebase後の検証表](evidence/previous-runs/2026-11-14-rebased-branches-prs.md)を区別して参照              |
 | [#728](https://github.com/duplicati/ngclient/pull/728) | `d4f715de88e3fa6c435f852c249e18d52a75e2c6` | [過去の実行詳細](evidence/previous-runs/2026-11-14-rebased-branches-prs.md)。現在SHAでの結果はPR本文と[rebase後の検証表](evidence/previous-runs/2026-11-14-rebased-branches-prs.md)を区別して参照                 |
 | [#729](https://github.com/duplicati/ngclient/pull/729) | `03c222dc86eb038ca0648e8c4d607cd6c2f7d00a` | [過去の実行詳細](evidence/previous-runs/2026-11-14-ngt-079-reorder-focus.md)。現在SHAでの結果はPR本文と[rebase後の検証表](evidence/previous-runs/2026-11-14-rebased-branches-prs.md)を区別して参照                |
 | [#730](https://github.com/duplicati/ngclient/pull/730) | `6cafe57c78820bcbc3d0b56ff04e06917725e4eb` | [過去の実行詳細](evidence/previous-runs/2026-11-13-ngt-075-status-snapshot-lifecycle.md)。現在SHAでの結果はPR本文と[rebase後の検証表](evidence/previous-runs/2026-11-14-rebased-branches-prs.md)を区別して参照    |
 | [#731](https://github.com/duplicati/ngclient/pull/731) | `18803f296cc8b77a79850623659fffc57e012ed4` | [過去の実行詳細](evidence/previous-runs/2026-11-13-ngt-074-status-task-actions.md)。現在SHAでの結果はPR本文と[rebase後の検証表](evidence/previous-runs/2026-11-14-rebased-branches-prs.md)を区別して参照          |
 | [#732](https://github.com/duplicati/ngclient/pull/732) | `9e3e5cce3243b6aefbc0df3370d3811d52dc73f2` | [過去の実行詳細](evidence/previous-runs/2026-11-13-ngt-076-statusbar-progress-lifecycle.md)。現在SHAでの結果はPR本文と[rebase後の検証表](evidence/previous-runs/2026-11-14-rebased-branches-prs.md)を区別して参照 |
-| [#733](https://github.com/duplicati/ngclient/pull/733) | `1393c45e3e3f59ab7a67787ac0f4163aaac2c723` | [過去の実行詳細](evidence/previous-runs/2026-11-14-ngt-077-websocket-lifecycle.md)。現在SHAでの結果はPR本文と[rebase後の検証表](evidence/previous-runs/2026-11-14-rebased-branches-prs.md)を区別して参照          |
+| [#733](https://github.com/duplicati/ngclient/pull/733) | `780c2e31a2baaef344966bd15b231fc1b691ef67` | [過去の実行詳細](evidence/previous-runs/2026-11-14-ngt-077-websocket-lifecycle.md)。現在SHAでの結果はPR本文と[rebase後の検証表](evidence/previous-runs/2026-11-14-rebased-branches-prs.md)を区別して参照          |
 | [#734](https://github.com/duplicati/ngclient/pull/734) | `a08f89f2c810aeb0a5d3423c296b50967020e9de` | [過去の実行詳細](evidence/previous-runs/2026-11-14-rebased-branches-prs.md)。現在SHAでの結果はPR本文と[rebase後の検証表](evidence/previous-runs/2026-11-14-rebased-branches-prs.md)を区別して参照                 |
 | [#735](https://github.com/duplicati/ngclient/pull/735) | `74257b98e08f483b4963f9f35331870276a69a57` | [過去の実行詳細](evidence/previous-runs/2026-11-14-ngt-006-live-editor-e2e.md)。現在SHAでの結果はPR本文と[rebase後の検証表](evidence/previous-runs/2026-11-14-rebased-branches-prs.md)を区別して参照              |
 | [#736](https://github.com/duplicati/ngclient/pull/736) | `3e98d5b9b0dbbe65492ca7d526eeb192524b8e8c` | [過去の実行詳細](evidence/previous-runs/2026-11-14-ngt-051-individual-file-restore.md)。現在SHAでの結果はPR本文と[rebase後の検証表](evidence/previous-runs/2026-11-14-rebased-branches-prs.md)を区別して参照      |
