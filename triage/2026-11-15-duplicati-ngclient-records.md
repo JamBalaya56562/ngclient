@@ -83,7 +83,9 @@ J/T検索用agentId:
 ## NGT-087
 
 `fix/status-bar-file-count-separators` / duplicati/duplicati#3041
-最終SHA: `eb506d7c5c715320cb30e236cc84f63bb86df61e`。土台: main `8f401edd337bf53a963fc4e80a47d3db4d52fc3d`。
+移管時SHA: `eb506d7c5c715320cb30e236cc84f63bb86df61e`。土台: main `8f401edd337bf53a963fc4e80a47d3db4d52fc3d`。
+
+追試（同じhead、追加修正なし）: 23テスト・tsc・本番ビルド成功。実バックアップ中にen-USの1,800 / deの1.800を確認。項目1だけの範囲を維持。[追試記録](evidence/2026-11-15-ngt-087/verification.md)。以下は移管時の履歴。
 
 移管元補足（原文。試験内容・未実施・訂正を含む）:
 
