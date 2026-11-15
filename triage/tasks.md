@@ -68,7 +68,7 @@
 | ----------------------------------------------------------- | ----------------------------------------------- | ------- | --------------------------------------- | --------------------------------------------------- |
 | [NGT-084](2026-11-15-duplicati-ngclient-records.md#ngt-084) | duplicati/duplicati#1510 Verify完了通知         | PUSHED  | `fix/verify-completion-alert`           | 実サーバー4条件・47テスト/ビルド済。公開指示待ち                             |
 | [NGT-085](2026-11-15-duplicati-ngclient-records.md#ngt-085) | duplicati/duplicati#2310 グローバル設定のexport | BLOCKED | `feat/export-global-options`            | 本体feat/export-global-options先行必須。実サーバー/17単体/6E2E/ビルド済 |
-| [NGT-086](2026-11-15-duplicati-ngclient-records.md#ngt-086) | duplicati/duplicati#2701 次回予定のskip         | BLOCKED | `feat/skip-next-scheduled-run`          | 本体 feat/skip-next-scheduled-run が先。本文要作成  |
+| [NGT-086](2026-11-15-duplicati-ngclient-records.md#ngt-086) | duplicati/duplicati#2701 次回予定のskip         | BLOCKED | `feat/skip-next-scheduled-run`          | 本体04f2dd08a先行。42テスト/本番/実サーバー済。queued取消外、本文要作成 |
 | [NGT-087](2026-11-15-duplicati-ngclient-records.md#ngt-087) | duplicati/duplicati#3041 進捗件数の桁区切り     | PUSHED  | `fix/status-bar-file-count-separators`  | item 1のみの範囲                                    |
 | [NGT-088](2026-11-15-duplicati-ngclient-records.md#ngt-088) | duplicati/duplicati#3191 配下の部分除外表示     | PUSHED  | `feat/file-tree-partial-exclusion`      | #728のaria-description、#736/050のツリー表示        |
 | [NGT-089](2026-11-15-duplicati-ngclient-records.md#ngt-089) | duplicati/duplicati#3369 idle sign-out          | PUSHED  | `feat/idle-sign-out`                    | 複数タブ・relay等の既存記録と不足範囲               |

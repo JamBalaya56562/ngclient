@@ -60,7 +60,9 @@ J/T検索用agentId:
 ## NGT-086
 
 `feat/skip-next-scheduled-run` / duplicati/duplicati#2701
-最終SHA: `28be8c2be254e859f2fcadc0639afafa24980555`。土台: main `8f401edd337bf53a963fc4e80a47d3db4d52fc3d`。
+移管時SHA: `28be8c2be254e859f2fcadc0639afafa24980555`。土台: main `8f401edd337bf53a963fc4e80a47d3db4d52fc3d`。
+
+追試（同じhead、追加修正なし）: 42テスト・tsc・本番ビルド成功。実サーバーで元の回の未実行→次の回の自動実行まで確認。queued回は取消さない。本体04f2dd08aの先行マージが必要。[追試記録](evidence/2026-11-15-ngt-086/verification.md)。以下は移管時の履歴。
 
 移管元補足（原文。試験内容・未実施・訂正を含む）:
 

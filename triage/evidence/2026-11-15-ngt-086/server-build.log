@@ -1,0 +1,162 @@
+  復元対象のプロジェクトを決定しています...
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\AutoUpdater\Duplicati.Library.AutoUpdater.csproj を復元しました (3.16 秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\AliyunOSS\Duplicati.Library.Backend.AliyunOSS.csproj を復元しました (3.16 秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\Filejump\Duplicati.Library.Backend.Filejump.csproj を復元しました (2.95 秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\File\Duplicati.Library.Backend.File.csproj を復元しました (3.16 秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\AzureBlob\Duplicati.Library.Backend.AzureBlob.csproj を復元しました (3.16 秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\Filen\Duplicati.Library.Backend.Filen.csproj を復元しました (3.16 秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\Dropbox\Duplicati.Library.Backend.Dropbox.csproj を復元しました (16 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\DrimeCloud\Duplicati.Library.Backend.DrimeCloud.csproj を復元しました (21 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Logging\Duplicati.Library.Logging.csproj を復元しました (6 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\Box\Duplicati.Library.Backend.Box.csproj を復元しました (56 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\Backblaze\Duplicati.Library.Backend.Backblaze.csproj を復元しました (25 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\Duplicati\Duplicati.Library.Backend.Duplicati.csproj を復元しました (132 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Localization\Duplicati.Library.Localization.csproj を復元しました (11 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Common\Duplicati.Library.Common.csproj を復元しました (25 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Interface\Duplicati.Library.Interface.csproj を復元しました (94 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Certificates\Duplicati.Library.Certificates.csproj を復元しました (56 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Compression\Duplicati.Library.Compression.csproj を復元しました (91 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\WEBDAV\Duplicati.Library.Backend.WEBDAV.csproj を復元しました (20 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\ChangeTracking\Duplicati.Library.ChangeTracking.csproj を復元しました (100 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\TahoeLAFS\Duplicati.Library.Backend.TahoeLAFS.csproj を復元しました (29 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\TencentCOS\Duplicati.Library.Backend.TencentCOS.csproj を復元しました (81 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Modules\Builtin\Duplicati.Library.Modules.Builtin.csproj を復元しました (610 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\Storj\Duplicati.Library.Backend.Storj.csproj を復元しました (85 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Encryption\Duplicati.Library.Encryption.csproj を復元しました (58 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Main\Duplicati.Library.Main.csproj を復元しました (807 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\CommandLine\CLI\Duplicati.CommandLine.csproj を復元しました (283 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Crashlog\Duplicati.Library.Crashlog.csproj を復元しました (6 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\PackageRef\Duplicati.PackageRef.csproj を復元しました (8 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\CommandLine\BackendTool\Duplicati.CommandLine.BackendTool.csproj を復元しました (220 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backends\Duplicati.Library.Backends.csproj を復元しました (4.22 秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\License\Duplicati.License.csproj を復元しました (17 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\CommandLine\RecoveryTool\Duplicati.CommandLine.RecoveryTool.csproj を復元しました (4.18 秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Server\Duplicati.Server.Serialization\Duplicati.Server.Serialization.csproj を復元しました (60 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\UsageReporter\Duplicati.Library.UsageReporter.csproj を復元しました (50 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\SQLiteHelper\Duplicati.Library.SQLiteHelper.csproj を復元しました (49 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Utility\Duplicati.Library.Utility.csproj を復元しました (78 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\CommandLine\BackendTester\Duplicati.CommandLine.BackendTester.csproj を復元しました (383 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\DynamicLoader\Duplicati.Library.DynamicLoader.csproj を復元しました (395 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Snapshots\Duplicati.Library.Snapshots.csproj を復元しました (73 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\SourceProviders\Duplicati.Library.SourceProviders.csproj を復元しました (216 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\SourceProvider\Builtin\Duplicati.Library.SourceProvider.Builtin.csproj を復元しました (311 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\ResultSerialization\Duplicati.Library.ResultSerialization.csproj を復元しました (47 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\OAuthHelper\Duplicati.Library.OAuthHelper.csproj を復元しました (46 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\MovistarCloud\Duplicati.Library.Backend.MovistarCloud.csproj を復元しました (34 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\Mega\Duplicati.Library.Backend.Mega.csproj を復元しました (17 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\Jottacloud\Duplicati.Library.Backend.Jottacloud.csproj を復元しました (38 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\GoogleServices\Duplicati.Library.Backend.GoogleServices.csproj を復元しました (77 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\Internxt\Duplicati.Library.Backend.Internxt.csproj を復元しました (59 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\FTP\Duplicati.Library.Backend.FTP.csproj を復元しました (27 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\Idrivee2\Duplicati.Library.Backend.Idrivee2.csproj を復元しました (50 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\proprietary\Office365\Duplicati.Proprietary.Office365.csproj を復元しました (48 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\SecretProvider\Duplicati.Library.SecretProvider.csproj を復元しました (431 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Tools\Duplicati.Tools.csproj を復元しました (4 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\proprietary\LicenseChecker\Duplicati.Proprietary.LicenseChecker.csproj を復元しました (21 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\proprietary\GoogleWorkspace\Duplicati.Proprietary.GoogleWorkspace.csproj を復元しました (50 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\proprietary\LoaderHelper\Duplicati.Proprietary.LoaderHelper.csproj を復元しました (85 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\SSHv2\Duplicati.Library.Backend.SSHv2.csproj を復元しました (51 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\SharePoint\Duplicati.Library.Backend.SharePoint.csproj を復元しました (22 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\proprietary\DiskImage\Duplicati.Proprietary.DiskImage.csproj を復元しました (198 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\SMB\Duplicati.Library.Backend.SMB.csproj を復元しました (128 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\Rclone\Duplicati.Library.Backend.Rclone.csproj を復元しました (49 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\S3\Duplicati.Library.Backend.S3.csproj を復元しました (122 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\pCloud\Duplicati.Library.Backend.pCloud.csproj を復元しました (40 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\OneDrive\Duplicati.Library.Backend.OneDrive.csproj を復元しました (63 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\OpenStack\Duplicati.Library.Backend.OpenStack.csproj を復元しました (82 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Parity\Duplicati.Library.Parity.csproj を復元しました (15 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\RemoteControl\Duplicati.Library.RemoteControl.csproj を復元しました (313 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\RestAPI\Duplicati.Library.RestAPI.csproj を復元しました (202 ミリ秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\WebserverCore\Duplicati.WebserverCore.csproj を復元しました (1.18 秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Server\Duplicati.Server.csproj を復元しました (2.39 秒)。
+  C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Executables\Duplicati.Server\Duplicati.Server.csproj を復元しました (1.3 秒)。
+  Duplicati.PackageRef -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\PackageRef\bin\Debug\net10.0\Duplicati.PackageRef.dll
+  Duplicati.Library.Logging -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Logging\bin\Debug\net10.0\Duplicati.Library.Logging.dll
+  Duplicati.Library.Localization -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Localization\bin\Debug\net10.0\Duplicati.Library.Localization.dll
+  Duplicati.Library.Interface -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Interface\bin\Debug\net10.0\Duplicati.Library.Interface.dll
+  Duplicati.Library.Common -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Common\bin\Debug\net10.0\Duplicati.Library.Common.dll
+  Duplicati.Library.Utility -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Utility\bin\Debug\net10.0\Duplicati.Library.Utility.dll
+  Duplicati.Library.Compression -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Compression\bin\Debug\net10.0\Duplicati.Library.Compression.dll
+  Duplicati.License -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\License\bin\Debug\net10.0\Duplicati.License.dll
+  Duplicati.Library.AutoUpdater -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\AutoUpdater\bin\Debug\net10.0\Duplicati.Library.AutoUpdater.dll
+  Duplicati.Library.Backend.DrimeCloud -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\DrimeCloud\bin\Debug\net10.0\Duplicati.Library.Backend.DrimeCloud.dll
+  Duplicati.Library.Backend.Filejump -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\Filejump\bin\Debug\net10.0\Duplicati.Library.Backend.Filejump.dll
+  Duplicati.Library.OAuthHelper -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\OAuthHelper\bin\Debug\net10.0\Duplicati.Library.OAuthHelper.dll
+  Duplicati.Library.Backend.Filen -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\Filen\bin\Debug\net10.0\Duplicati.Library.Backend.Filen.dll
+  Duplicati.Library.Backend.Internxt -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\Internxt\bin\Debug\net10.0\Duplicati.Library.Backend.Internxt.dll
+  Duplicati.Library.Backend.AzureBlob -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\AzureBlob\bin\Debug\net10.0\Duplicati.Library.Backend.AzureBlob.dll
+  Duplicati.Library.Backend.Backblaze -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\Backblaze\bin\Debug\net10.0\Duplicati.Library.Backend.Backblaze.dll
+  Duplicati.Library.Backend.Box -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\Box\bin\Debug\net10.0\Duplicati.Library.Backend.Box.dll
+  Duplicati.Library.Snapshots -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Snapshots\bin\Debug\net10.0\Duplicati.Library.Snapshots.dll
+  Duplicati.Library.SourceProvider.Builtin -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\SourceProvider\Builtin\bin\Debug\net10.0\Duplicati.Library.SourceProvider.Builtin.dll
+  Duplicati.Library.Backend.SMB -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\SMB\bin\Debug\net10.0\Duplicati.Library.Backend.SMB.dll
+  Duplicati.Library.Backend.S3 -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\S3\bin\Debug\net10.0\Duplicati.Library.Backend.S3.dll
+  Duplicati.Library.Backend.Duplicati -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\Duplicati\bin\Debug\net10.0\Duplicati.Library.Backend.Duplicati.dll
+  Duplicati.Library.Backend.Dropbox -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\Dropbox\bin\Debug\net10.0\Duplicati.Library.Backend.Dropbox.dll
+  Duplicati.Library.Backend.File -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\File\bin\Debug\net10.0\Duplicati.Library.Backend.File.dll
+  Duplicati.Library.Backend.FTP -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\FTP\bin\Debug\net10.0\Duplicati.Library.Backend.FTP.dll
+  Duplicati.Library.Backend.GoogleServices -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\GoogleServices\bin\Debug\net10.0\Duplicati.Library.Backend.GoogleServices.dll
+  Duplicati.Library.Backend.Idrivee2 -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\Idrivee2\bin\Debug\net10.0\Duplicati.Library.Backend.Idrivee2.dll
+  Duplicati.Library.Backend.Jottacloud -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\Jottacloud\bin\Debug\net10.0\Duplicati.Library.Backend.Jottacloud.dll
+  Duplicati.Library.Backend.Mega -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\Mega\bin\Debug\net10.0\Duplicati.Library.Backend.Mega.dll
+  Duplicati.Library.Backend.MovistarCloud -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\MovistarCloud\bin\Debug\net10.0\Duplicati.Library.Backend.MovistarCloud.dll
+  Duplicati.Library.Backend.OneDrive -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\OneDrive\bin\Debug\net10.0\Duplicati.Library.Backend.OneDrive.dll
+  Duplicati.Library.Backend.OpenStack -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\OpenStack\bin\Debug\net10.0\Duplicati.Library.Backend.OpenStack.dll
+  Duplicati.Library.Backend.pCloud -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\pCloud\bin\Debug\net10.0\Duplicati.Library.Backend.pCloud.dll
+  Duplicati.Library.Backend.Rclone -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\Rclone\bin\Debug\net10.0\Duplicati.Library.Backend.Rclone.dll
+  Duplicati.Library.Backend.SharePoint -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\SharePoint\bin\Debug\net10.0\Duplicati.Library.Backend.SharePoint.dll
+  Duplicati.Library.Backend.SSHv2 -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\SSHv2\bin\Debug\net10.0\Duplicati.Library.Backend.SSHv2.dll
+  Duplicati.Library.Backend.Storj -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\Storj\bin\Debug\net10.0\Duplicati.Library.Backend.Storj.dll
+  Duplicati.Library.Backend.TahoeLAFS -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\TahoeLAFS\bin\Debug\net10.0\Duplicati.Library.Backend.TahoeLAFS.dll
+  Duplicati.Library.Backend.TencentCOS -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\TencentCOS\bin\Debug\net10.0\Duplicati.Library.Backend.TencentCOS.dll
+  Duplicati.Library.Backend.WEBDAV -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\WEBDAV\bin\Debug\net10.0\Duplicati.Library.Backend.WEBDAV.dll
+  Duplicati.Library.Backend.AliyunOSS -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backend\AliyunOSS\bin\Debug\net10.0\Duplicati.Library.Backend.AliyunOSS.dll
+  Duplicati.Proprietary.LicenseChecker -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\proprietary\LicenseChecker\bin\Debug\net10.0\Duplicati.Proprietary.LicenseChecker.dll
+  Duplicati.Proprietary.Office365 -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\proprietary\Office365\bin\Debug\net10.0\Duplicati.Proprietary.Office365.dll
+  Duplicati.Proprietary.GoogleWorkspace -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\proprietary\GoogleWorkspace\bin\Debug\net10.0\Duplicati.Proprietary.GoogleWorkspace.dll
+  Duplicati.Proprietary.DiskImage -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\proprietary\DiskImage\bin\Debug\net10.0\Duplicati.Proprietary.DiskImage.dll
+  Duplicati.Proprietary.LoaderHelper -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\proprietary\LoaderHelper\bin\Debug\net10.0\Duplicati.Proprietary.LoaderHelper.dll
+  Duplicati.Library.Backends -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Backends\bin\Debug\net10.0\Duplicati.Library.Backends.dll
+  Duplicati.Library.Encryption -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Encryption\bin\Debug\net10.0\Duplicati.Library.Encryption.dll
+  Duplicati.Library.Parity -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Parity\bin\Debug\net10.0\Duplicati.Library.Parity.dll
+  Duplicati.Library.SecretProvider -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\SecretProvider\bin\Debug\net10.0\Duplicati.Library.SecretProvider.dll
+  Duplicati.Library.SourceProviders -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\SourceProviders\bin\Debug\net10.0\Duplicati.Library.SourceProviders.dll
+  Duplicati.Library.DynamicLoader -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\DynamicLoader\bin\Debug\net10.0\Duplicati.Library.DynamicLoader.dll
+  Duplicati.Library.SQLiteHelper -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\SQLiteHelper\bin\Debug\net10.0\SQLiteHelper.dll
+  Duplicati.Library.UsageReporter -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\UsageReporter\bin\Debug\net10.0\Duplicati.Library.UsageReporter.dll
+  Duplicati.Library.ResultSerialization -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\ResultSerialization\bin\Debug\net10.0\Duplicati.Library.ResultSerialization.dll
+C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Main\IPC\ControllerRpcServer.cs(134,59): warning CS8604: 'Task IControllerRpcCallbacks.OnOperationCompletedAsync(OperationResultDto result, ExceptionDto exception)' 内のパラメーター 'result' に Null 参照引数がある可能性があります。 [C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Main\Duplicati.Library.Main.csproj]
+C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Main\IPC\ControllerRpcServer.cs(134,70): warning CS8604: 'Task IControllerRpcCallbacks.OnOperationCompletedAsync(OperationResultDto result, ExceptionDto exception)' 内のパラメーター 'exception' に Null 参照引数がある可能性があります。 [C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Main\Duplicati.Library.Main.csproj]
+C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Main\IPC\ControllerRpcServer.cs(453,42): warning CS8604: 'Task IControllerRpcCallbacks.OnLogMessageAsync(LogEntryDto entry)' 内のパラメーター 'entry' に Null 参照引数がある可能性があります。 [C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Main\Duplicati.Library.Main.csproj]
+C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Main\IPC\ControllerRpcServer.cs(467,44): warning CS8604: 'Task IControllerRpcCallbacks.OnBackendProgressAsync(BackendProgressDto progress)' 内のパラメーター 'progress' に Null 参照引数がある可能性があります。 [C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Main\Duplicati.Library.Main.csproj]
+C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Main\IPC\ControllerRpcServer.cs(481,50): warning CS8604: 'Task IControllerRpcCallbacks.OnOperationProgressAsync(OperationProgressDto progress)' 内のパラメーター 'progress' に Null 参照引数がある可能性があります。 [C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Main\Duplicati.Library.Main.csproj]
+C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Main\IPC\ControllerRpcServer.cs(488,46): warning CS8604: 'Task IControllerRpcCallbacks.OnOperationProgressAsync(OperationProgressDto progress)' 内のパラメーター 'progress' に Null 参照引数がある可能性があります。 [C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Main\Duplicati.Library.Main.csproj]
+  Duplicati.Library.Main -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Main\bin\Debug\net10.0\Duplicati.Library.Main.dll
+  Duplicati.CommandLine.BackendTool -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\CommandLine\BackendTool\bin\Debug\net10.0\Duplicati.CommandLine.BackendTool.Implementation.dll
+  Duplicati.Library.Modules.Builtin -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Modules\Builtin\bin\Debug\net10.0\Duplicati.Library.Modules.Builtin.dll
+  Duplicati.CommandLine.BackendTester -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\CommandLine\BackendTester\bin\Debug\net10.0\Duplicati.CommandLine.BackendTester.Implementation.dll
+  Duplicati.CommandLine.RecoveryTool -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\CommandLine\RecoveryTool\bin\Debug\net10.0\Duplicati.CommandLine.RecoveryTool.Implementation.dll
+  Duplicati.Tools -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Tools\bin\Debug\net10.0\Duplicati.Tools.dll
+  Duplicati.Library.Crashlog -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Crashlog\bin\Debug\net10.0\Duplicati.Library.Crashlog.dll
+  Duplicati.CommandLine -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\CommandLine\CLI\bin\Debug\net10.0\Duplicati.CommandLine.Implementation.dll
+  Duplicati.Library.ChangeTracking -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\ChangeTracking\bin\Debug\net10.0\Duplicati.Library.ChangeTracking.dll
+  Duplicati.Server.Serialization -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Server\Duplicati.Server.Serialization\bin\Debug\net10.0\Duplicati.Server.Serialization.dll
+  Duplicati.Library.RestAPI -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\RestAPI\bin\Debug\net10.0\Duplicati.Library.RestAPI.dll
+  Duplicati.Library.RemoteControl -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\RemoteControl\bin\Debug\net10.0\Duplicati.Library.RemoteControl.dll
+  Duplicati.WebserverCore -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\WebserverCore\bin\Debug\net10.0\Duplicati.WebserverCore.dll
+  Duplicati.Library.Certificates -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Certificates\bin\Debug\net10.0\Duplicati.Library.Certificates.dll
+  Duplicati.Server -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Server\bin\Debug\net10.0\Duplicati.Server.Implementation.dll
+  Duplicati.Server -> C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Executables\Duplicati.Server\bin\Debug\net10.0\Duplicati.Server.dll
+
+ビルドに成功しました。
+
+C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Main\IPC\ControllerRpcServer.cs(134,59): warning CS8604: 'Task IControllerRpcCallbacks.OnOperationCompletedAsync(OperationResultDto result, ExceptionDto exception)' 内のパラメーター 'result' に Null 参照引数がある可能性があります。 [C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Main\Duplicati.Library.Main.csproj]
+C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Main\IPC\ControllerRpcServer.cs(134,70): warning CS8604: 'Task IControllerRpcCallbacks.OnOperationCompletedAsync(OperationResultDto result, ExceptionDto exception)' 内のパラメーター 'exception' に Null 参照引数がある可能性があります。 [C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Main\Duplicati.Library.Main.csproj]
+C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Main\IPC\ControllerRpcServer.cs(453,42): warning CS8604: 'Task IControllerRpcCallbacks.OnLogMessageAsync(LogEntryDto entry)' 内のパラメーター 'entry' に Null 参照引数がある可能性があります。 [C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Main\Duplicati.Library.Main.csproj]
+C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Main\IPC\ControllerRpcServer.cs(467,44): warning CS8604: 'Task IControllerRpcCallbacks.OnBackendProgressAsync(BackendProgressDto progress)' 内のパラメーター 'progress' に Null 参照引数がある可能性があります。 [C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Main\Duplicati.Library.Main.csproj]
+C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Main\IPC\ControllerRpcServer.cs(481,50): warning CS8604: 'Task IControllerRpcCallbacks.OnOperationProgressAsync(OperationProgressDto progress)' 内のパラメーター 'progress' に Null 参照引数がある可能性があります。 [C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Main\Duplicati.Library.Main.csproj]
+C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Main\IPC\ControllerRpcServer.cs(488,46): warning CS8604: 'Task IControllerRpcCallbacks.OnOperationProgressAsync(OperationProgressDto progress)' 内のパラメーター 'progress' に Null 参照引数がある可能性があります。 [C:\Users\Jam\Documents\ngclient\tmp\ngt086-skip-20261115\server-source\Duplicati\Library\Main\Duplicati.Library.Main.csproj]
+    6 個の警告
+    0 エラー
+
+経過時間 00:08:14.68

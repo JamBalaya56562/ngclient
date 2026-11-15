@@ -1,0 +1,208 @@
+[
+  {
+    "kind": "websocket",
+    "type": "legacystatus"
+  },
+  {
+    "kind": "websocket",
+    "type": "backuplist",
+    "data": [
+      {
+        "Backup": {
+          "ID": "1",
+          "ExternalID": "",
+          "Name": "NGT-086 scheduled",
+          "Description": "",
+          "Tags": [],
+          "TargetURL": "file:///C:/Users/Jam/Documents/ngclient/tmp/ngt086-skip-20261115/run-L9TPos/NGT-086%20scheduled/remote",
+          "ConnectionStringID": -1,
+          "OperationType": "Backup",
+          "Enabled": true,
+          "DBPath": "C:\\Users\\Jam\\Documents\\ngclient\\tmp\\ngt086-skip-20261115\\run-L9TPos\\data\\SOEDEOVUSX.sqlite",
+          "DBPathExists": false,
+          "Sources": [],
+          "Settings": null,
+          "Filters": null,
+          "Metadata": {},
+          "IsTemporary": false,
+          "IsUnencryptedOrPassphraseStored": true,
+          "AdditionalTargetURLs": []
+        },
+        "Schedule": {
+          "ID": 1,
+          "Tags": [
+            "ID=1"
+          ],
+          "Time": "2026-11-15T05:13:00Z",
+          "Repeat": "301s",
+          "LastRun": "0001-01-01T00:00:00Z",
+          "Rule": "",
+          "AllowedDays": null
+        }
+      },
+      {
+        "Backup": {
+          "ID": "2",
+          "ExternalID": "",
+          "Name": "NGT-086 unscheduled",
+          "Description": "",
+          "Tags": [],
+          "TargetURL": "file:///C:/Users/Jam/Documents/ngclient/tmp/ngt086-skip-20261115/run-L9TPos/NGT-086%20unscheduled/remote",
+          "ConnectionStringID": -1,
+          "OperationType": "Backup",
+          "Enabled": true,
+          "DBPath": "C:\\Users\\Jam\\Documents\\ngclient\\tmp\\ngt086-skip-20261115\\run-L9TPos\\data\\WXSIZHUPGH.sqlite",
+          "DBPathExists": false,
+          "Sources": [],
+          "Settings": null,
+          "Filters": null,
+          "Metadata": {},
+          "IsTemporary": false,
+          "IsUnencryptedOrPassphraseStored": true,
+          "AdditionalTargetURLs": []
+        },
+        "Schedule": null
+      },
+      {
+        "Backup": {
+          "ID": "3",
+          "ExternalID": "",
+          "Name": "NGT-086 disabled",
+          "Description": "",
+          "Tags": [],
+          "TargetURL": "file:///C:/Users/Jam/Documents/ngclient/tmp/ngt086-skip-20261115/run-L9TPos/NGT-086%20disabled/remote",
+          "ConnectionStringID": -1,
+          "OperationType": "Backup",
+          "Enabled": false,
+          "DBPath": "C:\\Users\\Jam\\Documents\\ngclient\\tmp\\ngt086-skip-20261115\\run-L9TPos\\data\\MNMNYRCUZV.sqlite",
+          "DBPathExists": false,
+          "Sources": [],
+          "Settings": null,
+          "Filters": null,
+          "Metadata": {},
+          "IsTemporary": false,
+          "IsUnencryptedOrPassphraseStored": true,
+          "AdditionalTargetURLs": []
+        },
+        "Schedule": {
+          "ID": 2,
+          "Tags": [
+            "ID=3"
+          ],
+          "Time": "2026-11-16T05:12:00Z",
+          "Repeat": "1D",
+          "LastRun": "0001-01-01T00:00:00Z",
+          "Rule": "",
+          "AllowedDays": null
+        }
+      }
+    ]
+  },
+  {
+    "kind": "websocket",
+    "type": "legacystatus"
+  },
+  {
+    "kind": "websocket",
+    "type": "backuplist",
+    "data": [
+      {
+        "Backup": {
+          "ID": "1",
+          "ExternalID": "",
+          "Name": "NGT-086 scheduled",
+          "Description": "",
+          "Tags": [],
+          "TargetURL": "file:///C:/Users/Jam/Documents/ngclient/tmp/ngt086-skip-20261115/run-L9TPos/NGT-086%20scheduled/remote",
+          "ConnectionStringID": -1,
+          "OperationType": "Backup",
+          "Enabled": true,
+          "DBPath": "C:\\Users\\Jam\\Documents\\ngclient\\tmp\\ngt086-skip-20261115\\run-L9TPos\\data\\SOEDEOVUSX.sqlite",
+          "DBPathExists": false,
+          "Sources": [],
+          "Settings": null,
+          "Filters": null,
+          "Metadata": {},
+          "IsTemporary": false,
+          "IsUnencryptedOrPassphraseStored": true,
+          "AdditionalTargetURLs": []
+        },
+        "Schedule": {
+          "ID": 1,
+          "Tags": [
+            "ID=1"
+          ],
+          "Time": "2026-11-15T05:18:01Z",
+          "Repeat": "301s",
+          "LastRun": "0001-01-01T00:00:00Z",
+          "Rule": "",
+          "AllowedDays": null
+        }
+      },
+      {
+        "Backup": {
+          "ID": "2",
+          "ExternalID": "",
+          "Name": "NGT-086 unscheduled",
+          "Description": "",
+          "Tags": [],
+          "TargetURL": "file:///C:/Users/Jam/Documents/ngclient/tmp/ngt086-skip-20261115/run-L9TPos/NGT-086%20unscheduled/remote",
+          "ConnectionStringID": -1,
+          "OperationType": "Backup",
+          "Enabled": true,
+          "DBPath": "C:\\Users\\Jam\\Documents\\ngclient\\tmp\\ngt086-skip-20261115\\run-L9TPos\\data\\WXSIZHUPGH.sqlite",
+          "DBPathExists": false,
+          "Sources": [],
+          "Settings": null,
+          "Filters": null,
+          "Metadata": {},
+          "IsTemporary": false,
+          "IsUnencryptedOrPassphraseStored": true,
+          "AdditionalTargetURLs": []
+        },
+        "Schedule": null
+      },
+      {
+        "Backup": {
+          "ID": "3",
+          "ExternalID": "",
+          "Name": "NGT-086 disabled",
+          "Description": "",
+          "Tags": [],
+          "TargetURL": "file:///C:/Users/Jam/Documents/ngclient/tmp/ngt086-skip-20261115/run-L9TPos/NGT-086%20disabled/remote",
+          "ConnectionStringID": -1,
+          "OperationType": "Backup",
+          "Enabled": false,
+          "DBPath": "C:\\Users\\Jam\\Documents\\ngclient\\tmp\\ngt086-skip-20261115\\run-L9TPos\\data\\MNMNYRCUZV.sqlite",
+          "DBPathExists": false,
+          "Sources": [],
+          "Settings": null,
+          "Filters": null,
+          "Metadata": {},
+          "IsTemporary": false,
+          "IsUnencryptedOrPassphraseStored": true,
+          "AdditionalTargetURLs": []
+        },
+        "Schedule": {
+          "ID": 2,
+          "Tags": [
+            "ID=3"
+          ],
+          "Time": "2026-11-16T05:12:00Z",
+          "Repeat": "1D",
+          "LastRun": "0001-01-01T00:00:00Z",
+          "Rule": "",
+          "AllowedDays": null
+        }
+      }
+    ]
+  },
+  {
+    "path": "/api/v1/backup/1/skip-next-run",
+    "status": 200,
+    "response": {
+      "Status": "OK",
+      "NextScheduledRun": "2026-11-15T05:18:01Z"
+    }
+  }
+]
