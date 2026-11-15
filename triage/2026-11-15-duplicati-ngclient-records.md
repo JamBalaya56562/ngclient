@@ -41,7 +41,9 @@ J/T検索用agentId:
 ## NGT-085
 
 `feat/export-global-options` / duplicati/duplicati#2310
-最終SHA: `088dba4c01d6127b50ff26a5045190b743a668a2`。土台: main `8f401edd337bf53a963fc4e80a47d3db4d52fc3d`。
+移管時SHA: `088dba4c01d6127b50ff26a5045190b743a668a2`。土台: main `8f401edd337bf53a963fc4e80a47d3db4d52fc3d`。
+
+追試後head: `f082e4d89932ad9393faa678953c9fee4fd25a51`。Space操作を修正し実サーバー検証済み。**本体`feat/export-global-options` / `0c242a335e6af90788f7c98a11b349d593d14a4b`の先行マージが必要**。[追試記録](evidence/2026-11-15-ngt-085/verification.md)。以下は移管時の履歴。
 
 移管元補足（原文。試験内容・未実施・訂正を含む）:
 

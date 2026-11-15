@@ -1,0 +1,101 @@
+[
+  {
+    "case": "default",
+    "path": "/backup/1/export",
+    "query": {},
+    "status": 200
+  },
+  {
+    "case": "default",
+    "path": "/api/v1/auth/issuetoken/export",
+    "query": {},
+    "status": 200
+  },
+  {
+    "case": "default",
+    "path": "/api/v1/backup/1/export",
+    "query": {
+      "export-passwords": "false"
+    },
+    "status": 200
+  },
+  {
+    "case": "include",
+    "path": "/backup/1/export",
+    "query": {},
+    "status": 200
+  },
+  {
+    "case": "include",
+    "path": "/api/v1/auth/issuetoken/export",
+    "query": {},
+    "status": 200
+  },
+  {
+    "case": "include",
+    "path": "/api/v1/backup/1/export",
+    "query": {
+      "export-passwords": "false",
+      "include-global-options": "true"
+    },
+    "status": 200
+  },
+  {
+    "case": "passwords",
+    "path": "/backup/1/export",
+    "query": {},
+    "status": 200
+  },
+  {
+    "case": "passwords",
+    "path": "/api/v1/auth/issuetoken/export",
+    "query": {},
+    "status": 200
+  },
+  {
+    "case": "passwords",
+    "path": "/api/v1/backup/1/export",
+    "query": {
+      "export-passwords": "true",
+      "include-global-options": "true"
+    },
+    "status": 200
+  },
+  {
+    "case": "encrypted",
+    "path": "/backup/1/export",
+    "query": {},
+    "status": 200
+  },
+  {
+    "case": "encrypted",
+    "path": "/api/v1/auth/issuetoken/export",
+    "query": {},
+    "status": 200
+  },
+  {
+    "case": "encrypted",
+    "path": "/api/v1/backup/1/export",
+    "query": {
+      "export-passwords": "true",
+      "include-global-options": "true",
+      "passphrase": "ngt085-isolated-export-secret"
+    },
+    "status": 200
+  },
+  {
+    "case": "command-line",
+    "path": "/backup/1/export",
+    "query": {},
+    "status": 200
+  },
+  {
+    "case": "command-line",
+    "path": "/api/v1/backup/1/export-cmdline",
+    "query": {
+      "export-passwords": "false",
+      "passphrase": ""
+    },
+    "status": 200
+  }
+]
