@@ -18,6 +18,10 @@
 | [#736](https://github.com/duplicati/ngclient/pull/736) | `3e98d5b9b0dbbe65492ca7d526eeb192524b8e8c` | [過去の実行詳細](evidence/previous-runs/2026-11-14-ngt-051-individual-file-restore.md)。現在SHAでの結果はPR本文と[rebase後の検証表](evidence/previous-runs/2026-11-14-rebased-branches-prs.md)を区別して参照      |
 | NGT-050 / #637（未PR）                                 | `68c088a6e6bb2c1d2e07a03a338ead45b348950e` | [赤→緑・実サーバー6条件・画像](evidence/previous-runs/2026-11-14-ngt-050-source-attributes.md)。公開は#727後                                                                                                      |
 
+## NGT-084 実サーバー追試（2026-11-15）
+
+検証済み: `879857e496eafadda45a1704a24ab3af1ba5892d`。通知プレビューの表示漏れを修正。正常・破損・宛先不在・復旧の4条件、関連47テスト、tsc/app+spec、Prettier、本番ビルドが成功。[証拠・コマンド・画像](evidence/2026-11-15-ngt-084/verification.md)。PRは未作成。
+
 ## 報告者への確認待ち
 
 - #215/#283/#492/#217/#401は台帳の公開コメントが一次の検証範囲・SHA・サーバー版の参照先。同じコメントを重複投稿しない。

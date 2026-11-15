@@ -22,7 +22,9 @@
 ## NGT-084
 
 `fix/verify-completion-alert` / duplicati/duplicati#1510
-最終SHA: `86510cc5ef09b8c36a38417bab6824310c61eb82`。土台: main `8f401edd337bf53a963fc4e80a47d3db4d52fc3d`。
+移管時SHA: `86510cc5ef09b8c36a38417bab6824310c61eb82`。土台: main `8f401edd337bf53a963fc4e80a47d3db4d52fc3d`。
+
+追試後head: `879857e496eafadda45a1704a24ab3af1ba5892d`。実サーバーで通知の表示漏れを修正し4条件を確認。[追試記録](evidence/2026-11-15-ngt-084/verification.md)。以下は移管時の履歴。
 
 移管元補足（原文。試験内容・未実施・訂正を含む）:
 

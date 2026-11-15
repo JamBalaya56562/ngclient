@@ -1,0 +1,101 @@
+> Building...
+√ Building...
+Application bundle generation complete. [24.879 seconds] - 2026-11-15T01:04:11.557Z
+
+
+ RUN  v5.0.3 C:/Users/Jam/Documents/ngclient
+
+ ❯ |ngclient| projects/ngclient/src/app/core/components/service-hub/service-hub.component.spec.ts (10 tests | 3 failed) 528ms
+   ❯ ServiceHub preview lifecycle (10)
+     × previews a new success alert without server notifications 67ms
+     × previews a new error alert without server notifications 39ms
+     × previews the new alert rather than an existing server notification 33ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |ngclient| projects/ngclient/src/app/core/components/service-hub/service-hub.component.spec.ts > ServiceHub preview lifecycle > previews a new success alert without server notifications
+AssertionError: expected null to match object { type: 'alert', …(2) }
+
+- Expected:
+{
+  "content": {
+    "id": "verify",
+    "title": "Verify completed",
+    "type": "success",
+  },
+  "countDown": 3,
+  "type": "alert",
+}
+
++ Received:
+null
+
+ ❯ projects/ngclient/src/app/core/components/service-hub/service-hub.component.spec.ts:73:54
+     71|     history.set([{ ...alert('verify'), title: 'Verify completed', type…
+     72|     TestBed.tick();
+     73|     expect(fixture.componentInstance.shownMessage()).toMatchObject({
+       |                                                      ^
+     74|       type: 'alert', content: { id: 'verify', type, title: 'Verify com…
+     75|     });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  |ngclient| projects/ngclient/src/app/core/components/service-hub/service-hub.component.spec.ts > ServiceHub preview lifecycle > previews a new error alert without server notifications
+AssertionError: expected null to match object { type: 'alert', …(2) }
+
+- Expected:
+{
+  "content": {
+    "id": "verify",
+    "title": "Verify completed",
+    "type": "error",
+  },
+  "countDown": 3,
+  "type": "alert",
+}
+
++ Received:
+null
+
+ ❯ projects/ngclient/src/app/core/components/service-hub/service-hub.component.spec.ts:73:54
+     71|     history.set([{ ...alert('verify'), title: 'Verify completed', type…
+     72|     TestBed.tick();
+     73|     expect(fixture.componentInstance.shownMessage()).toMatchObject({
+       |                                                      ^
+     74|       type: 'alert', content: { id: 'verify', type, title: 'Verify com…
+     75|     });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  |ngclient| projects/ngclient/src/app/core/components/service-hub/service-hub.component.spec.ts > ServiceHub preview lifecycle > previews the new alert rather than an existing server notification
+AssertionError: expected { content: { ID: 1 }, …(2) } to match object { type: 'alert', …(1) }
+(2 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+    "content": {
+-     "id": "verify",
++     "ID": 1,
+    },
+-   "type": "alert",
++   "type": "notification",
+  }
+
+ ❯ projects/ngclient/src/app/core/components/service-hub/service-hub.component.spec.ts:83:54
+     81|     history.set([alert('verify')]);
+     82|     TestBed.tick();
+     83|     expect(fixture.componentInstance.shownMessage()).toMatchObject({ t…
+       |                                                      ^
+     84|   });
+     85|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  3 failed | 7 passed (10)
+   Start at  10:04:14
+   Duration  11.89s (environment 56%, transform 17%, setup 14%, import 7%, tests 5%)
+

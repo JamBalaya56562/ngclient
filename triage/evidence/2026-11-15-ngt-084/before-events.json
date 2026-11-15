@@ -1,0 +1,27 @@
+[
+  {
+    "kind": "server",
+    "version": "2.4.1.101",
+    "OSType": "Windows",
+    "run": "C:\\Users\\Jam\\Documents\\ngclient\\tmp\\ngt084-verify-20261115\\run-JgENda"
+  },
+  {
+    "kind": "backup-completed",
+    "task": {
+      "Status": "Completed",
+      "ID": 2,
+      "TaskStarted": "2026-11-15T10:01:14.3496037+09:00",
+      "TaskFinished": "2026-11-15T10:01:18.6321171+09:00",
+      "ErrorMessage": null,
+      "Exception": null
+    }
+  },
+  {
+    "kind": "failed",
+    "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByText('Verification of backup files completed successfully.', { exact: true })\nExpected: visible\nTimeout: 20000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByText('Verification of backup files completed successfully.', { exact: true }) with timeout 20000ms\n  - waiting for getByText('Verification of backup files completed successfully.', { exact: true })\n\n    at captureRawStack (C:\\Users\\Jam\\Documents\\ngclient\\node_modules\\playwright-core\\lib\\coreBundle.js:8588:17)\n    at callMatcherAsStep (C:\\Users\\Jam\\Documents\\ngclient\\node_modules\\playwright\\lib\\matchers\\expect.js:13310:57)\n    at Object.toBeVisible (C:\\Users\\Jam\\Documents\\ngclient\\node_modules\\playwright\\lib\\matchers\\expect.js:13302:23)\n    at verify (C:\\Users\\Jam\\Documents\\ngclient\\tmp\\ngt084-verify-20261115\\live.mjs:39:622)\n    at async file:///C:/Users/Jam/Documents/ngclient/tmp/ngt084-verify-20261115/live.mjs:40:2"
+  },
+  {
+    "kind": "cleanup",
+    "remainingJobs": 0
+  }
+]

@@ -66,7 +66,7 @@
 
 | ID                                                          | 本体Issue・内容                                 | 状態    | ブランチ                                | 先行・公開前の確認                                  |
 | ----------------------------------------------------------- | ----------------------------------------------- | ------- | --------------------------------------- | --------------------------------------------------- |
-| [NGT-084](2026-11-15-duplicati-ngclient-records.md#ngt-084) | duplicati/duplicati#1510 Verify完了通知         | PUSHED  | `fix/verify-completion-alert`           | 実サーバー完了/失敗通知                             |
+| [NGT-084](2026-11-15-duplicati-ngclient-records.md#ngt-084) | duplicati/duplicati#1510 Verify完了通知         | PUSHED  | `fix/verify-completion-alert`           | 実サーバー4条件・47テスト/ビルド済。公開指示待ち                             |
 | [NGT-085](2026-11-15-duplicati-ngclient-records.md#ngt-085) | duplicati/duplicati#2310 グローバル設定のexport | BLOCKED | `feat/export-global-options`            | 本体 feat/export-global-options が先。本文要作成    |
 | [NGT-086](2026-11-15-duplicati-ngclient-records.md#ngt-086) | duplicati/duplicati#2701 次回予定のskip         | BLOCKED | `feat/skip-next-scheduled-run`          | 本体 feat/skip-next-scheduled-run が先。本文要作成  |
 | [NGT-087](2026-11-15-duplicati-ngclient-records.md#ngt-087) | duplicati/duplicati#3041 進捗件数の桁区切り     | PUSHED  | `fix/status-bar-file-count-separators`  | item 1のみの範囲                                    |
