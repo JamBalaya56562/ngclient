@@ -1,213 +1,86 @@
-# タスク台帳
+# 現在のタスク台帳
 
-更新: 2026-11-15（18件の記録移管のみ。GitHub状態の再照合・実行検証なし）。基準main: `8f401edd337bf53a963fc4e80a47d3db4d52fc3d`。
+更新・GitHub照合: 2026-11-15。main `8f401edd337bf53a963fc4e80a47d3db4d52fc3d`（0.0.250）。[取得結果](evidence/github-state-2026-11-15.json)。動作テストは今回再実行していない。
 
-このファイルが**現在の状態の正本**。日付付き調査文書は根拠・検証範囲・履歴として参照する。Beadsや別のDBは導入しない。GitHubのIssue/PRの状態はGitHubが正本で、この台帳は作業判断用スナップショット。
+## 現在地と次の判断
 
-## 固定IDと状態のルール
+- **検証済み（GitHub API）**: open PRは#727〜#736の10件。#637のNGT-050は#727待ち。本体#7832もopen。移管5件に対応する本体ブランチ名のPR検索は0件で、先行マージ待ちを維持。
+- 準備済み実装は記録上29ブランチ（公開10・未PR19）。NGT-079はNGT-004と同じブランチなので二重に数えない。triageと画像専用ブランチは実装数に含めない。移管18件のSHAは[移管索引](2026-11-15-duplicati-ngclient-records.md)。
+- 次は未PR19件の不足検証・本体依存・Issueを閉じる範囲を確認する。PUSHEDを「公開可能・全検証済み」と扱わない。実装・試験・公開は個別の依頼時に行う。
+- 新規実装は再現するバグを優先。NGT-052〜055は要求/APIの調査から。NGT-071は準備済み差分を避ける範囲で再監査。NGT-080はNGT-092と同じCommandlineを触るため、移行範囲を決める前に差分照合が必要。
+- NGT-081/082は#735後、NGT-005は#728/#736とNGT-088/050のツリー契約を踏まえて進める。独立ベースでも同じファイルへの変更を無条件に同時公開しない。
 
-- IDは`NGT-001`形式。付番後は名称が変わっても変更・再利用しない。新規は末尾の番号に続ける。統合した行も消さず統合先IDを残す。
-- `READY`: 既知の外部ブロッカーがなく、次に調査・実装へ着手できる。修正が必要と確認済みという意味ではない。
-- `INVESTIGATE`: 情報不足・重複未確認。調査から着手可能だが実装範囲は未決定。
-- `ACTIVE`: 実施中。担当チャット・ブックマーク・着手日を記載し、別セッションは重複着手しない。
-- `PUSHED`: 実装・検証・originへのpush済み、未PR。公開指示と最新mainでの再検証待ち。
-- `PR_OPEN`: PRレビュー・マージ待ち。`BLOCKED`: 明示した依存待ち。`WAITING`: 報告者・メンテナ回答待ち。
-- `DEFERRED`: 方針として保留。`DONE`: 定義した作業範囲が完了。Issue全体のcloseとは区別する。
-- 依存列の`NGT-xxx`は前提タスク、外部PRは`duplicati/duplicati#番号`。単なる関連は「関連」と明記し、必須依存と混同しない。
-- 表の更新日は状態・判断を最後に確認した日。各作業の証拠に書かれた実行日・main SHAとは別。
+## 運用
 
-## 今後の実装方針・作業順
+- IDは固定・再利用しない。次の新規IDは**NGT-102**。完了/廃止は[completed.md](completed.md)に残す。
+- READY=既知の外部ブロッカーなし、INVESTIGATE=範囲・要件の調査、PUSHED=push報告あり/未PR（検証の充足は別）、PR_OPEN=レビュー待ち、BLOCKED=依存待ち、WAITING=返信待ち、DEFERRED=方針保留。
+- 開始時にACTIVE・担当・日付・ブックマーク、終了時に証拠・残件を更新する。GitHubがIssue/PR状態の正本。依存マージだけでDONEにしない。
+- 実装は最新mainから別ブランチ。既存ブランチを無断で書き換えない。stack後段は前段マージ後に公開。PR・公開コメントは依頼がある場合のみ。Issue全体を満たす場合だけFixes/Closes、部分対応はRefsと残件。
+- 公開Signal/Router/DestroyRef等を必要な範囲で使い、DTO・認証・生成OpenAPI・保存値・disabled・native submit・キーボード契約を守る。単一Playwright設定を維持。新機能導入自体を目的にせず、導入時に対象Angular版の公式仕様を確認する。
+- 赤→緑、関連spec・型・ビルド、必要な実サーバー確認を証拠付きで区別する。未実施と記録なしを分ける。推論は推測と明記し、原文引用中の検証表現を追試扱いしない。
 
-**検証済み（2026-11-14の取得）**: mainは上記SHA、open PRは#727〜#736の10件。当時の実装ブランチは11件（公開済み10件とNGT-050の未PR 1件）。11-15の移管記録では別途18件を追加し、記録上は計29件・未PR 19件。今回の移管ではGitHubの現状を再照合していない。NGT-050は#727のマージ待ち。triageと画像URL保存用ブランチは実装数に含めない。旧FilterComponent候補NGT-034は削除・取り下げ済み。[照合記録](2026-11-14-triage-reconciliation.md)。
+## 公開済みPR
 
-基本方針は、**再現できる不具合の修正 → 回帰を防ぐ検証 → 動作を保った構造改善**。機能/APIの導入や移行件数自体を目標にしない。以下の順序は実装候補を選ぶ方針であり、未検証の問題が存在するという宣言や、全候補への一括実装・公開の許可ではない。
+| ID      | 範囲                                   | PR                                                     | 次の判断                                                                                                                          |
+| ------- | -------------------------------------- | ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------- |
+| NGT-004 | 動的リストの安定したtrack              | [#729](https://github.com/duplicati/ngclient/pull/729) | レビュー待ち。[検証索引](verification.md)。                                                                                       |
+| NGT-006 | 実サーバーE2E整備 / #273               | [#735](https://github.com/duplicati/ngclient/pull/735) | レビュー待ち。[検証索引](verification.md)。 #273全体のcloseは保留。既存liveはAPIによる準備を含み、画面での全作成フローはNGT-082。 |
+| NGT-033 | リンク先表示                           | [#728](https://github.com/duplicati/ngclient/pull/728) | レビュー待ち。[検証索引](verification.md)。 #636はclose済みで、この追加表示とは別。                                               |
+| NGT-051 | #311 flat file restore                 | [#736](https://github.com/duplicati/ngclient/pull/736) | レビュー待ち。[検証索引](verification.md)。 Fixes #311はマージ時の指定であり、現時点のcloseではない。                             |
+| NGT-074 | Status停止・中断要求の状態と破棄       | [#731](https://github.com/duplicati/ngclient/pull/731) | レビュー待ち。[検証索引](verification.md)。                                                                                       |
+| NGT-075 | Status snapshot取得セッションの寿命    | [#730](https://github.com/duplicati/ngclient/pull/730) | レビュー待ち。[検証索引](verification.md)。                                                                                       |
+| NGT-076 | StatusBar進捗取得の重複・応答寿命      | [#732](https://github.com/duplicati/ngclient/pull/732) | レビュー待ち。[検証索引](verification.md)。                                                                                       |
+| NGT-077 | WebSocket接続・非同期認証の寿命監査    | [#733](https://github.com/duplicati/ngclient/pull/733) | レビュー待ち。[検証索引](verification.md)。                                                                                       |
+| NGT-078 | 詳細オプション追加アクションの無効状態 | [#727](https://github.com/duplicati/ngclient/pull/727) | レビュー待ち。[検証索引](verification.md)。                                                                                       |
+| NGT-079 | リスト並替時のフォーカス保持           | [#729](https://github.com/duplicati/ngclient/pull/729) | レビュー待ち。[検証索引](verification.md)。NGT-004と同じPR                                                                        |
+| NGT-083 | SSH Browse時のホストキー承認           | [#734](https://github.com/duplicati/ngclient/pull/734) | レビュー待ち。[検証索引](verification.md)。 #373はclose済み。既存APIのBrowse経路改善で、本体の追加APIは不要。                     |
 
-### 今から独立して進められる候補
+## 未PR・調査・回答待ち
 
-| 優先 | ID                    | 次の作業と終了条件                                                                                                                                                                                                          |
-| ---- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1    | NGT-080 / #497        | 実際のルートから使われるCommandlineComponentの残存Reactive Formsを監査・移行。コマンド切替時の引数の保持/復元、URL state、既存オプション、送信payload、エラー・再試行を既存テストで固定。#727〜#735とは変更ファイルを分ける |
-| 2    | NGT-071               | mainに残るログ・DB・Export等のナビゲーションを小さく再監査。単純な移動と操作/disabled付きボタンを区別し、修正が必要なものだけ扱う。#729のhome/restore、#734の宛先、#735の設定を重複変更しない                               |
-| 3    | NGT-055、NGT-052〜054 | validation schema、改善要望、secondary restore/deleteの要求とAPI可否を調査。特に削除対象・Sync・保持データを確認し、破壊操作の推測実装や本体機能のUI側回避を避ける                                                          |
+| ID      | 範囲                                  | 状態        | 依存・次の行動                                                                                                                                                                                                                                                      |
+| ------- | ------------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| NGT-005 | Aria/CDKの適合評価                    | BLOCKED     | 先行#728/#736と準備済みNGT-088/050のARIA・選択契約を照合して評価。一括Aria/CDK置換はしない。                                                                                                                                                                        |
+| NGT-007 | Signal Forms全体 / #497               | INVESTIGATE | Signal Formsの残存実使用フォームを棚卸し。NGT-080参照。共有CVA・未使用コードを区別し、DTO/検証/キャンセル/送信の同等性を確認するまで#497をcloseしない。                                                                                                             |
+| NGT-008 | SSR・画像最適化等                     | DEFERRED    | 導入根拠となる課題が未観測 性能・UX課題が観測された場合のみ再評価 2026-11-12                                                                                                                                                                                        |
+| NGT-040 | #215 世代削除                         | WAITING     | Issue open。[実サーバー検証・close提案済み](https://github.com/duplicati/ngclient/issues/215#issuecomment-6779794381)。メンテナ判断待ち                                                                                                                             |
+| NGT-041 | #283 再接続                           | WAITING     | Issue open。[WS/long polling復帰の公開確認済み](https://github.com/duplicati/ngclient/issues/283#issuecomment-6779880314)。報告者確認待ち。追加の寿命管理PR #733 と元症状のclose判断を分ける                                                                        |
+| NGT-042 | #492 時差・DST                        | WAITING     | Issue open。[日次全曜日・DST前後6起動の公開確認済み](https://github.com/duplicati/ngclient/issues/492#issuecomment-6779919691)。報告者確認待ち。除外曜日や曖昧時刻は未検証                                                                                          |
+| NGT-043 | #217 破損ファイル削除                 | WAITING     | Issue open。[データvolume欠損・旧世代復元とclose提案済み](https://github.com/duplicati/ngclient/issues/217#issuecomment-6780101822)。他の破損種類は未検証                                                                                                           |
+| NGT-044 | #401 Windows宛先パス                  | WAITING     | Issue open。[実Windowsで入力・保存・再読込の公開確認済み](https://github.com/duplicati/ngclient/issues/401#issuecomment-6780391498)。報告者確認待ち                                                                                                                 |
+| NGT-045 | #449 cross-OS復元                     | WAITING     | 本体#7776後のDebugで両方向の一覧・UI復元・内容一致を検証済み（追加ngclient修正なし）。[公開報告・再確認依頼済み](https://github.com/duplicati/ngclient/issues/449#issuecomment-6867298500)。Issueはopenで返信待ち。配布版への収録、fresh直接API復元等は別確認       |
+| NGT-047 | #328 URL再構築                        | BLOCKED     | 本体[PR #7832](https://github.com/duplicati/duplicati/pull/7832)（fix/keep-target-url-when-masking）がopen。マージ後にブラウザーなしGET→PUTとUI保存を再確認。#618のUI対策を繰り返さず、Issue全体を先にcloseしない                                                   |
+| NGT-049 | #627 editor tabs/save                 | WAITING     | main UIで5ページの直接移動・保存・再読込を確認。[コメント投稿・訂正済み](https://github.com/duplicati/ngclient/issues/627#issuecomment-6867035192)。Save changesは公式2.4.1.101 Canaryに収録確認、実画面検証はmain UI。タブ外観・ツアーの残要望と報告者の再確認待ち |
+| NGT-050 | #637 hidden/system設定                | BLOCKED     | codex/source-attribute-exclusion-feedback（68c088a6）。#727待ち。実サーバー6条件・関連333件の過去記録は[検証索引](verification.md)。新旧画像・[本文](pr-drafts/ngclient-source-attribute-exclusion-feedback.md)あり。マージ後に新規属性追加フローを再確認。         |
+| NGT-052 | #409 suggestions                      | INVESTIGATE | #409の要望を分割し、帯域制限ボタンの名前/説明、警告・ログ・進捗・現在ファイルの残件を確認。既存の一部アイコン対応を全解決と扱わない。                                                                                                                               |
+| NGT-053 | #460 secondary restore                | INVESTIGATE | secondary宛先の対象を既存APIで指定できるか確認。不足なら本体契約が先。削除では選ばなかった宛先へ影響しないことを確認。                                                                                                                                              |
+| NGT-054 | #462 secondary delete                 | INVESTIGATE | secondary宛先の対象を既存APIで指定できるか確認。不足なら本体契約が先。削除では選ばなかった宛先へ影響しないことを確認。                                                                                                                                              |
+| NGT-055 | #126 validation schema                | INVESTIGATE | #126の検証schema API契約・適用範囲・後方互換性を先に確認。既存クライアント検証と分ける。                                                                                                                                                                            |
+| NGT-071 | 先行マージ後のナビゲーション再監査    | READY       | ホーム#697・接続画面#700・ルートID #711はマージ済み。マージ済みNGT-064〜070と重ならない範囲を現行mainで再監査する。disabled/状態変更付き操作は維持                                                                                                                  |
+| NGT-080 | #497 CommandlineのSignal Forms移行    | INVESTIGATE | NGT-092のCommandline差分を先に照合。既存の引数・URL state・保存/送信・disabled・再試行を保つ移行範囲を確定する。重複を避けられない部分は先行マージ待ち。                                                                                                            |
+| NGT-081 | 実サーバーE2Eの継続実行               | BLOCKED     | NGT-006 / #735 マージ待ち。単一設定とlive fixtureを再利用し、実行契機・固定サーバー版・隔離・片付け・失敗証拠を既存CIへ組み込む。CIでの実行可否は未検証                                                                                                             |
+| NGT-082 | 画面からの新規作成を含む実サーバーE2E | BLOCKED     | #735 マージ待ち。現在のAPIによるジョブ準備と区別し、ウィザード入力→保存→実行→復元→削除の最小実フローを追加。内容一致と削除範囲を確認し#273の完了基準を合意する                                                                                                      |
 
-バグ候補が新たに再現すればこの順序より優先する。NGT-051 / #311は初回切り分け後、利用者の依頼で表示専用のFile groupを実装しPR #736を公開。レビュー待ちであり重複実装しない。独立作業はNGT-080などへ進む。#497ではCommandlineの次にSettingsなどの実使用フォームを棚卸しし、別IDで小さく分割する。FormsModuleの検索ヒットだけで、共有CVA・既移行画面・未使用コードをすべて未移行と数えない。
+## Duplicati側から移管した18件
 
-### 先行マージ後に進めるもの
+元の実装・レビュー記録を保存した状態。今回の整理で再検証していない。全件の完全SHA・赤の種類・未実施・agentIdは[移管索引](2026-11-15-duplicati-ngclient-records.md)、原文はevidence内。13本のPR本文は原文保存、対になる5本は要作成。
 
-| 待機対象                   | 次の作業                                                                                                                                                                                                                             |
-| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 本体#7832 → NGT-047 / #328 | 本体マージ後、ブラウザーなしの無変更GET→PUTでURL表記を保持することを再確認。その後ngclientで保存・再読込し、UIが値を変えないことも確認する。公開版への収録は別に確認し、修正済みDebugだけで報告者の配布版でも直ったとは言わない      |
-| #735 → NGT-081             | 既存の単一playwright.config.ts/live fixtureを再利用し、実サーバーE2Eを継続実行できる手順/CIへつなぐ。既存workflowへ組み込み、OS・実行契機・サーバー版固定・片付け・失敗証拠を決める。設定ファイルを増やさない                        |
-| #735 → NGT-082             | 画面での新規ジョブ作成から実行・復元・削除までを実サーバーで確認する最小フローを追加。現在のliveテストはジョブ準備にAPIを使うので、全ウィザード入力は未カバー。まず通常ローカルバックアップ1件から。#273の終了条件をメンテナと揃える |
-| #728・#736 → NGT-005       | locked/リンク先表示とFile groupを統合してからfile-treeのキーボード・フォーカス・ARIA契約を評価。Angular Aria/CDKは既存部品より利点を示せる範囲でのみ採用し、一括置換しない                                                           |
-| #730〜#733                 | Status/WSの同じファイルへの追加修正は先行マージを待つ。別ファイルの独立調査まで止める依存ではない                                                                                                                                    |
-
-### Angular・APIの実装原則
-
-既存のSignal Forms、RouterLink、DestroyRef等の公開APIを適合する範囲で使い、外部との副作用・状態・破棄の責任を明確にする。生成OpenAPIクライアントの型、認証interceptor、relayの経路を維持し、公式機能を使うためだけに生HTTPへ置き換えない。性能改善は同条件の実測で判断する。SSRや新しい設定ファイル・依存の導入は、具体的な必要性と利点が確認できた場合に限る。
-
-### 返信・判断待ちと公開ルール
-
-#215/#283/#492/#217/#401/#449/#627は既に検証範囲付きの公開コメントがある。#637は返信を受けてNGT-050を実装・push済み。公開は#727のマージ待ち。同じコメント・検証を未実施として繰り返さず、新しい再現条件や返信があれば再開する。#636/#466はclose済みで、追加機能のPR待ちとIssue未解決を混同しない。
-
-実装は最新mainから独立ブランチを作り、triageを親にしない。既存PR・準備済み差分・本体依存を先に照合する。修正では赤→緑、関連spec・型・本番ビルドと、必要な実サーバー確認を残す。PR作成は明示の指示がある場合だけ。先行PRに積む場合はそのマージまで後段PRを出さない。Issue全体の受け入れ条件を満たす場合のみFixes/Closes、部分対応はRefsと残件を明記する。
-
-## 構造改善
-
-根拠・受け入れ条件: [Angular改善計画](2026-11-12-angular-modernization.md)。以下の改善効果や不具合発生は、別記しない限り**推測・未検証**。
-
-| ID      | 内容                                         | 状態        | 依存・重複回避                                                                                    | 次の行動                                                                                                                                                                                                                                                                                                           | 更新       |
-| ------- | -------------------------------------------- | ----------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- |
-| NGT-001 | 独自Signalラッパー整理                       | DONE        | codex/public-signal-helpers。main独立、本体依存なし                                               | [検証記録](2026-11-12-ngt-001-signal-helpers.md)。PR #706 マージ済み。ブックマーク削除済み                                                                                                                                                                                                                         | 2026-11-14 |
-| NGT-002 | 非同期読み取り・破棄処理（ServiceHub timer） | DONE        | codex/service-hub-timer-lifecycle。独立main、本体依存なし                                         | [検証記録](2026-11-12-ngt-002-async-lifecycle.md)。PR #707 マージ済み（ブックマーク削除済み）、残る監査はNGT-056                                                                                                                                                                                                   | 2026-11-14 |
-| NGT-003 | Routerとナビゲーションの意味（サイドバー）   | DONE        | codex/sidebar-router-links。独立main、本体依存なし                                                | [検証記録](2026-11-12-ngt-003-sidebar-navigation.md)。PR #708 マージ済み（ブックマーク削除済み）、残る監査はNGT-057                                                                                                                                                                                                | 2026-11-14 |
-| NGT-004 | 動的リストの安定したtrack                    | PR_OPEN     | codex/stable-backup-list-tracking。最新main独立、本体依存なし                                     | [赤3件→緑・E2E9件・単体28件・ビルド](2026-11-14-ngt-004-stable-tracking.md)。PR #729 公開済み。NGT-079も同じブランチで対応済み                                                                                                                                                                                     | 2026-11-14 |
-| NGT-005 | Aria/CDKの適合評価                           | BLOCKED     | NGT-030はmain反映済み。NGT-033 / PR #728 とNGT-051 / PR #736 のマージ待ち                         | 統合後にfile-treeの既存契約と採用効果を小範囲評価。NGT-046 / #636 の再オープンは前提でない                                                                                                                                                                                                                         | 2026-11-14 |
-| NGT-006 | 実サーバーE2E整備 / #273                     | PR_OPEN     | codex/live-editor-persistence-e2e。最新main独立。設定は既存playwright.config.tsのliveモードへ統合 | [実サーバー6件（保存・通常/AES・直接復元・誤入力/空欄回復）・ビルド](2026-11-14-ngt-006-live-editor-e2e.md)。PR #735 公開済み。全体closeは保留。同じブランチへ非暗号化/AESのローカルbackup/restoreと、設定なし・画面パスフレーズ入力の直接復元と誤入力・空欄からの回復を追加済み。runnerマージ後に次のフローを追加 | 2026-11-14 |
-| NGT-007 | Signal Forms全体 / #497                      | INVESTIGATE | General #682とNGT-010〜029の移行PR #687〜#704はmain反映済み                                       | 残る実使用フォームを監査。次候補NGT-080はCommandline。共有CVA・未使用旧コードを区別し、全完了を確認するまでRefs                                                                                                                                                                                                    | 2026-11-14 |
-| NGT-008 | SSR・画像最適化等                            | DEFERRED    | 導入根拠となる課題が未観測                                                                        | 性能・UX課題が観測された場合のみ再評価                                                                                                                                                                                                                                                                             | 2026-11-12 |
-
-## 個別実装の履歴とレビュー状態
-
-**過去の検証記録（2026-11-12、現在の件数ではない）**: #684〜#694はマージ済み。残る20実装ブランチとtriageで全単体テスト・本番ビルドが成功し、変更したE2Eも成功した。その時点の21ブックマークのoriginとのSHA一致を確認済み。NGT-020〜029の10件をPR #695〜#704として公開した。SHA・コマンドと結果・再試行の内容は[全ブランチ検証記録](2026-11-12-rebase-validation.md)を参照。記録の追記はMarkdownのみで、検証後にアプリのソース変更はない。
-
-| ID      | 範囲                          | 状態    | PR / ブックマーク（codex/以下）                                                                   | 依存・次の行動                                                                                                                                                                            |
-| ------- | ----------------------------- | ------- | ------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| NGT-010 | Schedule / Options            | DONE    | #687 / migrate-schedule-options-signal-forms                                                      | mainへマージ済み。ブックマーク削除済み                                                                                                                                                    |
-| NGT-011 | Source data                   | DONE    | #688 / migrate-source-data-signal-forms                                                           | mainへマージ済み。ブックマーク削除済み                                                                                                                                                    |
-| NGT-012 | 詳細オプション値              | DONE    | #689 / migrate-option-values-signal-forms                                                         | mainへマージ済み。ブックマーク削除済み                                                                                                                                                    |
-| NGT-013 | Import encryption             | DONE    | #690 / migrate-import-encryption-signal-forms                                                     | mainへマージ済み。ブックマーク削除済み                                                                                                                                                    |
-| NGT-014 | Restore encryption            | DONE    | #691 / migrate-restore-encryption-signal-forms                                                    | mainへマージ済み。ブックマーク削除済み                                                                                                                                                    |
-| NGT-015 | Restore config                | DONE    | #692 / migrate-restore-config-signal-forms                                                        | mainへマージ済み。ブックマーク削除済み                                                                                                                                                    |
-| NGT-016 | Login                         | DONE    | #693 / migrate-login-signal-forms                                                                 | mainへマージ済み。ブックマーク削除済み                                                                                                                                                    |
-| NGT-017 | Import file                   | DONE    | #694 / migrate-import-file-signal-forms                                                           | mainへマージ済み。ブックマーク削除済み                                                                                                                                                    |
-| NGT-020 | Export                        | DONE    | [#696](https://github.com/duplicati/ngclient/pull/696) / migrate-export-signal-forms              | mainへマージ済み。ローカル・originのブックマーク削除済み                                                                                                                                  |
-| NGT-021 | Throttle                      | DONE    | [#703](https://github.com/duplicati/ngclient/pull/703) / migrate-throttle-signal-forms            | mainへマージ済み。ローカル・originのブックマーク削除済み                                                                                                                                  |
-| NGT-022 | Database path                 | DONE    | [#695](https://github.com/duplicati/ngclient/pull/695) / migrate-database-path-signal-forms       | mainへマージ済み。ローカル・originのブックマーク削除済み                                                                                                                                  |
-| NGT-023 | Remote registration           | DONE    | [#700](https://github.com/duplicati/ngclient/pull/700) / migrate-remote-registration-signal-forms | mainへマージ済み。ローカル・originのブックマーク削除済み                                                                                                                                  |
-| NGT-024 | Restore URL                   | DONE    | [#702](https://github.com/duplicati/ngclient/pull/702) / migrate-restore-url-signal-forms         | mainへマージ済み。ローカル・originのブックマーク削除済み                                                                                                                                  |
-| NGT-025 | Import selection              | DONE    | [#698](https://github.com/duplicati/ngclient/pull/698) / migrate-import-selection-signal-forms    | mainへマージ済み。ローカル・originのブックマーク削除済み                                                                                                                                  |
-| NGT-026 | Home search                   | DONE    | [#697](https://github.com/duplicati/ngclient/pull/697) / migrate-home-search-signal-forms         | mainへマージ済み。ローカル・originのブックマーク削除済み                                                                                                                                  |
-| NGT-027 | Initial passphrase            | DONE    | [#699](https://github.com/duplicati/ngclient/pull/699) / migrate-initial-passphrase-signal-forms  | mainへマージ済み。ローカル・originのブックマーク削除済み                                                                                                                                  |
-| NGT-028 | Restore search                | DONE    | [#701](https://github.com/duplicati/ngclient/pull/701) / migrate-restore-search-signal-forms      | mainへマージ済み。ローカル・originのブックマーク削除済み                                                                                                                                  |
-| NGT-029 | Version labels                | DONE    | [#704](https://github.com/duplicati/ngclient/pull/704) / migrate-version-labels-signal-forms      | mainへマージ済み。ローカル・originのブックマーク削除済み                                                                                                                                  |
-| NGT-030 | locked展開防止・Access denied | DONE    | #684 / prevent-locked-folder-expansion                                                            | mainへマージ済み。ブックマーク削除済み                                                                                                                                                    |
-| NGT-031 | Pause E2E                     | DONE    | #685 / test-server-pause                                                                          | mainへマージ済み。ブックマーク削除済み                                                                                                                                                    |
-| NGT-032 | Job deletion E2E              | DONE    | #686 / test-job-deletion                                                                          | mainへマージ済み。ブックマーク削除済み                                                                                                                                                    |
-| NGT-033 | リンク先表示                  | PR_OPEN | [#728](https://github.com/duplicati/ngclient/pull/728) / show-file-tree-link-target               | 本体#7775はマージ済み。最新main上の関連spec・ビルド成功。旧サーバーのnull/未定義をテスト。今回の実サーバー統合は未再確認。#636は既にclose済みでこの追加表示とは別                         |
-| NGT-034 | 旧folder filter候補の取り下げ | DONE    | fix/folder-filter-separatorsはローカル・originから削除済み                                        | 旧FilterComponentは現行画面で未使用のため利用者指示で候補を取り下げ。専用コミットもabandon。機能修正の完了やIssue解決を意味しない。[整理記録](2026-11-14-drop-unused-filter-candidate.md) |
-
-## Issueの残件・回答待ち
-
-状態は2026-11-14にGitHub APIで再取得。下表が現在の判断。過去の動作検証を今回のmainで再実行したという意味ではない。[照合記録](2026-11-14-triage-reconciliation.md)。
-
-| ID      | Issue / 内容           | 状態        | 依存・次の行動                                                                                                                                                                                                                                                                                                                                                             |
-| ------- | ---------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| NGT-040 | #215 世代削除          | WAITING     | Issue open。[実サーバー検証・close提案済み](https://github.com/duplicati/ngclient/issues/215#issuecomment-6779794381)。メンテナ判断待ち                                                                                                                                                                                                                                    |
-| NGT-041 | #283 再接続            | WAITING     | Issue open。[WS/long polling復帰の公開確認済み](https://github.com/duplicati/ngclient/issues/283#issuecomment-6779880314)。報告者確認待ち。追加の寿命管理PR #733 と元症状のclose判断を分ける                                                                                                                                                                               |
-| NGT-042 | #492 時差・DST         | WAITING     | Issue open。[日次全曜日・DST前後6起動の公開確認済み](https://github.com/duplicati/ngclient/issues/492#issuecomment-6779919691)。報告者確認待ち。除外曜日や曖昧時刻は未検証                                                                                                                                                                                                 |
-| NGT-043 | #217 破損ファイル削除  | WAITING     | Issue open。[データvolume欠損・旧世代復元とclose提案済み](https://github.com/duplicati/ngclient/issues/217#issuecomment-6780101822)。他の破損種類は未検証                                                                                                                                                                                                                  |
-| NGT-044 | #401 Windows宛先パス   | WAITING     | Issue open。[実Windowsで入力・保存・再読込の公開確認済み](https://github.com/duplicati/ngclient/issues/401#issuecomment-6780391498)。報告者確認待ち                                                                                                                                                                                                                        |
-| NGT-045 | #449 cross-OS復元      | WAITING     | 本体#7776後のDebugで両方向の一覧・UI復元・内容一致を検証済み（追加ngclient修正なし）。[公開報告・再確認依頼済み](https://github.com/duplicati/ngclient/issues/449#issuecomment-6867298500)。Issueはopenで返信待ち。配布版への収録、fresh直接API復元等は別確認                                                                                                              |
-| NGT-046 | #636 junction          | DONE        | GitHubはclosed/completed。本体#7772/#7775はマージ済み、locked展開防止#684もmain反映済み。報告者の独語Windows環境は今回未検証。追加リンク先表示はNGT-033 / #728 で、IssueをBLOCKEDにする依存ではない                                                                                                                                                                        |
-| NGT-047 | #328 URL再構築         | BLOCKED     | 本体[PR #7832](https://github.com/duplicati/duplicati/pull/7832)（fix/keep-target-url-when-masking）がopen。マージ後にブラウザーなしGET→PUTとUI保存を再確認。#618のUI対策を繰り返さず、Issue全体を先にcloseしない                                                                                                                                                          |
-| NGT-048 | #466 pCloud            | DONE        | GitHubはclosed/completed。[報告者が2.4.0.1で正常動作と返信](https://github.com/duplicati/ngclient/issues/466#issuecomment-6830293591)。ローカルで全OAuth環境を再検証したという意味ではない                                                                                                                                                                                 |
-| NGT-049 | #627 editor tabs/save  | WAITING     | main UIで5ページの直接移動・保存・再読込を確認。[コメント投稿・訂正済み](https://github.com/duplicati/ngclient/issues/627#issuecomment-6867035192)。Save changesは公式2.4.1.101 Canaryに収録確認、実画面検証はmain UI。タブ外観・ツアーの残要望と報告者の再確認待ち                                                                                                        |
-| NGT-050 | #637 hidden/system設定 | BLOCKED     | 実装push済み: codex/source-attribute-exclusion-feedback。最新main独立。本体変更不要。報告者の返信を踏まえて属性除外表示・既存設定への導線を追加。赤3→緑333、実サーバー6条件・本番E2E2件・ビルド成功。PRは#727のマージ待ち（未設定時のAddがdisabledであることを実画面確認）。新旧画像・Fixes #637下書き準備済み。[検証記録](2026-11-14-ngt-050-source-attributes.md)        |
-| NGT-051 | #311 flat file restore | PR_OPEN     | [PR #736](https://github.com/duplicati/ngclient/pull/736) / codex/restore-individual-file-groups。main独立、本体依存なし。表示専用File groupで保存済みの個別ファイルだけを選択し、実フォルダーと区別。赤5→緑6、全2317件、本番E2E12件、実サーバー3ケース成功。新旧4画像を本文へ掲載。Fixes #311はマージ時のclose指定。[記録](2026-11-14-ngt-051-individual-file-restore.md) |
-| NGT-052 | #409 suggestions       | INVESTIGATE | 要求と再現条件を確認                                                                                                                                                                                                                                                                                                                                                       |
-| NGT-053 | #460 secondary restore | INVESTIGATE | 本体依存の有無から確認                                                                                                                                                                                                                                                                                                                                                     |
-| NGT-054 | #462 secondary delete  | INVESTIGATE | 本体依存の有無から確認                                                                                                                                                                                                                                                                                                                                                     |
-| NGT-055 | #126 validation schema | INVESTIGATE | 既存Signal Forms・検証との境界を確認                                                                                                                                                                                                                                                                                                                                       |
-
-## 監査タスクの進捗
-
-| ID      | 内容                                     | 状態    | 依存・次の行動                                                                                                                                                                                                                                                                 |
-| ------- | ---------------------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| NGT-056 | 長ポーリングの購読・破棄ライフサイクル   | DONE    | codex/longpoll-service-lifecycle。最新main独立、本体依存なし。[赤→緑・ビルドの記録](2026-11-13-ngt-056-longpoll-lifecycle.md)。PR #723 マージ済み（ブックマーク削除済み）。非同期監査全体の残りはNGT-072                                                                       |
-| NGT-057 | ナビゲーション監査（Add Backup入口）     | DONE    | codex/add-backup-router-links。独立main、本体依存なし。[検証記録](2026-11-12-ngt-057-add-backup-navigation.md)。PR #709 マージ済み（ブックマーク削除済み）、残る評価はNGT-058                                                                                                  |
-| NGT-058 | 接続ステータスのナビゲーション           | DONE    | codex/console-connection-router-links。独立main、本体依存なし。[検証記録](2026-11-12-ngt-058-connectivity-navigation.md)。PR #710 マージ済み（ブックマーク削除済み）、残る評価はNGT-059                                                                                        |
-| NGT-059 | バックアップ編集のルートID入力           | DONE    | codex/backup-route-input-binding。独立main、本体依存なし。[検証記録](2026-11-12-ngt-059-backup-route-input.md)。PR #711 マージ済み（ブックマーク削除済み）、残る評価はNGT-060                                                                                                  |
-| NGT-060 | ジョブログのルートID入力                 | DONE    | codex/job-log-route-input-binding。独立main、本体依存なし。[検証記録](2026-11-12-ngt-060-job-log-route-input.md)。PR #712 マージ済み（ブックマーク削除済み）、残る評価はNGT-061                                                                                                |
-| NGT-061 | コマンド実行結果のルート入力             | DONE    | codex/command-result-route-input-binding。独立main、本体依存なし。[検証記録](2026-11-12-ngt-061-command-result-input.md)。PR #713 マージ済み（ブックマーク削除済み）、残る評価はNGT-062                                                                                        |
-| NGT-062 | ナビゲーション監査（復元進捗taskid入力） | DONE    | codex/restore-progress-route-input。main独立、本体依存なし。[変更前後の契約テスト・ビルド・E2E](2026-11-12-ngt-062-restore-progress-input.md)。PR #714 マージ済み（ブックマーク削除済み）。残る評価はNGT-064                                                                   |
-| NGT-063 | ログ画面のRouter購読の破棄               | DONE    | codex/logs-router-subscription-lifecycle。main独立、本体依存なし。PR #715 マージ済み（ブックマーク削除済み）。[赤→緑・ビルド・E2Eの記録](2026-11-12-ngt-063-logs-router-lifecycle.md)                                                                                          |
-| NGT-064 | Aboutのnativeリンク・選択同期            | DONE    | codex/about-navigation-links。main独立、本体依存なし。[赤→緑・実画面・ビルドの記録](2026-11-12-ngt-064-about-navigation.md)。PR #716 マージ済み（ブックマーク削除済み）。ホーム・route入力の残りはNGT-065                                                                      |
-| NGT-065 | 復元オプションの戻るリンク               | DONE    | codex/restore-options-back-link。main独立、本体依存なし。[赤→緑・ビルド・E2Eの記録](2026-11-13-ngt-065-restore-options-back.md)。PR #717 マージ済み（ブックマーク削除済み）。ホーム・Router使用箇所の残りはNGT-066                                                             |
-| NGT-066 | ジョブ削除画面のナビゲーション           | DONE    | codex/delete-backup-navigation-links。main独立、本体依存なし。[赤→緑・ビルド・E2Eの記録](2026-11-13-ngt-066-delete-navigation.md)。PR #718 マージ済み（ブックマーク削除済み）。残る評価はNGT-067                                                                               |
-| NGT-067 | 復元設定・ファイル削除のホーム移動リンク | DONE    | codex/wizard-home-navigation-links。main独立、本体依存なし。[赤→緑・ビルド・E2Eの記録](2026-11-13-ngt-067-wizard-home-links.md)。PR #719 マージ済み（ブックマーク削除済み）。残りはNGT-068                                                                                     |
-| NGT-068 | 設定インポートのホーム移動リンク         | DONE    | codex/import-home-navigation-link。main独立、本体依存なし。[赤→緑・ビルド・E2Eの記録](2026-11-13-ngt-068-import-home-link.md)。PR #720 マージ済み（ブックマーク削除済み）。残る監査はNGT-069                                                                                   |
-| NGT-069 | コマンド画面のホーム移動リンク           | DONE    | codex/commandline-home-link。最新main独立、本体依存なし。[赤→緑・ビルド・E2Eの記録](2026-11-13-ngt-069-commandline-home-link.md)。PR #721 マージ済み（ブックマーク削除済み）。残る監査はNGT-070                                                                                |
-| NGT-070 | ログアウト完了画面の移動リンク           | DONE    | codex/logout-navigation-link。最新main独立、本体依存なし。[赤→緑・ビルド・E2Eの記録](2026-11-13-ngt-070-logout-link.md)。PR #722 マージ済み（ブックマーク削除済み）。既知の残件はNGT-071へ集約                                                                                 |
-| NGT-071 | 先行マージ後のナビゲーション再監査       | READY   | ホーム#697・接続画面#700・ルートID #711はマージ済み。マージ済みNGT-064〜070と重ならない範囲を現行mainで再監査する。disabled/状態変更付き操作は維持                                                                                                                             |
-| NGT-072 | タスク完了購読・待機の破棄ライフサイクル | DONE    | codex/task-waiter-service-lifecycle。最新main独立、本体依存なし。[赤→緑・ビルドの記録](2026-11-13-ngt-072-task-waiter-lifecycle.md)。PR #724 マージ済み（ブックマーク削除済み）。残る非同期監査はNGT-073                                                                       |
-| NGT-073 | About更新確認の非同期処理・破棄          | DONE    | codex/update-check-lifecycle。最新main独立、本体依存なし。[赤→緑・ビルド・E2Eの記録](2026-11-13-ngt-073-update-check-lifecycle.md)。PR #725 マージ済み（ブックマーク削除済み）。Promise APIの通信自体は中断せずUI購読を終了。残る監査はNGT-074                                 |
-| NGT-074 | Status停止・中断要求の状態と破棄         | PR_OPEN | codex/status-task-action-lifecycle。最新main独立、本体依存なし。[赤→緑・ビルド・E2Eの記録](2026-11-13-ngt-074-status-task-actions.md)。PR #731 公開済み。Stop待ち中のAbortを維持。残る監査はNGT-075                                                                            |
-| NGT-075 | Status snapshot取得セッションの寿命      | PR_OPEN | codex/status-snapshot-lifecycle。最新main独立、本体依存なし。[赤→緑・ビルド・E2Eの記録](2026-11-13-ngt-075-status-snapshot-lifecycle.md)。PR #730 公開済み。旧応答と追加ループを分離。残る監査はNGT-076                                                                        |
-| NGT-076 | StatusBar進捗取得の重複・応答寿命        | PR_OPEN | codex/statusbar-progress-lifecycle。最新main独立、本体依存なし。[赤→緑・ビルド・E2Eの記録](2026-11-13-ngt-076-statusbar-progress-lifecycle.md)。PR #732 公開済み。二段階取得の重複と旧応答を分離。残る監査はNGT-077                                                            |
-| NGT-077 | WebSocket接続・非同期認証の寿命監査      | PR_OPEN | codex/websocket-connection-lifecycle。最新main独立、本体依存なし。[赤8件→緑・型チェック・ビルド・E2E](2026-11-14-ngt-077-websocket-lifecycle.md)。PR #733 公開済み。隔離Canaryで実JWT期限切れ・更新503→200後のWS購読復帰を確認（再読込0）。StatusBar等の準備済み変更を含まない |
-| NGT-078 | 詳細オプション追加アクションの無効状態   | PR_OPEN | codex/advanced-options-actions。main独立、本体依存なし。[赤→緑・実サーバー記録](2026-11-14-advanced-option-actions.md)。PR #727 公開済み                                                                                                                                       |
-| NGT-079 | リスト並替時のフォーカス保持             | PR_OPEN | 利用者指示でNGT-004と同じcodex/stable-backup-list-trackingに追加。並替後の同一ジョブfocus、明示blur・削除・検索をChromiumで確認。隔離実Canaryの追加・削除・名前順更新も3表示で成功。[赤3件→緑・ビルドの記録](2026-11-14-ngt-079-reorder-focus.md)。PR #729 公開済み            |
-| NGT-080 | #497 CommandlineのSignal Forms移行       | READY   | app.routes.tsの実使用ルートとbaseCmdForm/standardFieldsのReactive Formsを静的確認。バグ再現は未実施。既存の引数切替・URL state・送信を固定し、CommandlineComponentに範囲を限定。新しい依存/重複は着手時に再照合                                                                |
-| NGT-081 | 実サーバーE2Eの継続実行                  | BLOCKED | NGT-006 / #735 マージ待ち。単一設定とlive fixtureを再利用し、実行契機・固定サーバー版・隔離・片付け・失敗証拠を既存CIへ組み込む。CIでの実行可否は未検証                                                                                                                        |
-| NGT-082 | 画面からの新規作成を含む実サーバーE2E    | BLOCKED | #735 マージ待ち。現在のAPIによるジョブ準備と区別し、ウィザード入力→保存→実行→復元→削除の最小実フローを追加。内容一致と削除範囲を確認し#273の完了基準を合意する                                                                                                                 |
-| NGT-083 | SSH Browse時のホストキー承認             | PR_OPEN | PR #734 / fix/browse-approve-host-key。main独立、本体の新規API依存なし。既存ブランチと関連spec・ビルドを検証済み。Issue #373は既にclose済みで別のBrowse経路を補完                                                                                                              |
-
-## 更新手順と履歴
-
-作業開始時にIDをACTIVEへ変え、担当チャット識別子・ブックマーク・着手日を記載する。終了時は証拠への参照、次の行動、更新日も同時に更新する。PR作成・マージ後はGitHub APIまたはghで実状態を確認し、対応IDの状態を変更する。依存のマージだけで自動的にDONEにはせず、統合後の検証と要求充足を確認する。
-
-依存先が完了したらBLOCKED行を再評価し、着手可能一覧も更新する。完了行は履歴として残す。今回のIDには欠番を設けているが既存IDを詰め直さず、NGT-084〜101は11-15の移管分へ割り当て済み。新規はNGT-102から付番する。
-
-- 2026-11-12: 初回台帳を追加。固定ID、状態、依存、着手候補を既存の調査記録から整理。新しいバグ再現・コード変更・テスト実行はしていない。
-
-確認コマンド（実際はmise管理下のjj/gh実体を直接使用）:
-
-```text
-jj git fetch --all-remotes
-jj bookmark list --all-remotes
-gh pr list --repo duplicati/ngclient --state open --limit 100 --json number,title,headRefName
-gh issue list --repo duplicati/ngclient --state open --limit 100 --json number
-gh pr view 7772 --repo duplicati/duplicati --json number,state,mergedAt
-gh pr view 7775 --repo duplicati/duplicati --json number,state,mergedAt
-gh pr view 7776 --repo duplicati/duplicati --json number,state,mergedAt
-```
-
-- 2026-11-13: #695〜#705のマージを照合し、11ブランチを整理。残存26実装とtriageをmainへrebaseし、関連テスト・全本番ビルド・変更E2Eを検証。10件をPR公開。[証拠とSHA一覧](2026-11-13-maintenance-validation.md)。
-
-- 2026-11-14: #706〜#715のMERGED/headを照合し10ブランチを整理。16実装とtriageを最新mainへrebase・pushし、関連テスト・本番ビルド・変更E2Eを検証。10件を公開。[記録](2026-11-14-maintenance-validation.md)。
-
-- 2026-11-14（現状照合）: open 9PRと9実装ブランチ、未PR 0件を照合。#449/#627の未投稿表記、#636/#466の状態、本体#7832の依存を訂正。作業順を更新しNGT-080〜083を付番（083は既存SSH PR #734の台帳登録）。[根拠](2026-11-14-triage-reconciliation.md)。
-
-- 2026-11-14（NGT-051）: #311を最新mainの本番UIと隔離Windows Canaryで確認。個別/混在/フォルダーの3ケースでAPIとDOMが一致、選択復元も成功。意図的な平坦表示は変更せず、仮想グループの仕様判断を残した。関連38 specと本番ビルド成功。[記録](2026-11-14-ngt-051-individual-file-restore.md)。
-
-- 2026-11-14（NGT-051実装）: 利用者の公開指示により表示専用グループを実装しPR #736を公開。open 10件・未PR実装0件。画像専用codex/pr-311-screenshotsは実装候補に数えず保持。[証拠](2026-11-14-ngt-051-individual-file-restore.md)。
-
-- 2026-11-14（NGT-050）: 報告者の返信を受けて属性除外の表示と既存Optionsへの導線を実装・push。未PR実装1件を追加。公開は#727待ちで、スタックしたPRは作らない。[結果と下書き](2026-11-14-ngt-050-source-attributes.md)。
-
-## Duplicati側から移管した準備済みブランチ
-
-証拠と原文: [2026-11-15-duplicati-ngclient-records.md](2026-11-15-duplicati-ngclient-records.md)。以下は記録移管による登録で、移管担当によるテスト・ビルド・統合・公開の承認ではない。PUSHEDは元の検証記録とpush報告がある状態。本体依存5件はBLOCKED。既存の改善候補を選ぶ際も、これらとの重複を確認する（NGT-080とNGT-092のCommandline、NGT-050とNGT-090のSource Data、NGT-005/#728/#736とNGT-088のfile-tree等）。
-
-| ID      | 本体Issue / 内容         | 状態    | ブランチ・依存と次の確認                                                                                                                                                                                                                                                                         |
-| ------- | ------------------------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| NGT-084 | duplicati/duplicati#1510 | PUSHED  | `fix/verify-completion-alert` / `86510cc5ef09b8c36a38417bab6824310c61eb82`。原文PR下書きを保存。 検証範囲・未実施・レビュー履歴は[記録](2026-11-15-duplicati-ngclient-records.md#ngt-084)。公開指示前に既存PRと重複・依存・不足検証を確認                                                        |
-| NGT-085 | duplicati/duplicati#2310 | BLOCKED | `feat/export-global-options` / `088dba4c01d6127b50ff26a5045190b743a668a2`。本体 feat/export-global-options が先行。ngclient本文は要作成。 検証範囲・未実施・レビュー履歴は[記録](2026-11-15-duplicati-ngclient-records.md#ngt-085)。公開指示前に既存PRと重複・依存・不足検証を確認               |
-| NGT-086 | duplicati/duplicati#2701 | BLOCKED | `feat/skip-next-scheduled-run` / `28be8c2be254e859f2fcadc0639afafa24980555`。本体 feat/skip-next-scheduled-run が先行。ngclient本文は要作成。 検証範囲・未実施・レビュー履歴は[記録](2026-11-15-duplicati-ngclient-records.md#ngt-086)。公開指示前に既存PRと重複・依存・不足検証を確認           |
-| NGT-087 | duplicati/duplicati#3041 | PUSHED  | `fix/status-bar-file-count-separators` / `eb506d7c5c715320cb30e236cc84f63bb86df61e`。原文PR下書きを保存。 検証範囲・未実施・レビュー履歴は[記録](2026-11-15-duplicati-ngclient-records.md#ngt-087)。公開指示前に既存PRと重複・依存・不足検証を確認                                               |
-| NGT-088 | duplicati/duplicati#3191 | PUSHED  | `feat/file-tree-partial-exclusion` / `0426e04e0f4c65e57c834c67c06a2c8bddbf0b2a`。原文PR下書きを保存。 検証範囲・未実施・レビュー履歴は[記録](2026-11-15-duplicati-ngclient-records.md#ngt-088)。公開指示前に既存PRと重複・依存・不足検証を確認                                                   |
-| NGT-089 | duplicati/duplicati#3369 | PUSHED  | `feat/idle-sign-out` / `77c6303395e176e0efbf9e4ece3797528905a535`。原文PR下書きを保存。 検証範囲・未実施・レビュー履歴は[記録](2026-11-15-duplicati-ngclient-records.md#ngt-089)。公開指示前に既存PRと重複・依存・不足検証を確認                                                                 |
-| NGT-090 | duplicati/duplicati#3519 | PUSHED  | `feat/show-resolved-source-shortcut` / `1d82b60093c78b741d8833bd34169bf15b8f0bdf`。原文PR下書きを保存。 検証範囲・未実施・レビュー履歴は[記録](2026-11-15-duplicati-ngclient-records.md#ngt-090)。公開指示前に既存PRと重複・依存・不足検証を確認                                                 |
-| NGT-091 | duplicati/duplicati#3851 | PUSHED  | `feat/server-stored-theme` / `fc6d25f8ff799b8a2f75b4b5e67b2d87f88ea27d`。原文PR下書きを保存。 検証範囲・未実施・レビュー履歴は[記録](2026-11-15-duplicati-ngclient-records.md#ngt-091)。公開指示前に既存PRと重複・依存・不足検証を確認                                                           |
-| NGT-092 | duplicati/duplicati#4678 | PUSHED  | `feat/log-compare-previous-version` / `b806e2ee2d9296914a8a7e8e885a27052d5eb491`。原文PR下書きを保存。 検証範囲・未実施・レビュー履歴は[記録](2026-11-15-duplicati-ngclient-records.md#ngt-092)。公開指示前に既存PRと重複・依存・不足検証を確認                                                  |
-| NGT-093 | duplicati/duplicati#1843 | PUSHED  | `feat/ssl-certificate-upload` / `6fbcc1a2140d0b839db18dca839c879a28b82157`。原文PR下書きを保存。 検証範囲・未実施・レビュー履歴は[記録](2026-11-15-duplicati-ngclient-records.md#ngt-093)。公開指示前に既存PRと重複・依存・不足検証を確認                                                        |
-| NGT-094 | duplicati/duplicati#2259 | PUSHED  | `feat/report-issue-link` / `d8a9d4702d9f7be9a79967360e0fa5a66f828b31`。原文PR下書きを保存。 検証範囲・未実施・レビュー履歴は[記録](2026-11-15-duplicati-ngclient-records.md#ngt-094)。公開指示前に既存PRと重複・依存・不足検証を確認                                                             |
-| NGT-095 | duplicati/duplicati#2330 | PUSHED  | `feat/run-all-backups` / `ac3ce63c131b4c9e1190d05f281f5dea4b607a7c`。原文PR下書きを保存。 検証範囲・未実施・レビュー履歴は[記録](2026-11-15-duplicati-ngclient-records.md#ngt-095)。公開指示前に既存PRと重複・依存・不足検証を確認                                                               |
-| NGT-096 | duplicati/duplicati#2764 | PUSHED  | `feat/last-run-failed-indicator` / `1d0fa3bf2393330aa97815c914b83319c92b2433`。原文PR下書きを保存。 検証範囲・未実施・レビュー履歴は[記録](2026-11-15-duplicati-ngclient-records.md#ngt-096)。公開指示前に既存PRと重複・依存・不足検証を確認                                                     |
-| NGT-097 | duplicati/duplicati#3246 | PUSHED  | `feat/log-download` / `1355c2643a6a628eabbd42f5ce59054336942a4c`。原文PR下書きを保存。 検証範囲・未実施・レビュー履歴は[記録](2026-11-15-duplicati-ngclient-records.md#ngt-097)。公開指示前に既存PRと重複・依存・不足検証を確認                                                                  |
-| NGT-098 | duplicati/duplicati#3397 | BLOCKED | `feat/compact-progress` / `792c2ba895634c5934ead901745f5829d139cccd`。本体 feat/compact-progress が先行。ngclient本文は要作成。 検証範囲・未実施・レビュー履歴は[記録](2026-11-15-duplicati-ngclient-records.md#ngt-098)。公開指示前に既存PRと重複・依存・不足検証を確認                         |
-| NGT-099 | duplicati/duplicati#3694 | PUSHED  | `feat/restore-version-file-count` / `026d135944cf3c1bb6107b936adb2d6d8c7d9b86`。原文PR下書きを保存。 検証範囲・未実施・レビュー履歴は[記録](2026-11-15-duplicati-ngclient-records.md#ngt-099)。公開指示前に既存PRと重複・依存・不足検証を確認                                                    |
-| NGT-100 | duplicati/duplicati#5239 | BLOCKED | `feat/restore-resume-drafts` / `a27d25e3eb60aa2710f7f5265914c9547d7e2a07`。本体 feat/list-temporary-backups が先行。ngclient本文は要作成。 検証範囲・未実施・レビュー履歴は[記録](2026-11-15-duplicati-ngclient-records.md#ngt-100)。公開指示前に既存PRと重複・依存・不足検証を確認              |
-| NGT-101 | duplicati/duplicati#6611 | BLOCKED | `feat/show-db-encryption-preload-paths` / `224fab317da03845d285caf8b272f696220a2335`。本体 feat/systeminfo-preload-paths が先行。ngclient本文は要作成。 検証範囲・未実施・レビュー履歴は[記録](2026-11-15-duplicati-ngclient-records.md#ngt-101)。公開指示前に既存PRと重複・依存・不足検証を確認 |
-
-- 2026-11-15: Duplicati側ワークフローの18件をNGT-084〜101に登録し、40エージェントの一次結果・コマンド抜粋・TEMP保存物と13本のPR本文を移管。本体と対になる5本のngclient本文は要作成。実装変更・再実行・PR作成なし。
+| ID                                                          | 本体Issue・内容                                 | 状態    | ブランチ                                | 先行・公開前の確認                                  |
+| ----------------------------------------------------------- | ----------------------------------------------- | ------- | --------------------------------------- | --------------------------------------------------- |
+| [NGT-084](2026-11-15-duplicati-ngclient-records.md#ngt-084) | duplicati/duplicati#1510 Verify完了通知         | PUSHED  | `fix/verify-completion-alert`           | 実サーバー完了/失敗通知                             |
+| [NGT-085](2026-11-15-duplicati-ngclient-records.md#ngt-085) | duplicati/duplicati#2310 グローバル設定のexport | BLOCKED | `feat/export-global-options`            | 本体 feat/export-global-options が先。本文要作成    |
+| [NGT-086](2026-11-15-duplicati-ngclient-records.md#ngt-086) | duplicati/duplicati#2701 次回予定のskip         | BLOCKED | `feat/skip-next-scheduled-run`          | 本体 feat/skip-next-scheduled-run が先。本文要作成  |
+| [NGT-087](2026-11-15-duplicati-ngclient-records.md#ngt-087) | duplicati/duplicati#3041 進捗件数の桁区切り     | PUSHED  | `fix/status-bar-file-count-separators`  | item 1のみの範囲                                    |
+| [NGT-088](2026-11-15-duplicati-ngclient-records.md#ngt-088) | duplicati/duplicati#3191 配下の部分除外表示     | PUSHED  | `feat/file-tree-partial-exclusion`      | #728のaria-description、#736/050のツリー表示        |
+| [NGT-089](2026-11-15-duplicati-ngclient-records.md#ngt-089) | duplicati/duplicati#3369 idle sign-out          | PUSHED  | `feat/idle-sign-out`                    | 複数タブ・relay等の既存記録と不足範囲               |
+| [NGT-090](2026-11-15-duplicati-ngclient-records.md#ngt-090) | duplicati/duplicati#3519 特殊ソースの実パス表示 | PUSHED  | `feat/show-resolved-source-shortcut`    | NGT-050とSource Dataが重なる                        |
+| [NGT-091](2026-11-15-duplicati-ngclient-records.md#ngt-091) | duplicati/duplicati#3851 テーマのサーバー保存   | PUSHED  | `feat/server-stored-theme`              | 不足検証・既存差分と公開範囲                        |
+| [NGT-092](2026-11-15-duplicati-ngclient-records.md#ngt-092) | duplicati/duplicati#4678 ログから前版と比較     | PUSHED  | `feat/log-compare-previous-version`     | NGT-080とCommandlineが重なる。実ログ日時の対応      |
+| [NGT-093](2026-11-15-duplicati-ngclient-records.md#ngt-093) | duplicati/duplicati#1843 証明書アップロード     | PUSHED  | `feat/ssl-certificate-upload`           | 実証明書のuploadは未実施                            |
+| [NGT-094](2026-11-15-duplicati-ngclient-records.md#ngt-094) | duplicati/duplicati#2259 Issue報告リンク        | PUSHED  | `feat/report-issue-link`                | 不足検証・既存差分と公開範囲                        |
+| [NGT-095](2026-11-15-duplicati-ngclient-records.md#ngt-095) | duplicati/duplicati#2330 全ジョブ開始           | PUSHED  | `feat/run-all-backups`                  | 不足検証・既存差分と公開範囲                        |
+| [NGT-096](2026-11-15-duplicati-ngclient-records.md#ngt-096) | duplicati/duplicati#2764 前回失敗表示           | PUSHED  | `feat/last-run-failed-indicator`        | 警告表示は含まない。Fixes範囲                       |
+| [NGT-097](2026-11-15-duplicati-ngclient-records.md#ngt-097) | duplicati/duplicati#3246 ログdownload           | PUSHED  | `feat/log-download`                     | GUIのみ、CLIは残件                                  |
+| [NGT-098](2026-11-15-duplicati-ngclient-records.md#ngt-098) | duplicati/duplicati#3397 Compact進捗            | BLOCKED | `feat/compact-progress`                 | 本体 feat/compact-progress が先。本文要作成         |
+| [NGT-099](2026-11-15-duplicati-ngclient-records.md#ngt-099) | duplicati/duplicati#3694 復元版の件数           | PUSHED  | `feat/restore-version-file-count`       | 赤の件数は1失敗1合格へ訂正。件数の意味              |
+| [NGT-100](2026-11-15-duplicati-ngclient-records.md#ngt-100) | duplicati/duplicati#5239 直接復元の再開         | BLOCKED | `feat/restore-resume-drafts`            | 本体 feat/list-temporary-backups が先。本文要作成   |
+| [NGT-101](2026-11-15-duplicati-ngclient-records.md#ngt-101) | duplicati/duplicati#6611 DB暗号化・preload表示  | BLOCKED | `feat/show-db-encryption-preload-paths` | 本体 feat/systeminfo-preload-paths が先。本文要作成 |
