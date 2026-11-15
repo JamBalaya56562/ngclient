@@ -1,6 +1,6 @@
 # タスク台帳
 
-更新: 2026-11-14。基準main: `8f401edd337bf53a963fc4e80a47d3db4d52fc3d`。
+更新: 2026-11-15（18件の記録移管のみ。GitHub状態の再照合・実行検証なし）。基準main: `8f401edd337bf53a963fc4e80a47d3db4d52fc3d`。
 
 このファイルが**現在の状態の正本**。日付付き調査文書は根拠・検証範囲・履歴として参照する。Beadsや別のDBは導入しない。GitHubのIssue/PRの状態はGitHubが正本で、この台帳は作業判断用スナップショット。
 
@@ -18,7 +18,7 @@
 
 ## 今後の実装方針・作業順
 
-**検証済み（2026-11-14の取得）**: mainは上記SHA、open PRは#727〜#736の10件。実装ブランチは11件（公開済み10件とNGT-050の未PR 1件）。未PRのNGT-050は#727のマージ待ち。triageと画像URL保存用ブランチは実装数に含めない。旧FilterComponent候補NGT-034は削除・取り下げ済み。[照合記録](2026-11-14-triage-reconciliation.md)。
+**検証済み（2026-11-14の取得）**: mainは上記SHA、open PRは#727〜#736の10件。当時の実装ブランチは11件（公開済み10件とNGT-050の未PR 1件）。11-15の移管記録では別途18件を追加し、記録上は計29件・未PR 19件。今回の移管ではGitHubの現状を再照合していない。NGT-050は#727のマージ待ち。triageと画像URL保存用ブランチは実装数に含めない。旧FilterComponent候補NGT-034は削除・取り下げ済み。[照合記録](2026-11-14-triage-reconciliation.md)。
 
 基本方針は、**再現できる不具合の修正 → 回帰を防ぐ検証 → 動作を保った構造改善**。機能/APIの導入や移行件数自体を目標にしない。以下の順序は実装候補を選ぶ方針であり、未検証の問題が存在するという宣言や、全候補への一括実装・公開の許可ではない。
 
@@ -157,7 +157,7 @@
 
 作業開始時にIDをACTIVEへ変え、担当チャット識別子・ブックマーク・着手日を記載する。終了時は証拠への参照、次の行動、更新日も同時に更新する。PR作成・マージ後はGitHub APIまたはghで実状態を確認し、対応IDの状態を変更する。依存のマージだけで自動的にDONEにはせず、統合後の検証と要求充足を確認する。
 
-依存先が完了したらBLOCKED行を再評価し、着手可能一覧も更新する。完了行は履歴として残す。今回のIDには欠番を設けているが既存IDを詰め直さず、新規はNGT-084から付番する（NGT-080〜083は本更新で割り当て済み）。
+依存先が完了したらBLOCKED行を再評価し、着手可能一覧も更新する。完了行は履歴として残す。今回のIDには欠番を設けているが既存IDを詰め直さず、NGT-084〜101は11-15の移管分へ割り当て済み。新規はNGT-102から付番する。
 
 - 2026-11-12: 初回台帳を追加。固定ID、状態、依存、着手候補を既存の調査記録から整理。新しいバグ再現・コード変更・テスト実行はしていない。
 
@@ -184,3 +184,30 @@ gh pr view 7776 --repo duplicati/duplicati --json number,state,mergedAt
 - 2026-11-14（NGT-051実装）: 利用者の公開指示により表示専用グループを実装しPR #736を公開。open 10件・未PR実装0件。画像専用codex/pr-311-screenshotsは実装候補に数えず保持。[証拠](2026-11-14-ngt-051-individual-file-restore.md)。
 
 - 2026-11-14（NGT-050）: 報告者の返信を受けて属性除外の表示と既存Optionsへの導線を実装・push。未PR実装1件を追加。公開は#727待ちで、スタックしたPRは作らない。[結果と下書き](2026-11-14-ngt-050-source-attributes.md)。
+
+## Duplicati側から移管した準備済みブランチ
+
+証拠と原文: [2026-11-15-duplicati-ngclient-records.md](2026-11-15-duplicati-ngclient-records.md)。以下は記録移管による登録で、移管担当によるテスト・ビルド・統合・公開の承認ではない。PUSHEDは元の検証記録とpush報告がある状態。本体依存5件はBLOCKED。既存の改善候補を選ぶ際も、これらとの重複を確認する（NGT-080とNGT-092のCommandline、NGT-050とNGT-090のSource Data、NGT-005/#728/#736とNGT-088のfile-tree等）。
+
+| ID      | 本体Issue / 内容         | 状態    | ブランチ・依存と次の確認                                                                                                                                                                                                                                                                         |
+| ------- | ------------------------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| NGT-084 | duplicati/duplicati#1510 | PUSHED  | `fix/verify-completion-alert` / `86510cc5ef09b8c36a38417bab6824310c61eb82`。原文PR下書きを保存。 検証範囲・未実施・レビュー履歴は[記録](2026-11-15-duplicati-ngclient-records.md#ngt-084)。公開指示前に既存PRと重複・依存・不足検証を確認                                                        |
+| NGT-085 | duplicati/duplicati#2310 | BLOCKED | `feat/export-global-options` / `088dba4c01d6127b50ff26a5045190b743a668a2`。本体 feat/export-global-options が先行。ngclient本文は要作成。 検証範囲・未実施・レビュー履歴は[記録](2026-11-15-duplicati-ngclient-records.md#ngt-085)。公開指示前に既存PRと重複・依存・不足検証を確認               |
+| NGT-086 | duplicati/duplicati#2701 | BLOCKED | `feat/skip-next-scheduled-run` / `28be8c2be254e859f2fcadc0639afafa24980555`。本体 feat/skip-next-scheduled-run が先行。ngclient本文は要作成。 検証範囲・未実施・レビュー履歴は[記録](2026-11-15-duplicati-ngclient-records.md#ngt-086)。公開指示前に既存PRと重複・依存・不足検証を確認           |
+| NGT-087 | duplicati/duplicati#3041 | PUSHED  | `fix/status-bar-file-count-separators` / `eb506d7c5c715320cb30e236cc84f63bb86df61e`。原文PR下書きを保存。 検証範囲・未実施・レビュー履歴は[記録](2026-11-15-duplicati-ngclient-records.md#ngt-087)。公開指示前に既存PRと重複・依存・不足検証を確認                                               |
+| NGT-088 | duplicati/duplicati#3191 | PUSHED  | `feat/file-tree-partial-exclusion` / `0426e04e0f4c65e57c834c67c06a2c8bddbf0b2a`。原文PR下書きを保存。 検証範囲・未実施・レビュー履歴は[記録](2026-11-15-duplicati-ngclient-records.md#ngt-088)。公開指示前に既存PRと重複・依存・不足検証を確認                                                   |
+| NGT-089 | duplicati/duplicati#3369 | PUSHED  | `feat/idle-sign-out` / `77c6303395e176e0efbf9e4ece3797528905a535`。原文PR下書きを保存。 検証範囲・未実施・レビュー履歴は[記録](2026-11-15-duplicati-ngclient-records.md#ngt-089)。公開指示前に既存PRと重複・依存・不足検証を確認                                                                 |
+| NGT-090 | duplicati/duplicati#3519 | PUSHED  | `feat/show-resolved-source-shortcut` / `1d82b60093c78b741d8833bd34169bf15b8f0bdf`。原文PR下書きを保存。 検証範囲・未実施・レビュー履歴は[記録](2026-11-15-duplicati-ngclient-records.md#ngt-090)。公開指示前に既存PRと重複・依存・不足検証を確認                                                 |
+| NGT-091 | duplicati/duplicati#3851 | PUSHED  | `feat/server-stored-theme` / `fc6d25f8ff799b8a2f75b4b5e67b2d87f88ea27d`。原文PR下書きを保存。 検証範囲・未実施・レビュー履歴は[記録](2026-11-15-duplicati-ngclient-records.md#ngt-091)。公開指示前に既存PRと重複・依存・不足検証を確認                                                           |
+| NGT-092 | duplicati/duplicati#4678 | PUSHED  | `feat/log-compare-previous-version` / `b806e2ee2d9296914a8a7e8e885a27052d5eb491`。原文PR下書きを保存。 検証範囲・未実施・レビュー履歴は[記録](2026-11-15-duplicati-ngclient-records.md#ngt-092)。公開指示前に既存PRと重複・依存・不足検証を確認                                                  |
+| NGT-093 | duplicati/duplicati#1843 | PUSHED  | `feat/ssl-certificate-upload` / `6fbcc1a2140d0b839db18dca839c879a28b82157`。原文PR下書きを保存。 検証範囲・未実施・レビュー履歴は[記録](2026-11-15-duplicati-ngclient-records.md#ngt-093)。公開指示前に既存PRと重複・依存・不足検証を確認                                                        |
+| NGT-094 | duplicati/duplicati#2259 | PUSHED  | `feat/report-issue-link` / `d8a9d4702d9f7be9a79967360e0fa5a66f828b31`。原文PR下書きを保存。 検証範囲・未実施・レビュー履歴は[記録](2026-11-15-duplicati-ngclient-records.md#ngt-094)。公開指示前に既存PRと重複・依存・不足検証を確認                                                             |
+| NGT-095 | duplicati/duplicati#2330 | PUSHED  | `feat/run-all-backups` / `ac3ce63c131b4c9e1190d05f281f5dea4b607a7c`。原文PR下書きを保存。 検証範囲・未実施・レビュー履歴は[記録](2026-11-15-duplicati-ngclient-records.md#ngt-095)。公開指示前に既存PRと重複・依存・不足検証を確認                                                               |
+| NGT-096 | duplicati/duplicati#2764 | PUSHED  | `feat/last-run-failed-indicator` / `1d0fa3bf2393330aa97815c914b83319c92b2433`。原文PR下書きを保存。 検証範囲・未実施・レビュー履歴は[記録](2026-11-15-duplicati-ngclient-records.md#ngt-096)。公開指示前に既存PRと重複・依存・不足検証を確認                                                     |
+| NGT-097 | duplicati/duplicati#3246 | PUSHED  | `feat/log-download` / `1355c2643a6a628eabbd42f5ce59054336942a4c`。原文PR下書きを保存。 検証範囲・未実施・レビュー履歴は[記録](2026-11-15-duplicati-ngclient-records.md#ngt-097)。公開指示前に既存PRと重複・依存・不足検証を確認                                                                  |
+| NGT-098 | duplicati/duplicati#3397 | BLOCKED | `feat/compact-progress` / `792c2ba895634c5934ead901745f5829d139cccd`。本体 feat/compact-progress が先行。ngclient本文は要作成。 検証範囲・未実施・レビュー履歴は[記録](2026-11-15-duplicati-ngclient-records.md#ngt-098)。公開指示前に既存PRと重複・依存・不足検証を確認                         |
+| NGT-099 | duplicati/duplicati#3694 | PUSHED  | `feat/restore-version-file-count` / `026d135944cf3c1bb6107b936adb2d6d8c7d9b86`。原文PR下書きを保存。 検証範囲・未実施・レビュー履歴は[記録](2026-11-15-duplicati-ngclient-records.md#ngt-099)。公開指示前に既存PRと重複・依存・不足検証を確認                                                    |
+| NGT-100 | duplicati/duplicati#5239 | BLOCKED | `feat/restore-resume-drafts` / `a27d25e3eb60aa2710f7f5265914c9547d7e2a07`。本体 feat/list-temporary-backups が先行。ngclient本文は要作成。 検証範囲・未実施・レビュー履歴は[記録](2026-11-15-duplicati-ngclient-records.md#ngt-100)。公開指示前に既存PRと重複・依存・不足検証を確認              |
+| NGT-101 | duplicati/duplicati#6611 | BLOCKED | `feat/show-db-encryption-preload-paths` / `224fab317da03845d285caf8b272f696220a2335`。本体 feat/systeminfo-preload-paths が先行。ngclient本文は要作成。 検証範囲・未実施・レビュー履歴は[記録](2026-11-15-duplicati-ngclient-records.md#ngt-101)。公開指示前に既存PRと重複・依存・不足検証を確認 |
+
+- 2026-11-15: Duplicati側ワークフローの18件をNGT-084〜101に登録し、40エージェントの一次結果・コマンド抜粋・TEMP保存物と13本のPR本文を移管。本体と対になる5本のngclient本文は要作成。実装変更・再実行・PR作成なし。

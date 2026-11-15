@@ -33,3 +33,5 @@ jj file show -r triage triage/2026-11-10-bug-triage.md
 ```
 
 jj/ghはmise管理下の実体を直接呼ぶ。ローカルtmpの証拠はGit管理外なので、将来存在する保証はない。公開コメント、固定SHA、PRと併せて参照し、必要なら再実行する。
+
+移管資料: [Duplicati側で準備された18本の一次記録・レビュー・検証保存物](2026-11-15-duplicati-ngclient-records.md)。現在の状態はtasks.md、引用原文と実行ログの所在は移管記録を参照する。

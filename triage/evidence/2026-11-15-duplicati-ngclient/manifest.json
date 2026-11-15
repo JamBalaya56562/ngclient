@@ -1,0 +1,2850 @@
+{
+  "migration_date": "2026-11-15",
+  "source_revision": "e49eaba6123b38c9018a118f8a40e2e931497407",
+  "journal_source": "C:\\Users\\Jam\\.claude\\projects\\C--Users-Jam-Documents-duplicati\\2ade3d67-588b-4a0d-82ef-8acf31aad402\\subagents\\workflows\\wf_031b812c-914\\journal.jsonl",
+  "journal_sha256": "054473000cb156ee9a1a88935d72beac1c6e70634f3fedfa724acd3e45774ef7",
+  "transcripts": [
+    {
+      "agentId": "a3ad6abe3c83d7365",
+      "source": "C:\\Users\\Jam\\.claude\\projects\\C--Users-Jam-Documents-duplicati\\2ade3d67-588b-4a0d-82ef-8acf31aad402\\subagents\\workflows\\wf_031b812c-914\\agent-a3ad6abe3c83d7365.jsonl",
+      "bytes": 826295,
+      "sha256": "56218884707681f10b98b48850043d894fa31aff45ccece33fbe8518d8590c92",
+      "selected_commands": 8,
+      "status": "抜粋保存。全履歴は元パスを参照",
+      "auxiliary_records": 0
+    },
+    {
+      "agentId": "ae115b3be82345290",
+      "source": "C:\\Users\\Jam\\.claude\\projects\\C--Users-Jam-Documents-duplicati\\2ade3d67-588b-4a0d-82ef-8acf31aad402\\subagents\\workflows\\wf_031b812c-914\\agent-ae115b3be82345290.jsonl",
+      "bytes": 955629,
+      "sha256": "8d0c520faa9873c0aecc45d6a3f98dfb6706692d0373cd2ba8bdecdd4881d723",
+      "selected_commands": 8,
+      "status": "抜粋保存。全履歴は元パスを参照",
+      "auxiliary_records": 0
+    },
+    {
+      "agentId": "aa817f6a7951495fe",
+      "source": "C:\\Users\\Jam\\.claude\\projects\\C--Users-Jam-Documents-duplicati\\2ade3d67-588b-4a0d-82ef-8acf31aad402\\subagents\\workflows\\wf_031b812c-914\\agent-aa817f6a7951495fe.jsonl",
+      "bytes": 604358,
+      "sha256": "6533759dcba69a27795c985450528ea4379fe5397c72d7e9d65a1e701033f834",
+      "selected_commands": 2,
+      "status": "抜粋保存。全履歴は元パスを参照",
+      "auxiliary_records": 0
+    },
+    {
+      "agentId": "aefc1e66677034ee8",
+      "source": "C:\\Users\\Jam\\.claude\\projects\\C--Users-Jam-Documents-duplicati\\2ade3d67-588b-4a0d-82ef-8acf31aad402\\subagents\\workflows\\wf_031b812c-914\\agent-aefc1e66677034ee8.jsonl",
+      "bytes": 633376,
+      "sha256": "dc072d424e6cfc6d5d193cc5779890c01cc1a5c951dde245c9dad273827b61c1",
+      "selected_commands": 2,
+      "status": "抜粋保存。全履歴は元パスを参照",
+      "auxiliary_records": 0
+    },
+    {
+      "agentId": "a89963ba9900dbe54",
+      "source": "C:\\Users\\Jam\\.claude\\projects\\C--Users-Jam-Documents-duplicati\\2ade3d67-588b-4a0d-82ef-8acf31aad402\\subagents\\workflows\\wf_031b812c-914\\agent-a89963ba9900dbe54.jsonl",
+      "bytes": 705544,
+      "sha256": "dd04f8c1e09161e00ceda2d566befc6c647a059579b61b56e8b176bfefb982f5",
+      "selected_commands": 4,
+      "status": "抜粋保存。全履歴は元パスを参照",
+      "auxiliary_records": 0
+    },
+    {
+      "agentId": "a907bbcb48708bf3e",
+      "source": "C:\\Users\\Jam\\.claude\\projects\\C--Users-Jam-Documents-duplicati\\2ade3d67-588b-4a0d-82ef-8acf31aad402\\subagents\\workflows\\wf_031b812c-914\\agent-a907bbcb48708bf3e.jsonl",
+      "bytes": 578434,
+      "sha256": "5ca9f3f6c81b0da0e32f0d5f5125247f88b1861aa78600a32edcd0cf71a8518a",
+      "selected_commands": 1,
+      "status": "抜粋保存。全履歴は元パスを参照",
+      "auxiliary_records": 0
+    },
+    {
+      "agentId": "af11bd29541a099a0",
+      "source": "C:\\Users\\Jam\\.claude\\projects\\C--Users-Jam-Documents-duplicati\\2ade3d67-588b-4a0d-82ef-8acf31aad402\\subagents\\workflows\\wf_031b812c-914\\agent-af11bd29541a099a0.jsonl",
+      "bytes": 836162,
+      "sha256": "1f04b1d9123f71bf5c4e5797704022aacd119437b945a24a81695e9cc57fe1a3",
+      "selected_commands": 9,
+      "status": "抜粋保存。全履歴は元パスを参照",
+      "auxiliary_records": 0
+    },
+    {
+      "agentId": "a99806cfe12ff9d7f",
+      "source": "C:\\Users\\Jam\\.claude\\projects\\C--Users-Jam-Documents-duplicati\\2ade3d67-588b-4a0d-82ef-8acf31aad402\\subagents\\workflows\\wf_031b812c-914\\agent-a99806cfe12ff9d7f.jsonl",
+      "bytes": 1031950,
+      "sha256": "40ae30733d04c6743847cbcf38245674eef2297f061b410c02b228fe3e010400",
+      "selected_commands": 7,
+      "status": "抜粋保存。全履歴は元パスを参照",
+      "auxiliary_records": 1
+    },
+    {
+      "agentId": "a8f009b1fddf947a5",
+      "source": "C:\\Users\\Jam\\.claude\\projects\\C--Users-Jam-Documents-duplicati\\2ade3d67-588b-4a0d-82ef-8acf31aad402\\subagents\\workflows\\wf_031b812c-914\\agent-a8f009b1fddf947a5.jsonl",
+      "bytes": 618200,
+      "sha256": "c4629e45cc4ef695f3fc6c2b6e5bc729d0e21642c006af1cb7a1d7fa64e2be10",
+      "selected_commands": 7,
+      "status": "抜粋保存。全履歴は元パスを参照",
+      "auxiliary_records": 0
+    },
+    {
+      "agentId": "a3b555c2a78ab7df1",
+      "source": "C:\\Users\\Jam\\.claude\\projects\\C--Users-Jam-Documents-duplicati\\2ade3d67-588b-4a0d-82ef-8acf31aad402\\subagents\\workflows\\wf_031b812c-914\\agent-a3b555c2a78ab7df1.jsonl",
+      "bytes": 975479,
+      "sha256": "13660945f068f07cba48a14a76b6275551f4af2c884785a8b80c5a88a25b5039",
+      "selected_commands": 12,
+      "status": "抜粋保存。全履歴は元パスを参照",
+      "auxiliary_records": 0
+    },
+    {
+      "agentId": "a7e3d89b953051c28",
+      "source": "C:\\Users\\Jam\\.claude\\projects\\C--Users-Jam-Documents-duplicati\\2ade3d67-588b-4a0d-82ef-8acf31aad402\\subagents\\workflows\\wf_031b812c-914\\agent-a7e3d89b953051c28.jsonl",
+      "bytes": 641453,
+      "sha256": "c193c90f9e1410c07276c5d34909bfee397082bf0fc76ac0ec5ed36087628362",
+      "selected_commands": 5,
+      "status": "抜粋保存。全履歴は元パスを参照",
+      "auxiliary_records": 0
+    },
+    {
+      "agentId": "addf53d58b7ff8c0c",
+      "source": "C:\\Users\\Jam\\.claude\\projects\\C--Users-Jam-Documents-duplicati\\2ade3d67-588b-4a0d-82ef-8acf31aad402\\subagents\\workflows\\wf_031b812c-914\\agent-addf53d58b7ff8c0c.jsonl",
+      "bytes": 692465,
+      "sha256": "95ec098d057062b6b15c6019686e76ae48d857aa90a1f77138885b4bcb080cda",
+      "selected_commands": 4,
+      "status": "抜粋保存。全履歴は元パスを参照",
+      "auxiliary_records": 0
+    },
+    {
+      "agentId": "a72789f6ca8dcb106",
+      "source": "C:\\Users\\Jam\\.claude\\projects\\C--Users-Jam-Documents-duplicati\\2ade3d67-588b-4a0d-82ef-8acf31aad402\\subagents\\workflows\\wf_031b812c-914\\agent-a72789f6ca8dcb106.jsonl",
+      "bytes": 1219841,
+      "sha256": "4e8d04ff8bf033bee682ae506eb779bf47c5f1bdabcfe59d69834e85e6defd7a",
+      "selected_commands": 9,
+      "status": "抜粋保存。全履歴は元パスを参照",
+      "auxiliary_records": 1
+    },
+    {
+      "agentId": "af40a01351a4968c1",
+      "source": "C:\\Users\\Jam\\.claude\\projects\\C--Users-Jam-Documents-duplicati\\2ade3d67-588b-4a0d-82ef-8acf31aad402\\subagents\\workflows\\wf_031b812c-914\\agent-af40a01351a4968c1.jsonl",
+      "bytes": 1403106,
+      "sha256": "889765558647cc7db92aeed37d380af4a34e9747f348182aa05fac3f855ab1a5",
+      "selected_commands": 7,
+      "status": "抜粋保存。全履歴は元パスを参照",
+      "auxiliary_records": 3
+    },
+    {
+      "agentId": "af2ba383f6dea9cb2",
+      "source": "C:\\Users\\Jam\\.claude\\projects\\C--Users-Jam-Documents-duplicati\\2ade3d67-588b-4a0d-82ef-8acf31aad402\\subagents\\workflows\\wf_031b812c-914\\agent-af2ba383f6dea9cb2.jsonl",
+      "bytes": 662166,
+      "sha256": "339c34340b679dbaa6bc70b943e53ad67e1a3a39d899e35872831483fd1ca06e",
+      "selected_commands": 5,
+      "status": "抜粋保存。全履歴は元パスを参照",
+      "auxiliary_records": 0
+    },
+    {
+      "agentId": "a1afc631005b417f2",
+      "source": "C:\\Users\\Jam\\.claude\\projects\\C--Users-Jam-Documents-duplicati\\2ade3d67-588b-4a0d-82ef-8acf31aad402\\subagents\\workflows\\wf_031b812c-914\\agent-a1afc631005b417f2.jsonl",
+      "bytes": 804278,
+      "sha256": "3bb98048f277135cc7031a1d4d83941c09cfe12ef1f7b6720f5063ed7d356bbe",
+      "selected_commands": 8,
+      "status": "抜粋保存。全履歴は元パスを参照",
+      "auxiliary_records": 1
+    },
+    {
+      "agentId": "a9db97528b43bd939",
+      "source": "C:\\Users\\Jam\\.claude\\projects\\C--Users-Jam-Documents-duplicati\\2ade3d67-588b-4a0d-82ef-8acf31aad402\\subagents\\workflows\\wf_031b812c-914\\agent-a9db97528b43bd939.jsonl",
+      "bytes": 557201,
+      "sha256": "ad87c971b9608d666cb2b7dc8c6c431d7080a5a1a404f314b4ad7f1566079059",
+      "selected_commands": 2,
+      "status": "抜粋保存。全履歴は元パスを参照",
+      "auxiliary_records": 0
+    },
+    {
+      "agentId": "a8faaf5b597c805d8",
+      "source": "C:\\Users\\Jam\\.claude\\projects\\C--Users-Jam-Documents-duplicati\\2ade3d67-588b-4a0d-82ef-8acf31aad402\\subagents\\workflows\\wf_031b812c-914\\agent-a8faaf5b597c805d8.jsonl",
+      "bytes": 1021780,
+      "sha256": "0db67ddcbb111a57b11cb556b51c823375002fd3e950e306b8bb6e99da796f15",
+      "selected_commands": 6,
+      "status": "抜粋保存。全履歴は元パスを参照",
+      "auxiliary_records": 0
+    },
+    {
+      "agentId": "ade56d0da67b67c90",
+      "source": "C:\\Users\\Jam\\.claude\\projects\\C--Users-Jam-Documents-duplicati\\2ade3d67-588b-4a0d-82ef-8acf31aad402\\subagents\\workflows\\wf_031b812c-914\\agent-ade56d0da67b67c90.jsonl",
+      "bytes": 955739,
+      "sha256": "3f123dbb80ccfc05438f6d3afea8e5c6860e04bf5c4bf626572f6c77a3785b98",
+      "selected_commands": 5,
+      "status": "抜粋保存。全履歴は元パスを参照",
+      "auxiliary_records": 3
+    },
+    {
+      "agentId": "ac4018c6250ce18df",
+      "source": "C:\\Users\\Jam\\.claude\\projects\\C--Users-Jam-Documents-duplicati\\2ade3d67-588b-4a0d-82ef-8acf31aad402\\subagents\\workflows\\wf_031b812c-914\\agent-ac4018c6250ce18df.jsonl",
+      "bytes": 731701,
+      "sha256": "e615405a7b3b63a94937522a914429db8cd50edd1010502fb5f61b005f35e26c",
+      "selected_commands": 2,
+      "status": "抜粋保存。全履歴は元パスを参照",
+      "auxiliary_records": 0
+    },
+    {
+      "agentId": "a3d35e1e99355dfdf",
+      "source": "C:\\Users\\Jam\\.claude\\projects\\C--Users-Jam-Documents-duplicati\\2ade3d67-588b-4a0d-82ef-8acf31aad402\\subagents\\workflows\\wf_031b812c-914\\agent-a3d35e1e99355dfdf.jsonl",
+      "bytes": 1190851,
+      "sha256": "b09e3aa7a80acfc10454b9f0aede249337389dc3ea914e4446e2f5a0a4eb5387",
+      "selected_commands": 1,
+      "status": "抜粋保存。全履歴は元パスを参照",
+      "auxiliary_records": 5
+    },
+    {
+      "agentId": "a59c5aa45f6b75661",
+      "source": "C:\\Users\\Jam\\.claude\\projects\\C--Users-Jam-Documents-duplicati\\2ade3d67-588b-4a0d-82ef-8acf31aad402\\subagents\\workflows\\wf_031b812c-914\\agent-a59c5aa45f6b75661.jsonl",
+      "bytes": 885169,
+      "sha256": "d9cb319710aaec91bfa8ad1aea75e7a22e889aee99832216e6591df8eefb343d",
+      "selected_commands": 10,
+      "status": "抜粋保存。全履歴は元パスを参照",
+      "auxiliary_records": 0
+    },
+    {
+      "agentId": "a857e376a2e5e0219",
+      "source": "C:\\Users\\Jam\\.claude\\projects\\C--Users-Jam-Documents-duplicati\\2ade3d67-588b-4a0d-82ef-8acf31aad402\\subagents\\workflows\\wf_031b812c-914\\agent-a857e376a2e5e0219.jsonl",
+      "bytes": 720805,
+      "sha256": "21516de07099a926506ab53dfdc37a67a9a4287651e9edceff03fee881903c5c",
+      "selected_commands": 2,
+      "status": "抜粋保存。全履歴は元パスを参照",
+      "auxiliary_records": 0
+    },
+    {
+      "agentId": "a0656a2392a87bbaf",
+      "source": "C:\\Users\\Jam\\.claude\\projects\\C--Users-Jam-Documents-duplicati\\2ade3d67-588b-4a0d-82ef-8acf31aad402\\subagents\\workflows\\wf_031b812c-914\\agent-a0656a2392a87bbaf.jsonl",
+      "bytes": 579813,
+      "sha256": "c11b145fa14a171f86c98da51ca8a2903ba343ebc1a809cd8d28f02e7acf20bc",
+      "selected_commands": 5,
+      "status": "抜粋保存。全履歴は元パスを参照",
+      "auxiliary_records": 0
+    },
+    {
+      "agentId": "afb2bd62d7082cd90",
+      "source": "C:\\Users\\Jam\\.claude\\projects\\C--Users-Jam-Documents-duplicati\\2ade3d67-588b-4a0d-82ef-8acf31aad402\\subagents\\workflows\\wf_031b812c-914\\agent-afb2bd62d7082cd90.jsonl",
+      "bytes": 1695367,
+      "sha256": "5a35388966614533542a468c20399d80179f2f8ee22f3adf48ee96c0fa2b8d85",
+      "selected_commands": 8,
+      "status": "抜粋保存。全履歴は元パスを参照",
+      "auxiliary_records": 0
+    },
+    {
+      "agentId": "aa2fb0cfe967392e2",
+      "source": "C:\\Users\\Jam\\.claude\\projects\\C--Users-Jam-Documents-duplicati\\2ade3d67-588b-4a0d-82ef-8acf31aad402\\subagents\\workflows\\wf_031b812c-914\\agent-aa2fb0cfe967392e2.jsonl",
+      "bytes": 693641,
+      "sha256": "0d2ffb1aea66adc02625338bb2339e8c404b49b92a70ce0905f3e5c716df3bc8",
+      "selected_commands": 7,
+      "status": "抜粋保存。全履歴は元パスを参照",
+      "auxiliary_records": 0
+    },
+    {
+      "agentId": "a220e3ae160129497",
+      "source": "C:\\Users\\Jam\\.claude\\projects\\C--Users-Jam-Documents-duplicati\\2ade3d67-588b-4a0d-82ef-8acf31aad402\\subagents\\workflows\\wf_031b812c-914\\agent-a220e3ae160129497.jsonl",
+      "bytes": 637630,
+      "sha256": "5b054d410438a44a1a319a948b0c99251271926993e2ad0349677dd9b509fe5d",
+      "selected_commands": 6,
+      "status": "抜粋保存。全履歴は元パスを参照",
+      "auxiliary_records": 0
+    },
+    {
+      "agentId": "af948d130caa2096e",
+      "source": "C:\\Users\\Jam\\.claude\\projects\\C--Users-Jam-Documents-duplicati\\2ade3d67-588b-4a0d-82ef-8acf31aad402\\subagents\\workflows\\wf_031b812c-914\\agent-af948d130caa2096e.jsonl",
+      "bytes": 844412,
+      "sha256": "7237ffe9954dd83017333d9d3766c4f3bf13be7f0674a3db0b51ed6d217950dd",
+      "selected_commands": 4,
+      "status": "抜粋保存。全履歴は元パスを参照",
+      "auxiliary_records": 0
+    },
+    {
+      "agentId": "a9462d09dcabdfec0",
+      "source": "C:\\Users\\Jam\\.claude\\projects\\C--Users-Jam-Documents-duplicati\\2ade3d67-588b-4a0d-82ef-8acf31aad402\\subagents\\workflows\\wf_031b812c-914\\agent-a9462d09dcabdfec0.jsonl",
+      "bytes": 610550,
+      "sha256": "9469a0d957b3226714869712938fc5f93144d22fa84e8b693ec68c9e0cf90196",
+      "selected_commands": 3,
+      "status": "抜粋保存。全履歴は元パスを参照",
+      "auxiliary_records": 0
+    },
+    {
+      "agentId": "aabec9e9f6d0c0477",
+      "source": "C:\\Users\\Jam\\.claude\\projects\\C--Users-Jam-Documents-duplicati\\2ade3d67-588b-4a0d-82ef-8acf31aad402\\subagents\\workflows\\wf_031b812c-914\\agent-aabec9e9f6d0c0477.jsonl",
+      "bytes": 884848,
+      "sha256": "1944350bd02ef0dfdf8d07bea571662d561e09b8b2a0da6d2a16d0b3ee36e4c9",
+      "selected_commands": 1,
+      "status": "抜粋保存。全履歴は元パスを参照",
+      "auxiliary_records": 1
+    },
+    {
+      "agentId": "adf1145963d8ce780",
+      "source": "C:\\Users\\Jam\\.claude\\projects\\C--Users-Jam-Documents-duplicati\\2ade3d67-588b-4a0d-82ef-8acf31aad402\\subagents\\workflows\\wf_031b812c-914\\agent-adf1145963d8ce780.jsonl",
+      "bytes": 1239970,
+      "sha256": "8d7a78d12564d184958cceac26e0e960bf7e924fb92ffc55163d08d1f6eca7e5",
+      "selected_commands": 16,
+      "status": "抜粋保存。全履歴は元パスを参照",
+      "auxiliary_records": 1
+    },
+    {
+      "agentId": "ae2f580ddb1a4bf9d",
+      "source": "C:\\Users\\Jam\\.claude\\projects\\C--Users-Jam-Documents-duplicati\\2ade3d67-588b-4a0d-82ef-8acf31aad402\\subagents\\workflows\\wf_031b812c-914\\agent-ae2f580ddb1a4bf9d.jsonl",
+      "bytes": 640068,
+      "sha256": "1c801a768ae094730e98504aada79adbd9e948a45a08f0330aa90de27ff4c716",
+      "selected_commands": 3,
+      "status": "抜粋保存。全履歴は元パスを参照",
+      "auxiliary_records": 0
+    },
+    {
+      "agentId": "aa50f608c8a2c26db",
+      "source": "C:\\Users\\Jam\\.claude\\projects\\C--Users-Jam-Documents-duplicati\\2ade3d67-588b-4a0d-82ef-8acf31aad402\\subagents\\workflows\\wf_031b812c-914\\agent-aa50f608c8a2c26db.jsonl",
+      "bytes": 1298610,
+      "sha256": "db4de7c455fe22af39fba54638f57169a23859d61b18e6a06f9be779b40187be",
+      "selected_commands": 5,
+      "status": "抜粋保存。全履歴は元パスを参照",
+      "auxiliary_records": 0
+    },
+    {
+      "agentId": "a71e1b62a08b1d1ce",
+      "source": "C:\\Users\\Jam\\.claude\\projects\\C--Users-Jam-Documents-duplicati\\2ade3d67-588b-4a0d-82ef-8acf31aad402\\subagents\\workflows\\wf_031b812c-914\\agent-a71e1b62a08b1d1ce.jsonl",
+      "bytes": 776551,
+      "sha256": "f6a44286f848e835faf43310b087837afb12cc29126e906d7ddc82d04f62332a",
+      "selected_commands": 7,
+      "status": "抜粋保存。全履歴は元パスを参照",
+      "auxiliary_records": 0
+    },
+    {
+      "agentId": "a9260e3059ce61e6d",
+      "source": "C:\\Users\\Jam\\.claude\\projects\\C--Users-Jam-Documents-duplicati\\2ade3d67-588b-4a0d-82ef-8acf31aad402\\subagents\\workflows\\wf_031b812c-914\\agent-a9260e3059ce61e6d.jsonl",
+      "bytes": 671734,
+      "sha256": "fcb14ca7a44f30fef5ceb0b6f8f1721989408781d8b4725d04d9a7de3da2a6a4",
+      "selected_commands": 5,
+      "status": "抜粋保存。全履歴は元パスを参照",
+      "auxiliary_records": 0
+    },
+    {
+      "agentId": "a00923c6959cef043",
+      "source": "C:\\Users\\Jam\\.claude\\projects\\C--Users-Jam-Documents-duplicati\\2ade3d67-588b-4a0d-82ef-8acf31aad402\\subagents\\workflows\\wf_031b812c-914\\agent-a00923c6959cef043.jsonl",
+      "bytes": 565620,
+      "sha256": "b4fb4fbf51448607b890219d5835c6478229950b5e6ff145bfc9837d521d5009",
+      "selected_commands": 2,
+      "status": "抜粋保存。全履歴は元パスを参照",
+      "auxiliary_records": 0
+    },
+    {
+      "agentId": "abe136e7c81d3957a",
+      "source": "C:\\Users\\Jam\\.claude\\projects\\C--Users-Jam-Documents-duplicati\\2ade3d67-588b-4a0d-82ef-8acf31aad402\\subagents\\workflows\\wf_031b812c-914\\agent-abe136e7c81d3957a.jsonl",
+      "bytes": 994145,
+      "sha256": "7c49ad375da29c23f4562465e6f34e7982402e1e36cd610e0113ad60106d920b",
+      "selected_commands": 6,
+      "status": "抜粋保存。全履歴は元パスを参照",
+      "auxiliary_records": 1
+    },
+    {
+      "agentId": "ab110b6cd5a78cfc8",
+      "source": "C:\\Users\\Jam\\.claude\\projects\\C--Users-Jam-Documents-duplicati\\2ade3d67-588b-4a0d-82ef-8acf31aad402\\subagents\\workflows\\wf_031b812c-914\\agent-ab110b6cd5a78cfc8.jsonl",
+      "bytes": 632782,
+      "sha256": "a40a7df8d068770100dd04fb8edb0178efc68ab6215def25d7d1e33b6131d2a1",
+      "selected_commands": 3,
+      "status": "抜粋保存。全履歴は元パスを参照",
+      "auxiliary_records": 0
+    },
+    {
+      "agentId": "a15bd764caadb99bd",
+      "source": "C:\\Users\\Jam\\.claude\\projects\\C--Users-Jam-Documents-duplicati\\2ade3d67-588b-4a0d-82ef-8acf31aad402\\subagents\\workflows\\wf_031b812c-914\\agent-a15bd764caadb99bd.jsonl",
+      "bytes": 1059822,
+      "sha256": "ba9ba94ed6a0296e63167bbe33fb4836e10dad5083d287dd6d1b413d845d41cf",
+      "selected_commands": 8,
+      "status": "抜粋保存。全履歴は元パスを参照",
+      "auxiliary_records": 0
+    },
+    {
+      "agentId": "ad92b47c6e3547ed4",
+      "source": "C:\\Users\\Jam\\.claude\\projects\\C--Users-Jam-Documents-duplicati\\2ade3d67-588b-4a0d-82ef-8acf31aad402\\subagents\\workflows\\wf_031b812c-914\\agent-ad92b47c6e3547ed4.jsonl",
+      "bytes": 648410,
+      "sha256": "f24ceaba61db6efc0426e8bf11aa27c83c8a7a70aee81aea800be23ab8fd5e65",
+      "selected_commands": 5,
+      "status": "抜粋保存。全履歴は元パスを参照",
+      "auxiliary_records": 0
+    }
+  ],
+  "artifacts": [
+    {
+      "source_relative": "skipprobe.ps1",
+      "bytes": 3451,
+      "sha256": "b4f67851709e5ca696067770a349a7da01d5d6cc18577a8c52aebd7478dcb08a",
+      "included": true,
+      "reason": "一次保存物を保全",
+      "destination": "artifacts\\skipprobe.ps1"
+    },
+    {
+      "source_relative": "e2e3369\\idle.mjs",
+      "bytes": 2035,
+      "sha256": "4a68240ff7cfbbb8342bbcf0352039cfb24b0c22771d44b2494b315ed939d6dd",
+      "included": true,
+      "reason": "一次保存物を保全",
+      "destination": "artifacts\\e2e3369\\idle.mjs"
+    },
+    {
+      "source_relative": "e2e3369\\msg.txt",
+      "bytes": 886,
+      "sha256": "2b82878d8a1f95005b3223f34867a2a28962b9bc6ed86273e241057ec8513718",
+      "included": true,
+      "reason": "一次保存物を保全",
+      "destination": "artifacts\\e2e3369\\msg.txt"
+    },
+    {
+      "source_relative": "e2e3369\\proxy.conf.mjs",
+      "bytes": 164,
+      "sha256": "6a0e80d5f8d875986739b9f5adb9747df044d17a3913826708b62cb566e41f85",
+      "included": true,
+      "reason": "一次保存物を保全",
+      "destination": "artifacts\\e2e3369\\proxy.conf.mjs"
+    },
+    {
+      "source_relative": "e2e3369\\serve.log",
+      "bytes": 78615,
+      "sha256": "ecf0e48d8a857ac95084771686eece8d7a3c00f9162c9b3d05257c260192a997",
+      "included": true,
+      "reason": "一次保存物を保全",
+      "destination": "artifacts\\e2e3369\\serve.log"
+    },
+    {
+      "source_relative": "e2e3369\\server.log",
+      "bytes": 4150,
+      "sha256": "2df34f909f27fa094c2cb8219abd25a7850e35ba876ed0be62c00b5f92b9c83b",
+      "included": true,
+      "reason": "一次保存物を保全",
+      "destination": "artifacts\\e2e3369\\server.log"
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\3rdpartylicenses.txt",
+      "bytes": 26026,
+      "sha256": "c950f3bc8982f82f462ca948bfa9296a3f743f1ba3c498f79eda02cc56ff5771",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "wt\\red.py",
+      "bytes": 604,
+      "sha256": "b9a97eba633e73db8cab92f20492970bf35a8387d00b6e4b009d291cc79d6192",
+      "included": true,
+      "reason": "一次保存物を保全",
+      "destination": "artifacts\\wt\\red.py"
+    },
+    {
+      "source_relative": "xlf3694\\messages.xlf",
+      "bytes": 758595,
+      "sha256": "1a1fa0b0ec66e0f08bba5f42141e97ab01dc0077cdbe2fe30533eadd585b6058",
+      "included": true,
+      "reason": "一次保存物を保全",
+      "destination": "artifacts\\xlf3694\\messages.xlf"
+    },
+    {
+      "source_relative": "wt\\n2\\test-results\\home-backup-state-home-las-741e3-st-run-failed-in-both-views-chromium\\error-context.md",
+      "bytes": 8959,
+      "sha256": "bf480633768b97b65ecd9137adbaed85a806f708a4039821b7f22d0562e33d3c",
+      "included": true,
+      "reason": "一次保存物を保全",
+      "destination": "artifacts\\wt\\n2\\test-results\\home-backup-state-home-las-741e3-st-run-failed-in-both-views-chromium\\error-context.md"
+    },
+    {
+      "source_relative": "wt\\n2\\test-results\\home-backup-state-home-las-741e3-st-run-failed-in-both-views-chromium\\test-failed-1.png",
+      "bytes": 91672,
+      "sha256": "d40aadc5f64a1e156651855a101eac45060eaad66be40e03eac97c46b0aa852d",
+      "included": true,
+      "reason": "一次保存物を保全",
+      "destination": "artifacts\\wt\\n2\\test-results\\home-backup-state-home-las-741e3-st-run-failed-in-both-views-chromium\\test-failed-1.png"
+    },
+    {
+      "source_relative": "wt\\n2\\test-results\\home-backup-state-home-las-741e3-st-run-failed-in-both-views-chromium\\trace.zip",
+      "bytes": 1054493,
+      "sha256": "41ec4db781ab992dfc347502bb5df706c2bf6066cc8520bc060b156cec4d5500",
+      "included": true,
+      "reason": "一次保存物を保全",
+      "destination": "artifacts\\wt\\n2\\test-results\\home-backup-state-home-las-741e3-st-run-failed-in-both-views-chromium\\trace.zip"
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-0l4EFLt7.js",
+      "bytes": 4598,
+      "sha256": "b2dd5ea1048d2054f2ae8d4fbd59d780654fc65f6aa70e8d4b8a184879ef53c5",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-1lMztgb-.js",
+      "bytes": 1528,
+      "sha256": "87b0baccc25a88284ee1686d8e6b102d90363a819c6d208e55df0cc00f2a46b6",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-3B5SdnSL.js",
+      "bytes": 81808,
+      "sha256": "75fef0731c19054e859a94061089e0e5a1e42f12839a34838cf32d7f040b840d",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-4ocIcaSy.js",
+      "bytes": 723,
+      "sha256": "7663b4ca02b480790f4e8e876b443232d1de31abfd7bbe08a074dcde4906fd18",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-68I9KZ5I.js",
+      "bytes": 10384,
+      "sha256": "212a845d7a6e52cecf66439635c6e4c9c35992ffc76f0b57c2f1013232390bee",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-7dRM5l9D.js",
+      "bytes": 271,
+      "sha256": "ae347d59d3e3f36816134c51ce59abff9a5d63c7367d5b713d6e4aeee7a6b9a5",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-B1GQ92wm.js",
+      "bytes": 28062,
+      "sha256": "718800ea622f68b8ef6fa255936542db71fb5dbcf9b93fea75d8162b514c1f16",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-B6CAQiNT.js",
+      "bytes": 6218,
+      "sha256": "0567007e5e83a3db77b1725f92c83ddb7f402af63e5ab9ed471a6f376a88c413",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-B7XHYA11.js",
+      "bytes": 650,
+      "sha256": "c22d498b860af936e0493d31cc8ef823435a473a7287a8cbcae7cb90b3eb97bb",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-B9STdjqr.js",
+      "bytes": 8111,
+      "sha256": "eb1afdaf5dd43c239637a9a92ec17e2f198f97a184dee228f30481d50248861b",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-BAvLXjos.js",
+      "bytes": 12497,
+      "sha256": "866e8a6097baee9b949cd5ff03a09d115798d0e672d1f65480b5f4c3a6f53c30",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-BBSXkwuh.js",
+      "bytes": 24162,
+      "sha256": "7a10ca2bc1527fc745694bcee485001d4f01237045a995e1e61319e568e049d3",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-BEwBCOWa.js",
+      "bytes": 2998,
+      "sha256": "6dab0e95ef5dd3aa7bc36c8b28e41f1758f637cc9b262a4622dc4c91cbce437b",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-BgwXnA2r.js",
+      "bytes": 10223,
+      "sha256": "1b8f3bc21fb8678c1c889d7f4235635d0228c8ddd17564dcbf501b0b6a987956",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-BG_9lvQI.js",
+      "bytes": 2287,
+      "sha256": "0c4d2d9a6eea02b7ce06f64fa98e3821e591dec0acff8a01bb2585d95f2f2d85",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-Bi3qsRtL.js",
+      "bytes": 2282,
+      "sha256": "ab1f0d38a0b408030f7ccb99b7810f9fd06bad0e77b664afe584ed586591f686",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-BihukeS7.js",
+      "bytes": 645,
+      "sha256": "9c915cac69fe233d95b669f03916d5a2050ff861ae27e40d47497d8b2e48f905",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-BikntgLW.js",
+      "bytes": 81880,
+      "sha256": "29c33068554f5af9df984842bf3ffe698e49a5b10bbac472be57a93c115ca433",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-BIRwBiFI.js",
+      "bytes": 125,
+      "sha256": "2598808fc83f382b439f4ed31f10e58cfd4499406f34291dec465504b5a36ea3",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-BIuoPWil.js",
+      "bytes": 271,
+      "sha256": "26f7d899840024416d8d5199baa104858fb47d2a074a282ea18562e7583a695b",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-BjE_TQOZ.js",
+      "bytes": 692,
+      "sha256": "41e4aa8cd323787c8e8c8792ea36eebb8f2b695cc597875c9cbd223659b66fe6",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-BJvIrRzB.js",
+      "bytes": 7396,
+      "sha256": "5627a9996e986bbdd2af9079d5b995f76842a2ae01cff2f7b31444165a21b824",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-BKCo0GUq.js",
+      "bytes": 1765,
+      "sha256": "22c71ea8578151dcf7693eba40e1c684ceb5289823498133e051980c0841a6be",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-Bkt7kXlM.js",
+      "bytes": 4706,
+      "sha256": "3859eebfc3144504d3731bba18efd9b3d6e289ac906fc14a5f15d3ffa96f7435",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-BlCqpD7O.js",
+      "bytes": 11374,
+      "sha256": "c5a6615a62dbe00c9638c9d3ffb5ebd39e8387854813591d60bc2e5330cf887e",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-BLJY1M26.js",
+      "bytes": 8532,
+      "sha256": "fedfbb0ee06e04876942e197f6cf4a3734ab7bca513716e4341c2b4454c0669f",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-BMvsgw2M.js",
+      "bytes": 7300,
+      "sha256": "956a4c21a95ef4b5bdcc5d302fc3c17417db6f94d53cefa7c2154df9786299b2",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-BOvegkIq.js",
+      "bytes": 13135,
+      "sha256": "0c8fb7914d1c1807e20f8b041b1fe45374ebcee752c69d3af58d10cf4d0bca3e",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-BP6cxZcO.js",
+      "bytes": 424,
+      "sha256": "b1328a9e901afc6014c133c92f6a5818ac5d7684f0337e6226d7585204271b3b",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-BQ7Mr6J6.js",
+      "bytes": 7643,
+      "sha256": "cfe3e89f9aad11fd53a74f78cfb1db8c01ef757589a6f57c0697058eac37c42d",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-BqRAgWLw.js",
+      "bytes": 5350,
+      "sha256": "ba03c8acfd086ffa662261d464340d0dd7e1cbcb4eccae2e12fc4bc38fdc8704",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-BsaXCHUb.js",
+      "bytes": 11946,
+      "sha256": "2b6c6e32204981839d36332d9ca876207b819f9a48c422fb32c9bb1e1f510d01",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-Bu9IAjUP.js",
+      "bytes": 4850,
+      "sha256": "26baca9fca9cd200171c965c38d264e4ab355486edf41adee7de3cf07201d974",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-BuAp1dRU.js",
+      "bytes": 22300,
+      "sha256": "4647b2798dd6612147bf2956c267e3298fa83c3378fb21708330556061481d32",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-BVJDqYly.js",
+      "bytes": 3688,
+      "sha256": "0b9b49990e2a7c043d4a63803d586fb706a406b68e9a495811f746ded95660fd",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-BwoS23Xi.js",
+      "bytes": 5715,
+      "sha256": "7642dae59b81e62c9435aa93af0be58915c0940cabcbe76ae0b1749d26a6f519",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-C2TGJcfN.js",
+      "bytes": 42858,
+      "sha256": "48a6bcaf073df71c4ff0d88e119858b2dec33ab9bcb1300dc4144211f36229ac",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-C33733wf.js",
+      "bytes": 474,
+      "sha256": "4e4a73dbda940f22305af14c4ab8e1893fb1fb9ae872cfeeb7e39192c3068128",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-C68oe-FI.js",
+      "bytes": 6226,
+      "sha256": "00a9f269995759bba6c8891456cf56a305a371ac044913dfedc04e7ca8672ecc",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-C99vuTBo.js",
+      "bytes": 10150,
+      "sha256": "821a990759421a8a4cb32c763e29c6290dec93f81e1f8ca900021caabe618625",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-C9V3DViB.js",
+      "bytes": 27816,
+      "sha256": "b9cf784b62ce6db69018a552b13bedd0e6fbcf35d155e5c38742e0b256e1abe0",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-C9zP1Ksn.js",
+      "bytes": 4470,
+      "sha256": "01f759abb4729f8fc2c5e35b87888e3ded965fdd8e8bf4047ffd875e2abdc13f",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-CaR3Fli1.js",
+      "bytes": 1157,
+      "sha256": "3d38dff94604c10c908dcce7c07c0babc889e127d1221b50256ffb1b9c6df751",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-CAr5Vhdy.js",
+      "bytes": 3470,
+      "sha256": "46bc093e421e50fd7d80b64c605bb9e36f678cdc0b70c529d2140134b2d050c8",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-CbdXrIyK.js",
+      "bytes": 26302,
+      "sha256": "3e58305f4294521f2bb9af7ec5a71e2e355e587b27502f19cf8175cf0fd9eb7e",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-CeMSpipa.js",
+      "bytes": 457,
+      "sha256": "1cb3254d6f34c912e2289492e1843fe33fd55d30deabb1345ec6b43f4e2fd397",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-Cf6yG_IP.js",
+      "bytes": 197819,
+      "sha256": "03cf1e14b8af2607eee04ba0c7ac910954ce56b4b21f0715619f53ce502f40cc",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-ChbnaxrK.js",
+      "bytes": 307,
+      "sha256": "1377a788b7f7192a9204e3434a853661af4e232ef030f417f94e3a9dcc75478d",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-CIRM2FU7.js",
+      "bytes": 2962,
+      "sha256": "6a064997624a4338bc2f85e75c947c9c56053f417ec470de919204e9ba543163",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-CJ21LQft.js",
+      "bytes": 2451,
+      "sha256": "5b2a1cc4d02d44830cfe63d716b238d8024f7ae653a3050c4066ad2aeefab44b",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-CK9YGyPx.js",
+      "bytes": 4881,
+      "sha256": "0a08b124f0100544766338c7938af707e99493d14651efb626f9ccf4eea183cd",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-Cloa07Av.js",
+      "bytes": 289,
+      "sha256": "88fb80c9e867ce14f67ed5c4de04ec658fdea66ede652c3eabbbb620d083e823",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-CM-x7tJj.js",
+      "bytes": 5101,
+      "sha256": "f660ca59f0ef0f230ea3a921e7d82920dca9d6e5f88b40762a55d50aa581f88d",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-CmJSuWJn.js",
+      "bytes": 3572,
+      "sha256": "6ce42424fc028546c9eb18919e2da61e0be41e2ab3d91d150b21a4862ec4cc8a",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-CMWHDsjR.js",
+      "bytes": 58118,
+      "sha256": "0f12e82f604f733dddfc5ded9443206f499f1ffe69b94c73443d8a1cd3695e86",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-CmysjFrN.js",
+      "bytes": 25285,
+      "sha256": "11e7ec0bb592f76e9f81fcb738c30e03d764d0efb0c73534e15979d9ce438859",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-CNF4RRCu.js",
+      "bytes": 1417,
+      "sha256": "c3d22cba4bddb80b69e55d599651e18d124fdaebd9f1c4a418d71bbadc68fe8d",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-CO1tcYxH.js",
+      "bytes": 4129,
+      "sha256": "bfaa33d80c9ac2fba97b925d96ca41be14c55908982a0e114427c58262fa8452",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-CO5K5mQ1.js",
+      "bytes": 8826,
+      "sha256": "484db0e6b54a822fc8b70d12951a2b50244b538b15a934203d8d8dc40f5dc16e",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-Coaf4ror.js",
+      "bytes": 76230,
+      "sha256": "2985c682859a074d6a1a516637d6092f9e4a3fd81ea05e69889f9cfceaa3cbaf",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-CpIe5d6c.js",
+      "bytes": 698,
+      "sha256": "d9781c66b1b5fd205a2bbac7112a5f9fbc89d76a4c07c28899dab3b8b44554c3",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-CPlwFXgD.js",
+      "bytes": 43482,
+      "sha256": "eb5e4b645aa4f90eeef9ac3c8ed20700ba37d46e6a1e0ad745a891df0919337b",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-CsdryDvN.js",
+      "bytes": 1869,
+      "sha256": "4436766f489c635104cce3f1c22fa1e6516fc6382d0bbdc20a88975ea49a3a8b",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-CSlZg19W.js",
+      "bytes": 999,
+      "sha256": "aa9c783ccfa79cdce7afce67d624affc65bfbf7b6733dd5f5ca2258b5a173e95",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-CU5tCgMs.js",
+      "bytes": 55136,
+      "sha256": "d934721a31ebb629693e1386458df782da1f525fd70d5684d5103a93f5f7fc9b",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-CVvpr6zY.js",
+      "bytes": 41063,
+      "sha256": "867c2dc08b4203b47848c749185d5c723bdf7f1563f19614e7e04700cdea95cc",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-CxMlIzZL.js",
+      "bytes": 1249,
+      "sha256": "4db37d6156b161972a1c67293332fea043939e4d2b66ea9ad33627195a683061",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-CXZLktUt.js",
+      "bytes": 13075,
+      "sha256": "5df4c49869b8f83acaf911ad6962481fe88ac4422073a3db1900d419f5c6383b",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-cZQfLPeI.js",
+      "bytes": 146,
+      "sha256": "c9abfe8f5b8966748269895ae700a833d8b0a920600e96ad30cf6d6d645a63a0",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-Czw85Fi1.js",
+      "bytes": 5983,
+      "sha256": "2d10c9a78f81cdedfb19f5a45ea219d7b180675fc802dab836c6a3022a13b382",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-CzZfFyb7.js",
+      "bytes": 6292,
+      "sha256": "45c8d1806560cf409d5e5e54ef8ac7bafe10600db4875e630be16b0419c24293",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-D-D8-x96.js",
+      "bytes": 12381,
+      "sha256": "bac5202984f35f0b180f4c0f1be1c1c60a0e7af1c7aca2f1cd49518fad0b4c82",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-D1sMALit.js",
+      "bytes": 64514,
+      "sha256": "a4ac51dbb0decd1d9e1e625ffb511010b468156e51f02f0096655d4559f3f37c",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-D4OBxvVJ.js",
+      "bytes": 6830,
+      "sha256": "cfa817ecf38a87f3ebeb5c2e55e6af73d4aa13fa1920ec5e841436928c92f8c4",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-D9UIg81d.js",
+      "bytes": 36815,
+      "sha256": "95e8d56f4ad8c28533f5ac7c10bb0900ccc4b188ea573ede9caee441aefa856b",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-DaDLAMNo.js",
+      "bytes": 8585,
+      "sha256": "11ff860b5bac2bb8a6fcf8f223617938664381df1bf3f53017dafe7fcc618c3e",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-DBB3i-dv.js",
+      "bytes": 100,
+      "sha256": "0197e2b9f0339bde5e1dc36bcfd7a1ebefa8bffd85cb0a0d1162ecb06edc8fa6",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-DBijYz7t.js",
+      "bytes": 1639,
+      "sha256": "c84f06d40d7e94244c784604c72af599514c397334009ca7ff5301bf15ab6ae0",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-DCF84fnJ.js",
+      "bytes": 4068,
+      "sha256": "d4569eda0334b57a54924bd17494a6244fbe81ea79ea260a9dd4ddeadffd9e7e",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-DCkvkRaW.js",
+      "bytes": 5560,
+      "sha256": "a153f85571c912e5c699caecef325da61bdae92ff97f58b36c5101df0e6c151b",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-Dd2sRHJe.js",
+      "bytes": 2549,
+      "sha256": "3a853aa097b9737fad671d440e1a02217501351f54973210a1b8eee57c4e28e7",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-DdmwBwJL.js",
+      "bytes": 1458,
+      "sha256": "f5613f17aac0550849e68b29d95751703bd40403733c39a772c8751205aaa1ab",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-DewBuPqN.js",
+      "bytes": 161,
+      "sha256": "f54ed40416e52524bc30357aa28c6237b036a4b19fa917f003ad3918ce4d0377",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-Df8AUccc.js",
+      "bytes": 7979,
+      "sha256": "d6844e746fb0d157a777840c3eeb47230f9df90c903854b091753509e409b875",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-DgPiHNDW.js",
+      "bytes": 119,
+      "sha256": "eb119c70917dd6d635499f9f8a26c4eefebe36a9d3c72e3dcb5204f5c7521775",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-DH7E9xHv.js",
+      "bytes": 2419,
+      "sha256": "27f42889be958dcb2fbb2dc0c4058efb7c78ba0742a8fd287604bc70b6ae13e1",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-DhNbae0e.js",
+      "bytes": 50925,
+      "sha256": "62ca5d72fea99da6c2afbef871e9e99ee6d01b913b32021b418642df917eae88",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-DHRMkvDN.js",
+      "bytes": 3885,
+      "sha256": "1f3b0d9fa61e58aa52cce074152388641c4d23ddee9a73c3bb5d2373dba218e9",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-dhZDRoX4.js",
+      "bytes": 3739,
+      "sha256": "d8bccb16635bed6216d105f4d7d83f3d13fe04dee2652427f40e8e745202d0f2",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-DikcAtRq.js",
+      "bytes": 4731,
+      "sha256": "ff1a97e9a553ddd2214f2e39d808da4db5390d1d7de1e06a1090555846a5b6cd",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-DiYolR6g.js",
+      "bytes": 8130,
+      "sha256": "d9e8a3681227acef7ef0e2f18f7fe435e5f9d857f3120e771abd905e8f5e8722",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-DJqrlPnH.js",
+      "bytes": 39559,
+      "sha256": "1800e2a8daef02749db2982c1dd3fc99834051722f9588db86f38e3a55f61ffb",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-Djz7x_rT.js",
+      "bytes": 48589,
+      "sha256": "2e44766603081efccb06946f451a4dfdc3c0be95ea152ab58efefd413f3936cd",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-DK3QlWpc.js",
+      "bytes": 27934,
+      "sha256": "4076d73b1fe3458a49b55a89da8da5a0e3f62180d96131c2b28a04ff770a1328",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-DkgaksIA.js",
+      "bytes": 396,
+      "sha256": "e7aa3ea9812cf5670b81da0dac6433fe000dd9e35ce18338959feb20607a8c11",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-DM-d78IE.js",
+      "bytes": 4463,
+      "sha256": "80998634c3caaf633fa79c3d0d31f724aa153276adec525b05a088ecd0a9ac00",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-DmHqYC93.js",
+      "bytes": 973,
+      "sha256": "8d74ebe75738f0e10721300a455976b9f999a5993cce410b3dab1830efb53f7d",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-Dnm8IIP8.js",
+      "bytes": 5582,
+      "sha256": "916bc14d7cd68415397ee9fac62a885403a016c92c7426eda723711398c3d049",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-DO18IMp_.js",
+      "bytes": 21074,
+      "sha256": "98bd36df47d07af31c26c175b46e4006396c413c9a89cc0bff9555191edcdd38",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-DoXgjTpb.js",
+      "bytes": 14533,
+      "sha256": "6674c224200823fa24a57bb835b37eb1df1ab89b6edc8d6b30a03a99a279b020",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-DQkS25-c.js",
+      "bytes": 442,
+      "sha256": "3eb416771813b6a9ed6be382cc974c27d6e39eca4fec07c495333d384e539c07",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-DR1oXFoF.js",
+      "bytes": 22006,
+      "sha256": "f6f0fe046c6c32101d8b1ebb97a6aa50ef3cc904335d6b191349c42f5a0c6d4f",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-Dr71Zmjn.js",
+      "bytes": 1297,
+      "sha256": "8b56570847da37b4deb1b373e3b9e9cb70b6fa86b970f325ef3264a4dd1bfd4e",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-DSBBk_t8.js",
+      "bytes": 584,
+      "sha256": "f2d2f528fc691a8567e5fadad90a4f703ece2ba8813a9dfe6f4592d03eb51485",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-Du9dbQv7.js",
+      "bytes": 2924,
+      "sha256": "d9803af9789f6e415e32920895b653e6b0cb5cea62544dd653b2de4a81e6eb70",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-DVdvCTNe.js",
+      "bytes": 7890,
+      "sha256": "112e845fbcdb287d3eb6a483e936dddb0d22002e62ddb16116462b0a6a0a0090",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-Dwh6DuAM.js",
+      "bytes": 448,
+      "sha256": "516b6ee07235627d8005e506c3c3571fadddd3b9dbf3a5b02562da2909599ab5",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-DXUcr247.js",
+      "bytes": 4881,
+      "sha256": "b0f641f62bca960385dd4bfef82aa7a0464ab8827499c5fd62c0d3267b976a79",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-DyDxXcis.js",
+      "bytes": 99,
+      "sha256": "5f1462097748d439f01ae2e92d8310743373da6cb3bc34c5ba2d12a20d9664ba",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-DZzC-nb6.js",
+      "bytes": 39509,
+      "sha256": "dee2b3a24877236f8e7c9cb1544646f0c3b471d03cb012d4779f907ea8b96494",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-D_TDMJVQ.js",
+      "bytes": 16043,
+      "sha256": "5746ba3d90249b33e5ae621d80bbe25188dfc56d478d29561bddfaa0bd3884a5",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-D_Y_kVYS.js",
+      "bytes": 3427,
+      "sha256": "fc95ab517022baf0716908b725a4398e49b98428dd33c67d89acfa4355720b90",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-e2Poi0AM.js",
+      "bytes": 2667,
+      "sha256": "5529125372d77e4647033bd684550dcf9461749b32a465641d50ab3c3c8124e6",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-edyNgGIE.js",
+      "bytes": 4498,
+      "sha256": "a5139a806c0e9591c8f49956f96472a945050513eb53048e026c8f8c258e80b3",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-hp27vo_T.js",
+      "bytes": 4954,
+      "sha256": "ef781be46809ad2283a3c51224a82b2a49a05afb75dc67c92e4d17e5ccec6fb8",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-IO-HIOYV.js",
+      "bytes": 6736,
+      "sha256": "87e819e64d740b0daf9596afa1e07055f8e24ec681a1e7aea497d307a75bab2b",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-jMiu4pmj.js",
+      "bytes": 47804,
+      "sha256": "1d1c63b71e558fa4a5bfbceb4a7072b8dd6804a0766427d3aada38f953e509ca",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-mbNTo56n.js",
+      "bytes": 1421,
+      "sha256": "86272a313098405e94e7b84983da9ccdd8c1e1b9883ae14fd07f323467fce4bf",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-NSomfIJF.js",
+      "bytes": 11859,
+      "sha256": "9941e9378dfe598f57bf994f456ceae04547bfbf6fe50d5ea7c187e13c578918",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-nZfk8-Bl.js",
+      "bytes": 3917,
+      "sha256": "a6e5956c721f3dff7515f370188a2093e4cd35bb4e4c157b6d8cae8dd9eafd75",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-P-9ZNUZg.js",
+      "bytes": 3433,
+      "sha256": "fa5587f774aadfb77373b7841da629ab2371e16b6d21c5c6cbf430e21e08ebe1",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-pwUNW0Cj.js",
+      "bytes": 2837,
+      "sha256": "3394fcd0bd5df50df5e68a59c9494c38c9b35d5fe3dc52b340e055462546dc1d",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-ruf30fQk.js",
+      "bytes": 5494,
+      "sha256": "b3498613e2d72625d68a590c8e19f0beccaf15a98f2f1d22960691279065f45c",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-SO5o_D9J.js",
+      "bytes": 428,
+      "sha256": "ea33957d55414a70defeecf9eb8ec10370abd31d3c68edd7b965907e533e32c9",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-TgCFC6Ni.js",
+      "bytes": 10669,
+      "sha256": "cbdd0d3867546181882f5794390d57e2d40b9c0fbbc4bb10dd2ff12288ddd5c6",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-tzX3Cn9R.js",
+      "bytes": 13646,
+      "sha256": "0682060da68312b97cc6ceee0946069514cc6b5c203b83f37eb0a2bd4c134974",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-uC0HPI73.js",
+      "bytes": 10904,
+      "sha256": "3744808626323f3b2679f6ce2f1c5793a478a0db6b2532902d08f017b644b94b",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-urOsCLld.js",
+      "bytes": 910,
+      "sha256": "e6f42b0eac9c5463efc5f5b77432f8bab377dabd9374123497416785d0bf0282",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-wU9KPDOT.js",
+      "bytes": 13540,
+      "sha256": "c4d20759a817901ac19958cc3c985f2e7da893f32a285937139f370f4403bd28",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-Xe2Dnhi8.js",
+      "bytes": 19716,
+      "sha256": "86782c17c2319c0a1cc234c3a88a8f1f76443e4a591aeac22ced9705bb5503a1",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-ZkwVbkj2.js",
+      "bytes": 9431,
+      "sha256": "9e95e0d93a90db7e1beef2ff3a893c24a8e3caa21facf416c331b6a31c925caf",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\chunk-zRONuLaS.js",
+      "bytes": 871,
+      "sha256": "6676dbb8299fe1e52df4327ce194223b1401bd8fd478610ad7f915bc3eaabfa3",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\index.html",
+      "bytes": 13228,
+      "sha256": "da85bbc025377de7180a391244f293c68c1058850de041a4c89d766c58b59a0f",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\main-OBNXJK3K.js",
+      "bytes": 154920,
+      "sha256": "1d07c2d7530460db17cc58a65eaa8ae646c9fe69ea7ddf0d9d808ffeab90b9cd",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\polyfills-QLUXRXNR.js",
+      "bytes": 534,
+      "sha256": "623a2356d81c3f9199eeea84141b99cf4f6dc55bf6e3ae4741f26a97374b9fca",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\styles-PVX5SREM.css",
+      "bytes": 21506,
+      "sha256": "4c87ef9b7b148f8f230d4a5f4eda0e3985ee77cafc1872ba438931ec0e3e52e9",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\spk-bold.woff2",
+      "bytes": 612,
+      "sha256": "462cb2ef25aff5a5c0420a23f8980342fb4ce1c7cfcbb781feb890f6b29cb505",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\spk.css",
+      "bytes": 1678,
+      "sha256": "feef9cb1d09a3fa8f8a607a3f4cfcf1ab55d5276f8eb610eec1f24ca6634e019",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\spk.woff2",
+      "bytes": 9412,
+      "sha256": "e38cf7dc685565b4f18169a88c21f10f155a986fe108825942cfa4219991fcb7",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\messages.cs.json",
+      "bytes": 8632,
+      "sha256": "f28ad513ec5097b34223dee30291f4dfee5b934d41da936bd15af90f50398edd",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\messages.da.json",
+      "bytes": 12499,
+      "sha256": "0fa67ad532ab3015b5c62222f21a5ee3ba644ad2611c4889f65f5d4ad5fbde16",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\messages.de.json",
+      "bytes": 84680,
+      "sha256": "7f9a9266f3280e4f6e7219f40ddcbbe3bf2402607615da9ae937cf798cab3126",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\messages.de_CH.json",
+      "bytes": 84699,
+      "sha256": "641b08f043ca3e24cd875f9c25fe1bd747f506b0c28fe3d6b48612b3df4054ca",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\messages.de_DE.json",
+      "bytes": 84701,
+      "sha256": "f32373e4eda8558e8a0df95673f0e93bf25a9f60140f2c99d5c7aad946a931cd",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\messages.en.json",
+      "bytes": 83870,
+      "sha256": "c6c2f5a32548e99baa1823768b2675ece03ee86cc6a733aea547a0b787d9884d",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\messages.en_GB.json",
+      "bytes": 60745,
+      "sha256": "3b64960238bd4df39e23a1b31f2882c43f297094f937ab9a177bbeac483be33a",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\messages.en_US.json",
+      "bytes": 67975,
+      "sha256": "8e7f61de43dba4ae778763ae9dd3ca5e3f53185a4208b779384521b8331f9b60",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\messages.es.json",
+      "bytes": 10610,
+      "sha256": "1c255ce6c2d746452361f80a41deda506454da5386d5938dfe15c2247f5b6d5d",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\messages.es_AR.json",
+      "bytes": 10700,
+      "sha256": "28b3fe16b960d74f483b79fe18911c40ea094bf26057fe6401001e94eb08d95c",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\messages.fi.json",
+      "bytes": 7244,
+      "sha256": "aa74564b77ad4655a316625f89a35a516ad8fdb788ad741a3e8aabf6886792ee",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\messages.fr.json",
+      "bytes": 87492,
+      "sha256": "9ad1c5e75f478530234e54575972ef0a69eada075672d6624e9621d0c1c705eb",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\messages.fr_CA.json",
+      "bytes": 87451,
+      "sha256": "4087c481533be39098bde2aca38aadbf3255d815bd99d923f1598a924efa3023",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\messages.fr_FR.json",
+      "bytes": 87563,
+      "sha256": "9e39880e16530c864a758ceda2d31827f649ac1a5a093cb00fcc9ce711ec5499",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\messages.hu.json",
+      "bytes": 7124,
+      "sha256": "35596effb47307627f34fc76660f7bdc9f0137bd907baedf961deee9cdaa8787",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\messages.it.json",
+      "bytes": 84124,
+      "sha256": "1f9a0a94ccdc7f11bf7eece44beaf1128b52fb293af0e88ef9ada8da86c1808d",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\messages.it_IT.json",
+      "bytes": 84254,
+      "sha256": "3af0c0f3b55012a2cd759df8457e5bdf7ad220d64ae446d6bc4d64a59e33fc7b",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\messages.ja.json",
+      "bytes": 25903,
+      "sha256": "383191ba36c198f487cda5dd48b41fbf741227ba2c4c41761a0f63dc482b4da4",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\messages.ja_JP.json",
+      "bytes": 25888,
+      "sha256": "2928a936d7be93d6ed6af756e7c7460952bbca46b2959427b9ed0badc21a29d1",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\messages.json",
+      "bytes": 83870,
+      "sha256": "c6c2f5a32548e99baa1823768b2675ece03ee86cc6a733aea547a0b787d9884d",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\messages.ko.json",
+      "bytes": 60798,
+      "sha256": "387b037af93acce5dd6f57d2be6650f74a4aaed66dfc63b1960a9b4b8b09890a",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\messages.nl_BE.json",
+      "bytes": 83292,
+      "sha256": "fd02ee4244e6b5d7ba999bec5129ff8bf7de1bb30c9695aec5a26a43f37522a0",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\messages.nl_NL.json",
+      "bytes": 83255,
+      "sha256": "449ee4b4d0655f963993e345e0f9c90b6736530c6f6d1d92a8c45959d1c16223",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\messages.pl.json",
+      "bytes": 43061,
+      "sha256": "02a0e60cdc050e92df19d9c21018aa875e76d4b5548161371ff903a892ea4d41",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\messages.pt.json",
+      "bytes": 8617,
+      "sha256": "1fbd39f1f6fe740cb3840acca7ba3dc987bbfd71dfed81711df538a2f11718f2",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\messages.pt_BR.json",
+      "bytes": 8466,
+      "sha256": "bb05229518fa37df6c605df22684c03a1e978a00400832ad4fa584073201de82",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\messages.ru.json",
+      "bytes": 11355,
+      "sha256": "3274d5a50f614da4bf8296867d1500853c05a3b1a44983b303e2bafa8f005288",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\messages.sr_RS.json",
+      "bytes": 8461,
+      "sha256": "e89c2ccb5bcf249d852d3d155b11a38cf6db7812d0676a71c03e0aa06ae5fe8b",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\messages.sv_SE.json",
+      "bytes": 8175,
+      "sha256": "fdda20e2f3dc0e5b21910fbd2acffe29981be18da2aff2837ff2e406f888550f",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\messages.tr.json",
+      "bytes": 72454,
+      "sha256": "b3efed35a142db59bf28eff3af2537a4a73dfafcef51e9591c493d89dab312f9",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\messages.zh-Hans.json",
+      "bytes": 72457,
+      "sha256": "6208629c88ea0fb8072c93bc17fe1db13db78b4e8149f7c1c1c45df757b4ba63",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\messages.zh-Hant.json",
+      "bytes": 72450,
+      "sha256": "1a3e81fcd7857b4184a646cc1c42909f9006e46f9ab29d96a2c1633c3253b5f7",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\messages.zh.json",
+      "bytes": 72450,
+      "sha256": "1a3e81fcd7857b4184a646cc1c42909f9006e46f9ab29d96a2c1633c3253b5f7",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\messages.zh_CN.json",
+      "bytes": 72526,
+      "sha256": "e22d43ed606b471f009332d27027fbaf1f855c83872b87182fe2ecb8ac79631d",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\messages.zh_HK.json",
+      "bytes": 72444,
+      "sha256": "9c0e4af5eb344c5b4922d3ac04907d252286f5acbf943a3b4738b68537349619",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\messages.zh_TW.json",
+      "bytes": 72510,
+      "sha256": "a6c7fe901ae8a389e658de06e25c6a1b9a170b74c373afdd1a3b8c500b559578",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\ship-ui-assets\\fonts\\InterTight-VariableFont_wght.woff2",
+      "bytes": 234656,
+      "sha256": "38890578a16b2bf4e6a1ec088717bde347713c421dfcbfb4cea19dbf8c5d4813",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\ship-ui-assets\\mcp\\components.json",
+      "bytes": 572209,
+      "sha256": "1e632e31fbf3e5bfdccfeedca08d7b023164d6fc42d199d8017e7c80ccfc652e",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\dayjs\\cs.js",
+      "bytes": 3109,
+      "sha256": "6419dab2f60ada6e0fc5ec01116668aa4ed5a1241c14ffc303a9cf553681555d",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\dayjs\\da.js",
+      "bytes": 1088,
+      "sha256": "2f5fdc040b19a0f06946909f76fc7f61b84f0a5f5dc98ebf408dafb18e66ad1c",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\dayjs\\de.js",
+      "bytes": 1725,
+      "sha256": "9a258751e178c992c6fe2749fd2fb31938b192fcde7374538269deaa6f74cd17",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\dayjs\\en-gb.js",
+      "bytes": 1170,
+      "sha256": "e10726d8fe0ab6689bfae5313ad690cd8585f74cbbf5febe696e5e22e3fb902a",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\dayjs\\en.js",
+      "bytes": 474,
+      "sha256": "074ebbd9be60c61942e88ab8a3d605b0d73aeeb4a805006c96dcf8170c055b70",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\dayjs\\es.js",
+      "bytes": 1074,
+      "sha256": "fa6674dfe96ba02e37fdcd1ed53a687595e6fef543f8059f084c961395672a68",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\dayjs\\fi.js",
+      "bytes": 2615,
+      "sha256": "6d19bf48f307ffc83bc0509d7677f34904c805dd2f793d8555b1f26f5db477c2",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\dayjs\\fr.js",
+      "bytes": 1113,
+      "sha256": "ed5201b652c1109b369442cc03b4fa91622aa3b669052b20e2ebcf14973025f7",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\dayjs\\hu.js",
+      "bytes": 2049,
+      "sha256": "c94710d9dcd90e954f1bd69023521b648149a37310f2abca40dfd346400bd54b",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\dayjs\\it.js",
+      "bytes": 1048,
+      "sha256": "2f89f6e909042cb38c0518704aa7520928b62e4d51e1244d182da23b143db489",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\dayjs\\ja.js",
+      "bytes": 1225,
+      "sha256": "128cb7da27bf23032cb2e2bca05e572624ba4ba522e41405937da7cb83c13e01",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\dayjs\\ko.js",
+      "bytes": 1251,
+      "sha256": "9fc930beb50e8f9fac4046fdaaeecf83687c0f7b97ed56e97dd9d746d167df68",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\dayjs\\nl.js",
+      "bytes": 1118,
+      "sha256": "e40d1b4a571be7945b4fed8ed96f59587dc2f6c00e470db569cc1c141de1ddae",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\dayjs\\pl.js",
+      "bytes": 2205,
+      "sha256": "b042b173373ae14946614d00559729a01082c0aa9c436e93ebdfee8f245b082c",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\dayjs\\pt.js",
+      "bytes": 1129,
+      "sha256": "951905a8a258c7d6ea923c7cdd9aa96ebfeda5c2cdd20eaede192bbbe8f3dbc8",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\dayjs\\ru.js",
+      "bytes": 3313,
+      "sha256": "9682cff0787d0a43516828a3225ff54e123c676bc049a75ebb857d23d722d609",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\dayjs\\sr.js",
+      "bytes": 2520,
+      "sha256": "193906f04afd4b536a131c67c6501dde690de14360a3ebd33b0e75a7c9b16e87",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\dayjs\\sv.js",
+      "bytes": 1211,
+      "sha256": "820ee9c05134bbda46ed61b7f5406c9df9f19577ade61946a786d4f8fd3352c8",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\dayjs\\tr.js",
+      "bytes": 1035,
+      "sha256": "ff1b485353f2cebfe89023cb777977ca2298c7f15e438c5cb515b06023188ba3",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\dayjs\\zh-cn.js",
+      "bytes": 1727,
+      "sha256": "e8279d862be02c60f256e98e42a6bde251b56a94851f9a3488b08924de2ec2eb",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\locale\\dayjs\\zh-tw.js",
+      "bytes": 1688,
+      "sha256": "4458abe36eb0df6c51ca6b6e21a11319deeaa4e5af938611298730ffde50863d",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\backgrounds\\base-bg.svg",
+      "bytes": 801850,
+      "sha256": "f2760401a8f01110c247b839c7ef8c4dc95f9872422fb55c15f8b471df1e2d7a",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\akamai.png",
+      "bytes": 1768,
+      "sha256": "a767b28950dd387260a7f508c527d75e18f89407a3e0717695db4e014a5cc1d8",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\aliyun.png",
+      "bytes": 5071,
+      "sha256": "b23effe04ecbc836bf896a5815793bfb514869751987b748b3da75b267aa6bc6",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\aws.png",
+      "bytes": 43471,
+      "sha256": "75d16817a63ede7214ecb4c1b1d3475bfd6952c5e0d22999b7e43548ba53c981",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\azure.png",
+      "bytes": 1127,
+      "sha256": "fe5f9eef689314aa76eb80c65db39aca74bbfc5c42a345f5f8c22bbe10b60d17",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\backblaze.png",
+      "bytes": 36357,
+      "sha256": "42688b8a49363068815a9c449abebd8051bd11eac4046ea4e9dbcbee2f2ad616",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\box-com.png",
+      "bytes": 43311,
+      "sha256": "c1f9f525f3844516a112fd6faa6baa6c7253e42635fbafdfafc2a5b7cf8d43fe",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\cloudflare.png",
+      "bytes": 2030,
+      "sha256": "75944157a696e2deb0f3ac7eb6ab7ed51298b68c67df49bf3032cac11ba9f6e2",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\digitalocean.png",
+      "bytes": 6260,
+      "sha256": "49cead3970d5d886378596e9614a5a4cec92540a0f69269d7da768ea93d2805b",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\dincloud.png",
+      "bytes": 91963,
+      "sha256": "a373e18703f2c11e14acdb5f6cb5b2bedc8bc2222ac02daad3d9841c756052fa",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\dosya.png",
+      "bytes": 17386,
+      "sha256": "30ced5ce72826c7548e4f0af64d4962b3ecd705c7cf3bb891b40572c54e1f588",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\dreamhost.png",
+      "bytes": 8695,
+      "sha256": "084b44f8ef68358fe106bbf5c3bcde7680d65dd7346bff23871fb9b22be2c4be",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\drime.png",
+      "bytes": 8950,
+      "sha256": "0f862f5bfc660a806f38b05e0c680db978cf62b138cd65f1ff639d280d704007",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\dropbox.png",
+      "bytes": 3749,
+      "sha256": "2a0b47ead49b64bc011bb7ff62f7a0706c5c7a86c8994ea2109c897cd9bedf7e",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\dunkel.png",
+      "bytes": 15833,
+      "sha256": "ebfe5953fb93bce7d0f3aa91e13d10ce7fc34440a2921628f80beeb87c3a3aa1",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\duplicati.png",
+      "bytes": 207340,
+      "sha256": "3a5aa847ac8087382c0e01e53a8e352436c2181a9950b0aa2d0f394d71c7e91c",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\exoscale.png",
+      "bytes": 2021,
+      "sha256": "ae9511728d5e402531952e5cc91da301d3aef608b0a0624d6310b83b3ecb48a5",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\external-harddrive.png",
+      "bytes": 5757,
+      "sha256": "874081f56a8bc622d743e7e3bf2864d364fd7570de1e4459e6ca4a026a90490b",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\file-jump.png",
+      "bytes": 10894,
+      "sha256": "7d6aef6cd2ae7bf0f6d316d14534d3f544339ee5c88f50821a0b23c16dd799ad",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\file-system.png",
+      "bytes": 4062,
+      "sha256": "37384bd877ca9306aeca95d69ffdb0403d899c10fe3f363803cbbb4263bf3f65",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\filen.png",
+      "bytes": 15698,
+      "sha256": "5f1306266a07484771d45352c38acde42005aac41061e2b093ed929ebb1d697c",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\ftp.png",
+      "bytes": 8563,
+      "sha256": "ab07d82e256fcbab26443a385a26f2cb44244c580bfa75bea8f5b7d0a2a5f2bf",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\google-cloud.png",
+      "bytes": 4291,
+      "sha256": "93222dffc365c8cb2ffc004877accd48bca035ac46ed2d1285560b90c837eb6c",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\google-drive.png",
+      "bytes": 2497,
+      "sha256": "825a6d5427bc43a6bc3747cf28ede4182b127de4a619467d5cf447057da3c758",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\googleworkspace.png",
+      "bytes": 44029,
+      "sha256": "c38e233d8b46ca4604d61fda0b2fe088d7f10e6f30aff7e960cd93e4f0bd1bdb",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\hetzner.png",
+      "bytes": 1091,
+      "sha256": "49df9e37eabec907df9a3971b4d86263a1173581a0ad02b5dca4531a4d944c83",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\hosteurope.png",
+      "bytes": 31781,
+      "sha256": "4a0a737135032388885285825a042e15ad0e752d91062dca586ee3efea997b95",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\huawei.png",
+      "bytes": 9774,
+      "sha256": "5e503ea4e6cd476c6a160f6478af42cfd0cb27a1581d87184890502be6920fc7",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\ibmcos.png",
+      "bytes": 19901,
+      "sha256": "b33efdc0bb74f9dda46af329885a1e2feb038c827cab77b837fe9b9ea6a0da9a",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\idrive-e2.png",
+      "bytes": 5627,
+      "sha256": "2b97e03f561d33609a4c4f5af37edce4ec1c2740ee068b479aeddcd573e06fbd",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\impossiblecloud.png",
+      "bytes": 71482,
+      "sha256": "0eccb9eab756739ea8667576f45cae29b71eea3037a5c2c2355361212fe93ef5",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\infomaniak.png",
+      "bytes": 23639,
+      "sha256": "ec585e3a546bf1f5032928f2c1c8014646c8f8ad8040cf59b2016b4f4e089178",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\internxt.png",
+      "bytes": 68034,
+      "sha256": "79974c8dd0f1110fc1ac1d9761b2ca90219008bd4b0dfda797a16fe9c99b0fcb",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\ionos.png",
+      "bytes": 2661,
+      "sha256": "0020574eaec0869bc94192adcec9d1960f550ae9a50cec7ced705f9eb48f22bd",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\jottacloud.png",
+      "bytes": 13794,
+      "sha256": "1b84211f8a53e5c9779d362ac67af63d80c5edf488087303158e5dbbece37b82",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\mega-nz.png",
+      "bytes": 1218,
+      "sha256": "b276a5923ee112e7f4cc52133d9fa4bbbbfa583e3f2a793ad0abf997ed36a65f",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\nas.png",
+      "bytes": 9722,
+      "sha256": "f45f8c25b27bfa5fd19f68672f178d83b0e7b255e4677d84a59e44e521becd0b",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\neon.png",
+      "bytes": 4711,
+      "sha256": "5e90d4d71846359effb0870b4937bb244c2ece426aecf108e4ec0a9326257075",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\office-365.png",
+      "bytes": 1807,
+      "sha256": "47c3456e3f2bf874f102ae7b3696d1fe3d92dfa63fd32ed3266543f975abbc91",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\office365.png",
+      "bytes": 47514,
+      "sha256": "82ec90162f05f1d10b7c14b89064142ca12d83f82cc62f87bd5b4fb02c14e4d0",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\one-drive.png",
+      "bytes": 24736,
+      "sha256": "34406e25cfd468a9550da5c97414317fe2cefa75dfd40229cd8daa274ac7cf61",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\open-stack.png",
+      "bytes": 17144,
+      "sha256": "95908b8c9b4938c76fa6f0029b9caa7d4942ff70750d2e700a5b30025d4bee70",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\oracle.png",
+      "bytes": 7255,
+      "sha256": "2658003b278d2f333a98af95b9c109027cdb7a9fa8674a527dd5415ce3daecdf",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\ovhcloud.png",
+      "bytes": 2183,
+      "sha256": "5e0d0e38e0d7af0910f27e75226d352f70bc5a61ac656c3a63c8f4925a170030",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\pcloud.png",
+      "bytes": 2768,
+      "sha256": "8579adbeeda073018cbc80aa803a91b2f2dbb069cdaa1ca67d3c71aa86082d2b",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\polisystems.png",
+      "bytes": 15755,
+      "sha256": "c6a4d4f195964286f149ebf550ab1eb2e2dc8480023e60afc4f2939df823a993",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\rabata.png",
+      "bytes": 55165,
+      "sha256": "a4de93f7fa33a9e6b1c0a7fe05ae5718192f0df2259332d7a698aec513029d1f",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\rackspace.png",
+      "bytes": 2209,
+      "sha256": "3b4e95e68a47de3842c19400b2dcfb5739d433db5c9558f3acc7c8815678a5f8",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\rclone.png",
+      "bytes": 3015,
+      "sha256": "9f58a684fe30183c367621e7673ae68cf161018c20b22859310a4dced7badaf1",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\s3compat.png",
+      "bytes": 34175,
+      "sha256": "a8dcbc9b4bafeb7e14146ca50238c169b2b8feacf05d9919e47cd27efd3a5126",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\sakuracloud.png",
+      "bytes": 29934,
+      "sha256": "93e0abcf64b8bcb2a01e7a1ae876d4b0127aedf8a9fe912d020f0091d7ad1241",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\scaleway.png",
+      "bytes": 11708,
+      "sha256": "09f2212c67f008ca7a5257d0384a046b29855c1fe274c0a806d892194e6883f9",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\seagatelyve.png",
+      "bytes": 16434,
+      "sha256": "6d46c9e8e6a8be35c80c8d972acac4329059f3fa563f6a818ff390823279ed1b",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\selectel.png",
+      "bytes": 48550,
+      "sha256": "997db2e1fdc3b9ba8af684a8e564697fc9912590bb734296012266fa7b932c7c",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\sftp.png",
+      "bytes": 12253,
+      "sha256": "08c2f75d57f3d173e7217448e27a98cd0e42e9e2f10ca90c2e5d74c4c13e9677",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\sharepoint.png",
+      "bytes": 20986,
+      "sha256": "de5082990e3db5f9e507c3f594285b6886361199bf2f09cff28ff609aadcc1f4",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\sia-cloud.png",
+      "bytes": 939,
+      "sha256": "706dad0ec5c2b216215c66bbeffd2cac0ca81d07e74d7747a6633b08096b9993",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\smb.png",
+      "bytes": 26702,
+      "sha256": "bd1675d55d5af01e605b09f07b51ad46e5fc2e96f115f7b52383e9e985a38380",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\ssh.png",
+      "bytes": 2625,
+      "sha256": "8db2ed34664c94589a89e67acd7419a51195946fc1fb8afd547cf2e339aa0a94",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\storadera.png",
+      "bytes": 36291,
+      "sha256": "175616a7c9924d0dccf6b448d3bf1c519458ceaf64ac9a71d4b412b7e0b7b347",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\storj.png",
+      "bytes": 38163,
+      "sha256": "9da7994ce29c1db5e81760fbf5b927fe25dd41b5c201cc946041afb572635246",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\synology.png",
+      "bytes": 2306,
+      "sha256": "afdf1bf68c9c0717d72374c528d5fee5cbf23fed1bd4113d06f974c47559d758",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\tahoelafs.png",
+      "bytes": 2345,
+      "sha256": "9dd704431fc48c44a29c438b687e33c3627d4b7e8f54c4e369b5ce9dc977b975",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\tencent-cloud.png",
+      "bytes": 19369,
+      "sha256": "6cfcaf9382f5b0470b2ef987977c5b6d3d8bbb40b2548d3fdc4aff98ced67256",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\wasabi.png",
+      "bytes": 73392,
+      "sha256": "7eea7cb2101dfdf52699ce6fc959ea42c266bfd68f12036b9abe497cfa4cac92",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\dest-icons\\webdav.png",
+      "bytes": 529,
+      "sha256": "751e61bfa2df40b52d1ca6a7f4f0a2ae91f65da26e1205219503ffc149b03be5",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\duplicati\\app-icon.png",
+      "bytes": 13094,
+      "sha256": "a3ed2a145df4df0c5bd34dd51417f32b4b3c635a6054af7645c2cb8c4ebec585",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\duplicati\\duplicati-dark.svg",
+      "bytes": 2077,
+      "sha256": "712a9b3645cc7afa37a8e653e2815b711d76bfbbbb23ca96a669bfe79c57ab9c",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\duplicati\\duplicati.svg",
+      "bytes": 2077,
+      "sha256": "712a9b3645cc7afa37a8e653e2815b711d76bfbbbb23ca96a669bfe79c57ab9c",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\duplicati\\pattern.svg",
+      "bytes": 13160,
+      "sha256": "1790d2b224479afceb31b2f2d6fd7c9a909b8b6e9d6b4f86390d4ca7298c0f9f",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\images\\backup-from-config.png",
+      "bytes": 218049,
+      "sha256": "a8ad586cc05ca6e75447b73751fda27f6d7742f30866f3902d01a1367ee34f0d",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\images\\backup-from-remote.png",
+      "bytes": 215575,
+      "sha256": "e4e0ee97ab97e5db379933c63de7f7b619d81f093d7ce33911364390a887db8a",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\images\\backup.png",
+      "bytes": 9737,
+      "sha256": "5c081e18f8a20c8b041fad29d967db685a2e6eaa135f4d5bb0d6a816e01c7db9",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\images\\console.avif",
+      "bytes": 67827,
+      "sha256": "a35811a3302b4a625063cfe25daf01fbf866bf63668ce33110278b40b7567464",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\images\\dark-theme.png",
+      "bytes": 19798,
+      "sha256": "250da409fe1af930fb2ecb276b4c9aec33954a992e670d5942be55c82601089c",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\images\\folder.png",
+      "bytes": 5864,
+      "sha256": "b315e3bb24dd50e04b9f14661d99800702eb728b150d064e463237d62a45f4c7",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\images\\light-theme.png",
+      "bytes": 19313,
+      "sha256": "f637c9558fc527d0bce107279f7d7877285615a170e5f7992e2420ad64afcb7d",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\images\\new-backup.png",
+      "bytes": 42451,
+      "sha256": "63ffa2e8776ecd3b61caa35e7fcfc2a6828729313e32667c23e240c7a3128c7a",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\images\\restore.png",
+      "bytes": 9679,
+      "sha256": "a5fbc5c0c2211fb031428223b48cee7d82249d4dd0d20a94e2b510c02861161c",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\images\\system-theme.png",
+      "bytes": 21957,
+      "sha256": "8a0d0bfa230c8e0af2e245c6f6381feab635b99a254994d87c5e19a5aaf1659c",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    },
+    {
+      "source_relative": "ngbuild-review-1843\\browser\\assets\\noise\\auth-noise.svg",
+      "bytes": 1518,
+      "sha256": "c5d510a0a174f59724ad3a0e96103866c18e1bf7588c3e5eb0216a665519a51c",
+      "included": false,
+      "reason": "再生成可能なビルド配布物7,602,572 bytes/280 files。ビルドコマンドと出力はT抜粋へ保存",
+      "destination": null
+    }
+  ],
+  "drafts": [
+    {
+      "branch": "fix/verify-completion-alert",
+      "source": "triage/pr-drafts/ngclient-verify-completion-alert.md",
+      "source_sha256": "b57a68f27bd4097851deae4f88f5fe4293f5997828ac7cef838b32a21245d044",
+      "status": "原文コピー。公開前の再確認が必要",
+      "destination": "triage/pr-drafts/ngclient-verify-completion-alert.md"
+    },
+    {
+      "branch": "feat/export-global-options",
+      "source": "triage/pr-drafts/ngclient-export-global-options.md",
+      "source_sha256": "91a671d98e29c4acbc2e1e316b51dd9514a7c855e7acc03a54a23f409c307035",
+      "status": "要作成（本体用との共用原文しかない）",
+      "destination": null
+    },
+    {
+      "branch": "feat/skip-next-scheduled-run",
+      "source": "triage/pr-drafts/ngclient-skip-next-scheduled-run.md",
+      "source_sha256": "4d9f042aa8b0d5fad2a351ee843d8c1ed4e05c2861a33f104862ce57a58f5817",
+      "status": "要作成（本体用との共用原文しかない）",
+      "destination": null
+    },
+    {
+      "branch": "fix/status-bar-file-count-separators",
+      "source": "triage/pr-drafts/ngclient-status-bar-file-count-separators.md",
+      "source_sha256": "2424303756774c2119ec07f854bc7ee0993306e5137a397904baf473cc20ff10",
+      "status": "原文コピー。公開前の再確認が必要",
+      "destination": "triage/pr-drafts/ngclient-status-bar-file-count-separators.md"
+    },
+    {
+      "branch": "feat/file-tree-partial-exclusion",
+      "source": "triage/pr-drafts/ngclient-file-tree-partial-exclusion.md",
+      "source_sha256": "b51fdb25fa680a5510ad360d7eebe372079e661ba716d6cf56d70ae867b24340",
+      "status": "原文コピー。公開前の再確認が必要",
+      "destination": "triage/pr-drafts/ngclient-file-tree-partial-exclusion.md"
+    },
+    {
+      "branch": "feat/idle-sign-out",
+      "source": "triage/pr-drafts/ngclient-idle-sign-out.md",
+      "source_sha256": "e6a297a22a503a5f102cfbb205f27fa03b148e23ac08afd6055dadd2b911205c",
+      "status": "原文コピー。公開前の再確認が必要",
+      "destination": "triage/pr-drafts/ngclient-idle-sign-out.md"
+    },
+    {
+      "branch": "feat/show-resolved-source-shortcut",
+      "source": "triage/pr-drafts/ngclient-show-resolved-source-shortcut.md",
+      "source_sha256": "41ca2d3cf3a1f2276f9c2aed0dd8e05a9e27e30ca5d82cbff0478177aba38b02",
+      "status": "原文コピー。公開前の再確認が必要",
+      "destination": "triage/pr-drafts/ngclient-show-resolved-source-shortcut.md"
+    },
+    {
+      "branch": "feat/server-stored-theme",
+      "source": "triage/pr-drafts/ngclient-server-stored-theme.md",
+      "source_sha256": "196096ecabd3e66c1426fc24e7f165cd01deb4120cafa6d3d3fff3244863923f",
+      "status": "原文コピー。公開前の再確認が必要",
+      "destination": "triage/pr-drafts/ngclient-server-stored-theme.md"
+    },
+    {
+      "branch": "feat/log-compare-previous-version",
+      "source": "triage/pr-drafts/ngclient-log-compare-previous-version.md",
+      "source_sha256": "6874478b2ee6697b0982e2288a4e4309a51aaf65bb1161e42b9b13271000bd5c",
+      "status": "原文コピー。公開前の再確認が必要",
+      "destination": "triage/pr-drafts/ngclient-log-compare-previous-version.md"
+    },
+    {
+      "branch": "feat/ssl-certificate-upload",
+      "source": "triage/pr-drafts/ngclient-ssl-certificate-upload.md",
+      "source_sha256": "047cae3cf61dd252642e2eb0fccc7259d5ae4274c7501b3a317496ca4b4ff116",
+      "status": "原文コピー。公開前の再確認が必要",
+      "destination": "triage/pr-drafts/ngclient-ssl-certificate-upload.md"
+    },
+    {
+      "branch": "feat/report-issue-link",
+      "source": "triage/pr-drafts/ngclient-report-issue-link.md",
+      "source_sha256": "182a7ba4a71f1842a84b9db08a8eefdc53fc75133b07c7519e1c53938bd87c19",
+      "status": "原文コピー。公開前の再確認が必要",
+      "destination": "triage/pr-drafts/ngclient-report-issue-link.md"
+    },
+    {
+      "branch": "feat/run-all-backups",
+      "source": "triage/pr-drafts/ngclient-run-all-backups.md",
+      "source_sha256": "8bede7a922ce1abc8e77384d043e9d1eedf27c312c76cf48c3bb6d0537de0b2a",
+      "status": "原文コピー。公開前の再確認が必要",
+      "destination": "triage/pr-drafts/ngclient-run-all-backups.md"
+    },
+    {
+      "branch": "feat/last-run-failed-indicator",
+      "source": "triage/pr-drafts/ngclient-last-run-failed-indicator.md",
+      "source_sha256": "2be3b1cbff44a0a52d65e44c28e1f9a4aebb91674d100be05c7e0e9328819d5e",
+      "status": "原文コピー。公開前の再確認が必要",
+      "destination": "triage/pr-drafts/ngclient-last-run-failed-indicator.md"
+    },
+    {
+      "branch": "feat/log-download",
+      "source": "triage/pr-drafts/ngclient-log-download.md",
+      "source_sha256": "5e7eb8e36115a1d42dd406adfd3df4ca20efd9271d6c93d445ba3e3d411bb95c",
+      "status": "原文コピー。公開前の再確認が必要",
+      "destination": "triage/pr-drafts/ngclient-log-download.md"
+    },
+    {
+      "branch": "feat/compact-progress",
+      "source": "triage/pr-drafts/ngclient-compact-progress.md",
+      "source_sha256": "a9fc127ce5ff9534c440e053fb1e12ce1d6716630ea1048003725fd64f0311b9",
+      "status": "要作成（本体用との共用原文しかない）",
+      "destination": null
+    },
+    {
+      "branch": "feat/restore-version-file-count",
+      "source": "triage/pr-drafts/ngclient-restore-version-file-count.md",
+      "source_sha256": "58271e7a82c3ef6651401c02a8645af7f945b6277786adc0432058df75bc1311",
+      "status": "原文コピー。公開前に赤件数を1失敗・1合格へ訂正する（レビュー記録の指摘）",
+      "destination": "triage/pr-drafts/ngclient-restore-version-file-count.md"
+    },
+    {
+      "branch": "feat/restore-resume-drafts",
+      "source": "triage/pr-drafts/ngclient-restore-resume-drafts.md",
+      "source_sha256": "661391ff5579986d40a11eb71c930994b680f44009900f2a687286f7e8c2734d",
+      "status": "要作成（本体用との共用原文しかない）",
+      "destination": null
+    },
+    {
+      "branch": "feat/show-db-encryption-preload-paths",
+      "source": "triage/pr-drafts/ngclient-show-db-encryption-preload-paths.md",
+      "source_sha256": "bb734cfacb4f63a4385702d37304b438990c1f276eda3b8bc81c9883fd3dd774",
+      "status": "要作成（本体用との共用原文しかない）",
+      "destination": null
+    }
+  ],
+  "policy": "Records only; no application tests, builds, implementation edits, rebase or implementation pushes. Author claims are quoted, not independently verified.",
+  "summary_source": "C:/Users/Jam/AppData/Local/Temp/claude/eb7164b3a8a8609a/2ade3d67-588b-4a0d-82ef-8acf31aad402/scratchpad/survey/ng-records.txt",
+  "summary_sha256": "084910560cfa37b881131a4f93de3f39915f5b61eb1a22beeef29b08d4ea67e0",
+  "scratchpad_source_root": "C:/Users/Jam/AppData/Local/Temp/claude/eb7164b3a8a8609a/2ade3d67-588b-4a0d-82ef-8acf31aad402/scratchpad",
+  "handoff_input_source": "C:/Users/Jam/.codex/attachments/200740ce-dba3-4db8-93d6-ddcdc1594828/貼り付けたテキスト.txt",
+  "final_only_output": {
+    "source": "C:\\Users\\Jam\\AppData\\Local\\Temp\\claude\\eb7164b3a8a8609a\\2ade3d67-588b-4a0d-82ef-8acf31aad402\\tasks\\wjcou9lsb.output",
+    "exists": true,
+    "included": false,
+    "reason": "最終結果のみで初回不承認レビューを欠くためJを採用。全ワークフローの無関係な結果は移さない",
+    "bytes": 633213,
+    "sha256": "87055f8df489c504e07765de0cfb3227712a87ed553c228b5e836ce18caef6ae"
+  },
+  "command_excerpt_count": 220,
+  "auxiliary_record_count": 17,
+  "migration_integrity": {
+    "journal_rows": 80,
+    "agents": 40,
+    "branches": 18,
+    "included_artifacts": 11,
+    "drafts_copied_verbatim": 13,
+    "drafts_to_create": 5,
+    "application_checks_rerun": false
+  }
+}

@@ -1,0 +1,16 @@
+Add an optional sign-out after a period of inactivity
+
+The interface refreshes its session for as long as the tab is open, so
+an unattended browser stays signed in indefinitely (duplicati/duplicati#3369).
+
+Add a "Sign out when idle" setting with a choice of 5 minutes to 4 hours.
+It is stored per browser and is off by default, so nothing changes for
+existing users. While it is on, pointer, key, wheel, touch and scroll
+activity restarts the idle time, and the last activity is shared through
+local storage so a tab left in the background does not sign out a
+session that is in use in another tab. The check also runs when the tab
+becomes visible again, because timers do not run while the machine
+sleeps. Relay and proxy sessions are not signed in with the passphrase
+and are left alone, as for the passphrase change sign-out.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
