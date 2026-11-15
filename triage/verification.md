@@ -34,6 +34,10 @@
 
 検証済み: `eb506d7c5c715320cb30e236cc84f63bb86df61e`、追加修正なし。23テスト・tsc・Prettier・本番ビルド成功。12,000ファイルの実バックアップ中、同じ受信件数がen-USで1,800・deで1.800と表示され、バックアップも正常終了。[証拠・コマンド・画像](evidence/2026-11-15-ngt-087/verification.md)。#3041の項目1のみ。項目2/3は未検証で、Issue全体のFixesにはしない。PR未作成。
 
+## NGT-102 Suppress時のジョブ種別保持（2026-11-15）
+
+検証済み: [#738](https://github.com/duplicati/ngclient/pull/738)、`c78e32be2f4615c80164d6ddaff688a4f9237b32`。赤8件→関連31件成功、tsc・Prettier・本番ビルド成功。未修正Canaryで省略PUTのSync→Backupを再現し、修正版UIでSuppress/解除がSyncと無効状態を保持、再実行で通常ファイル更新を確認。[証拠・コマンド・本文](evidence/2026-11-15-ngt-102/verification.md)。Part of duplicati/duplicati#7850であり単独のFixesではない。
+
 ## 報告者への確認待ち
 
 - #215/#283/#492/#217/#401は台帳の公開コメントが一次の検証範囲・SHA・サーバー版の参照先。同じコメントを重複投稿しない。

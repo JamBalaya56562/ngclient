@@ -1,18 +1,18 @@
 # 現在のタスク台帳
 
-更新・GitHub照合: 2026-11-15。main `8f401edd337bf53a963fc4e80a47d3db4d52fc3d`（0.0.250）。[取得結果](evidence/github-state-2026-11-15.json)。動作テストは今回再実行していない。
+更新・GitHub照合: 2026-11-15。main `8f401edd337bf53a963fc4e80a47d3db4d52fc3d`（0.0.250）。[整理時の取得結果](evidence/github-state-2026-11-15.json)。各タスクの追試は[検証索引](verification.md)を参照。
 
 ## 現在地と次の判断
 
-- **検証済み（GitHub API）**: open PRは#727〜#736の10件。#637のNGT-050は#727待ち。本体#7832もopen。移管5件に対応する本体ブランチ名のPR検索は0件で、先行マージ待ちを維持。
-- 準備済み実装は記録上29ブランチ（公開10・未PR19）。NGT-079はNGT-004と同じブランチなので二重に数えない。triageと画像専用ブランチは実装数に含めない。移管18件のSHAは[移管索引](2026-11-15-duplicati-ngclient-records.md)。
+- **検証済み（GitHub API）**: open PRは#727〜#738の12件（[今回の取得](evidence/2026-11-15-ngt-102/github-pr-state.json)）。本台帳の対象は#727〜#736と#738の11件、#737は台帳外。#637のNGT-050は#727待ち。本体#7832・移管5件の状態は整理時の記録で、公開前に再確認する。
+- 準備済み実装は記録上30ブランチ（公開11・未PR19）。NGT-079はNGT-004と同じブランチなので二重に数えない。triageと画像専用ブランチは実装数に含めない。移管18件のSHAは[移管索引](2026-11-15-duplicati-ngclient-records.md)。
 - 次は未PR19件の不足検証・本体依存・Issueを閉じる範囲を確認する。PUSHEDを「公開可能・全検証済み」と扱わない。実装・試験・公開は個別の依頼時に行う。
 - 新規実装は再現するバグを優先。NGT-052〜055は要求/APIの調査から。NGT-071は準備済み差分を避ける範囲で再監査。NGT-080はNGT-092と同じCommandlineを触るため、移行範囲を決める前に差分照合が必要。
 - NGT-081/082は#735後、NGT-005は#728/#736とNGT-088/050のツリー契約を踏まえて進める。独立ベースでも同じファイルへの変更を無条件に同時公開しない。
 
 ## 運用
 
-- IDは固定・再利用しない。次の新規IDは**NGT-102**。完了/廃止は[completed.md](completed.md)に残す。
+- IDは固定・再利用しない。次の新規IDは**NGT-103**。完了/廃止は[completed.md](completed.md)に残す。
 - READY=既知の外部ブロッカーなし、INVESTIGATE=範囲・要件の調査、PUSHED=push報告あり/未PR（検証の充足は別）、PR_OPEN=レビュー待ち、BLOCKED=依存待ち、WAITING=返信待ち、DEFERRED=方針保留。
 - 開始時にACTIVE・担当・日付・ブックマーク、終了時に証拠・残件を更新する。GitHubがIssue/PR状態の正本。依存マージだけでDONEにしない。
 - 実装は最新mainから別ブランチ。既存ブランチを無断で書き換えない。stack後段は前段マージ後に公開。PR・公開コメントは依頼がある場合のみ。Issue全体を満たす場合だけFixes/Closes、部分対応はRefsと残件。
@@ -34,6 +34,7 @@
 | NGT-078 | 詳細オプション追加アクションの無効状態 | [#727](https://github.com/duplicati/ngclient/pull/727) | レビュー待ち。[検証索引](verification.md)。                                                                                       |
 | NGT-079 | リスト並替時のフォーカス保持           | [#729](https://github.com/duplicati/ngclient/pull/729) | レビュー待ち。[検証索引](verification.md)。NGT-004と同じPR                                                                        |
 | NGT-083 | SSH Browse時のホストキー承認           | [#734](https://github.com/duplicati/ngclient/pull/734) | レビュー待ち。[検証索引](verification.md)。 #373はclose済み。既存APIのBrowse経路改善で、本体の追加APIは不要。                     |
+| NGT-102 | #7850 Suppress時のジョブ種別・Enabled保持 | [#738](https://github.com/duplicati/ngclient/pull/738) | PR_OPEN / Codex / 2026-11-15。`codex/preserve-job-type-on-warning-suppression`。赤8→関連31緑・本番・実サーバー済。[証拠](evidence/2026-11-15-ngt-102/verification.md)。Part ofのみ、単独でcloseしない。 |
 
 ## 未PR・調査・回答待ち
 

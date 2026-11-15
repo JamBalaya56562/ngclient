@@ -1,0 +1,72 @@
+{
+  "checked": "2026-11-15",
+  "openPullRequests": [
+    {
+      "number": 738,
+      "title": "Preserve job type when toggling warning suppression",
+      "url": "https://github.com/duplicati/ngclient/pull/738"
+    },
+    {
+      "number": 737,
+      "title": "Add Blomp as an S3 destination",
+      "url": "https://github.com/duplicati/ngclient/pull/737"
+    },
+    {
+      "number": 736,
+      "title": "Group individually backed-up files in the restore tree",
+      "url": "https://github.com/duplicati/ngclient/pull/736"
+    },
+    {
+      "number": 735,
+      "title": "Add isolated real-server backup and restore E2E coverage",
+      "url": "https://github.com/duplicati/ngclient/pull/735"
+    },
+    {
+      "number": 734,
+      "title": "Ask to approve an unknown SSH host key before browsing",
+      "url": "https://github.com/duplicati/ngclient/pull/734"
+    },
+    {
+      "number": 733,
+      "title": "Release WebSocket resources with their connection lifetime",
+      "url": "https://github.com/duplicati/ngclient/pull/733"
+    },
+    {
+      "number": 732,
+      "title": "Own progress polling across task and transport changes",
+      "url": "https://github.com/duplicati/ngclient/pull/732"
+    },
+    {
+      "number": 731,
+      "title": "Track pending stop and abort actions per status task",
+      "url": "https://github.com/duplicati/ngclient/pull/731"
+    },
+    {
+      "number": 730,
+      "title": "Scope status snapshot polling to the active view session",
+      "url": "https://github.com/duplicati/ngclient/pull/730"
+    },
+    {
+      "number": 729,
+      "title": "Preserve backup row identity and focus when the job list changes",
+      "url": "https://github.com/duplicati/ngclient/pull/729"
+    },
+    {
+      "number": 728,
+      "title": "Show symbolic link and junction targets in the file tree",
+      "url": "https://github.com/duplicati/ngclient/pull/728"
+    },
+    {
+      "number": 727,
+      "title": "Keep advanced option actions outside the disabled toggle heading",
+      "url": "https://github.com/duplicati/ngclient/pull/727"
+    }
+  ],
+  "createdPullRequest": {
+    "number": 738,
+    "head": "c78e32be2f4615c80164d6ddaff688a4f9237b32",
+    "base": "8f401edd337bf53a963fc4e80a47d3db4d52fc3d",
+    "mergeable": true,
+    "bodyPrefix": "Part of duplicati/duplicati#7850"
+  }
+}

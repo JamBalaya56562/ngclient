@@ -1,0 +1,294 @@
+> Building...
+√ Building...
+Application bundle generation complete. [51.362 seconds] - 2026-11-15T06:34:19.706Z
+
+
+ RUN  v5.0.3 C:/Users/Jam/Documents/ngclient
+
+ ❯ |ngclient| projects/ngclient/src/app/backup/log/general-log/general-log.component.spec.ts (22 tests | 8 failed) 3496ms
+   ❯ GeneralLogComponent warning suppression preserves the job (8)
+     × suppress preserves Sync and Enabled=true 209ms
+     × suppress preserves Sync and Enabled=false 109ms
+     × suppress preserves Backup and Enabled=true 114ms
+     × suppress preserves Backup and Enabled=false 96ms
+     × unsuppress preserves Sync and Enabled=true 84ms
+     × unsuppress preserves Sync and Enabled=false 87ms
+     × unsuppress preserves Backup and Enabled=true 96ms
+     × unsuppress preserves Backup and Enabled=false 99ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 8 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |ngclient| projects/ngclient/src/app/backup/log/general-log/general-log.component.spec.ts > GeneralLogComponent warning suppression preserves the job > suppress preserves Sync and Enabled=true
+ FAIL  |ngclient| projects/ngclient/src/app/backup/log/general-log/general-log.component.spec.ts > GeneralLogComponent warning suppression preserves the job > unsuppress preserves Sync and Enabled=true
+AssertionError: expected "vi.fn()" to be called with arguments: [ { path: { id: '7' }, …(1) } ]
+
+Received:
+
+  1st vi.fn() call:
+
+@@ -1,12 +1,16 @@
+  [
+    {
+      "body": {
+-       "Backup": ObjectContaining {
+-         "Enabled": true,
++       "Backup": {
++         "AdditionalTargetURLs": undefined,
++         "ConnectionStringID": undefined,
++         "DBPath": undefined,
++         "Description": undefined,
++         "Filters": undefined,
++         "Metadata": {},
+          "Name": "Existing job",
+-         "OperationType": "Sync",
+          "Settings": [
+            {
+              "Filter": undefined,
+              "Name": "--keep-time",
+              "Value": "7D",
+@@ -18,10 +22,11 @@
+            },
+          ],
+          "Sources": [
+            "/source/",
+          ],
++         "Tags": [],
+          "TargetURL": "file:///destination",
+        },
+        "Schedule": {
+          "AllowedDays": [
+            "Monday",
+
+
+Number of calls: 1
+
+ ❯ projects/ngclient/src/app/backup/log/general-log/general-log.component.spec.ts:296:19
+    294|       fixture.componentInstance.toggleWarningSuppression(warningId);
+    295|       await vi.waitFor(() => expect(put).toHaveBeenCalledOnce());
+    296|       expect(put).toHaveBeenCalledWith({
+       |                   ^
+    297|         path: { id: '7' },
+    298|         body: {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/8]⎯
+
+ FAIL  |ngclient| projects/ngclient/src/app/backup/log/general-log/general-log.component.spec.ts > GeneralLogComponent warning suppression preserves the job > suppress preserves Sync and Enabled=false
+ FAIL  |ngclient| projects/ngclient/src/app/backup/log/general-log/general-log.component.spec.ts > GeneralLogComponent warning suppression preserves the job > unsuppress preserves Sync and Enabled=false
+AssertionError: expected "vi.fn()" to be called with arguments: [ { path: { id: '7' }, …(1) } ]
+
+Received:
+
+  1st vi.fn() call:
+
+@@ -1,12 +1,16 @@
+  [
+    {
+      "body": {
+-       "Backup": ObjectContaining {
+-         "Enabled": false,
++       "Backup": {
++         "AdditionalTargetURLs": undefined,
++         "ConnectionStringID": undefined,
++         "DBPath": undefined,
++         "Description": undefined,
++         "Filters": undefined,
++         "Metadata": {},
+          "Name": "Existing job",
+-         "OperationType": "Sync",
+          "Settings": [
+            {
+              "Filter": undefined,
+              "Name": "--keep-time",
+              "Value": "7D",
+@@ -18,10 +22,11 @@
+            },
+          ],
+          "Sources": [
+            "/source/",
+          ],
++         "Tags": [],
+          "TargetURL": "file:///destination",
+        },
+        "Schedule": {
+          "AllowedDays": [
+            "Monday",
+
+
+Number of calls: 1
+
+ ❯ projects/ngclient/src/app/backup/log/general-log/general-log.component.spec.ts:296:19
+    294|       fixture.componentInstance.toggleWarningSuppression(warningId);
+    295|       await vi.waitFor(() => expect(put).toHaveBeenCalledOnce());
+    296|       expect(put).toHaveBeenCalledWith({
+       |                   ^
+    297|         path: { id: '7' },
+    298|         body: {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/8]⎯
+
+ FAIL  |ngclient| projects/ngclient/src/app/backup/log/general-log/general-log.component.spec.ts > GeneralLogComponent warning suppression preserves the job > suppress preserves Backup and Enabled=true
+AssertionError: expected "vi.fn()" to be called with arguments: [ { path: { id: '7' }, …(1) } ]
+
+Received:
+
+  1st vi.fn() call:
+
+@@ -1,12 +1,16 @@
+  [
+    {
+      "body": {
+-       "Backup": ObjectContaining {
+-         "Enabled": true,
++       "Backup": {
++         "AdditionalTargetURLs": undefined,
++         "ConnectionStringID": undefined,
++         "DBPath": undefined,
++         "Description": undefined,
++         "Filters": undefined,
++         "Metadata": {},
+          "Name": "Existing job",
+-         "OperationType": "Backup",
+          "Settings": [
+            {
+              "Filter": undefined,
+              "Name": "--keep-time",
+              "Value": "7D",
+@@ -18,10 +22,11 @@
+            },
+          ],
+          "Sources": [
+            "/source/",
+          ],
++         "Tags": [],
+          "TargetURL": "file:///destination",
+        },
+        "Schedule": {
+          "AllowedDays": [
+            "Monday",
+
+
+Number of calls: 1
+
+ ❯ projects/ngclient/src/app/backup/log/general-log/general-log.component.spec.ts:296:19
+    294|       fixture.componentInstance.toggleWarningSuppression(warningId);
+    295|       await vi.waitFor(() => expect(put).toHaveBeenCalledOnce());
+    296|       expect(put).toHaveBeenCalledWith({
+       |                   ^
+    297|         path: { id: '7' },
+    298|         body: {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/8]⎯
+
+ FAIL  |ngclient| projects/ngclient/src/app/backup/log/general-log/general-log.component.spec.ts > GeneralLogComponent warning suppression preserves the job > suppress preserves Backup and Enabled=false
+ FAIL  |ngclient| projects/ngclient/src/app/backup/log/general-log/general-log.component.spec.ts > GeneralLogComponent warning suppression preserves the job > unsuppress preserves Backup and Enabled=false
+AssertionError: expected "vi.fn()" to be called with arguments: [ { path: { id: '7' }, …(1) } ]
+
+Received:
+
+  1st vi.fn() call:
+
+@@ -1,12 +1,16 @@
+  [
+    {
+      "body": {
+-       "Backup": ObjectContaining {
+-         "Enabled": false,
++       "Backup": {
++         "AdditionalTargetURLs": undefined,
++         "ConnectionStringID": undefined,
++         "DBPath": undefined,
++         "Description": undefined,
++         "Filters": undefined,
++         "Metadata": {},
+          "Name": "Existing job",
+-         "OperationType": "Backup",
+          "Settings": [
+            {
+              "Filter": undefined,
+              "Name": "--keep-time",
+              "Value": "7D",
+@@ -18,10 +22,11 @@
+            },
+          ],
+          "Sources": [
+            "/source/",
+          ],
++         "Tags": [],
+          "TargetURL": "file:///destination",
+        },
+        "Schedule": {
+          "AllowedDays": [
+            "Monday",
+
+
+Number of calls: 1
+
+ ❯ projects/ngclient/src/app/backup/log/general-log/general-log.component.spec.ts:296:19
+    294|       fixture.componentInstance.toggleWarningSuppression(warningId);
+    295|       await vi.waitFor(() => expect(put).toHaveBeenCalledOnce());
+    296|       expect(put).toHaveBeenCalledWith({
+       |                   ^
+    297|         path: { id: '7' },
+    298|         body: {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/8]⎯
+
+ FAIL  |ngclient| projects/ngclient/src/app/backup/log/general-log/general-log.component.spec.ts > GeneralLogComponent warning suppression preserves the job > unsuppress preserves Backup and Enabled=true
+AssertionError: expected "vi.fn()" to be called with arguments: [ { path: { id: '7' }, …(1) } ]
+
+Received:
+
+  1st vi.fn() call:
+
+@@ -1,12 +1,16 @@
+  [
+    {
+      "body": {
+-       "Backup": ObjectContaining {
+-         "Enabled": true,
++       "Backup": {
++         "AdditionalTargetURLs": undefined,
++         "ConnectionStringID": undefined,
++         "DBPath": undefined,
++         "Description": undefined,
++         "Filters": undefined,
++         "Metadata": {},
+          "Name": "Existing job",
+-         "OperationType": "Backup",
+          "Settings": [
+            {
+              "Filter": undefined,
+              "Name": "--keep-time",
+              "Value": "7D",
+@@ -18,10 +22,11 @@
+            },
+          ],
+          "Sources": [
+            "/source/",
+          ],
++         "Tags": [],
+          "TargetURL": "file:///destination",
+        },
+        "Schedule": {
+          "AllowedDays": [
+            "Monday",
+
+
+Number of calls: 1
+
+ ❯ projects/ngclient/src/app/backup/log/general-log/general-log.component.spec.ts:296:19
+    294|       fixture.componentInstance.toggleWarningSuppression(warningId);
+    295|       await vi.waitFor(() => expect(put).toHaveBeenCalledOnce());
+    296|       expect(put).toHaveBeenCalledWith({
+       |                   ^
+    297|         path: { id: '7' },
+    298|         body: {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/8]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  8 failed | 14 passed (22)
+   Start at  15:34:26
+   Duration  19.97s (environment 32%, transform 22%, tests 19%, setup 15%, import 12%)
+
