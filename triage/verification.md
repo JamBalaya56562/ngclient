@@ -1,5 +1,7 @@
 # 検証記録の索引
 
+2026-11-16のmain更新・11本削除・残存19本のrebase結果と現在SHAは[更新記録](evidence/2026-11-16-maintenance/verification.md)。以下は過去のSHA・実行結果の参照先であり、今回の全ブランチ追試を意味しない。
+
 ## NGT-103 別タブE2EのCI失敗（2026-11-16）
 
 #727・#733の失敗ログ/traceを調査。コード差分なしでコミットを再作成してpushしCIを再実行。新headはそれぞれ`018692b3aab5f2c5a88a387b78f73c6963d81147`・`780c2e31a2baaef344966bd15b231fc1b691ef67`。以下の過去SHAでの試験結果は引き続き同一ソースを対象とする。[今回の検証・CI結果](evidence/2026-11-16-ci-navigation/verification.md)。根本原因を特定するまで修正PRは出さない。

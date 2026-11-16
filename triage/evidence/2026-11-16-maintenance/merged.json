@@ -1,0 +1,79 @@
+[
+  {
+    "pr": 736,
+    "branch": "codex/restore-individual-file-groups",
+    "sha": "3e98d5b9b0dbbe65492ca7d526eeb192524b8e8c",
+    "merge": "ae54d73bf1e5e98fb65dd8060c006f1defc90d01",
+    "merged_at": "2026-11-16T10:05:20Z"
+  },
+  {
+    "pr": 735,
+    "branch": "codex/live-editor-persistence-e2e",
+    "sha": "74257b98e08f483b4963f9f35331870276a69a57",
+    "merge": "e1b1459d9cd2170e7d98103dad5e901d3b61ff3d",
+    "merged_at": "2026-11-16T10:03:05Z"
+  },
+  {
+    "pr": 734,
+    "branch": "fix/browse-approve-host-key",
+    "sha": "a08f89f2c810aeb0a5d3423c296b50967020e9de",
+    "merge": "a02a9aa203700b9fd090cd235f45fae9346e7ee5",
+    "merged_at": "2026-11-16T10:02:33Z"
+  },
+  {
+    "pr": 733,
+    "branch": "codex/websocket-connection-lifecycle",
+    "sha": "780c2e31a2baaef344966bd15b231fc1b691ef67",
+    "merge": "f0e49afe9f6db028069e11ede199c0ff12948636",
+    "merged_at": "2026-11-16T10:01:16Z"
+  },
+  {
+    "pr": 732,
+    "branch": "codex/statusbar-progress-lifecycle",
+    "sha": "9e3e5cce3243b6aefbc0df3370d3811d52dc73f2",
+    "merge": "ec866140fcd7e2e10f8fb553bba482a3809ba698",
+    "merged_at": "2026-11-16T10:00:54Z"
+  },
+  {
+    "pr": 731,
+    "branch": "codex/status-task-action-lifecycle",
+    "sha": "18803f296cc8b77a79850623659fffc57e012ed4",
+    "merge": "5ac455cc571d9f9a55d43bd21c316ce0f8f77879",
+    "merged_at": "2026-11-16T10:00:12Z"
+  },
+  {
+    "pr": 730,
+    "branch": "codex/status-snapshot-lifecycle",
+    "sha": "6cafe57c78820bcbc3d0b56ff04e06917725e4eb",
+    "merge": "b250c2e0c456bd833bf5147551a6f12cb7a7782c",
+    "merged_at": "2026-11-16T09:59:13Z"
+  },
+  {
+    "pr": 729,
+    "branch": "codex/stable-backup-list-tracking",
+    "sha": "03c222dc86eb038ca0648e8c4d607cd6c2f7d00a",
+    "merge": "8a93b4417b70d929d652f0a4a349a2009bb910ea",
+    "merged_at": "2026-11-16T09:58:36Z"
+  },
+  {
+    "pr": 728,
+    "branch": "codex/show-file-tree-link-target",
+    "sha": "d4f715de88e3fa6c435f852c249e18d52a75e2c6",
+    "merge": "d8425df403b037ea4c61bbd1786b77bb4debec69",
+    "merged_at": "2026-11-16T09:57:51Z"
+  },
+  {
+    "pr": 727,
+    "branch": "codex/advanced-options-actions",
+    "sha": "018692b3aab5f2c5a88a387b78f73c6963d81147",
+    "merge": "d28ea0646b425cc63195709c6c127a9b016544e3",
+    "merged_at": "2026-11-16T09:57:15Z"
+  },
+  {
+    "pr": 738,
+    "branch": "codex/preserve-job-type-on-warning-suppression",
+    "sha": "c78e32be2f4615c80164d6ddaff688a4f9237b32",
+    "merge": "a874f17bf3cdff7d9e23d0fbce42613d2128011a",
+    "merged_at": "2026-11-16T09:55:52Z"
+  }
+]

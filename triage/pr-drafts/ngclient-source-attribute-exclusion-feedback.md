@@ -33,6 +33,6 @@ Images are stored outside the code branch at immutable commit URLs.
 
 The unit environment's existing stylesheet parsing messages and Playwright's NO_COLOR/FORCE_COLOR warning remain. Linux/macOS, remote providers and actual Temporary-attribute files were not exercised by this live run.
 
-Verified source: [68c088a6e6bb2c1d2e07a03a338ead45b348950e](https://github.com/JamBalaya56562/ngclient/commit/68c088a6e6bb2c1d2e07a03a338ead45b348950e), parent `8f401edd337bf53a963fc4e80a47d3db4d52fc3d`.
+Verified source: [ed6b24f2bac9b9fe2cce3b9a1ae926591ca9385d](https://github.com/JamBalaya56562/ngclient/commit/ed6b24f2bac9b9fe2cce3b9a1ae926591ca9385d), parent `8f401edd337bf53a963fc4e80a47d3db4d52fc3d`.
 
 🤖 Generated with [Claude Code](https://claude.com/claude-code)

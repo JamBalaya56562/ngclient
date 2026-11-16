@@ -48,3 +48,18 @@
 | NGT-070 | ログアウト完了画面の移動リンク               | #722                     |
 | NGT-072 | タスク完了購読・待機の破棄ライフサイクル     | #724                     |
 | NGT-073 | About更新確認の非同期処理・破棄              | #725                     |
+
+## 2026-11-16 マージ確認
+
+| NGT-004 | 動的リストの安定したtrack | [#729](https://github.com/duplicati/ngclient/pull/729)（2026-11-16 merged） |
+| NGT-006 | 実サーバーE2E整備 / #273 | [#735](https://github.com/duplicati/ngclient/pull/735)（2026-11-16 merged） |
+| NGT-033 | リンク先表示 | [#728](https://github.com/duplicati/ngclient/pull/728)（2026-11-16 merged） |
+| NGT-051 | #311 flat file restore | [#736](https://github.com/duplicati/ngclient/pull/736)（2026-11-16 merged） |
+| NGT-074 | Status停止・中断要求の状態と破棄 | [#731](https://github.com/duplicati/ngclient/pull/731)（2026-11-16 merged） |
+| NGT-075 | Status snapshot取得セッションの寿命 | [#730](https://github.com/duplicati/ngclient/pull/730)（2026-11-16 merged） |
+| NGT-076 | StatusBar進捗取得の重複・応答寿命 | [#732](https://github.com/duplicati/ngclient/pull/732)（2026-11-16 merged） |
+| NGT-077 | WebSocket接続・非同期認証の寿命監査 | [#733](https://github.com/duplicati/ngclient/pull/733)（2026-11-16 merged） |
+| NGT-078 | 詳細オプション追加アクションの無効状態 | [#727](https://github.com/duplicati/ngclient/pull/727)（2026-11-16 merged） |
+| NGT-079 | リスト並替時のフォーカス保持 | [#729](https://github.com/duplicati/ngclient/pull/729)（2026-11-16 merged） |
+| NGT-083 | SSH Browse時のホストキー承認 | [#734](https://github.com/duplicati/ngclient/pull/734)（2026-11-16 merged） |
+| NGT-102 | #7850 Suppress時のジョブ種別・Enabled保持 | [#738](https://github.com/duplicati/ngclient/pull/738)（2026-11-16 merged） |
