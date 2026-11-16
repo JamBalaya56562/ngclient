@@ -1,18 +1,18 @@
 # 現在のタスク台帳
 
-更新・GitHub照合: 2026-11-16。main `ae54d73bf1e5e98fb65dd8060c006f1defc90d01`（0.0.250）。[検証・公開記録](evidence/2026-11-16-publication/verification.md)。各タスクの追試は[検証索引](verification.md)を参照。
+更新・GitHub照合: 2026-11-17。main `ae54d73bf1e5e98fb65dd8060c006f1defc90d01`（0.0.250）。[CI切分け・修正記録](evidence/2026-11-17-ci-option-import/verification.md)、[全ブランチ検証・公開記録](evidence/2026-11-16-publication/verification.md)。各タスクの追試は[検証索引](verification.md)を参照。
 
 ## 現在地と次の判断
 
-- **検証済み（GitHub API）**: open PRは#739〜#748の10件。検証済みheadと本文を照合済み。CIは公開直後queued。
-- 実装・テスト修正は20ブランチ（公開10・未PR10）。既存19本と追加NGT-105で単体・型・本番ビルドを確認。現在SHAと件数は今回の検証記録を正本とする。triageと画像専用3本は数えない。
-- 次はNGT-104のmainでの切分けと、未PR10件の本体依存・実サーバー検証・公開範囲を確認する。PUSHEDは公開可能の保証ではない。
+- **検証済み（GitHub API）**: open PRは#739〜#749の11件。先の10件は単体・本番ビルド成功、#739/#741/#746/#747/#748のbrowser job失敗を照合。NGT-106 / #749で対処し、新PRのCIはqueued。#739の復元一覧テスト修正とは別件。
+- 実装・テスト修正は21ブランチ（公開11・未PR10）。既存20本は前回の検証記録、追加NGT-106は今回の記録が正本。triageと画像専用3本は数えない。
+- 次は#749のCI・レビュー確認、NGT-104のmainでの切分け、未PR10件の本体依存・実サーバー検証・公開範囲を確認する。PUSHEDは公開可能の保証ではない。
 - 新規実装は再現するバグを優先。NGT-052〜055は要求/APIの調査から。NGT-071は準備済み差分を避ける範囲で再監査。NGT-080はNGT-092と同じCommandlineを触るため、移行範囲を決める前に差分照合が必要。
 - NGT-081/082の#735待ちは解消。NGT-005はmainに入った#728/#736と準備済みNGT-088と公開中#740（NGT-050）のツリー契約を踏まえて進める。独立ベースでも同じファイルへの変更を無条件に同時公開しない。
 
 ## 運用
 
-- IDは固定・再利用しない。次の新規IDは**NGT-106**。完了/廃止は[completed.md](completed.md)に残す。
+- IDは固定・再利用しない。次の新規IDは**NGT-107**。完了/廃止は[completed.md](completed.md)に残す。
 - READY=既知の外部ブロッカーなし、INVESTIGATE=範囲・要件の調査、PUSHED=push報告あり/未PR（検証の充足は別）、PR_OPEN=レビュー待ち、BLOCKED=依存待ち、WAITING=返信待ち、DEFERRED=方針保留。
 - 開始時にACTIVE・担当・日付・ブックマーク、終了時に証拠・残件を更新する。GitHubがIssue/PR状態の正本。依存マージだけでDONEにしない。
 - 実装は最新mainから別ブランチ。既存ブランチを無断で書き換えない。stack後段は前段マージ後に公開。PR・公開コメントは依頼がある場合のみ。Issue全体を満たす場合だけFixes/Closes、部分対応はRefsと残件。
@@ -23,6 +23,7 @@
 
 | ID | 範囲 | PR | 状態 |
 | --- | --- | --- | --- |
+| NGT-106 | 保持メニューの外部フォーカス時の閉じ忘れ・import loadingの広すぎるE2E locator | [#749](https://github.com/duplicati/ngclient/pull/749) | PR_OPEN / Codex / 2026-11-17。単体2,375・関連E2E40・型・本番成功。#741と一時統合し8E2E成功。既存PR変更なし。CI待ち。[証拠](evidence/2026-11-17-ci-option-import/verification.md) |
 | NGT-105 | Check restore group paths without racing listing requests | [#739](https://github.com/duplicati/ngclient/pull/739) | PR_OPEN / テストのみ |
 | NGT-050 | Show source attribute exclusions and link to their settings | [#740](https://github.com/duplicati/ngclient/pull/740) | PR_OPEN / Fixes duplicati/ngclient#637 |
 | NGT-084 | Report the result when Verify files finishes | [#741](https://github.com/duplicati/ngclient/pull/741) | PR_OPEN / Fixes duplicati/duplicati#1510 |

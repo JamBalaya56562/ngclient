@@ -1,5 +1,9 @@
 # 検証記録の索引
 
+## NGT-106 保持メニューとimport loadingのCI失敗（2026-11-17）
+
+保持メニューが外部フォーカス後も残る実UI状態と、通知・読み込み表示が同じstatusを持つテスト競合を再現。赤2E2E/1単体→緑2,375単体/40E2E、型・本番成功。#741の通知変更と一時統合した8E2Eも成功。独立した[#749](https://github.com/duplicati/ngclient/pull/749)を公開、既存PRは変更なし。元の高速Tabのタイミング自体はローカル未再現。[検証・限界・コマンド](evidence/2026-11-17-ci-option-import/verification.md)。
+
 ## 全ブランチ検証・10件公開（2026-11-16）
 
 既存19本＋flaky修正1本で単体・型・本番ビルド成功。#739〜#748を公開し、#740には新旧画像を追加。現在SHA・E2E・依存・未公開理由は[今回の記録](evidence/2026-11-16-publication/verification.md)。NGT-104は未切分け。CIは公開直後queued。
