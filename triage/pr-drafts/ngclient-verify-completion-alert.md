@@ -1,5 +1,3 @@
-# Report the outcome of Verify files when the task finishes
-
 Fixes duplicati/duplicati#1510
 
 ## Summary
@@ -9,11 +7,18 @@ Fixes duplicati/duplicati#1510
 - No server change. `GET /api/v1/task/{id}` already reports `Failed` when the task throws and sets `ErrorMessage` when the results contain errors.
 
 ## Testing
-- `ng test ngclient --watch=false --include=projects/ngclient/src/app/home/home.component.spec.ts`: 8 passed.
-- Without the component change, the 4 new tests fail: success, failure, completed-with-errors and still-running.
-- The tests check the outbound verify call, check that the returned task ID is the one waited on, and check which alert is shown.
-- Follow-up verification at [e80484104552ed9857712a68bc15aa472e25cced](https://github.com/JamBalaya56562/ngclient/commit/e80484104552ed9857712a68bc15aa472e25cced): 47 related tests passed; app/spec type checks, Prettier and production build passed. Three added service-hub tests failed before its fix and passed afterward.
-- Production UI against an isolated Duplicati 2.4.1.101 Canary server: healthy verification and recovery showed success; a corrupted dblock and missing destination showed failures with the real task error. All four cases passed; no browser errors; test jobs deleted and server stopped.
-- Evidence: `triage/evidence/2026-11-15-ngt-084/verification.md` on the triage branch.
+
+- Node.js 26 / Bun 1.4.4, on the rebased branch.
+- `VITEST_MAX_WORKERS=1 bun run test:ci`: **2381 passed** (full unit suite).
+- `tsc --noEmit` for app and spec configurations: passed.
+- `bun run build:prod`: passed.
+
+- `node node_modules/@playwright/test/cli.js test e2e/home-backup-state.spec.ts e2e/home-action-labels.spec.ts e2e/authenticated-page.spec.ts`: **10 passed**, against the production build with mocked APIs. E2E type checking also passed.
+- Local browser checks used an available port because Windows reserves port 3000; the repository configuration was restored unchanged.
+
+The existing jsdom stylesheet parsing messages were present in the passing unit run.
+
+Based independently on main [ae54d73bf1e5e98fb65dd8060c006f1defc90d01](https://github.com/duplicati/ngclient/commit/ae54d73bf1e5e98fb65dd8060c006f1defc90d01); no predecessor PR is required.
+Verified commit: [e80484104552ed9857712a68bc15aa472e25cced](https://github.com/JamBalaya56562/ngclient/commit/e80484104552ed9857712a68bc15aa472e25cced).
 
 🤖 Generated with [Claude Code](https://claude.com/claude-code)

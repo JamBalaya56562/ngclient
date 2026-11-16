@@ -1,5 +1,3 @@
-# Add an optional sign-out after a period of inactivity
-
 Fixes duplicati/duplicati#3369
 
 ## Summary
@@ -19,16 +17,17 @@ No server change is needed.
 
 ## Testing
 
-- `ng test ngclient --watch=false --include=…/idle-logout.state.spec.ts --include=…/idle-logout-settings.spec.ts --include=…/app-auth.state.spec.ts`: all 38 tests pass.
-  - The state spec uses the real `AppAuthState` with fake timers.
-  - It asserts the outbound `postApiV1AuthRefreshLogout` call and the navigation to `/login`.
-- I checked that the spec catches regressions by breaking the code on purpose:
-  - With the sign-out call removed, 9 tests fail.
-  - With the shared activity read removed and the relay guard bypassed, 2 tests fail (the other-tab test and the relay test).
-- End to end, I ran a local Duplicati server, `ng serve` with a proxy, and Playwright with `page.clock`:
-  - After selecting 5 minutes, the setting is stored.
-  - Being idle for 4 minutes does not sign out, and activity restarts the idle time.
-  - Being idle for 5 minutes or more sends one `POST /api/v1/auth/refresh/logout` and lands on `/login`.
-- `ng build ngclient --configuration development` succeeds.
+- Node.js 26 / Bun 1.4.4, on the rebased branch.
+- `VITEST_MAX_WORKERS=1 bun run test:ci`: **2399 passed** (full unit suite).
+- `tsc --noEmit` for app and spec configurations: passed.
+- `bun run build:prod`: passed.
+
+- `node node_modules/@playwright/test/cli.js test e2e/authenticated-page.spec.ts e2e/authenticated-login.spec.ts e2e/logout-flow.spec.ts e2e/theme-toggle.spec.ts`: **10 passed**, against the production build with mocked APIs. E2E type checking also passed.
+- Local browser checks used an available port because Windows reserves port 3000; the repository configuration was restored unchanged.
+
+The existing jsdom stylesheet parsing messages were present in the passing unit run.
+
+Based independently on main [ae54d73bf1e5e98fb65dd8060c006f1defc90d01](https://github.com/duplicati/ngclient/commit/ae54d73bf1e5e98fb65dd8060c006f1defc90d01); no predecessor PR is required.
+Verified commit: [97ae286bfa432bb2001b0d66ca3a4e86375fad65](https://github.com/JamBalaya56562/ngclient/commit/97ae286bfa432bb2001b0d66ca3a4e86375fad65).
 
 🤖 Generated with [Claude Code](https://claude.com/claude-code)

@@ -1,5 +1,3 @@
-# Add a Report an issue link to the sidenav
-
 Fixes duplicati/duplicati#2259
 
 ## Summary
@@ -8,7 +6,18 @@ Fixes duplicati/duplicati#2259
 - Adds `layout.component.spec.ts`, which renders the real layout template and checks the new link's href and target. It also checks that the Documentation and forum links are still there.
 
 ## Testing
-- `ng test ngclient --watch=false --include=projects/ngclient/src/app/layout/layout.component.spec.ts`: 2 passed.
-- With the template change reverted, the new-link test fails (`expected undefined to be defined`) and the existing-links test still passes.
+
+- Node.js 26 / Bun 1.4.4, on the rebased branch.
+- `VITEST_MAX_WORKERS=1 bun run test:ci`: **2376 passed** (full unit suite).
+- `tsc --noEmit` for app and spec configurations: passed.
+- `bun run build:prod`: passed.
+
+- `node node_modules/@playwright/test/cli.js test e2e/sidebar-navigation.spec.ts`: **5 passed**, against the production build with mocked APIs. E2E type checking also passed.
+- Local browser checks used an available port because Windows reserves port 3000; the repository configuration was restored unchanged.
+
+The existing jsdom stylesheet parsing messages were present in the passing unit run.
+
+Based independently on main [ae54d73bf1e5e98fb65dd8060c006f1defc90d01](https://github.com/duplicati/ngclient/commit/ae54d73bf1e5e98fb65dd8060c006f1defc90d01); no predecessor PR is required.
+Verified commit: [3d47a88359a8016af20233e99453e5cfd411b541](https://github.com/JamBalaya56562/ngclient/commit/3d47a88359a8016af20233e99453e5cfd411b541).
 
 🤖 Generated with [Claude Code](https://claude.com/claude-code)

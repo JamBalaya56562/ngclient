@@ -1,6 +1,6 @@
 # Show when the last run of a backup failed on the home page
 
-Fixes duplicati/duplicati#2764
+Part of duplicati/duplicati#2764
 
 ## Summary
 The home page only shows the last *successful* run, so a backup whose latest attempt failed looks the same as a healthy one. The server already records `LastErrorDate` and `LastErrorMessage` when a run fails, and `FolderStatusService.DetermineStatus` treats a job as failed when that error is at least as new as the last finished run.

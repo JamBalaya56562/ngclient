@@ -1,5 +1,3 @@
-# Store the selected theme on the server
-
 Fixes duplicati/duplicati#3851
 
 ## Summary
@@ -12,9 +10,19 @@ The dark/light theme was saved only in the browser's localStorage. Opening the U
 - No server change is needed: the `/uisettings/{scheme}` endpoints already exist and require authorization.
 
 ## Testing
-- `ng test ngclient --watch=false --include=projects/ngclient/src/app/layout/layout.state.spec.ts`: 14 passed. With the change reverted (keeping only an empty `loadServerTheme()` so it compiles), 2 fail: the PATCH on selection and the server value taking precedence.
-- The new specs assert the outbound `getApiV1UisettingsByScheme` / `patchApiV1UisettingsByScheme` calls, the `dark`/`light` class on the document and the localStorage write. They also cover: no write without an explicit selection, the browser value kept when the server has nothing, has an unknown value or fails, and no overwrite of a selection made during loading.
-- `tsc -p projects/ngclient/tsconfig.app.json --noEmit` reports no errors, and Prettier passes on the touched files.
-- Not tested end to end against a running server.
+
+- Node.js 26 / Bun 1.4.4, on the rebased branch.
+- `VITEST_MAX_WORKERS=1 bun run test:ci`: **2381 passed** (full unit suite).
+- `tsc --noEmit` for app and spec configurations: passed.
+- `bun run build:prod`: passed.
+
+- `node node_modules/@playwright/test/cli.js test`: **194 passed**, against the production build with mocked APIs. E2E type checking also passed.
+- Local browser checks used an available port because Windows reserves port 3000; the repository configuration was restored unchanged.
+- Updated the browser API fixture for GET/PATCH UI settings after both existing theme tests failed on unexpected requests. Added checks that server preferences override fresh browser preferences without being written back. The full E2E suite then passed.
+
+The existing jsdom stylesheet parsing messages were present in the passing unit run.
+
+Based independently on main [ae54d73bf1e5e98fb65dd8060c006f1defc90d01](https://github.com/duplicati/ngclient/commit/ae54d73bf1e5e98fb65dd8060c006f1defc90d01); no predecessor PR is required.
+Verified commit: [fab37158bba905a991840010f34578a2a356f6f0](https://github.com/JamBalaya56562/ngclient/commit/fab37158bba905a991840010f34578a2a356f6f0).
 
 🤖 Generated with [Claude Code](https://claude.com/claude-code)
