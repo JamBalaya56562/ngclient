@@ -7,12 +7,13 @@
 - **検証済み（GitHub API）**: open PRは#739〜#749の11件。先の10件は単体・本番ビルド成功、#739/#741/#746/#747/#748のbrowser job失敗を照合。NGT-106 / #749で対処し、新PRのCIはqueued。#739の復元一覧テスト修正とは別件。
 - 実装・テスト修正は21ブランチ（公開11・未PR10）。既存20本は前回の検証記録、追加NGT-106は今回の記録が正本。triageと画像専用3本は数えない。
 - 次は#749のCI・レビュー確認、NGT-104のmainでの切分け、未PR10件の本体依存・実サーバー検証・公開範囲を確認する。PUSHEDは公開可能の保証ではない。
+- ngaxを廃止する前にngclientへ足す機能をNGT-107〜112に記録（2026-11-17、[証拠](evidence/2026-11-17-ngax-parity/README.md)）。共有DBの誤削除を防ぐNGT-108と、NGT-109・NGT-110を先に検討する。
 - 新規実装は再現するバグを優先。NGT-052〜055は要求/APIの調査から。NGT-071は準備済み差分を避ける範囲で再監査。NGT-080はNGT-092と同じCommandlineを触るため、移行範囲を決める前に差分照合が必要。
 - NGT-081/082の#735待ちは解消。NGT-005はmainに入った#728/#736と準備済みNGT-088と公開中#740（NGT-050）のツリー契約を踏まえて進める。独立ベースでも同じファイルへの変更を無条件に同時公開しない。
 
 ## 運用
 
-- IDは固定・再利用しない。次の新規IDは**NGT-107**。完了/廃止は[completed.md](completed.md)に残す。
+- IDは固定・再利用しない。次の新規IDは**NGT-113**。完了/廃止は[completed.md](completed.md)に残す。
 - READY=既知の外部ブロッカーなし、INVESTIGATE=範囲・要件の調査、PUSHED=push報告あり/未PR（検証の充足は別）、PR_OPEN=レビュー待ち、BLOCKED=依存待ち、WAITING=返信待ち、DEFERRED=方針保留。
 - 開始時にACTIVE・担当・日付・ブックマーク、終了時に証拠・残件を更新する。GitHubがIssue/PR状態の正本。依存マージだけでDONEにしない。
 - 実装は最新mainから別ブランチ。既存ブランチを無断で書き換えない。stack後段は前段マージ後に公開。PR・公開コメントは依頼がある場合のみ。Issue全体を満たす場合だけFixes/Closes、部分対応はRefsと残件。
@@ -62,6 +63,12 @@ NGT-103: 別タブ遷移E2Eの一時失敗を調査中（INVESTIGATE / Codex / 2
 | NGT-080 | #497 CommandlineのSignal Forms移行    | INVESTIGATE | NGT-092のCommandline差分を先に照合。既存の引数・URL state・保存/送信・disabled・再試行を保つ移行範囲を確定する。重複を避けられない部分は先行マージ待ち。                                                                                                            |
 | NGT-081 | 実サーバーE2Eの継続実行               | READY | NGT-006 / #735 はマージ済み。単一設定とlive fixtureを再利用し、実行契機・固定サーバー版・隔離・片付け・失敗証拠を既存CIへ組み込む。CIでの実行可否は未検証                                                                                                             |
 | NGT-082 | 画面からの新規作成を含む実サーバーE2E | READY | #735 はマージ済み。現在のAPIによるジョブ準備と区別し、ウィザード入力→保存→実行→復元→削除の最小実フローを追加。内容一致と削除範囲を確認し#273の完了基準を合意する                                                                                                      |
+| NGT-107 | ngax廃止前: 更新版の変更履歴 | INVESTIGATE | ngaxは`/changelog?from-update=true`で更新版の変更履歴を出す。ngclientの`about/changelog`は引数なしで、入っている版のものだけ（検証済み）。通知の「Show Update」から更新版を出すか、表示を切り替えるかを決める。[証拠](evidence/2026-11-17-ngax-parity/README.md) |
+| NGT-108 | ngax廃止前: 削除時の共有DB確認と宛先使用量 | INVESTIGATE | ngaxは`isdbusedelsewhere`で共有DBなら「DBも削除」を外して警告し、`report-remote-size`で未取得の使用量を出す。ngclientはどちらも呼ばない（検証済み）。共有DBを消す誤操作を防ぐので優先。[証拠](evidence/2026-11-17-ngax-parity/README.md) |
+| NGT-109 | ngax廃止前: 作成時の既存DB再利用 | INVESTIGATE | ngaxは`/remoteoperation/dbpath`で同じ宛先のDBがあれば使うか尋ねる。ngclientは呼ばない（検証済み）。ウィザードのどこで尋ねるかを決める。[証拠](evidence/2026-11-17-ngax-parity/README.md) |
+| NGT-110 | ngax廃止前: 保存時の確認 | INVESTIGATE | ngaxは弱い・自動生成のパスフレーズ、パスフレーズ・暗号化の変更、暗号化なし、ソースパスの相対・不存在で確認を出す。ngclientは強度メーターと控えの表示のみ（文言検索のみ、未追試）。どれを移すかを決めてから実装。[証拠](evidence/2026-11-17-ngax-parity/README.md) |
+| NGT-111 | ngax廃止前: Nightly更新チャンネル | INVESTIGATE | ngaxの設定にあり、ngclientの選択肢にない（検証済み）。サーバーはNightlyを扱える。今もNightlyが配布されているかを確かめてから追加するか決める。[証拠](evidence/2026-11-17-ngax-parity/README.md) |
+| NGT-112 | ngax廃止前: バックアップなしのコマンドライン | INVESTIGATE | ngaxの`/commandline`（メニューになくURL直打ちのみ）で任意の宛先を使える。ngclientはバックアップごとの画面だけ（未追試）。NGT-080・NGT-092と同じCommandlineを触るので、その差分の後。利用が少なそうなので優先度は低い（推測）。[証拠](evidence/2026-11-17-ngax-parity/README.md) |
 
 ## Duplicati側から移管した18件（未PR10件）
 
