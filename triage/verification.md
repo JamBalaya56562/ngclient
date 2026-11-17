@@ -1,5 +1,9 @@
 # 検証記録の索引
 
+2026-11-18: 7件のマージ済みブランチ削除、fork main更新、残存6実装＋triageのrebase。[最新記録](evidence/2026-11-18-maintenance/verification.md)。画像3参照は維持。
+
+2026-11-18: NGT-103の別タブ通知欠落をLinux単純リンクでも再現。Playwright 1.65.1の上流Chromium修正で解消し、共通PR #757を作成。比較400/400・Linux全193 E2E・元CI成果物各20・Windows20成功。全単体コンパイルのfixture問題は#756で別対応。[証拠と制約](evidence/2026-11-18-popup-ci/verification.md)。
+
 2026-11-18: NGT-091/#744を個別ブラウザー設定優先の任意既定値案へ変更。関連22単体・2ファイル除外2,478単体・6 E2E・隔離実サーバー3コンテキスト成功。main自身のfixture型エラーによりフルスイートは未達。[検証記録と返信](evidence/2026-11-18-theme-default-proposal/verification.md)。
 
 2026-11-17: 残存実装11本の全単体テスト・本番ビルド成功。本番UI 24 E2E・証明書upload/HTTPS・実ログ比較を確認し、独立した5件を新規公開。本体依存5件は保留、#744は重複しない。[検証・公開記録](evidence/2026-11-17-publication/verification.md)。

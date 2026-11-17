@@ -79,3 +79,18 @@
 | NGT-095 | Queue all eligible backups from the home page | [#747](https://github.com/duplicati/ngclient/pull/747) | DONE / 2026-11-17 merged |
 | NGT-097 | Download the loaded entries from log pages | [#748](https://github.com/duplicati/ngclient/pull/748) | DONE / 2026-11-17 merged |
 | NGT-113 | サイドバー単体テストのIdleLogoutState provider不足 | [#750](https://github.com/duplicati/ngclient/pull/750) closed / #747で同等修正 | DONE / 重複providerを追加するだけになったため取り下げ・ブランチ削除 |
+
+
+## 2026-11-18 マージ確認
+
+| ID | 完了範囲 | PR |
+| --- | --- | --- |
+| NGT-091 | Browser preference / server theme default | #744 |
+| NGT-088 | Partial exclusion display | #751 |
+| NGT-090 | Resolved shortcut source | #752 |
+| NGT-092 | Compare previous run | #753 |
+| NGT-093 | HTTPS certificate upload | #754 |
+| NGT-096 | Last run failed indicator | #755 |
+| NGT-114 | Required run-after fixture fields | #756 |
+
+GitHubのmergedAtとmainへの祖先包含を確認。Issue全体のclose状態は今回未確認。

@@ -1,0 +1,28 @@
+{
+  "parallel": 4,
+  "confirmedOver30Seconds": 1,
+  "count": 400,
+  "missing": 20,
+  "sample": [
+    {
+      "i": 18,
+      "button": "modifier",
+      "elapsed": 30003,
+      "pages": 1,
+      "events": 0,
+      "targets": [
+        {
+          "targetId": "C72D6797DB0FD3CF7C3CB7483888EA11",
+          "type": "page",
+          "title": "Popup target",
+          "url": "http://127.0.0.1:41833/target",
+          "attached": true,
+          "canAccessOpener": false,
+          "browserContextId": "7B91FF68EFD4CA47013655BB428CBDE1"
+        }
+      ],
+      "eventsAfter30s": 0
+    }
+  ],
+  "navigationFailures": 10
+}

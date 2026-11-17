@@ -1,0 +1,58 @@
+[
+  {
+    "pr": 751,
+    "ref": "e4d73be2e504746c3797ec80c7511f860339945a",
+    "file": "e2e/about-navigation.spec.ts",
+    "equal": true,
+    "sha256": "256af7ff31ed9f52bb92aefba65f8e0b221d80a2eb8fe9133fe0ca4f7ab2609e"
+  },
+  {
+    "pr": 751,
+    "ref": "e4d73be2e504746c3797ec80c7511f860339945a",
+    "file": "e2e/delete-backup.spec.ts",
+    "equal": true,
+    "sha256": "b39ad05f91bcad7bbd905f54a6c6377d1570cb497c2c3dfd4d22be267f9a681e"
+  },
+  {
+    "pr": 751,
+    "ref": "e4d73be2e504746c3797ec80c7511f860339945a",
+    "file": "e2e/fixtures/authenticated.ts",
+    "equal": true,
+    "sha256": "71c2df5673d1cb3e163911f349bd706f0eb55fb76ba5ad058a7527e23e8b05d8"
+  },
+  {
+    "pr": 751,
+    "ref": "e4d73be2e504746c3797ec80c7511f860339945a",
+    "file": "playwright.config.ts",
+    "equal": true,
+    "sha256": "0132073979ceedb9eba8fd91783e517c91f24606b556195501fe075e45b31834"
+  },
+  {
+    "pr": 752,
+    "ref": "321dd8cee474d192ca3238aa0eb53c3a577db17b",
+    "file": "e2e/about-navigation.spec.ts",
+    "equal": true,
+    "sha256": "256af7ff31ed9f52bb92aefba65f8e0b221d80a2eb8fe9133fe0ca4f7ab2609e"
+  },
+  {
+    "pr": 752,
+    "ref": "321dd8cee474d192ca3238aa0eb53c3a577db17b",
+    "file": "e2e/delete-backup.spec.ts",
+    "equal": true,
+    "sha256": "b39ad05f91bcad7bbd905f54a6c6377d1570cb497c2c3dfd4d22be267f9a681e"
+  },
+  {
+    "pr": 752,
+    "ref": "321dd8cee474d192ca3238aa0eb53c3a577db17b",
+    "file": "e2e/fixtures/authenticated.ts",
+    "equal": true,
+    "sha256": "71c2df5673d1cb3e163911f349bd706f0eb55fb76ba5ad058a7527e23e8b05d8"
+  },
+  {
+    "pr": 752,
+    "ref": "321dd8cee474d192ca3238aa0eb53c3a577db17b",
+    "file": "playwright.config.ts",
+    "equal": true,
+    "sha256": "0132073979ceedb9eba8fd91783e517c91f24606b556195501fe075e45b31834"
+  }
+]

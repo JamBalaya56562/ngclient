@@ -1,17 +1,15 @@
 # 現在のタスク台帳
 
-台帳更新: 2026-11-18。一括保守時のmain `81694ce023ffc16e76bef3a0472fea8ffe6c54d8`。現在SHAと確認範囲は[全11本の検証・公開記録](evidence/2026-11-17-publication/verification.md)。[更新・整理記録](evidence/2026-11-17-maintenance/verification.md)も参照。
+台帳更新: 2026-11-18。最新main `e632fdd59a5bef4c6791612918de0c53c93ced9c`。[今回の更新・整理・rebase記録](evidence/2026-11-18-maintenance/verification.md)を現在の基準とする。過去の検証件数は当時のSHAに限る。
 
 ## 現在地と次の判断
 
-- 2026-11-18 / NGT-091: #744をブラウザー個別設定優先＋任意のサーバー既定値の提案へ更新。head `785835b3fcbec6bbc743bef37ed2bb3728f76d72`、親は取得済み最新upstream main `b856d9ce4dd9881291bb440650a9a2fc76685498`。他ブランチの一括rebaseは今回実施していない。本体変更不要。22関連単体・2ファイル除外の2,478単体・6 E2E・実サーバー3コンテキスト確認。全体のspec型エラーはmain自身でも再現。[証拠・制約・返信](evidence/2026-11-18-theme-default-proposal/verification.md)。採用を迫らず、PR/Issue closeも許容してメンテナ判断待ち。
-
-- **検証済み（GitHub API）**: #739/#740/#741/#742/#743/#745/#746/#747/#748/#749をマージ確認し、local/originの10ブックマークを削除。更新作業時点のopenは#744の1件。共通fixture修正#750は#747で同等修正がmainへ入り重複したためclose・ブランチ削除。
-- 残存実装11本で全単体テスト・本番ビルド成功。今回、新規PR5件を公開。既存#744は重複せず、本体依存5件は公開保留。9件には不足する理由と証拠は今回の記録。部分除外表示は改行のみ整理し、正規化後の内容一致と公開headの本番UIテストを確認。
-- 次は公開済み6件のCI・レビュー、本体依存5件の先行マージ待ち、NGT-104のmainでの切分け。PUSHEDは公開可能の保証ではない。
-- ngaxを廃止する前にngclientへ足す機能をNGT-107〜112に記録（2026-11-17、[証拠](evidence/2026-11-17-ngax-parity/README.md)）。共有DBの誤削除を防ぐNGT-108と、NGT-109・NGT-110を先に検討する。
-- 新規実装は再現するバグを優先。NGT-052〜055は要求/APIの調査から。NGT-071は準備済み差分を避ける範囲で再監査。NGT-080はNGT-092と同じCommandlineを触るため、移行範囲を決める前に差分照合が必要。
-- NGT-081/082の#735待ちは解消。NGT-005はmainに入った#728/#736と公開中NGT-088（#751）とmainへマージ済み#740（NGT-050）のツリー契約を踏まえて進める。独立ベースでも同じファイルへの変更を無条件に同時公開しない。
+- 検証済み（GitHub API・jj ancestry）: #744と#751〜#756の7件はマージ済み。local/originの対応7ブランチを削除。コミット本体はmainの履歴として保持する。
+- open PRは#757のみ。最新mainへrebase済み。前回の#757のProduction Build/browser-testsは成功、Unit Testsの2つのfixture型エラーは今回mainへ入った#756の対象と一致。今回のpush後CIは別途確認する。
+- 未PRの実装は本体依存の5本（NGT-085/086/098/100/101）。全て最新mainへrebase。本体依存の解消状態は今回調査していないため、自動的に公開可能とはしない。
+- 画像3ブランチは公開PRの固定SHA画像リンク維持のためrebase・削除しない。別workspace claude-fixesも変更しない。
+- 次はNGT-104の切分け、NGT-108の共有DB誤削除防止、NGT-109/110の契約確認を優先候補とする。既存の本体依存5本とは差分を照合する。
+- NGT-005は#728/#736/#740/#751のマージ後のツリー契約を照合して評価。NGT-080は#753マージ後のCommandlineを再確認して範囲を決める。
 
 ## 運用
 
@@ -24,27 +22,19 @@
 
 ## 公開済みPR
 
-NGT-114 / 2026-11-18: mainのRunAfter必須フィールド不足を2つのfixtureで補完。[#756](https://github.com/duplicati/ngclient/pull/756) / PR_OPEN、`codex/fix-backup-fixture-run-after-fields`。最新main直下、#744から独立。除外なし2,473単体・app/spec型・本番ビルド・整形成功。[証拠](evidence/2026-11-18-run-after-fixtures.md)。#744のmain由来の型エラーはこの共通修正のマージ待ち。
-
-
 | ID | 範囲 | PR | 状態 |
 | --- | --- | --- | --- |
-| NGT-091 | Browser preference + optional server default | [#744](https://github.com/duplicati/ngclient/pull/744) | PR_OPEN / 提案・Related to duplicati/duplicati#3851、先行本体変更なし |
-| NGT-088 | Mark backed-up folders that have excluded subpaths | [#751](https://github.com/duplicati/ngclient/pull/751) | PR_OPEN / Fixes duplicati/duplicati#3191 |
-| NGT-090 | Show the folder a shortcut source path points to | [#752](https://github.com/duplicati/ngclient/pull/752) | PR_OPEN / Fixes duplicati/duplicati#3519 |
-| NGT-092 | Compare a backup run with the previous version from the log | [#753](https://github.com/duplicati/ngclient/pull/753) | PR_OPEN / Fixes duplicati/duplicati#4678 |
-| NGT-093 | Add HTTPS certificate upload to the settings page | [#754](https://github.com/duplicati/ngclient/pull/754) | PR_OPEN / Fixes duplicati/duplicati#1843 |
-| NGT-096 | Show when the last run of a backup failed on the home page | [#755](https://github.com/duplicati/ngclient/pull/755) | PR_OPEN / Part of duplicati/duplicati#2764 |
+| NGT-103 | Chromium popup initialization / Playwright update | [#757](https://github.com/duplicati/ngclient/pull/757) | PR_OPEN / 最新mainへrebase・push |
 
 ## 未PR・調査・回答待ち
 
 NGT-104: 読み込み済みフォルダーのArrowRight再展開。INVESTIGATE / Codex / 2026-11-16。実UIで疑いを観測、純粋mainでの再現・原因・回帰テストは未検証。[今回の証拠と次の手順](evidence/2026-11-16-publication/verification.md#ngt-104-arrowright再展開未切分け)。未実装、ブランチなし。
 
-NGT-103: 別タブ遷移E2Eの一時失敗を調査中（INVESTIGATE / Codex / 2026-11-16）。#727・#733はソース差分なしのコミット再作成・pushでCI再実行し両件successを確認、両PRともマージ済み。traceでは遷移要求200後にpageイベントが来ない。ローカルでは未再現で、根本原因を未特定のため修正PRは未作成。[証拠と残件](evidence/2026-11-16-ci-navigation/verification.md)。実装ブランチ数に含めない。
+NGT-103: PR_OPEN / Codex / 2026-11-18。[共通修正#757](https://github.com/duplicati/ngclient/pull/757)、`codex/update-playwright-popup-fix`。#751/#752と#756の新規ページ通知欠落はブラウザー単体でも再現。Playwright 1.65.1（上流修正入りChromium159）へ更新し400/400・Linux193 E2E・元CI成果物各20回・Windows20回成功。設定とテスト本体は不変。[原因・検証・再実行権限の制約](evidence/2026-11-18-popup-ci/verification.md)。#756はマージ済み。#757を最新mainへrebase/pushし、CI結果を確認する。
 
 | ID      | 範囲                                  | 状態        | 依存・次の行動                                                                                                                                                                                                                                                      |
 | ------- | ------------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| NGT-005 | Aria/CDKの適合評価                    | BLOCKED     | 先行#728/#736と公開中NGT-088（#751）とmainへマージ済み#740（NGT-050）のARIA・選択契約を照合して評価。一括Aria/CDK置換はしない。                                                                                                                                                                        |
+| NGT-005 | Aria/CDKの適合評価                    | BLOCKED     | 先行#728/#736とマージ済みNGT-088（#751）とmainへマージ済み#740（NGT-050）のARIA・選択契約を照合して評価。一括Aria/CDK置換はしない。                                                                                                                                                                        |
 | NGT-007 | Signal Forms全体 / #497               | INVESTIGATE | Signal Formsの残存実使用フォームを棚卸し。NGT-080参照。共有CVA・未使用コードを区別し、DTO/検証/キャンセル/送信の同等性を確認するまで#497をcloseしない。                                                                                                             |
 | NGT-008 | SSR・画像最適化等                     | DEFERRED    | 導入根拠となる課題が未観測 性能・UX課題が観測された場合のみ再評価 2026-11-12                                                                                                                                                                                        |
 | NGT-040 | #215 世代削除                         | WAITING     | Issue open。[実サーバー検証・close提案済み](https://github.com/duplicati/ngclient/issues/215#issuecomment-6779794381)。メンテナ判断待ち                                                                                                                             |
@@ -70,9 +60,9 @@ NGT-103: 別タブ遷移E2Eの一時失敗を調査中（INVESTIGATE / Codex / 2
 | NGT-111 | ngax廃止前: Nightly更新チャンネル | INVESTIGATE | ngaxの設定にあり、ngclientの選択肢にない（検証済み）。サーバーはNightlyを扱える。今もNightlyが配布されているかを確かめてから追加するか決める。[証拠](evidence/2026-11-17-ngax-parity/README.md) |
 | NGT-112 | ngax廃止前: バックアップなしのコマンドライン | INVESTIGATE | ngaxの`/commandline`（メニューになくURL直打ちのみ）で任意の宛先を使える。ngclientはバックアップごとの画面だけ（未追試）。NGT-080・NGT-092と同じCommandlineを触るので、その差分の後。利用が少なそうなので優先度は低い（推測）。[証拠](evidence/2026-11-17-ngax-parity/README.md) |
 
-## Duplicati側から移管した18件（未PR10件）
+## Duplicati側から移管した18件（未PR5件）
 
-18件中8件を公開。未PR10件も今回単体・型・本番ビルドは追試済みで、実サーバー確認と本体依存は別判定。移管時の履歴は[移管索引](2026-11-15-duplicati-ngclient-records.md)、現在SHAは今回の検証記録を参照。
+18件中13件はマージ済み、残り5件は未PR。本体依存と実サーバー確認は別判定。今回のrebase後検証は下記の更新・整理記録を参照し、以前の全体テスト・本番ビルドを今回の結果と扱わない。移管時の履歴は[移管索引](2026-11-15-duplicati-ngclient-records.md)、現在SHAは今回の検証記録を参照。
 
 | ID                                                          | 本体Issue・内容                                 | 状態    | ブランチ                                | 先行・公開前の確認                                  |
 | ----------------------------------------------------------- | ----------------------------------------------- | ------- | --------------------------------------- | --------------------------------------------------- |
