@@ -15,7 +15,7 @@
 
 ## 運用
 
-- IDは固定・再利用しない。次の新規IDは**NGT-114**。完了/廃止は[completed.md](completed.md)に残す。
+- IDは固定・再利用しない。次の新規IDは**NGT-115**。完了/廃止は[completed.md](completed.md)に残す。
 - READY=既知の外部ブロッカーなし、INVESTIGATE=範囲・要件の調査、PUSHED=push報告あり/未PR（検証の充足は別）、PR_OPEN=レビュー待ち、BLOCKED=依存待ち、WAITING=返信待ち、DEFERRED=方針保留。
 - 開始時にACTIVE・担当・日付・ブックマーク、終了時に証拠・残件を更新する。GitHubがIssue/PR状態の正本。依存マージだけでDONEにしない。
 - 実装は最新mainから別ブランチ。既存ブランチを無断で書き換えない。stack後段は前段マージ後に公開。PR・公開コメントは依頼がある場合のみ。Issue全体を満たす場合だけFixes/Closes、部分対応はRefsと残件。
@@ -23,6 +23,9 @@
 - 赤→緑、関連spec・型・ビルド、必要な実サーバー確認を証拠付きで区別する。未実施と記録なしを分ける。推論は推測と明記し、原文引用中の検証表現を追試扱いしない。
 
 ## 公開済みPR
+
+NGT-114 / 2026-11-18: mainのRunAfter必須フィールド不足を2つのfixtureで補完。[#756](https://github.com/duplicati/ngclient/pull/756) / PR_OPEN、`codex/fix-backup-fixture-run-after-fields`。最新main直下、#744から独立。除外なし2,473単体・app/spec型・本番ビルド・整形成功。[証拠](evidence/2026-11-18-run-after-fixtures.md)。#744のmain由来の型エラーはこの共通修正のマージ待ち。
+
 
 | ID | 範囲 | PR | 状態 |
 | --- | --- | --- | --- |
