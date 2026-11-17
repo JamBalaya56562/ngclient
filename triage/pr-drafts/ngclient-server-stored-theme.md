@@ -25,4 +25,8 @@ The existing jsdom stylesheet parsing messages were present in the passing unit 
 Based independently on main [ae54d73bf1e5e98fb65dd8060c006f1defc90d01](https://github.com/duplicati/ngclient/commit/ae54d73bf1e5e98fb65dd8060c006f1defc90d01); no predecessor PR is required.
 Verified commit: [fab37158bba905a991840010f34578a2a356f6f0](https://github.com/JamBalaya56562/ngclient/commit/fab37158bba905a991840010f34578a2a356f6f0).
 
+## Rebase validation (2026-11-17)
+
+Current head: [`d827c4653faa2957ec375dd1832e2758069543e1`](https://github.com/JamBalaya56562/ngclient/commit/d827c4653faa2957ec375dd1832e2758069543e1), base `81694ce023ffc16e76bef3a0472fea8ffe6c54d8`. App/spec type checks, related unit specs and production build passed. Earlier results above are pre-rebase evidence. Run any remaining checks before publication.
+
 🤖 Generated with [Claude Code](https://claude.com/claude-code)

@@ -1,5 +1,11 @@
 # 検証記録の索引
 
+2026-11-17: 残存実装11本の全単体テスト・本番ビルド成功。本番UI 24 E2E・証明書upload/HTTPS・実ログ比較を確認し、独立した5件を新規公開。本体依存5件は保留、#744は重複しない。[検証・公開記録](evidence/2026-11-17-publication/verification.md)。
+
+## main更新・10本削除・残存11本のrebase（2026-11-17）
+
+[今回の記録](evidence/2026-11-17-maintenance/verification.md)が現在SHAの正本。途中のrun-after追加と#747マージを取り込み直した。全11本の型、競合解消4本の関連単体・本番ビルド確認。#750は同等修正がmainへ入りclose。画像3参照の固定SHAと別workspaceは維持。
+
 ## NGT-106 保持メニューとimport loadingのCI失敗（2026-11-17）
 
 保持メニューが外部フォーカス後も残る実UI状態と、通知・読み込み表示が同じstatusを持つテスト競合を再現。赤2E2E/1単体→緑2,375単体/40E2E、型・本番成功。#741の通知変更と一時統合した8E2Eも成功。独立した[#749](https://github.com/duplicati/ngclient/pull/749)を公開、既存PRは変更なし。元の高速Tabのタイミング自体はローカル未再現。[検証・限界・コマンド](evidence/2026-11-17-ci-option-import/verification.md)。

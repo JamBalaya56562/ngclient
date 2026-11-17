@@ -1,0 +1,27 @@
+[
+  {
+    "before": "8fb2fde2a84cc134d8bfa320b8dc0e1c7eef47e0",
+    "sha": "e4d73be2e504746c3797ec80c7511f860339945a",
+    "branch": "feat/file-tree-partial-exclusion"
+  },
+  {
+    "before": "321dd8cee474d192ca3238aa0eb53c3a577db17b",
+    "sha": "321dd8cee474d192ca3238aa0eb53c3a577db17b",
+    "branch": "feat/show-resolved-source-shortcut"
+  },
+  {
+    "before": "947ea31ffca525c2fafb837240e2bedf7c2710d5",
+    "sha": "947ea31ffca525c2fafb837240e2bedf7c2710d5",
+    "branch": "feat/log-compare-previous-version"
+  },
+  {
+    "before": "ebf1e65269ee7b05d0f2b6e2fe1371dd698e3a40",
+    "sha": "ebf1e65269ee7b05d0f2b6e2fe1371dd698e3a40",
+    "branch": "feat/ssl-certificate-upload"
+  },
+  {
+    "before": "8fc77558945b6de7ea2ee771e33991090e76787d",
+    "sha": "8fc77558945b6de7ea2ee771e33991090e76787d",
+    "branch": "feat/last-run-failed-indicator"
+  }
+]

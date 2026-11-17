@@ -63,3 +63,19 @@
 | NGT-079 | リスト並替時のフォーカス保持 | [#729](https://github.com/duplicati/ngclient/pull/729)（2026-11-16 merged） |
 | NGT-083 | SSH Browse時のホストキー承認 | [#734](https://github.com/duplicati/ngclient/pull/734)（2026-11-16 merged） |
 | NGT-102 | #7850 Suppress時のジョブ種別・Enabled保持 | [#738](https://github.com/duplicati/ngclient/pull/738)（2026-11-16 merged） |
+
+## 2026-11-17 マージ・整理確認
+
+| ID | 範囲 | PR | 状態 |
+| --- | --- | --- | --- |
+| NGT-106 | 保持メニューの外部フォーカス時の閉じ忘れ・import loadingの広すぎるE2E locator | [#749](https://github.com/duplicati/ngclient/pull/749) | DONE / 2026-11-17 merged |
+| NGT-105 | Check restore group paths without racing listing requests | [#739](https://github.com/duplicati/ngclient/pull/739) | DONE / 2026-11-17 merged |
+| NGT-050 | Show source attribute exclusions and link to their settings | [#740](https://github.com/duplicati/ngclient/pull/740) | DONE / 2026-11-17 merged |
+| NGT-084 | Report the result when Verify files finishes | [#741](https://github.com/duplicati/ngclient/pull/741) | DONE / 2026-11-17 merged |
+| NGT-087 | Format progress file counts with locale-aware separators | [#742](https://github.com/duplicati/ngclient/pull/742) | DONE / 2026-11-17 merged |
+| NGT-089 | Add an optional sign-out after browser inactivity | [#743](https://github.com/duplicati/ngclient/pull/743) | DONE / 2026-11-17 merged |
+| NGT-094 | Add a Report an issue link to the navigation | [#745](https://github.com/duplicati/ngclient/pull/745) | DONE / 2026-11-17 merged |
+| NGT-099 | Show file counts in the restore version picker | [#746](https://github.com/duplicati/ngclient/pull/746) | DONE / 2026-11-17 merged |
+| NGT-095 | Queue all eligible backups from the home page | [#747](https://github.com/duplicati/ngclient/pull/747) | DONE / 2026-11-17 merged |
+| NGT-097 | Download the loaded entries from log pages | [#748](https://github.com/duplicati/ngclient/pull/748) | DONE / 2026-11-17 merged |
+| NGT-113 | サイドバー単体テストのIdleLogoutState provider不足 | [#750](https://github.com/duplicati/ngclient/pull/750) closed / #747で同等修正 | DONE / 重複providerを追加するだけになったため取り下げ・ブランチ削除 |
