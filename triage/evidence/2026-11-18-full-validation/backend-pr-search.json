@@ -1,0 +1,27 @@
+[
+  {
+    "exitCode": 0,
+    "branch": "feat/export-global-options",
+    "pullRequests": []
+  },
+  {
+    "exitCode": 0,
+    "branch": "feat/skip-next-scheduled-run",
+    "pullRequests": []
+  },
+  {
+    "exitCode": 0,
+    "branch": "feat/compact-progress",
+    "pullRequests": []
+  },
+  {
+    "exitCode": 0,
+    "branch": "feat/list-temporary-backups",
+    "pullRequests": []
+  },
+  {
+    "exitCode": 0,
+    "branch": "feat/systeminfo-preload-paths",
+    "pullRequests": []
+  }
+]

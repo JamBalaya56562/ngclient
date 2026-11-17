@@ -1,5 +1,7 @@
 # 検証記録の索引
 
+2026-11-18: 残存6実装の除外なし全体テスト・本番ビルド成功。本体依存5件は未統合・PRなし、既存#757はCI全成功。新規PR0件。[結果とworker待機時間の一時延長・復元](evidence/2026-11-18-full-validation/verification.md)。
+
 2026-11-18: 7件のマージ済みブランチ削除、fork main更新、残存6実装＋triageのrebase。[最新記録](evidence/2026-11-18-maintenance/verification.md)。画像3参照は維持。
 
 2026-11-18: NGT-103の別タブ通知欠落をLinux単純リンクでも再現。Playwright 1.65.1の上流Chromium修正で解消し、共通PR #757を作成。比較400/400・Linux全193 E2E・元CI成果物各20・Windows20成功。全単体コンパイルのfixture問題は#756で別対応。[証拠と制約](evidence/2026-11-18-popup-ci/verification.md)。

@@ -5,8 +5,8 @@
 ## 現在地と次の判断
 
 - 検証済み（GitHub API・jj ancestry）: #744と#751〜#756の7件はマージ済み。local/originの対応7ブランチを削除。コミット本体はmainの履歴として保持する。
-- open PRは#757のみ。最新mainへrebase済み。前回の#757のProduction Build/browser-testsは成功、Unit Testsの2つのfixture型エラーは今回mainへ入った#756の対象と一致。今回のpush後CIは別途確認する。
-- 未PRの実装は本体依存の5本（NGT-085/086/098/100/101）。全て最新mainへrebase。本体依存の解消状態は今回調査していないため、自動的に公開可能とはしない。
+- open PRは#757のみ。最新mainへrebase済み。前回の#757のProduction Build/browser-testsは成功、Unit Testsの2つのfixture型エラーは今回mainへ入った#756の対象と一致。rebase後のproduction-build / unit-tests / browser-testsは全てSUCCESS。
+- 未PRの実装は本体依存の5本（NGT-085/086/098/100/101）。全て最新mainへrebase。本体最新master e8756fabで依存5件は全て未統合、対応PRなしと確認。全体テスト・本番ビルドは6実装全て成功（ローカルworker待機時間を一時延長）。[検証と公開保留理由](evidence/2026-11-18-full-validation/verification.md)。
 - 画像3ブランチは公開PRの固定SHA画像リンク維持のためrebase・削除しない。別workspace claude-fixesも変更しない。
 - 次はNGT-104の切分け、NGT-108の共有DB誤削除防止、NGT-109/110の契約確認を優先候補とする。既存の本体依存5本とは差分を照合する。
 - NGT-005は#728/#736/#740/#751のマージ後のツリー契約を照合して評価。NGT-080は#753マージ後のCommandlineを再確認して範囲を決める。
@@ -24,13 +24,13 @@
 
 | ID | 範囲 | PR | 状態 |
 | --- | --- | --- | --- |
-| NGT-103 | Chromium popup initialization / Playwright update | [#757](https://github.com/duplicati/ngclient/pull/757) | PR_OPEN / 最新mainへrebase・push |
+| NGT-103 | Chromium popup initialization / Playwright update | [#757](https://github.com/duplicati/ngclient/pull/757) | PR_OPEN / rebase後CI全成功・ローカル全体テストと本番ビルド成功 |
 
 ## 未PR・調査・回答待ち
 
 NGT-104: 読み込み済みフォルダーのArrowRight再展開。INVESTIGATE / Codex / 2026-11-16。実UIで疑いを観測、純粋mainでの再現・原因・回帰テストは未検証。[今回の証拠と次の手順](evidence/2026-11-16-publication/verification.md#ngt-104-arrowright再展開未切分け)。未実装、ブランチなし。
 
-NGT-103: PR_OPEN / Codex / 2026-11-18。[共通修正#757](https://github.com/duplicati/ngclient/pull/757)、`codex/update-playwright-popup-fix`。#751/#752と#756の新規ページ通知欠落はブラウザー単体でも再現。Playwright 1.65.1（上流修正入りChromium159）へ更新し400/400・Linux193 E2E・元CI成果物各20回・Windows20回成功。設定とテスト本体は不変。[原因・検証・再実行権限の制約](evidence/2026-11-18-popup-ci/verification.md)。#756はマージ済み。#757を最新mainへrebase/pushし、CI結果を確認する。
+NGT-103: PR_OPEN / Codex / 2026-11-18。[共通修正#757](https://github.com/duplicati/ngclient/pull/757)、`codex/update-playwright-popup-fix`。#751/#752と#756の新規ページ通知欠落はブラウザー単体でも再現。Playwright 1.65.1（上流修正入りChromium159）へ更新し400/400・Linux193 E2E・元CI成果物各20回・Windows20回成功。設定とテスト本体は不変。[原因・検証・再実行権限の制約](evidence/2026-11-18-popup-ci/verification.md)。#756はマージ済み。#757はrebase後の単体・本番ビルド・ブラウザーCIが全て成功。今回のローカル全体テスト・本番ビルドも成功。
 
 | ID      | 範囲                                  | 状態        | 依存・次の行動                                                                                                                                                                                                                                                      |
 | ------- | ------------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -61,6 +61,8 @@ NGT-103: PR_OPEN / Codex / 2026-11-18。[共通修正#757](https://github.com/du
 | NGT-112 | ngax廃止前: バックアップなしのコマンドライン | INVESTIGATE | ngaxの`/commandline`（メニューになくURL直打ちのみ）で任意の宛先を使える。ngclientはバックアップごとの画面だけ（未追試）。NGT-080・NGT-092と同じCommandlineを触るので、その差分の後。利用が少なそうなので優先度は低い（推測）。[証拠](evidence/2026-11-17-ngax-parity/README.md) |
 
 ## Duplicati側から移管した18件（未PR5件）
+
+2026-11-18再確認: 全5本の本体依存は未統合・PRなし。ngclient全体テスト/本番ビルドは6実装全て成功。[最新のSHA・コマンド・結果・制約](evidence/2026-11-18-full-validation/verification.md)。
 
 18件中13件はマージ済み、残り5件は未PR。本体依存と実サーバー確認は別判定。今回のrebase後検証は下記の更新・整理記録を参照し、以前の全体テスト・本番ビルドを今回の結果と扱わない。移管時の履歴は[移管索引](2026-11-15-duplicati-ngclient-records.md)、現在SHAは今回の検証記録を参照。
 
