@@ -1,5 +1,7 @@
 # 検証記録の索引
 
+2026-11-18: NGT-115 / #3851の旧UI Cookie依存リセットを最新masterと隔離実サーバーで確認。本体forkの独立ブランチにlocalStorage移行を実装、2E2E赤→12E2E緑。ngclientのテーマCookie削除後保持も確認。[証拠と限界](evidence/2026-11-18-legacy-theme/verification.md)。
+
 2026-11-18: 残存6実装の除外なし全体テスト・本番ビルド成功。本体依存5件は未統合・PRなし、既存#757はCI全成功。新規PR0件。[結果とworker待機時間の一時延長・復元](evidence/2026-11-18-full-validation/verification.md)。
 
 2026-11-18: 7件のマージ済みブランチ削除、fork main更新、残存6実装＋triageのrebase。[最新記録](evidence/2026-11-18-maintenance/verification.md)。画像3参照は維持。

@@ -13,7 +13,7 @@
 
 ## 運用
 
-- IDは固定・再利用しない。次の新規IDは**NGT-115**。完了/廃止は[completed.md](completed.md)に残す。
+- IDは固定・再利用しない。次の新規IDは**NGT-116**。完了/廃止は[completed.md](completed.md)に残す。
 - READY=既知の外部ブロッカーなし、INVESTIGATE=範囲・要件の調査、PUSHED=push報告あり/未PR（検証の充足は別）、PR_OPEN=レビュー待ち、BLOCKED=依存待ち、WAITING=返信待ち、DEFERRED=方針保留。
 - 開始時にACTIVE・担当・日付・ブックマーク、終了時に証拠・残件を更新する。GitHubがIssue/PR状態の正本。依存マージだけでDONEにしない。
 - 実装は最新mainから別ブランチ。既存ブランチを無断で書き換えない。stack後段は前段マージ後に公開。PR・公開コメントは依頼がある場合のみ。Issue全体を満たす場合だけFixes/Closes、部分対応はRefsと残件。
@@ -27,6 +27,9 @@
 | NGT-103 | Chromium popup initialization / Playwright update | [#757](https://github.com/duplicati/ngclient/pull/757) | PR_OPEN / rebase後CI全成功・ローカル全体テストと本番ビルド成功 |
 
 ## 未PR・調査・回答待ち
+
+NGT-115: PUSHED / Codex / 2026-11-18。duplicati/duplicati#3851の旧UI側。別ポートでのテーマ上書きとテーマCookie消失でのリセットを実測。本体の独立ブランチ `codex/ngax-persistent-browser-theme` / `ff4af1dd9c23379fab103a5508d2ee2aa2813e00` をoriginへpush。localStorage優先＋Cookie移行＋保存拒否時fallback。2 E2E赤→12 E2E緑。PR未作成、Issueに解決済みとは投稿していない。[証拠と未検証範囲](evidence/2026-11-18-legacy-theme/verification.md)。
+
 
 NGT-104: 読み込み済みフォルダーのArrowRight再展開。INVESTIGATE / Codex / 2026-11-16。実UIで疑いを観測、純粋mainでの再現・原因・回帰テストは未検証。[今回の証拠と次の手順](evidence/2026-11-16-publication/verification.md#ngt-104-arrowright再展開未切分け)。未実装、ブランチなし。
 

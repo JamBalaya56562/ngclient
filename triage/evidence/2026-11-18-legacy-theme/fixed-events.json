@@ -1,0 +1,50 @@
+[
+  {
+    "kind": "server",
+    "version": "2.4.1.101",
+    "webroot": "C:\\Users\\Jam\\Documents\\ngclient\\tmp\\ngax-theme-workspace\\Duplicati\\Server\\webroot",
+    "run": "C:\\Users\\Jam\\Documents\\ngclient\\tmp\\theme-legacy-20261118\\run-IQLUIP",
+    "base": "http://127.0.0.1:8895",
+    "other": "http://127.0.0.1:8896",
+    "client": "http://127.0.0.1:8897"
+  },
+  {
+    "kind": "served-controller",
+    "sha256": "bc0f30d6622f26db86a16a849720b6a069b30eb11131283dc12632afd4fc8adf",
+    "sourceMatches": true
+  },
+  {
+    "kind": "browser",
+    "version": "157.0.4341.60",
+    "channel": "msedge"
+  },
+  {
+    "kind": "ngax-normal-reload",
+    "theme": "dark",
+    "storage": {
+      "duplicati:ngax:theme": "dark"
+    }
+  },
+  {
+    "kind": "ngax-theme-cookie",
+    "cookie": null
+  },
+  {
+    "kind": "ngax-after-other-port-saved-light",
+    "actual": "styles/dark.css",
+    "expectedIndependent": "styles/dark.css"
+  },
+  {
+    "kind": "ngax-after-theme-cookie-removed",
+    "actual": "styles/dark.css",
+    "expectedPersistent": "styles/dark.css"
+  },
+  {
+    "kind": "ngclient-after-cookie-removal",
+    "theme": "dark",
+    "stored": "true"
+  },
+  {
+    "kind": "completed"
+  }
+]
