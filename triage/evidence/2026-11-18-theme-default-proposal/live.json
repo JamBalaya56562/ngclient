@@ -1,0 +1,44 @@
+[
+  {
+    "kind": "server",
+    "version": "2.4.1.101",
+    "OSType": "Windows",
+    "run": "C:\\Users\\Jam\\Documents\\ngclient\\tmp\\review744-20261118\\run-rNRFaG"
+  },
+  {
+    "kind": "default-set-from-settings",
+    "stored": {
+      "theme": "dark"
+    }
+  },
+  {
+    "kind": "browser-override-is-private",
+    "shared": {
+      "theme": "dark"
+    },
+    "browser": "light"
+  },
+  {
+    "kind": "browser-override-survives-other-client-change-and-reload"
+  },
+  {
+    "kind": "fresh-context-inherits-server-default"
+  },
+  {
+    "kind": "browser-override-cleared"
+  },
+  {
+    "kind": "system-fallback-per-browser",
+    "a": "light",
+    "b": "dark",
+    "c": "light"
+  },
+  {
+    "kind": "completed",
+    "pageErrors": []
+  },
+  {
+    "kind": "cleanup",
+    "remainingJobs": 0
+  }
+]

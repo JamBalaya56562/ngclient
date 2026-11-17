@@ -1,8 +1,10 @@
 # 現在のタスク台帳
 
-更新・GitHub照合: 2026-11-17。main `81694ce023ffc16e76bef3a0472fea8ffe6c54d8`。現在SHAと確認範囲は[全11本の検証・公開記録](evidence/2026-11-17-publication/verification.md)。[更新・整理記録](evidence/2026-11-17-maintenance/verification.md)も参照。
+台帳更新: 2026-11-18。一括保守時のmain `81694ce023ffc16e76bef3a0472fea8ffe6c54d8`。現在SHAと確認範囲は[全11本の検証・公開記録](evidence/2026-11-17-publication/verification.md)。[更新・整理記録](evidence/2026-11-17-maintenance/verification.md)も参照。
 
 ## 現在地と次の判断
+
+- 2026-11-18 / NGT-091: #744をブラウザー個別設定優先＋任意のサーバー既定値の提案へ更新。head `785835b3fcbec6bbc743bef37ed2bb3728f76d72`、親は取得済み最新upstream main `b856d9ce4dd9881291bb440650a9a2fc76685498`。他ブランチの一括rebaseは今回実施していない。本体変更不要。22関連単体・2ファイル除外の2,478単体・6 E2E・実サーバー3コンテキスト確認。全体のspec型エラーはmain自身でも再現。[証拠・制約・返信](evidence/2026-11-18-theme-default-proposal/verification.md)。採用を迫らず、PR/Issue closeも許容してメンテナ判断待ち。
 
 - **検証済み（GitHub API）**: #739/#740/#741/#742/#743/#745/#746/#747/#748/#749をマージ確認し、local/originの10ブックマークを削除。更新作業時点のopenは#744の1件。共通fixture修正#750は#747で同等修正がmainへ入り重複したためclose・ブランチ削除。
 - 残存実装11本で全単体テスト・本番ビルド成功。今回、新規PR5件を公開。既存#744は重複せず、本体依存5件は公開保留。9件には不足する理由と証拠は今回の記録。部分除外表示は改行のみ整理し、正規化後の内容一致と公開headの本番UIテストを確認。
@@ -24,7 +26,7 @@
 
 | ID | 範囲 | PR | 状態 |
 | --- | --- | --- | --- |
-| NGT-091 | Persist the selected theme on the server | [#744](https://github.com/duplicati/ngclient/pull/744) | PR_OPEN / Fixes duplicati/duplicati#3851 |
+| NGT-091 | Browser preference + optional server default | [#744](https://github.com/duplicati/ngclient/pull/744) | PR_OPEN / 提案・Related to duplicati/duplicati#3851、先行本体変更なし |
 | NGT-088 | Mark backed-up folders that have excluded subpaths | [#751](https://github.com/duplicati/ngclient/pull/751) | PR_OPEN / Fixes duplicati/duplicati#3191 |
 | NGT-090 | Show the folder a shortcut source path points to | [#752](https://github.com/duplicati/ngclient/pull/752) | PR_OPEN / Fixes duplicati/duplicati#3519 |
 | NGT-092 | Compare a backup run with the previous version from the log | [#753](https://github.com/duplicati/ngclient/pull/753) | PR_OPEN / Fixes duplicati/duplicati#4678 |

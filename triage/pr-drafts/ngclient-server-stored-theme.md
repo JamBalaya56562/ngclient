@@ -1,32 +1,33 @@
-Fixes duplicati/duplicati#3851
+# Allow a server theme default while keeping browser preferences personal
 
-## Summary
-The dark/light theme was saved only in the browser's localStorage. Opening the UI in another browser, a private window or on another machine brought back the default theme, and one server could not be given a different look from another to tell them apart.
+Related to duplicati/duplicati#3851.
 
-- When the user explicitly picks a theme (header toggle or Settings), the choice is also written to the server's existing UI settings store: `PATCH /api/v1/uisettings/ngclient` with `{ "theme": "dark" | "light" }`.
-- The authenticated layout reads `GET /api/v1/uisettings/ngclient` when it loads and applies the stored theme over the browser's value.
-- If the server has no stored theme, has an unknown value, or the request fails, the browser's own choice is kept. Existing installs therefore look the same until someone picks a theme.
-- A theme picked while the server value is still loading is not overwritten.
-- No server change is needed: the `/uisettings/{scheme}` endpoints already exist and require authorization.
+Browser theme choices remain personal. This proposal adds an optional server default for browsers that have not made a choice, so a fresh browser or private window can inherit an instance-specific appearance.
 
-## Testing
+## Behavior
 
-- Node.js 26 / Bun 1.4.4, on the rebased branch.
-- `VITEST_MAX_WORKERS=1 bun run test:ci`: **2381 passed** (full unit suite).
-- `tsc --noEmit` for app and spec configurations: passed.
-- `bun run build:prod`: passed.
+- Priority: an explicit browser choice, then the server default, then that browser's operating-system preference.
+- The header toggle and existing Light/Dark controls save only in that browser. Existing stored choices are preserved.
+- A separate **Default theme for this server** section explicitly saves Light, Dark or Operating system through the existing `PATCH /api/v1/uisettings/ngclient` API. It does not change another browser's personal choice.
+- **Use server default** clears the browser override. Loading a server default never writes it into localStorage as a personal choice.
+- Defaults are loaded after authentication. An unset/unknown default uses the browser's OS preference, including subsequent OS changes.
+- Default updates are single-flight, retain the previous value on failure and allow retry. A failed initial load prevents accidental shared changes.
 
-- `node node_modules/@playwright/test/cli.js test`: **194 passed**, against the production build with mocked APIs. E2E type checking also passed.
-- Local browser checks used an available port because Windows reserves port 3000; the repository configuration was restored unchanged.
-- Updated the browser API fixture for GET/PATCH UI settings after both existing theme tests failed on unexpected requests. Added checks that server preferences override fresh browser preferences without being written back. The full E2E suite then passed.
+No server change or new API is needed. There is no synchronization of personal choices between browsers.
 
-The existing jsdom stylesheet parsing messages were present in the passing unit run.
+## Validation
 
-Based independently on main [ae54d73bf1e5e98fb65dd8060c006f1defc90d01](https://github.com/duplicati/ngclient/commit/ae54d73bf1e5e98fb65dd8060c006f1defc90d01); no predecessor PR is required.
-Verified commit: [fab37158bba905a991840010f34578a2a356f6f0](https://github.com/JamBalaya56562/ngclient/commit/fab37158bba905a991840010f34578a2a356f6f0).
+- Three regression checks fail with the original implementation: ordinary toggles write to the server, a server value overrides an explicit browser value, and an inherited value is saved as a browser choice. All pass after the change.
+- `bun run test:ci --include=projects/ngclient/src/app/layout/*.spec.ts`: **22 passed**.
+- `bun run test:ci --exclude=**/backups.enable-disable.spec.ts --exclude=**/backups.refresh.spec.ts`: **2,478 passed / 192 files**. The exclusions are command-line options only; no repository test configuration was changed.
+- App and E2E TypeScript checks, Prettier and `bun run build:prod`: passed.
+- `node node_modules/@playwright/test/cli.js test e2e/theme-toggle.spec.ts`: **6 passed** against the production build. The temporary local port adjustment was restored.
+- Isolated Duplicati **2.4.1.101 Canary** with **three independent browser contexts**: a browser's Light override survives another client's shared-default changes and reload; a fresh context inherits Dark without storing a local choice; clearing an override resumes inheritance; selecting Operating system yields Light/Dark independently for each browser. No page errors. The isolated server, proxy and browsers were stopped afterward.
 
-## Rebase validation (2026-11-17)
+### Existing main test-fixture failure
 
-Current head: [`d827c4653faa2957ec375dd1832e2758069543e1`](https://github.com/JamBalaya56562/ngclient/commit/d827c4653faa2957ec375dd1832e2758069543e1), base `81694ce023ffc16e76bef3a0472fea8ffe6c54d8`. App/spec type checks, related unit specs and production build passed. Earlier results above are pre-rebase evidence. Run any remaining checks before publication.
+The unrestricted unit suite and spec type check currently fail to compile because `backups.enable-disable.spec.ts` and `backups.refresh.spec.ts` omit the newly required `RunAfterBackupID` and `RunAfterCondition` fields. I reproduced the same two TS2739 errors on unmodified upstream main `b856d9ce4dd9881291bb440650a9a2fc76685498`. This PR leaves that separate issue unchanged; the 2,478-test result above excludes those two files and is not a full-suite success claim.
+
+Verified head: [`785835b3fcbec6bbc743bef37ed2bb3728f76d72`](https://github.com/JamBalaya56562/ngclient/commit/785835b3fcbec6bbc743bef37ed2bb3728f76d72), independently based on upstream main `b856d9ce4dd9881291bb440650a9a2fc76685498`.
 
 🤖 Generated with [Claude Code](https://claude.com/claude-code)

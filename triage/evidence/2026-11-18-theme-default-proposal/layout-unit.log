@@ -1,0 +1,14 @@
+$ ng test ngclient --watch=false "--include=projects/ngclient/src/app/layout/*.spec.ts"
+> Building...
+√ Building...
+Application bundle generation complete. [16.944 seconds] - 2026-11-17T15:49:13.865Z
+
+
+ RUN  v5.0.3 C:/Users/Jam/Documents/ngclient
+
+
+ Test Files  2 passed (2)
+      Tests  22 passed (22)
+   Start at  00:49:15
+   Duration  9.09s (environment 32%, import 24%, tests 18%, transform 14%, setup 12%)
+
