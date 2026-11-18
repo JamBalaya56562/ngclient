@@ -1,0 +1,40 @@
+
+Running 1 test using 1 worker
+
+(node:20156) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 [chromium] › e2e\live\destination-url-preservation.spec.ts:50:3 › interleaved-secrets: API and untouched editor saves retain the exact destination and advanced options (1.4s)
+
+
+  1) [chromium] › e2e\live\destination-url-preservation.spec.ts:50:3 › interleaved-secrets: API and untouched editor saves retain the exact destination and advanced options 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "s3://bucket/a%2Fb?AUTH-PASSWORD=one&keep=middle&auth-password=two&flag"
+    Received: "s3://bucket/a%2Fb?AUTH-PASSWORD=one&auth-password=two&keep=middle&flag"
+
+       96 |       const saved = await api.put(endpoint, { data: initial });
+       97 |       expect(saved.ok(), await saved.text()).toBe(true);
+    >  98 |       expect(storedUrl()).toBe(url);
+          |                           ^
+       99 |       expect(advancedOptions(await get())).toEqual(expectedOptions);
+      100 |
+      101 |       const writes: GetBackupResultDto[] = [];
+        at C:\Users\Jam\Documents\ngclient\e2e\live\destination-url-preservation.spec.ts:98:27
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    tmp\issue328-20261119\red-results\destination-url-preservati-aa595-nation-and-advanced-options-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: tmp\issue328-20261119\red-results\destination-url-preservati-aa595-nation-and-advanced-options-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    tmp\issue328-20261119\red-results\destination-url-preservati-aa595-nation-and-advanced-options-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace tmp\issue328-20261119\red-results\destination-url-preservati-aa595-nation-and-advanced-options-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [chromium] › e2e\live\destination-url-preservation.spec.ts:50:3 › interleaved-secrets: API and untouched editor saves retain the exact destination and advanced options 

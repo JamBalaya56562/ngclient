@@ -8,7 +8,7 @@ GitHubをIssue/PR状態の正本、このファイルを作業判断の正本と
 
 - こちらの#758〜765は8件すべてマージ済み。対応するlocal/originブランチ8本を削除した。Issue数・全open PR数は今回再集計していない。
 - 最新mainは#776まで統合済み。#767（テーマ）・#768（Home操作ダイアログ）も統合済み。#766もマージ済み（現在のopen PR検索は0件）。
-- 実装ブランチは6本＝公開中1本（#777）＋本体待ち5本。#771〜776はマージ済みでlocal/originブランチを削除。残る実装とtriageをmain `5c520f1311b7`へ更新。固定画像/証拠参照4本と別workspaceは維持。
+- 実装ブランチは7本＝公開中2本（#777・#778）＋本体待ち5本。#771〜776はマージ済みでlocal/originブランチを削除。残る実装とtriageをmain `5c520f1311b7`へ更新。固定画像/証拠参照4本と別workspaceは維持。
 - upstreamの新規PR [#766](https://github.com/duplicati/ngclient/pull/766) は版比較画面。#761と`backup/commandline/commandline.component.ts`・specを共有する。ファイル重複は検証済みだが、実際のmerge conflict・機能依存は未検証。どちらかがマージされたら他方をrebase・再検証する。
 - #768統合に合わせNGT-086のSkip next runを新しい操作ダイアログへ移した。NGT-118の先行マージ待ちは解除。
 - 元の返信待ち5件は、回帰テストPR #772〜776のマージによりcompletedでclose済み。新たなIssueコメントは投稿していない。
@@ -19,11 +19,10 @@ GitHubをIssue/PR状態の正本、このファイルを作業判断の正本と
 
 | 優先 | ID | 状態 | 範囲・完了条件 |
 | --- | --- | --- | --- |
-| 1 | NGT-047 / #328 | INVESTIGATE | #7832後の.NET 11実サーバーで通常8種のAPIと6種のUI・18回の保存を確認。URLと詳細オプション保持。重複する認証キーが離れている場合だけ、ブラウザーなしGET→PUTでも本体が順序を変更する（値は保持、影響未検証）。ngclient修正なし。本体の残件判断が必要。[証拠](evidence/2026-11-18-ngt047-recheck/verification.md)。 |
-| 2 | NGT-081 / #273 | READY | 現在のlive fixtureと単一Playwright設定を使い、固定した公式サーバー版・取得検証・隔離・終了処理・失敗artifactを既存CIへ組み込む。最初はworkflow_dispatch等の実行契機を決める。#765のspecを変更せず、既存ケースでも動く構成にする。CIでliveを流した実績はまだない。 |
-| 3 | NGT-118 / #273 | READY | #768はマージ済み。現在のHome操作ダイアログを使う。 **新規: 実サーバーでのUI削除E2E**。隔離ジョブをAPIで準備し、Home→削除画面→取消で変更なし→確認後にジョブと選んだローカルDBだけ削除、宛先ファイルのハッシュ保持を検証。既存live fixtureを再利用し、#765の`backup-restore.spec.ts`を編集しない。#759の共有DBガードが入っても、共有していない通常ジョブで成立すること。実装・実行は未着手。 |
-| 4 | NGT-005 | READY | Aria/CDK適合評価。先行#728/#736/#740/#751はすべてマージ済みなので外部BLOCKEDを解除。現行ツリーのARIA・選択・キーボード契約を照合し、導入により解決できる観測課題があるか調べる。一括置換自体を目的にしない。 |
-| 5 | NGT-119 / #497 | READY | **新規: Start-all完了後操作のSignal Forms移行**。実使用中の`home/start-all-dialog`のafter-action入力だけを対象にする。None/null、未対応アクションのNoneへの戻し、候補表示、選択順、未選択時disabled、Cancelを維持。Shutdown等の副作用はモックで送信値を確認。共有Set/checkboxを機械的にフォーム化しない。#761/#766や準備済み5本とファイル重複なし。実装・試験は未着手。 |
+| 1 | NGT-081 / #273 | READY | 現在のlive fixtureと単一Playwright設定を使い、固定した公式サーバー版・取得検証・隔離・終了処理・失敗artifactを既存CIへ組み込む。最初はworkflow_dispatch等の実行契機を決める。#765のspecを変更せず、既存ケースでも動く構成にする。CIでliveを流した実績はまだない。 |
+| 2 | NGT-118 / #273 | READY | #768はマージ済み。現在のHome操作ダイアログを使う。 **新規: 実サーバーでのUI削除E2E**。隔離ジョブをAPIで準備し、Home→削除画面→取消で変更なし→確認後にジョブと選んだローカルDBだけ削除、宛先ファイルのハッシュ保持を検証。既存live fixtureを再利用し、#765の`backup-restore.spec.ts`を編集しない。#759の共有DBガードが入っても、共有していない通常ジョブで成立すること。実装・実行は未着手。 |
+| 3 | NGT-005 | READY | Aria/CDK適合評価。先行#728/#736/#740/#751はすべてマージ済みなので外部BLOCKEDを解除。現行ツリーのARIA・選択・キーボード契約を照合し、導入により解決できる観測課題があるか調べる。一括置換自体を目的にしない。 |
+| 4 | NGT-119 / #497 | READY | **新規: Start-all完了後操作のSignal Forms移行**。実使用中の`home/start-all-dialog`のafter-action入力だけを対象にする。None/null、未対応アクションのNoneへの戻し、候補表示、選択順、未選択時disabled、Cancelを維持。Shutdown等の副作用はモックで送信値を確認。共有Set/checkboxを機械的にフォーム化しない。#761/#766や準備済み5本とファイル重複なし。実装・試験は未着手。 |
 
 ## 先に調査・範囲決定が必要なもの
 
@@ -112,7 +111,7 @@ NGT-086は#768の新ダイアログへ統合済み。対応サーバー・スケ
 
 - #273: 既存の単体・通常E2Eに加え、#765の画面作成、NGT-081の継続live実行、NGT-118のUI削除を揃えて範囲を説明する。現在のlive round tripの後片付けはAPI削除なので、UI削除まで網羅したとは書かない。メンテナと完了基準を合わせてからClosesを使う。
 - #497: #761と残る実使用フォームを段階的に整理する。公開APIを使い、DTO/disabled/キャンセル/送信値/URL stateを保持。ngModelを一律ゼロにすることや、通常のSignal状態までフォーム化することを完了条件にしない。
-- #328: #7832後の実API/UIの往復が成功したら、確認した範囲・SHA・配布版との違いを添えて残件を確認する。
+- #328: #618と本体#7832/#7860/#7898はマージ済み。NGT-047の実サーバー回帰E2EをPR #778で公開しCloses #328を付与。9種のGET→PUTとUI27回保存でURL/詳細オプション保持。配布版への修正収録・全provider接続は未検証。
 - #460/#462/#126: UIの見た目を先に足さず、対象宛先/検証schemaのAPI契約を固める。
 - #409: 要望を項目別に判定し、具体的な再現不具合とUX提案を分ける。新しい未検証の対処を既存改善の実績に混ぜない。
 - 元の返信待ち5件は、ユーザー依頼の回帰テストPR #772〜776がマージ済み。未検証範囲と#627の代替案の範囲は本文へ明記し、メンテナのmerge判断に委ねる。
@@ -140,3 +139,7 @@ NGT-086は#768の新ダイアログへ統合済み。対応サーバー・スケ
 ## #771〜776マージ後の整理（2026-11-19）
 
 検証済み: 6件のGitHub merged=trueとmainの祖先判定が一致。対応するlocal/originブランチ6本を削除し、fork mainを5c520f1311b7805bd26cf2e4ff420127e46b1d72へ更新。#777はopenでメンテナのmain取り込みがあるため、取得済みツリーを保持してrebaseする。固定画像/証拠参照4本と別workspaceは対象外。rebase結果・CI調査はevidence/2026-11-19-maintenance/verification.mdに記録する。
+
+## NGT-047 / #328 の公開（2026-11-19）
+
+PR_OPEN: [#778](https://github.com/duplicati/ngclient/pull/778) / codex/live-destination-url-preservation / 2f67628310cdb4fbfed666d064f79c4dbc06670d（main 5c520f1311b7直上）。Closes #328。旧Debugサーバーの重複認証キー順序変更で新規テスト1件が赤、修正を含むサーバーで9件が緑（再実行9 passed）。GET→PUT 9回・UI保存27回で実DBのURLバイト列、秘密値、詳細オプションを確認。未知backend・フォームで読めないURLも含む。関連単体20件・E2E型・整形・本番ビルド成功。本番コード変更なし。#777のfixture修正を含めず、既存PRとの重複/stack依存なし。実行は隔離したWindows Debug/.NET 11、サーバー停止済み。[証拠](evidence/2026-11-19-issue328-live-regression/verification.md)。

@@ -1,0 +1,44 @@
+$ ng test ngclient --watch=false "--include=**/destination-edit-session.spec.ts" "--include=**/single-destination.render.spec.ts"
+> Building...
+√ Building...
+Application bundle generation complete. [14.296 seconds] - 2026-11-18T23:42:33.509Z
+
+
+ RUN  v5.0.3 C:/Users/Jam/Documents/ngclient
+
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+
+ Test Files  2 passed (2)
+      Tests  20 passed (20)
+   Start at  08:42:37
+   Duration  27.60s (environment 87%, setup 5%, transform 3%, import 3%, tests 1%)
+

@@ -1,0 +1,137 @@
+[
+  {
+    "label": "file",
+    "actions": [
+      "mouse",
+      "reload-keyboard",
+      "description-only"
+    ],
+    "writes": 3,
+    "exactStoredUrlPreserved": true,
+    "advancedOptionsPreserved": true,
+    "unexpected": [],
+    "errors": [],
+    "serverVersion": "1.0.0.0 - debug",
+    "runtime": "11.0.0"
+  },
+  {
+    "label": "ssh",
+    "actions": [
+      "mouse",
+      "reload-keyboard",
+      "description-only"
+    ],
+    "writes": 3,
+    "exactStoredUrlPreserved": true,
+    "advancedOptionsPreserved": true,
+    "unexpected": [],
+    "errors": [],
+    "serverVersion": "1.0.0.0 - debug",
+    "runtime": "11.0.0"
+  },
+  {
+    "label": "webdav",
+    "actions": [
+      "mouse",
+      "reload-keyboard",
+      "description-only"
+    ],
+    "writes": 3,
+    "exactStoredUrlPreserved": true,
+    "advancedOptionsPreserved": true,
+    "unexpected": [],
+    "errors": [],
+    "serverVersion": "1.0.0.0 - debug",
+    "runtime": "11.0.0"
+  },
+  {
+    "label": "s3",
+    "actions": [
+      "mouse",
+      "reload-keyboard",
+      "description-only"
+    ],
+    "writes": 3,
+    "exactStoredUrlPreserved": true,
+    "advancedOptionsPreserved": true,
+    "unexpected": [],
+    "errors": [],
+    "serverVersion": "1.0.0.0 - debug",
+    "runtime": "11.0.0"
+  },
+  {
+    "label": "pcloud",
+    "actions": [
+      "mouse",
+      "reload-keyboard",
+      "description-only"
+    ],
+    "writes": 3,
+    "exactStoredUrlPreserved": true,
+    "advancedOptionsPreserved": true,
+    "unexpected": [],
+    "errors": [],
+    "serverVersion": "1.0.0.0 - debug",
+    "runtime": "11.0.0"
+  },
+  {
+    "label": "unsupported",
+    "actions": [
+      "mouse",
+      "reload-keyboard",
+      "description-only"
+    ],
+    "writes": 3,
+    "exactStoredUrlPreserved": true,
+    "advancedOptionsPreserved": true,
+    "unexpected": [],
+    "errors": [],
+    "serverVersion": "1.0.0.0 - debug",
+    "runtime": "11.0.0"
+  },
+  {
+    "label": "ftp-encoding",
+    "actions": [
+      "mouse",
+      "reload-keyboard",
+      "description-only"
+    ],
+    "writes": 3,
+    "exactStoredUrlPreserved": true,
+    "advancedOptionsPreserved": true,
+    "unexpected": [],
+    "errors": [],
+    "serverVersion": "1.0.0.0 - debug",
+    "runtime": "11.0.0"
+  },
+  {
+    "label": "interleaved-secrets",
+    "actions": [
+      "mouse",
+      "reload-keyboard",
+      "description-only"
+    ],
+    "writes": 3,
+    "exactStoredUrlPreserved": true,
+    "advancedOptionsPreserved": true,
+    "unexpected": [],
+    "errors": [],
+    "serverVersion": "1.0.0.0 - debug",
+    "runtime": "11.0.0"
+  },
+  {
+    "label": "unparseable",
+    "actions": [
+      "mouse",
+      "reload-keyboard",
+      "description-only"
+    ],
+    "writes": 3,
+    "exactStoredUrlPreserved": true,
+    "advancedOptionsPreserved": true,
+    "unexpected": [],
+    "errors": [],
+    "serverVersion": "1.0.0.0 - debug",
+    "runtime": "11.0.0"
+  }
+]
