@@ -1,0 +1,42 @@
+[
+  {
+    "number": 7907,
+    "state": "open",
+    "merged": false,
+    "merged_at": null,
+    "head": "1015f8d7d90fe18f55dbb0e15fc49f8a92cfdba7",
+    "url": "https://github.com/duplicati/duplicati/pull/7907"
+  },
+  {
+    "number": 7911,
+    "state": "open",
+    "merged": false,
+    "merged_at": null,
+    "head": "4fc5c6a4d3b843fdbb898e829313536985da7634",
+    "url": "https://github.com/duplicati/duplicati/pull/7911"
+  },
+  {
+    "number": 7912,
+    "state": "open",
+    "merged": false,
+    "merged_at": null,
+    "head": "56376b7b5e6878e460f1974adda1d86e6d08ccba",
+    "url": "https://github.com/duplicati/duplicati/pull/7912"
+  },
+  {
+    "number": 7914,
+    "state": "open",
+    "merged": false,
+    "merged_at": null,
+    "head": "406d079d929165fc71fc5cbf488b017c8229f508",
+    "url": "https://github.com/duplicati/duplicati/pull/7914"
+  },
+  {
+    "number": 7915,
+    "state": "open",
+    "merged": false,
+    "merged_at": null,
+    "head": "aadc206da7ee6496650dc391e1e2281bac667229",
+    "url": "https://github.com/duplicati/duplicati/pull/7915"
+  }
+]

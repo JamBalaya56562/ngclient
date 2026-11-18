@@ -86,15 +86,15 @@ NGT-104は現行mainの単体/DOMで疑いを再現できず、回帰テスト�
 
 ## 実装済み・本体待ちの5本
 
-検証済み: 対応する本体5ブランチはいずれもmaster未統合・該当PRなし。本体triageの理由は**PR枠待ち**（open PRのマージごとに1本提出、本体を先に出す）。実装未着手待ちではない。ngclient PRは本体の提出→マージ→契約/実動作の再確認後に出す。
+検証済み（2026-11-19再照合）: 対応する本体5件はPR提出済みだが、いずれもOPEN・merged=falseでmaster未統合。待ち理由は**本体PRのマージ待ち**。ngclient PRは本体マージ後、契約/実動作・重複・テスト/ビルドを再確認して公開する。[最新依存照合](evidence/2026-11-19-backend-publication-check/verification.md)。
 
 | ID / 本体Issue | ngclientブランチ / 現在head | 必要な本体ブランチ / 現在head | 状態 |
 | --- | --- | --- | --- |
-| NGT-085 / [duplicati#2310](https://github.com/duplicati/duplicati/issues/2310) | `feat/export-global-options` / `cf7e7465` | `feat/export-global-options` / `c31eb53dab64` | BLOCKED / 本体PR枠待ち→マージ待ち |
-| NGT-086 / [duplicati#2701](https://github.com/duplicati/duplicati/issues/2701) | `feat/skip-next-scheduled-run` / `ee552d1d` | `feat/skip-next-scheduled-run` / `856178be72a2` | BLOCKED / 本体PR枠待ち→マージ待ち |
-| NGT-098 / [duplicati#3397](https://github.com/duplicati/duplicati/issues/3397) | `feat/compact-progress` / `cfc57e5a` | `feat/compact-progress` / `64309f1d73a8` | BLOCKED / 本体PR枠待ち→マージ待ち |
-| NGT-100 / [duplicati#5239](https://github.com/duplicati/duplicati/issues/5239) | `feat/restore-resume-drafts` / `8f154b80` | `feat/list-temporary-backups` / `f090ed236eb2` | BLOCKED / 本体PR枠待ち→マージ待ち |
-| NGT-101 / [duplicati#6611](https://github.com/duplicati/duplicati/issues/6611) | `feat/show-db-encryption-preload-paths` / `e63fe51d` | `feat/systeminfo-preload-paths` / `fdefdd71aad0` | BLOCKED / 本体PR枠待ち→マージ待ち |
+| NGT-085 / [duplicati#2310](https://github.com/duplicati/duplicati/issues/2310) | `feat/export-global-options` / `cf7e7465` | `feat/export-global-options` / `1015f8d7d90f` / [#7907](https://github.com/duplicati/duplicati/pull/7907) | BLOCKED / 本体PRマージ待ち |
+| NGT-086 / [duplicati#2701](https://github.com/duplicati/duplicati/issues/2701) | `feat/skip-next-scheduled-run` / `ee552d1d` | `feat/skip-next-scheduled-run` / `4fc5c6a4d3b8` / [#7911](https://github.com/duplicati/duplicati/pull/7911) | BLOCKED / 本体PRマージ待ち |
+| NGT-098 / [duplicati#3397](https://github.com/duplicati/duplicati/issues/3397) | `feat/compact-progress` / `cfc57e5a` | `feat/compact-progress` / `56376b7b5e68` / [#7912](https://github.com/duplicati/duplicati/pull/7912) | BLOCKED / 本体PRマージ待ち |
+| NGT-100 / [duplicati#5239](https://github.com/duplicati/duplicati/issues/5239) | `feat/restore-resume-drafts` / `8f154b80` | `feat/list-temporary-backups` / `406d079d9291` / [#7914](https://github.com/duplicati/duplicati/pull/7914) | BLOCKED / 本体PRマージ待ち |
+| NGT-101 / [duplicati#6611](https://github.com/duplicati/duplicati/issues/6611) | `feat/show-db-encryption-preload-paths` / `e63fe51d` | `feat/systeminfo-preload-paths` / `aadc206da7ee` / [#7915](https://github.com/duplicati/duplicati/pull/7915) | BLOCKED / 本体PRマージ待ち |
 
 本体の最新PENDING-BRANCHESではskip-nextとtemporary一覧の以前の競合は解消した旨を記録している。今回ここでrebase・ビルドを追試したわけではない。本体の最新full SHA・祖先判定・PR検索は[照合記録](evidence/2026-11-18-state-refresh/verification.md)に保存。ngclient専用PR本文は公開時に最新SHAとwhole-Issueの範囲を再確認する。
 
