@@ -1,0 +1,19 @@
+$ErrorActionPreference='Stop'
+$node=(Get-Item 'C:/Users/Jam/AppData/Local/mise/installs/node/*/node.exe'|Sort-Object FullName|Select-Object -Last 1).FullName
+$cfg=Join-Path $PWD 'playwright.config.ts';$fixture=Join-Path $PWD 'e2e/live/fixture.ts'
+$cfgBytes=[IO.File]::ReadAllBytes($cfg);$fixtureBytes=[IO.File]::ReadAllBytes($fixture)
+try {
+ New-Item -ItemType Directory -Force tmp/eight-prs-20261118/live-ui | Out-Null; Copy-Item tmp/eight-prs-20261118/builds/reuse-existing-local-database/* tmp/eight-prs-20261118/live-ui -Recurse -Force
+ $s=[Text.Encoding]::UTF8.GetString($cfgBytes).Replace('  use: {',"  use: {`n    channel: 'msedge',").Replace("'./e2e/live'","'./tmp/eight-prs-20261118'")
+ [IO.File]::WriteAllText($cfg,$s)
+ $s=[Text.Encoding]::UTF8.GetString($fixtureBytes).Replace("resolve('dist/ngclient/browser')","resolve('tmp/eight-prs-20261118/live-ui')")
+ [IO.File]::WriteAllText($fixture,$s)
+ $env:PLAYWRIGHT_MODE='live';$env:DUPLICATI_SERVER_PATH=(Get-Content tmp/editor627-20261114/server-executable.txt -Raw).Trim()
+ & $node node_modules/@playwright/test/cli.js test database-live.spec.ts --reporter=list --output tmp/eight-prs-20261118/database-live-results *> tmp/eight-prs-20261118/database-live.log
+ $code=$LASTEXITCODE
+ Get-Content tmp/eight-prs-20261118/database-live.log -Tail 35
+} finally {
+ [IO.File]::WriteAllBytes($cfg,$cfgBytes);[IO.File]::WriteAllBytes($fixture,$fixtureBytes)
+ Remove-Item Env:PLAYWRIGHT_MODE -ErrorAction SilentlyContinue;Remove-Item Env:DUPLICATI_SERVER_PATH -ErrorAction SilentlyContinue
+}
+exit $code

@@ -1,0 +1,42 @@
+$ ng test ngclient --watch=false "--include=**/delete-backup.component.spec.ts"
+> Building...
+√ Building...
+Application bundle generation complete. [8.719 seconds] - 2026-11-18T00:43:22.014Z
+
+
+ RUN  v5.0.3 C:/Users/Jam/Documents/ngclient
+
+ ❯ |ngclient| projects/ngclient/src/app/backup/delete-backup/delete-backup.component.spec.ts (12 tests | 2 failed) 720ms
+   ❯ job deletion remote files option (12)
+     × keeps the database when its ownership check is shared 272ms
+     × keeps the database when its ownership check is failed 63ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |ngclient| projects/ngclient/src/app/backup/delete-backup/delete-backup.component.spec.ts > job deletion remote files option > keeps the database when its ownership check is shared
+ FAIL  |ngclient| projects/ngclient/src/app/backup/delete-backup/delete-backup.component.spec.ts > job deletion remote files option > keeps the database when its ownership check is failed
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ projects/ngclient/src/app/backup/delete-backup/delete-backup.component.spec.ts:54:31
+     52|     const { component, fixture, open, remove } = await setup('Backup',…
+     53|     const checkbox = fixture.nativeElement.querySelector('input[type=c…
+     54|     expect(checkbox.disabled).toBe(true);
+       |                               ^
+     55|     expect(fixture.nativeElement.textContent).toContain(mode === 'shar…
+     56|     component.deleteLocalDb.set(true);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 10 passed (12)
+   Start at  09:43:22
+   Duration  3.81s (environment 39%, tests 20%, import 16%, setup 13%, transform 12%)
+
+error: script "test:ci" exited with code 1

@@ -1,0 +1,34 @@
+param([string[]]$Specs,[string]$Name,[switch]$Live,[string]$Grep='', [string]$BuildDir='dist/ngclient/browser', [switch]$Shell)
+$ErrorActionPreference='Stop'
+$node=(Get-Item 'C:/Users/Jam/AppData/Local/mise/installs/node/*/node.exe'|Sort-Object FullName|Select-Object -Last 1).FullName
+$bun=(Get-Item 'C:/Users/Jam/AppData/Local/mise/installs/bun/*/bin/bun.exe'|Sort-Object FullName|Select-Object -Last 1).FullName
+$env:PATH=(Split-Path $node)+';'+(Split-Path $bun)+';'+$env:PATH
+$config=Join-Path $PWD 'playwright.config.ts'
+$original=[IO.File]::ReadAllBytes($config)
+$listener=[Net.Sockets.TcpListener]::new([Net.IPAddress]::Loopback,0)
+$listener.Start();$port=$listener.LocalEndpoint.Port;$listener.Stop()
+try{
+ $s=[Text.Encoding]::UTF8.GetString($original)
+ if($Shell){
+ $exe=(Get-ChildItem 'C:/Users/Jam/AppData/Local/ms-playwright/chromium_headless_shell-1255' -Recurse -Filter 'chrome-headless-shell.exe'|Select-Object -First 1).FullName.Replace('\','/')
+ $s=$s.Replace('  use: {',"  use: {`n    launchOptions: { executablePath: '$exe' },")
+}else{$s=$s.Replace('  use: {',"  use: {`n    channel: 'msedge',")}
+ if($Live){
+  $env:PLAYWRIGHT_MODE='live'
+  $env:DUPLICATI_SERVER_PATH=(Get-Content tmp/editor627-20261114/server-executable.txt -Raw).Trim()
+ }else{
+  $env:PLAYWRIGHT_MODE='e2e'
+  $s=$s.Replace('3000',[string]$port).Replace("'bun run preview'","'bun --bun sirv $BuildDir --single --host 127.0.0.1 --port $port --ignores ^/api --ignores ^/notifications'")
+ }
+ [IO.File]::WriteAllText($config,$s)
+ $cliArgs=@('node_modules/@playwright/test/cli.js','test')+$Specs+@('--reporter=list','--output',"tmp/eight-prs-20261118/$Name-results")
+ if($Grep){$cliArgs+=@('--grep',$Grep)}
+ & $node @cliArgs *> "tmp/eight-prs-20261118/$Name-browser.log"
+ $code=$LASTEXITCODE
+ Get-Content "tmp/eight-prs-20261118/$Name-browser.log" -Tail 18
+}finally{
+ [IO.File]::WriteAllBytes($config,$original)
+ Remove-Item Env:PLAYWRIGHT_MODE -ErrorAction SilentlyContinue
+ Remove-Item Env:DUPLICATI_SERVER_PATH -ErrorAction SilentlyContinue
+}
+exit $code
