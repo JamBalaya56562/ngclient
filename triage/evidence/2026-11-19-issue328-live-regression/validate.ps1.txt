@@ -1,0 +1,23 @@
+$ErrorActionPreference='Stop'
+$node=(Get-Item "$env:USERPROFILE/AppData/Local/mise/installs/node/*/node.exe"|Sort-Object FullName|Select-Object -Last 1).FullName
+$bun=(Get-Item "$env:USERPROFILE/AppData/Local/mise/installs/bun/*/bin/bun.exe","$env:USERPROFILE/AppData/Local/mise/installs/bun/*/bun.exe" -ErrorAction SilentlyContinue|Sort-Object FullName|Select-Object -Last 1).FullName
+$dotnet=(Get-Item "$env:USERPROFILE/AppData/Local/mise/installs/dotnet/*/dotnet.exe"|Sort-Object FullName|Select-Object -Last 1).FullName
+$env:PATH=(Split-Path $node)+';'+(Split-Path $bun)+';'+$env:PATH
+$root='tmp/issue328-20261119'
+& $node node_modules/prettier/bin/prettier.cjs --write e2e/live/destination-url-preservation.spec.ts
+if($LASTEXITCODE){throw 'format'}
+& $node node_modules/typescript/bin/tsc -p e2e/tsconfig.json *> "$root/types-final.log"
+if($LASTEXITCODE){throw 'types'}
+& $bun run test:ci '--include=**/destination-edit-session.spec.ts' '--include=**/single-destination.render.spec.ts' *> "$root/related-tests.log"
+if($LASTEXITCODE){Get-Content "$root/related-tests.log" -Tail 25; throw 'related unit tests'}
+& $bun run build:prod *> "$root/build.log"
+if($LASTEXITCODE){Get-Content "$root/build.log" -Tail 20; throw 'production build'}
+$env:DOTNET_ROOT=Split-Path $dotnet
+$env:DOTNET_ROOT_X64=Split-Path $dotnet
+$env:DOTNET_ROLL_FORWARD='LatestMajor'
+$env:PLAYWRIGHT_MODE='live'
+$env:DUPLICATI_SERVER_PATH=(Resolve-Path "$root/server/Duplicati.Server.exe").Path
+& $node node_modules/@playwright/test/cli.js test destination-url-preservation.spec.ts --reporter=list --output "$root/green-results" *> "$root/green.log"
+if($LASTEXITCODE){Get-Content "$root/green.log" -Tail 45; throw 'live tests'}
+Get-Content "$root/related-tests.log" -Tail 8
+Get-Content "$root/green.log" -Tail 15

@@ -1,0 +1,16 @@
+
+Running 9 tests using 1 worker
+
+(node:18812) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › e2e\live\destination-url-preservation.spec.ts:50:3 › file: API and untouched editor saves retain the exact destination and advanced options (10.6s)
+  ok 2 [chromium] › e2e\live\destination-url-preservation.spec.ts:50:3 › ssh: API and untouched editor saves retain the exact destination and advanced options (6.0s)
+  ok 3 [chromium] › e2e\live\destination-url-preservation.spec.ts:50:3 › webdav: API and untouched editor saves retain the exact destination and advanced options (5.4s)
+  ok 4 [chromium] › e2e\live\destination-url-preservation.spec.ts:50:3 › s3: API and untouched editor saves retain the exact destination and advanced options (6.4s)
+  ok 5 [chromium] › e2e\live\destination-url-preservation.spec.ts:50:3 › pcloud: API and untouched editor saves retain the exact destination and advanced options (5.1s)
+  ok 6 [chromium] › e2e\live\destination-url-preservation.spec.ts:50:3 › unsupported: API and untouched editor saves retain the exact destination and advanced options (5.1s)
+  ok 7 [chromium] › e2e\live\destination-url-preservation.spec.ts:50:3 › ftp-encoding: API and untouched editor saves retain the exact destination and advanced options (5.4s)
+  ok 8 [chromium] › e2e\live\destination-url-preservation.spec.ts:50:3 › interleaved-secrets: API and untouched editor saves retain the exact destination and advanced options (5.4s)
+  ok 9 [chromium] › e2e\live\destination-url-preservation.spec.ts:50:3 › unparseable: API and untouched editor saves retain the exact destination and advanced options (5.0s)
+
+  9 passed (1.2m)
