@@ -50,3 +50,16 @@ Verified: systeminfo reported `2.4.1.101 - 2.4.1.101_canary_2026-11-07`; the CLI
 | NGT-071 | codex/native-console-connection-link | 1e042d69cdcb07676911a69f46475ff70dee68b4 | 2527 passed | pass | pass |
 | NGT-082 | codex/live-backup-wizard-roundtrip | 9b53c5c762e0a7a93a9a5200049b86975768248f | 2526 passed | pass | pass |
 
+
+## CI publication
+
+Verified after publication: all eight PRs passed unit-tests and production-build. Browser-tests passed on #761/#762/#763/#764. Four runs failed only in existing new-tab tests:
+
+- #758: add-backup-navigation.spec.ts, remote import / ControlOrMeta; page-event timeout. The newly added update-changelog.spec.ts passed in the same run (198 passed / 1 failed).
+- #759: commandline-navigation.spec.ts; page-event timeout (198 passed / 1 failed).
+- #760: remote-connectivity-navigation.spec.ts / middle click; new page URL empty (197 passed / 1 failed).
+- #765: restore-lifecycle.spec.ts / options Back; page-event timeout (197 passed / 1 failed). The changed live suite is opt-in and is not run by the ordinary browser job.
+
+The changed-file lists show these tests and their feature components were not modified by the affected branches. The failure signatures match the previously investigated popup initialization problem tracked by existing #757. The corresponding four tests pass against production bundles with Chromium159: 3 passed in ci-popup-chromium159-browser.log and 1 passed in ci-import-popup-chromium159-browser.log. These reruns do not claim that the old Chromium CI jobs have become green. #757 remains the shared dependency update; no duplicate dependency fix or ninth PR was created.
+
+CI logs and changed-file lists are under logs/ci-*. The snapshot final-pr-checks.json records the observed check states and action URLs. A full CI rerun after #757 merges is not yet verified.

@@ -1,0 +1,8 @@
+
+Running 1 test using 1 worker
+
+(node:13296) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › e2e\add-backup-navigation.spec.ts:131:9 › server supports remote configuration import › opens file import in a separate tab with ControlOrMeta (2.0s)
+
+  1 passed (4.0s)
