@@ -28,7 +28,7 @@
 
 ## 未PR・調査・回答待ち
 
-NGT-115: PUSHED / Codex / 2026-11-18。duplicati/duplicati#3851の旧UI側。別ポートでのテーマ上書きとテーマCookie消失でのリセットを実測。本体の独立ブランチ `codex/ngax-persistent-browser-theme` / `ff4af1dd9c23379fab103a5508d2ee2aa2813e00` をoriginへpush。localStorage優先＋Cookie移行＋保存拒否時fallback。2 E2E赤→12 E2E緑。PR未作成、Issueに解決済みとは投稿していない。[証拠と未検証範囲](evidence/2026-11-18-legacy-theme/verification.md)。
+NGT-115: PR_OPEN / Codex / 2026-11-18。duplicati/duplicati#3851の旧UI側。別ポートでのテーマ上書きとテーマCookie消失でのリセットを実測。本体の独立ブランチ `codex/ngax-persistent-browser-theme` / `ff4af1dd9c23379fab103a5508d2ee2aa2813e00` をoriginへpush。localStorage優先＋Cookie移行＋保存拒否時fallback。2 E2E赤→12 E2E緑。本体PR [#7886](https://github.com/duplicati/duplicati/pull/7886)を作成（Fixes #3851、新旧画像付き）。Issueにリリース済みとは投稿していない。[証拠と未検証範囲](evidence/2026-11-18-legacy-theme/verification.md)。
 
 
 NGT-104: 読み込み済みフォルダーのArrowRight再展開。INVESTIGATE / Codex / 2026-11-16。実UIで疑いを観測、純粋mainでの再現・原因・回帰テストは未検証。[今回の証拠と次の手順](evidence/2026-11-16-publication/verification.md#ngt-104-arrowright再展開未切分け)。未実装、ブランチなし。

@@ -77,4 +77,4 @@ ngclient-after-cookie-removal: dark; stored=true
 ドキュメント根拠: [ChromeのCookie有効期限上限](https://developer.chrome.com/blog/cookie-max-age-expires)。
 10年指定が約400日へ制限されることは実ブラウザーのCookie情報でも確認したが、400日後の期限切れ自体は実待機していない。
 
-本体originへpush済み。PRは未作成。旧UIの問題が残るため、Issueへ解決済み・close提案の追加コメントはしていない。
+本体originへpush済み。利用者の依頼で本体PR [#7886](https://github.com/duplicati/duplicati/pull/7886)を作成（Fixes #3851、新旧画像と未検証範囲付き）。Issueへリリース済み・解決済みとする追加コメントはしていない。
