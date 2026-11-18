@@ -1,0 +1,130 @@
+[
+  {
+    "branch": "codex/update-changelog-source",
+    "paths": [
+      "e2e/update-changelog.spec.ts",
+      "projects/ngclient/src/app/about/changelog/changelog.component.spec.ts",
+      "projects/ngclient/src/app/about/changelog/changelog.component.ts",
+      "projects/ngclient/src/app/notifications/notification/notification.component.ts"
+    ]
+  },
+  {
+    "branch": "codex/guard-shared-database-deletion",
+    "paths": [
+      "e2e/delete-backup.spec.ts",
+      "projects/ngclient/src/app/backup/delete-backup/delete-backup.component.html",
+      "projects/ngclient/src/app/backup/delete-backup/delete-backup.component.spec.ts",
+      "projects/ngclient/src/app/backup/delete-backup/delete-backup.component.ts"
+    ]
+  },
+  {
+    "branch": "codex/file-tree-reexpansion-coverage",
+    "paths": [
+      "projects/ngclient/src/app/core/components/file-tree/file-tree.keyboard.spec.ts"
+    ]
+  },
+  {
+    "branch": "codex/command-editor-signal-fields",
+    "paths": [
+      "e2e/commandline-fields.spec.ts",
+      "projects/ngclient/src/app/backup/commandline/commandline.component.html",
+      "projects/ngclient/src/app/backup/commandline/commandline.component.spec.ts",
+      "projects/ngclient/src/app/backup/commandline/commandline.component.ts"
+    ]
+  },
+  {
+    "branch": "codex/remote-encryption-save-confirmation",
+    "paths": [
+      "e2e/unencrypted-remote-confirmation.spec.ts",
+      "projects/ngclient/src/app/backup/backup-save.spec.ts",
+      "projects/ngclient/src/app/backup/backup.state.ts"
+    ]
+  },
+  {
+    "branch": "codex/reuse-existing-local-database",
+    "paths": [
+      "e2e/destination-database-reuse.spec.ts",
+      "projects/ngclient/src/app/backup/backup-save.spec.ts",
+      "projects/ngclient/src/app/backup/backup.state.ts",
+      "projects/ngclient/src/app/backup/destination/destination.component.html",
+      "projects/ngclient/src/app/backup/destination/destination.component.ts",
+      "projects/ngclient/src/app/backup/destination/destination.connection-test.spec.ts",
+      "projects/ngclient/src/app/backup/destination/destination.database-reuse.spec.ts"
+    ]
+  },
+  {
+    "branch": "codex/native-console-connection-link",
+    "paths": [
+      "projects/ngclient/src/app/backup/destination/single-destination/single-destination.component.html",
+      "projects/ngclient/src/app/backup/destination/single-destination/single-destination.render.spec.ts"
+    ]
+  },
+  {
+    "branch": "codex/live-backup-wizard-roundtrip",
+    "paths": [
+      "e2e/live/backup-restore.spec.ts"
+    ]
+  },
+  {
+    "branch": "feat/compact-progress",
+    "paths": [
+      "projects/ngclient/src/app/core/components/status-bar/status-bar.compact-progress.spec.ts",
+      "projects/ngclient/src/app/core/components/status-bar/status-bar.state.ts"
+    ]
+  },
+  {
+    "branch": "feat/export-global-options",
+    "paths": [
+      "e2e/export-encryption.spec.ts",
+      "projects/ngclient/src/app/backup/export/export.component.html",
+      "projects/ngclient/src/app/backup/export/export.component.spec.ts",
+      "projects/ngclient/src/app/backup/export/export.component.ts"
+    ]
+  },
+  {
+    "branch": "feat/restore-resume-drafts",
+    "paths": [
+      "projects/ngclient/src/app/core/openapi/index.ts",
+      "projects/ngclient/src/app/core/openapi/sdk.gen.ts",
+      "projects/ngclient/src/app/core/openapi/types.gen.ts",
+      "projects/ngclient/src/app/core/states/sysinfo.state.ts",
+      "projects/ngclient/src/app/restore/restore-drafts.state.ts",
+      "projects/ngclient/src/app/restore/restore-from-config/restore-from-config.component.spec.ts",
+      "projects/ngclient/src/app/restore/restore-from-config/restore-from-config.component.ts",
+      "projects/ngclient/src/app/restore/restore.component.html",
+      "projects/ngclient/src/app/restore/restore.component.scss",
+      "projects/ngclient/src/app/restore/restore.component.ts",
+      "projects/ngclient/src/app/restore/restore.drafts.spec.ts",
+      "projects/ngclient/src/app/restore-flow/restore-encryption/restore-encryption.component.spec.ts",
+      "projects/ngclient/src/app/restore-flow/restore-encryption/restore-encryption.component.ts",
+      "projects/ngclient/src/app/restore-flow/restore-flow.state.ts",
+      "projects/ngclient/src/app/restore-flow/restore-flow.submission.spec.ts",
+      "swagger.json"
+    ]
+  },
+  {
+    "branch": "feat/show-db-encryption-preload-paths",
+    "paths": [
+      "projects/ngclient/src/app/about/general/general.component.html",
+      "projects/ngclient/src/app/about/general/general.component.scss",
+      "projects/ngclient/src/app/about/general/general.component.spec.ts",
+      "projects/ngclient/src/app/about/general/general.component.ts",
+      "projects/ngclient/src/app/core/openapi/types.gen.ts"
+    ]
+  },
+  {
+    "branch": "feat/skip-next-scheduled-run",
+    "paths": [
+      "projects/ngclient/src/app/core/openapi/index.ts",
+      "projects/ngclient/src/app/core/openapi/sdk.gen.ts",
+      "projects/ngclient/src/app/core/openapi/types.gen.ts",
+      "projects/ngclient/src/app/core/states/backups.skip-next-run.spec.ts",
+      "projects/ngclient/src/app/core/states/backups.state.ts",
+      "projects/ngclient/src/app/core/states/sysinfo.state.spec.ts",
+      "projects/ngclient/src/app/core/states/sysinfo.state.ts",
+      "projects/ngclient/src/app/home/home.component.html",
+      "projects/ngclient/src/app/home/home.component.ts",
+      "swagger.json"
+    ]
+  }
+]

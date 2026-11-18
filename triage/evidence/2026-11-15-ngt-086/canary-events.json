@@ -1,0 +1,33 @@
+[
+  {
+    "kind": "server",
+    "version": "2.4.1.101",
+    "supported": false,
+    "run": "C:\\Users\\Jam\\Documents\\ngclient\\tmp\\ngt086-skip-20261115\\run-BeROEx"
+  },
+  {
+    "kind": "menu-checked",
+    "name": "NGT-086 unscheduled",
+    "visible": false
+  },
+  {
+    "kind": "menu-checked",
+    "name": "NGT-086 disabled",
+    "visible": false
+  },
+  {
+    "kind": "menu-checked",
+    "name": "NGT-086 scheduled",
+    "visible": false
+  },
+  {
+    "kind": "completed",
+    "supported": false,
+    "pageErrors": [],
+    "skipRequests": 0
+  },
+  {
+    "kind": "cleanup",
+    "remainingJobs": 0
+  }
+]

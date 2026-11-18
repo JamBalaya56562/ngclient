@@ -1,0 +1,18 @@
+$ErrorActionPreference='Stop'
+$node=(Get-Item 'C:/Users/Jam/AppData/Local/mise/installs/node/*/node.exe'|Sort-Object FullName|Select-Object -Last 1).FullName
+$bun=(Get-Item 'C:/Users/Jam/AppData/Local/mise/installs/bun/*/bin/bun.exe'|Sort-Object FullName|Select-Object -Last 1).FullName
+$dotnet=(Get-Item 'C:/Users/Jam/AppData/Local/mise/installs/dotnet/*/dotnet.exe'|Sort-Object FullName|Select-Object -Last 1).FullName
+$env:PATH=(Split-Path $node)+';'+(Split-Path $bun)+';'+$env:PATH
+& $node node_modules/typescript/bin/tsc -p e2e/tsconfig.json *> tmp/ngt120-20261119/compat-types.log
+if($LASTEXITCODE){throw 'Compatibility types failed'}
+& $bun run build:prod *> tmp/ngt120-20261119/compat-build.log
+if($LASTEXITCODE){throw 'Compatibility build failed'}
+$env:DOTNET_ROOT=Split-Path $dotnet
+$env:DOTNET_ROOT_X64=Split-Path $dotnet
+$env:DOTNET_ROLL_FORWARD='LatestMajor'
+$env:DUPLICATI_SERVER_PATH=(Resolve-Path tmp/ngt047-20261118/server/Duplicati.Server.exe).Path
+$env:PLAYWRIGHT_MODE='live'
+& $node node_modules/@playwright/test/cli.js test auth-reconnect.spec.ts --grep 'one failed refresh' --reporter=list --output tmp/ngt120-20261119/compat-results *> tmp/ngt120-20261119/compat-live.log
+$code=$LASTEXITCODE
+Get-Content tmp/ngt120-20261119/compat-live.log -Tail 25
+exit $code

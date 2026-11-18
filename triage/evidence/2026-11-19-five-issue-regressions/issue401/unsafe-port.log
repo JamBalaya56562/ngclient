@@ -1,0 +1,40 @@
+
+Running 1 test using 1 worker
+
+(node:10516) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 [chromium] › e2e\live\windows-destination-path.spec.ts:6:1 › keeps a Windows drive path intact while typing, saving and reloading (2.0s)
+
+
+  1) [chromium] › e2e\live\windows-destination-path.spec.ts:6:1 › keeps a Windows drive path intact while typing, saving and reloading 
+
+    Error: page.goto: net::ERR_UNSAFE_PORT at http://127.0.0.1:6697/login
+    Call log:
+      - navigating to "http://127.0.0.1:6697/login", waiting until "load"
+
+
+      38 |         operations.push(r.url());
+      39 |     });
+    > 40 |     await page.goto('/login');
+         |                ^
+      41 |     await page.getByPlaceholder('Enter your password').fill(password);
+      42 |     await page.getByRole('button', { name: 'Login', exact: true }).click();
+      43 |     await expect(page).toHaveURL('/');
+        at C:\Users\Jam\Documents\ngclient\e2e\live\windows-destination-path.spec.ts:40:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    tmp\five-close-20261118\issue401\results\windows-destination-path-k-e1d33-typing-saving-and-reloading-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: tmp\five-close-20261118\issue401\results\windows-destination-path-k-e1d33-typing-saving-and-reloading-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    tmp\five-close-20261118\issue401\results\windows-destination-path-k-e1d33-typing-saving-and-reloading-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace tmp\five-close-20261118\issue401\results\windows-destination-path-k-e1d33-typing-saving-and-reloading-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [chromium] › e2e\live\windows-destination-path.spec.ts:6:1 › keeps a Windows drive path intact while typing, saving and reloading 

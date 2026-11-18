@@ -1,0 +1,170 @@
+[
+  {
+    "case": "healthy",
+    "kind": "websocket",
+    "payload": {
+      "Version": 1,
+      "Id": "req-2",
+      "Service": "taskcompleted",
+      "Message": "Subscribed successfully",
+      "Success": true,
+      "Data": null,
+      "Type": "reply"
+    }
+  },
+  {
+    "case": "healthy",
+    "path": "/api/v1/backup/1/verify",
+    "status": 200,
+    "response": {
+      "Status": "OK",
+      "ID": 3
+    }
+  },
+  {
+    "case": "healthy",
+    "kind": "websocket",
+    "payload": {
+      "Type": "taskcompleted",
+      "ApiVersion": 1,
+      "Data": {
+        "Status": "Completed",
+        "ID": 3,
+        "TaskStarted": "2026-11-15T10:08:57.3801677+09:00",
+        "TaskFinished": "2026-11-15T10:08:57.822479+09:00",
+        "ErrorMessage": null,
+        "Exception": null
+      }
+    }
+  },
+  {
+    "case": "corrupt-volume",
+    "kind": "websocket",
+    "payload": {
+      "Version": 1,
+      "Id": "req-2",
+      "Service": "taskcompleted",
+      "Message": "Subscribed successfully",
+      "Success": true,
+      "Data": null,
+      "Type": "reply"
+    }
+  },
+  {
+    "case": "corrupt-volume",
+    "path": "/api/v1/backup/1/verify",
+    "status": 200,
+    "response": {
+      "Status": "OK",
+      "ID": 4
+    }
+  },
+  {
+    "case": "corrupt-volume",
+    "kind": "websocket",
+    "payload": {
+      "Type": "taskcompleted",
+      "ApiVersion": 1,
+      "Data": {
+        "Status": "Failed",
+        "ID": 4,
+        "TaskStarted": "2026-11-15T10:08:59.8139963+09:00",
+        "TaskFinished": "2026-11-15T10:09:51.0930343+09:00",
+        "ErrorMessage": "Hash mismatch on file \"duplicati-bf0419b1005c947afb20375798f47edad.dblock.zip\", recorded hash: eEL92MKRWIIwhgNo3l06VhMOiRx/OSWLiq6Q0KpxZb0=, actual hash Unl2bOtPfveopTZSS71P05KhGlaelzYh1gABxoZkgAM=",
+        "Exception": "SharpAESCrypt.HashMismatchException: Hash mismatch on file \"duplicati-bf0419b1005c947afb20375798f47edad.dblock.zip\", recorded hash: eEL92MKRWIIwhgNo3l06VhMOiRx/OSWLiq6Q0KpxZb0=, actual hash Unl2bOtPfveopTZSS71P05KhGlaelzYh1gABxoZkgAM=\r\n   at Duplicati.Library.Main.Backend.BackendManager.GetOperation.ExecuteAsync(IBackend backend, CancellationToken cancelToken)\r\n   at Duplicati.Library.Utility.TaskCancellationExtensions.UntilCancelledAsync[TResult](Task`1 task, CancellationToken token, Action`1 onAbandonedResult)\r\n   at Duplicati.Library.Main.Backend.BackendManager.Handler.ExecuteAsync[TResult](PendingOperation`1 op, CancellationToken cancellationToken)\r\n   at Duplicati.Library.Main.Backend.BackendManager.Handler.ExecuteAsync(PendingOperationBase op, CancellationToken cancellationToken)\r\n   at Duplicati.Library.Main.Backend.BackendManager.Handler.ExecuteWithRetryAsync(PendingOperationBase op, CancellationToken cancellationToken)\r\n   at Duplicati.Library.Main.Backend.BackendManager.GetWithInfoAsync(String remotename, String hash, Int64 size, Boolean allowParityRepair, CancellationToken cancelToken)\r\n   at Duplicati.Library.Main.Backend.BackendManager.GetFilesOverlappedAsync(IEnumerable`1 volumes, Boolean allowParityRepair, CancellationToken cancelToken)+MoveNext()\r\n   at Duplicati.Library.Main.Backend.BackendManager.GetFilesOverlappedAsync(IEnumerable`1 volumes, Boolean allowParityRepair, CancellationToken cancelToken)+System.Threading.Tasks.Sources.IValueTaskSource<System.Boolean>.GetResult()\r\n   at Duplicati.Library.Main.Operation.TestHandler.DoRunAsync(Int64 samples, LocalTestDatabase db, IBackendManager backend)\r\n   at Duplicati.Library.Main.Operation.TestHandler.DoRunAsync(Int64 samples, LocalTestDatabase db, IBackendManager backend)\r\n   at Duplicati.Library.Main.Operation.TestHandler.RunAsync(Int64 samples, IBackendManager backendManager)\r\n   at Duplicati.Library.Main.Operation.TestHandler.RunAsync(Int64 samples, IBackendManager backendManager)\r\n   at Duplicati.Library.Main.Controller.RunActionAsync[TRes,TCon](TRes result, String[] paths, IFilter filter, TCon context, Func`2 method)\r\n   at Duplicati.Library.Main.Controller.RunActionAsync[TRes,TCon](TRes result, String[] paths, IFilter filter, TCon context, Func`2 method)\r\n   at Duplicati.Library.Main.Controller.RunActionAsync[TRes,TCon](TRes result, String[] paths, IFilter filter, TCon context, Func`2 method)\r\n   at Duplicati.Library.Main.Controller.TestAsync(Int64 samples)\r\n   at Duplicati.Server.Runner.RunInternalAsync(Connection databaseConnection, EventPollNotify eventPollNotify, INotificationUpdateService notificationUpdateService, IProgressStateProviderService progressStateProviderService, IApplicationSettings applicationSettings, IRunnerData data, Boolean fromQueue)\r\n   at Duplicati.WebserverCore.Services.QueueRunnerService.RunTaskAsync(IQueuedTask task)"
+      }
+    }
+  },
+  {
+    "case": "missing-destination",
+    "kind": "websocket",
+    "payload": {
+      "Version": 1,
+      "Id": "req-2",
+      "Service": "taskcompleted",
+      "Message": "Subscribed successfully",
+      "Success": true,
+      "Data": null,
+      "Type": "reply"
+    }
+  },
+  {
+    "case": "missing-destination",
+    "path": "/api/v1/backup/1/verify",
+    "status": 200,
+    "response": {
+      "Status": "OK",
+      "ID": 5
+    }
+  },
+  {
+    "case": "missing-destination",
+    "kind": "websocket",
+    "payload": {
+      "Type": "taskcompleted",
+      "ApiVersion": 1,
+      "Data": {
+        "Status": "Failed",
+        "ID": 5,
+        "TaskStarted": "2026-11-15T10:09:54.5856982+09:00",
+        "TaskFinished": "2026-11-15T10:10:45.045408+09:00",
+        "ErrorMessage": "The folder C:\\Users\\Jam\\Documents\\ngclient\\tmp\\ngt084-verify-20261115\\run-cLdgds\\remote does not exist",
+        "Exception": "Duplicati.Library.Interface.FolderMissingException: The folder C:\\Users\\Jam\\Documents\\ngclient\\tmp\\ngt084-verify-20261115\\run-cLdgds\\remote does not exist\r\n   at Duplicati.Library.Backend.File.ListAsync(CancellationToken cancelToken)+MoveNext()\r\n   at Duplicati.Library.Backend.File.ListAsync(CancellationToken cancelToken)+System.Threading.Tasks.Sources.IValueTaskSource<System.Boolean>.GetResult()\r\n   at System.Linq.AsyncEnumerable.<ToListAsync>g__Impl|188_0[TSource](ConfiguredCancelableAsyncEnumerable`1 source)\r\n   at System.Linq.AsyncEnumerable.<ToListAsync>g__Impl|188_0[TSource](ConfiguredCancelableAsyncEnumerable`1 source)\r\n   at Duplicati.Library.Main.Backend.BackendManager.ListOperation.ExecuteAsync(IBackend backend, CancellationToken cancelToken)\r\n   at Duplicati.Library.Utility.TaskCancellationExtensions.UntilCancelledAsync[TResult](Task`1 task, CancellationToken token, Action`1 onAbandonedResult)\r\n   at Duplicati.Library.Main.Backend.BackendManager.Handler.ExecuteAsync[TResult](PendingOperation`1 op, CancellationToken cancellationToken)\r\n   at Duplicati.Library.Main.Backend.BackendManager.Handler.ExecuteAsync(PendingOperationBase op, CancellationToken cancellationToken)\r\n   at Duplicati.Library.Main.Backend.BackendManager.Handler.ExecuteWithRetryAsync(PendingOperationBase op, CancellationToken cancellationToken)\r\n   at Duplicati.Library.Main.Backend.BackendManager.ListAsync(String path, CancellationToken cancelToken)\r\n   at Duplicati.Library.Main.Operation.FilelistProcessor.RemoteListAnalysisAsync(IBackendManager backendManager, Options options, LocalDatabase database, IBackendWriter log, IEnumerable`1 protectedFiles, IEnumerable`1 strictExcemptFiles, VerifyMode verifyMode, CancellationToken cancellationToken)\r\n   at Duplicati.Library.Main.Operation.FilelistProcessor.VerifyRemoteListAsync(IBackendManager backend, Options options, LocalDatabase database, IBackendWriter log, IEnumerable`1 protectedFiles, IEnumerable`1 strictExcemptFiles, Boolean logErrors, VerifyMode verifyMode, CancellationToken cancellationToken)\r\n   at Duplicati.Library.Main.Operation.FilelistProcessor.VerifyRemoteListAsync(IBackendManager backend, Options options, LocalDatabase database, IBackendWriter backendWriter, Boolean latestVolumesOnly, VerifyMode verifyMode, CancellationToken cancellationToken)\r\n   at Duplicati.Library.Main.Operation.TestHandler.RunAsync(Int64 samples, IBackendManager backendManager)\r\n   at Duplicati.Library.Main.Operation.TestHandler.RunAsync(Int64 samples, IBackendManager backendManager)\r\n   at Duplicati.Library.Main.Controller.RunActionAsync[TRes,TCon](TRes result, String[] paths, IFilter filter, TCon context, Func`2 method)\r\n   at Duplicati.Library.Main.Controller.RunActionAsync[TRes,TCon](TRes result, String[] paths, IFilter filter, TCon context, Func`2 method)\r\n   at Duplicati.Library.Main.Controller.RunActionAsync[TRes,TCon](TRes result, String[] paths, IFilter filter, TCon context, Func`2 method)\r\n   at Duplicati.Library.Main.Controller.TestAsync(Int64 samples)\r\n   at Duplicati.Server.Runner.RunInternalAsync(Connection databaseConnection, EventPollNotify eventPollNotify, INotificationUpdateService notificationUpdateService, IProgressStateProviderService progressStateProviderService, IApplicationSettings applicationSettings, IRunnerData data, Boolean fromQueue)\r\n   at Duplicati.WebserverCore.Services.QueueRunnerService.RunTaskAsync(IQueuedTask task)"
+      }
+    }
+  },
+  {
+    "case": "recovered",
+    "kind": "websocket",
+    "payload": {
+      "Version": 1,
+      "Id": "req-2",
+      "Service": "taskcompleted",
+      "Message": "Subscribed successfully",
+      "Success": true,
+      "Data": null,
+      "Type": "reply"
+    }
+  },
+  {
+    "case": "recovered",
+    "path": "/api/v1/backup/1/verify",
+    "status": 200,
+    "response": {
+      "Status": "OK",
+      "ID": 6
+    }
+  },
+  {
+    "case": "recovered",
+    "kind": "websocket",
+    "payload": {
+      "Type": "taskcompleted",
+      "ApiVersion": 1,
+      "Data": {
+        "Status": "Completed",
+        "ID": 6,
+        "TaskStarted": "2026-11-15T10:10:47.3882281+09:00",
+        "TaskFinished": "2026-11-15T10:10:47.7645757+09:00",
+        "ErrorMessage": null,
+        "Exception": null
+      }
+    }
+  },
+  {
+    "case": "recovered",
+    "kind": "websocket",
+    "payload": {
+      "Type": "taskcompleted",
+      "ApiVersion": 1,
+      "Data": {
+        "Status": "Completed",
+        "ID": 7,
+        "TaskStarted": "2026-11-15T10:10:48.2953318+09:00",
+        "TaskFinished": "2026-11-15T10:10:48.3438434+09:00",
+        "ErrorMessage": null,
+        "Exception": null
+      }
+    }
+  }
+]

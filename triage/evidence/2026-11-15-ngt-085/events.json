@@ -1,0 +1,62 @@
+[
+  {
+    "kind": "server",
+    "version": "1.0.0.0",
+    "OSType": "Windows",
+    "supported": true,
+    "run": "C:\\Users\\Jam\\Documents\\ngclient\\tmp\\ngt085-export-20261115\\run-NokHQp"
+  },
+  {
+    "kind": "case-passed",
+    "mode": "default",
+    "supported": true,
+    "filename": "Backup-duplicati-config.json",
+    "includedGlobal": false,
+    "includedPassword": false,
+    "jobBlocksize": "50kb"
+  },
+  {
+    "kind": "case-passed",
+    "mode": "include",
+    "supported": true,
+    "filename": "Backup-duplicati-config.json",
+    "includedGlobal": true,
+    "includedPassword": false,
+    "jobBlocksize": "50kb"
+  },
+  {
+    "kind": "case-passed",
+    "mode": "passwords",
+    "supported": true,
+    "filename": "Backup-duplicati-config.json",
+    "includedGlobal": true,
+    "includedPassword": true,
+    "jobBlocksize": "50kb"
+  },
+  {
+    "kind": "case-passed",
+    "mode": "encrypted",
+    "supported": true,
+    "filename": "Backup-duplicati-config.aes",
+    "includedGlobal": true,
+    "includedPassword": true,
+    "jobBlocksize": "50kb"
+  },
+  {
+    "kind": "case-passed",
+    "mode": "command-line",
+    "globalControlHidden": true,
+    "globalMailPresent": true
+  },
+  {
+    "kind": "completed",
+    "cases": 5,
+    "supported": true,
+    "pageErrors": [],
+    "storedJobUnchanged": true
+  },
+  {
+    "kind": "cleanup",
+    "remainingJobs": 0
+  }
+]

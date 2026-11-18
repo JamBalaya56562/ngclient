@@ -1,0 +1,18 @@
+{
+  "scenario": {
+    "name": "utc-after",
+    "server": "UTC",
+    "browser": "America/New_York",
+    "time": "2027-03-14T08:20:00Z"
+  },
+  "serverZone": "UTC",
+  "serverSystemZone": "Tokyo Standard Time",
+  "expectedDate": "Mar 14, 2027",
+  "expectedTime": "04:20",
+  "expectedHome": "3/14/27, 4:20 AM",
+  "storedTime": "2027-03-14T08:20:00.000Z",
+  "schedulerWrittenLastRun": "2026-11-18T15:19:25Z",
+  "lastBackupStarted": "20261118T151925Z",
+  "runtime": "11.0.0",
+  "errors": []
+}

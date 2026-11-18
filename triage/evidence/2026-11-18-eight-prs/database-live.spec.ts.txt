@@ -1,0 +1,45 @@
+import { test, expect } from '../../e2e/live/fixture';
+import { spawn } from 'node:child_process';
+import { once } from 'node:events';
+import { mkdir, writeFile, readFile, readdir, cp } from 'node:fs/promises';
+import { join, dirname, sep, resolve } from 'node:path';
+import { pathToFileURL } from 'node:url';
+
+test('reuse CLI database and keep it when deleting UI job', async ({ page, liveServer }) => {
+ test.setTimeout(120000); page.setDefaultTimeout(15000);
+ const { directory, password, api }=liveServer;
+ const info=await (await api.get('/api/v1/systeminfo')).json();console.log('Server version',info.ServerVersion,info.ServerVersionName);
+ const source=join(directory,'cli-source'), remote=join(directory,'cli-remote');
+ await mkdir(source); await mkdir(remote); await writeFile(join(source,'message.txt'),'CLI registry isolation proof');
+ const binary=join(dirname(process.env.DUPLICATI_SERVER_PATH!), 'Duplicati.CommandLine.exe');
+ const cli=spawn(binary,['backup',pathToFileURL(remote).href,source+sep,'--no-encryption=true','--snapshot-policy=off','--log-file='+join(directory,'cli-full.log'),'--log-file-log-level=Information'],{env:{...process.env,DUPLICATI_HOME:join(directory,'data')},windowsHide:true});
+ let output='';cli.stdout.on('data',x=>output+=x);cli.stderr.on('data',x=>output+=x);
+ const [exit]=await once(cli,'close');await writeFile(join(directory,'cli.log'),output);console.log('CLI exit',exit);expect([0,2],output).toContain(exit);expect(output).toContain('Backup completed successfully!');
+ const registry=JSON.parse((await readFile(join(directory,'data','dbconfig.json'),'utf8')).replace(/^\uFEFF/,''));console.log('CLI registry entries',registry.length);
+ const lookup=await api.post('/api/v1/remoteoperation/dbpath',{data:{path:pathToFileURL(remote).href}});
+ const match=await lookup.json();console.log('DB lookup',match);expect(match.Exists).toBe(true);
+ const before=await readFile(match.Path);const remoteBefore=(await readdir(remote)).sort();
+ await page.goto('/login');await page.getByPlaceholder('Enter your password').fill(password);await page.getByRole('button',{name:'Login',exact:true}).click();await expect(page).toHaveURL('/');
+ await page.goto('/backup/new/general');await page.getByPlaceholder('Your backup name').fill('Reuse CLI database');
+ await page.locator('app-general sh-select').first().click();await page.locator('li.option').getByText('None', {exact:true}).click();
+ await page.getByRole('button',{name:'Continue',exact:true}).click();
+ const direct=page.getByPlaceholder('Add a direct path');await direct.fill(source+sep);await page.locator('app-source-data .row-inputs').filter({has:direct}).getByRole('button').click();
+ await page.getByRole('button',{name:'Continue',exact:true}).click();
+ await page.getByPlaceholder('Search for destination...').fill('File system');await page.locator('app-destination-list-item').filter({hasText:'File system'}).getByRole('button',{name:'Choose',exact:true}).click();
+ await page.getByRole('button',{name:'Manually type path',exact:true}).click();await page.getByLabel('File path',{exact:false}).fill(remote);
+ await page.getByRole('button',{name:'Continue',exact:true}).click();
+ const dialog=page.getByRole('dialog').filter({has:page.getByRole('heading',{name:'Use existing database?',exact:true})});await expect(dialog).toBeVisible();
+ await page.screenshot({path:'tmp/eight-prs-20261118/reuse-live.png'});await dialog.getByRole('button',{name:'Use existing database',exact:true}).click();await expect(page).toHaveURL('/backup/new/schedule');
+ await page.locator('app-schedule sh-select').first().click();await page.locator('li.option').getByText("Don't run automatically",{exact:true}).click();await page.getByRole('button',{name:'Continue',exact:true}).click();
+ const saved=page.waitForResponse(r=>r.request().method()==='POST'&&new URL(r.url()).pathname==='/api/v1/backups');await page.getByRole('button',{name:'Submit',exact:true}).click();const response=await saved;expect(response.ok(),await response.text()).toBe(true);const {ID}=await response.json();
+ const job=await (await api.get(`/api/v1/backup/${ID}`)).json();expect(job.Backup.DBPath).toBe(match.Path);console.log('Saved DBPath matches CLI:',job.Backup.DBPath);
+ const ownership=await (await api.get(`/api/v1/backup/${ID}/isdbusedelsewhere`)).json();console.log('Ownership',ownership);expect(ownership.inuse).toBe(true);
+ // The fixture serves this private artifact directory; switch only its files, then load a fresh document.
+ await cp(resolve('tmp/eight-prs-20261118/builds/guard-shared-database-deletion'),resolve('tmp/eight-prs-20261118/live-ui'),{recursive:true,force:true});
+ await page.goto('/');await expect(page.getByRole('heading',{name:/^Reuse CLI database/})).toBeVisible();
+ await page.evaluate((id)=>{history.pushState(null,'','/backup/'+id+'/delete');window.dispatchEvent(new PopStateEvent('popstate'));},ID);
+ const local=page.locator('app-delete-backup section').filter({has:page.getByRole('heading',{name:'Delete local database',exact:true})}).getByRole('checkbox');
+ await expect(local).toBeDisabled();await expect(page.getByText('This database is also used by the command line.',{exact:false})).toBeVisible();await page.screenshot({path:'tmp/eight-prs-20261118/shared-db-live.png'});
+ const deletion=page.waitForRequest(r=>r.method()==='DELETE'&&new URL(r.url()).pathname===`/api/v1/backup/${ID}`);await page.getByRole('button',{name:'Delete backup',exact:true}).click();await page.getByRole('dialog').getByRole('button',{name:'Delete backup',exact:true}).click();const req=await deletion;expect(new URL(req.url()).searchParams.get('delete-local-db')).toBe('false');await expect(page).toHaveURL('/');
+ expect(await readFile(match.Path)).toEqual(before);expect((await readdir(remote)).sort()).toEqual(remoteBefore);await expect.poll(async()=>{const jobs=await (await api.get('/api/v1/backups')).json();return jobs.filter((x:any)=>String(x.Backup.ID)===String(ID));},{timeout:20000}).toEqual([]);console.log('UI job removed; CLI database bytes and remote files preserved');
+});

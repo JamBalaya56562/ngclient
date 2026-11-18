@@ -1,0 +1,1 @@
+{"body":"The `list-changes` command counter folders twice instead of files + folders, which could give a wrong message.","files":[{"path":"Duplicati/CommandLine/CLI/Commands.cs","additions":2,"deletions":2,"changeType":"MODIFIED"}],"number":7896,"state":"OPEN","title":"Fix wrong change count","url":"https://github.com/duplicati/duplicati/pull/7896"}

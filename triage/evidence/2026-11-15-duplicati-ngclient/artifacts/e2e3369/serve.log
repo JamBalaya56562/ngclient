@@ -1,0 +1,433 @@
+❯ Building...
+✔ Building...
+Initial chunk files | Names                 |  Raw size
+main.js             | main                  |  53.14 kB | 
+chunk-GBIB5CVO.js   | -                     |  52.19 kB | 
+chunk-6ZWDTOZO.js   | -                     |  34.14 kB | 
+styles.css          | styles                |  24.22 kB | 
+chunk-CFL43YXX.js   | -                     |  18.87 kB | 
+chunk-3ETB2QNZ.js   | -                     |  16.90 kB | 
+chunk-JMFK2VML.js   | -                     |  10.19 kB | 
+chunk-JVUF7Z6V.js   | -                     |   7.74 kB | 
+chunk-F3WHFOPK.js   | -                     |   7.23 kB | 
+chunk-MDQPTHJV.js   | -                     |   6.79 kB | 
+chunk-KIWL7IK5.js   | -                     |   6.35 kB | 
+chunk-NZH2MZBD.js   | -                     |   4.83 kB | 
+chunk-RM5XS7LR.js   | -                     |   2.58 kB | 
+chunk-EBUEAIOE.js   | -                     |   2.34 kB | 
+chunk-4R3GELCK.js   | -                     |   1.67 kB | 
+chunk-SOYZ7VNM.js   | -                     |   1.51 kB | 
+chunk-IWYIYW53.js   | -                     |   1.46 kB | 
+chunk-GOMI4DH3.js   | -                     |   1.42 kB | 
+chunk-6A25PSCZ.js   | -                     |   1.02 kB | 
+chunk-RAVTB5K7.js   | -                     | 352 bytes | 
+polyfills.js        | polyfills             | 204 bytes | 
+
+                    | Initial total         | 255.15 kB
+
+Lazy chunk files    | Names                 |  Raw size
+chunk-OPXLXP3F.js   | -                     | 293.20 kB | 
+chunk-LCS5RH7O.js   | settings-component    | 251.13 kB | 
+chunk-KHUQRTMW.js   | log-component         | 243.54 kB | 
+chunk-HINTYPU7.js   | home-component        | 175.86 kB | 
+chunk-K4XNS7MU.js   | status-component      | 165.58 kB | 
+chunk-JW2IWDTB.js   | -                     | 160.23 kB | 
+chunk-T3DXTOMG.js   | -                     | 152.22 kB | 
+chunk-XXIQPH5I.js   | source-data-component | 147.09 kB | 
+chunk-J2KMNYRA.js   | -                     | 114.46 kB | 
+chunk-FGGODPGS.js   | -                     | 104.06 kB | 
+chunk-ARRMH5D4.js   | destination-component |  86.28 kB | 
+chunk-AQP4V7NO.js   | -                     |  82.84 kB | 
+chunk-FU7BDEE4.js   | layout-component      |  72.22 kB | 
+chunk-PX6P2IH4.js   | schedule-component    |  53.76 kB | 
+chunk-GYVCGWR4.js   | destinations          |  50.72 kB | 
+...and 69 more lazy chunks files. Use "--verbose" to show all the files.
+
+Application bundle generation complete. [57.500 seconds] - 2026-11-14T17:53:40.978Z
+
+Watch mode enabled. Watching for file changes...
+NOTE: Raw file sizes do not reflect development server per-request transformations.
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m4304[22m/[39m
+[2m2:53:46[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [optimizer] bundling dependencies...
+[2m2:54:33[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNG0318: `[style.transform]` was bound to an invalid value. Expected a string, number, SafeValue, null, or undefined, but received `boolean` (`false`). Find more at https://v22.angular.dev/errors/NG0318
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "3863996906560165957" ("Using a leading slash is most likely wrong, and will result in objects being created with a leading slash in the name.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "432524756311798008" ("Unknown destination type").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "8337009637390799588" ("Use TLS (https)").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4212803659748935168" ("Use TLS (https) to encrypt the connection to the server").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1547201480844218271" ("Disable chunk encoding").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "2476121206358383303" ("Disable chunked (streaming) uploads. Required by some S3 compatible providers that do not support chunk encoding.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "6409998219542811653" ("Store backups in any S3 compatible bucket.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "615373916496793031" ("Use files from any S3 compatible bucket as a remote source.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "8386113171441116034" ("The name of the bucket. You can also paste a bucket URL from your provider, and the server, bucket and folder are filled in from it.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "658575599993527024" ("The hostname of the S3 compatible server to connect to. You can also paste the endpoint or bucket URL from your provider, and the server, bucket and folder are filled in from it.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "6839763278934169817" ("File system").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "2196800415524042283" ("Store backups on your local file system.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "2815940505388783287" ("Use files from your local file system as a remote source.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "6569880249807429105" ("File path").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "2464317893854091654" ("The path to store the backup").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1356136780158792906" ("Duplicati Storage").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "8000599603454191573" ("Store backups with Duplicati Storage.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "7023036452993935891" ("Use files from Duplicati Storage as a remote source.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "6056687958225876686" ("Unique Backup ID").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1286532885675172535" ("A unique identifier for the backup job. It is recommended to not change this value.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "8257038251648900494" ("SFTP (SSH)").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5996514871038146919" ("Store backups with SFTP (SSH).").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1019751822130590702" ("Use files from SFTP (SSH) as a remote source.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "2698719400644288116" ("The server to connect to").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "765777744179252038" ("The port to connect to").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "8669916777817210558" ("Using a leading slash makes the path absolute, pointing to the root of the filesystem.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "6287501959303066769" ("This is a path to a private key file locally on the machine").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "6287501959303066769" ("This is a path to a private key file locally on the machine").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4999325208946009372" ("SSH private key").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "283763651838103633" ("An SSH private key. Supported formats are OpenSSL, OpenSSH, PuTTY, and PEM.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "6409998219542811653" ("Store backups in any S3 compatible bucket.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "615373916496793031" ("Use files from any S3 compatible bucket as a remote source.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "8386113171441116034" ("The name of the bucket. You can also paste a bucket URL from your provider, and the server, bucket and folder are filled in from it.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "658575599993527024" ("The hostname of the S3 compatible server to connect to. You can also paste the endpoint or bucket URL from your provider, and the server, bucket and folder are filled in from it.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "8002220294716779094" ("Amazon S3").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "8698557473197673031" ("Store backups in Amazon S3.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "8667080090567647684" ("Use files from Amazon S3 as a remote source.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "8386113171441116034" ("The name of the bucket. You can also paste a bucket URL from your provider, and the server, bucket and folder are filled in from it.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "658575599993527024" ("The hostname of the S3 compatible server to connect to. You can also paste the endpoint or bucket URL from your provider, and the server, bucket and folder are filled in from it.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "2685289648610623245" ("Store backups in Google Cloud Storage.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "2138662635134502544" ("Use files from Google Cloud Storage as a remote source.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5715706014888226674" ("An OAuth token with access to the Google Cloud Storage. Not required if service account JSON is provided.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4310843648876437875" ("Service account JSON file").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "3493312189618135422" ("Pick the path to a file with service account JSON.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "8634339063636601285" ("Service account JSON").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5517352459746267593" ("Paste the service account JSON here.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "672439927759604285" ("Store backups in Google Drive.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "2845785108159307633" ("Use files from Google Drive as a remote source.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "2824778775727635891" ("pCloud").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "6067224471499272941" ("Store backups in pCloud.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "8958523624307603377" ("Use files from pCloud as a remote source.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "2571561222043199870" ("Azure Blob Storage").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "2373982793777599122" ("Store backups in Azure Blob Storage.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5266393313174481934" ("Use files from Azure Blob Storage as a remote source.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4776297842943067423" ("OneDrive").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4000469533344318986" ("Store backups in OneDrive.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4340012721272694047" ("Use files from OneDrive as a remote source.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "7956849327133080256" ("OneDrive Business (deprecated)").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "2104449910634073151" ("Store backups in OneDrive Business. Deprecated, use Sharepoint instead.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4509107490740551741" ("Use files from OneDrive Business as a remote source. Deprecated, use SharePoint instead.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5928231752989405956" ("Microsoft SharePoint (deprecated)").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5182090668552377849" ("Store backups in Microsoft SharePoint using legacy API.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "6619147255352042447" ("Use files from Microsoft SharePoint as a remote source using the legacy API.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "6243043133204186678" ("Store backups in Microsoft SharePoint.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "749786881542983757" ("Use files from Microsoft SharePoint as a remote source.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4598054074055792393" ("Store backups in Dropbox.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5428996800365127337" ("Use files from Dropbox as a remote source.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "3845443824080997838" ("Store backups in Box.com.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5023613655464433245" ("Use files from Box.com as a remote source.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "157333137085730907" ("Store backups in Jottacloud.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "722297683211184806" ("Use files from Jottacloud as a remote source.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1560119022164856777" ("Store backups in B2 Cloud Storage.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5302177788386560897" ("Use files from B2 Cloud Storage as a remote source.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "6376261217871722243" ("Path in the bucket").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "6376261217871722243" ("Path in the bucket").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "2385634023146528014" ("Application ID").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4850391806785872653" ("Application Key").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5817791938505061739" ("Store backups in IDrive e2.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "175266416302029315" ("Use files from IDrive e2 as a remote source.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "6376261217871722243" ("Path in the bucket").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "6376261217871722243" ("Path in the bucket").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4055246236738746947" ("Access ID").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "8206437921423261892" ("Access Secret").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "3690832063756455175" ("Mega.nz").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "7456819223000178588" ("Store backups in Mega.nz.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "3154459878338205575" ("Use files from Mega.nz as a remote source.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "7763987319419032945" ("Store backups in Microsoft Office 365 Group.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "7323214043905645114" ("Use files from Microsoft Office 365 Group as a remote source.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1891100445393831017" ("Store backups in Rackspace CloudFiles.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "971114270110706553" ("Use files from Rackspace CloudFiles as a remote source.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "6511418996017048042" ("Store backups in Rclone.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5668417932431853100" ("Use files from Rclone as a remote source.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "2153379598793229223" ("Path on remote repository").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1640334719601029575" ("OpenStack Object Storage").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5365065159713730999" ("Store backups in OpenStack Object Storage.").
+[2m2:54:34[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "851786620766130459" ("Use files from OpenStack Object Storage as a remote source.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "715869236704033904" ("Auth URI").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4161869179420419180" ("Store backups in WebDAV.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "94435331975823749" ("Use files from WebDAV as a remote source.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "2761209516328971502" ("Store backups in FTP.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "7071219071756090842" ("Use files from FTP as a remote source.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "8669916777817210558" ("Using a leading slash makes the path absolute, pointing to the root of the filesystem.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "2761209516328971502" ("Store backups in FTP.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "7071219071756090842" ("Use files from FTP as a remote source.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "8669916777817210558" ("Using a leading slash makes the path absolute, pointing to the root of the filesystem.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5564878180454686333" ("Sia Decentralized Cloud").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "2433190855747757380" ("Store backups in Sia Decentralized Cloud.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5393098553781161620" ("Use files from Sia Decentralized Cloud as a remote source.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "7121157188144306851" ("Store backups in Tencent COS.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "2299523087083081493" ("Use files from Tencent COS as a remote source.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "3973868637264779754" ("Tahoe LAFS").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "863931951136375296" ("Store backups in Tahoe LAFS.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "9079114527960008262" ("Use files from Tahoe LAFS as a remote source.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "7350796876483329661" ("Windows Share (SMB)").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "6199963465947823058" ("Store backups on SMB storage.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "3933527762600913038" ("Use files from SMB storage as a remote source.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5098290215983190635" ("Share Name").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5098290215983190635" ("Share Name").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5984920942050514845" ("CIFS (deprecated)").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1234853131116144954" ("Same as SMB backend, but with a different name. Use SMB instead.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "2302829110443112963" ("Use files from CIFS storage as a remote source. Deprecated, use SMB instead.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "732218849333506427" ("Filen.io").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4267087859628904259" ("Store backups in Filen.io.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "3903392117898228349" ("Use files from Filen.io as a remote source.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "8554734047079490713" ("Path on Filen").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "8554734047079490713" ("Path on Filen").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "2792782099373246525" ("Filejump").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "8754096557728124922" ("Store backups in Filejump.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "7288815777124180150" ("Use files from Filejump as a remote source.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1317354077788346238" ("Path on Filejump").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1317354077788346238" ("Path on Filejump").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5297710070167842134" ("API Token").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "6015867774087473210" ("Filejump API Token").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "7767043792653794161" ("Storj Access Grant").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "7990311587063681599" ("Store backups in Storj Access Grant.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "164396778815048301" ("Use files from Storj with an access grant as a remote source.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5694580546178076526" ("Access Grant").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "7732296756511089144" ("Storj API Key").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "520993283570669753" ("Store backups in Storj API Key.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "2074860377457319316" ("Use files from Storj with an API key as a remote source.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "7896650584449704588" ("Secret").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "7236053877128063351" ("Store backups in Aliyun OSS").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5048957297384968114" ("Use files from Aliyun OSS as a remote source.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4890321515347479714" ("Path in bucket").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4890321515347479714" ("Path in bucket").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4825302841512311747" ("Microsoft 365").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1293553999776384358" ("Create backups of Microsoft 365 data.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "759419466280884419" ("Use Microsoft 365 data as a remote source.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5273501066845923426" ("Client ID").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "3781907749631435021" ("Application (client) ID from your Azure AD app registration.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "3858350041926042177" ("Client Secret").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1571724742258274216" ("Client Secret from your Azure AD app registration.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "8564560199771306024" ("Tenant ID").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "2867292373275695199" ("Google Workspace").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4076898106338430458" ("Create backups of Google Workspace data.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4853180835572920193" ("Use Google Workspace data as a remote source.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "7810923642443814756" ("Admin Email").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "2781011151472037463" ("Email address of the Google Workspace admin user.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "8634339063636601285" ("Service account JSON").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5517352459746267593" ("Paste the service account JSON here.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4310843648876437875" ("Service account JSON file").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "3493312189618135422" ("Pick the path to a file with service account JSON.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "7068154059619131988" ("Drime Cloud").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "678022036802816099" ("Store backups in Drime Cloud.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4610311159596762330" ("Use files from Drime Cloud as a remote source.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "8367536494741798224" ("Path in Drime Cloud").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "8367536494741798224" ("Path in Drime Cloud").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "7710526150169561067" ("Internxt Drive").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "6632194972312780197" ("Store backups in Internxt Drive. Requires a plan with CLI access.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "7050005113541436439" ("Path in Internxt Drive").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "7050005113541436439" ("Path in Internxt Drive").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4534379559666709413" ("{$PH} (S3)").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5004948293280583686" ("Store backups in {$PH} storage.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1916488750884554313" ("The hostname of the {$PH} endpoint. You can also paste the endpoint or bucket URL from {$PH_1}, and the server, bucket and folder are filled in from it.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4534379559666709413" ("{$PH} (S3)").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5004948293280583686" ("Store backups in {$PH} storage.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1916488750884554313" ("The hostname of the {$PH} endpoint. You can also paste the endpoint or bucket URL from {$PH_1}, and the server, bucket and folder are filled in from it.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4534379559666709413" ("{$PH} (S3)").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5004948293280583686" ("Store backups in {$PH} storage.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1916488750884554313" ("The hostname of the {$PH} endpoint. You can also paste the endpoint or bucket URL from {$PH_1}, and the server, bucket and folder are filled in from it.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4534379559666709413" ("{$PH} (S3)").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5004948293280583686" ("Store backups in {$PH} storage.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1916488750884554313" ("The hostname of the {$PH} endpoint. You can also paste the endpoint or bucket URL from {$PH_1}, and the server, bucket and folder are filled in from it.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4534379559666709413" ("{$PH} (S3)").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5004948293280583686" ("Store backups in {$PH} storage.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1916488750884554313" ("The hostname of the {$PH} endpoint. You can also paste the endpoint or bucket URL from {$PH_1}, and the server, bucket and folder are filled in from it.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4534379559666709413" ("{$PH} (S3)").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5004948293280583686" ("Store backups in {$PH} storage.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1916488750884554313" ("The hostname of the {$PH} endpoint. You can also paste the endpoint or bucket URL from {$PH_1}, and the server, bucket and folder are filled in from it.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4534379559666709413" ("{$PH} (S3)").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5004948293280583686" ("Store backups in {$PH} storage.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1916488750884554313" ("The hostname of the {$PH} endpoint. You can also paste the endpoint or bucket URL from {$PH_1}, and the server, bucket and folder are filled in from it.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4534379559666709413" ("{$PH} (S3)").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5004948293280583686" ("Store backups in {$PH} storage.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1916488750884554313" ("The hostname of the {$PH} endpoint. You can also paste the endpoint or bucket URL from {$PH_1}, and the server, bucket and folder are filled in from it.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4534379559666709413" ("{$PH} (S3)").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5004948293280583686" ("Store backups in {$PH} storage.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1916488750884554313" ("The hostname of the {$PH} endpoint. You can also paste the endpoint or bucket URL from {$PH_1}, and the server, bucket and folder are filled in from it.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4534379559666709413" ("{$PH} (S3)").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5004948293280583686" ("Store backups in {$PH} storage.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1916488750884554313" ("The hostname of the {$PH} endpoint. You can also paste the endpoint or bucket URL from {$PH_1}, and the server, bucket and folder are filled in from it.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4534379559666709413" ("{$PH} (S3)").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5004948293280583686" ("Store backups in {$PH} storage.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1916488750884554313" ("The hostname of the {$PH} endpoint. You can also paste the endpoint or bucket URL from {$PH_1}, and the server, bucket and folder are filled in from it.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4534379559666709413" ("{$PH} (S3)").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5004948293280583686" ("Store backups in {$PH} storage.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1916488750884554313" ("The hostname of the {$PH} endpoint. You can also paste the endpoint or bucket URL from {$PH_1}, and the server, bucket and folder are filled in from it.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4534379559666709413" ("{$PH} (S3)").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5004948293280583686" ("Store backups in {$PH} storage.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1916488750884554313" ("The hostname of the {$PH} endpoint. You can also paste the endpoint or bucket URL from {$PH_1}, and the server, bucket and folder are filled in from it.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4534379559666709413" ("{$PH} (S3)").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5004948293280583686" ("Store backups in {$PH} storage.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1916488750884554313" ("The hostname of the {$PH} endpoint. You can also paste the endpoint or bucket URL from {$PH_1}, and the server, bucket and folder are filled in from it.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4534379559666709413" ("{$PH} (S3)").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5004948293280583686" ("Store backups in {$PH} storage.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1916488750884554313" ("The hostname of the {$PH} endpoint. You can also paste the endpoint or bucket URL from {$PH_1}, and the server, bucket and folder are filled in from it.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4534379559666709413" ("{$PH} (S3)").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5004948293280583686" ("Store backups in {$PH} storage.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1916488750884554313" ("The hostname of the {$PH} endpoint. You can also paste the endpoint or bucket URL from {$PH_1}, and the server, bucket and folder are filled in from it.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "2365358268693073016" ("Your account's R2 endpoint, such as <account ID>.r2.cloudflarestorage.com. Paste the S3 API URL from the bucket settings in the Cloudflare dashboard, and the server and bucket are filled in from it.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4534379559666709413" ("{$PH} (S3)").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5004948293280583686" ("Store backups in {$PH} storage.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "8670734756503583186" ("Your tenancy's endpoint, such as <namespace>.compat.objectstorage.<region>.oci.customer-oci.com, using the namespace shown on the bucket details page. Namespaces containing "-", "_" or "." must use the older <namespace>.compat.objectstorage.<region>.oraclecloud.com form. You can also paste the full bucket URL.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4534379559666709413" ("{$PH} (S3)").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5004948293280583686" ("Store backups in {$PH} storage.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4534379559666709413" ("{$PH} (S3)").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5004948293280583686" ("Store backups in {$PH} storage.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1916488750884554313" ("The hostname of the {$PH} endpoint. You can also paste the endpoint or bucket URL from {$PH_1}, and the server, bucket and folder are filled in from it.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4534379559666709413" ("{$PH} (S3)").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5004948293280583686" ("Store backups in {$PH} storage.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1916488750884554313" ("The hostname of the {$PH} endpoint. You can also paste the endpoint or bucket URL from {$PH_1}, and the server, bucket and folder are filled in from it.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4534379559666709413" ("{$PH} (S3)").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5004948293280583686" ("Store backups in {$PH} storage.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1916488750884554313" ("The hostname of the {$PH} endpoint. You can also paste the endpoint or bucket URL from {$PH_1}, and the server, bucket and folder are filled in from it.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4534379559666709413" ("{$PH} (S3)").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5004948293280583686" ("Store backups in {$PH} storage.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1916488750884554313" ("The hostname of the {$PH} endpoint. You can also paste the endpoint or bucket URL from {$PH_1}, and the server, bucket and folder are filled in from it.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4534379559666709413" ("{$PH} (S3)").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5004948293280583686" ("Store backups in {$PH} storage.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1916488750884554313" ("The hostname of the {$PH} endpoint. You can also paste the endpoint or bucket URL from {$PH_1}, and the server, bucket and folder are filled in from it.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4534379559666709413" ("{$PH} (S3)").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5004948293280583686" ("Store backups in {$PH} storage.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1916488750884554313" ("The hostname of the {$PH} endpoint. You can also paste the endpoint or bucket URL from {$PH_1}, and the server, bucket and folder are filled in from it.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4534379559666709413" ("{$PH} (S3)").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5004948293280583686" ("Store backups in {$PH} storage.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1916488750884554313" ("The hostname of the {$PH} endpoint. You can also paste the endpoint or bucket URL from {$PH_1}, and the server, bucket and folder are filled in from it.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4534379559666709413" ("{$PH} (S3)").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5004948293280583686" ("Store backups in {$PH} storage.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1916488750884554313" ("The hostname of the {$PH} endpoint. You can also paste the endpoint or bucket URL from {$PH_1}, and the server, bucket and folder are filled in from it.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "3021221570392345721" ("Store backups in Neon Object Storage.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4534379559666709413" ("{$PH} (S3)").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1916488750884554313" ("The hostname of the {$PH} endpoint. You can also paste the endpoint or bucket URL from {$PH_1}, and the server, bucket and folder are filled in from it.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "6857965272290049614" ("The dosya S3 endpoint, s3.dosya.dev. Use your workspace ID as the bucket name; it is shown under Integrations > S3 in the dosya web app.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4534379559666709413" ("{$PH} (S3)").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5004948293280583686" ("Store backups in {$PH} storage.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "2906587845957718064" ("Local").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "9044330610758641922" ("Read: list backups, follow tasks and browse backup contents").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1509856671111314508" ("Backup: also run backups and stop tasks").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "2099833175691412859" ("Restore: also restore files").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4776429682428363094" ("1 day").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "7152095234138763013" ("30 days").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "9019651111955599289" ("90 days").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4022869046575091075" ("1 year").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "7599292392402466884" ("10 years").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "6635886607889874272" ("Other agent").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "6939005683702161102" ("System default ($value)").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "6252070156626006029" ("None").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "6370106640591740243" ("{$START_TAG_SH_ICON}clock-counter-clockwise{$CLOSE_TAG_SH_ICON} Restore ").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "297381350184272930" ("{$START_TAG_SH_ICON}pulse{$CLOSE_TAG_SH_ICON} System status ").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4319414730852685278" (" Notifications {$START_TAG_BUTTON}{$START_TAG_SH_ICON}x-circle{$CLOSE_TAG_SH_ICON}{$CLOSE_TAG_BUTTON}").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "373645687858467964" (" Alerts {$START_TAG_BUTTON}{$START_TAG_SH_ICON}x-circle{$CLOSE_TAG_SH_ICON}{$CLOSE_TAG_BUTTON}").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "803131845720356706" ("Switch to dark mode").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "8853052030834318192" ("Configure your backup settings.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "277176022829105628" ("Sign out when idle").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4489415516595335116" (" The interface keeps you signed in for as long as it is open. Choose a time to be signed out automatically when this browser has not been used for that long. The setting is stored in this browser only. ").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "8971651371945962652" ("File tree sorting").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5129207905481876527" ("Configure how files and folders are sorted in the file tree.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "6872692250712834683" ("{$START_TAG_SH_ICON}swap{$CLOSE_TAG_SH_ICON}{$START_BLOCK_IF}{$START_TAG_SPAN}Set current UI as default{$CLOSE_TAG_SPAN}{$CLOSE_BLOCK_IF}{$START_BLOCK_ELSE}{$START_TAG_SPAN}Set legacy UI as default{$CLOSE_TAG_SPAN}{$CLOSE_BLOCK_ELSE}").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "6160336790605687552" ("Experimental").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5200159073475977981" ("Reduced reporting").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1067508100937070416" (" Switch this on when the machine handles confidential or protected information. Every report leaving the machine then carries log message ids, counters and dates only. ").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4236748301222282684" ("Console connection status").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "7184651849296644094" ("Reporting configured by server").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "848829919559026147" (" Remote control disabled {$START_TAG_SH_ICON}info{$CLOSE_TAG_SH_ICON}").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "6613782784192189777" (" Remote control enabled {$START_TAG_SH_ICON}info{$CLOSE_TAG_SH_ICON}").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1237201025893117621" (" Console connection status is hidden {$START_TAG_SH_ICON}info{$CLOSE_TAG_SH_ICON}").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "2453233387286437331" (" Console connection status is visible {$START_TAG_SH_ICON}info{$CLOSE_TAG_SH_ICON}").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1804413399654345739" ("Enter new password").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5373727393387841282" ("Repeat password").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "2125684709649375393" ("Password have to be filled and have to match").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4431867970994412641" (" Changing the passphrase signs out everyone using Duplicati, including you, and revokes all issued access tokens. You need to sign in again with the new passphrase afterwards. ").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "7186928219241173917" ("Repeat passphrase").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "6754344606868942222" ("Folders are shown before files").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5896756000586155045" ("Files and folders are mixed together").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "8256650140008972757" ("Sorting is case sensitive").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5850649976681629248" ("Sorting is case insensitive").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5557404271695903905" ("Tray icon automatic log-in is disabled").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "7353358800145803668" ("Tray icon automatic log-in is enabled").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "9017592502834915287" ("Saving server time zone").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "6922839297299632161" ("Server time zone").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "3633646676830799764" (" The time zone the server uses when scheduling backups. Scheduled times are kept at the same local time across daylight saving changes in this time zone. The system default is the time zone of the machine running Duplicati. ").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5189164421284867792" ("Reduced reporting enforced by the console").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "3159633954087502717" ("Reduced reporting enabled").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "2057813355837966523" ("Reduced reporting disabled").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "7593338605286839558" ("Saving usage statistics").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "15207906429617134" ("Operations run in an isolated process").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "8767018736632509662" ("Operations run inside the server process").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5386297349331502811" ("File system watcher").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "2813994914194411164" ("The file watcher is disabled for all backups").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "7270191581348076674" ("Backups can track changed files with the file watcher").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "7742678908024604738" ("MCP server").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "3089518894503730833" ("AI agents with an access token can use the MCP endpoint at /mcp").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4620343719055375029" ("The MCP endpoint is disabled").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1187130474743521212" ("MCP access tokens").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "7884766276049839736" (" An AI agent connects to the MCP endpoint with an access token. A token only works on the MCP endpoint, and can be limited to a permission level and to selected backups. ").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "8489413715279717169" ("Disabling console control will disable remote access to this machine from the console, but will keep the
+            registration intact and allow pushing settings from the console.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "8269848688678936126" ("Hides the connection status indicator in the status bar. Useful if you are not using the remote console.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "8110367050267853536" ("More options").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "7513388682755268547" ("{$START_BLOCK_IF}{$START_TAG_SH_ICON}pause{$CLOSE_TAG_SH_ICON} Pause {$CLOSE_BLOCK_IF}{$START_BLOCK_ELSE}{$START_TAG_SH_ICON}play{$CLOSE_TAG_SH_ICON} Resume {$CLOSE_BLOCK_ELSE}").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "8088579011532771101" ("{$START_TAG_SH_ICON}skull{$CLOSE_TAG_SH_ICON} Abort ").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1845281535947373751" ("{$START_TAG_SH_ICON}stop{$CLOSE_TAG_SH_ICON} Stop ").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "6231927997656324898" ("{$START_TAG_SH_ICON}floppy-disk{$CLOSE_TAG_SH_ICON} Save settings ").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "3891152409365583719" ("Settings saved").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "6260815357943243058" ("Saving advanced settings…").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "6942406425896924729" (" Could not save advanced settings. Your changes have been kept. Please try again. ").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5605877476441016463" (" {$INTERPOLATION} - {$START_TAG_SH_ICON}clock{$CLOSE_TAG_SH_ICON} {$INTERPOLATION_1} at {$INTERPOLATION_2} ").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5251829225351663738" (" Loading {$START_TAG_SH_SPINNER}{$CLOSE_TAG_SH_SPINNER}").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4931861490722469250" ("System default ({$PH})").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "3256567343129957987" ("Register on console").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "3008478973302833120" ("Machine is now registered, open this link to add it to your account:").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "3064490671150106718" ("Registering, please wait...").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1112525418959962254" ("Cancel registration").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "2421917420516328621" ("Disable console connection").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4766396747475517086" ("Enable console connection").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "3586607267950000790" (" Delete console connection setup ").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "9091802884339884246" (" Reporting configured by server {$START_BLOCK_IF}{$START_TAG_SH_ICON}check{$CLOSE_TAG_SH_ICON}{$CLOSE_BLOCK_IF}{$START_BLOCK_ELSE}{$START_TAG_SH_ICON}copy{$CLOSE_TAG_SH_ICON}{$CLOSE_BLOCK_ELSE}").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5937355608366652214" ("Never sign out automatically").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "6519351389174362418" ("After {$minutes} minutes without activity").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "6519351389174362418" ("After {$minutes} minutes without activity").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "6519351389174362418" ("After {$minutes} minutes without activity").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1086995343469227208" ("After 1 hour without activity").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "7560886063859415362" ("After {$hours} hours without activity").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "7560886063859415362" ("After {$hours} hours without activity").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "6921480752627321705" ("When switched on, every report leaving this machine carries log message ids, counters and dates only: no message text, file names or error messages. Bug reports cannot be created while it is on.").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "8776300244268604360" ("System default").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5785329015047258586" ("{$START_BLOCK_IF} Resetting {$START_TAG_DIV}{$CLOSE_TAG_DIV}{$CLOSE_BLOCK_IF}{$START_BLOCK_ELSE} Click to connect {$START_TAG_DIV_1}{$CLOSE_TAG_DIV}{$CLOSE_BLOCK_ELSE}").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4188449841109889183" (" Connecting {$START_TAG_DIV}{$CLOSE_TAG_DIV}").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "2882790181541329307" (" Click to register {$START_TAG_DIV}{$CLOSE_TAG_DIV}").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1112525418959962254" ("Cancel registration").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1112525418959962254" ("Cancel registration").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "492115741781494042" ("{$START_TAG_SH_ICON} x-circle {$CLOSE_TAG_SH_ICON}{$START_TAG_DIV}Click to claim{$CLOSE_TAG_DIV}{$START_TAG_DIV_1}{$CLOSE_TAG_DIV}").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1838540954753437718" (" Connected {$START_TAG_DIV}{$CLOSE_TAG_DIV}").
+[2m2:54:35[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNG0318: `[style.transform]` was bound to an invalid value. Expected a string, number, SafeValue, null, or undefined, but received `boolean` (`false`). Find more at https://v22.angular.dev/errors/NG0318
+[2m2:54:36[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "6921480752627321705" ("When switched on, every report leaving this machine carries log message ids, counters and dates only: no message text, file names or error messages. Bug reports cannot be created while it is on.").
+[2m2:54:36[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "8776300244268604360" ("System default").
+[2m2:54:36[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "2777652599986788725" (" Show editor {$START_TAG_SH_ICON}link{$CLOSE_TAG_SH_ICON}").
+[2m2:54:36[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "7409748838172861762" (" Add advanced option {$START_TAG_SH_ICON}plus{$CLOSE_TAG_SH_ICON}").
+[2m2:54:36[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5402881094856060028" ("{$START_TAG_SH_ICON}pen{$CLOSE_TAG_SH_ICON} New custom option ").
+[2m2:54:36[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1087182457721593206" ("{$START_TAG_SH_ICON}wrench{$CLOSE_TAG_SH_ICON} Toggle option names ").
+[2m2:54:36[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4141282812307802268" ("By adding this option it will override the matching global option").
+[2m2:54:36[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4560504204439476580" ("Toggle password visibility").
+[2m2:54:36[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "5937355608366652214" ("Never sign out automatically").
+[2m2:54:36[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "6519351389174362418" ("After {$minutes} minutes without activity").
+[2m2:54:36[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "6519351389174362418" ("After {$minutes} minutes without activity").
+[2m2:54:36[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "6519351389174362418" ("After {$minutes} minutes without activity").
+[2m2:54:36[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "1086995343469227208" ("After 1 hour without activity").
+[2m2:54:36[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "7560886063859415362" ("After {$hours} hours without activity").
+[2m2:54:36[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "7560886063859415362" ("After {$hours} hours without activity").
+[2m2:54:36[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "510226563600599366" (" If the backup file was not downloaded automatically, {$START_LINK}right click and choose "Save as …"{$CLOSE_LINK}").
+[2m2:54:36[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "6082171864197428613" ("Install").
+[2m2:54:36[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "6090415610942857763" ("Cancel update").
+[2m2:54:36[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "6921480752627321705" ("When switched on, every report leaving this machine carries log message ids, counters and dates only: no message text, file names or error messages. Bug reports cannot be created while it is on.").
+[2m2:54:36[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4866386105421592521" ("Console connection is not set up").
+[2m2:54:36[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "8776300244268604360" ("System default").
+[2m2:54:40[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "2772023564304193657" ("Enter your password").
+[2m2:54:40[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "4560504204439476580" ("Toggle password visibility").
+[2m2:54:40[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "8478646166340702449" (" Password {$START_LINK}{$START_TAG_SH_ICON}question{$CLOSE_TAG_SH_ICON}{$CLOSE_LINK}").
+[2m2:54:40[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "2676308716533799662" (" Login {$START_TAG_SH_ICON}arrow-right{$CLOSE_TAG_SH_ICON}").
+[2m2:54:40[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "2351615913393564557" (" Keep me logged in {$TAG_INPUT}").
+[2m2:54:40[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mNo translation found for "6508575097595619745" (" Remember to enter a password, if you can't remember the password open the duplicati client on the machine in question and make sure you open it through the tray icon then go into settings to change the password. ").

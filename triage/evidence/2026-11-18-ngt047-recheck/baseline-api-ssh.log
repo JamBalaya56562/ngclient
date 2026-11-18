@@ -1,0 +1,52 @@
+
+Running 1 test using 1 worker
+
+(node:14204) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+{"event":"api-roundtrip","serverVariant":"baseline-canary","case":"ssh","id":"1","input":"ssh://fixture-user:fixture-secret@Example.COM:022/archive%2fpart?auth-password=p%2525&buffer-size=64MB&web-timeout=2m&future=a+b&future=two&flag&empty=","initialStored":"ssh://fixture-user:fixture-secret@Example.COM:022/archive%2fpart?auth-password=p%2525&buffer-size=64MB&web-timeout=2m&future=a+b&future=two&flag&empty=","getUrl":"ssh://fixture-user:fixture-secret@Example.COM:22/archive/part?auth-password=***************&buffer-size=64MB&web-timeout=2m&future=a+b,two","stored":"ssh://fixture-user:fixture-secret@Example.COM:22/archive/part?buffer-size=64MB&web-timeout=2m&future=a+b,two&auth-password=p%2525","unchanged":false,"optionsUnchanged":true}
+{"event":"api-explicit-edit","serverVariant":"baseline-canary","case":"ssh","stored":"ssh://fixture-user:fixture-secret@Example.COM:22/archive/part?buffer-size=64MB&web-timeout=2m&future=a+b,two&fixture-explicit=changed%20value&auth-password=p%2525","expected":"ssh://fixture-user:fixture-secret@Example.COM:22/archive/part?buffer-size=64MB&web-timeout=2m&future=a+b,two&auth-password=p%2525&fixture-explicit=changed%20value"}
+  x  1 [chromium] › tmp\ngt047-20261118\probe.spec.ts:55:3 › API ssh preserves stored URL through GET PUT and allows explicit edits (6.2s)
+
+
+  1) [chromium] › tmp\ngt047-20261118\probe.spec.ts:55:3 › API ssh preserves stored URL through GET PUT and allows explicit edits 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "ssh://fixture-user:fixture-secret@Example.COM:022/archive%2fpart?auth-password=p%2525&buffer-size=64MB&web-timeout=2m&future=a+b&future=two&flag&empty="
+    Received: "ssh://fixture-user:fixture-secret@Example.COM:22/archive/part?buffer-size=64MB&web-timeout=2m&future=a+b,two&auth-password=p%2525"
+
+      62 |     record('api-roundtrip', { case: label, id, input: url, initialStored: initial, getUrl: before.Backup.TargetURL,
+      63 |       stored, unchanged: initial === stored, optionsUnchanged: JSON.stringify(options(after)) === JSON.stringify(originalOptions) });
+    > 64 |     expect.soft(stored).toBe(initial);
+         |                         ^
+      65 |     expect.soft(options(after)).toEqual(originalOptions);
+      66 |     after.Backup.TargetURL += '&fixture-explicit=changed%20value';
+      67 |     const edited = await api.put('/api/v1/backup/' + id, { data: after });
+        at C:\Users\Jam\Documents\ngclient\tmp\ngt047-20261118\probe.spec.ts:64:25
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "ssh://fixture-user:fixture-secret@Example.COM:22/archive/part?buffer-size=64MB&web-timeout=2m&future=a+b,two&auth-password=p%2525&fixture-explicit=changed%20value"
+    Received: "ssh://fixture-user:fixture-secret@Example.COM:22/archive/part?buffer-size=64MB&web-timeout=2m&future=a+b,two&fixture-explicit=changed%20value&auth-password=p%2525"
+
+      69 |     const editedStored = raw(directory, id);
+      70 |     record('api-explicit-edit', { case: label, stored: editedStored, expected: stored + '&fixture-explicit=changed%20value' });
+    > 71 |     expect.soft(editedStored).toBe(stored + '&fixture-explicit=changed%20value');
+         |                               ^
+      72 |   });
+      73 | }
+      74 | for (const [label, url] of cases.slice(0, 6)) {
+        at C:\Users\Jam\Documents\ngclient\tmp\ngt047-20261118\probe.spec.ts:71:31
+
+    Error Context: tmp\ngt047-20261118\baseline-canary-results\probe-API-ssh-preserves-st-6a862-T-and-allows-explicit-edits-chromium\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    tmp\ngt047-20261118\baseline-canary-results\probe-API-ssh-preserves-st-6a862-T-and-allows-explicit-edits-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace tmp\ngt047-20261118\baseline-canary-results\probe-API-ssh-preserves-st-6a862-T-and-allows-explicit-edits-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [chromium] › tmp\ngt047-20261118\probe.spec.ts:55:3 › API ssh preserves stored URL through GET PUT and allows explicit edits 

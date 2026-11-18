@@ -1,0 +1,28 @@
+サーバーが起動しました。localhostのポート8304でリクエストを待ち受けています
+Warning: Amazon.S3.AmazonS3Config.DisableS3ExpressSessionAuth took 126.076ms to get value
+fail: Microsoft.AspNetCore.Server.Kestrel[13]
+      Connection id "0HNQ2F0Q63LG7", Request id "0HNQ2F0Q63LG7:00000001": An unhandled exception was thrown by the application.
+      System.Net.WebSockets.WebSocketException (0x80004005): The remote party closed the WebSocket connection without completing the close handshake.
+         at System.Net.WebSockets.ManagedWebSocket.ThrowEOFUnexpected()
+         at System.Net.WebSockets.ManagedWebSocket.EnsureBufferContainsAsync(Int32 minimumRequiredBytes, CancellationToken cancellationToken)
+         at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+         at System.Net.WebSockets.ManagedWebSocket.ReceiveAsyncPrivate[TResult](Memory`1 payloadBuffer, CancellationToken cancellationToken)
+         at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+         at System.Threading.Tasks.ValueTask`1.ValueTaskSourceAsTask.<>c.<.cctor>b__4_0(Object state)
+      --- End of stack trace from previous location ---
+         at Duplicati.WebserverCore.Notifications.WebsocketAuthenticator.HandleClientDataAsync(WebSocket webSocket, CancellationToken cancellationToken) in C:\Users\Jam\AppData\Local\Temp\claude\eb7164b3a8a8609a\2ade3d67-588b-4a0d-82ef-8acf31aad402\scratchpad\wt\n1s\Duplicati\WebserverCore\Notifications\WebsocketAuthenticator.cs:line 68
+         at Duplicati.WebserverCore.Notifications.WebsocketAuthenticator.AddConnectionAsync(WebSocket newConnection) in C:\Users\Jam\AppData\Local\Temp\claude\eb7164b3a8a8609a\2ade3d67-588b-4a0d-82ef-8acf31aad402\scratchpad\wt\n1s\Duplicati\WebserverCore\Notifications\WebsocketAuthenticator.cs:line 62
+         at Duplicati.WebserverCore.Middlewares.WebsocketExtensions.<>c__DisplayClass0_0.<<UseNotifications>b__0>d.MoveNext() in C:\Users\Jam\AppData\Local\Temp\claude\eb7164b3a8a8609a\2ade3d67-588b-4a0d-82ef-8acf31aad402\scratchpad\wt\n1s\Duplicati\WebserverCore\Middlewares\WebsocketExtensions.cs:line 49
+      --- End of stack trace from previous location ---
+         at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+         at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.HandleException(HttpContext context, ExceptionDispatchInfo edi)
+         at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+         at Duplicati.WebserverCore.DuplicatiWebserver.<>c__DisplayClass33_0.<<CreateWebServer>b__12>d.MoveNext() in C:\Users\Jam\AppData\Local\Temp\claude\eb7164b3a8a8609a\2ade3d67-588b-4a0d-82ef-8acf31aad402\scratchpad\wt\n1s\Duplicati\WebserverCore\DuplicatiWebserver.cs:line 390
+      --- End of stack trace from previous location ---
+         at Duplicati.WebserverCore.Middlewares.StaticFilesExtensions.<>c__DisplayClass15_0.<<UseDefaultStaticFiles>b__1>d.MoveNext() in C:\Users\Jam\AppData\Local\Temp\claude\eb7164b3a8a8609a\2ade3d67-588b-4a0d-82ef-8acf31aad402\scratchpad\wt\n1s\Duplicati\WebserverCore\Middlewares\StaticFilesMiddleware.cs:line 199
+      --- End of stack trace from previous location ---
+         at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+         at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+         at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+         at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+         at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequests[TContext](IHttpApplication`1 application)

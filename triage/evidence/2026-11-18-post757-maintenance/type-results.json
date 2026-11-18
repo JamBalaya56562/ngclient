@@ -1,0 +1,67 @@
+[
+  {
+    "sha": "d7c6eb752caa7fb935bd79e392526a280fb871de",
+    "branch": "codex/update-changelog-source",
+    "e2eTypes": 0
+  },
+  {
+    "sha": "d5e305dfe468b40a69691412e5975cacc93a4816",
+    "branch": "codex/guard-shared-database-deletion",
+    "e2eTypes": 0
+  },
+  {
+    "sha": "3c0bd014ef1bc83e65add546ea964dc998307966",
+    "branch": "codex/file-tree-reexpansion-coverage",
+    "e2eTypes": 0
+  },
+  {
+    "sha": "4194f31c98694e89d537bd6aac09178b35a73ff1",
+    "branch": "codex/command-editor-signal-fields",
+    "e2eTypes": 0
+  },
+  {
+    "sha": "e950991af4bd1d936092bee18a5721e4731846db",
+    "branch": "codex/remote-encryption-save-confirmation",
+    "e2eTypes": 0
+  },
+  {
+    "sha": "f1d32843cec1abb4a987f23ee851a327bcd38214",
+    "branch": "codex/reuse-existing-local-database",
+    "e2eTypes": 0
+  },
+  {
+    "sha": "e4f224305d35f0ddc08761853af884aeaf3f1a24",
+    "branch": "codex/native-console-connection-link",
+    "e2eTypes": 0
+  },
+  {
+    "sha": "1f0b5c0f900fb24ce5a31b93dcf83a7b5f75819a",
+    "branch": "codex/live-backup-wizard-roundtrip",
+    "e2eTypes": 0
+  },
+  {
+    "sha": "735d2bd891363117a8027bb52e83572bf47bd798",
+    "branch": "feat/compact-progress",
+    "e2eTypes": 0
+  },
+  {
+    "sha": "62842460839424137d215ea82eebec7644907ce2",
+    "branch": "feat/export-global-options",
+    "e2eTypes": 0
+  },
+  {
+    "sha": "e58afab5d87f0a18dc8d2fdc8e14d3d046a6e077",
+    "branch": "feat/restore-resume-drafts",
+    "e2eTypes": 0
+  },
+  {
+    "sha": "16309d52ee55d2beb0e265282684d5e10e8c9afd",
+    "branch": "feat/show-db-encryption-preload-paths",
+    "e2eTypes": 0
+  },
+  {
+    "sha": "99f9c04082cf4f63b22f5f05cc5fefb95957fad4",
+    "branch": "feat/skip-next-scheduled-run",
+    "e2eTypes": 0
+  }
+]

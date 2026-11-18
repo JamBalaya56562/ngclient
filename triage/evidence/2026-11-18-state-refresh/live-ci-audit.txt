@@ -1,0 +1,18 @@
+playwright.config.ts:3:const mode = process.env['PLAYWRIGHT_MODE'] ?? 'e2e';
+playwright.config.ts:4:if (!['e2e', 'startup', 'live'].includes(mode)) throw new Error('PLAYWRIGHT_MODE must be e2e, startup or live');
+playwright.config.ts:6:const live = mode === 'live';
+playwright.config.ts:10:  testDir: live ? './e2e/live' : startup ? './benchmarks' : './e2e',
+playwright.config.ts:11:  testIgnore: live ? [] : ['**/live/**'],
+playwright.config.ts:12:  ...(startup ? { testMatch: 'startup-loading.benchmark.ts', timeout: 120_000 } : live ? { timeout: 120_000 } : {}),
+playwright.config.ts:29:  webServer: live
+e2e/live/fixture.ts:13:export const test = base.extend<{}, { liveServer: LiveServer }>({
+e2e/live/fixture.ts:14:  liveServer: [
+e2e/live/fixture.ts:16:      const executable = process.env['DUPLICATI_SERVER_PATH'];
+e2e/live/fixture.ts:18:        throw new Error('Set DUPLICATI_SERVER_PATH to a local Duplicati.Server executable (not a running server URL).');
+e2e/live/fixture.ts:24:      const directory = await mkdtemp(join(workerInfo.project.outputDir, 'live-server-'));
+e2e/live/fixture.ts:177:  baseURL: async ({ liveServer }, use) => {
+e2e/live/fixture.ts:178:    await use(liveServer.url);
+.github/workflows\production-build.yml:4:  workflow_dispatch:
+.github/workflows\production-build.yml:102:        run: bun run test:e2e
+.github/workflows\production-build.yml:115:    if: github.event_name == 'workflow_dispatch' && inputs.startup_measurements
+.github/workflows\unit-tests.yml:4:  workflow_dispatch:

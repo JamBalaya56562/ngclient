@@ -1,0 +1,99 @@
+[
+  {
+    "kind": "server",
+    "version": "1.0.0.0",
+    "supported": true,
+    "run": "C:\\Users\\Jam\\Documents\\ngclient\\tmp\\ngt086-skip-20261115\\run-L9TPos"
+  },
+  {
+    "kind": "menu-checked",
+    "name": "NGT-086 unscheduled",
+    "visible": false
+  },
+  {
+    "kind": "menu-checked",
+    "name": "NGT-086 disabled",
+    "visible": false
+  },
+  {
+    "kind": "skip-confirmed",
+    "first": "2026-11-15T05:13:00.000Z",
+    "next": "2026-11-15T05:18:01.000Z",
+    "before": " 11/15/26, 5:13 AM",
+    "after": " 11/15/26, 5:18 AM",
+    "requests": 1,
+    "withoutReload": true
+  },
+  {
+    "kind": "restart-retained",
+    "next": "2026-11-15T05:18:01Z"
+  },
+  {
+    "kind": "waiting-for-original-slot",
+    "first": "2026-11-15T05:13:00.000Z",
+    "next": "2026-11-15T05:18:01.000Z"
+  },
+  {
+    "kind": "original-slot-skipped",
+    "first": "2026-11-15T05:13:00.000Z",
+    "metadata": {},
+    "remoteFiles": 0
+  },
+  {
+    "kind": "following-slot-metadata",
+    "metadata": {
+      "LastBackupDate": "20261115T051801Z",
+      "BackupListCount": "1",
+      "TotalQuotaSpace": "1021945311232",
+      "FreeQuotaSpace": "183143399424",
+      "AssignedQuotaSpace": "-1",
+      "TargetFilesSize": "2446",
+      "TargetFilesCount": "3",
+      "TargetFilesetsCount": "1",
+      "TargetSizeString": "2.39 KiB",
+      "SourceFilesSize": "30",
+      "SourceFilesCount": "1",
+      "SourceSizeString": "30バイト",
+      "LastBackupStarted": "20261115T051801Z",
+      "LastBackupFinished": "20261115T051802Z",
+      "LastBackupDuration": "00:00:01.6429120",
+      "LastCompactDuration": "00:00:00.0481946",
+      "LastCompactStarted": "20261115T051802Z",
+      "LastCompactFinished": "20261115T051802Z"
+    }
+  },
+  {
+    "kind": "following-slot-ran",
+    "started": "20261115T051801Z",
+    "finished": "20261115T051802Z",
+    "filesets": [
+      {
+        "Version": 0,
+        "Time": "2026-11-15T05:18:01Z",
+        "IsFullBackup": true,
+        "FileCount": 2,
+        "FileSizes": 30,
+        "Label": null
+      }
+    ]
+  },
+  {
+    "kind": "queued-run-retained",
+    "taskId": 4,
+    "next": "2026-11-17T05:18:02Z"
+  },
+  {
+    "kind": "queued-run-finished-without-undoing-skip",
+    "next": "2026-11-17T05:18:02Z"
+  },
+  {
+    "kind": "completed",
+    "supported": true,
+    "pageErrors": [],
+    "skipRequests": 1
+  },
+  {
+    "kind": "cleanup",
+    "remainingJobs": 0
+  }
+]

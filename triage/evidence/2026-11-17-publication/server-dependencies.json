@@ -1,0 +1,59 @@
+[
+  {
+    "key": "export",
+    "dependency": "0c242a335e6af90788f7c98a11b349d593d14a4b",
+    "files": [
+      "Duplicati/UnitTest/ServerApiIntegrationTests.cs",
+      "Duplicati/WebserverCore/Endpoints/V1/Backup/BackupGet.cs"
+    ]
+  },
+  {
+    "key": "skip",
+    "dependency": "04f2dd08a5ead15d147d4d6d2856f52db725f486",
+    "files": [
+      "Duplicati/Library/RestAPI/Abstractions/ISchedulerService.cs",
+      "Duplicati/Library/RestAPI/Scheduler.cs",
+      "Duplicati/UnitTest/SchedulerSkipNextRunTests.cs",
+      "Duplicati/UnitTest/ServerApiIntegrationTests.cs",
+      "Duplicati/WebserverCore/Dto/SkipNextRunOutputDto.cs",
+      "Duplicati/WebserverCore/Endpoints/V1/Backup/BackupPost.cs",
+      "Duplicati/WebserverCore/Services/SchedulerService.cs",
+      "Duplicati/WebserverCore/Services/SystemInfoProvider.cs"
+    ]
+  },
+  {
+    "key": "compact",
+    "dependency": "999cb7176b59dc85b53363b69fa376599453883f",
+    "files": [
+      "Duplicati/Library/Main/Operation/BackupHandler.cs",
+      "Duplicati/Library/Main/Operation/CompactHandler.cs",
+      "Duplicati/Library/Main/Operation/DeleteHandler.cs",
+      "Duplicati/Library/Main/Operation/PurgeFilesHandler.cs",
+      "Duplicati/Library/Main/OverallProgressEstimator.cs",
+      "Duplicati/UnitTest/CompactProgressTests.cs",
+      "Duplicati/UnitTest/OverallProgressEstimatorTests.cs"
+    ]
+  },
+  {
+    "key": "drafts",
+    "dependency": "5cc77ccda02786210d98b53c3eb65d702e352213",
+    "files": [
+      "Duplicati/Library/RestAPI/Database/Connection.cs",
+      "Duplicati/UnitTest/ServerApiIntegrationTests.cs",
+      "Duplicati/WebserverCore/Dto/TemporaryBackupDto.cs",
+      "Duplicati/WebserverCore/Endpoints/V1/Backups.cs",
+      "Duplicati/WebserverCore/Services/SystemInfoProvider.cs"
+    ]
+  },
+  {
+    "key": "paths",
+    "dependency": "0a056ef05b6155f90cfd3ce3c7a449aa650bd952",
+    "files": [
+      "Duplicati/Library/AutoUpdater/PreloadSettingsLoader.cs",
+      "Duplicati/UnitTest/PreloadSettingsSearchPathTests.cs",
+      "Duplicati/UnitTest/ServerApiIntegrationTests.cs",
+      "Duplicati/WebserverCore/Dto/SystemInfoDto.cs",
+      "Duplicati/WebserverCore/Services/SystemInfoProvider.cs"
+    ]
+  }
+]

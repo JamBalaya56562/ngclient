@@ -1,0 +1,4 @@
+{"repeat":null,"sha":"8fc77558945b6de7ea2ee771e33991090e76787d","port":12648,"specs":["e2e/home-backup-state.spec.ts"],"exit":0,"branch":"feat/last-run-failed-indicator"}
+{"repeat":null,"sha":"e4d73be2e504746c3797ec80c7511f860339945a","port":6699,"specs":["e2e/file-tree-keyboard.spec.ts","e2e/file-tree-range.spec.ts","e2e/attribute-exclusions.spec.ts"],"exit":0,"branch":"feat/file-tree-partial-exclusion"}
+{"repeat":null,"sha":"321dd8cee474d192ca3238aa0eb53c3a577db17b","port":3665,"specs":["e2e/source-paths.spec.ts","e2e/backup-save.spec.ts"],"exit":0,"branch":"feat/show-resolved-source-shortcut"}
+{"repeat":null,"sha":"947ea31ffca525c2fafb837240e2bedf7c2710d5","port":12688,"specs":["e2e/job-log-pagination.spec.ts","e2e/commandline-navigation.spec.ts","e2e/commandline-polling.spec.ts"],"exit":0,"branch":"feat/log-compare-previous-version"}

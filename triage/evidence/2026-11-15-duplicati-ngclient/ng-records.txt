@@ -1,0 +1,915 @@
+
+
+######## #1510
+
+=== impl:n1:#1510 agent=a3ad6abe3c83d7365
+branches: [["ngclient","fix/verify-completion-alert","86510cc5"]]
+--- tests:
+cd wt/n1; node node_modules/@angular/cli/bin/ng.js test ngclient --watch=false --include=projects/ngclient/src/app/home/home.component.spec.ts
+- 修正あり (green): Test Files 1 passed (1), Tests 8 passed (8)。初回はワーカー起動のタイムアウト (vitest-pool) で失敗し、再実行で通過しました
+- 修正なし (red、home.component.ts だけ HEAD に戻した状態): Tests 4 failed | 4 passed (8)。失敗した 4 件は次のとおりです: 'reports a successful verification once the queued task completes', 'reports a failed verification with the task error', 'reports errors from a task that completed with errors in its results', 'does not report anything while the verification is still queued or running'
+テストは postApiV1BackupByIdVerify への呼び出し ({path:{id:'3'}}) と、応答の ID 17 が waitForTaskToComplete に渡ることを確認します。そのうえで、出るアラート (success/error とその文言) を確認します。
+prettier --check: 警告は CRLF の差だけでした。LF に直した内容は prettier の出力と一致します (diff は空)。index は LF で保存されています。
+--- unverified:
+実サーバーとブラウザでの表示は未検証です (Playwright や手動での確認はしていません)。検証で問題が見つかったときに、サーバーが実際に ErrorMessage を設定するかどうかも、コードを読んで判断しただけで未検証です。ページ移動などで HomeComponent が破棄された後もアラートが出る動作は、select-files と同じ書き方 (take(1) で、takeUntilDestroyed は付けない) によるものですが、これも未検証です。新しい $localize 文言の翻訳カタログは更新していません (このリポジトリでは文言ごとに翻訳ファイルを更新していないと判断しました。推測)。
+
+=== review:#1510 agent=aa817f6a7951495fe
+--- problems:
+No blocking problems.
+
+What I checked:
+- Correctness (検証済み, by reading the code): HomeComponent.verifyFiles takes the ID from the response and passes it to ServerStateService.waitForTaskToComplete. That is the same seam restore-progress uses. Its poller treats both Completed and Failed as finished. On the server side, TestHandler logs remote file problems with WriteErrorMessage ("Verified {0} remote files with {1} problem(s)", TestHandler.cs:262). That makes ParsedResult Error, so QueueRunnerService.GetResultErrorMessage sets ErrorMessage and the UI shows the error alert. A verify that only has warnings shows the success alert, which is reasonable.
+- Issue fit: #1510 says no OK dialog appears after Verify, and this change adds that feedback.
+- Backwards compatibility: ngclient only, and the existing 2-second success mark is kept.
+- Secrets: the alert shows only the task's ErrorMessage, nothing from options.
+- Line endings: both files are LF in the base commit, the HEAD blob and the working copy, with 0 CR in each.
+- Scope: 2 files. New strings use $localize. messages.xlf is only regenerated in bulk localization commits, so it is fine that this branch does not touch it.
+- Commit message: has `Fixes duplicati/duplicati#1510` and the required Co-Authored-By line.
+
+Minor notes, not blocking (推測):
+1. The waitForTaskToComplete subscription is not tied to the component's lifetime. This looks intentional, since the alert still appears after the user leaves Home, and take(1) plus the service completing the subscription prevent a leak.
+2. The "still queued" test fails without the fix only because the waitFor on waitForTaskToComplete times out, so it guards less than the other three tests.
+3. The real server round trip was not tested (未検証).
+--- rerun:
+In wt/n1 on fix/verify-completion-alert (86510cc5) I ran `node node_modules/@angular/cli/bin/ng.js test ngclient --watch=false --include=projects/ngclient/src/app/home/home.component.spec.ts`.
+- With the fix (green): Test Files 1 passed (1), Tests 8 passed (8).
+- Without the fix (red), with only home.component.ts checked out from 8f401edd: Tests 4 failed | 4 passed (8). The 4 failures were the new tests: 'reports a successful verification once the queued task completes', 'reports a failed verification with the task error', 'reports errors from a task that completed with errors in its results', and 'does not report anything while the verification is still queued or running'.
+- I restored the file to HEAD afterwards, and git status is clean.
+
+
+######## #2310
+
+=== impl:n1:#2310 agent=a99806cfe12ff9d7f
+branches: [["duplicati","feat/export-global-options","0c242a335e6af90788f7c98a11b349d593d14a4b"],["ngclient","feat/export-global-options","088dba4c01d6127b50ff26a5045190b743a668a2"]]
+--- tests:
+duplicati（worktree n1s）:
+- dotnet build Duplicati/UnitTest/Duplicati.UnitTest.csproj（修正前、テストだけを追加した状態）のあと、
+  dotnet test --no-build --filter "FullyQualifiedName~ExportCanIncludeGlobalAdvancedOptions"
+  → 失敗!  -失敗: 1、合格: 0。メッセージは "A global advanced option should be exported when asked for"、Expected: "global@example.com" But was: null
+- 修正後に再ビルドして
+  dotnet test --no-build --filter "FullyQualifiedName~ExportCanIncludeGlobalAdvancedOptions|FullyQualifiedName~ImportSupportsProvidingPassphraseOverride"
+  → 成功!  -失敗: 0、合格: 2
+  このテストは実際のサーバーを立てます。PATCH /api/v1/serversettings でグローバルオプションを設定したあと、実際の /export エンドポイントを呼び、出力された JSON の Backup.Settings を検査します。検査項目は、グローバルオプションが入ること、パスワードが消えること、ジョブの値が勝つこと、export-passwords=true ならパスワードが残ること、フラグなしでは変化がないこと、保存されたジョブが変わらないことです。
+- ビルド出力を grep したところ、BackupGet.cs と ServerApiIntegrationTests.cs に警告もエラーもありませんでした。
+
+ngclient（worktree n1）:
+- node node_modules/@angular/cli/bin/ng.js test ngclient --watch=false --include=projects/ngclient/src/app/backup/export/export.component.spec.ts
+  - 修正前（spec だけを追加した状態）: ビルドに失敗しました。TS2339: Property 'includeGlobalOptions' does not exist（赤）
+  - 修正後: Test Files 1 passed, Tests 17 passed（新しく追加した 2 件は、既定では送らないことと、オンで include-global-options=true を送ることを、HttpClient.get に渡る URL で確かめます）
+- prettier: 変更した 3 ファイルを LF に正規化して整形すると、差分はありませんでした。--check の warn は作業コピーが CRLF であることだけが原因です。コミットされた blob に CR はありません（0 行）。
+--- unverified:
+- ngclient の UI を実際のブラウザーで表示し、実サーバーと組み合わせてエンドツーエンドで確かめてはいません（未検証）。トグルの表示位置と見た目も確認していません。
+- ngclient の赤は、実行時のアサーションではなく型エラーによるビルド失敗で確かめました。
+- 新しい i18n 文字列を locale の xlf に抽出していません（既存の PR も抽出していないので、それに合わせました。推測）。
+- ServerUtil（CLI の export コマンド）と DuplicatiServerClient には、新しいパラメーターを足していません（範囲外です）。
+- グローバルフィルター（connection.Filters）は対象にしていません。issue が求めているのは詳細オプションです。
+- 既存のコマンドラインエクスポートでは、export-passwords=false でもグローバルのパスワードがそのまま出るように見えます（コードを読んだだけの推測です。範囲外なので触っていません）。
+- Windows 以外ではテストしていません。
+
+=== review:#2310 agent=addf53d58b7ff8c0c
+--- problems:
+Nothing blocks approval. Checked on both branches: correctness, backwards compatibility, secrets, line endings, warnings and scope.
+
+Non-blocking notes:
+1. The issue suggests asking at import time. The branch lets the user choose at export time instead, and the import side is unchanged. This does what the issue says it needs ("all advanced options used to execute a backup task should be exported to the file"), but the PR body should say the choice moved from import to export. (推測: maintainers may want the import prompt.)
+2. Global filters are not included. connection.Filters appears in the command-line export through `cf`, but this branch adds only connection.Settings. The issue only names advanced options, so this is within scope, but the PR could say so. (検証済み by reading Runner.cs around lines 867 and 937.)
+3. ngclient openapi types.gen.ts has no `include-global-options`. The component builds the URL by hand, so nothing breaks; the file is regenerated elsewhere. The new i18n string has no xlf entry, which matches how this repo works: maintainers sync translations in bulk (e.g. cee4c07a). (検証済み by grep and git log.)
+4. Housekeeping: for my red check I put the base BackupGet.cs back temporarily, then restored it (`git status` is clean). The UnitTest bin in n1s still holds that base build, so rebuild before reusing it.
+
+Correctness (検証済み by reading the diff and Runner.cs):
+- AddGlobalOptions strips `--` the same way GetCommonOptions does.
+- The backup's own `x` or `--x` value wins, matching ApplyOptions, which applies the backup after the common options.
+- It runs before RemovePasswords, so global passwords are removed when export-passwords is false. The test shows this for `--send-mail-password`.
+- With no flag the output is unchanged.
+- The stored backup is not changed, because GetBackup returns a fresh copy (also asserted in the test).
+- Nothing is logged.
+
+Line endings (検証済み): all 5 touched files are i/lf in the index before and after (`git ls-files --eol`), and the committed blobs have 0 CR.
+
+Warnings (検証済み): the UnitTest build reported 6 warnings in total. Grepping the build output for BackupGet.cs and ServerApiIntegrationTests.cs found none.
+--- rerun:
+duplicati (n1s, feat/export-global-options 0c242a335):
+- `dotnet build Duplicati/UnitTest/Duplicati.UnitTest.csproj` -> 6 warnings in total, none in the touched files.
+- `dotnet test --no-build --filter "FullyQualifiedName~ExportCanIncludeGlobalAdvancedOptions|FullyQualifiedName~ImportSupportsProvidingPassphraseOverride"` -> 成功! 失敗 0、合格 2 (43 s).
+- Red check: put BackupGet.cs back to 30b521ed6 and kept the new test, rebuilt, and ran the same filter on ExportCanIncludeGlobalAdvancedOptions -> 失敗! 失敗 1. Message: "A global advanced option should be exported when asked for", Expected "global@example.com", But was null. File restored afterwards with `git checkout HEAD --`.
+
+ngclient (n1, feat/export-global-options 088dba4c):
+- `node node_modules/@angular/cli/bin/ng.js test ngclient --watch=false --include=projects/ngclient/src/app/backup/export/export.component.spec.ts` -> the first run ended with "no tests, 1 error" after 60 s. I could not see the cause in the clipped output; it looks like a startup flake (推測). The second identical run gave Test Files 1 passed, Tests 17 passed.
+- Red check: deleted only the `'include-global-options'` query line from export.component.ts -> 1 failed, 16 passed. The failing test was "asks the server for the global advanced options when they are included", with AssertionError: expected null to be 'true'. This checks the URL that actually goes to HttpClient.get. File restored, worktree clean.
+
+
+######## #2701
+
+=== impl:n1:#2701 agent=af40a01351a4968c1
+branches: [["duplicati","feat/skip-next-scheduled-run","12c67fcf6db1ed6cef97bf7bdb31674adc9ad95d"],["ngclient","feat/skip-next-scheduled-run","28be8c2be254e859f2fcadc0639afafa24980555"]]
+--- tests:
+duplicati (worktree n1s):
+- dotnet build Duplicati/UnitTest/Duplicati.UnitTest.csproj → 0 エラー。変更したファイルに新しい警告は出なかった（grep で確認）。
+- dotnet test --no-build --filter "FullyQualifiedName~SchedulerSkipNextRunTests|FullyQualifiedName~NextScheduledRunCanBeSkippedThroughTheApi" → 成功! 失敗: 0、合格: 4（SkipNextRun_StoresTheFollowingSlot / SkipNextRun_SkipsAnOverdueRunSoItIsNotQueued / SkipNextRun_ReturnsNullWithoutASchedule / NextScheduledRunCanBeSkippedThroughTheApi_Async）。
+- red: base 30b521ed6 に戻し、HTTP テストだけを新しい型を使わない形に書き換えて実行した → 失敗! 失敗: 1。「Expected: some item equal to "v1:backup:skip-next-run"」で落ちた（エンドポイントも拡張も無い）。Scheduler の単体テストは新 API を呼ぶので、base ではコンパイルできない。
+- 実サーバー (Executables/Duplicati.Server, port 8304) の /swagger/v1/swagger.json に /api/v1/backup/{id}/skip-next-run と SkipNextRunOutputDto が出ることを確認した。確認後、Path で絞ってサーバーを停止した。
+
+ngclient (worktree n1):
+- ng test ngclient --watch=false --include=.../backups.skip-next-run.spec.ts --include=.../sysinfo.state.spec.ts → Test Files 2 passed, Tests 38 passed。
+- red: backups.state.ts と sysinfo.state.ts を base に戻した → TS2339「Property 'skipNextRun' does not exist on type 'BackupsState'」と「'hasSkipNextRun' does not exist on type 'SysinfoState'」で失敗（新 API なのでコンパイルの失敗）。
+- ng build ngclient --configuration development → exit 0（テンプレートの型チェック込み）。
+- 変更した 6 ファイルを LF に正規化して prettier にかけ、差分なし。
+--- unverified:
+- ngclient のメニューに実際にボタンが表示され、押すと次回時刻の表示が変わることは、ブラウザーで確認していない（未検証）。確認するには、両ブランチのサーバーと ngclient を組み合わせ、スケジュールのあるバックアップのメニューから Skip next run を押し、「Next scheduled run」が 1 枠進むことを見る。
+- スケジューラーの 1 回の処理中に SkipNextRun が呼ばれると、同じ瞬間にキューに積まれた実行が終了時に古い時刻を書き戻す可能性がある。窓は狭いが残っている（推測、未検証）。
+- キュー済みの実行を取り除く動作は実装していない。issue の「起動直後に取りこぼし分が走る」場面は、事前に押しておくか、キューから手で外す必要がある。メンテナーがキュー済みの実行も消す動作を望むかどうかは、PR で確認が要る（推測）。
+- 1D 以外の繰り返しや曜日指定、DST をまたぐ場合の見送りは、既存の GetNextValidTime に任せており、個別のテストはしていない（未検証）。
+- duplicati のテストは対象 4 件のみで、関連カテゴリーや全体のテストは実行していない。
+
+=== review:#2701 agent=ade56d0da67b67c90
+--- problems:
+1. [検証済み] After a skip, the server pushes a stale next-run time over the WebSocket, so the new ngclient button looks like it did nothing. SkipNextRun (Duplicati/Library/RestAPI/Scheduler.cs) calls m_dataConnection.AddOrUpdateSchedule(sc) and then Reschedule(). AddOrUpdateSchedule raises SignalNewEvent. That runs WebsocketAccessor's NewEvent handler, which builds the LegacyStatus payload right away (_statusService.GetStatus() -> GetProposedSchedule() reads m_schedule). The Runner thread has not recomputed m_schedule yet, and nothing signals again once it has. Probe: C:/Users/Jam/AppData/Local/Temp/claude/eb7164b3a8a8609a/2ade3d67-588b-4a0d-82ef-8acf31aad402/scratchpad/skipprobe.ps1 against the branch server on port 8304, using a WebSocket on /notifications?token=. Output: "skip response NextScheduledRun: 11/15/2026 16:46:00", "ws message 1 type=legacystatus ProposedSchedule for backup: 11/14/2026 16:46:00", "ws messages after skip: 1 (waited 8s idle)", then "fresh GET serverstate ProposedSchedule: 11/15/2026 16:46:00". So the only push carries the skipped slot. ngclient home.component.ts scheduledTimes (lines 152-167) prefers ProposedSchedule over Schedule.Time, so refreshing the backup list in BackupsState.skipNextRun does not fix the display [推測, from code; not checked in a browser]. The user then sees the old time and may click again, which silently skips one more slot. Suggested fix: update the m_schedule entry for sc.ID to `next` under m_lock before calling AddOrUpdateSchedule, or signal a new event after the Runner pass. Add a test that reads GetProposedSchedule (or the pushed status) right after SkipNextRun, without waiting for the scheduler pass. The current SkipNextRun_SkipsAnOverdueRunSoItIsNotQueued only checks GetProposedSchedule after Terminate(true), which hides the race.
+2. [推測, from code] No test covers the m_updateTasks rewrite (a run that is already queued must not write the old Time back when it finishes) or the path that uses the time cached in m_schedule. Both unit tests start the scheduler thread only inside SkipNextRun, so m_schedule is empty and m_updateTasks has no entry. This is behaviour the commit claims but no test fails without it.
+3. Scope note, not a code defect [推測]: the issue's main complaint is missed runs piling up and failing when the destination is offline. At startup the scheduler queues overdue runs right away, and SkipNextRun deliberately leaves runs that are already queued. So the button only helps when it is pressed before the run is queued. The PR description should state this limitation.
+Checked and fine: the change is opt-in (new endpoint plus extension flag) and backwards compatible. No secrets are logged or returned. 0 warnings when the RestAPI and WebserverCore projects were rebuilt with --no-incremental. Committed blobs are LF in both repos, as at base (git ls-files --eol shows i/lf). The only trailing whitespace is in the copied license header. Scope stays within the issue. ngclient follows the enable/disable pattern, and the skip-forward icon exists in @phosphor-icons/web. I did not re-run the base-side red check myself; the implementer's red evidence is plausible.
+--- rerun:
+duplicati (n1s @ 12c67fcf6): dotnet build Duplicati/UnitTest/Duplicati.UnitTest.csproj -> 0 エラー, 0 個の警告. dotnet build --no-incremental --no-dependencies on Duplicati.Library.RestAPI.csproj and Duplicati.WebserverCore.csproj -> 0 エラー, 0 個の警告 each. dotnet test --no-build --filter "FullyQualifiedName~SchedulerSkipNextRunTests|FullyQualifiedName~NextScheduledRunCanBeSkippedThroughTheApi" -> 成功! 失敗: 0、合格: 4. Built Executables/Duplicati.Server and ran the WebSocket probe on port 8304 (results in problem 1); the server was stopped afterwards by the Path filter and Get-Process found none left. ngclient (n1 @ 28be8c2b): ng test ngclient --watch=false --include=projects/ngclient/src/app/core/states/backups.skip-next-run.spec.ts --include=projects/ngclient/src/app/core/states/sysinfo.state.spec.ts -> Test Files 2 passed, Tests 38 passed, exit 0. A first attempt reported 2 errors and no tests run. I captured no error text from it, so the cause is 未検証 (my shell command also failed with a bash eval quoting error in the same call); the identical second run passed. git diff --check is clean for the ngclient non-generated files.
+
+=== fix:n1:#2701 agent=a3d35e1e99355dfdf
+branches: [["duplicati","feat/skip-next-scheduled-run","04f2dd08a5ead15d147d4d6d2856f52db725f486"],["ngclient","feat/skip-next-scheduled-run","28be8c2be254e859f2fcadc0639afafa24980555"]]
+--- tests:
+すべて worktree n1s で実行。DOTNET_ROOT=/c/Users/Jam/AppData/Local/mise/dotnet-root。
+Build: dotnet build Duplicati/UnitTest/Duplicati.UnitTest.csproj -v q → "0 個の警告 / 0 エラー" [検証済み]
+Green: dotnet test Duplicati/UnitTest/Duplicati.UnitTest.csproj --no-build --filter "FullyQualifiedName~SchedulerSkipNextRunTests|FullyQualifiedName~SkipNextRun" → "成功! -失敗: 0、合格: 5" [検証済み]
+Green: --filter "FullyQualifiedName~NextScheduledRunCanBeSkippedThroughTheApi" → "成功! -失敗: 0、合格: 1" [検証済み]
+Red（修正を 1 か所ずつ外して再ビルド → テスト。スクリプトは scratchpad/wt/red.py。実行後に元へ戻し、cmp で一致を確認）[検証済み]:
+- m_schedule の更新を外す → "失敗 SkipNextRun_StatusSignalledOnSaveShowsTheNewTime / Expected: 2026-11-15 17:15:46 But was: 2026-11-14 17:15:46"（合格 4 / 失敗 1）
+- m_updateTasks の書き換えを外す（Item2 をそのまま残す）→ "失敗 SkipNextRun_QueuedRunDoesNotUndoTheSkipWhenItFinishes / Expected: 2026-11-16 15:22:36 But was: 2026-11-15 15:22:36"
+- m_schedule のキャッシュ経路を外す（if (false && cached.Length > 0)）→ 同じテストが "Expected: 2026-11-16 15:26:28 But was: 2026-11-15 15:26:28" で失敗
+EOL: git ls-files --eol は両ファイルとも i/lf のままで、コミットした blob に CR は 0 個 [検証済み]
+--- unverified:
+- 実サーバーでの WebSocket 再現は未検証です（レビュアーの skipprobe.ps1 は再実行していません）。単体テストは WebsocketAccessor が購読しているのと同じ EventPollNotify.NewEvent を通して確かめています。
+- ngclient の画面表示（push 後にボタンが新しい時刻を出すこと）はブラウザでは未検証です。ngclient のコードは変えていないので、ngclient の spec は再実行していません。
+- 単体テストは「1 日後 = AddDays(1)」と見なしています。DST がある既定以外のタイムゾーンでの挙動は未検証です（既存のテストと同じ前提です）。
+- 修正後にフルスイートや Scheduler カテゴリ全体は回していません（narrowest テストだけ実行）。
+
+=== review2:#2701 agent=a857e376a2e5e0219
+--- problems:
+None blocking. Note: the duplicati branch tip is now 04f2dd08a5ead15d147d4d6d2856f52db725f486, not the 12c67fcf6 given in the task. The fix was amended into the single commit, and I reviewed 04f2dd08a. The ngclient tip is 28be8c2b, unchanged.
+
+How the three earlier problems stand:
+1. Stale WebSocket push: fixed [検証済み]. SkipNextRun now replaces the m_schedule entry for sc.ID with `next` under m_lock before AddOrUpdateSchedule runs. The new test SkipNextRun_StatusSignalledOnSaveShowsTheNewTime records GetProposedSchedule from inside EventPollNotify.NewEvent, which is the hook WebsocketAccessor uses. I disabled the m_schedule assignment and the test failed with "Expected: 2026-11-15 17:58:33 But was: 2026-11-14 17:58:33". I did not re-run the WebSocket probe or open a browser.
+2. m_updateTasks and the cached m_schedule path had no test: fixed [検証済み]. SkipNextRun_QueuedRunDoesNotUndoTheSkipWhenItFinishes lets the real scheduler queue an overdue run, waits until it holds the next slot (firstRun+1D), skips, then runs the job's real OnStarting/OnFinished. It expects firstRun+2D both as the return value and in the DB. With the m_updateTasks rewrite disabled it failed with "Expected: 2026-11-16 16:01:27 But was: 2026-11-15 16:01:27". Without the cached path the expected value would be +1D, so this test also covers that path [推測, from code].
+3. Limitation: the commit message now says "A run that is already queued is left in the queue." The PR body should repeat this when the PR is opened [推測].
+
+Minor, not blocking [推測, from code, not reproduced]: m_lock is released before AddOrUpdateSchedule runs. If a Runner pass reads the DB in that small gap, it rewrites m_schedule with the old cached slot, and the push on save could show the old time once. The next Runner pass corrects m_schedule but nothing pushes again. The window is tiny.
+
+ngclient [推測]: the button is shown whenever backup.Schedule is set. If Repeat is empty, the server returns 400, and the subscribe has no error handler. That matches the setEnabled and verifyFiles pattern, so it is consistent with existing code.
+
+Other checks:
+- Behaviour is opt-in: a new endpoint plus the v1:backup:skip-next-run extension, and the menu item is gated on that flag. It is backwards compatible.
+- Nothing secret is logged or returned. The test passphrase is a dummy value.
+- Line endings: committed blobs are i/lf for all 8 duplicati files, as at base, and the diff contains no CR.
+- No new warnings: a --no-incremental rebuild of the RestAPI and UnitTest projects shows only the 6 known CS8604 in ControllerRpcServer.cs.
+- Scope matches issue #2701: a button to skip a scheduled job until its next occurrence.
+--- rerun:
+duplicati worktree n1s, branch feat/skip-next-scheduled-run at 04f2dd08a:
+- `dotnet build Duplicati/UnitTest/Duplicati.UnitTest.csproj`: 0 エラー, 6 warnings, all the known CS8604 in ControllerRpcServer.cs. `--no-incremental` rebuilds of Duplicati.Library.RestAPI.csproj and the UnitTest project show the same 6 and nothing else.
+- `dotnet test --no-build --filter "FullyQualifiedName~SchedulerSkipNextRunTests|FullyQualifiedName~NextScheduledRunCanBeSkippedThroughTheApi"`: 成功! 失敗: 0, 合格: 6, 合計: 6, 49 s.
+- Red check A: I disabled the `m_schedule = ...` assignment in Scheduler.cs line 163 and rebuilt. SchedulerSkipNextRunTests then gave 失敗! 1 of 5: SkipNextRun_StatusSignalledOnSaveShowsTheNewTime, "Expected: 2026-11-15 17:58:33 But was: 2026-11-14 17:58:33".
+- Red check B: I disabled the m_updateTasks rewrite at line 159 and rebuilt. Result 失敗! 1 of 5: SkipNextRun_QueuedRunDoesNotUndoTheSkipWhenItFinishes, "Expected: 2026-11-16 16:01:27 But was: 2026-11-15 16:01:27".
+- After each red check I ran `git restore` on Scheduler.cs, and `git status` was clean. I then rebuilt the clean tree (0 エラー). I committed nothing.
+
+ngclient worktree n1, branch feat/skip-next-scheduled-run at 28be8c2b:
+- `npx ng test ngclient --watch=false --include=.../backups.skip-next-run.spec.ts --include=.../sysinfo.state.spec.ts`: the first attempt reported "no tests, 2 errors". That was likely a cold-start problem in the environment; I did not look into it. The immediate re-run gave Test Files 2 passed, Tests 38 passed.
+- I did not re-run the ngclient red check myself. The implementer reports a TS2339 compile failure against base.
+
+Issue thread: `gh issue view 2701` (read-only). The issue is open and asks for a GUI button to postpone or omit scheduled jobs until the next occurrence.
+
+
+######## #3041
+
+=== impl:n1:#3041 agent=aa2fb0cfe967392e2
+branches: [["ngclient","fix/status-bar-file-count-separators","eb506d7c5c715320cb30e236cc84f63bb86df61e"]]
+--- tests:
+cd wt/n1; PATH=node lts; npx ng test ngclient --watch=false --include=projects/ngclient/src/app/core/components/status-bar/status-bar.state.spec.ts
+- 修正なし (status-bar.state.ts を HEAD に戻した状態): Tests 5 failed | 18 passed (23)。例: AssertionError: expected '168338 files (800 bytes) to go ' to contain '168,338 files (800 bytes) to go' / expected 'Files processed 1000/168338' to be 'Files processed 1,000/168,338' / expected '168338 files (800 bytes) to go ' to contain '168.338 files'
+- 修正あり (prettier --write 後に再実行): Test Files 1 passed (1), Tests 23 passed (23)
+- npx prettier: 差分前の blob は check ok。触った 2 ファイルは --write 済み（改行は LF で commit、autocrlf=true）
+--- unverified:
+・実ブラウザで実サーバーに対してステータスバーの表示を見る確認はしていません（未検証）。spec で StatusBarState の出力文字列を検証しただけです。
+・$localize の「Files processed {$PH}/{$PH_1}」の message ID が変わらないかは extract-i18n を実行して確かめていません。placeholder 名は式ではなく位置で決まるので変わらない、というのは推測です（ドキュメント根拠: messages.en.json の該当エントリは {$PH}/{$PH_1} です）。
+・open PR duplicati/ngclient#732 が同じ status-bar.state.ts を変更しています。行が重なってコンフリクトするかは確認していません（未検証）。
+・ng test 以外の lint と、型チェック単体の実行はしていません（ng test のビルドは通っています）。
+
+=== review:#3041 agent=a220e3ae160129497
+--- problems:
+No blocking problems.
+
+Diff against 8f401edd: two files, status-bar.state.ts and its spec. All four file-count spots in the status bar text now go through formatNumber(count, LOCALE_ID, '1.0-0'). null and undefined still print as before via `${count}`. That covers request (1) of #3041, the thousands separators (検証済み: red/green below). It is backwards compatible: only the display string changes, no API or default changes, and nothing secret is involved.
+
+Line endings: both committed blobs are LF, like the base blobs. Working copy has 0 CR (検証済み: grep -c $'\r' gave 0/0 for base and HEAD).
+
+Prettier: piping the HEAD blob through prettier with --stdin-filepath gives output identical to the blob (diff empty), so the commit is formatted (検証済み). Running `npx prettier --check` on files on disk warns here, but it also warns on the untouched status-bar.component.ts. That is an environment artifact, not this diff (検証済み that it also affects an untouched file; cause 未調査).
+
+Locale risk (推測, from reading the code): formatNumber needs locale data for LOCALE_ID, which is set from getLocale() in app.config.ts. DatePipe uses the same lookup and is used in 28 template places, so this adds no new kind of failure. Runtime check across every supported locale: 未検証.
+
+Non-blocking notes for the PR:
+(a) The branch only addresses item (1). Items (2) truncation and (3) 'Running' are deliberately out of scope. The PR body should say that, e.g. "Addresses item 1 of #3041", rather than imply that "Fixes #3041" resolves everything, or it should explain why the other two no longer apply.
+(b) Other file counts in the log page and version tables (general-log.component.html, delete-versions, version-labels) are still unformatted. Leaving them out matches the issue's status-bar scope.
+--- rerun:
+In the worktree n1, on branch fix/status-bar-file-count-separators (eb506d7c), with node lts on PATH:
+`npx ng test ngclient --watch=false --include=projects/ngclient/src/app/core/components/status-bar/status-bar.state.spec.ts`
+- With the change: Test Files 1 passed, Tests 23 passed (23).
+- Without the change (status-bar.state.ts checked out from 8f401edd, spec kept from HEAD): Tests 5 failed | 18 passed (23). Failures:
+  - expected '168338 files (800 bytes) to go ' to contain '168,338 files (800 bytes) to go'
+  - 'Counting (1234567 files found…' vs 'Counting (1,234,567 files found…'
+  - 'Synchronizing secondary destination: …' does not contain ': 12,000 files (800 bytes) to go'
+  - 'Files processed 1000/168338' vs 'Files processed 1,000/168,338'
+  - the de locale case does not contain '168.338 files'
+
+The file was then restored with `git checkout HEAD -- …`, and `git status --short` is clean.
+
+The tests go through the real seam: StatusBarState.statusData() output, with the real LOCALE_ID injection.
+
+
+######## #3191
+
+=== impl:n1:#3191 agent=af948d130caa2096e
+branches: [["ngclient","feat/file-tree-partial-exclusion","0426e04e"]]
+--- tests:
+新しい spec: projects/ngclient/src/app/core/components/file-tree/file-tree.excluded-descendants.spec.ts。テンプレートを実際に描画し、行の class と aria-description を確認します。
+コマンド: node node_modules/@angular/cli/bin/ng.js test ngclient --watch=false --include=projects/ngclient/src/app/core/components/file-tree/file-tree.excluded-descendants.spec.ts
+- 変更なし（コンポーネント側の 4 ファイルを git stash した状態）: Tests 1 failed | 2 passed。'marks the selected folder and the folders between it and an excluded subfolder' が AssertionError: expected false to be true（検証済み）
+- 変更あり: Tests 3 passed（検証済み）
+回帰の確認: --include='projects/ngclient/src/app/core/components/file-tree/**/*.spec.ts' → Test Files 15 passed、Tests 186 passed（検証済み）
+npx tsc -p projects/ngclient/tsconfig.app.json --noEmit → 出力なし（検証済み）
+npx prettier --check --end-of-line auto projects/ngclient/src/app/core/components/file-tree/ → All matched files use Prettier code style!（検証済み）
+--- unverified:
+以下は確認していません（未検証）:
+- 実ブラウザでの見た目。破線の枠線の色と、active の背景との組み合わせ、ダークテーマでの見え方は確認していません。
+- Windows のパスや %MY_DOCUMENTS% のような特殊フォルダーでの動き。resolvedpath を使って判定していますが、テストは '/' 区切りだけです。
+- リモートソースのマウント配下での動き。
+- 新しい $localize 文字列の翻訳。翻訳カタログ（xlf）は更新しておらず、メンテナーが一括で更新する運用だと推測しています。
+- push と PR 作成はしていません（指示どおり）。
+
+=== review:#3191 agent=a9462d09dcabdfec0
+--- problems:
+No blocking problems.
+
+Correctness (verified by reading the code): treeStructure and searchResultTreeStructure build new node objects on every compute, so a stale hasExcludedDescendants flag cannot carry over after the filter is removed. The new code only adds a class and attributes, and aria-checked and selection are unchanged, so it is backwards compatible. It runs only when multiSelect is set. No secrets or option values are logged. All 5 touched files use LF, matching the committed blobs (0 CRLF lines each). tsc reports no errors. Scope is limited to the file-tree component, and the new $localize string follows the repo's pattern of central xlf extraction. It answers the issue (OPEN, no comments): a top-level folder should show when a subfolder is excluded.
+
+Non-blocking nits:
+1. The code comment and the commit body say filter-group excludes are not considered. In fact both call sites pass paths through #resolveFilterGroups first, so groups whose entries are plain paths below a folder do mark it. Behaviour is fine; the wording is a little inaccurate.
+2. The search-results path (searchResultTreeStructure) has no test. Only the browsed tree is covered.
+3. A wildcard exclude such as '-/home/user/*.tmp' also marks its ancestors, because it is matched by prefix. That is arguably correct, but it is not mentioned anywhere.
+--- rerun:
+All runs in worktree n1 on branch feat/file-tree-partial-exclusion (0426e04e), using node from mise lts:
+- With the change: `ng test ngclient --watch=false --include=projects/ngclient/src/app/core/components/file-tree/file-tree.excluded-descendants.spec.ts` gave Test Files 1 passed, Tests 3 passed (検証済み).
+- Without the change: I temporarily checked out the 8f401edd versions of the component .html/.scss/.ts and file-tree.models.ts and ran the same spec. Result: Tests 1 failed | 2 passed. The failing test was 'marks the selected folder and the folders between it and an excluded subfolder', with AssertionError: expected false to be true. I then ran `git checkout HEAD --` on those files; `git status --short` was empty afterwards (検証済み).
+- Regression: `--include='projects/ngclient/src/app/core/components/file-tree/**/*.spec.ts'` gave Test Files 15 passed, Tests 186 passed (検証済み).
+- `tsc -p projects/ngclient/tsconfig.app.json --noEmit` exited 0 with no output (検証済み).
+- The spec renders the real template and checks the row's class and aria-description, which is the output the user sees.
+
+
+######## #3369
+
+=== impl:n1:#3369 agent=adf1145963d8ce780
+branches: [["ngclient","feat/idle-sign-out","77c6303395e176e0efbf9e4ece3797528905a535"]]
+--- tests:
+緑（検証済み）: node node_modules/@angular/cli/bin/ng.js test ngclient --watch=false --include=projects/ngclient/src/app/core/states/idle-logout.state.spec.ts --include=projects/ngclient/src/app/settings/idle-logout-settings.spec.ts --include=projects/ngclient/src/app/core/states/app-auth.state.spec.ts -> "Test Files 3 passed (3) / Tests 38 passed (38)"
+赤 1（検証済み）: idle-logout.state.ts のサインアウト呼び出しを外すと idle-logout.state.spec.ts は "Tests 9 failed | 8 passed (17)" でした（"signs out once the configured time has passed"、6 種類のイベントの "restarts the idle time on …"、別タブ、スリープ復帰）。spec は本物の AppAuthState を使い、モックした DuplicatiServer への postApiV1AuthRefreshLogout({ body: { Nonce: 'refresh-nonce' } }) 呼び出しと、router.navigate(['/login']) を確かめています。
+赤 2（検証済み）: 共有 localStorage の読み取りを外し、signOutAfterIdle を logout に替えると "Tests 2 failed | 15 passed (17)" でした（"keeps the session while another tab …"、"leaves relay sessions alone"）。どちらも元に戻すと緑です。
+E2E（検証済み）: wt/n1s にビルド済みの Duplicati.Server を --webservice-port=8304 で起動し、ng serve（4304、プロキシは 8304）と Playwright の page.clock で操作しました。出力は "section input value: 0" / "stored minutes: 5" / "after 4 min idle: url /settings logout requests 0" / "after activity + 4 min: url /settings logout requests 0" / "after 5+ min idle: url /login logout requests [ 'POST' ]" です。設定 UI、LayoutComponent での監視開始、サーバーへの logout 送信まで一通り動きました。サーバーと dev server は停止済みです。
+ビルド（検証済み）: ng build ngclient --configuration development は "Application bundle generation complete" で、テンプレートの型チェックも通りました。
+Prettier（検証済み）: 新規ファイルは --check で問題なしです。既存ファイルの警告は CRLF の作業コピーによるもので、LF に直した内容では差分がありません。例外は app-auth.state.ts で、base の時点から同じ箇所（login/refresh の pipe のインデント）が警告になっています。
+--- unverified:
+- 翻訳: 新しい i18n 文字列の locale ファイル（messages.*.xlf/json）は更新していません。このリポジトリではメンテナーが一括で更新しているため、と推測しています。check:locales は locale カタログを確かめるもので、メッセージは対象外です（ドキュメント根拠: scripts/generate-locales.ts）。check:locales 自体は実行していません（未検証）。
+- 実時間: 実時間のスリープや hibernate、実時間での複数タブは試していません。page.clock と fake timer で代用しました（未検証）。
+- proxy 認証: proxy 認証セッションを対象外にする分岐はテストしていません（relay だけテスト済み）。未検証です。
+- 最終テストの時点: 最後のユニットテスト実行は、idle-logout-settings.ts に prettier の整形（改行位置だけ）をかける前でした。整形の後に動かしたのは E2E とビルドだけです。
+- CI: CI は実行していません。push していないためです。
+
+=== review:#3369 agent=ae2f580ddb1a4bf9d
+--- problems:
+No blocking problems.
+
+Checks I made (検証済み unless marked otherwise):
+- Diff 8f401edd..77c63033 is one commit touching 8 ngclient files: app-auth.state.ts, the new idle-logout.state.ts and its spec, layout.component.ts, the new idle-logout-settings.ts and its spec, and settings.component.html/.ts. Scope stays on issue #3369 (Pectojin asked for "a background timer that logs out after a user defined interval"). No server or ngax change.
+- Backwards compatible: the default is 0 (off), and the check returns early when minutes <= 0. The spec test 'does not sign out by default' covers this. Relay and proxy sessions are skipped, in the same way as signOutAfterPassphraseChange.
+- Secrets: nothing is logged. Only a minutes number and a timestamp go to localStorage.
+- Line endings: `git ls-files --eol` shows i/lf for all 8 files, and all 587 files under src/app are i/lf, so this matches the repo.
+- Warnings: `tsc --noEmit -p projects/ngclient/tsconfig.spec.json` reports no diagnostics in the touched files.
+- Locale xlf files are not updated. Upstream history shows maintainers sync translations in separate commits, so that is fine.
+- The test goes through the real seam: the real AppAuthState, then the mocked DuplicatiServer.postApiV1AuthRefreshLogout({ body: { Nonce: 'refresh-nonce' } }), then router.navigate(['/login']).
+
+Red run: 未検証 by me, because I was told not to edit files. Without the change the spec cannot even compile, since idle-logout.state.ts does not exist. The assertions target the outbound logout request. The implementer's mutation results (9 failed / 2 failed) are plausible (推測).
+
+Non-blocking notes (推測, not tested):
+1. The minutes setting is read once per tab and there is no 'storage' event listener. If another tab is already open with a non-zero value and the user turns the setting off in one tab, the other tab still signs out after its old interval. With RememberMe the nonce is shared, so that also ends the session for the first tab. This could be worth a follow-up or a note in the PR.
+2. pointermove counts as activity, so even a small mouse movement keeps the session alive. That is reasonable, but the PR could say so.
+--- rerun:
+In the n1 worktree on feat/idle-sign-out (77c63033), with node lts on PATH:
+`node node_modules/@angular/cli/bin/ng.js test ngclient --watch=false --include=projects/ngclient/src/app/core/states/idle-logout.state.spec.ts --include=projects/ngclient/src/app/settings/idle-logout-settings.spec.ts --include=projects/ngclient/src/app/core/states/app-auth.state.spec.ts`
+
+- First run: failed with "[vitest-pool-runner]: Timeout waiting for worker to respond" and "no tests". This was worker startup under load, not the code.
+- Second run: "Test Files 3 passed (3) / Tests 38 passed (38)", 27.5s.
+
+Also ran `node node_modules/typescript/bin/tsc --noEmit -p projects/ngclient/tsconfig.spec.json`, filtered to the touched files: no errors.
+
+
+######## #3519
+
+=== impl:n1:#3519 agent=a71e1b62a08b1d1ce
+branches: [["ngclient","feat/show-resolved-source-shortcut","1d82b600"]]
+--- tests:
+cd wt/n1; node node_modules/@angular/cli/bin/ng.js test ngclient --watch=false --include=projects/ngclient/src/app/backup/source-data/source-data.component.spec.ts
+新規テスト: 'shows the server folder a shortcut source such as %HOME% points to' (SpecialFolders [{ID:'%HOME%',Path:'/root'}] を返す systemInfo に、本物の SysinfoState.prototype.resolveShorthandPath をつないで描画した DOM を確認)
+RED (本番ファイル 3 つを stash した状態): Tests 1 failed | 6 passed (7) -  Expected "%HOME% (/root)" / Received "%HOME%"
+GREEN: Tests 7 passed (7)
+prettier: 変更した 4 ファイルを LF に正規化して stdin でチェックし、差分なし
+--- unverified:
+実ブラウザでの見た目 (flex 行の折り返しや薄い色の具合) と、実サーバーを root やサービスとして動かしたときの表示は確認していません (未検証)。%HOME%/sub のように、トークンの後ろにパスが続く場合は既存の resolveShorthandPath が解決しないので、表示は変わりません (推測: 選択ツリーが保存するのは完全一致のトークンのみ)。ファイルツリーの Home ノードのツールチップは今回のスコープに入れていません。テンプレート型チェックは ng test のコンパイルが通ったことしか確認しておらず、ng build は実行していません (未検証)。
+
+=== review:#3519 agent=a00923c6959cef043
+--- problems:
+Nothing blocks the branch. Non-blocking notes, none needing a change:
+1) Only a source that is exactly a token (such as %HOME%) gets the resolved folder shown. A token with a subpath (such as %HOME%/docs/) is shown as before. This comes from the existing SysinfoState.resolveShorthandPath, which needs the path to both start and end with '%', and fits the issue's case of forgetting to deselect Home. (検証済み: sysinfo.state.ts lines 258-272)
+2) The issue also asks to show which user name the server runs as. The branch does not do that; the resolved home folder (/root) answers the ambiguity the issue describes. (推測: whether maintainers also want the user name)
+3) Requests (2) and (3), the warning or fix for the sqlite-journal self-backup, were not re-checked by the implementer or by me (未検証). The PR body should not claim they are fixed without checking GetBlacklistedPaths.
+Review results:
+- Correctness: the token check plus resolveShorthandPath gives the SpecialFolders Path, and returns null when the token is unknown or resolves to itself. 検証済み by reading the diff and the resolver.
+- Backward compatibility: the stored value is unchanged; the test asserts the form value is still '%HOME%\0/documents/'. 検証済み.
+- Secrets: none are logged or reported.
+- Scope: 4 files, all in source-data, no unrelated changes.
+- Line endings: all 4 files are LF in both the base and the branch blobs. 検証済み: git show | grep -c $'\r' gives 0 for each.
+- Test: it renders the real component through the real SysinfoState.prototype.resolveShorthandPath and asserts the DOM text and the title attribute. It fails without the change.
+- The text colour uses var(--base-8), which other components already use.
+--- rerun:
+In C:/Users/Jam/AppData/Local/Temp/claude/eb7164b3a8a8609a/2ade3d67-588b-4a0d-82ef-8acf31aad402/scratchpad/wt/n1 on feat/show-resolved-source-shortcut (1d82b600):
+- GREEN: `node node_modules/@angular/cli/bin/ng.js test ngclient --watch=false --include=projects/ngclient/src/app/backup/source-data/source-data.component.spec.ts` gave Test Files 1 passed, Tests 7 passed (7).
+- RED: I ran `git checkout 8f401edd --` on the three production files (.html, .scss, .ts), keeping the new spec, and ran the same command. It gave Tests 1 failed | 6 passed (7); the failing test was "shows the server folder a shortcut source such as %HOME% points to" (Expected/Received diff).
+- I then restored the files with `git checkout HEAD -- projects/ngclient/src/app/backup/source-data`; `git status --short` is clean.
+
+
+######## #3851
+
+=== impl:n1:#3851 agent=abe136e7c81d3957a
+branches: [["ngclient","feat/server-stored-theme","fc6d25f8"]]
+--- tests:
+worktree: C:/Users/Jam/AppData/Local/Temp/claude/eb7164b3a8a8609a/2ade3d67-588b-4a0d-82ef-8acf31aad402/scratchpad/wt/n1（node lts を PATH に追加）
+コマンド: node node_modules/@angular/cli/bin/ng.js test ngclient --watch=false --include=projects/ngclient/src/app/layout/layout.state.spec.ts
+
+GREEN（変更後）: Test Files 1 passed (1) / Tests 14 passed (14)
+
+RED（spec は新しいまま、layout.state.ts を HEAD に戻し、コンパイルを通すために空の loadServerTheme() {} だけ足したもの）: Tests 2 failed | 12 passed (14)
+  × stores explicit theme selections on the server — AssertionError: expected last "vi.fn()" call to have been called with [ { …(2) } ]
+  × applies the server theme over the browser theme — AssertionError: expected false to be true
+（実装をまったく入れない HEAD のままだと、loadServerTheme がないためバンドル生成で失敗する）
+
+テストの seam: DuplicatiServer をモックし、外に出るリクエスト（getApiV1UisettingsByScheme / patchApiV1UisettingsByScheme の引数 {path:{scheme:'ngclient'}, body:{theme}}）と、documentElement の dark/light クラス、localStorage への書き込みを確認している。そのほかのケース: 明示的に選ばない限り PATCH しない、サーバーの値がない/想定外/取得失敗ならブラウザの値を保つ、読み込み中の選択を上書きしない。
+
+型チェック: node node_modules/typescript/bin/tsc -p projects/ngclient/tsconfig.app.json --noEmit → 出力なし（エラー 0）
+Prettier: 改行を LF にそろえたうえでの prettier --check → "All matched files use Prettier code style!"（作業ツリー上の警告は autocrlf による CRLF のためだけ。コミットした blob は LF）
+--- unverified:
+- 実際のサーバーとブラウザでの end-to-end 動作（ブラウザ A で選んだテーマが、ブラウザ B で再読み込みしたときに反映されるか）は未検証。ngclient をビルドして Duplicati.Server で配信する確認はしていない。
+- layout.component.ts の ngOnInit から loadServerTheme() が呼ばれることは、型チェックでしか確認していない。LayoutComponent の spec がないので、呼び出しを確かめるテストは未検証。
+- サーバーで scheme が存在しないときに空の辞書が返ることは、Connection.GetUISettings のコードを読んで確認しただけで、実行はしていない（ドキュメント根拠に近い推測）。
+- ログイン直後に、localStorage のテーマからサーバーのテーマへ一瞬切り替わって見える可能性がある（推測、未確認）。
+- ngax（旧 UI）は cookie のままで、今回は変えていない。
+
+=== review:#3851 agent=ab110b6cd5a78cfc8
+--- problems:
+No blocking problems were found. These notes don't block approval:
+- The server theme overrides the browser's stored theme on every authenticated load. The page can briefly show the local theme and then switch to the server one. This is how the issue says it should behave, but put it in the PR body. (推測: I didn't run it in a browser.)
+- I checked the server PATCH /uisettings/{scheme} code. Connection.UpdateUISettings only deletes and inserts the keys it is sent, so {theme} doesn't wipe other ngclient keys. (ドキュメント根拠: source at Duplicati/Library/RestAPI/Database/Connection.cs:1452. I didn't run it.)
+- The only callers are layout.component.html toggleBodyClass and the settings page setLightMode/setDarkMode. Both sit inside the authenticated UI, so no PATCH is sent before login. (検証済み: grep. That the settings page is under the auth guard is 推測.)
+- Persisting the theme in ngax (the cookie mentioned in the issue thread) is out of scope and left unchanged. That's fine, since ngclient is the current UI. The PR should still say this. It can say "Fixes #3851" or "Fixes duplicati/duplicati#3851", but only if maintainers accept the ngclient-only fix.
+- Line endings are fine: all three touched files are i/lf in the index, same as the base. (検証済み: git ls-files --eol.)
+- No secrets are logged. The only value sent is 'dark' or 'light', and errors are swallowed silently.
+- Scope is limited to three files under layout/.
+- The tests go through the real seam: a mocked DuplicatiServer, with assertions on the outbound get/patch arguments, the documentElement class and localStorage.
+- Not checked (未検証): an end-to-end run against a real server with two browsers.
+--- rerun:
+Worktree wt/n1 on feat/server-stored-theme (fc6d25f8), node lts on PATH:
+1. GREEN on the branch: `node node_modules/@angular/cli/bin/ng.js test ngclient --watch=false --include=projects/ngclient/src/app/layout/layout.state.spec.ts`. Result: Test Files 1 passed (1), Tests 14 passed (14).
+2. RED: I temporarily replaced layout.state.ts with the 8f401edd blob plus an empty `loadServerTheme() {}` stub, using the same command. Result: Tests 2 failed | 12 passed (14).
+   - "× stores explicit theme selections on the server" failed with "AssertionError: expected last "vi.fn()" call to have been called with [ { …(2) } ]".
+   - "× applies the server theme over the browser theme" failed with "AssertionError: expected false to be true".
+   - I then ran `git checkout -- layout.state.ts`, and `git status --short` was empty.
+3. `node node_modules/typescript/bin/tsc -p projects/ngclient/tsconfig.app.json --noEmit` gave exit 0 with no output.
+4. No other spec file injects LayoutState. The consumers are settings.component.ts, layout.component.ts and mobile-menu-toggle, and none has a spec (checked with grep), so there were no further specs to run. DuplicatiServer is providedIn root.
+
+
+######## #4678
+
+=== impl:n1:#4678 agent=a15bd764caadb99bd
+branches: [["ngclient","feat/log-compare-previous-version","b806e2ee"]]
+--- tests:
+node node_modules/@angular/cli/bin/ng.js test ngclient --watch=false --include=projects/ngclient/src/app/backup/log/general-log/general-log.compare.spec.ts --include=projects/ngclient/src/app/backup/commandline/commandline.component.spec.ts
+- green（変更あり）: Test Files 2 passed (2), Tests 19 passed (19)
+- red（commandline.component.ts と general-log.component.html の変更を stash した状態）: Tests 4 failed | 15 passed (19)。落ちたテスト:
+  - opens the command editor with COMPARE between the run and the version before it
+  - explains when the run kept no version instead of comparing other versions
+  - explains when the run created the oldest version
+  - runs COMPARE between the versions the log page links with (duplicati#4678)。AssertionError: expected { command: 'backup', …} to deeply equal { command: 'compare', …}
+- red（.ts 側も stash した状態）: findBackupVersion が export されていないため、ビルドが失敗する（TS2305）。
+- 何を確かめているか: リンクのテストは、実際の Router の URL（/backup/7/commandline?command=compare&base=2&target=1）と getApiV1BackupByIdFilesets の呼び出しを確認している。commandline のテストは、postApiV1Commandline に送る body 全体（'compare','file:///backup','3','2',...）を確認している。
+- 隣接 spec: general-log.component.spec.ts / general-log.pagination.spec.ts / commandline.navigation.spec.ts は 3 files, 25 tests すべて passed。
+- prettier --check: 変更したファイルはすべて通過（LF で確認）。
+--- unverified:
+- 実サーバーとの組み合わせは未検証。ログの BeginTime/EndTime と、/filesets の Time の実際の書式（タイムゾーン付きの ISO 文字列か）を実データで突き合わせていない。60 秒の許容幅で、実際に作られたバージョンに当たるかどうかも同じ。根拠は推測で、BackupHandler が fileset を database.OperationTimestamp（実行開始時刻）で作ることをコードで読んだだけ。
+- ブラウザでの見た目は未確認。git-diff アイコンの表示とボタンの配置を見ていない。
+- 新しい $localize 文字列の翻訳ファイルは更新していない。最近のコミットも翻訳ファイルを触っていないため、ドキュメント根拠ではなく慣例からの推測。
+- eslint と ng build（本番ビルド）は実行していない。テンプレートの型チェックは、テストビルドのコンパイルが通ったところまで。
+- 一度に確認できる COMPARE は前のバージョンとの 1 組だけで、比較結果をログ画面の中に出す方式にはしていない。
+
+=== review:#4678 agent=ad92b47c6e3547ed4
+--- problems:
+Nothing blocks this branch. Non-blocking notes:
+(1) 未検証: nobody has checked the 60s match between a real server's fileset Time and the result's BeginTime/EndTime. The tests use hand-written filesets. Before the PR, run one manual check against a real server: back up twice, open the log entry, click the button, and confirm the commandline form shows compare with N+1 and N.
+(2) ドキュメント/コード根拠: the base/target order is correct. ListChangesHandler.RunAsync defaults to base "1" and compare "0", so base is the older version. CLI/Program.cs:97 maps "compare" to Commands.ListChanges.
+(3) The PR body should say `Fixes duplicati/duplicati#4678`. It implements warwickmm's suggestion in the issue: a link in the log view that runs COMPARE against the previous version.
+(4) Running prettier --check inside the worktree warns, but it warns the same way on untouched base files such as log.component.ts. It is an artefact of the worktree, not of this diff. The committed blobs pass prettier with the repo .prettierrc (検証済み).
+Checked and fine:
+- The commandline URL prefill only applies when there is no state, only for command=compare, and only when both values are all digits. Other commands are ignored. The user still has to press Run.
+- Existing state-based behaviour is unchanged. No secrets are logged.
+- The real route 'backup/:id/commandline' exists in app.routes.ts:176.
+- Line endings are LF in both base and HEAD for all 6 files (CR count is 0 in each). The scope is only the general-log and commandline components.
+--- rerun:
+Ran in worktree n1 on feat/log-compare-previous-version (b806e2ee): node node_modules/@angular/cli/bin/ng.js test ngclient --watch=false --include=.../general-log/general-log.compare.spec.ts --include=.../commandline/commandline.component.spec.ts
+- With the change (green): Test Files 2 passed, Tests 19 passed.
+- Red: I set commandline.component.ts and general-log.component.html back to 8f401edd and ran the same command. Test Files 2 failed, Tests 4 failed | 15 passed. The failing tests were: "opens the command editor with COMPARE between the run and the version before it", "explains when the run kept no version...", "explains when the run created the oldest version", and "runs COMPARE between the versions the log page links with (duplicati#4678)". I then restored the files from HEAD, and git status is clean.
+- prettier --check on the committed blobs: all files pass.
+
+
+######## #1843
+
+=== impl:n2:#1843 agent=ae115b3be82345290
+branches: [["ngclient","feat/ssl-certificate-upload","6fbcc1a2"]]
+--- tests:
+(node = ~/AppData/Local/mise/installs/node/lts/node.exe on PATH, in worktree n2)
+GREEN: node node_modules/@angular/cli/bin/ng.js test ngclient --watch=false --include=projects/ngclient/src/app/settings/ssl-certificate/ssl-certificate.component.spec.ts -> Test Files 1 passed (1), Tests 9 passed (9). The first attempt hit a vitest worker-start timeout under load; the retry passed.
+RED (mutation through the real seam): changed the component body to { Certificate: file.name, ... } -> 'posts the selected file as base64 with the typed password' failed: Expected "Certificate": "MIIA/4AB", Received "server.pfx"; Tests 1 failed | 8 passed. Then restored the file (grep confirmed). Before the change the spec cannot run at all because the component does not exist.
+The component test renders the real template, selects a File, types into the password input, clicks the button and asserts DuplicatiServer.postApiV1Uisettings was called with { body: { Certificate: 'MIIA/4AB', Password: 'secret' } } (the base64 was cross-checked with printf|base64 = MIIA/4AB). It also checks the http: warning, the success message and that the form is kept after an error.
+Build: ng build ngclient -> 'Application bundle generation complete', no errors or warnings shown. This type-checks the settings.component template that now uses <app-ssl-certificate>.
+Prettier: new files pass --check. Edited settings.component.html/.ts are identical to prettier output after removing CR (the warning was only the CRLF working copy). Committed blobs are LF (git ls-files --eol i/lf).
+--- unverified:
+- 実サーバーへの実アップロード (本物の PFX で HTTPS 稼働中に差し替わるか、HTTP 稼働中のサーバーが再起動後に HTTPS になるか) は未検証です。コード読みに基づくものです (DuplicatiWebserver.cs:184, 477-510、ServerSettings.UseHTTPS)。
+- --webservice-disable-https が指定されたサーバーでは、アップロードしても HTTPS になりません。UI はこのケースを区別しません (推測、未検証)。
+- 画面の見た目 (ブラウザでの表示、ダーク/ライト、モバイル幅) は未確認です。
+- 自動生成証明書を置き換えると Autogenerated=false になり、自動更新されなくなるはずです (コード根拠、未検証)。UI では「Duplicati が生成した証明書も置き換える」とだけ書いています。
+- ロケールファイル更新が不要なこと: 過去の機能追加コミットで xlf を変更していない、という推測です。
+- duplicati-configure https による管理 TLS と役割が重なります。採否の方針はメンテナー判断です (推測)。
+
+=== review:#1843 agent=aefc1e66677034ee8
+--- rerun:
+I reviewed branch feat/ssl-certificate-upload at 6fbcc1a2 in worktree n2, against base 8f401edd. The diff has 7 files and 264 insertions. I made no edits or commits, and git status is clean.
+
+1. Spec run (検証済み): `node node_modules/@angular/cli/bin/ng.js test ngclient --watch=false --include=projects/ngclient/src/app/settings/ssl-certificate/ssl-certificate.component.spec.ts` gave Test Files 1 passed (1), Tests 9 passed (9).
+2. Build (検証済み): `ng build ngclient --output-path <scratchpad>/ngbuild-review-1843` gave "Application bundle generation complete". No warning or error lines appeared, so the settings.component template that uses `<app-ssl-certificate />` compiles.
+3. Line endings (検証済み): `git ls-files --eol` shows every touched file as i/lf. Both edited files were already LF in the committed blob (the w/crlf is only the working copy), so line endings are preserved.
+4. Server side (検証済み by reading the code in n2s at 30b521ed6):
+   - UpdateCertificate.cs maps POST /uisettings to `LoadPfxCertificate(Convert.FromBase64String(input.Certificate), input.Password)`. The generated `postApiV1Uisettings` with `UpdateCertificateInputDto {Certificate, Password}` matches it.
+   - Utility.cs:1866 throws on a blank password, which justifies the rule "button enabled only with a file and a non-blank password".
+   - DuplicatiWebserver.cs:184 picks HTTPS at startup when UseHTTPS is true and a certificate exists, which backs the success text. One minor point, not blocking: the success text does not mention that the existing DisableHTTPS setting keeps the server on HTTP.
+   - The server's error messages contain only ex.Message, not the password. The client logs nothing and clears the password after a successful upload.
+5. Issue thread (検証済み via gh, read only): kenkendk's last comment (2025-05-21) says the server supports it but the UI does not expose it, and this branch adds exactly that UI. The HTTP warning implements HRomie's suggestion. Showing certificate details and generating a self-signed certificate are left out, which is reasonable scope.
+6. Test quality (推測; the mutation was not re-run by me because I must not edit): the component test drives the real template (file selection, typing into the password input, clicking the button). It asserts the outbound call on the injected `DuplicatiServer.postApiV1Uisettings` (the same seam the component uses) with `{ body: { Certificate: 'MIIA/4AB', Password: 'secret' } }`. The expected base64 decodes the 6 test bytes correctly (30 82 00 ff 80 01 = MIIA/4AB). The implementer's reported mutation (body using `file.name`) going red is consistent with this assertion. Without the change the spec cannot exist.
+7. Compatibility (検証済み): the change is additive. One new settings section, no server change and no change to defaults.
+
+
+######## #2259
+
+=== impl:n2:#2259 agent=a89963ba9900dbe54
+branches: [["ngclient","feat/report-issue-link","d8a9d470"]]
+--- tests:
+cd wt/n2; PATH=<node lts>:$PATH npx ng test ngclient --watch=false --include=projects/ngclient/src/app/layout/layout.component.spec.ts
+- GREEN (with change): Test Files 1 passed (1), Tests 2 passed (2)
+- RED (layout.component.html reverted to 8f401edd, spec kept): "links to the GitHub issue chooser in a new tab" failed with AssertionError: expected undefined to be defined (spec line 73); "keeps the documentation and forum links" passed. Tests 1 failed | 1 passed.
+- 実行中に stderr へ NG0318 ([style.transform] に boolean) が出ます。スタブの LayoutState/ship-sidenav が原因で、テストの成否には影響しません（推測）。
+- prettier --check で layout.component.html に警告が出ますが、base 8f401edd の元のファイルでも同じ警告が出るので、今回の変更とは関係ありません（検証済み）。追加した行は既存の行の書式に合わせました。
+--- unverified:
+実ブラウザでの表示（アイコンの描画とレイアウト）と、gen:font による bug アイコンの生成は確認していません（未検証）。locale ファイルの再生成（tx:sync）と、ビルド全体（ng build）の成否も確認していません（未検証）。
+
+=== review:#2259 agent=a907bbcb48708bf3e
+--- rerun:
+Branch feat/report-issue-link (d8a9d470) in wt/n2. The worktree was clean afterwards (git status empty).
+
+- GREEN (検証済み): `npx ng test ngclient --watch=false --include=projects/ngclient/src/app/layout/layout.component.spec.ts` gave Test Files 1 passed (1), Tests 2 passed (2).
+- RED (検証済み): I took layout.component.html back to 8f401edd and kept the spec. Result: "× links to the GitHub issue chooser in a new tab", AssertionError: expected undefined to be defined, Tests 1 failed | 1 passed. Then I put the file back with `git checkout HEAD`.
+
+Other checks:
+- Diff (検証済み): two files, +91 lines. One new `<a>` in layout.component.html, following the existing Documentation/Forum pattern (target=_blank, action, i18n, suffix arrow icon), and a new spec. Nothing is removed or changed, so it is backwards compatible. There are no secrets and no logging.
+- Line endings (検証済み): the committed blob of layout.component.html has 0 CR both at base and at HEAD. The new spec blob has 0 CR, the same as other committed spec blobs (for example about.navigation.spec.ts has 0 CR). core.autocrlf=true.
+- Icon (検証済み): `bug` exists in the Phosphor regular set (one `ph-bug:before` in node_modules/@phosphor-icons/web/src/regular/style.css, and `"name": "bug"` in selection.json). gen:font scans src, so the icon gets picked up.
+- Issue (検証済み, `gh issue view 2259 --comments`): kenkendk proposes a general "Report issue/request feature" button linking to issues/new. `gh api .../ISSUE_TEMPLATE` lists bug-report.md, config.yml and feature_request.md, so /issues/new/choose lets the reporter pick a template. That is a reasonable target. Leaving out the bug-report-DB explanation keeps the scope small, and the issue's core ask is met.
+- Test: it renders the real LayoutComponent template and checks the produced anchor's href and target, which is the seam the user actually sees.
+- Not checked: I did not re-run the implementer's prettier check (warning reportedly already present at base), and I did not look at the NG0318 stderr noise. Neither affects the test result (推測).
+
+
+######## #2330
+
+=== impl:n2:#2330 agent=af11bd29541a099a0
+branches: [["ngclient","feat/run-all-backups","ac3ce63c"]]
+--- tests:
+ワークツリー n2 で実行: node node_modules/@angular/cli/bin/ng.js test ngclient --watch=false --include=projects/ngclient/src/app/home/home.component.spec.ts --include=projects/ngclient/src/app/core/states/backups.start-all.spec.ts
+- 変更前（spec はそのまま、backups.state.ts / home.component.ts / home.component.html を git stash）: 赤。ビルド時に "TS2551: Property 'startBackups' does not exist on type 'BackupsState'" で失敗（検証済み）
+- 変更後: 緑。Test Files 2 passed (2), Tests 10 passed (10)（既存 4 件と新規 6 件）
+- 関連する既存 spec（backups.enable-disable / backups.refresh）も含めて実行: Test Files 4 passed (4), Tests 18 passed (18)
+- テンプレートの型チェック: ngc.js -p projects/ngclient/tsconfig.app.json --noEmit が exit 0、出力 0 行
+- prettier --write を適用済み
+新規テストは送信リクエストを直接確かめています。home の spec は本物の BackupsState と DuplicatiServer のスタブを使い、確認ダイアログを承認すると postApiV1BackupByIdStart が {id:'1'}、{id:'3'} の順で呼ばれ、無効・実行中・キュー待ちのものは呼ばれないことを確認します。キャンセルしたときと対象が 0 件のときは何も送らず、ダイアログも開かないことも確認します。state の spec は 1 件ずつ順番に送ること、途中の失敗後も続けること、最後の一覧更新が 1 回だけであること、二重呼び出しを無視することを確認します。
+--- unverified:
+実際のブラウザでの見た目と動作は未検証です（Duplicati.Server を起動しての手動確認や Playwright は実行していません）。ボタン配置（検索欄の左）が狭い画面でどう見えるかも未確認です。翻訳ファイル（locale/*.xlf）は更新していません。新しい文言は tx:sync で抽出される想定ですが、これは推測です。キュー待ちの表示を見たいという issue 後半が既存 UI で満たされているかは、classifier の根拠に頼っており、未検証です。push と PR 作成はしていません。
+
+=== review:#2330 agent=a8f009b1fddf947a5
+--- problems:
+No blocking problems.
+
+What I checked (検証済み unless marked otherwise):
+- Diff ac3ce63c vs 8f401edd: 5 ngclient files, all inside the home list and BackupsState. No server change and no new API; it reuses POST /api/v1/backup/{id}/start. Nothing new appears unless the user clicks the new button, and the button only shows with 2 or more backups, so it is backwards compatible. No secrets or option values are logged.
+- Issue #2330 asks to start all tasks at once or queue them. The concatMap loop sends one request at a time in list order, which covers that. The second half of the issue (seeing waiting tasks) is left out. That is reasonable because the existing Queued markers and Status page show it (推測, not rechecked).
+- Line endings: all committed blobs are LF, same as the base (0 CR lines, checked with git show | grep -c $'\r$').
+- Formatting: prettier --check on the working copy warns on 3 files, but only because core.autocrlf=true checks them out as CRLF. I ran the same check on the committed HEAD blobs with the repo .prettierrc and it reported "All matched files use Prettier code style!".
+- Commit message: imperative subject, body explains why, and the last line is the required Co-Authored-By.
+
+Non-blocking notes for the PR discussion:
+1. A failed start is dropped silently (catchError -> EMPTY). The global http.interceptor probably shows the error first (推測, 未検証), but the user gets no summary like "2 of 5 started".
+2. #startingBackup is shared with the single-row Start. If a row's Start is pressed during a batch, its finalize clears the spinner early. This is cosmetic only (推測, 未検証 in the UI).
+3. Leaving out disabled backups is the implementer's own choice, and the confirm text says so.
+4. The new $localize strings are not in the xlf files. That matches the repo practice: messages.en.xlf was last touched in 6292e777.
+5. Not checked in a real browser or against a real server (未検証). The tests use stubbed DuplicatiServer and ServerState.
+--- rerun:
+Worktree n2 on feat/run-all-backups (ac3ce63c). Command: node node_modules/@angular/cli/bin/ng.js test ngclient --watch=false --include=projects/ngclient/src/app/home/home.component.spec.ts --include=projects/ngclient/src/app/core/states/backups.start-all.spec.ts
+- On the branch: green. Test Files 2 passed (2), Tests 10 passed (10).
+- With backups.state.ts, home.component.ts and home.component.html reset to 8f401edd and the new specs kept: red. The build fails with TS2551/TS2339 (startAllBackups, startAllBackupIds, startBackups and startingAllBackups do not exist).
+- Behavioural mutations, since compile errors alone are a weak red:
+  (a) concatMap changed to mergeMap, catchError removed and the isDisabled filter removed: 3 failed / 7 passed. Failing: "sends one start request at a time in the given order and refreshes the list once", "asks first and then sends a start request for each enabled backup that is not running or queued", "does not open the dialog when every backup is skipped".
+  (b) only catchError(() => EMPTY) replaced with tap(): 1 failed / 2 passed. Failing: "keeps starting the remaining backups when one start request fails".
+  So the tests check the outbound postApiV1BackupByIdStart calls: order, filtering, continuing after an error, and a single refresh.
+- After each run I restored the files with git checkout HEAD; git status is clean and HEAD is still ac3ce63c.
+
+
+######## #2764
+
+=== impl:n2:#2764 agent=a3b555c2a78ab7df1
+branches: [["ngclient","feat/last-run-failed-indicator","1d0fa3bf"]]
+--- tests:
+緑（検証済み）
+1. pipe と home の spec: `node node_modules/@angular/cli/bin/ng.js test ngclient --watch=false --include=projects/ngclient/src/app/core/pipes/last-run.pipe.spec.ts --include=projects/ngclient/src/app/home/home.component.spec.ts` → Test Files 2 passed, Tests 29 passed。最初の 1 回は並行負荷で "Timeout waiting for worker to respond" になったため、再実行した結果です。
+2. 実際の描画経路（e2e）: `ng build ngclient --configuration development`（成功）のあと `node node_modules/@playwright/test/cli.js test e2e/home-backup-state.spec.ts` → 4 passed。新しいテスト "home last run failure › marks only the backup whose latest run failed in both views" を含みます。このテストでは次を確かめています。
+   - 失敗したジョブのカードに sh-chip.error（Last run failed）が出て、ホバーで "The destination is unreachable" が見える
+   - 成功が新しいジョブには chip が出ない
+   - 詳細表示でも同じように出し分けられる
+
+赤（検証済み）
+- 実装の 3 ファイル（html, component.ts, pipe.ts）だけを git stash で外し、テストを残したまま再ビルドして `-g "last run failure"` を実行 → 1 failed: `expect(locator).toHaveText(/Last run failed/) ... element(s) not found`。stash pop 後にもう一度ビルドして 4 passed を確認しました。
+- pipe の単体テストは、実装がないと import が解決できず失敗します。これは自明な赤なので、変更を確かめる赤は上の e2e を正としています。
+
+整形
+- prettier --check を CR を除いた内容に stdin で実行し、差分 0 を確認しました。作業ツリーは autocrlf で CRLF になっているため、それだけで出る警告は変更していないファイルにも出ます。
+- コミットの blob に CR は 0 バイトでした。
+--- unverified:
+- 実サーバーで本当にバックアップを失敗させたときの表示は未検証です。e2e ではメタデータをモックしています。
+- ダークテーマでの chip の色、ツールチップの見た目、スクリーンショットでの確認は未検証です。
+- 復元や検証など、バックアップ以外の操作の失敗でも LastErrorDate は更新されます（Runner.cs の catch。ドキュメント根拠: ソースを読んだだけ）。その場合もこの chip が出ます。サーバーの FolderStatusService や CLI ListBackups と同じ扱いですが、メンテナーがこれをどう受け取るかは推測です。
+- Abort（OperationCanceledException）も失敗として表示されるはずですが、未検証です。
+- ローカライズのカタログ（xlf）は更新していません。既存の home 変更コミットも同じで、tx:sync で取り込む運用だと推測しています。
+- ngclient の upstream 全体のテスト、lint、CI は実行していません。
+
+=== review:#2764 agent=a7e3d89b953051c28
+--- problems:
+No blocking problems.
+
+Checked:
+- Correctness: matches the server rule (ドキュメント根拠, from reading the source). FolderStatusService.DetermineStatus marks a backup failed when lastError >= finished. Backups read LastBackupFinished, falling back to LastBackupDate. Syncs read LastSyncFinished and never LastBackupDate. Runner.UpdateMetadataError writes LastErrorDate/LastErrorMessage, and UpdateMetadataBase writes LastBackupFinished on a successful backup.
+- Line endings: CR count is 0 in both the base blob and the new blob for all 5 files (検証済み).
+- Build warnings: `ng build ngclient --configuration development` finished with no warning or error lines (検証済み).
+- Scope: limited to the home view and the pipe. No server change. Success display is unchanged. The new strings are i18n-tagged; locale files are synced by the maintainers' tx:sync, so not updating them is expected.
+- Secrets: only LastErrorMessage is shown, and only in a tooltip. The UI already shows this to the same user, and nothing new is logged.
+
+Non-blocking notes:
+1. The card view shows "Last run failed" even while the job is running again. The details view hides its chip while running. This is a small inconsistency, not a bug.
+2. UpdateMetadataError runs for any operation on the job, including a failed restore, verify or compact (Runner.cs:1331). So the chip can mean the last task failed rather than the last backup failed. The server's Failed status behaves the same way (ドキュメント根拠). Whether a user-cancelled backup sets LastErrorDate is 推測 / 未検証.
+3. The issue also asks for green and yellow. Yellow is impossible because warnings are not stored in the metadata. The PR body should say the issue is only partly addressed (red only), or ask the maintainers whether `Fixes #2764` is appropriate.
+4. For a Sync job with no LastSyncFinished, getLastRunValue falls back to LastBackupFinished, while the server does not. This is the existing pipe's deliberate fallback and only matters with old or mixed metadata.
+--- rerun:
+All runs were in worktree n2 on feat/last-run-failed-indicator (1d0fa3bf), against base 8f401edd.
+
+1. Unit specs: `node node_modules/@angular/cli/bin/ng.js test ngclient --watch=false --include=projects/ngclient/src/app/core/pipes/last-run.pipe.spec.ts --include=projects/ngclient/src/app/home/home.component.spec.ts` gave Test Files 2 passed, Tests 29 passed (検証済み).
+2. e2e green: `ng build ngclient --configuration development`, then `node node_modules/@playwright/test/cli.js test e2e/home-backup-state.spec.ts` gave 4 passed, including "home last run failure > marks only the backup whose latest run failed in both views" (検証済み).
+3. e2e red: I put the base versions of last-run.pipe.ts, home.component.html and home.component.ts into the working tree (`git checkout 8f401edd -- <3 files>`), kept the new test, rebuilt and ran `-g "last run failure"`. Result: 1 failed with `expect(locator).toHaveText(/Last run failed/) ... element(s) not found` at line 127 (検証済み).
+4. Restore: `git checkout HEAD -- <3 files>` left `git status` clean. I rebuilt dist from HEAD afterwards. Nothing was edited or committed on the branch.
+
+
+######## #3246
+
+=== impl:n2:#3246 agent=a72789f6ca8dcb106
+branches: [["ngclient","feat/log-download","c0a8cc4c"]]
+--- tests:
+Run from the n2 worktree with node (mise lts): node node_modules/@angular/cli/bin/ng.js test ngclient --watch=false --include=<spec>...
+
+RED (production changes stashed, only the new specs and the remote-log spec selector change present), log-download.spec.ts + logs-download.spec.ts:
+  Test Files 2 failed (2) / Tests 8 failed (8)
+  TypeError: Cannot read properties of null (reading 'click') / (reading 'disabled'), because button.download-log does not exist
+
+GREEN (with the change), the 2 new specs plus remote-log.component.spec.ts, general-log/*.spec.ts, logs-stored.component.spec.ts, logs-live.state.spec.ts and logs.component.spec.ts:
+  Test Files 8 passed (8) / Tests 72 passed (72)
+After formatting with prettier: log-download, logs-download and remote-log specs, Test Files 3 passed (3) / Tests 23 passed (23)
+
+The tests click the real template button and parse the Blob passed to URL.createObjectURL. They check that its content toEqual the rows the server stub returned (live log: in the order shown, newest first), the type is application/json, the anchor download file name and the revokeObjectURL call, and that the button is disabled when there are no rows.
+Prettier: the 3 new files were formatted with prettier --write --end-of-line lf. The existing CRLF files show no difference after CR is stripped. Committed blobs are LF (git diff --cached has 0 CRs).
+--- unverified:
+- 実ブラウザーと実サーバーでの確認はしていません（未検証）。jsdom の spec だけで、ボタンの見た目、配置、ダークテーマ、実際の保存ダイアログは見ていません。click() の直後に revokeObjectURL する方式は既存の export.component と同じです。ただ、Firefox などで保存が確実に動くかは確かめていません。
+- ダウンロードされるのは読み込み済みの分だけです。ジョブログは表示中の 1 ページ（100 件）、保存済みログは「Load more」で読んだ分、リモートログは最新 100 件で、全件ではありません。全件をページングして取得するかどうかは、レビューで判断してもらう前提です（設計判断）。
+- 別件の不具合と思われる挙動を見つけました（推測、範囲外のため修正していません）。logs-stored の paginationEffect は、getLogs 内の logsIsLoading / noMoreItems / logs シグナルも追跡しています。そのため 1 ページ目の応答後に detectChanges すると、同じオフセットでもう一度取得し、行が重複しました。根拠は、Promise スタブで書いた最初の版の spec で、2 行のはずが 4 行になったことです。実アプリで再現するかは見ていません（未検証）。
+- issue の CLI 側の要望（--export-job-log など）は実装していません。
+- 翻訳ファイル（locale）は更新していません。リポジトリでは翻訳の同期コミットで一括更新している慣例に合わせました。
+
+=== review:#3246 agent=af2ba383f6dea9cb2
+--- problems:
+1. One small fix is needed. remote-log.component.ts does not import ShipButton. Its `imports` is `[JsonPipe, ShipProgressBar, ShipIcon, DatePipe]` (検証済み, grep). The ShipButton selector is `[shButton]` and it adds host classes `sh-sheet-h` and `hostClasses()` (検証済み, read in node_modules/@ship-ui/core/fesm2022/ship-ui-core-ship-button.mjs). So on the remote-log page the new Download button gets no component host classes, unlike the same button on the other three pages, which all import ShipButton. The page's existing Copy button has the same gap, so this is an old omission that the new button inherits. How it looks on screen is 推測 (未検証). Fix: add ShipButton to the remote-log component's imports (one line, in scope).
+
+Non-blocking notes:
+- The job log saves only the page currently shown. The stored log saves only the entries loaded so far. The issue asks to export the current database log contents. The code comments say this is page-scoped. The PR body should say so too.
+- The issue also asks for CLI options (`--export-*-log`), which are out of scope here. The PR should therefore say "Part of #3246" (or ask the maintainer) instead of "Fixes #3246", or state clearly that the CLI part is left out.
+
+Everything else checks out:
+- Correctness: the buttons save the raw server rows. The live log keeps the order shown.
+- Backwards compatible: only buttons are added. No server change.
+- No secrets: nothing is logged, and the export only runs when the user clicks.
+- Scope: limited to the GUI part of the issue.
+- Line endings: committed blobs are LF before and after, 0 CRs in every touched file (検証済み).
+- Formatting: `prettier --check --end-of-line auto` passes.
+- Type check: `ngc -p projects/ngclient/tsconfig.app.json --noEmit` printed no errors.
+- The remote-log spec selector change to `.log-content button` is needed and correct.
+--- rerun:
+All runs were in the n2 worktree on feat/log-download (c0a8cc4c), with node lts on PATH.
+
+GREEN, branch as committed (検証済み):
+`node node_modules/@angular/cli/bin/ng.js test ngclient --watch=false` with these includes:
+- projects/ngclient/src/app/backup/log/log-download.spec.ts
+- projects/ngclient/src/app/about/logs/logs-download.spec.ts
+- projects/ngclient/src/app/backup/log/remote-log/remote-log.component.spec.ts
+- "projects/ngclient/src/app/backup/log/general-log/*.spec.ts"
+- projects/ngclient/src/app/about/logs/logs-stored/logs-stored.component.spec.ts
+- projects/ngclient/src/app/about/logs/logs-live/logs-live.state.spec.ts
+
+Result: Test Files 7 passed (7), Tests 67 passed (67).
+
+RED, production files only reverted to 8f401edd with `git checkout 8f401edd --` (12 html/scss/ts files; download-json.ts and the specs kept). Ran log-download.spec.ts and logs-download.spec.ts:
+- Result: Test Files 2 failed (2), Tests 8 failed (8).
+- 4 × TypeError: Cannot read properties of null (reading 'click').
+- 4 × TypeError: Cannot read properties of null (reading 'disabled').
+
+Afterwards the files were restored with `git checkout HEAD --`, and `git status --short` was empty.
+
+Other checks:
+- `ngc -p projects/ngclient/tsconfig.app.json --noEmit` printed no output.
+- `prettier --check --end-of-line auto` on the 16 touched files: "All matched files use Prettier code style!".
+- CR count in the base and HEAD blobs of every touched file: 0 / 0.
+- Issue #3246 is OPEN with 0 comments. It asks for a GUI "Save log to file" button on the job, remote, stored and maybe live log pages, plus CLI options (checked with gh, read-only).
+
+=== fix:n2:#3246 agent=a1afc631005b417f2
+branches: [["ngclient","feat/log-download","1355c264"]]
+--- tests:
+cd wt/n2; npx ng test ngclient --watch=false --include=projects/ngclient/src/app/backup/log/log-download.spec.ts
+RED (ShipButton import 追加前、新テストのみ): FAIL remote log download > renders the button as a ship button - AssertionError: expected "small download-log" to contain "sh-sheet-h"; Tests 1 failed | 4 passed (5)
+GREEN (修正後): npx ng test ngclient --watch=false --include=.../backup/log/log-download.spec.ts --include=.../backup/log/remote-log/remote-log.component.spec.ts --include=.../about/logs/logs-download.spec.ts -> Test Files 3 passed (3), Tests 24 passed (24)
+npx prettier --check --end-of-line auto remote-log.component.ts log-download.spec.ts -> All matched files use Prettier code style!
+npx ngc -p projects/ngclient/tsconfig.app.json --noEmit -> エラー出力なし
+--- unverified:
+画面上の見た目 (ボタンのスタイルが他ページと同じになること) はブラウザで確認していません (未検証、推測)。テストではホストクラスが付くことだけを確かめています。ブランチは push していません (ローカルのみ)。
+
+=== review2:#3246 agent=a9db97528b43bd939
+--- rerun:
+Branch feat/log-download is now one commit, 1355c264, on top of 8f401edd. The previous problem is fixed. remote-log.component.ts now imports ShipButton (`imports: [JsonPipe, ShipProgressBar, ShipIcon, DatePipe, ShipButton]`) (検証済み, git diff 8f401edd..HEAD). The commit message explains the change and ends with the exact Co-Authored-By line (検証済み, git log -1). A new test, 'renders the button as a ship button', checks that the rendered remote-log Download button has the host class sh-sheet-h, which comes from the real template. I did not see this test fail without the import myself, because the review was read-only and I did not edit files. The class is a ShipButton host class, which I read in the ship-ui source during the last review, so it should fail without the import (推測).
+
+What I re-ran in the n2 worktree:
+- `node node_modules/@angular/cli/bin/ng.js test ngclient --watch=false` with `--include` for log-download.spec.ts, logs-download.spec.ts and remote-log.component.spec.ts: Test Files 3 passed (3), Tests 24 passed (24). The previous run had 23 tests; the new one is the ShipButton test. (検証済み)
+- `prettier --check --end-of-line auto` on all 16 touched files: "All matched files use Prettier code style!" (検証済み)
+- `ngc -p projects/ngclient/tsconfig.app.json --noEmit`: no output, exit 0 (検証済み)
+- Line endings: 0 CR characters in the committed HEAD blob of every touched file, and the base files were LF already (検証済み). The working tree is clean.
+
+Non-blocking notes from the last review, for the PR body (I have not seen it):
+- Downloads cover only the page shown or the entries loaded so far.
+- The CLI `--export-*-log` part of #3246 is out of scope, so the PR should say "Part of #3246" or say clearly that the CLI part is left out.
+
+
+######## #3397
+
+=== impl:n2:#3397 agent=a8faaf5b597c805d8
+branches: [["duplicati","feat/compact-progress","469c71562233faf41fdd3d1e1e0fb5937b52819e"],["ngclient","feat/compact-progress","792c2ba895634c5934ead901745f5829d139cccd"]]
+--- tests:
+duplicati (worktree n2s):
+- 実行したコマンド:
+  - $DOTNET_ROOT/dotnet.exe build Duplicati/UnitTest/Duplicati.UnitTest.csproj
+  - $DOTNET_ROOT/dotnet.exe test Duplicati/UnitTest/Duplicati.UnitTest.csproj --no-build --filter "FullyQualifiedName~CompactProgressTests|FullyQualifiedName~OverallProgressEstimatorTests"
+- GREEN（変更あり、検証済み）: 「成功! -失敗: 0、合格: 29、合計: 29」
+- RED（Duplicati/Library の変更だけを戻して再ビルドし、同じフィルタで実行）。落ちたテストは次のとおり:
+  - CompactReportsProgressAsItGoesAsync: Has.Some.GreaterThan(0f).And.LessThan(1f) で、実際の値は全サンプルが 0.0f
+  - CompactDuringBackupReportsProgressInItsRangeAsync: Has.Some.GreaterThan(0.95f) で、実際の値は全サンプルが 0.949999988f
+  - DeleteAndCompactPhasesKeepReportedProgressInTheirRange のうち (Backup_Compact,0.965) (Backup_Delete,0.97) (Backup_Delete,1.0): 期待値はそれぞれの値、実際の値は 0.95
+- 変更を戻した後、フィルタに CompactResultLogTests と PurgeTesting も加えて実行: 「成功! 合格: 34、合計: 34」
+- 統合テストは、IMessageSink.SetOperationProgress で受け取った IOperationProgress.UpdateOverall を BackendEvent のたびに読んで確認しています。サーバーが読むのと同じ経路です。
+- ビルド出力を grep した結果、触ったファイルに新しい CS86xx 警告はありませんでした。
+
+ngclient (worktree n2):
+- 実行したコマンド: npx ng test ngclient --watch=false --include=<dir>/status-bar.compact-progress.spec.ts --include=<dir>/status-bar.state.spec.ts
+- GREEN: 「Test Files 2 passed, Tests 28 passed」
+- 1 回目は負荷のせいで vitest worker がタイムアウトしました。再実行して通っています。
+- RED（status-bar.state.ts を戻して compact-progress spec だけを実行）: 「Tests 4 failed | 6 passed」。その一つは "expected 0.95 to be close to 0.96" です。
+- prettier: コミット済みの blob を prettier に通したときの出力の diff は空でした。作業コピーへの --check では、git add 前のファイルに警告が出ました（改行コードが原因と推測）。
+--- unverified:
+- 実際のサーバーを起動して、ngclient と ngax の画面で進捗バーが動くところは見ていません（未検証）。ngax は変更していないので、バックアップ中の compact では従来の表示のままと推測しています。単体の compact で ngax がどう表示するかも未検証です。
+- CLI (Commands.cs) の表示は確認していません（未検証）。
+- バックアップ中に compact した後の Backup_PostBackupTest などで、表示が 0.98 になることは推論だけです（未検証）。
+- purge 中の compact の進捗は、範囲を割り当てる式をコードで確認しただけで、テストは書いていません（未検証）。
+- Linux と macOS の CI は回していません。
+- duplicati/documentation の更新は不要と推測しています。
+
+=== review:#3397 agent=ac4018c6250ce18df
+--- problems:
+Nothing blocking. Non-blocking notes:
+1. Scope gap (検証済み by grep): the old ngax UI still pins Backup_Delete/Backup_Compact to 0.95 (Duplicati/Server/webroot/ngax/scripts/controllers/StateController.js:62-65). Inside a backup, ngax users get no compact progress. A standalone compact still works there, because its phase is not a Backup_* phase. This could be a follow-up branch, or ngclient-only could be stated as deliberate in the PR.
+2. Design (推測): inside a backup the compact only moves the bar from 0.95 to 0.98, which is barely visible. The issue reporter wants to know how much work is left. The full 0-1 range is only used for standalone compact and delete. Worth saying in the PR body.
+3. Side effect (推測, the implementer flagged it too): after an in-backup compact, the reported progress stays at 0.98 until the next handler resets it. Default-branch phases therefore show 0.98 instead of indeterminate for a moment. TestHandler calls UpdateProgress(0) when it starts, so the window is short.
+4. The integration test only exercises the DeleteHandler path (phase Backup_Delete). BackupHandler's direct Backup_Compact path is covered by the estimator unit test only.
+5. RED not re-run by me (未検証 by me). The implementer reported red results. At base, CompactHandler.cs and DeleteHandler.cs have no UpdateProgress calls (`git grep UpdateProgress 30b521ed6 -- CompactHandler.cs DeleteHandler.cs` returns exit 1), and the old ngclient branch was a constant 0.95. So the new assertions (progress >0 and <1, progress >0.95, toBeCloseTo 0.96) cannot pass without the change (推測, strongly supported).
+Checks that passed: diffs are limited to the compact/delete/purge progress plumbing, the estimator and the ngclient status bar. The new parameter is optional and defaults to null; PurgeBrokenFiles keeps its old behaviour, and old servers report 0, which still shows 0.95, so the change is backward compatible. No logging is added, so no secrets can leak. The fraction is computed inside the await foreach over volumesToDownload, so there is no division by zero. `git ls-files --eol` shows every touched blob is i/lf in both repos, the same as base. No new CS86xx warnings: the build shows only the 6 known ControllerRpcServer CS8604. The thread has one bot comment and no maintainer objection.
+--- rerun:
+duplicati worktree n2s at 469c71562 (feat/compact-progress):
+- `dotnet build Duplicati/UnitTest/Duplicati.UnitTest.csproj` gave 「6 個の警告 0 エラー」. All 6 are the known CS8604 warnings in ControllerRpcServer.cs; none are in touched files (検証済み).
+- `dotnet test --no-build --filter "FullyQualifiedName~CompactProgressTests|FullyQualifiedName~OverallProgressEstimatorTests|FullyQualifiedName~PurgeTesting"` gave 「成功! -失敗: 0、合格: 32、合計: 32」 (検証済み).
+ngclient worktree n2 at 792c2ba89:
+- `npx ng test ngclient --watch=false --include=.../status-bar.compact-progress.spec.ts --include=.../status-bar.state.spec.ts`. The first run hit a vitest worker timeout under load ("no tests, 2 errors"). The retry gave "Test Files 2 passed (2), Tests 28 passed (28)" (検証済み).
+- I did not re-run RED (未検証 by me; the implementer reported it).
+
+
+######## #3694
+
+=== impl:n2:#3694 agent=a59c5aa45f6b75661
+branches: [["ngclient","feat/restore-version-file-count","026d135944cf3c1bb6107b936adb2d6d8c7d9b86"]]
+--- tests:
+新規 spec: projects/ngclient/src/app/restore-flow/select-files/select-files.versions.spec.ts。実テンプレートで SelectFilesComponent を描画し、sh-select を開いて .ship-options .custom-option のテキストを検証します。
+コマンド: PATH=~/AppData/Local/mise/installs/node/lts:$PATH npx ng test ngclient --watch=false --include=projects/ngclient/src/app/restore-flow/select-files/select-files.versions.spec.ts
+- Red（変更前）: "Tests 2 failed (2)" — AssertionError: expected '0: Oct 1, 2026, 9:00:00 PM (3.15 MB)' to match /^0: .* \(3(\.00)? ?MB, 1,234 files\)$/
+  （その後、正規表現を実出力の 3\.15 MB に厳密化しました。表示側の差分は同じです）
+- Green（変更後）: "Tests 2 passed (2)"
+- 既存 spec: --include select-files.component.spec.ts と select-files.search.spec.ts で "Tests 36 passed (36)"
+- prettier --check: 変更したファイルは問題なし。触っていない既存の spec 2 本は元から warn が出ています。
+- ng extract-i18n ngclient --output-path <scratchpad>/xlf3694 は成功しました（Messages: 1964）。新しい 2 メッセージが {VAR_PLURAL, plural, =1 {(<x id="INTERPOLATION"/>, 1 file)} ...} として抽出されることを確認しています。
+--- unverified:
+- 実ブラウザ（実サーバー）での見た目は確認していません（未検証）。検証は jsdom の単体テストのみです。
+- locale の xlf/json は更新していません。Transifex 同期で更新されるため、新しい文言は翻訳されるまで英語で表示されます（推測）。
+- ICU の case 内でパイプを使った書き方が、--localize ビルドの全言語で問題なく動くかは確認していません（未検証）。extract-i18n は成功しています。
+- push・PR 作成はしていません。
+
+=== review:#3694 agent=a0656a2392a87bbaf
+--- problems:
+None blocking. I reviewed the full diff 8f401edd..026d1359: 3 files, template + DecimalPipe import + new spec.
+- Correctness and scope (検証済み): issue #3694 is open with 0 comments. It asks for the file count and size of each fileset in the restore list. Size was already shown; the branch adds FileCount through an ICU plural. restore-flow.state.ts:37/358/432 already carries FileCount, so no server change is needed. Without FileCount the old "(size)" display is unchanged, so it is backwards compatible. Nothing touches secrets. Scope is limited to the picker.
+- Line endings (検証済み): git ls-files --eol shows i/lf w/lf for the touched html/ts and the new spec, the same as the base.
+- Wrong claim in the implementer's red result (検証済み): they reported "Tests 2 failed (2)". With the final spec, red is 1 failed, 1 passed. The size-only test is meant to pass on base, since it guards backwards compatibility. Their 2/2 figure came from the earlier, looser regex. The PR text should say 1 of 2 fails without the change.
+- Prettier claim needs a correction (検証済み): `prettier --check` on the touched html/ts prints warn in this worktree. `npx prettier <file> | diff --strip-trailing-cr <file> -` gives no differences, so the warn is about line endings only and the formatting itself is clean. The implementer's "問題なし" claim is too strong but harmless.
+- Not checked (未検証): I did not run a full `ng build` to look for new template or compile warnings (the tests compile the template without errors). I did not check how the app renders the two new untranslated i18n messages in other locales; extraction was the implementer's check, not mine.
+--- rerun:
+The worktree was already on feat/restore-version-file-count and clean.
+Green: `PATH=~/AppData/Local/mise/installs/node/lts:$PATH npx ng test ngclient --watch=false --include=.../select-files.versions.spec.ts --include=.../select-files.component.spec.ts --include=.../select-files.search.spec.ts` gave "Test Files 3 passed (3), Tests 38 passed (38)".
+Red: I temporarily restored base 8f401edd select-files.component.html/.ts and ran the versions spec only. Result: "Tests 1 failed | 1 passed (2)", with AssertionError: expected '0: Oct 1, 2026, 9:00:00 PM (3.15 MB)' to match /^0: .+ \(3\.15 MB, 1,234 files\)$/. Afterwards `git checkout HEAD -- select-files/` put the branch files back, and git status --short is empty. The test renders the real template through ShipSelect and asserts the rendered option text, which is the real seam.
+Prettier 3.8.3: --check warns on the 2 touched files; --strip-trailing-cr diff against the prettier output is empty, so the warnings are line endings only.
+gh issue view 3694 (read-only): OPEN, 0 comments.
+
+
+######## #5239
+
+=== impl:n2:#5239 agent=afb2bd62d7082cd90
+branches: [["duplicati","feat/list-temporary-backups","14ad3ebc7396198bbeb519eee965658bbe922f5d"],["ngclient","feat/restore-resume-drafts","a27d25e3eb60aa2710f7f5265914c9547d7e2a07"]]
+--- tests:
+[duplicati] dotnet build Duplicati/UnitTest/Duplicati.UnitTest.csproj、続けて dotnet test --no-build --filter "FullyQualifiedName~TemporaryBackupsAreListedUntilDeleted"
+- RED: 拡張とエンドポイントが無い状態で実行し、失敗しました。
+  - `失敗!   -失敗:     1、合格:     0` (ServerApiIntegrationTests.cs:249 の Does.Contain(TemporaryBackupListExtension))
+- GREEN: `成功!   -失敗:     0、合格:     1`
+- テストの内容: 実サーバーに対して POST /api/v1/backups?temporary=true（auth-password を含む URL）を送り、GET /api/v1/backups/temporary で次を確認します。
+  - 一時バックアップの ID が含まれ、通常のバックアップは含まれない
+  - TargetURL に秘密の値が出ていない
+  - DELETE（削除タスクの完了まで待つ）の後は一覧から消えている
+- 触ったファイルに CS86xx 警告は出ていません（touch して再ビルドし、警告を grep した結果が 0 件）。
+
+[ngclient] node node_modules/@angular/cli/bin/ng.js test ngclient --watch=false に、次の --include を付けて実行
+- restore.drafts.spec, restore.search.spec, restore.sync.spec, restore-from-config.component.spec, restore-encryption.component.spec, restore-flow.submission.spec, restore-flow.filesets.spec, restore-flow.saved-destinations.spec, options.navigation.spec, sysinfo.state.spec
+- RED: 本番側の変更（restore.component.*、restore-drafts.state.ts、encryption/from-config/restore-flow.state）を退避して、新しい spec 4 ファイルを実行しました。
+  - `Test Files 4 failed (4) / Tests 6 failed | 26 passed`
+  - 主な失敗: "expected vi.fn() to be called once, but got 0 times"、"expected [] to deeply equal [ 'temporary-42' ]"、"expected [ 'other', '42' ] to deeply equal [ 'other' ]"
+  - 「拡張なしなら問い合わせない」のテストは、変更が無くても通る性質のものです。
+- GREEN: `Test Files 10 passed (10) / Tests 94 passed (94)`
+- prettier: CR を除いて比較し、差分なし（新しい spec は --write で整形済み）。
+--- unverified:
+- 実ブラウザでの確認はしていません（未検証）。ngclient をビルドし、n2s のサーバーに載せて、次の流れを試していません。
+  1. 直接リストアを開始する
+  2. ログ画面へ移る
+  3. Restore ページの一覧から戻る
+  4. ファイル選択を再開する
+- 戻った後の挙動も未検証です。restore-flow が既存の部分 DB を使ってファイル選択を再開できるかは、コードを読んだ上での推測にとどまります。
+- 新しい UI 文言 3 つ（"Or continue a direct restore"、"Dismiss"、"Continue"）は翻訳カタログに入れていません。これまでの機能コミットもロケールファイルを更新していないため、それに合わせました。
+- duplicati のフルスイートと CI は回していません（未検証）。
+- ngax には手を入れていません。
+- メンテナーが別の大きな作り直しを想定している可能性があります（推測）。issue のタイトルが "Rework" なので、設計の確認は PR 上で行う前提です。
+- ngclient の PR は duplicati 側のエンドポイントに依存します。旧サーバーでは機能が出ないだけです。
+
+=== review:#5239 agent=aabec9e9f6d0c0477
+--- problems:
+No blocking problems found.
+
+Review notes:
+- Scope (verified by reading the issue): #5239 asks for a way back to a temporary direct-restore backup after the user navigates away, "perhaps on the Restore page". Both branches do exactly that.
+- duplicati, feat/list-temporary-backups:
+  - GET /api/v1/backups/temporary requires authorization. It works on clones made under m_lock. Backup.Clone() deep-copies Settings, Sources and targets (verified by reading Backup.cs:300), so MaskSensitiveInformation does not change the stored temporary backup.
+  - The new API extension is additive, and old clients are unaffected.
+- ngclient, feat/restore-resume-drafts:
+  - Only IDs are written to localStorage. The key v1:duplicati:restoreDrafts follows the LOCALSTORAGE naming, so the existing clear logic removes it (verified by reading localstorage.token.ts:76).
+  - Servers without the extension are never queried, so it is backward compatible.
+  - Enter on the Dismiss button does not trigger the card, because the keyboard directive checks event.target (verified by reading keyboard-action.directive.ts).
+  - The hand-added openapi parts are consistent with each other (sdk method, types, index exports).
+- Line endings (verified by comparing CR counts in the committed blobs): every touched file stays fully CRLF as before, and the new files are CRLF throughout.
+- Warnings (verified): after touching Connection.cs and Backups.cs, a rebuild of UnitTest reported 0 warnings.
+
+Non-blocking observations:
+1. QuerystringMasking masks only query parameters. A password in URL userinfo (user:pass@host) would still appear in the new TargetURL field, which the Restore page now displays. Single GET /backup/{id} and the backup list already behave this way, so this is not new exposure (based on reading QuerystringMasking.cs:43; not run).
+2. On submit, a temporary draft is copied with copytotemp, and the original draft stays on the server until restart. That is pre-existing behaviour. The branch only stops listing the draft once the restore has started.
+3. Not re-checked by me (未検証): the RED runs, and the sysinfo.state, options.navigation and restore-flow.filesets/saved-destinations specs. RED for duplicati cannot compile without the production constant and DTO, so I relied on the implementer's RED output for both repos. Reading the code supports it: without the restore.component changes, listTemporary would never be called.
+--- rerun:
+duplicati (wt/n2s, feat/list-temporary-backups @14ad3ebc7):
+- dotnet build Duplicati/UnitTest/Duplicati.UnitTest.csproj, then dotnet test --no-build --filter "FullyQualifiedName~TemporaryBackupsAreListedUntilDeleted" -> "成功!   -失敗:     0、合格:     1、スキップ:     0、合計:     1".
+- Touched Connection.cs and Backups.cs and rebuilt -> "0 個の警告".
+
+ngclient (wt/n2, feat/restore-resume-drafts @a27d25e3):
+- node node_modules/@angular/cli/bin/ng.js test ngclient --watch=false with --include for restore.drafts.spec, restore-from-config.component.spec, restore-encryption.component.spec, restore-flow.submission.spec, restore.search.spec and restore.sync.spec -> "Test Files 6 passed (6) / Tests 41 passed (41)".
+
+I edited and committed nothing.
+
+
+######## #6611
+
+=== impl:n2:#6611 agent=aa50f608c8a2c26db
+branches: [["duplicati","feat/systeminfo-preload-paths","1f7448acb45607d60381a4099b7195b768818965"],["ngclient","feat/show-db-encryption-preload-paths","224fab317da03845d285caf8b272f696220a2335"]]
+--- tests:
+duplicati（n2s。UnitTest.csproj を 1 回ビルドしたあと、dotnet test --no-build を実行）:
+- dotnet test Duplicati/UnitTest/Duplicati.UnitTest.csproj --no-build --filter "FullyQualifiedName~PreloadSettingsSearchPathTests|FullyQualifiedName~SystemInfoReportsDatabaseEncryptionAndPreloadPaths"
+  - 修正後: 成功! -失敗: 0、合格: 8、スキップ: 0、合計: 8
+- red（DTO と provider の変更だけを戻し、ローダーの変更は残して再ビルド）: --filter "FullyQualifiedName~SystemInfoReportsDatabaseEncryptionAndPreloadPaths"
+  - 結果: 失敗 SystemInfoReportsDatabaseEncryptionAndPreloadPaths_Async / "System information should tell whether the database is encrypted" Expected: True / 失敗: 1、合格: 0
+- 統合テストは実サーバーを起動し、HTTP で /api/v1/systeminfo を取得します。暗号化あり（--settings-encryption-key と --disable-db-encryption=false）で true、暗号化なし（--disable-db-encryption=true）で false が返ることを確かめます。さらに、パス一覧がローダーの結果と一致し、インストール先の preload.json を含むことを確かめます。
+  - 途中で、debug ビルドでは DB 暗号化が既定で無効になる（Program.cs の DEBUG_MODE）ため、暗号化ありのケースが落ちました（Expected: True But was: False）。そこで、このケースに --disable-db-encryption=false を足しました。
+- PreloadSettingsSearchPathTests は純粋関数のテストです（portable モード、「!」による上書き、Exists の判定）。この関数は新しく追加したもので、変更前の red はコンパイルエラーになります。
+- ビルド: error はありません。CS86xx の警告は、既知の ControllerRpcServer.cs の CS8604 だけです（grep で確認）。
+
+ngclient（n2）:
+- node node_modules/@angular/cli/bin/ng.js test ngclient --watch=false --include=projects/ngclient/src/app/about/general/general.component.spec.ts
+  - 修正後: Tests 10 passed (10)
+  - red（general.component.ts と .html だけを戻して実行）: Tests 2 failed | 8 passed（"says the database is encrypted and lists the preload paths…" と "says the database is not encrypted" が失敗）
+- spec では本物の SysinfoState を使います。DuplicatiServer.getApiV1Systeminfo をスタブにして preload() を通し、描画結果を確かめます。
+- tsc -p projects/ngclient/tsconfig.spec.json --noEmit で、触ったファイルにエラーはありませんでした。prettier も（CRLF を除いて比較して）差分なしです。
+--- unverified:
+- ngclient の production ビルド（ng build。strict template の型チェックを含む）は実行していません。未検証です。
+- ブラウザで About ページの実際の見た目（余白や色）を確かめていません。未検証です。
+- Linux/macOS 上の実際の探索パスと、portable モードや DUPLICATI_PRELOAD_SETTINGS の「!」上書きを付けて起動したサーバーでの報告内容は確かめていません。これらは純粋関数の単体テストでだけ確認しています。
+- 新しい i18n 文言は、ロケールのカタログ（xlf/json）に追加していません。翻訳はメンテナーがまとめて更新する運用だと推測しています（推測）。
+- duplicati/documentation のドキュメントは更新していません。
+- ローカルの Windows 上で narrow テストを回しただけで、CI は実行していません。
+
+=== review:#6611 agent=a9260e3059ce61e6d
+--- problems:
+Nothing blocks either branch.
+
+Scope (検証済み, from gh issue view 6611 --comments): kenkendk wrote that "encrypted-fields" is the setting that says whether the database is encrypted, and that the loading paths are easy to get. He said tracking where each setting comes from is a separate feature. The reporter then narrowed the request to two things: "your database is [not] encrypted" and the list of loading paths. The branches implement exactly those two.
+
+duplicati 1f7448ac (feat/systeminfo-preload-paths):
+- Correct (検証済み by reading the code):
+  - DatabaseFieldsEncrypted reads ServerSettings.EncryptedFields (CONST.ENCRYPTED_FIELDS).
+  - GetSearchPaths is a straight move of the old portable-mode and "!" override logic. The loader and GetPreloadSettingsPaths both pass DataFolderManager.PORTABLE_MODE, so the report and the loader cannot disagree. Loader behaviour is unchanged.
+  - Exists uses the same rooted-and-file-exists check as the loader.
+- Compatible and safe: the change only adds required fields to the DTO. The response carries paths and booleans, never preload contents or keys.
+- Line endings: every touched blob, and the new file, is all-LF at base and at the branch tip (CR count 0, 検証済み).
+- Warnings: the only CS86xx warnings in the build are the six known CS8604 in ControllerRpcServer.cs (検証済み).
+- Nits, not blockers (推測):
+  - Exists shows whether the file exists now, not whether it was loaded at startup. That fits the issue's "where do I put preload.json" use.
+  - With the preload debug env var on, every systeminfo request prints the PreloadDebug console line. This is harmless.
+
+ngclient 224fab31 (feat/show-db-encryption-preload-paths):
+- The template shows nothing when an older server leaves the fields out, and a spec covers that case.
+- The new types in types.gen.ts follow the generator's layout (alphabetical, `Path: string | null`).
+- The committed blobs are LF, the same as at base.
+- Prettier finds no differences when run on the committed blobs with LF. It does warn on the working tree, but only because autocrlf=true checks the files out with CRLF.
+- The new i18n strings are not added to the locale files. Upstream syncs translations in separate commits ("Updated all localizations"), so this is expected (推測).
+
+Red runs: I did not re-run the failing-without-the-change runs myself, because this review was not allowed to edit the trees (未検証 by me).
+- The implementer reported them for both repos.
+- Reading the assertions, they should fail on base (推測): on base, TryGetProperty("DatabaseFieldsEncrypted") returns false, and the .database-encryption and .preload-paths elements do not exist.
+--- rerun:
+duplicati n2s at 1f7448ac:
+- dotnet build Duplicati/UnitTest/Duplicati.UnitTest.csproj: ビルドに成功しました, no errors. The only CS86xx warnings are the six known CS8604 in ControllerRpcServer.cs.
+- dotnet test --no-build --filter "FullyQualifiedName~PreloadSettingsSearchPathTests|FullyQualifiedName~SystemInfoReportsDatabaseEncryptionAndPreloadPaths": 成功! 失敗: 0、合格: 8、スキップ: 0、合計: 8.
+
+ngclient n2 at 224fab31:
+- ng test ngclient --watch=false --include=projects/ngclient/src/app/about/general/general.component.spec.ts: Test Files 1 passed, Tests 10 passed (10).
+- tsc -p projects/ngclient/tsconfig.spec.json --noEmit: no errors in general.component.* or types.gen.ts.
+- prettier --end-of-line lf on the committed blobs of general.component.{html,scss,ts,spec.ts}: no differences.
+
+Both worktrees were still clean (git status --short empty) after these runs.

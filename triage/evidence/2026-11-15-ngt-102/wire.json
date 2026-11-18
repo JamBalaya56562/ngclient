@@ -1,0 +1,106 @@
+[
+  {
+    "action": "Suppress",
+    "request": {
+      "Backup": {
+        "Name": "NGT102 Sync",
+        "Description": "",
+        "DBPath": "C:\\Users\\Jam\\Documents\\ngclient\\tmp\\ngt102-warning-job-type-20261115\\run-0ycDLl\\data\\DCSSIHEZRF.sqlite",
+        "Tags": [],
+        "TargetURL": "file:///C:/Users/Jam/Documents/ngclient/tmp/ngt102-warning-job-type-20261115/run-0ycDLl/remote",
+        "ConnectionStringID": -1,
+        "OperationType": "Sync",
+        "Enabled": false,
+        "Sources": [
+          "C:\\Users\\Jam\\Documents\\ngclient\\tmp\\ngt102-warning-job-type-20261115\\run-0ycDLl\\source\\"
+        ],
+        "Settings": [
+          {
+            "Name": "--no-encryption",
+            "Value": "true",
+            "Filter": ""
+          },
+          {
+            "Name": "--snapshot-policy",
+            "Value": "off",
+            "Filter": ""
+          },
+          {
+            "Name": "--ngt102-warning-probe",
+            "Value": "true",
+            "Filter": ""
+          },
+          {
+            "Name": "--suppress-warnings",
+            "Value": "UnsupportedOption",
+            "Filter": null
+          }
+        ],
+        "Filters": [],
+        "Metadata": {
+          "SourceFilesSize": "26",
+          "SourceFilesCount": "1",
+          "SourceSizeString": "26 bytes",
+          "LastSyncStarted": "20261115T064439Z",
+          "LastSyncFinished": "20261115T064440Z",
+          "LastSyncDuration": "00:00:01.4747093"
+        },
+        "AdditionalTargetURLs": []
+      }
+    },
+    "saved": {
+      "OperationType": "Sync",
+      "Enabled": false,
+      "suppressed": "UnsupportedOption"
+    }
+  },
+  {
+    "action": "Un-suppress",
+    "request": {
+      "Backup": {
+        "Name": "NGT102 Sync",
+        "Description": "",
+        "DBPath": "C:\\Users\\Jam\\Documents\\ngclient\\tmp\\ngt102-warning-job-type-20261115\\run-0ycDLl\\data\\DCSSIHEZRF.sqlite",
+        "Tags": [],
+        "TargetURL": "file:///C:/Users/Jam/Documents/ngclient/tmp/ngt102-warning-job-type-20261115/run-0ycDLl/remote",
+        "ConnectionStringID": -1,
+        "OperationType": "Sync",
+        "Enabled": false,
+        "Sources": [
+          "C:\\Users\\Jam\\Documents\\ngclient\\tmp\\ngt102-warning-job-type-20261115\\run-0ycDLl\\source\\"
+        ],
+        "Settings": [
+          {
+            "Name": "--no-encryption",
+            "Value": "true",
+            "Filter": ""
+          },
+          {
+            "Name": "--snapshot-policy",
+            "Value": "off",
+            "Filter": ""
+          },
+          {
+            "Name": "--ngt102-warning-probe",
+            "Value": "true",
+            "Filter": ""
+          }
+        ],
+        "Filters": [],
+        "Metadata": {
+          "SourceFilesSize": "26",
+          "SourceFilesCount": "1",
+          "SourceSizeString": "26 bytes",
+          "LastSyncStarted": "20261115T064439Z",
+          "LastSyncFinished": "20261115T064440Z",
+          "LastSyncDuration": "00:00:01.4747093"
+        },
+        "AdditionalTargetURLs": []
+      }
+    },
+    "saved": {
+      "OperationType": "Sync",
+      "Enabled": false
+    }
+  }
+]

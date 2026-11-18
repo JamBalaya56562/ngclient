@@ -1,0 +1,14 @@
+[WebServer] $ bun --bun sirv dist/ngclient/browser --single --host 127.0.0.1 --port 3000 --ignores ^/api --ignores ^/notifications
+
+Running 6 tests using 1 worker
+
+(node:1408) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › e2e\export-encryption.spec.ts:54:5 › turning export encryption off omits the retained password and downloads JSON (3.9s)
+  ok 2 [chromium] › e2e\export-encryption.spec.ts:72:7 › file export retains its selected encrypted=false options while obtaining a token (3.3s)
+  ok 3 [chromium] › e2e\export-encryption.spec.ts:72:7 › file export retains its selected encrypted=true options while obtaining a token (3.9s)
+  ok 4 [chromium] › e2e\export-encryption.spec.ts:92:5 › initial plaintext password export asks for approval and supports cancellation (2.8s)
+  ok 5 [chromium] › e2e\export-encryption.spec.ts:112:5 › encrypted export retains required, minimum-length and matching-password checks (3.0s)
+  ok 6 [chromium] › e2e\export-encryption.spec.ts:132:5 › global advanced options can be enabled with Space and included in the export request (2.5s)
+
+  6 passed (23.7s)

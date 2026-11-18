@@ -1,0 +1,16 @@
+[
+  {
+    "file": "projects/ngclient/src/app/core/components/file-tree/file-tree.component.html",
+    "before": "d3ebb54e659f35b8816f5c98a380e69ef2afdddb2b053cecfaf247ef7b16499f",
+    "after": "19c759267f39ad9918129747ab9130e40a3564e61789727c10aa4b085c9bf38b",
+    "normalized": "19c759267f39ad9918129747ab9130e40a3564e61789727c10aa4b085c9bf38b",
+    "lineEnding": "LF"
+  },
+  {
+    "file": "projects/ngclient/src/app/core/components/file-tree/file-tree.component.ts",
+    "before": "5489e7ec851f1777acbf97724d7186d795f3380adb7f1d610fca031695e73a97",
+    "after": "25042282d14f74dcca9fb9d28864bc8780f77d0dc30519b0b8073359537f1089",
+    "normalized": "25042282d14f74dcca9fb9d28864bc8780f77d0dc30519b0b8073359537f1089",
+    "lineEnding": "LF"
+  }
+]

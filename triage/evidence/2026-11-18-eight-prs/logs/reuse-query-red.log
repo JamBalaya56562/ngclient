@@ -1,0 +1,42 @@
+$ ng test ngclient --watch=false "--include=projects/ngclient/src/app/backup/backup-save.spec.ts"
+> Building...
+√ Building...
+Application bundle generation complete. [25.496 seconds] - 2026-11-18T02:02:14.055Z
+
+
+ RUN  v5.0.3 C:/Users/Jam/Documents/ngclient
+
+ ❯ |ngclient| projects/ngclient/src/app/backup/backup-save.spec.ts (36 tests | 1 failed) 552ms
+   ❯ backup save lifecycle (36)
+     × sends a chosen existing database only for the matching new destination 114ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |ngclient| projects/ngclient/src/app/backup/backup-save.spec.ts > backup save lifecycle > sends a chosen existing database only for the matching new destination
+AssertionError: expected undefined to deeply equal { existingdb: true }
+
+- Expected:
+{
+  "existingdb": true,
+}
+
++ Received:
+undefined
+
+ ❯ projects/ngclient/src/app/backup/backup-save.spec.ts:64:43
+     62|     state.submit();
+     63|     expect(create.mock.calls[0][0].body.Backup.DBPath).toBe('/shared.s…
+     64|     expect(create.mock.calls[0][0].query).toEqual({ existingdb: true }…
+       |                                           ^
+     65|     response.next({ ID: '42' });
+     66|     state.setTargetUrl('file:///other');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 35 passed (36)
+   Start at  11:02:24
+   Duration  48.84s (environment 94%, setup 2%, transform 2%, import 1%, tests 1%)
+
+error: script "test:ci" exited with code 1

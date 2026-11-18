@@ -1,0 +1,71 @@
+codex/command-editor-signal-fields: kpxpzqsw 4194f31c Bind command editor inputs through public Signal Forms adapters
+  @git: kpxpzqsw 4194f31c Bind command editor inputs through public Signal Forms adapters
+  @origin: kpxpzqsw 4194f31c Bind command editor inputs through public Signal Forms adapters
+codex/file-tree-reexpansion-coverage: sknlvrxn 3c0bd014 Cover keyboard reopening of loaded and empty folders
+  @git: sknlvrxn 3c0bd014 Cover keyboard reopening of loaded and empty folders
+  @origin: sknlvrxn 3c0bd014 Cover keyboard reopening of loaded and empty folders
+codex/guard-shared-database-deletion: rxtoxnks d5e305df Keep command-line shared databases when deleting a job
+  @git: rxtoxnks d5e305df Keep command-line shared databases when deleting a job
+  @origin: rxtoxnks d5e305df Keep command-line shared databases when deleting a job
+codex/live-backup-wizard-roundtrip: rnxyltos 1f0b5c0f Exercise wizard-created encrypted backups through a real restore
+  @git: rnxyltos 1f0b5c0f Exercise wizard-created encrypted backups through a real restore
+  @origin: rnxyltos 1f0b5c0f Exercise wizard-created encrypted backups through a real restore
+codex/native-console-connection-link: mulrxnll e4f22430 Use a native console connection link in destination forms
+  @git: mulrxnll e4f22430 Use a native console connection link in destination forms
+  @origin: mulrxnll e4f22430 Use a native console connection link in destination forms
+codex/pr-311-screenshots: ryslkwkx 26080ad6 Store issue 311 review images: main 8f401edd versus restore groups 3e98d5b9
+  @git: ryslkwkx 26080ad6 Store issue 311 review images: main 8f401edd versus restore groups 3e98d5b9
+  @origin: ryslkwkx 26080ad6 Store issue 311 review images: main 8f401edd versus restore groups 3e98d5b9
+codex/pr-637-screenshots: slwlsxwq 4b51aa1f Store the rebased source attribute exclusion review image
+  @git: slwlsxwq 4b51aa1f Store the rebased source attribute exclusion review image
+  @origin: slwlsxwq 4b51aa1f Store the rebased source attribute exclusion review image
+codex/pr-eight-evidence: yqqoxtnk/1 6192fc6e (divergent) Record publication CI results and confirm existing popup failures
+  @git: yqqoxtnk/1 6192fc6e (divergent) Record publication CI results and confirm existing popup failures
+  @origin: yqqoxtnk/1 6192fc6e (divergent) Record publication CI results and confirm existing popup failures
+codex/pr-review-screenshots: urkuryrx 193398fb Add Compact afterwards screenshots for PR 675
+  @git: urkuryrx 193398fb Add Compact afterwards screenshots for PR 675
+  @origin: urkuryrx 193398fb Add Compact afterwards screenshots for PR 675
+codex/remote-encryption-save-confirmation: nvlxwuwz e950991a Confirm new unencrypted remote backups before saving
+  @git: nvlxwuwz e950991a Confirm new unencrypted remote backups before saving
+  @origin: nvlxwuwz e950991a Confirm new unencrypted remote backups before saving
+codex/reuse-existing-local-database: ksomqooq f1d32843 Offer existing command-line databases for new backup destinations
+  @git: ksomqooq f1d32843 Offer existing command-line databases for new backup destinations
+  @origin: ksomqooq f1d32843 Offer existing command-line databases for new backup destinations
+codex/update-changelog-source: vwskmmqp d7c6eb75 Load the available update changelog from update notifications
+  @git: vwskmmqp d7c6eb75 Load the available update changelog from update notifications
+  @origin: vwskmmqp d7c6eb75 Load the available update changelog from update notifications
+dynamic-machine-server-url@upstream: usttzsxv 6b4fca59 Implement dynamic machineServerUrl
+experiment/status-page@upstream: rzkxwrvt 764ac592 (empty) Merge remote-tracking branch 'origin/main' into experiment/status-page
+feat/compact-progress: owwwqnro 735d2bd8 Show compact progress during a backup
+  @git: owwwqnro 735d2bd8 Show compact progress during a backup
+  @origin: owwwqnro 735d2bd8 Show compact progress during a backup
+feat/export-global-options: vuyttunx 62842460 Offer to include global advanced options in file exports
+  @git: vuyttunx 62842460 Offer to include global advanced options in file exports
+  @origin: vuyttunx 62842460 Offer to include global advanced options in file exports
+feat/restore-resume-drafts: lzuvslol e58afab5 List unfinished direct restores on the restore page
+  @git: lzuvslol e58afab5 List unfinished direct restores on the restore page
+  @origin: lzuvslol e58afab5 List unfinished direct restores on the restore page
+feat/run-all-backups@upstream: kqksvvxq 4b4fec46 Merge commit '6560c698e804ce641aa26cb8f4b0b4c1dc7aa329' into feat/run-all-backups
+feat/show-db-encryption-preload-paths: pnnvuzvv 16309d52 Show database encryption and preload paths on the About page
+  @git: pnnvuzvv 16309d52 Show database encryption and preload paths on the About page
+  @origin: pnnvuzvv 16309d52 Show database encryption and preload paths on the About page
+feat/skip-next-scheduled-run: pppzyqxv 99f9c040 Add a menu action to skip the next scheduled run
+  @git: pppzyqxv 99f9c040 Add a menu action to skip the next scheduled run
+  @origin: pppzyqxv 99f9c040 Add a menu action to skip the next scheduled run
+feature/add-compare-page@upstream: vrknymkk 5df18f32 Added a compare versions page
+feature/advanced-settings@upstream: kyxkynuk 6967ca97 Fix tsconfig
+feature/fix-dropping-icon@upstream: lsvpmsmv 3a3c2cbc Fixed dropping icon.
+feature/multi-root-file-tree-support@upstream: mrvrnsrq 5bf1802f Fix file tree and restore flow
+feature/reduce-backup-list-loading@upstream: koxroykl fba57281 Reduce the loading of the backup list.
+feature/remote-source-implementation@upstream: lyuxnlys fdb6dc5a (empty) Merge remote-tracking branch 'origin/main' into feature/remote-source-implementation
+feature/remove-providers@upstream: qlukuuvm a6b78ea0 Removed CloudFiles and Sia providers
+feature/support-filen-api-key@upstream: roqovyyq f706f296 Added support for getting and using Filen API key
+feature/support-single-task-pause-resume@upstream: kmnnszqw 2d6349f1 This adds support for pause/resume of a single task
+fix/397-naming@upstream: txlkqlkv 60afc971 fix: rename 'System settings' panel heading to 'Server settings' for consistency with tab name
+main: slvtylrw 0bcf3179 (empty) Merge pull request #757 from JamBalaya56562/codex/update-playwright-popup-fix
+  @git: slvtylrw 0bcf3179 (empty) Merge pull request #757 from JamBalaya56562/codex/update-playwright-popup-fix
+  @origin: slvtylrw 0bcf3179 (empty) Merge pull request #757 from JamBalaya56562/codex/update-playwright-popup-fix
+  @upstream: slvtylrw 0bcf3179 (empty) Merge pull request #757 from JamBalaya56562/codex/update-playwright-popup-fix
+triage: otwrlroo 776ba30e Record merged Playwright cleanup and rebased branch verification
+  @git: otwrlroo 776ba30e Record merged Playwright cleanup and rebased branch verification
+  @origin: otwrlroo 776ba30e Record merged Playwright cleanup and rebased branch verification

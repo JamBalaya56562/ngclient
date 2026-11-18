@@ -1,0 +1,128 @@
+import { test, expect } from '../../e2e/live/fixture';
+import { DatabaseSync } from 'node:sqlite';
+import { appendFileSync } from 'node:fs';
+import { mkdir, writeFile } from 'node:fs/promises';
+import { join, resolve, sep } from 'node:path';
+
+const root = resolve('tmp/ngt047-20261118');
+const record = (event: string, data: Record<string, unknown>) => {
+  const value = { event, serverVariant: process.env['NGT047_VARIANT'], ...data };
+  appendFileSync(join(root, 'events.jsonl'), JSON.stringify(value) + '\n');
+  console.log(JSON.stringify(value));
+};
+const cases = [
+  ['file', 'file://C:/Backup%20Files?future=a+b&future=two&flag&empty='],
+  ['ssh', 'ssh://fixture-user:fixture-secret@Example.COM:022/archive%2fpart?auth-password=p%2525&buffer-size=64MB&web-timeout=2m&future=a+b&future=two&flag&empty='],
+  ['webdav', 'webdavs://Example.COM/archive%2fpart?auth-username=fixture-user&auth-password=fixture%2525secret&future=a+b&future=two&flag&empty='],
+  ['s3', 's3://BucketName/archive?s3-server-name=s3.example.invalid&auth-password=fixture-secret&future=a+b&future=two&flag&empty='],
+  ['pcloud', 'pcloud://api.pcloud.com/Folder?authid=fixture-authid&future=a+b&future=two&flag&empty='],
+  ['unsupported', 'future-backend://example.invalid/archive?future=a+b&future=two&flag&empty='],
+  ['ftp-encoding', 'ftp://Example.COM/a%2Fb%20c?auth-username=u&empty=&plus=a+b&space=a%20b&double=%2520&auth-password=x%26y%3D&flag&dup=1&dup=2'],
+  ['interleaved-secrets', 's3://bucket/a%2Fb?AUTH-PASSWORD=one&keep=middle&auth-password=two&flag'],
+  ['file-at', 'file://C:\\@folder\\Backup%20Files?future=a+b&future=two&flag&empty='],
+] as const;
+const settings = [
+  { Name: '--no-encryption', Value: 'true' },
+  { Name: '--retry-delay', Value: '13s' },
+  { Name: '--fixture-option', Value: ' preserve + % and spaces ' },
+  { Name: '--fixture-empty', Value: '' },
+  { Name: '--exclude-files-attributes', Value: 'Hidden,System' },
+  { Name: '--dry-run', Value: 'false' },
+];
+function raw(directory: string, id: string) {
+  const db = new DatabaseSync(join(directory, 'data', 'Duplicati-server.sqlite'), { readOnly: true });
+  try { return db.prepare('SELECT TargetURL FROM Backup WHERE ID=?').get(Number(id))!.TargetURL as string; }
+  finally { db.close(); }
+}
+function options(job: any) {
+  return job.Backup.Settings.filter((x: any) => x.Name !== '--no-encryption' && settings.some(y => y.Name === x.Name))
+    .map(({ Name, Value }: any) => ({ Name, Value })).sort((a: any, b: any) => a.Name.localeCompare(b.Name));
+}
+async function seed(api: any, directory: string, label: string, url: string) {
+  const source = join(directory, 'source-' + label);
+  await mkdir(source, { recursive: true }); await writeFile(join(source, 'sample.txt'), 'Only isolated config round trips; no backup runs.');
+  const r = await api.post('/api/v1/backups', { data: { Backup: {
+    Name: label, Description: 'Original description', TargetURL: url, Sources: [source + sep],
+    Settings: settings, Filters: [], Tags: [], Metadata: {},
+  }, Schedule: null } });
+  expect(r.ok(), await r.text()).toBe(true);
+  const { ID } = await r.json(); expect(ID).toBeTruthy(); return String(ID);
+}
+async function get(api: any, id: string) {
+  const r = await api.get('/api/v1/backup/' + id); expect(r.ok(), await r.text()).toBe(true); return r.json();
+}
+for (const [label, url] of cases) {
+  test('API ' + label + ' preserves stored URL through GET PUT and allows explicit edits', async ({ liveServer }) => {
+    const { api, directory } = liveServer;
+    const info = await (await api.get('/api/v1/systeminfo')).json();
+    record('runtime', { case: label, version: info.ServerVersionName, runtime: info.CLRVersion });
+    if (process.env['NGT047_VARIANT']?.endsWith('net11')) expect(info.CLRVersion).toMatch(/(?:^|\s)11\./);
+    const id = await seed(api, directory, 'API-' + label, url);
+    const initial = raw(directory, id), before = await get(api, id), originalOptions = options(before);
+    const saved = await api.put('/api/v1/backup/' + id, { data: before });
+    expect(saved.ok(), await saved.text()).toBe(true);
+    const stored = raw(directory, id), after = await get(api, id);
+    record('api-roundtrip', { case: label, id, input: url, initialStored: initial, getUrl: before.Backup.TargetURL,
+      stored, unchanged: initial === stored, optionsUnchanged: JSON.stringify(options(after)) === JSON.stringify(originalOptions) });
+    expect.soft(stored).toBe(initial);
+    expect.soft(options(after)).toEqual(originalOptions);
+    after.Backup.TargetURL += '&fixture-explicit=changed%20value';
+    const edited = await api.put('/api/v1/backup/' + id, { data: after });
+    expect(edited.ok(), await edited.text()).toBe(true);
+    const editedStored = raw(directory, id);
+    record('api-explicit-edit', { case: label, stored: editedStored, expected: stored + '&fixture-explicit=changed%20value' });
+    expect.soft(editedStored).toBe(stored + '&fixture-explicit=changed%20value');
+  });
+}
+for (const [label, url] of cases.slice(0, 6)) {
+  test('UI ' + label + ' preserves URL and options across untouched save, reload and description edit', async ({ page, liveServer }) => {
+    test.setTimeout(120_000); page.setDefaultTimeout(20_000);
+    const { api, directory, password } = liveServer;
+    const info = await (await api.get('/api/v1/systeminfo')).json();
+    record('server', { version: info.ServerVersionName, runtime: info.CLRVersion, case: label });
+    if (process.env['NGT047_VARIANT']?.endsWith('net11')) expect(info.CLRVersion).toMatch(/(?:^|\s)11\./);
+    const id = await seed(api, directory, 'UI-' + label, url), initial = raw(directory, id);
+    const original = await get(api, id), originalOptions = options(original);
+    expect(originalOptions).toHaveLength(settings.length - 1);
+    const writes: any[] = [], unexpected: string[] = [], errors: string[] = [];
+    page.on('pageerror', x => errors.push(x.message));
+    page.on('request', req => {
+      const endpoint = new URL(req.url()).pathname;
+      if (req.method() === 'PUT' && endpoint === '/api/v1/backup/' + id) writes.push(req.postDataJSON());
+      if (req.method() === 'POST' && (/\/start$/.test(endpoint) || /\/test$/.test(endpoint) || /\/destination\/test$/.test(endpoint))) unexpected.push(endpoint);
+    });
+    await page.goto('/login'); await page.getByPlaceholder('Enter your password').fill(password);
+    await page.getByRole('button', { name: 'Login', exact: true }).click(); await expect(page).toHaveURL('/');
+    await page.goto('/backup/' + id + '/destination');
+    await expect(page.locator('app-single-destination')).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Save changes', exact: true })).toBeEnabled();
+    await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+    expect(writes).toHaveLength(0);
+    async function save(action: string, keyboard = false) {
+      const before = await get(api, id);
+      const pending = page.waitForResponse(r => r.request().method() === 'PUT' && new URL(r.url()).pathname === '/api/v1/backup/' + id);
+      const button = page.getByRole('button', { name: 'Save changes', exact: true });
+      if (keyboard) await button.press('Enter'); else await button.click();
+      const response = await pending; expect(response.ok(), await response.text()).toBe(true);
+      const body = response.request().postDataJSON(), after = await get(api, id), stored = raw(directory, id);
+      record('ui-save', { case: label, action, getUrl: before.Backup.TargetURL, putUrl: body.Backup.TargetURL,
+        outgoingUnchanged: body.Backup.TargetURL === before.Backup.TargetURL, stored, initialStored: initial,
+        storedUnchanged: stored === initial, optionsUnchanged: JSON.stringify(options(after)) === JSON.stringify(originalOptions) });
+      expect.soft(body.Backup.TargetURL).toBe(before.Backup.TargetURL);
+      expect.soft(stored).toBe(initial);
+      expect.soft(options(body)).toEqual(originalOptions); expect.soft(options(after)).toEqual(originalOptions);
+      for (const job of [body, after]) expect.soft(String(job.Backup.Settings.find((x: any) => x.Name === '--no-encryption')?.Value).toLowerCase()).toBe('true');
+      await expect(button).not.toHaveClass(/loading/);
+    }
+    await save('destination-untouched');
+    await page.reload(); await expect(page.getByRole('button', { name: 'Save changes', exact: true })).toBeEnabled();
+    await save('destination-hard-reload', true);
+    await page.getByRole('link', { name: 'General', exact: true }).click();
+    await page.getByPlaceholder('Your backup description').fill('Description changed without editing destination');
+    await save('general-description');
+    await page.reload(); await expect(page.getByPlaceholder('Your backup description')).toHaveValue('Description changed without editing destination');
+    expect(writes).toHaveLength(3); expect(unexpected).toEqual([]); expect(errors).toEqual([]);
+    if (label === 'ssh') await page.screenshot({ path: join(root, 'ssh-saved.png') });
+    record('ui-case-complete', { case: label, saves: writes.length, errors, unexpected });
+  });
+}

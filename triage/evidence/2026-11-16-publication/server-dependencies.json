@@ -1,0 +1,47 @@
+[
+  {
+    "branch": "feat/export-global-options",
+    "dependency": "0c242a335e6af90788f7c98a11b349d593d14a4b",
+    "url": "https://api.github.com/repos/duplicati/duplicati/compare/0c242a335e6af90788f7c98a11b349d593d14a4b...master",
+    "status": "diverged",
+    "ahead_by": 36,
+    "behind_by": 1,
+    "publication": "held"
+  },
+  {
+    "branch": "feat/skip-next-scheduled-run",
+    "dependency": "04f2dd08a",
+    "url": "https://api.github.com/repos/duplicati/duplicati/compare/04f2dd08a...master",
+    "status": "diverged",
+    "ahead_by": 36,
+    "behind_by": 1,
+    "publication": "held"
+  },
+  {
+    "branch": "feat/compact-progress",
+    "dependency": "999cb7176b59dc85b53363b69fa376599453883f",
+    "url": "https://api.github.com/repos/duplicati/duplicati/compare/999cb7176b59dc85b53363b69fa376599453883f...master",
+    "status": "behind",
+    "ahead_by": 0,
+    "behind_by": 1,
+    "publication": "held"
+  },
+  {
+    "branch": "feat/restore-resume-drafts",
+    "dependency": "5cc77ccda02786210d98b53c3eb65d702e352213",
+    "url": "https://api.github.com/repos/duplicati/duplicati/compare/5cc77ccda02786210d98b53c3eb65d702e352213...master",
+    "status": "behind",
+    "ahead_by": 0,
+    "behind_by": 1,
+    "publication": "held"
+  },
+  {
+    "branch": "feat/show-db-encryption-preload-paths",
+    "dependency": "0a056ef05b6155f90cfd3ce3c7a449aa650bd952",
+    "url": "https://api.github.com/repos/duplicati/duplicati/compare/0a056ef05b6155f90cfd3ce3c7a449aa650bd952...master",
+    "status": "behind",
+    "ahead_by": 0,
+    "behind_by": 1,
+    "publication": "held"
+  }
+]

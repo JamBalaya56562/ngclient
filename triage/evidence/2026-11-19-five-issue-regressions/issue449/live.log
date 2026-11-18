@@ -1,0 +1,8 @@
+
+Running 1 test using 1 worker
+
+(node:8784) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › e2e\live\cross-os-restore.spec.ts:7:1 › lists real foreign-OS folders as expandable and directly restores their selected contents (4.8s)
+
+  1 passed (8.8s)

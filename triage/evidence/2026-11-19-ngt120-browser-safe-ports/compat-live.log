@@ -1,0 +1,11 @@
+
+Running 2 tests using 1 worker
+
+(node:3080) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › e2e\live\auth-reconnect.spec.ts:10:7 › websocket › recovers from real token expiry and one failed refresh without reloading (1.3m)
+(node:8120) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 2 [chromium] › e2e\live\auth-reconnect.spec.ts:10:7 › longpoll › recovers from real token expiry and one failed refresh without reloading (1.2m)
+
+  2 passed (3.0m)

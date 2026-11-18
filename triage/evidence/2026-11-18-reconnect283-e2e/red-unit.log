@@ -1,0 +1,60 @@
+$ ng test ngclient --watch=false "--include=**/backups.refresh.spec.ts"
+> Building...
+√ Building...
+Application bundle generation complete. [21.164 seconds] - 2026-11-18T14:31:18.662Z
+
+
+ RUN  v5.0.3 C:/Users/Jam/Documents/ngclient
+
+ ❯ |ngclient| projects/ngclient/src/app/core/states/backups.refresh.spec.ts (6 tests | 1 failed) 85ms
+   ❯ BackupsState list refresh transport and caching (6)
+     × keeps the last list and permits retry without an unhandled error after a failed refresh 29ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |ngclient| projects/ngclient/src/app/core/states/backups.refresh.spec.ts > BackupsState list refresh transport and caching > keeps the last list and permits retry without an unhandled error after a failed refresh
+AssertionError: expected "vi.fn()" to not be called at all, but actually been called 1 times
+
+Received:
+
+  1st vi.fn() call:
+
+    Array [
+      Object {
+        "message": "Transient token refresh failure",
+        "status": 503,
+      },
+    ]
+
+
+Number of calls: 1
+
+ ❯ projects/ngclient/src/app/core/states/backups.refresh.spec.ts:120:34
+    118|       failed.error({ status: 503, message: 'Transient token refresh fa…
+    119|       await new Promise((resolve) => setTimeout(resolve, 0));
+    120|       expect.soft(unhandled).not.toHaveBeenCalled();
+       |                                  ^
+    121|       expect(state.backups()).toEqual(list);
+    122|       expect(state.backupsLoading()).toBe(false);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  |ngclient| projects/ngclient/src/app/core/states/backups.refresh.spec.ts > BackupsState list refresh transport and caching > keeps the last list and permits retry without an unhandled error after a failed refresh
+AssertionError: expected "vi.fn()" to be called 3 times, but got 2 times
+ ❯ projects/ngclient/src/app/core/states/backups.refresh.spec.ts:124:19
+    122|       expect(state.backupsLoading()).toBe(false);
+    123|       state.getBackups(true);
+    124|       expect(get).toHaveBeenCalledTimes(3);
+       |                   ^
+    125|       recovered.next([]);
+    126|       expect(state.backups()).toEqual([]);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 5 passed (6)
+   Start at  23:31:22
+   Duration  45.72s (environment 94%, setup 3%, import 1%, transform 1%)
+
+error: script "test:ci" exited with code 1

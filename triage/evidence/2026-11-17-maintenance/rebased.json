@@ -1,0 +1,62 @@
+[
+  {
+    "after": "7706fb3802d9d97a92887686be2da6a4b525b442",
+    "before": "d7af281a5636ba839717886290fe65eb733036bc",
+    "branch": "feat/compact-progress"
+  },
+  {
+    "after": "c9ef0c632d02d0aeda7f907275a7086ac9ad116f",
+    "before": "30e36ff5edf6409569421e7aa5cd8762510d41b4",
+    "branch": "feat/export-global-options"
+  },
+  {
+    "after": "8fb2fde2a84cc134d8bfa320b8dc0e1c7eef47e0",
+    "before": "1fd27e8ef139591473896558aa62afb338aaf1f5",
+    "branch": "feat/file-tree-partial-exclusion"
+  },
+  {
+    "after": "8fc77558945b6de7ea2ee771e33991090e76787d",
+    "before": "8ba12635a17127d4e3320c90755e2167fdb16af5",
+    "branch": "feat/last-run-failed-indicator"
+  },
+  {
+    "after": "947ea31ffca525c2fafb837240e2bedf7c2710d5",
+    "before": "22f5d3070066b3d55756a5fe89a72a821706ae99",
+    "branch": "feat/log-compare-previous-version"
+  },
+  {
+    "after": "9a598c53767d78d4ca54f2e717c39745cfd92ad7",
+    "before": "7e8122179c2b97945fbba87e7ccfa23a93fb81d8",
+    "branch": "feat/restore-resume-drafts"
+  },
+  {
+    "after": "d827c4653faa2957ec375dd1832e2758069543e1",
+    "before": "fab37158bba905a991840010f34578a2a356f6f0",
+    "branch": "feat/server-stored-theme"
+  },
+  {
+    "after": "624f0a31c6a0c81796eb5951c980e19d93a1b490",
+    "before": "3c1fc8834ef51ddf57566553b05003b809d7ecc7",
+    "branch": "feat/show-db-encryption-preload-paths"
+  },
+  {
+    "after": "321dd8cee474d192ca3238aa0eb53c3a577db17b",
+    "before": "0aa04f4eceb5681e894e97058feb6049e41928ca",
+    "branch": "feat/show-resolved-source-shortcut"
+  },
+  {
+    "after": "626c51025224bb8095773452515796f9c5ca6cf0",
+    "before": "34cb1512b49f3807b29dc092afa42614cba17c18",
+    "branch": "feat/skip-next-scheduled-run"
+  },
+  {
+    "after": "ebf1e65269ee7b05d0f2b6e2fe1371dd698e3a40",
+    "before": "96f572b348ece9119e659a35bb241e6604c5f103",
+    "branch": "feat/ssl-certificate-upload"
+  },
+  {
+    "after": "a857f76cb6f0db86d2a9228129c7abec32b22892",
+    "before": "8bb8501756008eb28383cfac8728281d4155a047",
+    "branch": "triage"
+  }
+]

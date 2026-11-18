@@ -1,0 +1,53 @@
+[
+  {
+    "kind": "server",
+    "version": "2.4.1.101",
+    "webroot": "C:\\Users\\Jam\\Documents\\duplicati\\Duplicati\\Server\\webroot",
+    "run": "C:\\Users\\Jam\\Documents\\ngclient\\tmp\\theme-legacy-20261118\\run-QMTdLX",
+    "base": "http://127.0.0.1:2834",
+    "other": "http://127.0.0.1:2835",
+    "client": "http://127.0.0.1:2836"
+  },
+  {
+    "kind": "served-controller",
+    "sha256": "b1ff1cc2c0c8c76b993e44374d97df68a53d0d0c61217a9ed75e197f53101b28",
+    "sourceMatches": true
+  },
+  {
+    "kind": "browser",
+    "version": "157.0.4341.60",
+    "channel": "msedge"
+  },
+  {
+    "kind": "ngax-normal-reload",
+    "theme": "dark",
+    "storage": {}
+  },
+  {
+    "kind": "ngax-theme-cookie",
+    "cookie": {
+      "value": "dark",
+      "path": "/ngax",
+      "expires": 1829519606.649923,
+      "lifetimeDays": 399.99999240651726
+    }
+  },
+  {
+    "kind": "ngax-after-other-port-saved-light",
+    "actual": "styles/default.css",
+    "expectedIndependent": "styles/dark.css"
+  },
+  {
+    "kind": "ngax-after-theme-cookie-removed",
+    "actual": "styles/default.css",
+    "expectedPersistent": "styles/dark.css"
+  },
+  {
+    "kind": "ngclient-after-cookie-removal",
+    "theme": "dark",
+    "stored": "true"
+  },
+  {
+    "kind": "completed"
+  }
+]

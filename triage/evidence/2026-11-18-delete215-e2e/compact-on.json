@@ -1,0 +1,148 @@
+{
+  "compact": true,
+  "requests": [
+    {
+      "BackupId": "8",
+      "Versions": [
+        1
+      ],
+      "SuppressCompact": false
+    }
+  ],
+  "before": [
+    {
+      "Version": 0,
+      "Time": "2026-11-18T11:45:54Z",
+      "IsFullBackup": true,
+      "FileCount": 3,
+      "FileSizes": 52,
+      "Label": null
+    },
+    {
+      "Version": 1,
+      "Time": "2026-11-18T11:45:52Z",
+      "IsFullBackup": true,
+      "FileCount": 37,
+      "FileSizes": 20889652,
+      "Label": null
+    },
+    {
+      "Version": 2,
+      "Time": "2026-11-18T11:45:51Z",
+      "IsFullBackup": true,
+      "FileCount": 3,
+      "FileSizes": 52,
+      "Label": null
+    }
+  ],
+  "after": [
+    {
+      "Version": 0,
+      "Time": "2026-11-18T11:45:54Z",
+      "IsFullBackup": true,
+      "FileCount": 3,
+      "FileSizes": 52,
+      "Label": null
+    },
+    {
+      "Version": 1,
+      "Time": "2026-11-18T11:45:51Z",
+      "IsFullBackup": true,
+      "FileCount": 3,
+      "FileSizes": 52,
+      "Label": null
+    }
+  ],
+  "beforeBlocks": [
+    "duplicati-b0ac0e59ee71545b8b457309aab226b0d.dblock.zip",
+    "duplicati-b0c5e47d0634449609f9a2c5058889550.dblock.zip",
+    "duplicati-b2006cc34e8664b99b3121e4d335f324f.dblock.zip",
+    "duplicati-b2169f3e085ca4c5db40902f55d9c2256.dblock.zip",
+    "duplicati-b31426b37c02a484a82e7d4b752382e2b.dblock.zip",
+    "duplicati-b34c07d712ae945af8a48456100eeef31.dblock.zip",
+    "duplicati-b39bd300a6f8042f395e38e681e8ae6d0.dblock.zip",
+    "duplicati-b4b3fdd570ad142da947039b81f679d0e.dblock.zip",
+    "duplicati-b684b83eaa31845bea052eb0987747e65.dblock.zip",
+    "duplicati-b72df8b80c60a400783b66939264c62c7.dblock.zip",
+    "duplicati-b80c04a3f8a6046639e312f9405c3ec5e.dblock.zip",
+    "duplicati-b831f570cba5f4d6bb3d102b66d8a568d.dblock.zip",
+    "duplicati-b8e73e5d26c35491e8e5b6ff21913eab3.dblock.zip",
+    "duplicati-b9397a1a71b6f49ceb966cc2a81e8074d.dblock.zip",
+    "duplicati-b9a02fcdc213c40b394f831bf58b42a9f.dblock.zip",
+    "duplicati-b9cf92f57c9704ac4b4d8a2c765e2ca73.dblock.zip",
+    "duplicati-ba007357cb5fc43c994eeeaa088fb3b50.dblock.zip",
+    "duplicati-ba1ca2f332ad042aba6b06f7fa0373c93.dblock.zip",
+    "duplicati-ba2263902a1664b05aa25f38954d5694d.dblock.zip",
+    "duplicati-ba2e450c2504b4e4e847c00e715b2b24f.dblock.zip",
+    "duplicati-ba8b88f2b8b1f4b56b12fc86989aa92a7.dblock.zip",
+    "duplicati-bfe1966a1f022445b9b1fbc4c0d5373d8.dblock.zip",
+    "duplicati-bfeb2b3d87e4c415988b38b33050eae42.dblock.zip"
+  ],
+  "afterBlocks": [
+    "duplicati-b39bd300a6f8042f395e38e681e8ae6d0.dblock.zip",
+    "duplicati-b831f570cba5f4d6bb3d102b66d8a568d.dblock.zip"
+  ],
+  "compactResults": {
+    "DeletedFileCount": 42,
+    "DownloadedFileCount": 0,
+    "UploadedFileCount": 0,
+    "DeletedFileSize": 20993393,
+    "DownloadedFileSize": 0,
+    "UploadedFileSize": 0,
+    "Dryrun": false,
+    "VacuumResults": null,
+    "MainOperation": "Compact",
+    "ParsedResult": "Success",
+    "Interrupted": false,
+    "Version": "1.0.0.0 (Current)",
+    "EndTime": "2026-11-18T11:45:58.149403Z",
+    "BeginTime": "2026-11-18T11:45:57.7339058Z",
+    "Duration": "00:00:00.4154972",
+    "MessagesActualLength": 0,
+    "WarningsActualLength": 0,
+    "ErrorsActualLength": 0,
+    "Messages": [],
+    "Warnings": [],
+    "Errors": [],
+    "BackendStatistics": {
+      "RemoteCalls": 45,
+      "BytesUploaded": 0,
+      "BytesDownloaded": 0,
+      "FilesUploaded": 0,
+      "FilesDownloaded": 0,
+      "FilesDeleted": 43,
+      "FoldersCreated": 0,
+      "RetryAttempts": 0,
+      "UnknownFileSize": 0,
+      "UnknownFileCount": 0,
+      "KnownFileCount": 49,
+      "KnownFileSize": 21004220,
+      "KnownFilesets": 3,
+      "LastBackupDate": "2026-11-18T20:45:54+09:00",
+      "BackupListCount": 3,
+      "TotalQuotaSpace": 1021945311232,
+      "FreeQuotaSpace": 160224395264,
+      "AssignedQuotaSpace": -1,
+      "ReportedQuotaError": false,
+      "ReportedQuotaWarning": false,
+      "UploadCompleted": null,
+      "ParsedResult": "Success",
+      "Interrupted": false,
+      "Version": "1.0.0.0 (Current)",
+      "MessagesActualLength": 0,
+      "WarningsActualLength": 0,
+      "ErrorsActualLength": 0,
+      "Messages": [],
+      "Warnings": [],
+      "Errors": []
+    }
+  },
+  "restoredVersions": [
+    0,
+    1
+  ],
+  "server": {
+    "version": "1.0.0.0 - debug",
+    "runtime": "11.0.0"
+  }
+}

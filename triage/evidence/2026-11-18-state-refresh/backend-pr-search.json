@@ -1,0 +1,22 @@
+[
+  {
+    "prs": [],
+    "branch": "feat/export-global-options"
+  },
+  {
+    "prs": [],
+    "branch": "feat/skip-next-scheduled-run"
+  },
+  {
+    "prs": [],
+    "branch": "feat/compact-progress"
+  },
+  {
+    "prs": [],
+    "branch": "feat/list-temporary-backups"
+  },
+  {
+    "prs": [],
+    "branch": "feat/systeminfo-preload-paths"
+  }
+]

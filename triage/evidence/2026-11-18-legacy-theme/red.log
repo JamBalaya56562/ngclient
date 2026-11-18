@@ -1,0 +1,91 @@
+
+Running 2 tests using 1 worker
+
+(node:21472) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 tmp\ngax-theme-workspace\playwright-tests\ngaxPages.spec.ts:169:5 › ngax keeps a saved theme when the legacy cookie disappears or changes (9.7s)
+(node:18924) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  2 tmp\ngax-theme-workspace\playwright-tests\ngaxPages.spec.ts:182:5 › ngax migrates an existing theme cookie into browser storage (3.5s)
+
+
+  1) tmp\ngax-theme-workspace\playwright-tests\ngaxPages.spec.ts:169:5 › ngax keeps a saved theme when the legacy cookie disappears or changes 
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator:  locator('link[ng-href]')
+    Expected: "styles/dark.css"
+    Received: "styles/default.css"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveAttribute" locator('link[ng-href]') with timeout 5000ms
+      - waiting for locator('link[ng-href]')
+        13 × locator resolved to <link type="text/css" rel="stylesheet" href="styles/default.css" ng-href="styles/default.css"/>
+           - unexpected value "styles/default.css"
+
+
+      172 |   await context.clearCookies({ name: "current-theme" });
+      173 |   await page.reload();
+    > 174 |   await expect(page.locator("link[ng-href]")).toHaveAttribute("href", "styles/dark.css");
+          |                                               ^
+      175 |   // Cookies are shared between ports on the same host; localStorage is not.
+      176 |   await context.addCookies([{ name: "current-theme", value: "default", url: `${SERVER_URL}/ngax/` }]);
+      177 |   await page.reload();
+        at C:\Users\Jam\Documents\ngclient\tmp\ngax-theme-workspace\playwright-tests\ngaxPages.spec.ts:174:47
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    tmp\theme-legacy-20261118\run-chHYGC\test-results\ngaxPages-ngax-keeps-a-sav-50022-ookie-disappears-or-changes\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    tmp\theme-legacy-20261118\run-chHYGC\test-results\ngaxPages-ngax-keeps-a-sav-50022-ookie-disappears-or-changes\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: tmp\theme-legacy-20261118\run-chHYGC\test-results\ngaxPages-ngax-keeps-a-sav-50022-ookie-disappears-or-changes\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    tmp\theme-legacy-20261118\run-chHYGC\test-results\ngaxPages-ngax-keeps-a-sav-50022-ookie-disappears-or-changes\trace.zip
+    Usage:
+
+        npx playwright show-trace tmp\theme-legacy-20261118\run-chHYGC\test-results\ngaxPages-ngax-keeps-a-sav-50022-ookie-disappears-or-changes\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tmp\ngax-theme-workspace\playwright-tests\ngaxPages.spec.ts:182:5 › ngax migrates an existing theme cookie into browser storage 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "dark"
+    Received: null
+
+      184 |   await openNgax(page, "settings");
+      185 |   await expect(page.locator("link[ng-href]")).toHaveAttribute("href", "styles/dark.css");
+    > 186 |   expect(await page.evaluate((key) => localStorage.getItem(key), THEME_STORAGE_KEY)).toBe("dark");
+          |                                                                                      ^
+      187 |   await context.clearCookies({ name: "current-theme" });
+      188 |   await page.reload();
+      189 |   await expect(page.locator("link[ng-href]")).toHaveAttribute("href", "styles/dark.css");
+        at C:\Users\Jam\Documents\ngclient\tmp\ngax-theme-workspace\playwright-tests\ngaxPages.spec.ts:186:86
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    tmp\theme-legacy-20261118\run-chHYGC\test-results\ngaxPages-ngax-migrates-an-e2240-cookie-into-browser-storage\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    tmp\theme-legacy-20261118\run-chHYGC\test-results\ngaxPages-ngax-migrates-an-e2240-cookie-into-browser-storage\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: tmp\theme-legacy-20261118\run-chHYGC\test-results\ngaxPages-ngax-migrates-an-e2240-cookie-into-browser-storage\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    tmp\theme-legacy-20261118\run-chHYGC\test-results\ngaxPages-ngax-migrates-an-e2240-cookie-into-browser-storage\trace.zip
+    Usage:
+
+        npx playwright show-trace tmp\theme-legacy-20261118\run-chHYGC\test-results\ngaxPages-ngax-migrates-an-e2240-cookie-into-browser-storage\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    tmp\ngax-theme-workspace\playwright-tests\ngaxPages.spec.ts:169:5 › ngax keeps a saved theme when the legacy cookie disappears or changes 
+    tmp\ngax-theme-workspace\playwright-tests\ngaxPages.spec.ts:182:5 › ngax migrates an existing theme cookie into browser storage 

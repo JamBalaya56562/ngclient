@@ -1,0 +1,83 @@
+[
+  {
+    "event": "server",
+    "data": {
+      "version": "1.0.0.0 - debug",
+      "runtime": "11.0.0"
+    }
+  },
+  {
+    "event": "fixture-damaged",
+    "data": {
+      "id": "1",
+      "healthy": "2026-11-18T15:06:02Z",
+      "newest": "2026-11-18T15:06:05Z",
+      "missing": "duplicati-b85376fe7e2324b12a8788a8486cc1f50.dblock.zip",
+      "bytes": 1027645
+    }
+  },
+  {
+    "event": "listed",
+    "data": {
+      "listed": {
+        "PageInfo": {
+          "Page": 1,
+          "PageSize": 1,
+          "Total": 1,
+          "Pages": 1
+        },
+        "Data": [
+          {
+            "FilesetID": 0,
+            "FilesetTime": "2026-11-18T15:06:05Z",
+            "Files": [
+              {
+                "Path": "C:\\Users\\Jam\\Documents\\ngclient\\tmp\\five-close-20261118\\issue217\\results\\live-server-kpiGWh\\fixture-HyD80t\\source\\damaged.bin",
+                "Size": 3145728
+              }
+            ]
+          }
+        ],
+        "Success": true,
+        "Error": null,
+        "StatusCode": "OK"
+      }
+    }
+  },
+  {
+    "event": "unchanged-before-confirm",
+    "data": {
+      "purgeRequests": 0,
+      "volumeHashes": 11,
+      "catalogHash": "ecd155f5e80e3c2b51a1954b7c4fa60d4ae041ea6ad7732318c9c275805ba274"
+    }
+  },
+  {
+    "event": "purge-completed",
+    "data": {
+      "id": "1",
+      "purgeTask": 9,
+      "before": [
+        "2026-11-18T15:06:05Z",
+        "2026-11-18T15:06:02Z"
+      ],
+      "after": [
+        "2026-11-18T15:06:06Z",
+        "2026-11-18T15:06:02Z"
+      ],
+      "healthyVersion": 1,
+      "brokenRemaining": 0
+    }
+  },
+  {
+    "event": "restore-verified",
+    "data": {
+      "restoreTask": 15,
+      "healthyTime": "2026-11-18T15:06:02Z",
+      "files": [
+        "healthy.txt"
+      ],
+      "sha256": "2436a5fcd7e1c083d0ffb0623c9d67c77660623cf1f9a3cea60c6cff9910fd28"
+    }
+  }
+]

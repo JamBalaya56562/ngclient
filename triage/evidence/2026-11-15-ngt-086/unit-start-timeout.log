@@ -1,0 +1,31 @@
+> Building...
+√ Building...
+Application bundle generation complete. [101.880 seconds] - 2026-11-15T04:50:58.202Z
+
+
+ RUN  v5.0.3 C:/Users/Jam/Documents/ngclient
+
+⎯⎯⎯⎯⎯⎯ Unhandled Errors ⎯⎯⎯⎯⎯⎯
+
+Vitest caught 1 unhandled error during the test run.
+This might cause false positive tests. Resolve unhandled errors to make sure your tests are not affected.
+
+⎯⎯⎯⎯⎯⎯ Unhandled Error ⎯⎯⎯⎯⎯⎯⎯
+Error: [vitest-pool]: Failed to start forks worker for test files C:/Users/Jam/Documents/ngclient/projects/ngclient/src/app/home/home.component.spec.ts, C:/Users/Jam/Documents/ngclient/projects/ngclient/src/app/core/states/sysinfo.state.spec.ts, C:/Users/Jam/Documents/ngclient/projects/ngclient/src/app/core/states/backups.skip-next-run.spec.ts.
+ ❯ node_modules/vitest/dist/chunks/index.DpLw24bj.js:11538:94
+ ❯ Pool.schedule node_modules/vitest/dist/chunks/index.DpLw24bj.js:11538:5
+
+Caused by: Error: [vitest-pool-runner]: Timeout waiting for worker to respond
+ ❯ Timeout.<anonymous> node_modules/vitest/dist/chunks/index.DpLw24bj.js:11035:58
+ ❯ listOnTimeout node:internal/timers:685:17
+ ❯ processTimers node:internal/timers:618:7
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+
+
+ Test Files  no tests
+      Tests  no tests
+     Errors  1 error
+   Start at  13:51:15
+   Duration  60.12s
+

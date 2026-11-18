@@ -1,0 +1,102 @@
+
+Running 5 tests using 1 worker
+
+(node:27336) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › e2e\delete-backup.spec.ts:50:7 › Sync job deletion › omits remote deletion while keeping local database deletion available (5.5s)
+  x  2 [chromium] › e2e\delete-backup.spec.ts:72:9 › backup deletion › export link opens a separate tab with ControlOrMeta and Cancel leaves without deleting (8.7s)
+(node:1868) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  3 [chromium] › e2e\delete-backup.spec.ts:72:9 › backup deletion › export link opens a separate tab with middle and Cancel leaves without deleting (10.5s)
+(node:14476) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 4 [chromium] › e2e\delete-backup.spec.ts:103:7 › backup deletion › cancels confirmation without deleting and then sends the selected options (5.0s)
+  ok 5 [chromium] › e2e\delete-backup.spec.ts:132:7 › shared command-line database deletion › keeps a shared database while deleting only the job configuration (3.4s)
+
+
+  1) [chromium] › e2e\delete-backup.spec.ts:72:9 › backup deletion › export link opens a separate tab with ControlOrMeta and Cancel leaves without deleting 
+
+    Error: expect(page).toHaveTitle(expected) failed
+
+    Expected: "Export configuration target"
+    Received: "Duplicati ngclient"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveTitle" with timeout 5000ms
+        14 × locator resolved to <html lang="en" dir="ltr" class="light" data-beasties-container="">…</html>
+           - unexpected value "Duplicati ngclient"
+
+
+      87 |       const popup = await newTab;
+      88 |       await expect(popup).toHaveURL(/\/backup\/42\/export$/);
+    > 89 |       await expect(popup).toHaveTitle('Export configuration target');
+         |                           ^
+      90 |       await popup.close();
+      91 |       await expect(page).toHaveURL('/backup/42/delete');
+      92 |       await expect(page.getByRole('dialog')).toHaveCount(0);
+        at C:\Users\Jam\Documents\ngclient\e2e\delete-backup.spec.ts:89:27
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    tmp\eight-prs-20261118\deletion-results\delete-backup-backup-delet-968a2-cel-leaves-without-deleting-chromium\test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    tmp\eight-prs-20261118\deletion-results\delete-backup-backup-delet-968a2-cel-leaves-without-deleting-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: tmp\eight-prs-20261118\deletion-results\delete-backup-backup-delet-968a2-cel-leaves-without-deleting-chromium\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    tmp\eight-prs-20261118\deletion-results\delete-backup-backup-delet-968a2-cel-leaves-without-deleting-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace tmp\eight-prs-20261118\deletion-results\delete-backup-backup-delet-968a2-cel-leaves-without-deleting-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [chromium] › e2e\delete-backup.spec.ts:72:9 › backup deletion › export link opens a separate tab with middle and Cancel leaves without deleting 
+
+    Error: expect(page).toHaveTitle(expected) failed
+
+    Expected: "Export configuration target"
+    Received: "Duplicati ngclient"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveTitle" with timeout 5000ms
+        13 × locator resolved to <html lang="en" dir="ltr" class="light" data-beasties-container="">…</html>
+           - unexpected value "Duplicati ngclient"
+
+
+      87 |       const popup = await newTab;
+      88 |       await expect(popup).toHaveURL(/\/backup\/42\/export$/);
+    > 89 |       await expect(popup).toHaveTitle('Export configuration target');
+         |                           ^
+      90 |       await popup.close();
+      91 |       await expect(page).toHaveURL('/backup/42/delete');
+      92 |       await expect(page.getByRole('dialog')).toHaveCount(0);
+        at C:\Users\Jam\Documents\ngclient\e2e\delete-backup.spec.ts:89:27
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    tmp\eight-prs-20261118\deletion-results\delete-backup-backup-delet-b65da-cel-leaves-without-deleting-chromium\test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    tmp\eight-prs-20261118\deletion-results\delete-backup-backup-delet-b65da-cel-leaves-without-deleting-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: tmp\eight-prs-20261118\deletion-results\delete-backup-backup-delet-b65da-cel-leaves-without-deleting-chromium\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    tmp\eight-prs-20261118\deletion-results\delete-backup-backup-delet-b65da-cel-leaves-without-deleting-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace tmp\eight-prs-20261118\deletion-results\delete-backup-backup-delet-b65da-cel-leaves-without-deleting-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    [chromium] › e2e\delete-backup.spec.ts:72:9 › backup deletion › export link opens a separate tab with ControlOrMeta and Cancel leaves without deleting 
+    [chromium] › e2e\delete-backup.spec.ts:72:9 › backup deletion › export link opens a separate tab with middle and Cancel leaves without deleting 
+  3 passed (42.7s)

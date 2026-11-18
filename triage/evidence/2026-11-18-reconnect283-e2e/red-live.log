@@ -1,0 +1,62 @@
+
+Running 13 tests using 1 worker
+
+(node:15112) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [chromium] › e2e\live\auth-reconnect.spec.ts:10:7 › websocket › recovers from real token expiry without reloading (1.3m)
+  ok  2 [chromium] › e2e\live\auth-reconnect.spec.ts:10:7 › websocket › recovers from real token expiry and one failed refresh without reloading (1.3m)
+(node:14224) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  3 [chromium] › e2e\live\auth-reconnect.spec.ts:10:7 › longpoll › recovers from real token expiry without reloading (1.1m)
+  x   4 [chromium] › e2e\live\auth-reconnect.spec.ts:10:7 › longpoll › recovers from real token expiry and one failed refresh without reloading (1.2m)
+(node:34448) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  5 [chromium] › e2e\live\backup-restore.spec.ts:15:3 › backs up unencrypted local files and restores original contents (16.3s)
+  ok  6 [chromium] › e2e\live\backup-restore.spec.ts:15:3 › backs up AES-encrypted local files and restores original contents (11.9s)
+  ok  7 [chromium] › e2e\live\backup-restore.spec.ts:15:3 › backs up AES-encrypted local files and restores original contents without saved settings (15.9s)
+  ok  8 [chromium] › e2e\live\backup-restore.spec.ts:15:3 › backs up AES-encrypted local files and restores original contents after correcting a wrong passphrase (16.9s)
+  ok  9 [chromium] › e2e\live\backup-restore.spec.ts:15:3 › backs up AES-encrypted local files and restores original contents after leaving the passphrase empty (18.2s)
+  ok 10 [chromium] › e2e\live\backup-restore.spec.ts:15:3 › backs up AES-encrypted local files and restores original contents after creating it with the wizard (11.9s)
+  ok 11 [chromium] › e2e\live\delete-versions.spec.ts:8:3 › deletes only the selected version and restores the survivors with compaction off (13.6s)
+  ok 12 [chromium] › e2e\live\delete-versions.spec.ts:8:3 › deletes only the selected version and restores the survivors with compaction on (13.0s)
+  ok 13 [chromium] › e2e\live\editor-persistence.spec.ts:6:1 › saves an existing job from another editor page and retains settings after reload (4.2s)
+
+
+  1) [chromium] › e2e\live\auth-reconnect.spec.ts:10:7 › longpoll › recovers from real token expiry and one failed refresh without reloading 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 3
+
+    - Array []
+    + Array [
+    +   "Object",
+    + ]
+
+      157 |           await expect(page.getByRole('heading', { name: 'Reconnecting...', exact: true })).toHaveCount(0);
+      158 |           expect(await page.evaluate(() => performance.timeOrigin)).toBe(origin);
+    > 159 |           expect(errors).toEqual([]);
+          |                          ^
+      160 |           expect(injected).toBe(transient);
+      161 |           const evidence = testInfo.outputPath('auth-reconnect-results.json');
+      162 |           await writeFile(
+        at C:\Users\Jam\Documents\ngclient\e2e\live\auth-reconnect.spec.ts:159:26
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    tmp\live-reconnect283-20261118\results\auth-reconnect-longpoll-re-41fdf-d-refresh-without-reloading-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: tmp\live-reconnect283-20261118\results\auth-reconnect-longpoll-re-41fdf-d-refresh-without-reloading-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    tmp\live-reconnect283-20261118\results\auth-reconnect-longpoll-re-41fdf-d-refresh-without-reloading-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace tmp\live-reconnect283-20261118\results\auth-reconnect-longpoll-re-41fdf-d-refresh-without-reloading-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [chromium] › e2e\live\auth-reconnect.spec.ts:10:7 › longpoll › recovers from real token expiry and one failed refresh without reloading 
+  12 passed (8.4m)
