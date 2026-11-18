@@ -1,0 +1,85 @@
+[
+  {
+    "kind": "server",
+    "version": "2.4.1.101",
+    "run": "C:\\Users\\Jam\\Documents\\ngclient\\tmp\\ngt087-counts-20261115\\run-fCPEOA"
+  },
+  {
+    "kind": "source-ready",
+    "files": 12000,
+    "bytes": 24576000,
+    "source": "C:\\Users\\Jam\\Documents\\ngclient\\tmp\\ngt087-counts-20261115\\run-ShhLfj\\source"
+  },
+  {
+    "kind": "backup-started",
+    "taskId": 2
+  },
+  {
+    "kind": "locale-captured",
+    "locale": "en-US",
+    "count": 1800,
+    "formatted": "1,800",
+    "text": "NGT-087 counts - Counting (1,800 files found, 3.69 MB)",
+    "phase": "Backup_ProcessingFiles",
+    "stillCounting": true,
+    "total": 1800,
+    "processed": 121
+  },
+  {
+    "kind": "locale-captured",
+    "locale": "de",
+    "count": 1800,
+    "formatted": "1.800",
+    "text": "NGT-087 counts - Counting (1.800 files found, 3,69 MB)",
+    "phase": "Backup_ProcessingFiles",
+    "stillCounting": true,
+    "total": 1800,
+    "processed": 121
+  },
+  {
+    "kind": "completed",
+    "finished": {
+      "Status": "Completed",
+      "ID": 2,
+      "TaskStarted": "2026-11-15T14:32:47.8919189+09:00",
+      "TaskFinished": "2026-11-15T14:34:18.497254+09:00",
+      "ErrorMessage": null,
+      "Exception": null
+    },
+    "versions": [
+      {
+        "Version": 0,
+        "Time": "2026-11-15T05:32:48Z",
+        "IsFullBackup": true,
+        "FileCount": 12021,
+        "FileSizes": 24576000,
+        "Label": null
+      }
+    ],
+    "captures": {
+      "en-US": {
+        "count": 1800,
+        "formatted": "1,800",
+        "text": "NGT-087 counts - Counting (1,800 files found, 3.69 MB)",
+        "phase": "Backup_ProcessingFiles",
+        "stillCounting": true,
+        "total": 1800,
+        "processed": 121
+      },
+      "de": {
+        "count": 1800,
+        "formatted": "1.800",
+        "text": "NGT-087 counts - Counting (1.800 files found, 3,69 MB)",
+        "phase": "Backup_ProcessingFiles",
+        "stillCounting": true,
+        "total": 1800,
+        "processed": 121
+      }
+    },
+    "pageErrors": []
+  },
+  {
+    "kind": "cleanup",
+    "remainingJobs": 0
+  }
+]

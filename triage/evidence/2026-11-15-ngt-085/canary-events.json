@@ -1,0 +1,62 @@
+[
+  {
+    "kind": "server",
+    "version": "2.4.1.101",
+    "OSType": "Windows",
+    "supported": false,
+    "run": "C:\\Users\\Jam\\Documents\\ngclient\\tmp\\ngt085-export-20261115\\run-Y4U7AM"
+  },
+  {
+    "kind": "case-passed",
+    "mode": "default",
+    "supported": false,
+    "filename": "Backup-duplicati-config.json",
+    "includedGlobal": false,
+    "includedPassword": false,
+    "jobBlocksize": "50kb"
+  },
+  {
+    "kind": "case-passed",
+    "mode": "include",
+    "supported": false,
+    "filename": "Backup-duplicati-config.json",
+    "includedGlobal": false,
+    "includedPassword": false,
+    "jobBlocksize": "50kb"
+  },
+  {
+    "kind": "case-passed",
+    "mode": "passwords",
+    "supported": false,
+    "filename": "Backup-duplicati-config.json",
+    "includedGlobal": false,
+    "includedPassword": false,
+    "jobBlocksize": "50kb"
+  },
+  {
+    "kind": "case-passed",
+    "mode": "encrypted",
+    "supported": false,
+    "filename": "Backup-duplicati-config.aes",
+    "includedGlobal": false,
+    "includedPassword": false,
+    "jobBlocksize": "50kb"
+  },
+  {
+    "kind": "case-passed",
+    "mode": "command-line",
+    "globalControlHidden": true,
+    "globalMailPresent": true
+  },
+  {
+    "kind": "completed",
+    "cases": 5,
+    "supported": false,
+    "pageErrors": [],
+    "storedJobUnchanged": true
+  },
+  {
+    "kind": "cleanup",
+    "remainingJobs": 0
+  }
+]

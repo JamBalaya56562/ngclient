@@ -1,0 +1,267 @@
+{
+  "mode": "websocket",
+  "transient": false,
+  "tokenLifetimeSeconds": 60,
+  "expiredTokenStatus": 401,
+  "closeCodes": [
+    1006,
+    4401
+  ],
+  "longpollRequests": 0,
+  "expiredAt": 1795012637777,
+  "refreshes": [
+    200
+  ],
+  "polls": [],
+  "frames": [
+    {
+      "socket": 1,
+      "type": "auth",
+      "success": true
+    },
+    {
+      "socket": 1,
+      "service": "legacystatus"
+    },
+    {
+      "socket": 1,
+      "service": "taskcompleted"
+    },
+    {
+      "socket": 1,
+      "service": "notifications"
+    },
+    {
+      "socket": 1,
+      "service": "serversettings"
+    },
+    {
+      "socket": 1,
+      "service": "remotecontrol"
+    },
+    {
+      "socket": 1,
+      "service": "backuplist"
+    },
+    {
+      "socket": 1,
+      "service": "progress"
+    },
+    {
+      "socket": 1,
+      "service": "taskqueue"
+    },
+    {
+      "socket": 1,
+      "type": "reply",
+      "success": true
+    },
+    {
+      "socket": 1,
+      "type": "legacystatus"
+    },
+    {
+      "socket": 1,
+      "type": "reply",
+      "success": true
+    },
+    {
+      "socket": 1,
+      "type": "reply",
+      "success": true
+    },
+    {
+      "socket": 1,
+      "type": "notifications"
+    },
+    {
+      "socket": 1,
+      "type": "reply",
+      "success": true
+    },
+    {
+      "socket": 1,
+      "type": "serversettings"
+    },
+    {
+      "socket": 1,
+      "type": "reply",
+      "success": true
+    },
+    {
+      "socket": 1,
+      "type": "remotecontrol"
+    },
+    {
+      "socket": 1,
+      "type": "reply",
+      "success": true
+    },
+    {
+      "socket": 1,
+      "type": "backuplist"
+    },
+    {
+      "socket": 1,
+      "type": "reply",
+      "success": true
+    },
+    {
+      "socket": 1,
+      "type": "reply",
+      "success": true
+    },
+    {
+      "socket": 1,
+      "type": "taskqueue"
+    },
+    {
+      "socket": 1,
+      "type": "legacystatus"
+    },
+    {
+      "socket": 1,
+      "type": "serversettings"
+    },
+    {
+      "socket": 1,
+      "type": "legacystatus"
+    },
+    {
+      "socket": 1,
+      "type": "legacystatus"
+    },
+    {
+      "socket": 3,
+      "type": "auth",
+      "success": true
+    },
+    {
+      "socket": 3,
+      "service": "legacystatus"
+    },
+    {
+      "socket": 3,
+      "service": "taskcompleted"
+    },
+    {
+      "socket": 3,
+      "service": "notifications"
+    },
+    {
+      "socket": 3,
+      "service": "serversettings"
+    },
+    {
+      "socket": 3,
+      "service": "remotecontrol"
+    },
+    {
+      "socket": 3,
+      "service": "backuplist"
+    },
+    {
+      "socket": 3,
+      "service": "progress"
+    },
+    {
+      "socket": 3,
+      "service": "taskqueue"
+    },
+    {
+      "socket": 3,
+      "type": "reply",
+      "success": true
+    },
+    {
+      "socket": 3,
+      "type": "legacystatus"
+    },
+    {
+      "socket": 3,
+      "type": "reply",
+      "success": true
+    },
+    {
+      "socket": 3,
+      "type": "reply",
+      "success": true
+    },
+    {
+      "socket": 3,
+      "type": "notifications"
+    },
+    {
+      "socket": 3,
+      "type": "reply",
+      "success": true
+    },
+    {
+      "socket": 3,
+      "type": "serversettings"
+    },
+    {
+      "socket": 3,
+      "type": "reply",
+      "success": true
+    },
+    {
+      "socket": 3,
+      "type": "remotecontrol"
+    },
+    {
+      "socket": 3,
+      "type": "reply",
+      "success": true
+    },
+    {
+      "socket": 3,
+      "type": "backuplist"
+    },
+    {
+      "socket": 3,
+      "type": "reply",
+      "success": true
+    },
+    {
+      "socket": 3,
+      "type": "reply",
+      "success": true
+    },
+    {
+      "socket": 3,
+      "type": "taskqueue"
+    },
+    {
+      "socket": 3,
+      "type": "legacystatus"
+    },
+    {
+      "socket": 3,
+      "type": "serversettings"
+    },
+    {
+      "socket": 3,
+      "type": "legacystatus"
+    },
+    {
+      "socket": 3,
+      "type": "legacystatus"
+    },
+    {
+      "socket": 3,
+      "type": "serversettings"
+    },
+    {
+      "socket": 3,
+      "type": "legacystatus"
+    }
+  ],
+  "socketCount": 3,
+  "reloads": 0,
+  "server": {
+    "version": "1.0.0.0 - debug",
+    "runtime": "11.0.0"
+  },
+  "errors": []
+}

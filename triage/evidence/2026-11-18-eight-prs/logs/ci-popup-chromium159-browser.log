@@ -1,0 +1,10 @@
+
+Running 3 tests using 1 worker
+
+(node:26704) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › e2e\commandline-navigation.spec.ts:3:5 › command editor Back supports native home navigation without running the edited command (4.7s)
+  ok 2 [chromium] › e2e\remote-connectivity-navigation.spec.ts:52:7 › supports middle opening the registration screen in another tab (1.8s)
+  ok 3 [chromium] › e2e\restore-lifecycle.spec.ts:225:5 › options Back is a native link and Enter returns without starting a restore (3.8s)
+
+  3 passed (16.8s)

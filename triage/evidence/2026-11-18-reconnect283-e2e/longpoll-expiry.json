@@ -1,0 +1,42 @@
+{
+  "mode": "longpoll",
+  "transient": false,
+  "tokenLifetimeSeconds": 60,
+  "expiredTokenStatus": 401,
+  "closeCodes": [],
+  "longpollRequests": 5,
+  "expiredAt": 1795012798043,
+  "refreshes": [
+    200
+  ],
+  "polls": [
+    {
+      "status": 200,
+      "longpoll": false
+    },
+    {
+      "status": 200,
+      "longpoll": true
+    },
+    {
+      "status": 200,
+      "longpoll": true
+    },
+    {
+      "status": 401,
+      "longpoll": true
+    },
+    {
+      "status": 200,
+      "longpoll": true
+    }
+  ],
+  "frames": [],
+  "socketCount": 0,
+  "reloads": 0,
+  "server": {
+    "version": "1.0.0.0 - debug",
+    "runtime": "11.0.0"
+  },
+  "errors": []
+}

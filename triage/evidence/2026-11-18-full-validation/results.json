@@ -1,0 +1,38 @@
+[
+  {
+    "sha": "05dd9fe8820057c418f70768d9e7e17b1974a49a",
+    "tests": 0,
+    "branch": "feat/compact-progress",
+    "build": 0
+  },
+  {
+    "sha": "c8dcdf753de2161675a9657a3ee90ca7b36d47c5",
+    "tests": 0,
+    "branch": "feat/export-global-options",
+    "build": 0
+  },
+  {
+    "sha": "62be94e7d434f665d334f9946f7c2a03af21cfe2",
+    "tests": 0,
+    "branch": "feat/restore-resume-drafts",
+    "build": 0
+  },
+  {
+    "sha": "a39cfa68539718007b2b38f33f9f779dd189af73",
+    "tests": 0,
+    "branch": "feat/show-db-encryption-preload-paths",
+    "build": 0
+  },
+  {
+    "sha": "8de66197aec5965c865b511ab954642ed10aa5ce",
+    "tests": 0,
+    "branch": "feat/skip-next-scheduled-run",
+    "build": 0
+  },
+  {
+    "sha": "1a5488aa7e54d4ed02ae69a0fe923737aad77bc6",
+    "tests": 0,
+    "branch": "codex/update-playwright-popup-fix",
+    "build": 0
+  }
+]

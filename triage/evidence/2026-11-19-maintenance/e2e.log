@@ -1,0 +1,3 @@
+[WebServer] $ bun --bun sirv dist/ngclient/browser --single --host 127.0.0.1 --port 3000 --ignores ^/api --ignores ^/notifications
+Error: Timed out waiting 60000ms from config.webServer.
+

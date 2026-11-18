@@ -1,0 +1,14 @@
+$ErrorActionPreference='Stop'
+$node=(Get-Item 'C:/Users/Jam/AppData/Local/mise/installs/node/*/node.exe'|Sort-Object FullName|Select-Object -Last 1).FullName
+$bun=(Get-Item 'C:/Users/Jam/AppData/Local/mise/installs/bun/*/bin/bun.exe'|Sort-Object FullName|Select-Object -Last 1).FullName
+$env:PATH=(Split-Path $node)+';'+(Split-Path $bun)+';'+$env:PATH
+$root='tmp/ngt047-20261118'
+& $bun run test:ci '--include=**/destination-edit-session.spec.ts' '--include=**/single-destination.render.spec.ts' *> "$root/related-tests.log"
+if($LASTEXITCODE){throw 'Related tests failed'}
+& $node node_modules/typescript/bin/tsc --noEmit -p projects/ngclient/tsconfig.app.json *> "$root/app-types.log"
+if($LASTEXITCODE){throw 'App types failed'}
+& $node node_modules/typescript/bin/tsc --noEmit -p projects/ngclient/tsconfig.spec.json *> "$root/spec-types.log"
+if($LASTEXITCODE){throw 'Spec types failed'}
+& $bun run build:prod *> "$root/build.log"
+if($LASTEXITCODE){throw 'Production build failed'}
+Write-Output 'Related tests, app/spec tsc and production build passed'

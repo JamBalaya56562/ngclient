@@ -1,0 +1,13 @@
+
+Running 6 tests using 1 worker
+
+(node:17820) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › e2e\live\schedule-timezone.spec.ts:18:5 › spring-before › preserves the local editor day, UTC instant and actual LastRun through save and reload (9.6s)
+  ok 2 [chromium] › e2e\live\schedule-timezone.spec.ts:18:5 › spring-after › preserves the local editor day, UTC instant and actual LastRun through save and reload (8.1s)
+  ok 3 [chromium] › e2e\live\schedule-timezone.spec.ts:18:5 › fall-before › preserves the local editor day, UTC instant and actual LastRun through save and reload (8.9s)
+  ok 4 [chromium] › e2e\live\schedule-timezone.spec.ts:18:5 › fall-after › preserves the local editor day, UTC instant and actual LastRun through save and reload (9.0s)
+  ok 5 [chromium] › e2e\live\schedule-timezone.spec.ts:18:5 › utc-before › preserves the local editor day, UTC instant and actual LastRun through save and reload (9.0s)
+  ok 6 [chromium] › e2e\live\schedule-timezone.spec.ts:18:5 › utc-after › preserves the local editor day, UTC instant and actual LastRun through save and reload (7.8s)
+
+  6 passed (57.2s)

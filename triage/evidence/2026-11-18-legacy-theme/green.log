@@ -1,0 +1,19 @@
+
+Running 12 tests using 1 worker
+
+(node:14968) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 tmp\ngax-theme-workspace\playwright-tests\ngaxPages.spec.ts:105:7 › ngax page #/home renders without errors (2.9s)
+  ok  2 tmp\ngax-theme-workspace\playwright-tests\ngaxPages.spec.ts:105:7 › ngax page #/addstart renders without errors (2.4s)
+  ok  3 tmp\ngax-theme-workspace\playwright-tests\ngaxPages.spec.ts:105:7 › ngax page #/restorestart renders without errors (2.2s)
+  ok  4 tmp\ngax-theme-workspace\playwright-tests\ngaxPages.spec.ts:105:7 › ngax page #/import renders without errors (2.2s)
+  ok  5 tmp\ngax-theme-workspace\playwright-tests\ngaxPages.spec.ts:105:7 › ngax page #/settings renders without errors (2.3s)
+  ok  6 tmp\ngax-theme-workspace\playwright-tests\ngaxPages.spec.ts:105:7 › ngax page #/log renders without errors (2.1s)
+  ok  7 tmp\ngax-theme-workspace\playwright-tests\ngaxPages.spec.ts:105:7 › ngax page #/commandline renders without errors (2.5s)
+  ok  8 tmp\ngax-theme-workspace\playwright-tests\ngaxPages.spec.ts:105:7 › ngax page #/about renders without errors (2.8s)
+  ok  9 tmp\ngax-theme-workspace\playwright-tests\ngaxPages.spec.ts:129:5 › ngax applies the default and dark theme stylesheets (2.7s)
+  ok 10 tmp\ngax-theme-workspace\playwright-tests\ngaxPages.spec.ts:169:5 › ngax keeps a saved theme when the legacy cookie disappears or changes (4.8s)
+  ok 11 tmp\ngax-theme-workspace\playwright-tests\ngaxPages.spec.ts:182:5 › ngax migrates an existing theme cookie into browser storage (3.0s)
+  ok 12 tmp\ngax-theme-workspace\playwright-tests\ngaxPages.spec.ts:192:5 › ngax can save its theme when browser storage rejects the write (3.5s)
+
+  12 passed (34.8s)

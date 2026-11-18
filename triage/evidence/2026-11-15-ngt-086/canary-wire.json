@@ -1,0 +1,267 @@
+[
+  {
+    "kind": "websocket",
+    "type": "legacystatus"
+  },
+  {
+    "kind": "websocket",
+    "type": "backuplist",
+    "data": [
+      {
+        "Backup": {
+          "ID": "1",
+          "ExternalID": "",
+          "Name": "NGT-086 scheduled",
+          "Description": "",
+          "Tags": [],
+          "TargetURL": "file:///C:/Users/Jam/Documents/ngclient/tmp/ngt086-skip-20261115/run-BeROEx/NGT-086%20scheduled/remote",
+          "ConnectionStringID": -1,
+          "OperationType": "Backup",
+          "Enabled": true,
+          "DBPath": "C:\\Users\\Jam\\Documents\\ngclient\\tmp\\ngt086-skip-20261115\\run-BeROEx\\data\\LJZNQTRRGC.sqlite",
+          "DBPathExists": false,
+          "Sources": [],
+          "Settings": null,
+          "Filters": null,
+          "Metadata": {},
+          "IsTemporary": false,
+          "IsUnencryptedOrPassphraseStored": true,
+          "AdditionalTargetURLs": []
+        },
+        "Schedule": {
+          "ID": 1,
+          "Tags": [
+            "ID=1"
+          ],
+          "Time": "2026-11-16T05:02:16Z",
+          "Repeat": "1D",
+          "LastRun": "0001-01-01T00:00:00Z",
+          "Rule": "",
+          "AllowedDays": null
+        }
+      },
+      {
+        "Backup": {
+          "ID": "2",
+          "ExternalID": "",
+          "Name": "NGT-086 unscheduled",
+          "Description": "",
+          "Tags": [],
+          "TargetURL": "file:///C:/Users/Jam/Documents/ngclient/tmp/ngt086-skip-20261115/run-BeROEx/NGT-086%20unscheduled/remote",
+          "ConnectionStringID": -1,
+          "OperationType": "Backup",
+          "Enabled": true,
+          "DBPath": "C:\\Users\\Jam\\Documents\\ngclient\\tmp\\ngt086-skip-20261115\\run-BeROEx\\data\\LTWZTZDZNG.sqlite",
+          "DBPathExists": false,
+          "Sources": [],
+          "Settings": null,
+          "Filters": null,
+          "Metadata": {},
+          "IsTemporary": false,
+          "IsUnencryptedOrPassphraseStored": true,
+          "AdditionalTargetURLs": []
+        },
+        "Schedule": null
+      },
+      {
+        "Backup": {
+          "ID": "3",
+          "ExternalID": "",
+          "Name": "NGT-086 disabled",
+          "Description": "",
+          "Tags": [],
+          "TargetURL": "file:///C:/Users/Jam/Documents/ngclient/tmp/ngt086-skip-20261115/run-BeROEx/NGT-086%20disabled/remote",
+          "ConnectionStringID": -1,
+          "OperationType": "Backup",
+          "Enabled": false,
+          "DBPath": "C:\\Users\\Jam\\Documents\\ngclient\\tmp\\ngt086-skip-20261115\\run-BeROEx\\data\\EVYRNJQVFB.sqlite",
+          "DBPathExists": false,
+          "Sources": [],
+          "Settings": null,
+          "Filters": null,
+          "Metadata": {},
+          "IsTemporary": false,
+          "IsUnencryptedOrPassphraseStored": true,
+          "AdditionalTargetURLs": []
+        },
+        "Schedule": {
+          "ID": 2,
+          "Tags": [
+            "ID=3"
+          ],
+          "Time": "2026-11-16T05:02:15Z",
+          "Repeat": "1D",
+          "LastRun": "0001-01-01T00:00:00Z",
+          "Rule": "",
+          "AllowedDays": null
+        }
+      }
+    ]
+  },
+  {
+    "kind": "websocket",
+    "type": "legacystatus"
+  },
+  {
+    "kind": "websocket",
+    "type": "legacystatus"
+  },
+  {
+    "kind": "websocket",
+    "type": "legacystatus"
+  },
+  {
+    "kind": "websocket",
+    "type": "legacystatus"
+  },
+  {
+    "kind": "websocket",
+    "type": "backuplist",
+    "data": [
+      {
+        "Backup": {
+          "ID": "2",
+          "ExternalID": "",
+          "Name": "NGT-086 unscheduled",
+          "Description": "",
+          "Tags": [],
+          "TargetURL": "file:///C:/Users/Jam/Documents/ngclient/tmp/ngt086-skip-20261115/run-BeROEx/NGT-086%20unscheduled/remote",
+          "ConnectionStringID": -1,
+          "OperationType": "Backup",
+          "Enabled": true,
+          "DBPath": "C:\\Users\\Jam\\Documents\\ngclient\\tmp\\ngt086-skip-20261115\\run-BeROEx\\data\\LTWZTZDZNG.sqlite",
+          "DBPathExists": false,
+          "Sources": [],
+          "Settings": null,
+          "Filters": null,
+          "Metadata": {},
+          "IsTemporary": false,
+          "IsUnencryptedOrPassphraseStored": true,
+          "AdditionalTargetURLs": []
+        },
+        "Schedule": null
+      },
+      {
+        "Backup": {
+          "ID": "3",
+          "ExternalID": "",
+          "Name": "NGT-086 disabled",
+          "Description": "",
+          "Tags": [],
+          "TargetURL": "file:///C:/Users/Jam/Documents/ngclient/tmp/ngt086-skip-20261115/run-BeROEx/NGT-086%20disabled/remote",
+          "ConnectionStringID": -1,
+          "OperationType": "Backup",
+          "Enabled": false,
+          "DBPath": "C:\\Users\\Jam\\Documents\\ngclient\\tmp\\ngt086-skip-20261115\\run-BeROEx\\data\\EVYRNJQVFB.sqlite",
+          "DBPathExists": false,
+          "Sources": [],
+          "Settings": null,
+          "Filters": null,
+          "Metadata": {},
+          "IsTemporary": false,
+          "IsUnencryptedOrPassphraseStored": true,
+          "AdditionalTargetURLs": []
+        },
+        "Schedule": {
+          "ID": 2,
+          "Tags": [
+            "ID=3"
+          ],
+          "Time": "2026-11-16T05:02:15Z",
+          "Repeat": "1D",
+          "LastRun": "0001-01-01T00:00:00Z",
+          "Rule": "",
+          "AllowedDays": null
+        }
+      }
+    ]
+  },
+  {
+    "kind": "websocket",
+    "type": "legacystatus"
+  },
+  {
+    "kind": "websocket",
+    "type": "legacystatus"
+  },
+  {
+    "kind": "websocket",
+    "type": "legacystatus"
+  },
+  {
+    "kind": "websocket",
+    "type": "legacystatus"
+  },
+  {
+    "kind": "websocket",
+    "type": "legacystatus"
+  },
+  {
+    "kind": "websocket",
+    "type": "backuplist",
+    "data": [
+      {
+        "Backup": {
+          "ID": "3",
+          "ExternalID": "",
+          "Name": "NGT-086 disabled",
+          "Description": "",
+          "Tags": [],
+          "TargetURL": "file:///C:/Users/Jam/Documents/ngclient/tmp/ngt086-skip-20261115/run-BeROEx/NGT-086%20disabled/remote",
+          "ConnectionStringID": -1,
+          "OperationType": "Backup",
+          "Enabled": false,
+          "DBPath": "C:\\Users\\Jam\\Documents\\ngclient\\tmp\\ngt086-skip-20261115\\run-BeROEx\\data\\EVYRNJQVFB.sqlite",
+          "DBPathExists": false,
+          "Sources": [],
+          "Settings": null,
+          "Filters": null,
+          "Metadata": {},
+          "IsTemporary": false,
+          "IsUnencryptedOrPassphraseStored": true,
+          "AdditionalTargetURLs": []
+        },
+        "Schedule": {
+          "ID": 2,
+          "Tags": [
+            "ID=3"
+          ],
+          "Time": "2026-11-16T05:02:15Z",
+          "Repeat": "1D",
+          "LastRun": "0001-01-01T00:00:00Z",
+          "Rule": "",
+          "AllowedDays": null
+        }
+      }
+    ]
+  },
+  {
+    "kind": "websocket",
+    "type": "legacystatus"
+  },
+  {
+    "kind": "websocket",
+    "type": "legacystatus"
+  },
+  {
+    "kind": "websocket",
+    "type": "legacystatus"
+  },
+  {
+    "kind": "websocket",
+    "type": "legacystatus"
+  },
+  {
+    "kind": "websocket",
+    "type": "legacystatus"
+  },
+  {
+    "kind": "websocket",
+    "type": "backuplist",
+    "data": []
+  },
+  {
+    "kind": "websocket",
+    "type": "legacystatus"
+  }
+]

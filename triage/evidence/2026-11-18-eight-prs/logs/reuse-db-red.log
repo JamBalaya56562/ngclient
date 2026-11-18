@@ -1,0 +1,81 @@
+$ ng test ngclient --watch=false "--include=**/destination.database-reuse.spec.ts"
+> Building...
+√ Building...
+Application bundle generation complete. [18.197 seconds] - 2026-11-18T00:52:04.229Z
+
+
+ RUN  v5.0.3 C:/Users/Jam/Documents/ngclient
+
+ ❯ |ngclient| projects/ngclient/src/app/backup/destination/destination.database-reuse.spec.ts (4 tests | 4 failed) 403ms
+   ❯ new destination database reuse (4)
+     × waits for the user to choose reuse=true before continuing 297ms
+     × waits for the user to choose reuse=false before continuing 39ms
+     × does not navigate when a lookup fails or a destination changes while waiting 34ms
+     × continues without a prompt when no database exists and skips lookup for edits 29ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |ngclient| projects/ngclient/src/app/backup/destination/destination.database-reuse.spec.ts > new destination database reuse > waits for the user to choose reuse=true before continuing
+ FAIL  |ngclient| projects/ngclient/src/app/backup/destination/destination.database-reuse.spec.ts > new destination database reuse > waits for the user to choose reuse=false before continuing
+AssertionError: expected "vi.fn()" to be called with arguments: [ Array(1) ]
+
+Number of calls: 0
+
+ ❯ projects/ngclient/src/app/backup/destination/destination.database-reuse.spec.ts:37:20
+     35|     const { component, lookup, navigate, reusedDatabase } = setup();
+     36|     await component.next();
+     37|     expect(lookup).toHaveBeenCalledWith({ body: { path: 'file:///backu…
+       |                    ^
+     38|     expect(navigate).not.toHaveBeenCalled();
+     39|     component.chooseDatabase(reuse);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  |ngclient| projects/ngclient/src/app/backup/destination/destination.database-reuse.spec.ts > new destination database reuse > does not navigate when a lookup fails or a destination changes while waiting
+AssertionError: expected "vi.fn()" to not be called at all, but actually been called 1 times
+
+Received:
+
+  1st vi.fn() call:
+
+    Array [
+      Array [
+        "schedule",
+      ],
+      Object {
+        "relativeTo": Object {},
+      },
+    ]
+
+
+Number of calls: 1
+
+ ❯ projects/ngclient/src/app/backup/destination/destination.database-reuse.spec.ts:47:33
+     45|     const failed = setup(throwError(() => new Error('lookup failed')));
+     46|     await failed.component.next();
+     47|     expect(failed.navigate).not.toHaveBeenCalled();
+       |                                 ^
+     48|     TestBed.resetTestingModule();
+     49|     const pending = new Subject<GetDbPathDto>();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  |ngclient| projects/ngclient/src/app/backup/destination/destination.database-reuse.spec.ts > new destination database reuse > continues without a prompt when no database exists and skips lookup for edits
+AssertionError: expected "vi.fn()" to be called once, but got 0 times
+ ❯ projects/ngclient/src/app/backup/destination/destination.database-reuse.spec.ts:66:20
+     64|     isNew.set(false);
+     65|     await component.next();
+     66|     expect(lookup).toHaveBeenCalledOnce();
+       |                    ^
+     67|     expect(navigate).toHaveBeenCalledTimes(2);
+     68|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  4 failed (4)
+   Start at  09:52:05
+   Duration  11.04s (environment 39%, transform 24%, import 20%, setup 12%, tests 4%)
+
+error: script "test:ci" exited with code 1

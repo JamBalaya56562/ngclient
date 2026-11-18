@@ -1,0 +1,21 @@
+{
+  "versionsChanged": [
+    {
+      "key": "@playwright/test",
+      "before": "@playwright/test@1.63.0",
+      "after": "@playwright/test@1.65.1"
+    },
+    {
+      "key": "playwright",
+      "before": "playwright@1.63.0",
+      "after": "playwright@1.65.1"
+    },
+    {
+      "key": "playwright-core",
+      "before": "playwright-core@1.63.0",
+      "after": "playwright-core@1.65.1"
+    }
+  ],
+  "removedAliasCount": 24,
+  "addedAliasCount": 2
+}

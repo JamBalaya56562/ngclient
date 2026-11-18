@@ -1,0 +1,46 @@
+
+Running 1 test using 1 worker
+
+(node:11912) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+CLI exit 0
+CLI registry entries 1
+DB lookup {
+  Exists: true,
+  Path: 'C:\\Users\\Jam\\Documents\\ngclient\\tmp\\eight-prs-20261118\\database-live-results\\live-server-ApzZa6\\data\\QBJPDHUKQV.sqlite'
+}
+  x  1 [chromium] › tmp\eight-prs-20261118\database-live.spec.ts:8:5 › reuse CLI database and keep it when deleting UI job (21.1s)
+
+
+  1) [chromium] › tmp\eight-prs-20261118\database-live.spec.ts:8:5 › reuse CLI database and keep it when deleting UI job 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "C:\\Users\\Jam\\Documents\\ngclient\\tmp\\eight-prs-20261118\\database-live-results\\live-server-ApzZa6\\data\\QBJPDHUKQV.sqlite"
+    Received: "C:\\Users\\Jam\\Documents\\ngclient\\tmp\\eight-prs-20261118\\database-live-results\\live-server-ApzZa6\\data\\CVSXWVMBHI.sqlite"
+
+      32 |  await page.locator('app-schedule sh-select').first().click();await page.locator('li.option').getByText("Don't run automatically",{exact:true}).click();await page.getByRole('button',{name:'Continue',exact:true}).click();
+      33 |  const saved=page.waitForResponse(r=>r.request().method()==='POST'&&new URL(r.url()).pathname==='/api/v1/backups');await page.getByRole('button',{name:'Submit',exact:true}).click();const response=await saved;expect(response.ok(),await response.text()).toBe(true);const {ID}=await response.json();
+    > 34 |  const job=await (await api.get(`/api/v1/backup/${ID}`)).json();expect(job.Backup.DBPath).toBe(match.Path);console.log('Saved DBPath matches CLI:',job.Backup.DBPath);
+         |                                                                                           ^
+      35 |  const ownership=await (await api.get(`/api/v1/backup/${ID}/isdbusedelsewhere`)).json();console.log('Ownership',ownership);expect(ownership.inuse).toBe(true);
+      36 |  // The fixture serves this private artifact directory; switch only its files, then load a fresh document.
+      37 |  await cp(resolve('tmp/eight-prs-20261118/builds/guard-shared-database-deletion'),resolve('tmp/eight-prs-20261118/live-ui'),{recursive:true,force:true});
+        at C:\Users\Jam\Documents\ngclient\tmp\eight-prs-20261118\database-live.spec.ts:34:91
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    tmp\eight-prs-20261118\database-live-results\database-live-reuse-CLI-da-2b10a-eep-it-when-deleting-UI-job-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: tmp\eight-prs-20261118\database-live-results\database-live-reuse-CLI-da-2b10a-eep-it-when-deleting-UI-job-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    tmp\eight-prs-20261118\database-live-results\database-live-reuse-CLI-da-2b10a-eep-it-when-deleting-UI-job-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace tmp\eight-prs-20261118\database-live-results\database-live-reuse-CLI-da-2b10a-eep-it-when-deleting-UI-job-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [chromium] › tmp\eight-prs-20261118\database-live.spec.ts:8:5 › reuse CLI database and keep it when deleting UI job 

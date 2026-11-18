@@ -1,0 +1,15 @@
+{
+  "sourceOS": "windows",
+  "serverOS": "Linux",
+  "runtime": "11.0.0",
+  "version": "1.0.0.0 - debug",
+  "browser": "153.0.8010.12",
+  "folderPath": "C:\\Users\\Jam\\Documents\\ngclient\\tmp\\restore449-recheck-20261114\\fixture2\\windows-source\\Documents\\",
+  "restorePaths": [
+    "C:\\Users\\Jam\\Documents\\ngclient\\tmp\\restore449-recheck-20261114\\fixture2\\windows-source\\Documents\\*"
+  ],
+  "files": [
+    "payload.txt"
+  ],
+  "errors": []
+}

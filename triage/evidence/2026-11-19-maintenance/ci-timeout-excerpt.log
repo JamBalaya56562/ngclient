@@ -1,0 +1,10 @@
+2026-11-18T20:24:53.2250427Z Complete job name: browser-tests
+2026-11-18T20:25:10.9397207Z ##[group]Run bunx playwright install --with-deps --only-shell chromium
+2026-11-18T20:32:14.2583300Z Running kernel seems to be up-to-date.
+2026-11-18T20:32:23.5722255Z Running 207 tests using 1 worker
+2026-11-18T20:34:57.7401974Z   ✓  201 [chromium] › e2e/usage-statistics.spec.ts:24:5 › saved reporting level "warning" › shows the saved selection without automatically rewriting it (493ms)
+2026-11-18T20:34:58.4871021Z   ✓  202 [chromium] › e2e/usage-statistics.spec.ts:44:5 › saving reporting levels › saves none using the canonical server value (741ms)
+2026-11-18T20:34:59.1698626Z   ✓  203 [chromium] › e2e/usage-statistics.spec.ts:44:5 › saving reporting levels › saves default using the canonical server value (676ms)
+2026-11-18T20:35:00.0205395Z   ✓  204 [chromium] › e2e/usage-statistics.spec.ts:80:3 › saving reporting levels › restores a rejected setting, reports the error, and allows retry without a browser exception (843ms)
+2026-11-18T20:35:00.6560114Z   ✓  205 [chromium] › e2e/version-labels.spec.ts:25:1 › label inputs save the correct versions sequentially and lock while saving (627ms)
+2026-11-18T20:35:01.1836898Z ##[error]The operation was canceled.

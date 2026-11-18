@@ -1,0 +1,40 @@
+$ ng test ngclient --watch=false --include "projects/ngclient/src/app/core/components/file-tree/**/*.spec.ts"
+> Building...
+√ Building...
+Application bundle generation complete. [28.430 seconds] - 2026-11-16T10:16:44.065Z
+
+
+ RUN  v5.0.3 C:/Users/Jam/Documents/ngclient
+
+ ❯ |ngclient| projects/ngclient/src/app/core/components/file-tree/file-tree.keyboard.spec.ts (22 tests | 1 failed) 2655ms
+   ❯ file tree keyboard navigation (22)
+     × shows a junction target without using it as the selected path 83ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |ngclient| projects/ngclient/src/app/core/components/file-tree/file-tree.keyboard.spec.ts > file tree keyboard navigation > shows a junction target without using it as the selected path
+AssertionError: expected null to be 'Link target: /Target/' // Object.is equality
+
+- Expected:
+"Link target: /Target/"
+
++ Received:
+null
+
+ ❯ projects/ngclient/src/app/core/components/file-tree/file-tree.keyboard.spec.ts:166:53
+    164|       const link = row(label + ' (Symbolic link)');
+    165|       expect(link.querySelector('.icon')?.getAttribute('title')).toBe(…
+    166|       expect(link.getAttribute('aria-description')).toBe('Link target:…
+       |                                                     ^
+    167|       press(link, 'Enter');
+    168|       expect(component.currentPathArray()).toContain(path);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 15 passed (16)
+      Tests  1 failed | 205 passed (206)
+   Start at  19:16:50
+   Duration  56.11s (environment 78%, tests 11%, setup 4%, import 4%, transform 3%)
+
+error: script "test:ci" exited with code 1

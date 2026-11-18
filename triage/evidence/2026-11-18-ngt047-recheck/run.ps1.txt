@@ -1,0 +1,29 @@
+param([switch]$Baseline,[string]$Grep='')
+$ErrorActionPreference='Stop'
+$node=(Get-Item 'C:/Users/Jam/AppData/Local/mise/installs/node/*/node.exe'|Sort-Object FullName|Select-Object -Last 1).FullName
+$root='tmp/ngt047-20261118'
+$config=Join-Path $PWD 'playwright.config.ts';$bytes=[IO.File]::ReadAllBytes($config)
+$oldMode=$env:PLAYWRIGHT_MODE;$oldServer=$env:DUPLICATI_SERVER_PATH;$oldVariant=$env:NGT047_VARIANT
+$oldDotnet=$env:DOTNET_ROOT;$oldDotnetX64=$env:DOTNET_ROOT_X64
+$oldRollForward=$env:DOTNET_ROLL_FORWARD
+$dotnet=(Get-Item 'C:/Users/Jam/AppData/Local/mise/installs/dotnet/*/dotnet.exe'|Sort-Object FullName|Select-Object -Last 1).FullName
+$label=if($Baseline){'baseline-canary'}else{'fixed-debug-net11'}
+try{
+ $text=[Text.Encoding]::UTF8.GetString($bytes).Replace("'./e2e/live'","'./tmp/ngt047-20261118'")
+ [IO.File]::WriteAllText($config,$text)
+ $env:PLAYWRIGHT_MODE='live';$env:NGT047_VARIANT=$label
+ $env:DOTNET_ROOT=Split-Path $dotnet;$env:DOTNET_ROOT_X64=Split-Path $dotnet
+ if(-not $Baseline){$env:DOTNET_ROLL_FORWARD='LatestMajor'}
+ $env:DUPLICATI_SERVER_PATH=if($Baseline){(Get-Content tmp/editor627-20261114/server-executable.txt -Raw).Trim()}else{Join-Path $PWD "$root/server/Duplicati.Server.exe"}
+ $a=@('node_modules/@playwright/test/cli.js','test','probe.spec.ts','--reporter=list','--output',"$root/$label-results")
+ if($Grep){$a+=@('--grep',$Grep)}
+ & $node @a *> "$root/$label.log"
+ $code=$LASTEXITCODE
+ $s=[IO.File]::ReadAllText((Join-Path $PWD "$root/$label.log"));($s -split "`n"|Select-Object -Last 25)-join "`n"
+}finally{
+ [IO.File]::WriteAllBytes($config,$bytes)
+ $env:PLAYWRIGHT_MODE=$oldMode;$env:DUPLICATI_SERVER_PATH=$oldServer;$env:NGT047_VARIANT=$oldVariant
+ $env:DOTNET_ROOT=$oldDotnet;$env:DOTNET_ROOT_X64=$oldDotnetX64
+ $env:DOTNET_ROLL_FORWARD=$oldRollForward
+}
+exit $code

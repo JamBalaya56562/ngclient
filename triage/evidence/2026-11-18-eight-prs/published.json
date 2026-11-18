@@ -1,0 +1,50 @@
+[
+  {
+    "number": 758,
+    "id": "NGT-107",
+    "branch": "codex/update-changelog-source",
+    "url": "https://github.com/duplicati/ngclient/pull/758"
+  },
+  {
+    "number": 759,
+    "id": "NGT-108",
+    "branch": "codex/guard-shared-database-deletion",
+    "url": "https://github.com/duplicati/ngclient/pull/759"
+  },
+  {
+    "number": 760,
+    "id": "NGT-104",
+    "branch": "codex/file-tree-reexpansion-coverage",
+    "url": "https://github.com/duplicati/ngclient/pull/760"
+  },
+  {
+    "number": 761,
+    "id": "NGT-080",
+    "branch": "codex/command-editor-signal-fields",
+    "url": "https://github.com/duplicati/ngclient/pull/761"
+  },
+  {
+    "number": 762,
+    "id": "NGT-110",
+    "branch": "codex/remote-encryption-save-confirmation",
+    "url": "https://github.com/duplicati/ngclient/pull/762"
+  },
+  {
+    "number": 763,
+    "id": "NGT-109",
+    "branch": "codex/reuse-existing-local-database",
+    "url": "https://github.com/duplicati/ngclient/pull/763"
+  },
+  {
+    "number": 764,
+    "id": "NGT-071",
+    "branch": "codex/native-console-connection-link",
+    "url": "https://github.com/duplicati/ngclient/pull/764"
+  },
+  {
+    "number": 765,
+    "id": "NGT-082",
+    "branch": "codex/live-backup-wizard-roundtrip",
+    "url": "https://github.com/duplicati/ngclient/pull/765"
+  }
+]

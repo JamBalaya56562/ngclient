@@ -1,0 +1,63 @@
+$ ng test ngclient --watch=false "--include=**/single-destination.render.spec.ts"
+> Building...
+√ Building...
+Application bundle generation complete. [4.723 seconds] - 2026-11-18T01:28:55.300Z
+
+
+ RUN  v5.0.3 C:/Users/Jam/Documents/ngclient
+
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+ ❯ |ngclient| projects/ngclient/src/app/backup/destination/single-destination/single-destination.render.spec.ts (3 tests | 1 failed) 418ms
+   ❯ SingleDestinationComponent rendered editing (3)
+     × offers console connection as a native link without rewriting the destination 60ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |ngclient| projects/ngclient/src/app/backup/destination/single-destination/single-destination.render.spec.ts > SingleDestinationComponent rendered editing > offers console connection as a native link without rewriting the destination
+AssertionError: expected null not to be null
+ ❯ projects/ngclient/src/app/backup/destination/single-destination/single-destination.render.spec.ts:78:22
+
+     76|     expect(fixture.nativeElement.textContent).toContain('Connect');
+     77|     const link = fixture.nativeElement.querySelector('a[href="/connect…
+     78|     expect(link).not.toBeNull();
+       |                      ^
+     79|     expect(link.textContent).toContain('Connect');
+     80|     let prevented: boolean | undefined;
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 2 passed (3)
+   Start at  10:28:55
+   Duration  2.73s (environment 30%, transform 25%, import 17%, tests 16%, setup 12%)
+
+error: script "test:ci" exited with code 1

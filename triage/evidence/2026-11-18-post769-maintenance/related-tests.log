@@ -1,0 +1,14 @@
+$ ng test ngclient --watch=false "--include=**/backup-actions-dialog.spec.ts" "--include=**/backups.skip-next-run.spec.ts"
+> Building...
+√ Building...
+Application bundle generation complete. [14.669 seconds] - 2026-11-18T11:33:20.272Z
+
+
+ RUN  v5.0.3 C:/Users/Jam/Documents/ngclient
+
+
+ Test Files  2 passed (2)
+      Tests  10 passed (10)
+   Start at  20:33:23
+   Duration  23.95s (environment 86%, setup 6%, transform 4%, tests 2%, import 2%, worker 1%)
+

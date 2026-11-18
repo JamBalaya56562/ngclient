@@ -1,0 +1,247 @@
+{
+  "date": "2026-11-15",
+  "main": {
+    "sha": "8f401edd337bf53a963fc4e80a47d3db4d52fc3d"
+  },
+  "prs": [
+    {
+      "number": 736,
+      "title": "Group individually backed-up files in the restore tree",
+      "state": "open",
+      "merged": false,
+      "head": "codex/restore-individual-file-groups",
+      "sha": "3e98d5b9b0dbbe65492ca7d526eeb192524b8e8c",
+      "url": "https://github.com/duplicati/ngclient/pull/736"
+    },
+    {
+      "number": 735,
+      "title": "Add isolated real-server backup and restore E2E coverage",
+      "state": "open",
+      "merged": false,
+      "head": "codex/live-editor-persistence-e2e",
+      "sha": "74257b98e08f483b4963f9f35331870276a69a57",
+      "url": "https://github.com/duplicati/ngclient/pull/735"
+    },
+    {
+      "number": 734,
+      "title": "Ask to approve an unknown SSH host key before browsing",
+      "state": "open",
+      "merged": false,
+      "head": "fix/browse-approve-host-key",
+      "sha": "a08f89f2c810aeb0a5d3423c296b50967020e9de",
+      "url": "https://github.com/duplicati/ngclient/pull/734"
+    },
+    {
+      "number": 733,
+      "title": "Release WebSocket resources with their connection lifetime",
+      "state": "open",
+      "merged": false,
+      "head": "codex/websocket-connection-lifecycle",
+      "sha": "1393c45e3e3f59ab7a67787ac0f4163aaac2c723",
+      "url": "https://github.com/duplicati/ngclient/pull/733"
+    },
+    {
+      "number": 732,
+      "title": "Own progress polling across task and transport changes",
+      "state": "open",
+      "merged": false,
+      "head": "codex/statusbar-progress-lifecycle",
+      "sha": "9e3e5cce3243b6aefbc0df3370d3811d52dc73f2",
+      "url": "https://github.com/duplicati/ngclient/pull/732"
+    },
+    {
+      "number": 731,
+      "title": "Track pending stop and abort actions per status task",
+      "state": "open",
+      "merged": false,
+      "head": "codex/status-task-action-lifecycle",
+      "sha": "18803f296cc8b77a79850623659fffc57e012ed4",
+      "url": "https://github.com/duplicati/ngclient/pull/731"
+    },
+    {
+      "number": 730,
+      "title": "Scope status snapshot polling to the active view session",
+      "state": "open",
+      "merged": false,
+      "head": "codex/status-snapshot-lifecycle",
+      "sha": "6cafe57c78820bcbc3d0b56ff04e06917725e4eb",
+      "url": "https://github.com/duplicati/ngclient/pull/730"
+    },
+    {
+      "number": 729,
+      "title": "Preserve backup row identity and focus when the job list changes",
+      "state": "open",
+      "merged": false,
+      "head": "codex/stable-backup-list-tracking",
+      "sha": "03c222dc86eb038ca0648e8c4d607cd6c2f7d00a",
+      "url": "https://github.com/duplicati/ngclient/pull/729"
+    },
+    {
+      "number": 728,
+      "title": "Show symbolic link and junction targets in the file tree",
+      "state": "open",
+      "merged": false,
+      "head": "codex/show-file-tree-link-target",
+      "sha": "d4f715de88e3fa6c435f852c249e18d52a75e2c6",
+      "url": "https://github.com/duplicati/ngclient/pull/728"
+    },
+    {
+      "number": 727,
+      "title": "Keep advanced option actions outside the disabled toggle heading",
+      "state": "open",
+      "merged": false,
+      "head": "codex/advanced-options-actions",
+      "sha": "4d50af9684de8c8d5b2f61a3097e06551ecbcba0",
+      "url": "https://github.com/duplicati/ngclient/pull/727"
+    }
+  ],
+  "issues": [
+    {
+      "number": 215,
+      "state": "open",
+      "title": "Add a \"Delete versions\" page",
+      "comments": 2,
+      "updated_at": "2026-11-10T21:31:25Z",
+      "url": "https://github.com/duplicati/ngclient/issues/215"
+    },
+    {
+      "number": 283,
+      "state": "open",
+      "title": "Improve re-connect handling",
+      "comments": 8,
+      "updated_at": "2026-11-10T21:35:33Z",
+      "url": "https://github.com/duplicati/ngclient/issues/283"
+    },
+    {
+      "number": 492,
+      "state": "open",
+      "title": "Schedule page \"Next time\" shows one day too early even after PR and more",
+      "comments": 4,
+      "updated_at": "2026-11-10T21:37:26Z",
+      "url": "https://github.com/duplicati/ngclient/issues/492"
+    },
+    {
+      "number": 217,
+      "state": "open",
+      "title": "Create a list-broken-files and purge-broken-files page",
+      "comments": 2,
+      "updated_at": "2026-11-10T21:46:14Z",
+      "url": "https://github.com/duplicati/ngclient/issues/217"
+    },
+    {
+      "number": 401,
+      "state": "open",
+      "title": "Destination manual path temporarily prepends drive letter with forward slash while typing",
+      "comments": 2,
+      "updated_at": "2026-11-10T21:59:07Z",
+      "url": "https://github.com/duplicati/ngclient/issues/401"
+    },
+    {
+      "number": 449,
+      "state": "open",
+      "title": "Cross-OS restores can loose the directory/file distinction",
+      "comments": 3,
+      "updated_at": "2026-11-13T23:14:14Z",
+      "url": "https://github.com/duplicati/ngclient/issues/449"
+    },
+    {
+      "number": 627,
+      "state": "open",
+      "title": "Job editor: tabs with a Save button instead of a wizard",
+      "comments": 2,
+      "updated_at": "2026-11-13T23:00:34Z",
+      "url": "https://github.com/duplicati/ngclient/issues/627"
+    },
+    {
+      "number": 637,
+      "state": "open",
+      "title": "Please bring back \"exclude hidden/system files\" options to backup source selection",
+      "comments": 2,
+      "updated_at": "2026-11-14T10:58:39Z",
+      "url": "https://github.com/duplicati/ngclient/issues/637"
+    },
+    {
+      "number": 311,
+      "state": "open",
+      "title": "restore shows individual files without a folder structure",
+      "comments": 2,
+      "updated_at": "2025-07-02T16:19:20Z",
+      "url": "https://github.com/duplicati/ngclient/issues/311"
+    },
+    {
+      "number": 409,
+      "state": "open",
+      "title": "A list of improvement suggestions:",
+      "comments": 1,
+      "updated_at": "2025-11-21T13:30:04Z",
+      "url": "https://github.com/duplicati/ngclient/issues/409"
+    },
+    {
+      "number": 460,
+      "state": "open",
+      "title": "Restore from secondary destination",
+      "comments": 1,
+      "updated_at": "2026-04-28T00:57:23Z",
+      "url": "https://github.com/duplicati/ngclient/issues/460"
+    },
+    {
+      "number": 462,
+      "state": "open",
+      "title": "Delete files from secondary destinations",
+      "comments": 0,
+      "updated_at": "2026-04-27T07:14:44Z",
+      "url": "https://github.com/duplicati/ngclient/issues/462"
+    },
+    {
+      "number": 126,
+      "state": "open",
+      "title": "[Suggestion] Add custom validation for destination/options/advanced options",
+      "comments": 0,
+      "updated_at": "2025-02-25T10:09:40Z",
+      "url": "https://github.com/duplicati/ngclient/issues/126"
+    },
+    {
+      "number": 497,
+      "state": "open",
+      "title": "chore: migrate codebase to using signal forms over object of signals",
+      "comments": 0,
+      "updated_at": "2026-08-10T19:45:58Z",
+      "url": "https://github.com/duplicati/ngclient/issues/497"
+    },
+    {
+      "number": 273,
+      "state": "open",
+      "title": "Add a testing suite",
+      "comments": 0,
+      "updated_at": "2025-06-03T07:26:06Z",
+      "url": "https://github.com/duplicati/ngclient/issues/273"
+    }
+  ],
+  "server7832": {
+    "state": "open",
+    "merged": false,
+    "url": "https://github.com/duplicati/duplicati/pull/7832"
+  },
+  "dependencies": [
+    {
+      "branch": "feat/export-global-options",
+      "prs": []
+    },
+    {
+      "branch": "feat/skip-next-scheduled-run",
+      "prs": []
+    },
+    {
+      "branch": "feat/compact-progress",
+      "prs": []
+    },
+    {
+      "branch": "feat/list-temporary-backups",
+      "prs": []
+    },
+    {
+      "branch": "feat/systeminfo-preload-paths",
+      "prs": []
+    }
+  ]
+}

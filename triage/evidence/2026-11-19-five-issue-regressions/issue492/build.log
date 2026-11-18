@@ -1,0 +1,54 @@
+$ bun run gen:font && ng build ngclient --configuration production
+$ ship-fg --src='./projects/ngclient/src' --out='./projects/ngclient/src/assets' --rootPath='./'
+Font & CSS (Generated/Compressed size): 18.61 KB/17.25 KB
+Time taken:  397.04ms
+ 
+> Building...
+√ Building...
+Initial chunk files   | Names                 |  Raw size | Estimated transfer size
+chunk-CGY5WPWL.js     | -                     | 198.26 kB |                59.37 kB
+main-P2BVQB4Z.js      | main                  | 155.83 kB |                40.46 kB
+chunk-Blgz_dgX.js     | -                     |  95.31 kB |                24.18 kB
+chunk-DBgBU3ZA.js     | -                     |  26.66 kB |                 5.25 kB
+styles-PVX5SREM.css   | styles                |  21.51 kB |                 3.28 kB
+chunk-Dhh0Q7eA.js     | -                     |  21.10 kB |                 6.49 kB
+chunk-Bu4GSneo.js     | -                     |  19.72 kB |                 5.92 kB
+chunk-B0d18Hkh.js     | -                     |  11.88 kB |                 3.76 kB
+chunk-C-3Qoy9q.js     | -                     |  10.89 kB |                 3.31 kB
+chunk-VQUK2zJ2.js     | -                     |   7.90 kB |                 2.47 kB
+chunk-B2I8re3u.js     | -                     |   6.45 kB |                 1.45 kB
+chunk-Dj2RnniR.js     | -                     |   4.96 kB |                 1.49 kB
+chunk-B8PrNF_R.js     | -                     |   3.93 kB |                 1.28 kB
+chunk-aa7_8jNB.js     | -                     |   3.00 kB |               994 bytes
+chunk-3ouQVt9C.js     | -                     |   2.52 kB |                 1.02 kB
+chunk-BYG1mCfP.js     | -                     |   1.78 kB |               804 bytes
+chunk-Cbsjqnwx.js     | -                     |   1.64 kB |               724 bytes
+chunk-CayLjyxl.js     | -                     | 974 bytes |               974 bytes
+chunk-DSBBk_t8.js     | -                     | 584 bytes |               584 bytes
+polyfills-7RKI4BGK.js | polyfills             | 534 bytes |               534 bytes
+chunk-Dv5miJv7.js     | -                     | 425 bytes |               425 bytes
+
+                      | Initial total         | 595.85 kB |               164.78 kB
+
+Lazy chunk files      | Names                 |  Raw size | Estimated transfer size
+chunk-BcCAZWTz.js     | settings-component    |  87.85 kB |                20.30 kB
+chunk-BzI-Wm7R.js     | -                     |  76.80 kB |                17.37 kB
+chunk-9H8L1hkN.js     | -                     |  64.91 kB |                11.70 kB
+chunk-DE7lxVcZ.js     | -                     |  63.02 kB |                17.46 kB
+chunk-DWmyz_oz.js     | log-component         |  62.08 kB |                13.05 kB
+chunk-BT1jRUtP.js     | home-component        |  55.47 kB |                12.64 kB
+chunk-DP16mj8R.js     | -                     |  50.93 kB |                10.52 kB
+chunk-0v4y9UvA.js     | status-component      |  49.45 kB |                12.74 kB
+chunk-CxYicYMu.js     | -                     |  48.89 kB |                12.05 kB
+chunk-DOWL-7Fl.js     | schedule-component    |  46.10 kB |                 9.60 kB
+chunk-C1GktfG8.js     | source-data-component |  41.87 kB |                 9.70 kB
+chunk-Bx5YsgKG.js     | changelog-component   |  41.20 kB |                11.83 kB
+chunk-DAhkBezL.js     | -                     |  39.52 kB |                10.68 kB
+chunk-Bx7Yl38G.js     | -                     |  39.51 kB |                 5.46 kB
+chunk-cD31gJx-.js     | layout-component      |  29.88 kB |                 7.78 kB
+...and 103 more lazy chunks files. Use "--verbose" to show all the files.
+
+Application bundle generation complete. [11.859 seconds] - 2026-11-18T15:17:19.946Z
+
+Output location: C:\Users\Jam\Documents\ngclient\dist\ngclient
+

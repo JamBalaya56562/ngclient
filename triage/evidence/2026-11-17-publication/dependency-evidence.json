@@ -1,0 +1,45 @@
+{
+  "serverMaster": "4153951a6e49d0092d99c4b3bd6675a1805bfd80",
+  "checks": [
+    {
+      "path": "Duplicati/WebserverCore/Services/SystemInfoProvider.cs",
+      "bytes": 21674,
+      "markers": [
+        {
+          "marker": "skip-next-run",
+          "present": false
+        },
+        {
+          "marker": "v1:backups:temporary",
+          "present": false
+        },
+        {
+          "marker": "PreloadSettingsPaths",
+          "present": false
+        }
+      ]
+    },
+    {
+      "path": "Duplicati/WebserverCore/Endpoints/V1/Backup/BackupGet.cs",
+      "bytes": 17824,
+      "markers": [
+        {
+          "marker": "include-global-options",
+          "present": false
+        }
+      ]
+    },
+    {
+      "path": "Duplicati/Library/Main/Operation/CompactHandler.cs",
+      "bytes": 28691,
+      "markers": [
+        {
+          "marker": "m_progressRange",
+          "present": false
+        }
+      ]
+    }
+  ],
+  "ngclientBase": "81694ce023ffc16e76bef3a0472fea8ffe6c54d8",
+  "existingOpenPR": 744
+}

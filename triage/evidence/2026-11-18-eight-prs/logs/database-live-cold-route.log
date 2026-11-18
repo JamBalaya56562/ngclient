@@ -1,0 +1,56 @@
+
+Running 1 test using 1 worker
+
+(node:33516) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Server version 2.4.1.101 2.4.1.101 - 2.4.1.101_canary_2026-11-07
+CLI exit 0
+CLI registry entries 1
+DB lookup {
+  Exists: true,
+  Path: 'C:\\Users\\Jam\\Documents\\ngclient\\tmp\\eight-prs-20261118\\database-live-results\\live-server-UwJMdt\\data\\TDKOCWNZEG.sqlite'
+}
+Saved DBPath matches CLI: C:\Users\Jam\Documents\ngclient\tmp\eight-prs-20261118\database-live-results\live-server-UwJMdt\data\TDKOCWNZEG.sqlite
+Ownership { inuse: true }
+  x  1 [chromium] › tmp\eight-prs-20261118\database-live.spec.ts:8:5 › reuse CLI database and keep it when deleting UI job (40.4s)
+
+
+  1) [chromium] › tmp\eight-prs-20261118\database-live.spec.ts:8:5 › reuse CLI database and keep it when deleting UI job 
+
+    Error: expect(locator).toBeDisabled() failed
+
+    Locator: locator('app-delete-backup section').filter({ has: getByRole('heading', { name: 'Delete local database', exact: true }) }).getByRole('checkbox')
+    Expected: disabled
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeDisabled" locator('app-delete-backup section').filter({ has: getByRole('heading', { name: 'Delete local database', exact: true }) }).getByRole('checkbox') with timeout 5000ms
+      - waiting for locator('app-delete-backup section').filter({ has: getByRole('heading', { name: 'Delete local database', exact: true }) }).getByRole('checkbox')
+
+
+      39 |  await page.goto(`/backup/${ID}/delete`);
+      40 |  const local=page.locator('app-delete-backup section').filter({has:page.getByRole('heading',{name:'Delete local database',exact:true})}).getByRole('checkbox');
+    > 41 |  await expect(local).toBeDisabled();await expect(page.getByText('This database is also used by the command line.',{exact:false})).toBeVisible();await page.screenshot({path:'tmp/eight-prs-20261118/shared-db-live.png'});
+         |                      ^
+      42 |  const deletion=page.waitForRequest(r=>r.method()==='DELETE'&&new URL(r.url()).pathname===`/api/v1/backup/${ID}`);await page.getByRole('button',{name:'Delete backup',exact:true}).click();await page.getByRole('dialog').getByRole('button',{name:'Delete backup',exact:true}).click();const req=await deletion;expect(new URL(req.url()).searchParams.get('delete-local-db')).toBe('false');await expect(page).toHaveURL('/');
+      43 |  expect(await readFile(match.Path)).toEqual(before);expect((await readdir(remote)).length).toBeGreaterThan(0);console.log('UI job removed; CLI database bytes and remote files preserved');
+      44 | });
+        at C:\Users\Jam\Documents\ngclient\tmp\eight-prs-20261118\database-live.spec.ts:41:22
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    tmp\eight-prs-20261118\database-live-results\database-live-reuse-CLI-da-2b10a-eep-it-when-deleting-UI-job-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: tmp\eight-prs-20261118\database-live-results\database-live-reuse-CLI-da-2b10a-eep-it-when-deleting-UI-job-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    tmp\eight-prs-20261118\database-live-results\database-live-reuse-CLI-da-2b10a-eep-it-when-deleting-UI-job-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace tmp\eight-prs-20261118\database-live-results\database-live-reuse-CLI-da-2b10a-eep-it-when-deleting-UI-job-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [chromium] › tmp\eight-prs-20261118\database-live.spec.ts:8:5 › reuse CLI database and keep it when deleting UI job 

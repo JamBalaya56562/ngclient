@@ -1,0 +1,18 @@
+
+Running 1 test using 1 worker
+
+(node:22944) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Server version 2.4.1.101 2.4.1.101 - 2.4.1.101_canary_2026-11-07
+CLI exit 0
+CLI registry entries 1
+DB lookup {
+  Exists: true,
+  Path: 'C:\\Users\\Jam\\Documents\\ngclient\\tmp\\eight-prs-20261118\\database-live-results\\live-server-NqFIqH\\data\\LDBIOAAZZC.sqlite'
+}
+Saved DBPath matches CLI: C:\Users\Jam\Documents\ngclient\tmp\eight-prs-20261118\database-live-results\live-server-NqFIqH\data\LDBIOAAZZC.sqlite
+Ownership { inuse: true }
+UI job removed; CLI database bytes and remote files preserved
+  ok 1 [chromium] › tmp\eight-prs-20261118\database-live.spec.ts:8:5 › reuse CLI database and keep it when deleting UI job (31.1s)
+
+  1 passed (48.9s)

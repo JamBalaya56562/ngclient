@@ -1,0 +1,38 @@
+param([string[]]$Only=@())
+$ErrorActionPreference='Stop'
+$jj=(Get-Item 'C:/Users/Jam/AppData/Local/mise/installs/jj/*/jj.exe'|Sort-Object FullName|Select-Object -Last 1).FullName
+$node=(Get-Item 'C:/Users/Jam/AppData/Local/mise/installs/node/*/node.exe'|Sort-Object FullName|Select-Object -Last 1).FullName
+$bun=(Get-Item 'C:/Users/Jam/AppData/Local/mise/installs/bun/*/bin/bun.exe'|Sort-Object FullName|Select-Object -Last 1).FullName
+$env:PATH=(Split-Path $node)+';'+(Split-Path $bun)+';'+$env:PATH
+$root='tmp/eight-prs-20261118'
+$branches=@('codex/update-changelog-source','codex/guard-shared-database-deletion','codex/file-tree-reexpansion-coverage','codex/command-editor-signal-fields','codex/remote-encryption-save-confirmation','codex/reuse-existing-local-database','codex/native-console-connection-link','codex/live-backup-wizard-roundtrip')
+if($Only.Count){$branches=$Only}
+$results=if(Test-Path "$root/results.json"){@(Get-Content "$root/results.json" -Raw|ConvertFrom-Json)}else{@()}
+foreach($branch in $branches){
+ & $jj edit $branch
+ if($LASTEXITCODE){throw "checkout failed $branch"}
+ $slug=$branch.Split('/')[-1]
+ $files=@(& $jj diff --from main --name-only)
+ & $node node_modules/prettier/bin/prettier.cjs --write --end-of-line auto @files *> "$root/$slug-format.log"
+ $format=$LASTEXITCODE
+ & $node node_modules/typescript/bin/tsc --noEmit -p projects/ngclient/tsconfig.app.json *> "$root/$slug-app.log"
+ $app=$LASTEXITCODE
+ & $node node_modules/typescript/bin/tsc --noEmit -p projects/ngclient/tsconfig.spec.json *> "$root/$slug-spec.log"
+ $spec=$LASTEXITCODE
+ & $node node_modules/typescript/bin/tsc --noEmit -p e2e/tsconfig.json *> "$root/$slug-e2e-types.log"
+ $e2eTypes=$LASTEXITCODE
+ & $bun run test:ci *> "$root/$slug-tests.log"
+ $tests=$LASTEXITCODE
+ & $bun run build:prod *> "$root/$slug-build.log"
+ $build=$LASTEXITCODE
+ if($build -eq 0){New-Item -ItemType Directory -Force "$root/builds/$slug"|Out-Null; Copy-Item -Path 'dist/ngclient/browser/*' -Destination "$root/builds/$slug" -Recurse -Force}
+ $sha=(& $jj log -r '@' --no-graph -T commit_id).Trim()
+ $results=@($results|Where-Object {$_.branch -ne $branch})
+ $results+=@{branch=$branch;sha=$sha;format=$format;app=$app;spec=$spec;e2eTypes=$e2eTypes;tests=$tests;build=$build}
+ $results|ConvertTo-Json -Depth 4|Set-Content "$root/results.json"
+ Write-Output "RESULT $branch format=$format app=$app spec=$spec e2e=$e2eTypes tests=$tests build=$build sha=$sha"
+ foreach($kind in @('app','spec','e2e-types','tests','build')){
+  $s=[IO.File]::ReadAllText((Join-Path $PWD "$root/$slug-$kind.log"))
+  ($s -split "`n"|Where-Object {$_ -match 'Test Files|Tests\s+\d|ERROR|error TS|FAIL|Application bundle generation'}|Select-Object -Last 6)-join "`n"
+ }
+}

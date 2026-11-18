@@ -1,0 +1,14 @@
+codex/guard-shared-database-deletion
+e2e\delete-backup.spec.ts
+projects\ngclient\src\app\backup\delete-backup\delete-backup.component.html
+projects\ngclient\src\app\backup\delete-backup\delete-backup.component.spec.ts
+projects\ngclient\src\app\backup\delete-backup\delete-backup.component.ts
+codex/file-tree-reexpansion-coverage
+projects\ngclient\src\app\core\components\file-tree\file-tree.keyboard.spec.ts
+codex/live-backup-wizard-roundtrip
+e2e\live\backup-restore.spec.ts
+codex/update-changelog-source
+e2e\update-changelog.spec.ts
+projects\ngclient\src\app\about\changelog\changelog.component.spec.ts
+projects\ngclient\src\app\about\changelog\changelog.component.ts
+projects\ngclient\src\app\notifications\notification\notification.component.ts

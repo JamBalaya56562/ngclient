@@ -1,0 +1,12 @@
+
+Running 5 tests using 1 worker
+
+(node:12460) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › e2e\live\fixture-ports.spec.ts:10:1 › a forbidden low preferred port cannot produce ERR_UNSAFE_PORT (1.3s)
+  ok 2 [chromium] › e2e\live\fixture-ports.spec.ts:24:1 › an occupied candidate selects a different port while both listeners stay bound (490ms)
+  ok 3 [chromium] › e2e\live\fixture-ports.spec.ts:44:1 › a non-retryable listen failure is propagated without leaking error listeners (387ms)
+  ok 4 [chromium] › e2e\live\fixture-ports.spec.ts:58:1 › a reserved candidate is skipped without leaving listeners behind (386ms)
+  ok 5 [chromium] › e2e\live\fixture-ports.spec.ts:84:1 › exhaustion is bounded and removes every temporary listener (8ms)
+
+  5 passed (4.9s)

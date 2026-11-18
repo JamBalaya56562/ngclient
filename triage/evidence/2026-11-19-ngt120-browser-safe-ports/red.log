@@ -1,0 +1,66 @@
+
+Running 3 tests using 1 worker
+
+(node:23020) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 [chromium] › e2e\live\fixture-ports.spec.ts:10:1 › a forbidden low preferred port cannot produce ERR_UNSAFE_PORT (1.2s)
+(node:23604) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  2 [chromium] › e2e\live\fixture-ports.spec.ts:24:1 › an occupied candidate selects a different port while both listeners stay bound (525ms)
+(node:9868) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 3 [chromium] › e2e\live\fixture-ports.spec.ts:44:1 › a non-retryable listen failure is propagated without leaking error listeners (484ms)
+
+
+  1) [chromium] › e2e\live\fixture-ports.spec.ts:10:1 › a forbidden low preferred port cannot produce ERR_UNSAFE_PORT 
+
+    Error: page.goto: net::ERR_UNSAFE_PORT at http://127.0.0.1:6697/
+    Call log:
+      - navigating to "http://127.0.0.1:6697/", waiting until "load"
+
+
+      12 |   try {
+      13 |     const port = await listenOnBrowserSafePort(server, 6697);
+    > 14 |     await page.goto(`http://127.0.0.1:${port}`);
+         |                ^
+      15 |     await expect(page.locator('body')).toHaveText('browser-safe proxy');
+      16 |     expect(port).toBeGreaterThanOrEqual(49152);
+      17 |     expect(port).toBeLessThanOrEqual(65535);
+        at C:\Users\Jam\Documents\ngclient\e2e\live\fixture-ports.spec.ts:14:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    tmp\ngt120-20261119\red-results\fixture-ports-a-forbidden--95422-not-produce-ERR-UNSAFE-PORT-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: tmp\ngt120-20261119\red-results\fixture-ports-a-forbidden--95422-not-produce-ERR-UNSAFE-PORT-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    tmp\ngt120-20261119\red-results\fixture-ports-a-forbidden--95422-not-produce-ERR-UNSAFE-PORT-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace tmp\ngt120-20261119\red-results\fixture-ports-a-forbidden--95422-not-produce-ERR-UNSAFE-PORT-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [chromium] › e2e\live\fixture-ports.spec.ts:24:1 › an occupied candidate selects a different port while both listeners stay bound 
+
+    Error: listen EADDRINUSE: address already in use 127.0.0.1:10329
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    tmp\ngt120-20261119\red-results\fixture-ports-an-occupied--736ac-e-both-listeners-stay-bound-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: tmp\ngt120-20261119\red-results\fixture-ports-an-occupied--736ac-e-both-listeners-stay-bound-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    tmp\ngt120-20261119\red-results\fixture-ports-an-occupied--736ac-e-both-listeners-stay-bound-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace tmp\ngt120-20261119\red-results\fixture-ports-an-occupied--736ac-e-both-listeners-stay-bound-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    [chromium] › e2e\live\fixture-ports.spec.ts:10:1 › a forbidden low preferred port cannot produce ERR_UNSAFE_PORT 
+    [chromium] › e2e\live\fixture-ports.spec.ts:24:1 › an occupied candidate selects a different port while both listeners stay bound 
+  1 passed (4.9s)

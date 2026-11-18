@@ -1,0 +1,50 @@
+[WebServer] $ bun --bun sirv dist/ngclient/browser --single --host 127.0.0.1 --port 3000 --ignores ^/api --ignores ^/notifications
+
+Running 1 test using 1 worker
+
+(node:34284) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 [chromium] › e2e\export-encryption.spec.ts:133:5 › global advanced options can be enabled with Space and included in the export request (9.7s)
+
+
+  1) [chromium] › e2e\export-encryption.spec.ts:133:5 › global advanced options can be enabled with Space and included in the export request 
+
+    Error: expect(locator).toBeChecked() failed
+
+    Locator:  locator('app-export').locator('input[name$=".includeGlobalOptions"]')
+    Expected: checked
+    Received: unchecked
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toBeChecked" locator('app-export').locator('input[name$=".includeGlobalOptions"]') with timeout 5000ms
+      - waiting for locator('app-export').locator('input[name$=".includeGlobalOptions"]')
+        13 × locator resolved to <input type="checkbox" _ngcontent-ng-c3809567672="" name="ng.form3.includeGlobalOptions"/>
+           - unexpected value "unchecked"
+
+
+      139 |   await include.focus();
+      140 |   await page.keyboard.press('Space');
+    > 141 |   await expect(include).toBeChecked();
+          |                         ^
+      142 |   await expect(include).toHaveAccessibleName('Include advanced options from settings');
+      143 |   await submit.click();
+      144 |   await expect.poll(() => tokens.length).toBe(1);
+        at C:\Users\Jam\Documents\ngclient\e2e\export-encryption.spec.ts:141:25
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\export-encryption-global-a-51294-luded-in-the-export-request-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\export-encryption-global-a-51294-luded-in-the-export-request-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\export-encryption-global-a-51294-luded-in-the-export-request-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\export-encryption-global-a-51294-luded-in-the-export-request-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [chromium] › e2e\export-encryption.spec.ts:133:5 › global advanced options can be enabled with Space and included in the export request 

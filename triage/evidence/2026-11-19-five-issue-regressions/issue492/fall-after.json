@@ -1,0 +1,18 @@
+{
+  "scenario": {
+    "name": "fall-after",
+    "server": "America/New_York",
+    "browser": "America/New_York",
+    "time": "2027-11-07T13:20:00Z"
+  },
+  "serverZone": "Eastern Standard Time",
+  "serverSystemZone": "Tokyo Standard Time",
+  "expectedDate": "Nov 7, 2027",
+  "expectedTime": "08:20",
+  "expectedHome": "11/7/27, 8:20 AM",
+  "storedTime": "2027-11-07T13:20:00.000Z",
+  "schedulerWrittenLastRun": "2026-11-18T15:19:08Z",
+  "lastBackupStarted": "20261118T151908Z",
+  "runtime": "11.0.0",
+  "errors": []
+}

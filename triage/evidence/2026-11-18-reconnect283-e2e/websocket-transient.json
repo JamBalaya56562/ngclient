@@ -1,0 +1,253 @@
+{
+  "mode": "websocket",
+  "transient": true,
+  "tokenLifetimeSeconds": 60,
+  "expiredTokenStatus": 401,
+  "closeCodes": [
+    1006,
+    4401,
+    4401
+  ],
+  "longpollRequests": 0,
+  "expiredAt": 1795012711034,
+  "refreshes": [
+    503,
+    200
+  ],
+  "polls": [],
+  "frames": [
+    {
+      "socket": 1,
+      "type": "auth",
+      "success": true
+    },
+    {
+      "socket": 1,
+      "service": "legacystatus"
+    },
+    {
+      "socket": 1,
+      "service": "taskcompleted"
+    },
+    {
+      "socket": 1,
+      "service": "notifications"
+    },
+    {
+      "socket": 1,
+      "service": "serversettings"
+    },
+    {
+      "socket": 1,
+      "service": "remotecontrol"
+    },
+    {
+      "socket": 1,
+      "service": "backuplist"
+    },
+    {
+      "socket": 1,
+      "service": "progress"
+    },
+    {
+      "socket": 1,
+      "service": "taskqueue"
+    },
+    {
+      "socket": 1,
+      "type": "reply",
+      "success": true
+    },
+    {
+      "socket": 1,
+      "type": "legacystatus"
+    },
+    {
+      "socket": 1,
+      "type": "reply",
+      "success": true
+    },
+    {
+      "socket": 1,
+      "type": "reply",
+      "success": true
+    },
+    {
+      "socket": 1,
+      "type": "notifications"
+    },
+    {
+      "socket": 1,
+      "type": "reply",
+      "success": true
+    },
+    {
+      "socket": 1,
+      "type": "serversettings"
+    },
+    {
+      "socket": 1,
+      "type": "reply",
+      "success": true
+    },
+    {
+      "socket": 1,
+      "type": "remotecontrol"
+    },
+    {
+      "socket": 1,
+      "type": "reply",
+      "success": true
+    },
+    {
+      "socket": 1,
+      "type": "backuplist"
+    },
+    {
+      "socket": 1,
+      "type": "reply",
+      "success": true
+    },
+    {
+      "socket": 1,
+      "type": "reply",
+      "success": true
+    },
+    {
+      "socket": 1,
+      "type": "taskqueue"
+    },
+    {
+      "socket": 4,
+      "type": "auth",
+      "success": true
+    },
+    {
+      "socket": 4,
+      "service": "legacystatus"
+    },
+    {
+      "socket": 4,
+      "service": "taskcompleted"
+    },
+    {
+      "socket": 4,
+      "service": "notifications"
+    },
+    {
+      "socket": 4,
+      "service": "serversettings"
+    },
+    {
+      "socket": 4,
+      "service": "remotecontrol"
+    },
+    {
+      "socket": 4,
+      "service": "backuplist"
+    },
+    {
+      "socket": 4,
+      "service": "progress"
+    },
+    {
+      "socket": 4,
+      "service": "taskqueue"
+    },
+    {
+      "socket": 4,
+      "type": "reply",
+      "success": true
+    },
+    {
+      "socket": 4,
+      "type": "legacystatus"
+    },
+    {
+      "socket": 4,
+      "type": "reply",
+      "success": true
+    },
+    {
+      "socket": 4,
+      "type": "reply",
+      "success": true
+    },
+    {
+      "socket": 4,
+      "type": "notifications"
+    },
+    {
+      "socket": 4,
+      "type": "reply",
+      "success": true
+    },
+    {
+      "socket": 4,
+      "type": "serversettings"
+    },
+    {
+      "socket": 4,
+      "type": "reply",
+      "success": true
+    },
+    {
+      "socket": 4,
+      "type": "remotecontrol"
+    },
+    {
+      "socket": 4,
+      "type": "reply",
+      "success": true
+    },
+    {
+      "socket": 4,
+      "type": "backuplist"
+    },
+    {
+      "socket": 4,
+      "type": "reply",
+      "success": true
+    },
+    {
+      "socket": 4,
+      "type": "reply",
+      "success": true
+    },
+    {
+      "socket": 4,
+      "type": "taskqueue"
+    },
+    {
+      "socket": 4,
+      "type": "legacystatus"
+    },
+    {
+      "socket": 4,
+      "type": "serversettings"
+    },
+    {
+      "socket": 4,
+      "type": "legacystatus"
+    },
+    {
+      "socket": 4,
+      "type": "legacystatus"
+    },
+    {
+      "socket": 4,
+      "type": "serversettings"
+    },
+    {
+      "socket": 4,
+      "type": "legacystatus"
+    }
+  ],
+  "socketCount": 4,
+  "reloads": 0,
+  "server": {
+    "version": "1.0.0.0 - debug",
+    "runtime": "11.0.0"
+  },
+  "errors": []
+}

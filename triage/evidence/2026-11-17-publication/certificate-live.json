@@ -1,0 +1,20 @@
+[
+  {
+    "kind": "server",
+    "version": "2.4.1.101",
+    "run": "C:\\Users\\Jam\\Documents\\ngclient\\tmp\\publication-20261117\\certificate-live-MnkerX"
+  },
+  {
+    "kind": "invalid-password",
+    "status": 400
+  },
+  {
+    "kind": "upload-success",
+    "status": 200,
+    "pageErrors": []
+  },
+  {
+    "kind": "https-after-restart",
+    "thumbprint": "2A06A8EE984032EC260533449C0C81659173F62D"
+  }
+]

@@ -1,0 +1,13 @@
+> Building...
+√ Building...
+Application bundle generation complete. [13.443 seconds] - 2026-11-15T01:38:51.939Z
+
+
+ RUN  v5.0.3 C:/Users/Jam/Documents/ngclient
+
+
+ Test Files  1 passed (1)
+      Tests  17 passed (17)
+   Start at  10:38:57
+   Duration  40.42s (environment 87%, import 5%, setup 3%, transform 3%, tests 2%)
+

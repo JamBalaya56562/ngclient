@@ -1,0 +1,46 @@
+$ ng test ngclient --watch=false "--include=**/backup-save.spec.ts"
+> Building...
+√ Building...
+Application bundle generation complete. [15.985 seconds] - 2026-11-18T00:48:58.673Z
+
+
+ RUN  v5.0.3 C:/Users/Jam/Documents/ngclient
+
+ ❯ |ngclient| projects/ngclient/src/app/backup/backup-save.spec.ts (40 tests | 2 failed) 746ms
+   ❯ backup save lifecycle (40)
+     × asks before creating an unencrypted remote backup and permits cancellation or explicit confirmation 194ms
+     × does not use a confirmation for a destination that was replaced while the dialog was open 20ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |ngclient| projects/ngclient/src/app/backup/backup-save.spec.ts > backup save lifecycle > asks before creating an unencrypted remote backup and permits cancellation or explicit confirmation
+AssertionError: expected "vi.fn()" to be called 1 times, but got 0 times
+ ❯ projects/ngclient/src/app/backup/backup-save.spec.ts:65:18
+     63|     state.submit();
+     64|     state.submit();
+     65|     expect(open).toHaveBeenCalledTimes(1);
+       |                  ^
+     66|     expect(create).not.toHaveBeenCalled();
+     67|     open.mock.calls[0][1].closed(false);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  |ngclient| projects/ngclient/src/app/backup/backup-save.spec.ts > backup save lifecycle > does not use a confirmation for a destination that was replaced while the dialog was open
+AssertionError: expected "vi.fn()" to be called once, but got 0 times
+ ❯ projects/ngclient/src/app/backup/backup-save.spec.ts:77:18
+     75|     state.setTargetUrl('s3://bucket/first');
+     76|     state.submit();
+     77|     expect(open).toHaveBeenCalledOnce();
+       |                  ^
+     78|     state.setTargetUrl('s3://bucket/second');
+     79|     open.mock.calls[0][1].closed(true);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 38 passed (40)
+   Start at  09:48:59
+   Duration  4.82s (environment 33%, import 21%, tests 17%, setup 15%, transform 14%)
+
+error: script "test:ci" exited with code 1

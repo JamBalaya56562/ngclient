@@ -1,0 +1,24 @@
+
+Running 13 tests using 1 worker
+
+(node:23892) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [chromium] › e2e\live\auth-reconnect.spec.ts:10:7 › websocket › recovers from real token expiry without reloading (1.2m)
+  ok  2 [chromium] › e2e\live\auth-reconnect.spec.ts:10:7 › websocket › recovers from real token expiry and one failed refresh without reloading (1.3m)
+(node:17680) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  3 [chromium] › e2e\live\auth-reconnect.spec.ts:10:7 › longpoll › recovers from real token expiry without reloading (1.1m)
+  ok  4 [chromium] › e2e\live\auth-reconnect.spec.ts:10:7 › longpoll › recovers from real token expiry and one failed refresh without reloading (1.2m)
+(node:27708) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  5 [chromium] › e2e\live\backup-restore.spec.ts:15:3 › backs up unencrypted local files and restores original contents (14.6s)
+  ok  6 [chromium] › e2e\live\backup-restore.spec.ts:15:3 › backs up AES-encrypted local files and restores original contents (7.4s)
+  ok  7 [chromium] › e2e\live\backup-restore.spec.ts:15:3 › backs up AES-encrypted local files and restores original contents without saved settings (18.2s)
+  ok  8 [chromium] › e2e\live\backup-restore.spec.ts:15:3 › backs up AES-encrypted local files and restores original contents after correcting a wrong passphrase (15.5s)
+  ok  9 [chromium] › e2e\live\backup-restore.spec.ts:15:3 › backs up AES-encrypted local files and restores original contents after leaving the passphrase empty (15.2s)
+  ok 10 [chromium] › e2e\live\backup-restore.spec.ts:15:3 › backs up AES-encrypted local files and restores original contents after creating it with the wizard (10.3s)
+  ok 11 [chromium] › e2e\live\delete-versions.spec.ts:8:3 › deletes only the selected version and restores the survivors with compaction off (11.7s)
+  ok 12 [chromium] › e2e\live\delete-versions.spec.ts:8:3 › deletes only the selected version and restores the survivors with compaction on (12.6s)
+  ok 13 [chromium] › e2e\live\editor-persistence.spec.ts:6:1 › saves an existing job from another editor page and retains settings after reload (3.6s)
+
+  13 passed (7.3m)

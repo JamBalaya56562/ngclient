@@ -1,0 +1,8 @@
+
+Running 1 test using 1 worker
+
+(node:9476) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › e2e\live\broken-files.spec.ts:9:1 › lists missing-volume damage without mutations until confirmation and restores the unaffected version after purge (10.7s)
+
+  1 passed (15.5s)

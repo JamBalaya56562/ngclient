@@ -1,0 +1,115 @@
+{
+  "compact": false,
+  "requests": [
+    {
+      "BackupId": "7",
+      "Versions": [
+        1
+      ],
+      "SuppressCompact": true
+    }
+  ],
+  "before": [
+    {
+      "Version": 0,
+      "Time": "2026-11-18T11:45:45Z",
+      "IsFullBackup": true,
+      "FileCount": 3,
+      "FileSizes": 52,
+      "Label": null
+    },
+    {
+      "Version": 1,
+      "Time": "2026-11-18T11:45:42Z",
+      "IsFullBackup": true,
+      "FileCount": 37,
+      "FileSizes": 20889652,
+      "Label": null
+    },
+    {
+      "Version": 2,
+      "Time": "2026-11-18T11:45:41Z",
+      "IsFullBackup": true,
+      "FileCount": 3,
+      "FileSizes": 52,
+      "Label": null
+    }
+  ],
+  "after": [
+    {
+      "Version": 0,
+      "Time": "2026-11-18T11:45:45Z",
+      "IsFullBackup": true,
+      "FileCount": 3,
+      "FileSizes": 52,
+      "Label": null
+    },
+    {
+      "Version": 1,
+      "Time": "2026-11-18T11:45:41Z",
+      "IsFullBackup": true,
+      "FileCount": 3,
+      "FileSizes": 52,
+      "Label": null
+    }
+  ],
+  "beforeBlocks": [
+    "duplicati-b017665825bc5455d8e40796e731f5e9f.dblock.zip",
+    "duplicati-b0407588721a6495795be17716f9235e3.dblock.zip",
+    "duplicati-b16930e32dfb540e8b3174e345f1c0ce5.dblock.zip",
+    "duplicati-b221cdeb6631b499e9bef78d99b8ad7ce.dblock.zip",
+    "duplicati-b2ec0be911ddd49b0a0c2dff92d0dc1b2.dblock.zip",
+    "duplicati-b3653cc11c9ff40e1983589cc2815ee46.dblock.zip",
+    "duplicati-b3ad531033b6849e1a1ced3bd9e3eacb8.dblock.zip",
+    "duplicati-b42dc0807d7cb4416900d60d8e424e002.dblock.zip",
+    "duplicati-b4d62bf269dd448b0940f9b7be8514006.dblock.zip",
+    "duplicati-b5a4d2e24aef74fffa2be881503b15c33.dblock.zip",
+    "duplicati-b61ec15780d574a86b0ca7bf2f50ff75a.dblock.zip",
+    "duplicati-b6ec669a13eba4638a22823034af21aab.dblock.zip",
+    "duplicati-b77c55d22e4054a6cb67dd52e6a5b80e8.dblock.zip",
+    "duplicati-b83fc49081e2840edba2fcd57d5bb4630.dblock.zip",
+    "duplicati-b8f3012a1a0564ddd893c48903fdc9e16.dblock.zip",
+    "duplicati-b985ca1f4e68c4076a5e1e1607074aa7a.dblock.zip",
+    "duplicati-ba8f05818f746471f87b77c5f414906eb.dblock.zip",
+    "duplicati-bc421a0f442e8459d98325953b59fbbd6.dblock.zip",
+    "duplicati-bcc320ffc0e6c46839394af5ad5368233.dblock.zip",
+    "duplicati-bdd59c3f88a93495ab022e6e0d112dc63.dblock.zip",
+    "duplicati-be8b534dabdad40179020daa592f9821a.dblock.zip",
+    "duplicati-beccbb14ba4084a1cb1f835a8bda47d81.dblock.zip",
+    "duplicati-bfde7c76d2ee4483a8499b35f26dd446f.dblock.zip"
+  ],
+  "afterBlocks": [
+    "duplicati-b017665825bc5455d8e40796e731f5e9f.dblock.zip",
+    "duplicati-b0407588721a6495795be17716f9235e3.dblock.zip",
+    "duplicati-b16930e32dfb540e8b3174e345f1c0ce5.dblock.zip",
+    "duplicati-b221cdeb6631b499e9bef78d99b8ad7ce.dblock.zip",
+    "duplicati-b2ec0be911ddd49b0a0c2dff92d0dc1b2.dblock.zip",
+    "duplicati-b3653cc11c9ff40e1983589cc2815ee46.dblock.zip",
+    "duplicati-b3ad531033b6849e1a1ced3bd9e3eacb8.dblock.zip",
+    "duplicati-b42dc0807d7cb4416900d60d8e424e002.dblock.zip",
+    "duplicati-b4d62bf269dd448b0940f9b7be8514006.dblock.zip",
+    "duplicati-b5a4d2e24aef74fffa2be881503b15c33.dblock.zip",
+    "duplicati-b61ec15780d574a86b0ca7bf2f50ff75a.dblock.zip",
+    "duplicati-b6ec669a13eba4638a22823034af21aab.dblock.zip",
+    "duplicati-b77c55d22e4054a6cb67dd52e6a5b80e8.dblock.zip",
+    "duplicati-b83fc49081e2840edba2fcd57d5bb4630.dblock.zip",
+    "duplicati-b8f3012a1a0564ddd893c48903fdc9e16.dblock.zip",
+    "duplicati-b985ca1f4e68c4076a5e1e1607074aa7a.dblock.zip",
+    "duplicati-ba8f05818f746471f87b77c5f414906eb.dblock.zip",
+    "duplicati-bc421a0f442e8459d98325953b59fbbd6.dblock.zip",
+    "duplicati-bcc320ffc0e6c46839394af5ad5368233.dblock.zip",
+    "duplicati-bdd59c3f88a93495ab022e6e0d112dc63.dblock.zip",
+    "duplicati-be8b534dabdad40179020daa592f9821a.dblock.zip",
+    "duplicati-beccbb14ba4084a1cb1f835a8bda47d81.dblock.zip",
+    "duplicati-bfde7c76d2ee4483a8499b35f26dd446f.dblock.zip"
+  ],
+  "compactResults": null,
+  "restoredVersions": [
+    0,
+    1
+  ],
+  "server": {
+    "version": "1.0.0.0 - debug",
+    "runtime": "11.0.0"
+  }
+}

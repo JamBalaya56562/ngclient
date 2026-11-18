@@ -1,0 +1,55 @@
+[
+  {
+    "kind": "server",
+    "version": "2.4.1.101",
+    "OSType": "Windows",
+    "run": "C:\\Users\\Jam\\Documents\\ngclient\\tmp\\publication-20261117\\run-avnGtT"
+  },
+  {
+    "kind": "real-filesets-and-log-times",
+    "filesets": [
+      {
+        "Version": 0,
+        "IsFullBackup": 1,
+        "Time": "2026-11-17T20:56:14+09:00",
+        "FileCount": -1,
+        "FileSizes": -1,
+        "Label": null
+      },
+      {
+        "Version": 1,
+        "IsFullBackup": 1,
+        "Time": "2026-11-17T20:56:12+09:00",
+        "FileCount": -1,
+        "FileSizes": -1,
+        "Label": null
+      }
+    ],
+    "times": [
+      {
+        "BeginTime": "2026-11-17T11:56:14.7512901Z",
+        "EndTime": "2026-11-17T11:56:14.8957115Z"
+      },
+      {
+        "BeginTime": "2026-11-17T11:56:12.2321893Z",
+        "EndTime": "2026-11-17T11:56:13.0981493Z"
+      }
+    ]
+  },
+  {
+    "kind": "latest-run-compare",
+    "url": "http://127.0.0.1:5041/backup/1/commandline?command=compare&base=1&target=0"
+  },
+  {
+    "kind": "oldest-run-no-previous",
+    "url": "http://127.0.0.1:5041/backup/1/log"
+  },
+  {
+    "kind": "completed",
+    "pageErrors": []
+  },
+  {
+    "kind": "cleanup",
+    "remainingJobs": 0
+  }
+]

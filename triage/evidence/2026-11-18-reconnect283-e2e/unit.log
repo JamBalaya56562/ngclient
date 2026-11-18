@@ -1,0 +1,14 @@
+$ ng test ngclient --watch=false "--include=**/server-status-websocket*.spec.ts" "--include=**/server-status-longpoll.service.spec.ts" "--include=**/backups.refresh.spec.ts"
+> Building...
+√ Building...
+Application bundle generation complete. [15.002 seconds] - 2026-11-18T14:33:00.311Z
+
+
+ RUN  v5.0.3 C:/Users/Jam/Documents/ngclient
+
+
+ Test Files  4 passed (4)
+      Tests  67 passed (67)
+   Start at  23:33:01
+   Duration  5.36s (environment 51%, setup 25%, transform 9%, import 9%, tests 6%, worker 1%)
+

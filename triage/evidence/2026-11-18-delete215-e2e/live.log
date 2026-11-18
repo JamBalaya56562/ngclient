@@ -1,0 +1,16 @@
+
+Running 9 tests using 1 worker
+
+(node:10152) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › e2e\live\backup-restore.spec.ts:15:3 › backs up unencrypted local files and restores original contents (11.3s)
+  ok 2 [chromium] › e2e\live\backup-restore.spec.ts:15:3 › backs up AES-encrypted local files and restores original contents (6.1s)
+  ok 3 [chromium] › e2e\live\backup-restore.spec.ts:15:3 › backs up AES-encrypted local files and restores original contents without saved settings (11.4s)
+  ok 4 [chromium] › e2e\live\backup-restore.spec.ts:15:3 › backs up AES-encrypted local files and restores original contents after correcting a wrong passphrase (13.8s)
+  ok 5 [chromium] › e2e\live\backup-restore.spec.ts:15:3 › backs up AES-encrypted local files and restores original contents after leaving the passphrase empty (11.9s)
+  ok 6 [chromium] › e2e\live\backup-restore.spec.ts:15:3 › backs up AES-encrypted local files and restores original contents after creating it with the wizard (8.8s)
+  ok 7 [chromium] › e2e\live\delete-versions.spec.ts:8:3 › deletes only the selected version and restores the survivors with compaction off (10.1s)
+  ok 8 [chromium] › e2e\live\delete-versions.spec.ts:8:3 › deletes only the selected version and restores the survivors with compaction on (8.6s)
+  ok 9 [chromium] › e2e\live\editor-persistence.spec.ts:6:1 › saves an existing job from another editor page and retains settings after reload (3.0s)
+
+  9 passed (1.5m)

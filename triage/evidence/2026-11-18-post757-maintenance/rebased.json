@@ -1,0 +1,93 @@
+[
+  {
+    "branch": "codex/update-changelog-source",
+    "patchUnchanged": true,
+    "sha": "d7c6eb752caa7fb935bd79e392526a280fb871de",
+    "parent": "0bcf31797dd07fe356899ce236447038c178627e",
+    "oldSha": "38cc098a8bae72387bc555eee24a65d4a34a9a6b"
+  },
+  {
+    "branch": "codex/guard-shared-database-deletion",
+    "patchUnchanged": true,
+    "sha": "d5e305dfe468b40a69691412e5975cacc93a4816",
+    "parent": "0bcf31797dd07fe356899ce236447038c178627e",
+    "oldSha": "609a99e89fb36fd5b439367c2ba3d2a11c047cbc"
+  },
+  {
+    "branch": "codex/file-tree-reexpansion-coverage",
+    "patchUnchanged": true,
+    "sha": "3c0bd014ef1bc83e65add546ea964dc998307966",
+    "parent": "0bcf31797dd07fe356899ce236447038c178627e",
+    "oldSha": "7fca959926889cf082015a209f3ba2c11118dc67"
+  },
+  {
+    "branch": "codex/command-editor-signal-fields",
+    "patchUnchanged": true,
+    "sha": "4194f31c98694e89d537bd6aac09178b35a73ff1",
+    "parent": "0bcf31797dd07fe356899ce236447038c178627e",
+    "oldSha": "c935b0836bab310a7a426f2eff9f15231fc1870b"
+  },
+  {
+    "branch": "codex/remote-encryption-save-confirmation",
+    "patchUnchanged": true,
+    "sha": "e950991af4bd1d936092bee18a5721e4731846db",
+    "parent": "0bcf31797dd07fe356899ce236447038c178627e",
+    "oldSha": "e5add38be8e8e739b141787b4b9171d5f5219379"
+  },
+  {
+    "branch": "codex/reuse-existing-local-database",
+    "patchUnchanged": true,
+    "sha": "f1d32843cec1abb4a987f23ee851a327bcd38214",
+    "parent": "0bcf31797dd07fe356899ce236447038c178627e",
+    "oldSha": "af3626f30666828803d76931f649701d6c4e1e39"
+  },
+  {
+    "branch": "codex/native-console-connection-link",
+    "patchUnchanged": true,
+    "sha": "e4f224305d35f0ddc08761853af884aeaf3f1a24",
+    "parent": "0bcf31797dd07fe356899ce236447038c178627e",
+    "oldSha": "1e042d69cdcb07676911a69f46475ff70dee68b4"
+  },
+  {
+    "branch": "codex/live-backup-wizard-roundtrip",
+    "patchUnchanged": true,
+    "sha": "1f0b5c0f900fb24ce5a31b93dcf83a7b5f75819a",
+    "parent": "0bcf31797dd07fe356899ce236447038c178627e",
+    "oldSha": "9b53c5c762e0a7a93a9a5200049b86975768248f"
+  },
+  {
+    "branch": "feat/compact-progress",
+    "patchUnchanged": true,
+    "sha": "735d2bd891363117a8027bb52e83572bf47bd798",
+    "parent": "0bcf31797dd07fe356899ce236447038c178627e",
+    "oldSha": "05dd9fe8820057c418f70768d9e7e17b1974a49a"
+  },
+  {
+    "branch": "feat/export-global-options",
+    "patchUnchanged": true,
+    "sha": "62842460839424137d215ea82eebec7644907ce2",
+    "parent": "0bcf31797dd07fe356899ce236447038c178627e",
+    "oldSha": "c8dcdf753de2161675a9657a3ee90ca7b36d47c5"
+  },
+  {
+    "branch": "feat/restore-resume-drafts",
+    "patchUnchanged": true,
+    "sha": "e58afab5d87f0a18dc8d2fdc8e14d3d046a6e077",
+    "parent": "0bcf31797dd07fe356899ce236447038c178627e",
+    "oldSha": "62be94e7d434f665d334f9946f7c2a03af21cfe2"
+  },
+  {
+    "branch": "feat/show-db-encryption-preload-paths",
+    "patchUnchanged": true,
+    "sha": "16309d52ee55d2beb0e265282684d5e10e8c9afd",
+    "parent": "0bcf31797dd07fe356899ce236447038c178627e",
+    "oldSha": "a39cfa68539718007b2b38f33f9f779dd189af73"
+  },
+  {
+    "branch": "feat/skip-next-scheduled-run",
+    "patchUnchanged": true,
+    "sha": "99f9c04082cf4f63b22f5f05cc5fefb95957fad4",
+    "parent": "0bcf31797dd07fe356899ce236447038c178627e",
+    "oldSha": "8de66197aec5965c865b511ab954642ed10aa5ce"
+  }
+]

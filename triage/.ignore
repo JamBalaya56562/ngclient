@@ -1,0 +1,2 @@
+# Raw evidence remains tracked; opt in with rg --no-ignore.
+evidence/

@@ -1,0 +1,15 @@
+{
+  "sourceOS": "linux",
+  "serverOS": "Windows",
+  "runtime": "11.0.0",
+  "version": "1.0.0.0 - debug",
+  "browser": "159.0.8154.6",
+  "folderPath": "/fixture/linux-source/Documents/",
+  "restorePaths": [
+    "/fixture/linux-source/Documents/*"
+  ],
+  "files": [
+    "payload.txt"
+  ],
+  "errors": []
+}

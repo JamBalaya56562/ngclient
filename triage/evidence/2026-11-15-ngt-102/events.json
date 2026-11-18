@@ -1,0 +1,42 @@
+[
+  {
+    "kind": "server",
+    "version": "2.4.1.101",
+    "run": "C:\\Users\\Jam\\Documents\\ngclient\\tmp\\ngt102-warning-job-type-20261115\\run-0ycDLl"
+  },
+  {
+    "kind": "old-server-omission-control",
+    "before": "Sync",
+    "after": "Backup"
+  },
+  {
+    "kind": "real-warning",
+    "operation": "Sync",
+    "warnings": [
+      "2026-11-15 15:44:39 +09 - [Warning-Duplicati.Library.Main.Controller-UnsupportedOption]: The supplied option --ngt102-warning-probe is not supported and will be ignored"
+    ]
+  },
+  {
+    "kind": "action-passed",
+    "action": "Suppress",
+    "OperationType": "Sync",
+    "Enabled": false,
+    "suppressed": "UnsupportedOption"
+  },
+  {
+    "kind": "action-passed",
+    "action": "Un-suppress",
+    "OperationType": "Sync",
+    "Enabled": false
+  },
+  {
+    "kind": "completed",
+    "rerunOperationType": "Sync",
+    "plainFileMatches": true,
+    "pageErrors": []
+  },
+  {
+    "kind": "cleanup",
+    "remainingJobs": 0
+  }
+]

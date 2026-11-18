@@ -1,0 +1,112 @@
+$ ng test ngclient --watch=false "--include=projects/ngclient/src/app/layout/layout.state.spec.ts"
+> Building...
+√ Building...
+Application bundle generation complete. [4.683 seconds] - 2026-11-17T15:43:37.777Z
+
+
+ RUN  v5.0.3 C:/Users/Jam/Documents/ngclient
+
+ ❯ |ngclient| projects/ngclient/src/app/layout/layout.state.spec.ts (15 tests | 3 failed) 380ms
+   ❯ LayoutState responsive navigation and theme (15)
+     × keeps ordinary theme selections private to this browser 42ms
+     × preserves an explicit browser preference over the server default 14ms
+     × uses the server default without turning it into a browser preference 74ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |ngclient| projects/ngclient/src/app/layout/layout.state.spec.ts > LayoutState responsive navigation and theme > keeps ordinary theme selections private to this browser
+AssertionError: expected "vi.fn()" to not be called at all, but actually been called 2 times
+
+Received:
+
+  1st vi.fn() call:
+
+    Array [
+      Object {
+        "body": Object {
+          "theme": "dark",
+        },
+        "path": Object {
+          "scheme": "ngclient",
+        },
+      },
+    ]
+
+  2nd vi.fn() call:
+
+    Array [
+      Object {
+        "body": Object {
+          "theme": "light",
+        },
+        "path": Object {
+          "scheme": "ngclient",
+        },
+      },
+    ]
+
+
+Number of calls: 2
+
+ ❯ projects/ngclient/src/app/layout/layout.state.spec.ts:108:53
+    106|     state.setDarkMode();
+    107|     state.toggleBodyClass();
+    108|     expect(server.patchApiV1UisettingsByScheme).not.toHaveBeenCalled();
+       |                                                     ^
+    109|   });
+    110|
+
+ Test Files  1 failed (1)
+      Tests  3 failed | 12 passed (15)
+   Start at  00:43:38
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  |ngclient| projects/ngclient/src/app/layout/layout.state.spec.ts > LayoutState responsive navigation and theme > preserves an explicit browser preference over the server default
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ projects/ngclient/src/app/layout/layout.state.spec.ts:123:32
+    121|     TestBed.tick();
+    122|     expect(server.getApiV1UisettingsByScheme).toHaveBeenCalledWith({ p…
+    123|     expect(state.isDarkMode()).toBe(false);
+       |                                ^
+    124|     expect(classes.contains('light')).toBe(true);
+    125|     expect(storage.setItemParsed).not.toHaveBeenCalled();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  |ngclient| projects/ngclient/src/app/layout/layout.state.spec.ts > LayoutState responsive navigation and theme > uses the server default without turning it into a browser preference
+AssertionError: expected "vi.fn()" to not be called at all, but actually been called 1 times
+
+Received:
+
+  1st vi.fn() call:
+
+    Array [
+      "darkTheme",
+      true,
+      true,
+    ]
+
+
+Number of calls: 1
+
+ ❯ projects/ngclient/src/app/layout/layout.state.spec.ts:133:39
+    131|     state.loadServerTheme();
+    132|     await vi.waitFor(() => expect(state.isDarkMode()).toBe(true));
+    133|     expect(storage.setItemParsed).not.toHaveBeenCalled();
+       |                                       ^
+    134|   });
+    135|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+   Duration  4.63s (environment 50%, setup 25%, transform 12%, tests 9%, import 3%)
+
+error: script "test:ci" exited with code 1

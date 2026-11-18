@@ -1,0 +1,62 @@
+[
+  {
+    "number": 748,
+    "branch": "feat/log-download",
+    "sha": "d620ef7f233505c2a4381ca077091d34214159ee",
+    "merged": "2026-11-17T08:54:29Z"
+  },
+  {
+    "number": 746,
+    "branch": "feat/restore-version-file-count",
+    "sha": "22dcf2c3a50d5c127bb69c9cf36dc33b1bca134c",
+    "merged": "2026-11-17T08:48:53Z"
+  },
+  {
+    "number": 745,
+    "branch": "feat/report-issue-link",
+    "sha": "3d47a88359a8016af20233e99453e5cfd411b541",
+    "merged": "2026-11-17T08:48:18Z"
+  },
+  {
+    "number": 743,
+    "branch": "feat/idle-sign-out",
+    "sha": "97ae286bfa432bb2001b0d66ca3a4e86375fad65",
+    "merged": "2026-11-17T08:46:09Z"
+  },
+  {
+    "number": 742,
+    "branch": "fix/status-bar-file-count-separators",
+    "sha": "d2b6007344741ca7c80205171b275bd449cac464",
+    "merged": "2026-11-17T08:44:54Z"
+  },
+  {
+    "number": 741,
+    "branch": "fix/verify-completion-alert",
+    "sha": "e80484104552ed9857712a68bc15aa472e25cced",
+    "merged": "2026-11-17T08:43:55Z"
+  },
+  {
+    "number": 740,
+    "branch": "codex/source-attribute-exclusion-feedback",
+    "sha": "ed6b24f2bac9b9fe2cce3b9a1ae926591ca9385d",
+    "merged": "2026-11-17T08:22:46Z"
+  },
+  {
+    "number": 749,
+    "branch": "codex/stabilize-option-import-browser-tests",
+    "sha": "e5a360af0eadd80078373f15031df050a8c355e2",
+    "merged": "2026-11-17T08:19:40Z"
+  },
+  {
+    "number": 739,
+    "branch": "codex/stabilize-restore-group-listing-test",
+    "sha": "8e3bbc612a42134c71c6d7bdf809845fd72e1457",
+    "merged": "2026-11-17T08:18:44Z"
+  },
+  {
+    "merged": "2026-11-17T10:20:11Z",
+    "number": 747,
+    "sha": "9b4485184abcdcb351663c931e12a7c0046ba57b",
+    "branch": "feat/run-all-backups"
+  }
+]
