@@ -1,0 +1,12 @@
+
+Running 5 tests using 1 worker
+
+(node:25480) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › e2e\delete-backup.spec.ts:50:7 › Sync job deletion › omits remote deletion while keeping local database deletion available (4.0s)
+  ok 2 [chromium] › e2e\delete-backup.spec.ts:72:9 › backup deletion › export link opens a separate tab with ControlOrMeta and Cancel leaves without deleting (2.9s)
+  ok 3 [chromium] › e2e\delete-backup.spec.ts:72:9 › backup deletion › export link opens a separate tab with middle and Cancel leaves without deleting (2.4s)
+  ok 4 [chromium] › e2e\delete-backup.spec.ts:103:7 › backup deletion › cancels confirmation without deleting and then sends the selected options (3.0s)
+  ok 5 [chromium] › e2e\delete-backup.spec.ts:132:7 › shared command-line database deletion › keeps a shared database while deleting only the job configuration (2.6s)
+
+  5 passed (21.2s)

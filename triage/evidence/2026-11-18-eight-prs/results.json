@@ -1,0 +1,82 @@
+[
+  {
+    "build": 0,
+    "sha": "7fca959926889cf082015a209f3ba2c11118dc67",
+    "e2eTypes": 0,
+    "format": 0,
+    "app": 0,
+    "branch": "codex/file-tree-reexpansion-coverage",
+    "spec": 0,
+    "tests": 0
+  },
+  {
+    "build": 0,
+    "e2eTypes": 0,
+    "format": 0,
+    "app": 0,
+    "tests": 0,
+    "branch": "codex/command-editor-signal-fields",
+    "spec": 0,
+    "sha": "c935b0836bab310a7a426f2eff9f15231fc1870b"
+  },
+  {
+    "build": 0,
+    "e2eTypes": 0,
+    "format": 0,
+    "app": 0,
+    "tests": 0,
+    "branch": "codex/remote-encryption-save-confirmation",
+    "spec": 0,
+    "sha": "e5add38be8e8e739b141787b4b9171d5f5219379"
+  },
+  {
+    "build": 0,
+    "e2eTypes": 0,
+    "format": 0,
+    "app": 0,
+    "tests": 0,
+    "branch": "codex/native-console-connection-link",
+    "spec": 0,
+    "sha": "1e042d69cdcb07676911a69f46475ff70dee68b4"
+  },
+  {
+    "build": 0,
+    "e2eTypes": 0,
+    "format": 0,
+    "app": 0,
+    "tests": 0,
+    "branch": "codex/live-backup-wizard-roundtrip",
+    "spec": 0,
+    "sha": "9b53c5c762e0a7a93a9a5200049b86975768248f"
+  },
+  {
+    "build": 0,
+    "e2eTypes": 0,
+    "format": 0,
+    "app": 0,
+    "tests": 0,
+    "branch": "codex/update-changelog-source",
+    "spec": 0,
+    "sha": "38cc098a8bae72387bc555eee24a65d4a34a9a6b"
+  },
+  {
+    "build": 0,
+    "e2eTypes": 0,
+    "format": 0,
+    "app": 0,
+    "tests": 0,
+    "branch": "codex/guard-shared-database-deletion",
+    "spec": 0,
+    "sha": "609a99e89fb36fd5b439367c2ba3d2a11c047cbc"
+  },
+  {
+    "tests": 0,
+    "format": 0,
+    "app": 0,
+    "branch": "codex/reuse-existing-local-database",
+    "spec": 0,
+    "build": 0,
+    "e2eTypes": 0,
+    "sha": "af3626f30666828803d76931f649701d6c4e1e39"
+  }
+]

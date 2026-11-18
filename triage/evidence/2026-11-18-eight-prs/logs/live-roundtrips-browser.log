@@ -1,0 +1,13 @@
+
+Running 6 tests using 1 worker
+
+(node:9956) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › e2e\live\backup-restore.spec.ts:15:7 › backs up unencrypted local files and restores original contents (13.4s)
+  ok 2 [chromium] › e2e\live\backup-restore.spec.ts:15:7 › backs up AES-encrypted local files and restores original contents (8.7s)
+  ok 3 [chromium] › e2e\live\backup-restore.spec.ts:15:7 › backs up AES-encrypted local files and restores original contents without saved settings (14.3s)
+  ok 4 [chromium] › e2e\live\backup-restore.spec.ts:15:7 › backs up AES-encrypted local files and restores original contents after correcting a wrong passphrase (15.4s)
+  ok 5 [chromium] › e2e\live\backup-restore.spec.ts:15:7 › backs up AES-encrypted local files and restores original contents after leaving the passphrase empty (14.6s)
+  ok 6 [chromium] › e2e\live\backup-restore.spec.ts:15:7 › backs up AES-encrypted local files and restores original contents after creating it with the wizard (14.1s)
+
+  6 passed (1.5m)

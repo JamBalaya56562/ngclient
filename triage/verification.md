@@ -1,5 +1,7 @@
 # 検証記録の索引
 
+2026-11-18: triageから独立8本を実装・公開。各全単体2,526〜2,533件・型・本番ビルド成功、6実復元と実CLI DB再利用/削除保護を確認。一時worker設定と単一Playwright設定を復元。[検証記録](evidence/2026-11-18-eight-prs/verification.md)。過去の件数は当時のSHA限定。
+
 2026-11-18: NGT-115 / #3851の旧UI Cookie依存リセットを最新masterと隔離実サーバーで確認。本体forkの独立ブランチにlocalStorage移行を実装、2E2E赤→12E2E緑。ngclientのテーマCookie削除後保持も確認。[証拠と限界](evidence/2026-11-18-legacy-theme/verification.md)。
 
 2026-11-18: 残存6実装の除外なし全体テスト・本番ビルド成功。本体依存5件は未統合・PRなし、既存#757はCI全成功。新規PR0件。[結果とworker待機時間の一時延長・復元](evidence/2026-11-18-full-validation/verification.md)。
