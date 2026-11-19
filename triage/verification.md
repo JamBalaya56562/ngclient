@@ -24,3 +24,13 @@
 | [移管18件の索引](2026-11-15-duplicati-ngclient-records.md)                                        | 元SHA、赤の種類、レビュー記録。移管時の報告と追試を区別                                                                                                                             |
 
 それ以前の詳細は[整理前の索引](https://github.com/JamBalaya56562/ngclient/blob/776ba30e5e17fd75c928343d387f9ed5714c79d2/triage/verification.md)とGit履歴から参照できる。一次証拠ファイルは保持し、通常検索ではtriage/.ignoreに従ってevidenceを除外する。
+
+## 2026-11-19 マージ後の整理
+
+検証済み: GitHubでPR #777〜783がmerged=true、7件のheadすべてがmain ea43cf64bdb61b01efad47b4f808334131cd18d4の祖先であることを確認。7件のブックマークをlocal/originから削除し、fork mainを更新。残る実装7本は同mainを直接の親として競合なくrebase・push済み。triageも同mainへrebase。画像固定参照4本と別workspaceは維持。
+
+マージコミットに必要な祖先はmainの履歴として残す。到達可能なマージ済みコミットの削除やGCは行わない。rebase前の旧版はjjの操作履歴から回復可能。
+
+コマンド: jj git fetch --all-remotes; jj log -r '<7 heads> & ancestors(main@upstream)'; jj bookmark delete <7 branches>; jj git push --remote origin -b <branches>; jj rebase -r 'bookmarks(glob:"feat/_")' -d main; jj rebase -s 'roots(main..triage)' -d main; jj git push --remote origin -b 'glob:feat/_'。
+
+出力: Rebased 7 commits to destination / Rebased 8 commits to destination。conflicts()照合は0件。新しい実装は行っていない。全体テスト・ビルド・本体依存の再検証は今回未実施。過去のテスト成功をrebase後の成功とは扱わない。
