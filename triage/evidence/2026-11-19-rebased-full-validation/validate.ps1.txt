@@ -1,0 +1,27 @@
+$ErrorActionPreference='Stop'
+Set-Location C:/Users/Jam/Documents/ngclient
+$jj=(Get-Item "$env:USERPROFILE/AppData/Local/mise/installs/jj/*/jj.exe"|Sort-Object FullName|Select-Object -Last 1).FullName
+$bun=(Get-Item "$env:USERPROFILE/AppData/Local/mise/installs/bun/*/bin/bun.exe","$env:USERPROFILE/AppData/Local/mise/installs/bun/*/bun.exe" -ErrorAction SilentlyContinue|Sort-Object FullName|Select-Object -Last 1).FullName
+$node=(Get-Item "$env:USERPROFILE/AppData/Local/mise/installs/node/*/node.exe"|Sort-Object FullName|Select-Object -Last 1).FullName
+$env:PATH=(Split-Path $node)+';'+(Split-Path $bun)+';'+$env:PATH
+$dir='tmp/full-validation-20261119'
+New-Item -ItemType Directory -Force $dir|Out-Null
+$results=@()
+foreach($b in @('feat/compact-progress','feat/export-global-options','feat/restore-resume-drafts','feat/show-db-encryption-preload-paths','feat/skip-next-scheduled-run','feat/show-update-check-result','feat/restore-download')){
+ & $jj new $b
+ if($LASTEXITCODE){throw 'checkout failed'}
+ $sha=(& $jj --ignore-working-copy log -r $b --no-graph -T commit_id).Trim()
+ $slug=$b.Replace('/','-')
+ Write-Output "START $b $sha"
+ & $bun install --frozen-lockfile *> "$dir/$slug-install.log"
+ $install=$LASTEXITCODE
+ if($install){throw "Install failed: $b"}
+ & $bun run test:ci *> "$dir/$slug-tests.log"
+ $tests=$LASTEXITCODE
+ Write-Output "TESTS $b exit=$tests"
+ & $bun run build:prod *> "$dir/$slug-build.log"
+ $build=$LASTEXITCODE
+ Write-Output "BUILD $b exit=$build"
+ $results+=@{branch=$b;sha=$sha;install=$install;tests=$tests;build=$build}
+ $results|ConvertTo-Json|Set-Content "$dir/results.json"
+}

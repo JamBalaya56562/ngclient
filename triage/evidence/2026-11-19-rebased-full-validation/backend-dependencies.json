@@ -1,0 +1,55 @@
+{
+  "checked": "2026-11-19",
+  "master": "b07ae7af808bffca0787a7c89285d63f6ed000a8",
+  "dependencies": [
+    {
+      "number": 7907,
+      "state": "open",
+      "merged": false,
+      "head": "feat/export-global-options",
+      "head_sha": "af9d586dc229e24787067fd8ce7eeab58d47d0a7",
+      "merge_commit_sha": "f3cb494e157f659bb5bbafd6163a3ea117de534a",
+      "url": "https://github.com/duplicati/duplicati/pull/7907"
+    },
+    {
+      "number": 7911,
+      "state": "open",
+      "merged": false,
+      "head": "feat/skip-next-scheduled-run",
+      "head_sha": "f38eabca182e8b8601c45c8271f05f1b3cd4534b",
+      "merge_commit_sha": "2cc190ff55530f8cd9b8e1dacda56fa10ef81289",
+      "url": "https://github.com/duplicati/duplicati/pull/7911"
+    },
+    {
+      "number": 7912,
+      "state": "closed",
+      "merged": true,
+      "head": "feat/compact-progress",
+      "head_sha": "56376b7b5e6878e460f1974adda1d86e6d08ccba",
+      "merge_commit_sha": "fc03e80e977daf8b3c8d97b5a595d72244a310ee",
+      "url": "https://github.com/duplicati/duplicati/pull/7912"
+    },
+    {
+      "number": 7914,
+      "state": "closed",
+      "merged": true,
+      "head": "feat/list-temporary-backups",
+      "head_sha": "406d079d929165fc71fc5cbf488b017c8229f508",
+      "merge_commit_sha": "224016823a4b3ac39ab6919183024f04c410748b",
+      "url": "https://github.com/duplicati/duplicati/pull/7914"
+    },
+    {
+      "number": 7915,
+      "state": "closed",
+      "merged": true,
+      "head": "feat/systeminfo-preload-paths",
+      "head_sha": "aadc206da7ee6496650dc391e1e2281bac667229",
+      "merge_commit_sha": "410790de05234df2e86ba3cb01219b6fe1896eef",
+      "url": "https://github.com/duplicati/duplicati/pull/7915"
+    }
+  ],
+  "unsubmittedHeadSearches": [
+    "feat/report-update-check-errors",
+    "feat/restore-download"
+  ]
+}

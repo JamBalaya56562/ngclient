@@ -1,0 +1,51 @@
+[
+  {
+    "build": 0,
+    "sha": "60000bb92ebb748f2cffc329e021b2e74c165e83",
+    "install": 0,
+    "branch": "feat/compact-progress",
+    "tests": 1
+  },
+  {
+    "build": 0,
+    "sha": "7d6bd94a1527980a07f81093672b73ce9d144583",
+    "install": 0,
+    "branch": "feat/export-global-options",
+    "tests": 0
+  },
+  {
+    "build": 0,
+    "sha": "d472e5925d2a98bd5ffb389784b8afb84a275643",
+    "install": 0,
+    "branch": "feat/restore-resume-drafts",
+    "tests": 0
+  },
+  {
+    "build": 0,
+    "sha": "746b10dd6d3839e26be06613bf8d9069bffe5ae3",
+    "install": 0,
+    "branch": "feat/show-db-encryption-preload-paths",
+    "tests": 0
+  },
+  {
+    "build": 0,
+    "sha": "642251f992cf8c5a8c9b06a5bfa5b69f32412aec",
+    "install": 0,
+    "branch": "feat/skip-next-scheduled-run",
+    "tests": 0
+  },
+  {
+    "build": 0,
+    "sha": "2dfc4aa78075f7440f887125e405f0de774b18cd",
+    "install": 0,
+    "branch": "feat/show-update-check-result",
+    "tests": 0
+  },
+  {
+    "build": 0,
+    "sha": "6ba1135e3a9482045b225557bd1c432c0a90d9e2",
+    "install": 0,
+    "branch": "feat/restore-download",
+    "tests": 1
+  }
+]

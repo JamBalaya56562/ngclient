@@ -4,9 +4,9 @@
 
 ## 現在地
 
-- 検証済み: upstream/fork mainは `ea43cf64bdb61b01efad47b4f808334131cd18d4`。本体 upstream masterは `f21a2245713cffb4dd020d8573c77e63592cfb66`。両リポジトリでfetch済み。
-- Issue件数は直前調査時7件（#328の自動close後の全件再集計は今回未実施）、PR #777〜783はすべてMERGED（今回確認）。#758〜776はすべてマージ済み。以前の#761/#766の先行マージ待ちは解消済み。
-- 実装ブランチは**7本（本体対応待ち）**。local/originのSHA一致を確認。画像・証拠の固定参照4本と別workspace `claude-fixes` は維持。
+- 検証済み: upstream/fork mainは `ea43cf64bdb61b01efad47b4f808334131cd18d4`。本体 upstream masterは `b07ae7af808bffca0787a7c89285d63f6ed000a8`。両リポジトリでfetch済み。
+- open Issueは6件（#126/#273/#409/#460/#462/#497、今回再取得）。PR #777〜783はすべてMERGED。#758〜776はすべてマージ済み。以前の#761/#766の先行マージ待ちは解消済み。
+- 実装ブランチは**7本＝公開3本（#784〜786）＋本体待ち4本**。local/originのSHA一致を確認。画像・証拠の固定参照4本と別workspace `claude-fixes` は維持。
 - 利用者の追加指示によりNGT-117/116/121、NGT-119/122、NGT-118のUI削除E2Eを実装し、独立したPR #779〜783で公開。[修正と検証](evidence/2026-11-19-fix-batch/verification.md)。本体#460/#462/#126の対応は別セッション。
 
 ## 今回マージ済みのPR
@@ -18,11 +18,10 @@
 
 #777と#778はmainから独立、互いのファイル重複なし。#778のliveテストには本体のURL-masking修正が必要。古いサーバーでの成功・全provider接続は保証しない。
 
-## open Issue 7件の道筋
+## open Issue 6件の道筋
 
 | Issue                                                                          | ID / 現在の判断                      | 次の一手・close条件                                                                                                                                                                                                                                                                                    |
 | ------------------------------------------------------------------------------ | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [#328](https://github.com/duplicati/ngclient/issues/328) editorへの耐性        | NGT-047 / MERGED                     | #778のレビュー・CI・マージ済み。Closesを付与済み。重ねて実装しない。                                                                                                                                                                                                                                   |
 | [#273](https://github.com/duplicati/ngclient/issues/273) テスト整備            | NGT-081 / NGT-118                    | mainでlive 22ケース/8ファイルを列挙。作成・実行・復元・直接復元・世代削除・認証復帰等は既存。ジョブ自体のUI削除は#779へ追加済み（NGT-118）。通常CIはliveを除外。最小限のUI削除と継続live CIの範囲を揃え、既存成果を示してclose判断する。                                                               |
 | [#497](https://github.com/duplicati/ngclient/issues/497) Signal Forms          | NGT-007 / NGT-119 / NGT-122          | ngModelがある28テンプレートを棚卸し（静的importグラフで26が到達）。旧Schedule/Filter2件、CVA内部、部分移行画面、通常UI状態を分離。28個の未移行フォームという意味ではない。Start-all（119）は#782、SSL証明書password（122）は#783で公開済み。次にMCP作成フォーム、設定画面はパネル単位で設計。          |
 | [#409](https://github.com/duplicati/ngclient/issues/409) UI改善一覧            | NGT-052 / INVESTIGATE                | 現行HomeのStart/Edit/More actionsは名前あり。global速度制限の名前/説明は#781で修正（NGT-121、マージ済み）。共有Tooltipの急速な再表示の問題はNGT-123へ分離。進捗/現在ファイルのロジックと単体は既存だが実行中の全表示・通知の実色・主観的な配色/余白は未再検証。一部改善で全closeにしない。             |
@@ -78,19 +77,19 @@ READYは既知の外部ブロッカーなしであり、実装済み/動作検�
 | NGT-112        | INVESTIGATE | 設定なしのコマンド画面。#761/#766先行待ちは解消済み。利用要件/API契約と現行Commandline差分の照合が先。                                                                                                                                  |
 | NGT-008        | DEFERRED    | SSR・画像最適化等。導入根拠となる性能/UX課題は未観測。                                                                                                                                                                                  |
 
-## 実装済み・本体PRマージ待ち7本
+## 実装済み7本：公開3本・本体待ち4本
 
-前回の状態照合: NGT-125・NGT-126以外の5件はOPEN・merged=false（本体の状態は今回再取得していない）。NGT-125・NGT-126の本体ブランチはpush済みでPR未提出。各headは本体upstream masterの祖先ではない。新規ngclient PRはまだ出さない。本体merge後にAPI契約/実動作、重複、テスト・ビルド、本文のSHAとwhole-Issue範囲を再確認する。
+検証済み: 本体#7912/#7914/#7915はマージ済みで対応3件を公開。#7907/#7911は未マージ、追加2件は本体PR未提出。全7本の全体単体テスト・本番ビルドは成功。実行条件と未検証範囲は[今回の検証](evidence/2026-11-19-rebased-full-validation/verification.md)を参照。
 
-| ID / 本体Issue           | ngclientブランチ / 現在head                                                          | 本体PR / 現在head                                                                                      |
-| ------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
-| NGT-085 / duplicati#2310 | `feat/export-global-options` / `7d6bd94a1527980a07f81093672b73ce9d144583`            | [#7907](https://github.com/duplicati/duplicati/pull/7907) / `1015f8d7d90fe18f55dbb0e15fc49f8a92cfdba7` |
-| NGT-086 / duplicati#2701 | `feat/skip-next-scheduled-run` / `642251f992cf8c5a8c9b06a5bfa5b69f32412aec`          | [#7911](https://github.com/duplicati/duplicati/pull/7911) / `4fc5c6a4d3b843fdbb898e829313536985da7634` |
-| NGT-098 / duplicati#3397 | `feat/compact-progress` / `60000bb92ebb748f2cffc329e021b2e74c165e83`                 | [#7912](https://github.com/duplicati/duplicati/pull/7912) / `56376b7b5e6878e460f1974adda1d86e6d08ccba` |
-| NGT-100 / duplicati#5239 | `feat/restore-resume-drafts` / `d472e5925d2a98bd5ffb389784b8afb84a275643`            | [#7914](https://github.com/duplicati/duplicati/pull/7914) / `406d079d929165fc71fc5cbf488b017c8229f508` |
-| NGT-101 / duplicati#6611 | `feat/show-db-encryption-preload-paths` / `746b10dd6d3839e26be06613bf8d9069bffe5ae3` | [#7915](https://github.com/duplicati/duplicati/pull/7915) / `aadc206da7ee6496650dc391e1e2281bac667229` |
-| NGT-125 / duplicati#3188 | `feat/show-update-check-result` / `2dfc4aa78075f7440f887125e405f0de774b18cd`         | PR未提出 / `feat/report-update-check-errors` / `28d5b2d579efa76aa3e49e199cff28a38a233802`              |
-| NGT-126 / duplicati#6221 | `feat/restore-download` / `6ba1135e3a9482045b225557bd1c432c0a90d9e2`                 | PR未提出 / `feat/restore-download` / `6ba1135e3a9482045b225557bd1c432c0a90d9e2`                        |
+| ID / 本体Issue                                                                            | ngclientブランチ / 現在head                                                          | 本体PR / 現在head                                                                                      |
+| ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| NGT-085 / duplicati#2310                                                                  | `feat/export-global-options` / `7d6bd94a1527980a07f81093672b73ce9d144583`            | [#7907](https://github.com/duplicati/duplicati/pull/7907) / `af9d586dc229e24787067fd8ce7eeab58d47d0a7` |
+| NGT-086 / duplicati#2701                                                                  | `feat/skip-next-scheduled-run` / `642251f992cf8c5a8c9b06a5bfa5b69f32412aec`          | [#7911](https://github.com/duplicati/duplicati/pull/7911) / `f38eabca182e8b8601c45c8271f05f1b3cd4534b` |
+| NGT-098 / duplicati#3397 / PR_OPEN [#786](https://github.com/duplicati/ngclient/pull/786) | `feat/compact-progress` / `60000bb92ebb748f2cffc329e021b2e74c165e83`                 | [#7912](https://github.com/duplicati/duplicati/pull/7912) / `56376b7b5e6878e460f1974adda1d86e6d08ccba` |
+| NGT-100 / duplicati#5239 / PR_OPEN [#784](https://github.com/duplicati/ngclient/pull/784) | `feat/restore-resume-drafts` / `d472e5925d2a98bd5ffb389784b8afb84a275643`            | [#7914](https://github.com/duplicati/duplicati/pull/7914) / `406d079d929165fc71fc5cbf488b017c8229f508` |
+| NGT-101 / duplicati#6611 / PR_OPEN [#785](https://github.com/duplicati/ngclient/pull/785) | `feat/show-db-encryption-preload-paths` / `746b10dd6d3839e26be06613bf8d9069bffe5ae3` | [#7915](https://github.com/duplicati/duplicati/pull/7915) / `aadc206da7ee6496650dc391e1e2281bac667229` |
+| NGT-125 / duplicati#3188                                                                  | `feat/show-update-check-result` / `2dfc4aa78075f7440f887125e405f0de774b18cd`         | PR未提出 / `feat/report-update-check-errors` / `28d5b2d579efa76aa3e49e199cff28a38a233802`              |
+| NGT-126 / duplicati#6221                                                                  | `feat/restore-download` / `6ba1135e3a9482045b225557bd1c432c0a90d9e2`                 | PR未提出 / `feat/restore-download` / `3f2e90abaa59028d8e07ca92862b700d082a58e0`                        |
 
 NGT-125（2026-11-19）: Aboutの「Check for updates」を押した後、本体が返す`UpdateCheckFinished`が変わったら、失敗の理由か「最新版」を表示する。古い本体は終了時刻を返さないので何も出さない。検証済み: general.component.spec 14件緑（表示を消すと3件赤）、e2e/update-check.spec 3件緑（表示を消すと新テストが赤、ポート3000がWindows予約範囲のため3100の一時設定で実行）。本体側は統合テストと単体テストが緑、実サーバーのngaxで「Update checks are disabled」の表示を確認。ngclientを実サーバーにつないだ確認は未検証。
 
