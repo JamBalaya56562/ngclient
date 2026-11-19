@@ -1,0 +1,9 @@
+
+Running 1 test using 1 worker
+
+(node:17704) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+TOOLTIP_REOPEN [{"open":false,"text":"Throttle network speed"}]
+  ok 1 [chromium] › tmp\fix-batch-20261119\verify-ui.spec.ts:64:1 › tooltipreopen probes the shared tooltip teardown window (1.7s)
+
+  1 passed (5.9s)

@@ -1,0 +1,13 @@
+[WebServer] $ bun --bun sirv dist/ngclient/browser --single --host 127.0.0.1 --port 3000 --ignores ^/api --ignores ^/notifications
+
+Running 5 tests using 1 worker
+
+(node:30128) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › e2e\delete-backup.spec.ts:53:3 › Sync job deletion › omits remote deletion while keeping local database deletion available (1.8s)
+  ok 2 [chromium] › e2e\delete-backup.spec.ts:75:5 › backup deletion › export link opens a separate tab with ControlOrMeta and Cancel leaves without deleting (1.4s)
+  ok 3 [chromium] › e2e\delete-backup.spec.ts:75:5 › backup deletion › export link opens a separate tab with middle and Cancel leaves without deleting (1.3s)
+  ok 4 [chromium] › e2e\delete-backup.spec.ts:106:3 › backup deletion › cancels confirmation without deleting and then sends the selected options (1.3s)
+  ok 5 [chromium] › e2e\delete-backup.spec.ts:135:3 › shared command-line database deletion › keeps a shared database while deleting only the job configuration (1.4s)
+
+  5 passed (9.5s)

@@ -1,0 +1,53 @@
+[WebServer] $ bun --bun sirv dist/ngclient/browser --single --host 127.0.0.1 --port 3000 --ignores ^/api --ignores ^/notifications
+
+Running 3 tests using 1 worker
+
+(node:2840) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › e2e\throttle-settings.spec.ts:14:1 › loads limits and lets the user cancel changes without saving (1.6s)
+  x  2 [chromium] › e2e\throttle-settings.spec.ts:29:1 › names the toolbar action and supports its tooltip and keyboard activation (6.1s)
+(node:14436) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 3 [chromium] › e2e\throttle-settings.spec.ts:42:1 › preserves edits after a rejected update and saves them on retry (1.5s)
+
+
+  1) [chromium] › e2e\throttle-settings.spec.ts:29:1 › names the toolbar action and supports its tooltip and keyboard activation 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('.desktop-actions').getByRole('button', { name: 'Throttle network speed', exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" locator('.desktop-actions').getByRole('button', { name: 'Throttle network speed', exact: true }) with timeout 5000ms
+      - waiting for locator('.desktop-actions').getByRole('button', { name: 'Throttle network speed', exact: true })
+
+
+      31 |   const desktop=page.locator('.desktop-actions');
+      32 |   const throttle=desktop.getByRole('button',{name:'Throttle network speed',exact:true});
+    > 33 |   await expect(throttle).toBeVisible(); await throttle.hover();
+         |                          ^
+      34 |   await expect(page.getByRole('tooltip')).toContainText('Throttle network speed');
+      35 |   await desktop.getByRole('button',{name:'Pause',exact:true}).focus(); await page.keyboard.press('Tab');
+      36 |   await expect(throttle).toBeFocused(); await page.keyboard.press('Enter');
+        at C:\Users\Jam\Documents\ngclient\e2e\throttle-settings.spec.ts:33:26
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    tmp\fix-batch-20261119\throttle-red-results\throttle-settings-names-th-6a5a4-tip-and-keyboard-activation-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: tmp\fix-batch-20261119\throttle-red-results\throttle-settings-names-th-6a5a4-tip-and-keyboard-activation-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    tmp\fix-batch-20261119\throttle-red-results\throttle-settings-names-th-6a5a4-tip-and-keyboard-activation-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace tmp\fix-batch-20261119\throttle-red-results\throttle-settings-names-th-6a5a4-tip-and-keyboard-activation-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [chromium] › e2e\throttle-settings.spec.ts:29:1 › names the toolbar action and supports its tooltip and keyboard activation 
+  2 passed (12.7s)

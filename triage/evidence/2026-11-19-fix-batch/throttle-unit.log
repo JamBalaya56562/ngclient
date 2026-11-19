@@ -1,0 +1,44 @@
+$ ng test ngclient --watch=false "--include=**/throttle-settings-dialog.component.spec.ts" "--include=**/status-bar.state.spec.ts"
+> Building...
+√ Building...
+Application bundle generation complete. [6.093 seconds] - 2026-11-19T03:22:23.635Z
+
+
+ RUN  v5.0.3 C:/Users/Jam/Documents/ngclient
+
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+
+ Test Files  2 passed (2)
+      Tests  33 passed (33)
+   Start at  12:22:23
+   Duration  2.41s (environment 37%, setup 24%, import 14%, transform 13%, tests 11%)
+

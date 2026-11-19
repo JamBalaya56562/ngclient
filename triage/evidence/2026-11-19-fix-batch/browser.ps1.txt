@@ -1,0 +1,27 @@
+param([string]$Spec,[string]$Label,[switch]$Probe,[int]$Repeat=1)
+$ErrorActionPreference='Stop'
+$node=(Get-Item "$env:USERPROFILE/AppData/Local/mise/installs/node/*/node.exe"|Sort-Object FullName|Select-Object -Last 1).FullName
+$bun=(Get-Item "$env:USERPROFILE/AppData/Local/mise/installs/bun/*/bin/bun.exe"|Sort-Object FullName|Select-Object -Last 1).FullName
+$dotnet=(Get-Item "$env:USERPROFILE/AppData/Local/mise/installs/dotnet/*/dotnet.exe"|Sort-Object FullName|Select-Object -Last 1).FullName
+$env:PATH=(Split-Path $node)+';'+(Split-Path $bun)+';'+$env:PATH
+$root='tmp/fix-batch-20261119'
+$config=Join-Path $PWD 'playwright.config.ts';$bytes=[IO.File]::ReadAllBytes($config)
+try {
+  $text=[Text.Encoding]::UTF8.GetString($bytes)
+  if($Probe){
+    $text=$text.Replace("'./e2e/live'","'./tmp/fix-batch-20261119'")
+    $env:PLAYWRIGHT_MODE='live'
+    $env:DUPLICATI_SERVER_PATH=(Resolve-Path 'tmp/issue328-20261119/server/Duplicati.Server.exe').Path
+    $env:DOTNET_ROOT=Split-Path $dotnet;$env:DOTNET_ROOT_X64=Split-Path $dotnet;$env:DOTNET_ROLL_FORWARD='LatestMajor'
+    $a=@('node_modules/@playwright/test/cli.js','test','verify-ui.spec.ts','--grep',$Spec)
+  }else{
+    $text=$text.Replace(': 3000',': 53001').Replace(": '3000'",": '53001'")
+    Remove-Item Env:PLAYWRIGHT_MODE -ErrorAction SilentlyContinue
+    $a=@('node_modules/@playwright/test/cli.js','test',$Spec)
+  }
+  [IO.File]::WriteAllText($config,$text)
+  & $node @a --reporter=list --repeat-each $Repeat --output "$root/$Label-results" *> "$root/$Label.log"
+  $code=$LASTEXITCODE
+  Get-Content "$root/$Label.log" -Tail 15
+} finally{[IO.File]::WriteAllBytes($config,$bytes)}
+exit $code

@@ -1,0 +1,11 @@
+[WebServer] $ bun --bun sirv dist/ngclient/browser --single --host 127.0.0.1 --port 3000 --ignores ^/api --ignores ^/notifications
+
+Running 3 tests using 1 worker
+
+(node:34656) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › e2e\throttle-settings.spec.ts:15:1 › loads limits and lets the user cancel changes without saving (1.6s)
+  ok 2 [chromium] › e2e\throttle-settings.spec.ts:31:1 › names the toolbar action and supports its tooltip and keyboard activation (1.1s)
+  ok 3 [chromium] › e2e\throttle-settings.spec.ts:49:1 › preserves edits after a rejected update and saves them on retry (1.2s)
+
+  3 passed (5.7s)

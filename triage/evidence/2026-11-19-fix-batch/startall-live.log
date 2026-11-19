@@ -1,0 +1,8 @@
+
+Running 1 test using 1 worker
+
+(node:34400) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › tmp\fix-batch-20261119\verify-ui.spec.ts:26:1 › startall retains the selected after-action and cancels without starting work (2.8s)
+
+  1 passed (7.1s)
