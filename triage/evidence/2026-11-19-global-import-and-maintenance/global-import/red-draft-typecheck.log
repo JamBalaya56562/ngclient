@@ -1,0 +1,34 @@
+Using Vitest configuration file: C:\Users\Jam\Documents\ngclient\tmp\full-validation-20261119\vitest.config.mts
+> Building...
+√ Building...
+Application bundle generation failed. [43.886 seconds] - 2026-11-19T10:09:38.293Z
+
+X [ERROR] TS2345: Argument of type '{ APIExtensions: string[]; }' is not assignable to parameter of type 'SystemInfoDto'.
+  Type '{ APIExtensions: string[]; }' is missing the following properties from type 'SystemInfoDto': APIVersion, PasswordPlaceholder, ServerVersion, ServerVersionName, and 50 more. [plugin angular-compiler]
+
+    C:/Users/Jam/Documents/ngclient/projects/ngclient/src/app/backup/import/import.global-options.spec.ts:30:48:
+      30 │ ...mInfo.set({ APIExtensions: supported ? ['v1:backup:export-globa...
+         ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] TS4111: Property 'global_options' comes from an index signature, so it must be accessed with ['global_options']. [plugin angular-compiler]
+
+    C:/Users/Jam/Documents/ngclient/projects/ngclient/src/app/backup/import/import.global-options.spec.ts:60:41:
+      60 │ ...xpect(request.mock.calls[0][0].body.global_options).toBe('merge');
+         ╵                                        ~~~~~~~~~~~~~~
+
+
+X [ERROR] TS4111: Property 'global_options' comes from an index signature, so it must be accessed with ['global_options']. [plugin angular-compiler]
+
+    C:/Users/Jam/Documents/ngclient/projects/ngclient/src/app/backup/import/import.global-options.spec.ts:71:41:
+      71 │ ...pect(request.mock.calls[0][0].body.global_options).toBe('ignore');
+         ╵                                       ~~~~~~~~~~~~~~
+
+
+X [ERROR] TS4111: Property 'global_options' comes from an index signature, so it must be accessed with ['global_options']. [plugin angular-compiler]
+
+    C:/Users/Jam/Documents/ngclient/projects/ngclient/src/app/backup/import/import.global-options.spec.ts:101:41:
+      101 │ ...ect(request.mock.calls[0][0].body.global_options).toBe('ignore');
+          ╵                                      ~~~~~~~~~~~~~~
+
+

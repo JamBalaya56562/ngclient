@@ -1,0 +1,20 @@
+[WebServer] $ bun --bun sirv dist/ngclient/browser --single --host 127.0.0.1 --port 3000 --ignores ^/api --ignores ^/notifications
+
+Running 12 tests using 1 worker
+
+(node:11460) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [chromium] › e2e\export-encryption.spec.ts:54:1 › turning export encryption off omits the retained password and downloads JSON (3.9s)
+  ok  2 [chromium] › e2e\export-encryption.spec.ts:72:3 › file export retains its selected encrypted=false options while obtaining a token (3.0s)
+  ok  3 [chromium] › e2e\export-encryption.spec.ts:72:3 › file export retains its selected encrypted=true options while obtaining a token (2.9s)
+  ok  4 [chromium] › e2e\export-encryption.spec.ts:92:1 › initial plaintext password export asks for approval and supports cancellation (2.8s)
+  ok  5 [chromium] › e2e\export-encryption.spec.ts:112:1 › encrypted export retains required, minimum-length and matching-password checks (2.3s)
+  ok  6 [chromium] › e2e\import-file-read.spec.ts:24:1 › removing an import file disables import instead of retaining its payload (2.4s)
+  ok  7 [chromium] › e2e\import-file-read.spec.ts:35:1 › a failed replacement read clears the old file and allows a fresh selection (2.8s)
+  ok  8 [chromium] › e2e\import-file-read.spec.ts:70:1 › a slower previous read cannot replace the latest selected configuration (5.0s)
+  ok  9 [chromium] › e2e\import-file-read.spec.ts:155:3 › global advanced options import › keeps ignoring global options as the default (3.3s)
+  ok 10 [chromium] › e2e\import-file-read.spec.ts:165:3 › global advanced options import › selects merging with the keyboard and sends the selected policy (2.8s)
+  ok 11 [chromium] › e2e\import-file-read.spec.ts:179:3 › global advanced options import › requires Save now and confirmation before applying server-wide options (2.9s)
+  ok 12 [chromium] › e2e\import-file-read.spec.ts:208:1 › configuration import Back supports native new tabs and keyboard navigation without importing (2.6s)
+
+  12 passed (43.0s)

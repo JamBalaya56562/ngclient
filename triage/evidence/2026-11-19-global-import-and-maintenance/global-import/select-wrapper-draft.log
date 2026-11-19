@@ -1,0 +1,129 @@
+Using Vitest configuration file: C:\Users\Jam\Documents\ngclient\tmp\full-validation-20261119\vitest.config.mts
+> Building...
+√ Building...
+Application bundle generation complete. [38.014 seconds] - 2026-11-19T10:15:03.709Z
+
+
+ RUN  v5.0.3 C:/Users/Jam/Documents/ngclient
+
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+Could not parse CSS stylesheet
+ ❯ |ngclient| projects/ngclient/src/app/backup/import/import.global-options.spec.ts (8 tests | 1 failed) 2522ms
+   ❯ configuration import global options (8)
+     × offers an explicit ignore default and explains the import-time choice 1130ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |ngclient| projects/ngclient/src/app/backup/import/import.global-options.spec.ts > configuration import global options > offers an explicit ignore default and explains the import-time choice
+AssertionError: expected null not to be null
+ ❯ projects/ngclient/src/app/backup/import/import.global-options.spec.ts:49:71
+     47|   it('offers an explicit ignore default and explains the import-time c…
+     48|     const { fixture, request } = setup();
+     49|     expect(fixture.nativeElement.querySelector('#globalOptions')).not.…
+       |                                                                       ^
+     50|     expect(fixture.nativeElement.textContent).toContain('Global advanc…
+     51|     expect(fixture.nativeElement.textContent).toContain('If the file c…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+⎯⎯⎯⎯⎯⎯ Unhandled Errors ⎯⎯⎯⎯⎯⎯
+
+Vitest caught 1 unhandled error during the test run.
+This might cause false positive tests. Resolve unhandled errors to make sure your tests are not affected.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+Error: NG0600: Writing to signals is not allowed while Angular renders the template (eg. interpolations). Template location: '_ImportComponent' component. Signal: 'selectedOptions'. Find more at https://v22.angular.dev/errors/NG0600
+ ❯ node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:13166:11
+ ❯ throwInvalidWriteToSignalError node_modules/@angular/core/fesm2022/_effect-chunk.mjs:326:3
+ ❯ signalSetFn node_modules/@angular/core/fesm2022/_effect-chunk.mjs:360:5
+ ❯ getter.set node_modules/@angular/core/fesm2022/core.mjs:188:7
+ ❯ ShipSelect.setSelectedOptionsFromValue node_modules/@ship-ui/core/fesm2022/ship-ui-core-ship-select.mjs:460:30
+ ❯ HTMLInputElement.<anonymous> node_modules/@ship-ui/core/fesm2022/ship-ui-core-ship-select.mjs:214:22
+ ❯ HTMLInputElement.callTheUserObjectsOperation node_modules/jsdom/lib/generated/idl/EventListener.js:26:30
+ ❯ innerInvokeEventListeners node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:360:16
+ ❯ invokeEventListeners node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:296:3
+ ❯ HTMLInputElementImpl._dispatch node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:243:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: -600 }
+This error originated in "projects/ngclient/src/app/backup/import/import.global-options.spec.ts" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The last test to run before this error was "clears an apply selection when Save now is turned off". This means either:
+- the error was thrown while Vitest was running this test, or
+- the error was thrown after the test completed, and this was the most recent test at that point.
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+
+
+ Test Files  1 failed | 2 passed (3)
+      Tests  1 failed | 41 passed (42)
+     Errors  1 error
+   Start at  19:15:05
+   Duration  11.40s (environment 45%, tests 20%, import 15%, setup 13%, transform 7%)
+

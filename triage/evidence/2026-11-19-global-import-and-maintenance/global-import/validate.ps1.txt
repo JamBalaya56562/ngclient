@@ -1,0 +1,24 @@
+$ErrorActionPreference='Stop'
+Set-Location C:/Users/Jam/Documents/ngclient
+$node=(Get-Item "$env:USERPROFILE/AppData/Local/mise/installs/node/*/node.exe"|Sort-Object FullName|Select-Object -Last 1).FullName
+$bun=(Get-Item "$env:USERPROFILE/AppData/Local/mise/installs/bun/*/bin/bun.exe"|Sort-Object FullName|Select-Object -Last 1).FullName
+$env:PATH=(Split-Path $node)+';'+(Split-Path $bun)+';'+$env:PATH
+$dir='tmp/export-global-rework-20261119'
+foreach($p in @('projects/ngclient/tsconfig.app.json','projects/ngclient/tsconfig.spec.json','e2e/tsconfig.json')){
+ $slug=(Split-Path $p -Leaf).Replace('.json','')
+ & $node node_modules/typescript/bin/tsc --noEmit -p $p *> "$dir/$slug.log"
+ if($LASTEXITCODE){throw "Typecheck failed $p"}
+}
+& $bun run build:prod *> "$dir/build.log"
+if($LASTEXITCODE){throw 'Build failed'}
+Write-Output 'Production build passed'
+$config=Join-Path $PWD 'playwright.config.ts'
+$bytes=[IO.File]::ReadAllBytes($config)
+try {
+ $s=[Text.Encoding]::UTF8.GetString($bytes).Replace(': 3000',': 3100').Replace(": '3000'",": '3100'")
+ [IO.File]::WriteAllText($config,$s)
+ & $node node_modules/@playwright/test/cli.js test e2e/import-file-read.spec.ts e2e/export-encryption.spec.ts --reporter=list --output "$dir/e2e-results" *> "$dir/e2e.log"
+ $code=$LASTEXITCODE
+ Write-Output "E2E exit=$code"
+}finally{[IO.File]::WriteAllBytes($config,$bytes)}
+exit $code

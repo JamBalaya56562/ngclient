@@ -35,3 +35,5 @@
 コマンド: jj git fetch --all-remotes; jj log -r '<7 heads> & ancestors(main@upstream)'; jj bookmark delete <7 branches>; jj git push --remote origin -b <branches>; jj rebase -r 'bookmarks(glob:"feat/_")' -d main; jj rebase -s 'roots(main..triage)' -d main; jj git push --remote origin -b 'glob:feat/_'。
 
 出力: Rebased 7 commits to destination / Rebased 8 commits to destination。conflicts()照合は0件。新しい実装は行っていない。全体テスト・ビルド・本体依存の再検証は今回未実施。過去のテスト成功をrebase後の成功とは扱わない。
+
+- [2026-11-19 GlobalSettings import更新・マージ後整理](evidence/2026-11-19-global-import-and-maintenance/verification.md): #7907対応の赤→緑、E2E12件、4本の全体テスト・本番ビルド、#788公開。

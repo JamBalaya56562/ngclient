@@ -124,3 +124,5 @@ GitHubのmergedAtとmainへの祖先包含を確認。Issue全体のclose状態�
 | NGT-115 | 旧UIテーマ保持                           | 本体duplicati/duplicati#7886 MERGED。ngclientで重ねない                 |
 
 検証済み: 今回GitHub metadataを再取得。#758〜776のmerged_atはevidence/2026-11-19-triage-refresh/recent-merged-prs.json、本体#7886はbackend-prs.json。各実装の動作は元の検証記録のSHA・範囲に限り、今回再試験したという意味ではない。
+
+2026-11-19: NGT-098 (#786)、NGT-100 (#784)、NGT-101 (#785) はマージ済み。ブランチをlocal/originから削除し、main aaccdfa0351cへ統合確認。[今回の記録](evidence/2026-11-19-global-import-and-maintenance/verification.md)。
