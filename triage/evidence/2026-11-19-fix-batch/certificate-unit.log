@@ -1,0 +1,14 @@
+$ ng test ngclient --watch=false "--include=**/ssl-certificate.component.spec.ts"
+> Building...
+√ Building...
+Application bundle generation complete. [1.805 seconds] - 2026-11-19T03:28:26.059Z
+
+
+ RUN  v5.0.3 C:/Users/Jam/Documents/ngclient
+
+
+ Test Files  1 passed (1)
+      Tests  15 passed (15)
+   Start at  12:28:26
+   Duration  1.90s (environment 39%, setup 20%, tests 20%, import 11%, transform 10%, worker 1%)
+

@@ -1,0 +1,41 @@
+$ ng test ngclient --watch=false "--include=**/changelog.component.spec.ts"
+> Building...
+√ Building...
+Application bundle generation complete. [2.422 seconds] - 2026-11-19T03:17:41.477Z
+
+
+ RUN  v5.0.3 C:/Users/Jam/Documents/ngclient
+
+ ❯ |ngclient| projects/ngclient/src/app/about/changelog/changelog.component.spec.ts (7 tests | 1 failed) 154ms
+   ❯ changelog version selection (7)
+     × renders only the Markdown content without a SafeValue diagnostic suffix 90ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |ngclient| projects/ngclient/src/app/about/changelog/changelog.component.spec.ts > changelog version selection > renders only the Markdown content without a SafeValue diagnostic suffix
+AssertionError: expected 'Release notes\nDetails (see https://a…' to be 'Release notes\nDetails' // Object.is equality
+
+- Expected
++ Received
+
+  Release notes
+- Details
++ Details (see https://angular.dev/best-practices/security#preventing-cross-site-scripting-xss)
+
+ ❯ projects/ngclient/src/app/about/changelog/changelog.component.spec.ts:29:40
+     27|     const {fixture}=setup(undefined,'\uFEFF# Release notes\n\n[Details…
+     28|     const output=fixture.nativeElement.querySelector('.markdown-output…
+     29|     expect(output.textContent!.trim()).toBe('Release notes\nDetails');
+       |                                        ^
+     30|     expect(output.querySelector('h1')!.textContent).toBe('Release note…
+     31|     expect(output.querySelector('a')!.getAttribute('href')).toBe('http…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 6 passed (7)
+   Start at  12:17:41
+   Duration  1.55s (environment 49%, setup 22%, tests 11%, transform 11%, import 7%, worker 1%)
+
+error: script "test:ci" exited with code 1

@@ -1,0 +1,14 @@
+$ ng test ngclient --watch=false "--include=**/delete-backup.component.spec.ts"
+> Building...
+√ Building...
+Application bundle generation complete. [4.235 seconds] - 2026-11-19T03:11:13.297Z
+
+
+ RUN  v5.0.3 C:/Users/Jam/Documents/ngclient
+
+
+ Test Files  1 passed (1)
+      Tests  15 passed (15)
+   Start at  12:11:13
+   Duration  2.22s (environment 33%, tests 29%, setup 15%, transform 13%, import 9%)
+

@@ -1,0 +1,8 @@
+2026-11-19T03:27:48.8889036Z   ✘  193 [chromium] › e2e/throttle-settings.spec.ts:29:1 › names the toolbar action and supports its tooltip and keyboard activation (5.6s)
+2026-11-19T03:28:00.5389433Z   1) [chromium] › e2e/throttle-settings.spec.ts:29:1 › names the toolbar action and supports its tooltip and keyboard activation 
+2026-11-19T03:28:00.5390548Z     Locator: getByRole('tooltip')
+2026-11-19T03:28:00.5390991Z     Expected substring: "Throttle network speed"
+2026-11-19T03:28:00.5391384Z     Timeout: 5000ms
+2026-11-19T03:28:00.5391669Z     Error: element(s) not found
+2026-11-19T03:28:00.5401666Z   1 failed
+2026-11-19T03:28:00.5402191Z     [chromium] › e2e/throttle-settings.spec.ts:29:1 › names the toolbar action and supports its tooltip and keyboard activation 

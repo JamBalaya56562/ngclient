@@ -5,9 +5,9 @@
 ## 現在地
 
 - 検証済み: upstream/fork mainは `5c520f1311b7805bd26cf2e4ff420127e46b1d72`。本体 upstream masterは `f21a2245713cffb4dd020d8573c77e63592cfb66`。両リポジトリでfetch済み。
-- ngclientのopen Issueは**7件**、open PRは**2件（#777・#778）**。#758〜776はすべてマージ済み。以前の#761/#766の先行マージ待ちは解消済み。
-- 実装ブランチは**7本＝公開中2本＋本体マージ待ち5本**。local/originのSHA一致を確認。画像・証拠の固定参照4本と別workspace `claude-fixes` は維持。
-- 今回は状態照合に加えて現行mainの本番ビルド・隔離実サーバー調査・関連単体60件を実行。NGT-116/117を再現し、新規NGT-121を確認した。製品コードの修正・PR/コメント投稿は行わない。
+- ngclientのopen Issueは**7件**、open PRは**7件（#777〜783）**。#758〜776はすべてマージ済み。以前の#761/#766の先行マージ待ちは解消済み。
+- 実装ブランチは**12本＝公開中7本＋本体マージ待ち5本**。local/originのSHA一致を確認。画像・証拠の固定参照4本と別workspace `claude-fixes` は維持。
+- 利用者の追加指示によりNGT-117/116/121、NGT-119/122、NGT-118のUI削除E2Eを実装し、独立したPR #779〜783で公開。[修正と検証](evidence/2026-11-19-fix-batch/verification.md)。本体#460/#462/#126の対応は別セッション。
 
 ## 公開中のPR
 
@@ -23,9 +23,9 @@
 | Issue                                                                          | ID / 現在の判断                      | 次の一手・close条件                                                                                                                                                                                                                                                                                    |
 | ------------------------------------------------------------------------------ | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | [#328](https://github.com/duplicati/ngclient/issues/328) editorへの耐性        | NGT-047 / PR_OPEN                    | #778のレビュー・CI・merge待ち。Closesを付与済み。重ねて実装しない。                                                                                                                                                                                                                                    |
-| [#273](https://github.com/duplicati/ngclient/issues/273) テスト整備            | NGT-081 / NGT-118                    | mainでlive 22ケース/8ファイルを列挙。作成・実行・復元・直接復元・世代削除・認証復帰等は既存。ジョブ自体のUI削除は未収録でNGT-118へ。通常CIはliveを除外。最小限のUI削除と継続live CIの範囲を揃え、既存成果を示してclose判断する。                                                                       |
-| [#497](https://github.com/duplicati/ngclient/issues/497) Signal Forms          | NGT-007 / NGT-119 / NGT-122          | ngModelがある28テンプレートを棚卸し（静的importグラフで26が到達）。旧Schedule/Filter2件、CVA内部、部分移行画面、通常UI状態を分離。28個の未移行フォームという意味ではない。独立した小範囲はStart-all（119）とSSL証明書のpassword（122）。次にMCP作成フォーム、設定画面はパネル単位で設計。              |
-| [#409](https://github.com/duplicati/ngclient/issues/409) UI改善一覧            | NGT-052 / INVESTIGATE                | 現行HomeのStart/Edit/More actionsは名前あり。global速度制限ボタンだけアクセシビリティ名なし・hover説明なしを実画面で確認（NGT-121）。進捗/現在ファイルのロジックと単体は既存だが実行中の全表示・通知の実色・主観的な配色/余白は未再検証。一部改善で全closeにしない。                                   |
+| [#273](https://github.com/duplicati/ngclient/issues/273) テスト整備            | NGT-081 / NGT-118                    | mainでlive 22ケース/8ファイルを列挙。作成・実行・復元・直接復元・世代削除・認証復帰等は既存。ジョブ自体のUI削除は#779へ追加済み（NGT-118）。通常CIはliveを除外。最小限のUI削除と継続live CIの範囲を揃え、既存成果を示してclose判断する。                                                               |
+| [#497](https://github.com/duplicati/ngclient/issues/497) Signal Forms          | NGT-007 / NGT-119 / NGT-122          | ngModelがある28テンプレートを棚卸し（静的importグラフで26が到達）。旧Schedule/Filter2件、CVA内部、部分移行画面、通常UI状態を分離。28個の未移行フォームという意味ではない。Start-all（119）は#782、SSL証明書password（122）は#783で公開済み。次にMCP作成フォーム、設定画面はパネル単位で設計。          |
+| [#409](https://github.com/duplicati/ngclient/issues/409) UI改善一覧            | NGT-052 / INVESTIGATE                | 現行HomeのStart/Edit/More actionsは名前あり。global速度制限の名前/説明は#781で修正（NGT-121、merge待ち）。共有Tooltipの急速な再表示の問題はNGT-123へ分離。進捗/現在ファイルのロジックと単体は既存だが実行中の全表示・通知の実色・主観的な配色/余白は未再検証。一部改善で全closeにしない。              |
 | [#460](https://github.com/duplicati/ngclient/issues/460) secondary宛先から復元 | NGT-053 / INVESTIGATE / 本体契約相談 | copytotempは成功するが、そのGUIDへ宛先を変えてPUTするとHTTP 500（整数変換）。元ジョブは不変。単純なtemp URL差替え案は使えなかった。選んだUrlKey・秘密値・独立DB・secondaryの版差を扱う本体API/代替手順の設計が先。別方式まで不可能とは未検証。NGT-100とRestore画面の編集が重なるため実装前に差分調整。 |
 | [#462](https://github.com/duplicati/ngclient/issues/462) secondary宛先の削除   | NGT-054 / INVESTIGATE / 本体契約相談 | 現行DELETEはdelete-remote-files/delete-local-db/forceのboolだけで宛先キーを選べない。Runnerのadditional設定展開はBackupOrSyncのみ。宛先単位の削除、非選択宛先/共有DB保持、部分失敗時のジョブ保持を本体と設計する。実削除の対象範囲は今回未検証。                                                       |
 | [#126](https://github.com/duplicati/ngclient/issues/126) 検証schema            | NGT-055 / INVESTIGATE / 本体契約相談 | 実systeminfoで調べた216個の定義にValidationsは0件。現行ICommandLineArgumentにも項目なし。Min/Max/Pattern等の共有schemaを合意して本体→生成型→UIの順に実装する。既存enum/flagsや型検証だけで全closeにはしない。                                                                                          |
@@ -34,25 +34,40 @@ open一覧・既存コメントは今回再取得した。返信・公開コメ�
 
 ## 次の調査・実装順
 
-現行mainで再現できた不具合から直す。優先順は **NGT-117 → NGT-116 → NGT-121**。その後、NGT-118のUI削除E2EとNGT-119/122の小さなフォーム移行へ進む。
+NGT-117/116/121/118/119/122は実装・PR公開済みで重ねて着手しない。次はNGT-123の共有Tooltip再表示問題の範囲調整、NGT-081のlive CI、NGT-007の残りのフォーム（MCP/設定パネル）を調べる。
 
-| 優先     | ID             | 状態             | 範囲・完了条件                                                                                                                                                                                                                                                                                             |
-| -------- | -------------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 修正1    | NGT-117        | READY / 再現済み | 削除URLのcold loadでは3秒後も名前が空でDeleteボタンは有効。GET backupは出ず、Home経由なら正しい名前。共有一覧キャッシュへの依存を外してIDから読込み、未取得/取得失敗中は削除を無効化。直接URL・reload・ルート切替・Sync・共有DBを回帰検証。                                                                |
-| 修正2    | NGT-116        | READY / 再現済み | 実APIにないAngularセキュリティ診断URLがChangelog末尾へ混入。SafeValue.toString()後にMarkdown化している。生のMarkdownを処理しAngularのHTMLサニタイズを保持する方針。診断文言非表示・見出し/リンク・from-update切替・悪意HTMLの回帰検証。                                                                    |
-| 後続1    | NGT-118 / #273 | READY            | Homeの現行操作ダイアログからUI削除する実サーバーE2E。取消で変更なし→確認後にジョブと選んだローカルDBだけ削除→宛先ファイルのハッシュ保持。非共有の通常ジョブを使う。既存backup-restore.spec.tsを重複編集せずfixtureを再利用。                                                                               |
-| 後続2    | NGT-119 / #497 | READY            | home/start-all-dialogのafter-actionだけをSignal Formsへ。残存ngModelを今回ソース確認済み。None/null、未対応値のNone戻し、候補/選択順、disabled、Cancel、送信値を保持。Shutdown等はモック検証。Set/checkboxを機械的にフォーム化しない。                                                                     |
-| 評価     | NGT-005        | READY            | Aria/CDK適合評価。ツリーのARIA・選択・キーボード契約を照合し、導入で解決できる観測課題を確認。一括置換を目的にしない。先行PRはマージ済み。                                                                                                                                                                 |
-| 範囲調整 | NGT-081 / #273 | INVESTIGATE      | live CIのサーバー固定版/SHA・取得検証・隔離・終了処理・失敗artifact・実行契機を決める。現行workflowにlive実行設定がないことを今回確認。#777とfixture/workflowが重なるため先行merge推奨（機能上の必須依存とは未確定）。#778を含む全liveに必要な本体修正の公式配布への収録も確認してからサーバーを固定する。 |
+| 優先     | ID             | 状態                 | 範囲・完了条件                                                                                                                                                                                                                                                                                             |
+| -------- | -------------- | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 修正1    | NGT-117        | PR_OPEN / #779       | ID単位の詳細ロード、読込み/失敗中の削除抑止、Retry、古いroute確認抑止。単体15件（新規3件赤→緑）、既存E2E5件、実削除E2E2件・型・本番ビルド成功。                                                                                                                                                            |
+| 修正2    | NGT-116        | PR_OPEN / #780       | 生MarkdownをparseしAngularのHTMLサニタイズを維持。新規1件赤→単体7件緑、通知からのE2E1件・実サーバー1件、本番ビルド成功。                                                                                                                                                                                   |
+| 後続1    | NGT-118 / #273 | PR_OPEN / #779へ同梱 | 実サーバーで作成/実行後のジョブをcold routeからUI削除。取消で不変、DB保持/削除2ケース、宛先SHA256保持。ngclientだけで完結し本体待ちなし。                                                                                                                                                                  |
+| 後続2    | NGT-119 / #497 | PR_OPEN / #782       | after-actionを公式form/FormFieldへ移行。既存8件維持、実UI選択/取消確認、本番ビルド成功。selected Setは通常状態のまま。                                                                                                                                                                                     |
+| 評価     | NGT-005        | READY                | Aria/CDK適合評価。ツリーのARIA・選択・キーボード契約を照合し、導入で解決できる観測課題を確認。一括置換を目的にしない。先行PRはマージ済み。                                                                                                                                                                 |
+| 範囲調整 | NGT-081 / #273 | INVESTIGATE          | live CIのサーバー固定版/SHA・取得検証・隔離・終了処理・失敗artifact・実行契機を決める。現行workflowにlive実行設定がないことを今回確認。#777とfixture/workflowが重なるため先行merge推奨（機能上の必須依存とは未確定）。#778を含む全liveに必要な本体修正の公式配布への収録も確認してからサーバーを固定する。 |
 
 追加の独立候補（今回登録、未実装）:
 
-| 優先  | ID                   | 状態             | 範囲・完了条件                                                                                                                                                                                                                                                              |
-| ----- | -------------------- | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 修正3 | NGT-121 / #409の一部 | READY / 再現済み | global速度制限ボタンが実画面のARIAツリーで名前のないbutton。aria-label/翻訳とtooltipを追加し、キーボードfocus・role/name・hover・ダイアログ取消を検証。#409全体はRefsに留める。既存open PR/本体待ち5本と同じファイルを編集しない範囲。                                      |
-| 後続3 | NGT-122 / #497の一部 | READY            | settings/ssl-certificateのPFX password入力をSignal Formsへ。File選択は通常状態として残し、canUpload・入力保持・失敗/成功・送信時snapshot・disabledを既存specで守る。差分照合では公開中2本・本体待ち5本と対象ファイル重複なし。MCP tokenフォームやSettings全体へ拡大しない。 |
+| 優先  | ID                   | 状態           | 範囲・完了条件                                                                                                                                                                                       |
+| ----- | -------------------- | -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 修正3 | NGT-121 / #409の一部 | PR_OPEN / #781 | aria-labelとShipTooltip、Tab/Enter/Cancel。新規E2E赤→緑、関連単体33件、実サーバー確認。CIで共有Tooltipの再表示条件を踏んだためテストsetupを分離し30回成功。共有ライブラリの再表示問題自体はNGT-123。 |
+| 後続3 | NGT-122 / #497の一部 | PR_OPEN / #783 | PFX passwordだけSignal Forms化。既存15件維持、実APIで拒否後の入力保持を確認。本番ビルド/型成功。ファイル選択は通常状態。                                                                             |
 
 READYは既知の外部ブロッカーなしであり、実装済み/動作検証済みの意味ではない。着手前にopen PRと準備済み差分を再確認する。
+
+## 今回公開した5本（すべてmain 5c520f1311b7から独立）
+
+| PR                                                     | ID           | ブランチ / 現在SHA                                                                |
+| ------------------------------------------------------ | ------------ | --------------------------------------------------------------------------------- |
+| [#779](https://github.com/duplicati/ngclient/pull/779) | NGT-117・118 | codex/load-delete-backup-by-id / 6d96a5dcb6291c77977537f94bb007abd2a4b585         |
+| [#780](https://github.com/duplicati/ngclient/pull/780) | NGT-116      | codex/changelog-plain-markdown / 2d0ea42e14f1e6d9c7286324a3ce3f92162318e8         |
+| [#781](https://github.com/duplicati/ngclient/pull/781) | NGT-121      | codex/name-throttle-control / ce3c547c7082b775eca5c9ea55c93b28334ed732            |
+| [#782](https://github.com/duplicati/ngclient/pull/782) | NGT-119      | codex/start-all-signal-form / fbc7c971127d2d94b23423c5645ebbe421366197            |
+| [#783](https://github.com/duplicati/ngclient/pull/783) | NGT-122      | codex/certificate-password-signal-form / 3ad12474c0f4d750caff77ec5e64ee81636de828 |
+
+新たな確認事項（今回の合意済み3不具合とは別、未修正）:
+
+- **NGT-123 / INVESTIGATE**: ShipTooltipのmouseleave後の短いcleanup区間で再hoverするとpopoverが閉じたまま残る。#781の最初のCIと、実サーバー上の60ms/100ms clockプローブで確認。既存ライブラリの問題で、今回のaria-label修正が原因ではない。共有ライブラリの修正/版更新/限定パッチの範囲を決めてから別対応。#781の検証は初期画面の独立シナリオにし、通常のtooltip/keyboardテスト自体は維持。
+- 削除checkboxの既存アクセシビリティ名はNGT-005の監査対象。今回の実削除E2Eは既存テストと同じ節見出しでスコープした。名前の修正を同じPRに混ぜていない。
 
 ## その他の調査・保留
 
@@ -86,7 +101,7 @@ NGT-086は#768の現行ダイアログへ統合済み。関連2ファイル10テ
 
 ## 運用
 
-- IDは固定・再利用しない。次の新規IDは**NGT-123**。
+- IDは固定・再利用しない。次の新規IDは**NGT-124**。
 - 状態: READY / INVESTIGATE / PR_OPEN / BLOCKED / WAITING / DEFERRED。着手時はACTIVE・担当・日付・ブックマークを記録。
 - 最新mainから独立して実装し、triageを実装の親にしない。stack後段は前段merge後に公開。画像固定参照4本と別workspaceを維持。
 - 主張は検証済み／ドキュメント根拠／推測に分け、未確認は未検証と明記。過去の試験を現在SHAで再実行したと書かない。

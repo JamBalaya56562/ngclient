@@ -1,0 +1,8 @@
+
+Running 1 test using 1 worker
+
+(node:31760) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › tmp\fix-batch-20261119\verify-ui.spec.ts:2:1 › changelog has no diagnostic suffix in the real production UI (2.2s)
+
+  1 passed (6.3s)

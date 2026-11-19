@@ -1,0 +1,75 @@
+import {test,expect} from '../../e2e/live/fixture';
+import {mkdir} from 'node:fs/promises';
+import {join,sep} from 'node:path';
+import {pathToFileURL} from 'node:url';
+test('changelog has no diagnostic suffix in the real production UI',async({page,liveServer},testInfo)=>{
+  await page.goto('/login'); await page.getByPlaceholder('Enter your password').fill(liveServer.password);
+  await page.getByRole('button',{name:'Login',exact:true}).click();await expect(page).toHaveURL('/');
+  await page.goto('/about/changelog'); const output=page.locator('.markdown-output');
+  await expect(output).not.toBeEmpty(); await expect(output).not.toContainText('angular.dev/best-practices/security');
+  await expect(output).not.toContainText('SafeValue must use');
+  await page.screenshot({path:testInfo.outputPath('changelog-after.png'),fullPage:true});
+});
+test('throttle is named, explained and keyboard operable in the real production UI',async({page,liveServer},testInfo)=>{
+  await page.goto('/login');await page.getByPlaceholder('Enter your password').fill(liveServer.password);
+  await page.getByRole('button',{name:'Login',exact:true}).click();await expect(page).toHaveURL('/');
+  const desktop=page.locator('.desktop-actions');
+  const throttle=desktop.getByRole('button',{name:'Throttle network speed',exact:true});
+  await expect(throttle).toBeVisible();await throttle.hover();
+  await expect(page.getByRole('tooltip')).toContainText('Throttle network speed');
+  await desktop.getByRole('button',{name:'Pause',exact:true}).focus();await page.keyboard.press('Tab');
+  await expect(throttle).toBeFocused();await page.keyboard.press('Enter');
+  await expect(page.getByRole('heading',{name:'Throttle network speed'})).toBeVisible();
+  await page.getByRole('dialog').getByRole('button',{name:'Cancel',exact:true}).click();
+  await page.screenshot({path:testInfo.outputPath('throttle-after.png')});
+});
+test('startall retains the selected after-action and cancels without starting work',async({page,liveServer})=>{
+  const ids:string[]=[];const {api,directory,password}=liveServer;
+  const source=join(directory,'startall-source');await mkdir(source);
+  try {
+    for(const name of ['Alpha','Beta']){
+      const response=await api.post('/api/v1/backups',{data:{Backup:{Name:`Startall ${name}`,TargetURL:pathToFileURL(join(directory,'unused-remote')).href,Sources:[source+sep],Settings:[{Name:'--no-encryption',Value:'true'}],Filters:[],Tags:[],Metadata:{}},Schedule:null}});
+      expect(response.ok(),await response.text()).toBe(true);ids.push((await response.json()).ID);
+    }
+    const writes:string[]=[];page.on('request',r=>{if(r.method()==='POST'&&/\/(start|queue-completion-action)$/.test(new URL(r.url()).pathname)) writes.push(r.url());});
+    await page.goto('/login');await page.getByPlaceholder('Enter your password').fill(password);
+    await page.getByRole('button',{name:'Login',exact:true}).click();await expect(page).toHaveURL('/');
+    await page.getByRole('button',{name:'Start all',exact:true}).click();
+    const dialog=page.getByRole('dialog');await expect(dialog.getByRole('heading',{name:'Start all backups'})).toBeVisible();
+    const select=dialog.locator('.after-action sh-select');
+    await select.locator('sh-form-field').click();
+    await page.getByRole('option',{name:'Restart the computer',exact:true}).click();
+    await expect(select.locator('input')).toHaveValue('Reboot');
+    await dialog.getByRole('button',{name:'Select none',exact:true}).click();
+    await expect(dialog.getByRole('button',{name:'Start 0 backups',exact:true})).toBeDisabled();
+    await dialog.getByRole('button',{name:'Select all',exact:true}).click();
+    await expect(select.locator('input')).toHaveValue('Reboot');
+    await dialog.getByRole('button',{name:'Cancel',exact:true}).click();expect(writes).toEqual([]);
+  } finally {for(const id of ids) await api.delete(`/api/v1/backup/${id}`,{params:{'delete-local-db':'false','delete-remote-files':'false'}});}
+});
+test('certificate form retains its file and password after a real rejected PFX upload',async({page,liveServer})=>{
+  await page.goto('/login');await page.getByPlaceholder('Enter your password').fill(liveServer.password);
+  await page.getByRole('button',{name:'Login',exact:true}).click();await expect(page).toHaveURL('/');
+  await page.goto('/settings');
+  const form=page.locator('app-ssl-certificate');await expect(form).toBeVisible();
+  const button=form.getByRole('button',{name:'Upload certificate',exact:true});await expect(button).toBeDisabled();
+  await form.locator('input[type=file]').setInputFiles({name:'invalid-fixture.pfx',mimeType:'application/x-pkcs12',buffer:Buffer.from('invalid synthetic certificate')});
+  const password=form.getByLabel('Certificate password',{exact:true});await password.fill('fixture-password');
+  await expect(button).toBeEnabled();
+  const pending=page.waitForResponse(r=>r.request().method()==='POST'&&new URL(r.url()).pathname==='/api/v1/uisettings');
+  await button.click();const response=await pending;expect(response.ok()).toBe(false);
+  await expect(password).toHaveValue('fixture-password');await expect(form).toContainText('invalid-fixture.pfx');await expect(button).toBeEnabled();
+  await expect(page.getByRole('heading',{name:'HTTPS certificate',exact:true})).toBeVisible();
+});
+test('tooltipreopen probes the shared tooltip teardown window',async({page,liveServer})=>{
+  await page.goto('/login');await page.getByPlaceholder('Enter your password').fill(liveServer.password);
+  await page.getByRole('button',{name:'Login',exact:true}).click();await expect(page).toHaveURL('/');
+  const button=page.locator('.desktop-actions').getByRole('button',{name:'Throttle network speed',exact:true});
+  await button.hover();await expect(page.getByRole('tooltip')).toBeVisible();
+  const box=await button.boundingBox();expect(box).toBeTruthy();
+  await page.clock.install();await page.clock.pauseAt(new Date());
+  await page.mouse.move(30,500);await page.clock.runFor(60);
+  await page.mouse.move(box!.x+box!.width/2,box!.y+box!.height/2);await page.clock.runFor(100);
+  const state=await page.locator('ship-tooltip-wrapper').evaluateAll(nodes=>nodes.map(n=>({open:n.matches(':popover-open'),text:n.textContent?.trim()})));
+  console.log('TOOLTIP_REOPEN '+JSON.stringify(state));await page.clock.resume();
+});

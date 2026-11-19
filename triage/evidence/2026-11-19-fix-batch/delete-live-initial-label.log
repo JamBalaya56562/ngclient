@@ -1,0 +1,88 @@
+
+Running 2 tests using 1 worker
+
+(node:11084) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 [chromium] › e2e\live\delete-backup.spec.ts:9:3 › cold deletion loads the job, cancels safely and preserves remote data (local DB deletion=false) (9.3s)
+(node:1644) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  2 [chromium] › e2e\live\delete-backup.spec.ts:9:3 › cold deletion loads the job, cancels safely and preserves remote data (local DB deletion=true) (8.6s)
+
+
+  1) [chromium] › e2e\live\delete-backup.spec.ts:9:3 › cold deletion loads the job, cancels safely and preserves remote data (local DB deletion=false) 
+
+    Error: expect(locator).toBeEnabled() failed
+
+    Locator: getByRole('checkbox', { name: 'Delete local database', exact: true })
+    Expected: enabled
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeEnabled" getByRole('checkbox', { name: 'Delete local database', exact: true }) with timeout 5000ms
+      - waiting for getByRole('checkbox', { name: 'Delete local database', exact: true })
+
+
+      74 |       const local = page.getByRole('checkbox', { name: 'Delete local database', exact: true });
+      75 |       const remoteCheckbox = page.getByRole('checkbox', { name: 'Delete remote files', exact: true });
+    > 76 |       await expect(local).toBeEnabled();
+         |                           ^
+      77 |       await expect(remoteCheckbox).toBeVisible();
+      78 |       await local.setChecked(deleteLocal);
+      79 |       await expect(remoteCheckbox).not.toBeChecked();
+        at C:\Users\Jam\Documents\ngclient\e2e\live\delete-backup.spec.ts:76:27
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    tmp\fix-batch-20261119\delete-live-results\delete-backup-cold-deletio-a62e5-ta-local-DB-deletion-false--chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: tmp\fix-batch-20261119\delete-live-results\delete-backup-cold-deletio-a62e5-ta-local-DB-deletion-false--chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    tmp\fix-batch-20261119\delete-live-results\delete-backup-cold-deletio-a62e5-ta-local-DB-deletion-false--chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace tmp\fix-batch-20261119\delete-live-results\delete-backup-cold-deletio-a62e5-ta-local-DB-deletion-false--chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [chromium] › e2e\live\delete-backup.spec.ts:9:3 › cold deletion loads the job, cancels safely and preserves remote data (local DB deletion=true) 
+
+    Error: expect(locator).toBeEnabled() failed
+
+    Locator: getByRole('checkbox', { name: 'Delete local database', exact: true })
+    Expected: enabled
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeEnabled" getByRole('checkbox', { name: 'Delete local database', exact: true }) with timeout 5000ms
+      - waiting for getByRole('checkbox', { name: 'Delete local database', exact: true })
+
+
+      74 |       const local = page.getByRole('checkbox', { name: 'Delete local database', exact: true });
+      75 |       const remoteCheckbox = page.getByRole('checkbox', { name: 'Delete remote files', exact: true });
+    > 76 |       await expect(local).toBeEnabled();
+         |                           ^
+      77 |       await expect(remoteCheckbox).toBeVisible();
+      78 |       await local.setChecked(deleteLocal);
+      79 |       await expect(remoteCheckbox).not.toBeChecked();
+        at C:\Users\Jam\Documents\ngclient\e2e\live\delete-backup.spec.ts:76:27
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    tmp\fix-batch-20261119\delete-live-results\delete-backup-cold-deletio-a4b54-ata-local-DB-deletion-true--chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: tmp\fix-batch-20261119\delete-live-results\delete-backup-cold-deletio-a4b54-ata-local-DB-deletion-true--chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    tmp\fix-batch-20261119\delete-live-results\delete-backup-cold-deletio-a4b54-ata-local-DB-deletion-true--chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace tmp\fix-batch-20261119\delete-live-results\delete-backup-cold-deletio-a4b54-ata-local-DB-deletion-true--chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    [chromium] › e2e\live\delete-backup.spec.ts:9:3 › cold deletion loads the job, cancels safely and preserves remote data (local DB deletion=false) 
+    [chromium] › e2e\live\delete-backup.spec.ts:9:3 › cold deletion loads the job, cancels safely and preserves remote data (local DB deletion=true) 

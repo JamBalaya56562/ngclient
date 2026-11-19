@@ -1,0 +1,9 @@
+[WebServer] $ bun --bun sirv dist/ngclient/browser --single --host 127.0.0.1 --port 3000 --ignores ^/api --ignores ^/notifications
+
+Running 1 test using 1 worker
+
+(node:27832) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › e2e\update-changelog.spec.ts:3:1 › Show Update opens available notes and ordinary changelog navigation restores installed notes (1.9s)
+
+  1 passed (3.6s)

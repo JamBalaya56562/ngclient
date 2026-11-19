@@ -1,0 +1,93 @@
+$ ng test ngclient --watch=false "--include=**/delete-backup.component.spec.ts"
+> Building...
+√ Building...
+Application bundle generation complete. [11.330 seconds] - 2026-11-19T03:10:30.932Z
+
+
+ RUN  v5.0.3 C:/Users/Jam/Documents/ngclient
+
+ ❯ |ngclient| projects/ngclient/src/app/backup/delete-backup/delete-backup.component.spec.ts (15 tests | 3 failed) 649ms
+   ❯ job deletion remote files option (15)
+     × loads a cold route by ID and prevents deletion until its details arrive 137ms
+     × keeps deletion disabled when loading fails and supports retry 92ms
+     × does not submit a confirmation from the previous route 51ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |ngclient| projects/ngclient/src/app/backup/delete-backup/delete-backup.component.spec.ts > job deletion remote files option > loads a cold route by ID and prevents deletion until its details arrive
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ projects/ngclient/src/app/backup/delete-backup/delete-backup.component.spec.ts:62:77
+
+     60|     const details = new Subject<JobDetails>();
+     61|     const {fixture, component, load, open} = await setup('Backup', of(…
+     62|     expect(fixture.nativeElement.querySelector('.actions button').disa…
+       |                                                                             ^
+     63|     component.deleteBackup();
+     64|     expect(open).not.toHaveBeenCalled();
+ Test Files  1 failed (1)
+      Tests  3 failed | 12 passed (15)
+   Start at  12:10:34
+   Duration  22.88s (environment 89%, setup 5%, tests 3%, import 2%, transform 1%)
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  |ngclient| projects/ngclient/src/app/backup/delete-backup/delete-backup.component.spec.ts > job deletion remote files option > keeps deletion disabled when loading fails and supports retry
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ projects/ngclient/src/app/backup/delete-backup/delete-backup.component.spec.ts:75:77
+     73|   it('keeps deletion disabled when loading fails and supports retry', …
+     74|     const {fixture, load, component, open} = await setup('Backup', of(…
+     75|     expect(fixture.nativeElement.querySelector('.actions button').disa…
+       |                                                                             ^
+     76|     component.deleteBackup(); expect(open).not.toHaveBeenCalled();
+     77|     load.mockReturnValue(of({Backup:{ID:'42',Name:'Recovered job'}}));
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  |ngclient| projects/ngclient/src/app/backup/delete-backup/delete-backup.component.spec.ts > job deletion remote files option > does not submit a confirmation from the previous route
+AssertionError: expected "vi.fn()" to not be called at all, but actually been called 1 times
+
+Received:
+
+  1st vi.fn() call:
+
+    Array [
+      Object {
+        "path": Object {
+          "id": "42",
+        },
+        "query": Object {
+          "delete-local-db": false,
+          "delete-remote-files": true,
+        },
+      },
+    ]
+
+
+Number of calls: 1
+
+ ❯ projects/ngclient/src/app/backup/delete-backup/delete-backup.component.spec.ts:91:24
+     89|     await fixture.whenStable(); fixture.detectChanges();
+     90|     open.mock.calls[0][1].closed(true);
+     91|     expect(remove).not.toHaveBeenCalled();
+       |                        ^
+     92|     expect(component.deleteRemoteFiles()).toBe(false);
+     93|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+error: script "test:ci" exited with code 1
