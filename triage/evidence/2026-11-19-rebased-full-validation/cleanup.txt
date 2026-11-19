@@ -1,0 +1,1 @@
+PASS: Vitest source restored byte-for-byte before bounded-worker retries

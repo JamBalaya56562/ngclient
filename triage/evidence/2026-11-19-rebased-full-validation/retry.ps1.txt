@@ -1,0 +1,26 @@
+$ErrorActionPreference='Stop'
+Set-Location C:/Users/Jam/Documents/ngclient
+$jj=(Get-Item "$env:USERPROFILE/AppData/Local/mise/installs/jj/*/jj.exe"|Sort-Object FullName|Select-Object -Last 1).FullName
+$bun=(Get-Item "$env:USERPROFILE/AppData/Local/mise/installs/bun/*/bin/bun.exe"|Sort-Object FullName|Select-Object -Last 1).FullName
+$node=(Get-Item "$env:USERPROFILE/AppData/Local/mise/installs/node/*/node.exe"|Sort-Object FullName|Select-Object -Last 1).FullName
+$env:PATH=(Split-Path $node)+';'+(Split-Path $bun)+';'+$env:PATH
+$dir='tmp/full-validation-20261119'
+$r=@(Get-Content "$dir/results.json" -Raw|ConvertFrom-Json)
+if($r.Count -ne 7){throw 'Incomplete first run'}
+Copy-Item "$dir/results.json" "$dir/results-first-attempt.json"
+Copy-Item "$dir/vitest-original.js" node_modules/vitest/dist/chunks/index.DpLw24bj.js
+if((Get-FileHash "$dir/vitest-original.js").Hash -ne (Get-FileHash node_modules/vitest/dist/chunks/index.DpLw24bj.js).Hash){throw 'Vitest restore mismatch'}
+'PASS: Vitest source restored byte-for-byte before bounded-worker retries'|Set-Content "$dir/cleanup.txt"
+foreach($b in @('feat/restore-download','feat/compact-progress')){
+ & $jj new $b
+ if($LASTEXITCODE){throw 'checkout failed'}
+ $slug=$b.Replace('/','-')
+ Write-Output "RETRY $b with maxWorkers=2 and original startup/test timeouts"
+ & $bun run test:ci --runner-config=tmp/full-validation-20261119/vitest.config.mts *> "$dir/$slug-retry-tests.log"
+ $code=$LASTEXITCODE
+ Write-Output "RETRY $b exit=$code"
+ if($code){throw "Retry failed $b"}
+ $r|Where-Object branch -eq $b|ForEach-Object {$_.tests=0; $_|Add-Member -NotePropertyName testLog -NotePropertyValue "$slug-retry-tests.log" -Force}
+ $r|ConvertTo-Json -Depth 5|Set-Content "$dir/results.json"
+}
+& $jj status
