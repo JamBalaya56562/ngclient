@@ -1,0 +1,20 @@
+[
+  {
+    "number": 778,
+    "title": "Cover exact destination URL preservation with real-server E2E tests",
+    "head": "codex/live-destination-url-preservation",
+    "head_sha": "2f67628310cdb4fbfed666d064f79c4dbc06670d",
+    "base_sha": "5c520f1311b7805bd26cf2e4ff420127e46b1d72",
+    "updated": "2026-11-18T23:51:30Z",
+    "url": "https://github.com/duplicati/ngclient/pull/778"
+  },
+  {
+    "number": 777,
+    "title": "Avoid Chromium-restricted ports in the live-server fixture",
+    "head": "codex/live-browser-safe-ports",
+    "head_sha": "79dbfd8be5a2f0fdccc642e4db1687a533f988fc",
+    "base_sha": "5c520f1311b7805bd26cf2e4ff420127e46b1d72",
+    "updated": "2026-11-18T23:17:42Z",
+    "url": "https://github.com/duplicati/ngclient/pull/777"
+  }
+]

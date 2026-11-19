@@ -1,0 +1,58 @@
+[
+  {
+    "number": 7907,
+    "title": "Export the global advanced options apart from the backup's settings",
+    "state": "open",
+    "merged": false,
+    "head": "af9d586dc229e24787067fd8ce7eeab58d47d0a7",
+    "merge": "f3cb494e157f659bb5bbafd6163a3ea117de534a"
+  },
+  {
+    "number": 7911,
+    "title": "Add an endpoint to skip the next scheduled run of a backup",
+    "state": "open",
+    "merged": false,
+    "head": "4fc5c6a4d3b843fdbb898e829313536985da7634",
+    "merge": "1317f911567ee384494546a5a1af8e0a4101b406"
+  },
+  {
+    "number": 7912,
+    "title": "Report progress while compacting",
+    "state": "open",
+    "merged": false,
+    "head": "56376b7b5e6878e460f1974adda1d86e6d08ccba",
+    "merge": "11b2964ce4aa2f8eeb5e29394ec18c68210dae2f"
+  },
+  {
+    "number": 7914,
+    "title": "Add an endpoint that lists temporary backups / List unfinished direct restores on the restore page",
+    "state": "open",
+    "merged": false,
+    "head": "406d079d929165fc71fc5cbf488b017c8229f508",
+    "merge": "cd6d0cce34ed106d9df95979294d0ae9610baa56"
+  },
+  {
+    "number": 7915,
+    "title": "Report database encryption and preload settings paths in system info",
+    "state": "open",
+    "merged": false,
+    "head": "aadc206da7ee6496650dc391e1e2281bac667229",
+    "merge": "87a54f0d3ab3a656a47993f0e8dcafa08e9a9bac"
+  },
+  {
+    "number": 7886,
+    "title": "Persist the legacy UI theme per browser origin",
+    "state": "closed",
+    "merged": true,
+    "head": "ff4af1dd9c23379fab103a5508d2ee2aa2813e00",
+    "merge": "184f68ddc42b1a17908ffabdefd3aac5af1f1951"
+  },
+  {
+    "number": 7896,
+    "title": "Fix wrong change count",
+    "state": "closed",
+    "merged": true,
+    "head": "fdc4bc113669958b975cdf473de248aaa94bb82d",
+    "merge": "8e45da53b65ded3161bf747e65e0bd815aece04d"
+  }
+]

@@ -1,0 +1,56 @@
+[
+  {
+    "bookmark": "main",
+    "local": "5c520f1311b7805bd26cf2e4ff420127e46b1d72",
+    "origin": "5c520f1311b7805bd26cf2e4ff420127e46b1d72",
+    "equal": true
+  },
+  {
+    "bookmark": "codex/live-browser-safe-ports",
+    "local": "79dbfd8be5a2f0fdccc642e4db1687a533f988fc",
+    "origin": "79dbfd8be5a2f0fdccc642e4db1687a533f988fc",
+    "equal": true
+  },
+  {
+    "bookmark": "codex/live-destination-url-preservation",
+    "local": "2f67628310cdb4fbfed666d064f79c4dbc06670d",
+    "origin": "2f67628310cdb4fbfed666d064f79c4dbc06670d",
+    "equal": true
+  },
+  {
+    "bookmark": "feat/compact-progress",
+    "local": "cfc57e5a48279cbf3cbc2d663dd3f0d97812cf4b",
+    "origin": "cfc57e5a48279cbf3cbc2d663dd3f0d97812cf4b",
+    "equal": true
+  },
+  {
+    "bookmark": "feat/export-global-options",
+    "local": "cf7e746577e57a198dbce308d1ea0787909603e6",
+    "origin": "cf7e746577e57a198dbce308d1ea0787909603e6",
+    "equal": true
+  },
+  {
+    "bookmark": "feat/restore-resume-drafts",
+    "local": "8f154b8085838c7361d8730b2d1d28ad097c8811",
+    "origin": "8f154b8085838c7361d8730b2d1d28ad097c8811",
+    "equal": true
+  },
+  {
+    "bookmark": "feat/show-db-encryption-preload-paths",
+    "local": "e63fe51df1118b48cc35884efed767f056448fcd",
+    "origin": "e63fe51df1118b48cc35884efed767f056448fcd",
+    "equal": true
+  },
+  {
+    "bookmark": "feat/skip-next-scheduled-run",
+    "local": "ee552d1d96d7cf0eb2ca21c9d2eba97011bbe945",
+    "origin": "ee552d1d96d7cf0eb2ca21c9d2eba97011bbe945",
+    "equal": true
+  },
+  {
+    "bookmark": "triage",
+    "local": "8ddd1e2fb6be25233851f3dd89078c0f346380f0",
+    "origin": "8ddd1e2fb6be25233851f3dd89078c0f346380f0",
+    "equal": true
+  }
+]

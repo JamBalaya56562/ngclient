@@ -1,0 +1,65 @@
+[
+  {
+    "number": 497,
+    "title": "chore: migrate codebase to using signal forms over object of signals",
+    "state": "open",
+    "updated_at": "2026-08-10T19:45:58Z",
+    "comments": 0,
+    "body": "In mostly the backup flow we prepared for form signals and replacing all that \"hacky\" object/nested objects of signals with real signal forms would be a big win for the codebase in overall readability and maintainability",
+    "html_url": "https://github.com/duplicati/ngclient/issues/497"
+  },
+  {
+    "number": 462,
+    "title": "Delete files from secondary destinations",
+    "state": "open",
+    "updated_at": "2026-04-27T07:14:44Z",
+    "comments": 0,
+    "body": "When deleting a backup, there's a tickbox for \"Delete remote files\". It would be convenient to feature the same tickbox for each of the secondary destinations as well. ",
+    "html_url": "https://github.com/duplicati/ngclient/issues/462"
+  },
+  {
+    "number": 460,
+    "title": "Restore from secondary destination",
+    "state": "open",
+    "updated_at": "2026-04-28T00:57:23Z",
+    "comments": 1,
+    "body": "When choosing a backup from the \"Restore\" page, the page starts listing the backup's contents. It would be nice if one could select the secondary destinations (if any has been configured) as the backup to restore from. ",
+    "html_url": "https://github.com/duplicati/ngclient/issues/460"
+  },
+  {
+    "number": 409,
+    "title": "A list of improvement suggestions:",
+    "state": "open",
+    "updated_at": "2025-11-21T13:30:04Z",
+    "comments": 1,
+    "body": "I switched to the old interface! Wow, it has several things superior to the new, terrible one:\n\n- Shows the errors in red balloons down at the bottom, warnings in yellow\n- It's centered around the log file and its current or past results\n- It shows a progress bar that makes a lot of sense\n- Weird, indecipherable icons (Web 2.0-esque) have balloon text when you hover (e.g. Throttle Options, top right) whereas the new interface had no clue as to what several things did (overflow ..., pencil icon, crescent moon)\n- You can view the current file being backed up on the Home screen, which is vitally important\n- It has better use of colors, menus, drop-downs, and white space\n- You can tell that whoever designed it really focused on the UI, because all the functions make sense and are discoverable\n\nFrom: https://www.reddit.com/r/Duplicati/comments/1p2no89/comment/npzkrap/",
+    "html_url": "https://github.com/duplicati/ngclient/issues/409"
+  },
+  {
+    "number": 328,
+    "title": "Resilience for broken editors",
+    "state": "open",
+    "updated_at": "2026-11-07T10:01:27Z",
+    "comments": 1,
+    "body": "If the editor (say destination config) is somehow broken, it will mess up the connection string on edit/save.\nThis happens because the event flow is triggered once the path is initially set.\nThe string is then decoded into forms, and once the form is populated, it is serialized back.\n\nThe effect of this is that the string is changed, even if the user has not actively changed anything.\nIf the user then saves the backup (or simply navigates) the incorrect string is written to the config.",
+    "html_url": "https://github.com/duplicati/ngclient/issues/328"
+  },
+  {
+    "number": 273,
+    "title": "Add a testing suite",
+    "state": "open",
+    "updated_at": "2025-06-03T07:26:06Z",
+    "comments": 0,
+    "body": "Lets add Vitest since angular internally use vite to compile (team behind vitest) and they're also working on a rewritten rust based vite compiler and it seems angular are leaning towards more vite there are a community effort to bring [vitest](https://analogjs.org/docs/features/testing/vitest) to angular\n\nWe should add E2E testing through [playwright](https://playwright.dev/) one thing we should keep this to a minimum but it could be good to make like one test for `doing a backup`, `running the backup`, `restore the backup`, `delete the backup`",
+    "html_url": "https://github.com/duplicati/ngclient/issues/273"
+  },
+  {
+    "number": 126,
+    "title": "[Suggestion] Add custom validation for destination/options/advanced options",
+    "state": "open",
+    "updated_at": "2025-02-25T10:09:40Z",
+    "comments": 0,
+    "body": "We currently have options/destination options etc but they dont do any validation besides the enumerations naterual validation by only showing allowed options\n\nI think we should agree on a format/contract between the frontend and backend so when we consume the options on the frontend it also carries a validation object like the example below are the current + the validation suggestion\n\n```typescript\n// This is the generated types from the backend\nexport type ArgumentType = 'String' | 'Integer' | 'Boolean' | 'Timespan' | 'Size' | 'Enumeration' | 'Path' | 'Password' | 'Flags' | 'Decimal' | 'Unknown';\n\n\nexport type ICommandLineArgument = {\n    Aliases?: Array<(string)> | null;\n    LongDescription?: (string) | null;\n    Name?: (string) | null;\n    ShortDescription?: (string) | null;\n    Type?: ArgumentType;\n    ValidValues?: Array<(string)> | null;\n    DefaultValue?: (string) | null;\n    readonly Typename?: (string) | null;\n    Deprecated?: boolean;\n    DeprecationMessage?: (string) | null;\n\n    // Suggestion\n    Validations: [\n      { \n         Type: ValidationType; // Min, Max, Pattern, Custom\n         Value: string | number | ...; // Should be the type that corresponds to the validation type\n      }\n    ]\n};\n``` \n\nThis is so that when we need to update validation on a provider or add a new provider we know validation are aligned across frontend and backend\n\nBut where we ofc dont ship validation that we dont need like for Enumerations and Flags, in general i think we should only ship validation if we found a case where it really makes sense like for #118 \n\n",
+    "html_url": "https://github.com/duplicati/ngclient/issues/126"
+  }
+]

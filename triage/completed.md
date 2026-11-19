@@ -66,45 +66,61 @@
 
 ## 2026-11-17 マージ・整理確認
 
-| ID | 範囲 | PR | 状態 |
-| --- | --- | --- | --- |
-| NGT-106 | 保持メニューの外部フォーカス時の閉じ忘れ・import loadingの広すぎるE2E locator | [#749](https://github.com/duplicati/ngclient/pull/749) | DONE / 2026-11-17 merged |
-| NGT-105 | Check restore group paths without racing listing requests | [#739](https://github.com/duplicati/ngclient/pull/739) | DONE / 2026-11-17 merged |
-| NGT-050 | Show source attribute exclusions and link to their settings | [#740](https://github.com/duplicati/ngclient/pull/740) | DONE / 2026-11-17 merged |
-| NGT-084 | Report the result when Verify files finishes | [#741](https://github.com/duplicati/ngclient/pull/741) | DONE / 2026-11-17 merged |
-| NGT-087 | Format progress file counts with locale-aware separators | [#742](https://github.com/duplicati/ngclient/pull/742) | DONE / 2026-11-17 merged |
-| NGT-089 | Add an optional sign-out after browser inactivity | [#743](https://github.com/duplicati/ngclient/pull/743) | DONE / 2026-11-17 merged |
-| NGT-094 | Add a Report an issue link to the navigation | [#745](https://github.com/duplicati/ngclient/pull/745) | DONE / 2026-11-17 merged |
-| NGT-099 | Show file counts in the restore version picker | [#746](https://github.com/duplicati/ngclient/pull/746) | DONE / 2026-11-17 merged |
-| NGT-095 | Queue all eligible backups from the home page | [#747](https://github.com/duplicati/ngclient/pull/747) | DONE / 2026-11-17 merged |
-| NGT-097 | Download the loaded entries from log pages | [#748](https://github.com/duplicati/ngclient/pull/748) | DONE / 2026-11-17 merged |
-| NGT-113 | サイドバー単体テストのIdleLogoutState provider不足 | [#750](https://github.com/duplicati/ngclient/pull/750) closed / #747で同等修正 | DONE / 重複providerを追加するだけになったため取り下げ・ブランチ削除 |
-
+| ID      | 範囲                                                                          | PR                                                                             | 状態                                                                |
+| ------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------- |
+| NGT-106 | 保持メニューの外部フォーカス時の閉じ忘れ・import loadingの広すぎるE2E locator | [#749](https://github.com/duplicati/ngclient/pull/749)                         | DONE / 2026-11-17 merged                                            |
+| NGT-105 | Check restore group paths without racing listing requests                     | [#739](https://github.com/duplicati/ngclient/pull/739)                         | DONE / 2026-11-17 merged                                            |
+| NGT-050 | Show source attribute exclusions and link to their settings                   | [#740](https://github.com/duplicati/ngclient/pull/740)                         | DONE / 2026-11-17 merged                                            |
+| NGT-084 | Report the result when Verify files finishes                                  | [#741](https://github.com/duplicati/ngclient/pull/741)                         | DONE / 2026-11-17 merged                                            |
+| NGT-087 | Format progress file counts with locale-aware separators                      | [#742](https://github.com/duplicati/ngclient/pull/742)                         | DONE / 2026-11-17 merged                                            |
+| NGT-089 | Add an optional sign-out after browser inactivity                             | [#743](https://github.com/duplicati/ngclient/pull/743)                         | DONE / 2026-11-17 merged                                            |
+| NGT-094 | Add a Report an issue link to the navigation                                  | [#745](https://github.com/duplicati/ngclient/pull/745)                         | DONE / 2026-11-17 merged                                            |
+| NGT-099 | Show file counts in the restore version picker                                | [#746](https://github.com/duplicati/ngclient/pull/746)                         | DONE / 2026-11-17 merged                                            |
+| NGT-095 | Queue all eligible backups from the home page                                 | [#747](https://github.com/duplicati/ngclient/pull/747)                         | DONE / 2026-11-17 merged                                            |
+| NGT-097 | Download the loaded entries from log pages                                    | [#748](https://github.com/duplicati/ngclient/pull/748)                         | DONE / 2026-11-17 merged                                            |
+| NGT-113 | サイドバー単体テストのIdleLogoutState provider不足                            | [#750](https://github.com/duplicati/ngclient/pull/750) closed / #747で同等修正 | DONE / 重複providerを追加するだけになったため取り下げ・ブランチ削除 |
 
 ## 2026-11-18 マージ確認
 
-| ID | 完了範囲 | PR |
-| --- | --- | --- |
+| ID      | 完了範囲                                  | PR   |
+| ------- | ----------------------------------------- | ---- |
 | NGT-091 | Browser preference / server theme default | #744 |
-| NGT-088 | Partial exclusion display | #751 |
-| NGT-090 | Resolved shortcut source | #752 |
-| NGT-092 | Compare previous run | #753 |
-| NGT-093 | HTTPS certificate upload | #754 |
-| NGT-096 | Last run failed indicator | #755 |
-| NGT-114 | Required run-after fixture fields | #756 |
+| NGT-088 | Partial exclusion display                 | #751 |
+| NGT-090 | Resolved shortcut source                  | #752 |
+| NGT-092 | Compare previous run                      | #753 |
+| NGT-093 | HTTPS certificate upload                  | #754 |
+| NGT-096 | Last run failed indicator                 | #755 |
+| NGT-114 | Required run-after fixture fields         | #756 |
 
 GitHubのmergedAtとmainへの祖先包含を確認。Issue全体のclose状態は今回未確認。
 | NGT-103 | Chromium popup初期化 / Playwright 1.65.1 | [#757](https://github.com/duplicati/ngclient/pull/757)、main 0bcf3179へマージ済み |
 
 ## 2026-11-19 マージ確認
 
-| ID | 完了した範囲 | PR |
-| --- | --- | --- |
+| ID      | 完了した範囲                                                    | PR   |
+| ------- | --------------------------------------------------------------- | ---- |
 | NGT-041 | #283: 実サーバーでWS/長ポーリング認証復帰、一覧取得のエラー処理 | #771 |
-| NGT-044 | #401: Windows宛先入力・保存・再読込の実サーバーE2E | #772 |
-| NGT-049 | #627: 既存ジョブ全ページの直接移動・保存・再読込E2E | #773 |
-| NGT-043 | #217: 欠損volume一覧・確認前不変・purge後の旧版復元E2E | #774 |
-| NGT-045 | #449: Linux/Windows両方向の一覧・復元E2E | #775 |
-| NGT-042 | #492: タイムゾーン/DST日付編集・保存・Home表示の実サーバーE2E | #776 |
+| NGT-044 | #401: Windows宛先入力・保存・再読込の実サーバーE2E              | #772 |
+| NGT-049 | #627: 既存ジョブ全ページの直接移動・保存・再読込E2E             | #773 |
+| NGT-043 | #217: 欠損volume一覧・確認前不変・purge後の旧版復元E2E          | #774 |
+| NGT-045 | #449: Linux/Windows両方向の一覧・復元E2E                        | #775 |
+| NGT-042 | #492: タイムゾーン/DST日付編集・保存・Home表示の実サーバーE2E   | #776 |
 
 検証済み: 6件のPRはmerged、対応Issueはclosed/completed。証拠はevidence/2026-11-19-maintenance/issues.json。個々の検証範囲・未検証範囲は各PR本文と元記録に従う。
+
+## 2026-11-19 完了索引の補完
+
+| ID      | 完了した範囲                             | PR・制限                                                                |
+| ------- | ---------------------------------------- | ----------------------------------------------------------------------- |
+| NGT-107 | 更新版の変更履歴                         | #758。SafeValue診断文言の疑いはNGT-116で別調査                          |
+| NGT-108 | 共有ローカルDBの削除防止                 | #759。cold start表示の疑いはNGT-117、secondary削除全体はNGT-054で別扱い |
+| NGT-104 | ツリー再展開の回帰テスト                 | #760。本番バグの再現・修正済みとは扱わない                              |
+| NGT-080 | CommandlineのSignal Forms                | #761。#497全体の移行完了ではない                                        |
+| NGT-110 | 新規remoteの未暗号化保存確認             | #762。パスフレーズ全般のUX完了ではない                                  |
+| NGT-109 | 既存CLI用DBの再利用                      | #763。宛先設定の追加実装は現行差分を照合                                |
+| NGT-071 | console接続のnative link                 | #764。ナビゲーション監査全体の完了ではない                              |
+| NGT-082 | ウィザード作成から実バックアップ・復元   | #765。live CI/UI削除はNGT-081/118に残る                                 |
+| NGT-040 | #215の世代削除・Compact実サーバー回帰E2E | #770。Issueはclose済み                                                  |
+| NGT-115 | 旧UIテーマ保持                           | 本体duplicati/duplicati#7886 MERGED。ngclientで重ねない                 |
+
+検証済み: 今回GitHub metadataを再取得。#758〜776のmerged_atはevidence/2026-11-19-triage-refresh/recent-merged-prs.json、本体#7886はbackend-prs.json。各実装の動作は元の検証記録のSHA・範囲に限り、今回再試験したという意味ではない。

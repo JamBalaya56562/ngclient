@@ -1,0 +1,23 @@
+[
+  {
+    "issue": 328,
+    "author": "JamBalaya56562",
+    "created": "2026-11-07T10:01:27Z",
+    "body": "Verified on main [626f10a35876753f0a2f36d414c878c91a819067](https://github.com/duplicati/ngclient/commit/626f10a35876753f0a2f36d414c878c91a819067).\n\n#618 addresses the load/serialize feedback loop by preserving the saved URL and applying only explicit edits. Verified scope: I reran `destination-edit-session.spec.ts` and `single-destination.render.spec.ts`; both passed, covering untouched URL values, unknown/repeated query parameters, credentials, and parse/mapper failures across their regression cases.\n\nThese are unit/component checks, not live connection tests for every provider. Is there a specific editor or configuration that still loses settings, or another remaining case you would like covered here?\r\n",
+    "url": "https://github.com/duplicati/ngclient/issues/328#issuecomment-6705365343"
+  },
+  {
+    "issue": 409,
+    "author": "ts678",
+    "created": "2025-11-21T13:30:04Z",
+    "body": "If clarifications may help, I will cite related issues for whoever sorts this out.\n\n[backup shows no per-file progress #233](https://github.com/duplicati/ngclient/issues/233) (gave futures plan but got closed)\n\n[Progress bar in staus bar area changes size #302](https://github.com/duplicati/ngclient/issues/302) (drops rest of forum post)\n\n[Canary job log not produced upon error since 2.1.0.121 #6538](https://github.com/duplicati/duplicati/issues/6538) (a reminder)\n\nComments on Alerts icon [here](https://forum.duplicati.com/t/release-2-1-0-118-canary-2025-05-12/20666/16?u=ts678). My [last post](https://forum.duplicati.com/t/release-2-1-0-118-canary-2025-05-12/20666/18?u=ts678) there asked about progress on:\n\n> We are currently working with a designer to overhaul the notifications.\n\n If Alerts get [noisier](https://forum.duplicati.com/t/new-ui-where-are-the-logs-win10/21655/3?u=ts678), please fix nuisance alerts such as 401 Unauthorized first.\n\n[Chrome (Chromium) gets status_access_violation page crash after tooltip hover #386](https://github.com/duplicati/ngclient/issues/386) (beware of this if adding hover actions)\n\n",
+    "url": "https://github.com/duplicati/ngclient/issues/409#issuecomment-3563045323"
+  },
+  {
+    "issue": 460,
+    "author": "ts678",
+    "created": "2026-04-28T00:57:23Z",
+    "body": "This would have to be sensitive to destination content, correct? Job DB matches primary, but may or may not match secondary.",
+    "url": "https://github.com/duplicati/ngclient/issues/460#issuecomment-4331557001"
+  }
+]

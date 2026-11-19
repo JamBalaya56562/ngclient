@@ -1,0 +1,52 @@
+codex/live-browser-safe-ports: kpmsmkmp 79dbfd8b Keep live E2E proxies on browser-safe ports and allow browser CI setup time
+  @git: kpmsmkmp 79dbfd8b Keep live E2E proxies on browser-safe ports and allow browser CI setup time
+  @origin: kpmsmkmp 79dbfd8b Keep live E2E proxies on browser-safe ports and allow browser CI setup time
+codex/live-destination-url-preservation: toxzrtoz 2f676283 Cover exact destination URL preservation through real-server editor saves
+  @git: toxzrtoz 2f676283 Cover exact destination URL preservation through real-server editor saves
+  @origin: toxzrtoz 2f676283 Cover exact destination URL preservation through real-server editor saves
+codex/pr-311-screenshots: ryslkwkx 26080ad6 Store issue 311 review images: main 8f401edd versus restore groups 3e98d5b9
+  @git: ryslkwkx 26080ad6 Store issue 311 review images: main 8f401edd versus restore groups 3e98d5b9
+  @origin: ryslkwkx 26080ad6 Store issue 311 review images: main 8f401edd versus restore groups 3e98d5b9
+codex/pr-637-screenshots: slwlsxwq 4b51aa1f Store the rebased source attribute exclusion review image
+  @git: slwlsxwq 4b51aa1f Store the rebased source attribute exclusion review image
+  @origin: slwlsxwq 4b51aa1f Store the rebased source attribute exclusion review image
+codex/pr-eight-evidence: yqqoxtnk 6192fc6e Record publication CI results and confirm existing popup failures
+  @git: yqqoxtnk 6192fc6e Record publication CI results and confirm existing popup failures
+  @origin: yqqoxtnk 6192fc6e Record publication CI results and confirm existing popup failures
+codex/pr-review-screenshots: urkuryrx 193398fb Add Compact afterwards screenshots for PR 675
+  @git: urkuryrx 193398fb Add Compact afterwards screenshots for PR 675
+  @origin: urkuryrx 193398fb Add Compact afterwards screenshots for PR 675
+dynamic-machine-server-url@upstream: usttzsxv 6b4fca59 Implement dynamic machineServerUrl
+experiment/status-page@upstream: rzkxwrvt 764ac592 (empty) Merge remote-tracking branch 'origin/main' into experiment/status-page
+feat/compact-progress: owwwqnro cfc57e5a Show compact progress during a backup
+  @git: owwwqnro cfc57e5a Show compact progress during a backup
+  @origin: owwwqnro cfc57e5a Show compact progress during a backup
+feat/export-global-options: vuyttunx cf7e7465 Offer to include global advanced options in file exports
+  @git: vuyttunx cf7e7465 Offer to include global advanced options in file exports
+  @origin: vuyttunx cf7e7465 Offer to include global advanced options in file exports
+feat/restore-resume-drafts: lzuvslol 8f154b80 List unfinished direct restores on the restore page
+  @git: lzuvslol 8f154b80 List unfinished direct restores on the restore page
+  @origin: lzuvslol 8f154b80 List unfinished direct restores on the restore page
+feat/run-all-backups@upstream: kqksvvxq 4b4fec46 Merge commit '6560c698e804ce641aa26cb8f4b0b4c1dc7aa329' into feat/run-all-backups
+feat/show-db-encryption-preload-paths: pnnvuzvv e63fe51d Show database encryption and preload paths on the About page
+  @git: pnnvuzvv e63fe51d Show database encryption and preload paths on the About page
+  @origin: pnnvuzvv e63fe51d Show database encryption and preload paths on the About page
+feat/skip-next-scheduled-run: pppzyqxv ee552d1d Add a menu action to skip the next scheduled run
+  @git: pppzyqxv ee552d1d Add a menu action to skip the next scheduled run
+  @origin: pppzyqxv ee552d1d Add a menu action to skip the next scheduled run
+feature/advanced-settings@upstream: kyxkynuk 6967ca97 Fix tsconfig
+feature/fix-dropping-icon@upstream: lsvpmsmv 3a3c2cbc Fixed dropping icon.
+feature/multi-root-file-tree-support@upstream: mrvrnsrq 5bf1802f Fix file tree and restore flow
+feature/reduce-backup-list-loading@upstream: koxroykl fba57281 Reduce the loading of the backup list.
+feature/remote-source-implementation@upstream: lyuxnlys fdb6dc5a (empty) Merge remote-tracking branch 'origin/main' into feature/remote-source-implementation
+feature/remove-providers@upstream: qlukuuvm a6b78ea0 Removed CloudFiles and Sia providers
+feature/support-filen-api-key@upstream: roqovyyq f706f296 Added support for getting and using Filen API key
+feature/support-single-task-pause-resume@upstream: kmnnszqw 2d6349f1 This adds support for pause/resume of a single task
+fix/397-naming@upstream: txlkqlkv 60afc971 fix: rename 'System settings' panel heading to 'Server settings' for consistency with tab name
+main: vlormtxs 5c520f13 (empty) Merge pull request #776 from JamBalaya56562/codex/live-schedule-timezone-roundtrip
+  @git: vlormtxs 5c520f13 (empty) Merge pull request #776 from JamBalaya56562/codex/live-schedule-timezone-roundtrip
+  @origin: vlormtxs 5c520f13 (empty) Merge pull request #776 from JamBalaya56562/codex/live-schedule-timezone-roundtrip
+  @upstream: vlormtxs 5c520f13 (empty) Merge pull request #776 from JamBalaya56562/codex/live-schedule-timezone-roundtrip
+triage: nqyywswp 8ddd1e2f Refresh backend-dependent publication blockers with open PR links
+  @git: nqyywswp 8ddd1e2f Refresh backend-dependent publication blockers with open PR links
+  @origin: nqyywswp 8ddd1e2f Refresh backend-dependent publication blockers with open PR links
