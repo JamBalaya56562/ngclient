@@ -1,0 +1,2 @@
+claude-fixes: ..\ngclient-claude ksqlyvlt d07fd97c (no description set)
+default (current): . qyrvyvut 531cf47a (empty) (no description set)

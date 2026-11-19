@@ -1,0 +1,135 @@
+[
+  {
+    "number": 772,
+    "title": "Cover Windows destination typing and persistence with a real server",
+    "merged_at": "2026-11-18T20:09:38Z",
+    "head": "b88e10d4258786a9e637e8a6cf2e8fb7852972f1",
+    "merge": "551aaa84cb8ce915e2c2be88672c9ea8c543a6ba"
+  },
+  {
+    "number": 776,
+    "title": "Cover real-server schedule editing across time zones and DST dates",
+    "merged_at": "2026-11-18T20:12:56Z",
+    "head": "21f6be9f47e7b24f76071cc02125b431163e8e0a",
+    "merge": "5c520f1311b7805bd26cf2e4ff420127e46b1d72"
+  },
+  {
+    "number": 775,
+    "title": "Exercise cross-OS listings and direct restore with real backup archives",
+    "merged_at": "2026-11-18T20:12:41Z",
+    "head": "2884ec2c6052bd3ccc72cb638533b888905888d9",
+    "merge": "83c75a0ef611fa5ab8feff14695ed4589c3a0fcd"
+  },
+  {
+    "number": 774,
+    "title": "Cover broken-file listing, confirmed purge and surviving restore with a real server",
+    "merged_at": "2026-11-18T20:10:07Z",
+    "head": "b4477291eae08bb8f931e1b9e979858c907941b3",
+    "merge": "aa194f6b82074b172bda50394bc4fca70564c41d"
+  },
+  {
+    "number": 773,
+    "title": "Verify in-place saving on every editor page with a real server",
+    "merged_at": "2026-11-18T20:09:49Z",
+    "head": "ad443c258d72266e9abf2580eb32b6cd352b8e38",
+    "merge": "96fdffcdd687b8f2c793f7ee601b509cb5ba2d55"
+  },
+  {
+    "number": 771,
+    "title": "Handle failed list refreshes and cover real-server session recovery",
+    "merged_at": "2026-11-18T20:09:19Z",
+    "head": "7251bc8806ceafebcad1b4f655cd79f401deba68",
+    "merge": "cdc68721637bb71dcc2fefe6f5d95555cb44525b"
+  },
+  {
+    "number": 770,
+    "title": "Cover version deletion and compaction with real-server E2E tests",
+    "merged_at": "2026-11-18T12:38:37Z",
+    "head": "2a23dab67c24dae600ab2ad8f6bd22cf45958af4",
+    "merge": "6cfac9f58d13b31f141404665d9488f8e0d45bbe"
+  },
+  {
+    "number": 766,
+    "title": "Added a compare versions page",
+    "merged_at": "2026-11-18T12:38:16Z",
+    "head": "03655103db00db37d4b54a6a8277d98406a01247",
+    "merge": "0225de7b5f53e4e9cebe485ead9d0ed9ddba62ff"
+  },
+  {
+    "number": 763,
+    "title": "Offer existing local databases for new backup destinations",
+    "merged_at": "2026-11-18T11:02:48Z",
+    "head": "3a1f5c02eddbc7132c308a109136ebb26fc8959a",
+    "merge": "d5f065cbe919c85e7d50b8fc704a33b7c10bbd33"
+  },
+  {
+    "number": 758,
+    "title": "Show the available update changelog from update notifications",
+    "merged_at": "2026-11-18T10:57:08Z",
+    "head": "d7c6eb752caa7fb935bd79e392526a280fb871de",
+    "merge": "3938d1f363b6c7cfb7e86011fde7a98a6ef10b1c"
+  },
+  {
+    "number": 765,
+    "title": "Exercise wizard-created encrypted backups through a real restore",
+    "merged_at": "2026-11-18T11:03:39Z",
+    "head": "1f0b5c0f900fb24ce5a31b93dcf83a7b5f75819a",
+    "merge": "7655bbe5963204f01f9fff5649a7d7701b38952e"
+  },
+  {
+    "number": 764,
+    "title": "Use a native console connection link in destination forms",
+    "merged_at": "2026-11-18T11:03:07Z",
+    "head": "e4f224305d35f0ddc08761853af884aeaf3f1a24",
+    "merge": "727fcb564036f8478b78f30391a96f97e2053b48"
+  },
+  {
+    "number": 762,
+    "title": "Confirm new unencrypted remote backups before saving",
+    "merged_at": "2026-11-18T11:00:43Z",
+    "head": "e950991af4bd1d936092bee18a5721e4731846db",
+    "merge": "685acb1f76895caeb59486ff6a18132d4ecefe20"
+  },
+  {
+    "number": 759,
+    "title": "Keep shared command-line databases when deleting a backup",
+    "merged_at": "2026-11-18T10:58:32Z",
+    "head": "d5e305dfe468b40a69691412e5975cacc93a4816",
+    "merge": "38d92cfc3a88f14b7804982b4d275f609f75991c"
+  },
+  {
+    "number": 761,
+    "title": "Bind command editor inputs through Signal Forms",
+    "merged_at": "2026-11-18T10:59:17Z",
+    "head": "4194f31c98694e89d537bd6aac09178b35a73ff1",
+    "merge": "57fe14cc7bba963545d0f38e0ffc31b78f6d4db4"
+  },
+  {
+    "number": 760,
+    "title": "Cover keyboard reopening of loaded and empty folders",
+    "merged_at": "2026-11-18T10:58:47Z",
+    "head": "3c0bd014ef1bc83e65add546ea964dc998307966",
+    "merge": "ec0919800d725657490ae5337759887b86cc5246"
+  },
+  {
+    "number": 769,
+    "title": "Hide the TLS missing warning if the host is the loopback adapter",
+    "merged_at": "2026-11-18T11:05:07Z",
+    "head": "fff7898606621756555e7f1dc630b0288725bb9b",
+    "merge": "912186a9786504f314d2a8bf126321ac170cb605"
+  },
+  {
+    "number": 768,
+    "title": "Larger context menu",
+    "merged_at": "2026-11-18T11:04:55Z",
+    "head": "627789fab2c384822e5025ae5d6e9847a73af607",
+    "merge": "903f0942c05c8330e26a48c48008d88688b0bd7a"
+  },
+  {
+    "number": 767,
+    "title": "Add theme toggle",
+    "merged_at": "2026-11-18T11:04:44Z",
+    "head": "12b7a6f3e20a05140eff85faafb74c01cc25eb5d",
+    "merge": "a8b5421210d249c284cd261420a2ffb50dfc1f38"
+  }
+]

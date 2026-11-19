@@ -1,0 +1,50 @@
+{
+  "pr777": {
+    "workflow_runs": [
+      {
+        "id": 44418598578,
+        "name": "Unit Tests",
+        "status": "completed",
+        "conclusion": "success",
+        "run_number": 842,
+        "jobs_url": "https://api.github.com/repos/duplicati/ngclient/actions/runs/44418598578/jobs",
+        "logs_url": "https://api.github.com/repos/duplicati/ngclient/actions/runs/44418598578/logs",
+        "workflow_id": 318537990
+      },
+      {
+        "id": 44418598535,
+        "name": "Production Build",
+        "status": "completed",
+        "conclusion": "success",
+        "run_number": 760,
+        "jobs_url": "https://api.github.com/repos/duplicati/ngclient/actions/runs/44418598535/jobs",
+        "logs_url": "https://api.github.com/repos/duplicati/ngclient/actions/runs/44418598535/logs",
+        "workflow_id": 345331032
+      }
+    ]
+  },
+  "pr778": {
+    "workflow_runs": [
+      {
+        "id": 44424269070,
+        "name": "Unit Tests",
+        "status": "completed",
+        "conclusion": "success",
+        "run_number": 843,
+        "jobs_url": "https://api.github.com/repos/duplicati/ngclient/actions/runs/44424269070/jobs",
+        "logs_url": "https://api.github.com/repos/duplicati/ngclient/actions/runs/44424269070/logs",
+        "workflow_id": 318537990
+      },
+      {
+        "id": 44424269079,
+        "name": "Production Build",
+        "status": "completed",
+        "conclusion": "success",
+        "run_number": 761,
+        "jobs_url": "https://api.github.com/repos/duplicati/ngclient/actions/runs/44424269079/jobs",
+        "logs_url": "https://api.github.com/repos/duplicati/ngclient/actions/runs/44424269079/logs",
+        "workflow_id": 345331032
+      }
+    ]
+  }
+}
