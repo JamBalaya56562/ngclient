@@ -1,0 +1,25 @@
+$ErrorActionPreference='Stop'
+Set-Location C:/Users/Jam/Documents/ngclient
+$jj=(Get-Item "$env:USERPROFILE/AppData/Local/mise/installs/jj/*/jj.exe"|Sort-Object FullName|Select-Object -Last 1).FullName
+$node=(Get-Item "$env:USERPROFILE/AppData/Local/mise/installs/node/*/node.exe"|Sort-Object FullName|Select-Object -Last 1).FullName
+$bun=(Get-Item "$env:USERPROFILE/AppData/Local/mise/installs/bun/*/bin/bun.exe"|Sort-Object FullName|Select-Object -Last 1).FullName
+$env:PATH=(Split-Path $node)+';'+(Split-Path $bun)+';'+$env:PATH
+$dir='tmp/post-export-maintenance-20261119'
+$results=@()
+foreach($b in @('feat/skip-next-scheduled-run','feat/export-global-options','feat/show-update-check-result','feat/restore-download')){
+ & $jj new $b
+ if($LASTEXITCODE){throw 'Checkout failed'}
+ $sha=(& $jj --ignore-working-copy log -r $b --no-graph -T commit_id).Trim()
+ $slug=$b.Replace('/','-')
+ Write-Output "START $b $sha"
+ & $bun install --frozen-lockfile *> "$dir/$slug-install.log"
+ if($LASTEXITCODE){throw 'Install failed'}
+ & $bun run test:ci --runner-config=tmp/post-export-maintenance-20261119/vitest.config.mts *> "$dir/$slug-tests.log"
+ $tests=$LASTEXITCODE
+ Write-Output "TESTS $b exit=$tests"
+ & $bun run build:prod *> "$dir/$slug-build.log"
+ $build=$LASTEXITCODE
+ Write-Output "BUILD $b exit=$build"
+ $results+=@{branch=$b;sha=$sha;tests=$tests;build=$build}
+ $results|ConvertTo-Json -Depth 5|Set-Content "$dir/results.json"
+}

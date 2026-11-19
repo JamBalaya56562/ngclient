@@ -1,0 +1,183 @@
+Using Vitest configuration file: C:\Users\Jam\Documents\ngclient\tmp\full-validation-20261119\vitest.config.mts
+> Building...
+√ Building...
+Application bundle generation complete. [15.454 seconds] - 2026-11-19T10:11:10.985Z
+
+
+ RUN  v5.0.3 C:/Users/Jam/Documents/ngclient
+
+ ❯ |ngclient| projects/ngclient/src/app/backup/import/import.global-options.spec.ts (8 tests | 7 failed) 906ms
+   ❯ configuration import global options (8)
+     × offers an explicit ignore default and explains the import-time choice 459ms
+     × sends ignore by default without changing the file or password 100ms
+     × does not offer or submit apply when Save now is off 65ms
+     × requires confirmation to apply server settings and submits the approved snapshot only once 44ms
+     × cancels applying server settings without importing and allows another choice 60ms
+     × clears an apply selection when Save now is turned off 60ms
+     × hides the choice and omits the new field for older servers 40ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 7 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |ngclient| projects/ngclient/src/app/backup/import/import.global-options.spec.ts > configuration import global options > offers an explicit ignore default and explains the import-time choice
+AssertionError: expected null not to be null
+ ❯ projects/ngclient/src/app/backup/import/import.global-options.spec.ts:42:71
+     40|   it('offers an explicit ignore default and explains the import-time c…
+     41|     const { fixture, request } = setup();
+     42|     expect(fixture.nativeElement.querySelector('#globalOptions')).not.…
+       |                                                                       ^
+     43|     expect(fixture.nativeElement.textContent).toContain('Global advanc…
+     44|     expect(fixture.nativeElement.textContent).toContain('If the file c…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/7]⎯
+
+ FAIL  |ngclient| projects/ngclient/src/app/backup/import/import.global-options.spec.ts > configuration import global options > sends ignore by default without changing the file or password
+AssertionError: expected "vi.fn()" to be called once with arguments: [ { body: ObjectContaining{…} } ]
+
+Received:
+
+  1st vi.fn() call:
+
+  [
+    {
+-     "body": ObjectContaining {
++     "body": {
++       "cmdline": false,
+        "config": "Y29uZmln",
+        "direct": false,
+-       "global_options": "ignore",
++       "import_metadata": false,
+        "passphrase": " unchanged ",
+      },
+    },
+  ]
+
+
+Number of calls: 1
+
+ ❯ projects/ngclient/src/app/backup/import/import.global-options.spec.ts:51:21
+     49|     const { component, request } = setup();
+     50|     component.submit();
+     51|     expect(request).toHaveBeenCalledExactlyOnceWith({ body: expect.obj…
+       |                     ^
+     52|       config: 'Y29uZmln', passphrase: ' unchanged ', direct: false, gl…
+     53|     }) });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/7]⎯
+
+ FAIL  |ngclient| projects/ngclient/src/app/backup/import/import.global-options.spec.ts > configuration import global options > does not offer or submit apply when Save now is off
+AssertionError: expected 'apply' to be 'ignore' // Object.is equality
+
+Expected: "ignore"
+Received: "apply"
+
+ ❯ projects/ngclient/src/app/backup/import/import.global-options.spec.ts:71:61
+     69|     choose('apply');
+     70|     component.submit();
+     71|     expect(request.mock.calls[0][0].body['global_options']).toBe('igno…
+       |                                                             ^
+     72|     expect(fixture.nativeElement.textContent).not.toContain('Apply to …
+     73|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/7]⎯
+
+ FAIL  |ngclient| projects/ngclient/src/app/backup/import/import.global-options.spec.ts > configuration import global options > requires confirmation to apply server settings and submits the approved snapshot only once
+AssertionError: expected "vi.fn()" to not be called at all, but actually been called 2 times
+
+Received:
+
+  1st vi.fn() call:
+
+    Array [
+      Object {
+        "body": Object {
+          "cmdline": false,
+          "config": "Y29uZmln",
+          "direct": true,
+          "global_options": "apply",
+          "import_metadata": false,
+          "passphrase": " unchanged ",
+        },
+      },
+    ]
+
+  2nd vi.fn() call:
+
+    Array [
+      Object {
+        "body": Object {
+          "cmdline": false,
+          "config": "Y29uZmln",
+          "direct": true,
+          "global_options": "apply",
+          "import_metadata": false,
+          "passphrase": " unchanged ",
+        },
+      },
+    ]
+
+
+Number of calls: 2
+
+ ❯ projects/ngclient/src/app/backup/import/import.global-options.spec.ts:80:25
+     78|     component.submit();
+     79|     component.submit();
+     80|     expect(request).not.toHaveBeenCalled();
+       |                         ^
+     81|     expect(open).toHaveBeenCalledTimes(1);
+     82|     expect(component.isImporting()).toBe(true);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/7]⎯
+
+ FAIL  |ngclient| projects/ngclient/src/app/backup/import/import.global-options.spec.ts > configuration import global options > cancels applying server settings without importing and allows another choice
+TypeError: Cannot read properties of undefined (reading '1')
+ ❯ projects/ngclient/src/app/backup/import/import.global-options.spec.ts:96:22
+     94|     choose('apply');
+     95|     component.submit();
+     96|     open.mock.calls[0][1].closed(false);
+       |                      ^
+     97|     expect(request).not.toHaveBeenCalled();
+     98|     expect(component.isImporting()).toBe(false);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/7]⎯
+
+ FAIL  |ngclient| projects/ngclient/src/app/backup/import/import.global-options.spec.ts > configuration import global options > clears an apply selection when Save now is turned off
+AssertionError: expected 'apply' to be 'ignore' // Object.is equality
+
+Expected: "ignore"
+Received: "apply"
+
+ ❯ projects/ngclient/src/app/backup/import/import.global-options.spec.ts:110:92
+    108|     component.importForm.direct().value.set(false);
+    109|     fixture.detectChanges();
+    110|     expect((component.importForm().value() as { global_options?: strin…
+       |                                                                                            ^
+    111|   });
+    112|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/7]⎯
+
+ FAIL  |ngclient| projects/ngclient/src/app/backup/import/import.global-options.spec.ts > configuration import global options > hides the choice and omits the new field for older servers
+AssertionError: expected { config: 'Y29uZmln', …(5) } to not have property "global_options"
+
+- Expected:
+undefined
+
++ Received:
+"merge"
+
+ ❯ projects/ngclient/src/app/backup/import/import.global-options.spec.ts:118:47
+    116|     component.submit();
+    117|     expect(fixture.nativeElement.querySelector('#globalOptions')).toBe…
+    118|     expect(request.mock.calls[0][0].body).not.toHaveProperty('global_o…
+       |                                               ^
+    119|   });
+    120| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/7]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  7 failed | 1 passed (8)
+   Start at  19:11:15
+   Duration  39.14s (environment 88%, setup 4%, import 4%, tests 2%, transform 1%)
+

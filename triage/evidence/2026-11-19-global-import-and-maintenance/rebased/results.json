@@ -1,0 +1,26 @@
+[
+  {
+    "build": 0,
+    "tests": 0,
+    "sha": "21c309af628669c801fceadb3b8e9671bf84a9cf",
+    "branch": "feat/skip-next-scheduled-run"
+  },
+  {
+    "build": 0,
+    "tests": 0,
+    "sha": "3ad275090282438962be8f90069324b25dea8a94",
+    "branch": "feat/export-global-options"
+  },
+  {
+    "build": 0,
+    "tests": 0,
+    "sha": "15acd674a16b91d38491648837574eff3c38f4f1",
+    "branch": "feat/show-update-check-result"
+  },
+  {
+    "build": 0,
+    "tests": 0,
+    "sha": "cd72dfa35231134663b6f8e4b59d14cc6bc47b79",
+    "branch": "feat/restore-download"
+  }
+]
