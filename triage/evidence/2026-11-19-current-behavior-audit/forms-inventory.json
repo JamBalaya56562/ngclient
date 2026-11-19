@@ -1,0 +1,805 @@
+{
+  "method": "static relative-import/templateUrl reachability, not runtime execution or a complete Angular compiler analysis",
+  "tsFilesReached": 224,
+  "templatesReached": 95,
+  "ngModelTemplates": 28,
+  "reachableNgModelTemplates": 26,
+  "entries": [
+    {
+      "file": "projects/ngclient/src/app/backup/compare-versions/compare-versions.component.html",
+      "reachableTemplate": true,
+      "lines": [
+        {
+          "line": 32,
+          "text": "[(ngModel)]=\"baseVersion\""
+        },
+        {
+          "line": 63,
+          "text": "[(ngModel)]=\"targetVersion\""
+        },
+        {
+          "line": 150,
+          "text": "[ngModel]=\"filter()\""
+        },
+        {
+          "line": 151,
+          "text": "(ngModelChange)=\"updateFilter($event)\" />"
+        }
+      ]
+    },
+    {
+      "file": "projects/ngclient/src/app/backup/components/filters/filters.component.html",
+      "reachableTemplate": true,
+      "lines": [
+        {
+          "line": 45,
+          "text": "[(ngModel)]=\"bulkFilters\""
+        },
+        {
+          "line": 46,
+          "text": "[ngModelOptions]=\"{ updateOn: 'blur', standalone: true }\""
+        },
+        {
+          "line": 48,
+          "text": "(ngModelChange)=\"saveBulkFilterEdit()\"></textarea>"
+        }
+      ]
+    },
+    {
+      "file": "projects/ngclient/src/app/backup/delete-backup/delete-backup.component.html",
+      "reachableTemplate": true,
+      "lines": [
+        {
+          "line": 18,
+          "text": "<input type=\"checkbox\" [(ngModel)]=\"deleteLocalDb\" [disabled]=\"!canDeleteLocalDb()\" />"
+        },
+        {
+          "line": 52,
+          "text": "<input type=\"checkbox\" [(ngModel)]=\"deleteRemoteFiles\" />"
+        }
+      ]
+    },
+    {
+      "file": "projects/ngclient/src/app/backup/destination/destination-list/destination-list.component.html",
+      "reachableTemplate": true,
+      "lines": [
+        {
+          "line": 8,
+          "text": "[(ngModel)]=\"destinationSearchTerm\" />"
+        },
+        {
+          "line": 10,
+          "text": "<input type=\"text\" i18n-placeholder placeholder=\"Search for destination...\" [(ngModel)]=\"destinationSearchTerm\" />"
+        }
+      ]
+    },
+    {
+      "file": "projects/ngclient/src/app/backup/destination/destination.component.html",
+      "reachableTemplate": true,
+      "lines": [
+        {
+          "line": 68,
+          "text": "[ngModel]=\"synchronizationMode(dest)\""
+        },
+        {
+          "line": 69,
+          "text": "(ngModelChange)=\"updateSynchronizationMode($index, $event)\""
+        },
+        {
+          "line": 70,
+          "text": "[ngModelOptions]=\"{ standalone: true }\" />"
+        },
+        {
+          "line": 78,
+          "text": "[ngModel]=\"dest.interval\""
+        },
+        {
+          "line": 79,
+          "text": "(ngModelChange)=\"updateSynchronizationInterval($index, $event)\""
+        },
+        {
+          "line": 80,
+          "text": "[ngModelOptions]=\"{ standalone: true }\""
+        },
+        {
+          "line": 97,
+          "text": "[ngModel]=\"synchronizationCount(dest)\""
+        },
+        {
+          "line": 98,
+          "text": "(ngModelChange)=\"updateSynchronizationCount($index, $event)\""
+        },
+        {
+          "line": 99,
+          "text": "[ngModelOptions]=\"{ standalone: true }\""
+        },
+        {
+          "line": 286,
+          "text": "<textarea id=\"targetUrl\" autocomplete=\"off\" [(ngModel)]=\"targetUrlCtrl\"></textarea>"
+        }
+      ]
+    },
+    {
+      "file": "projects/ngclient/src/app/backup/destination/single-destination/browse-path-dialog/browse-path-dialog.html",
+      "reachableTemplate": true,
+      "lines": [
+        {
+          "line": 15,
+          "text": "<input type=\"text\" id=\"path\" i18n-placeholder placeholder=\"Path\" [(ngModel)]=\"path\" />"
+        }
+      ]
+    },
+    {
+      "file": "projects/ngclient/src/app/backup/destination/single-destination/single-destination.component.html",
+      "reachableTemplate": true,
+      "lines": [
+        {
+          "line": 120,
+          "text": "[ngModel]=\"settingsAsText()\""
+        },
+        {
+          "line": 121,
+          "text": "(ngModelChange)=\"updateSettingsFromText($event)\""
+        },
+        {
+          "line": 122,
+          "text": "[ngModelOptions]=\"{ updateOn: 'blur' }\""
+        },
+        {
+          "line": 175,
+          "text": "[ngModel]=\"formInput\""
+        },
+        {
+          "line": 176,
+          "text": "(ngModelChange)=\"updateFieldValue(item.fieldGroup, item.formView.name, $event)\" />"
+        },
+        {
+          "line": 196,
+          "text": "[ngModel]=\"formInput\""
+        },
+        {
+          "line": 197,
+          "text": "(ngModelChange)=\"updateFieldValue(item.fieldGroup, item.formView.name, $event)\" />"
+        },
+        {
+          "line": 240,
+          "text": "[ngModel]=\"formInput\""
+        },
+        {
+          "line": 244,
+          "text": "(ngModelChange)=\"updateFieldValue(item.fieldGroup, item.formView.name, $event)\" />"
+        },
+        {
+          "line": 305,
+          "text": "[ngModel]=\"formInput\""
+        },
+        {
+          "line": 306,
+          "text": "(ngModelChange)=\"updateFieldValue(item.fieldGroup, item.formView.name, $event)\" />"
+        },
+        {
+          "line": 367,
+          "text": "[ngModel]=\"formInput\""
+        },
+        {
+          "line": 368,
+          "text": "(ngModelChange)=\"updateFieldValue(item.fieldGroup, item.formView.name, $event)\" />"
+        },
+        {
+          "line": 413,
+          "text": "[ngModel]=\"formInput\""
+        },
+        {
+          "line": 432,
+          "text": "[ngModel]=\"formInput\""
+        },
+        {
+          "line": 433,
+          "text": "(ngModelChange)=\"updateFieldValue(item.fieldGroup, item.formView.name, $event)\""
+        },
+        {
+          "line": 479,
+          "text": "[ngModel]=\"formInput\""
+        },
+        {
+          "line": 480,
+          "text": "(ngModelChange)=\"updateFieldValue(item.fieldGroup, item.formView.name, $event)\" />"
+        },
+        {
+          "line": 542,
+          "text": "[ngModel]=\"formInput\""
+        },
+        {
+          "line": 543,
+          "text": "(ngModelChange)=\"updateFieldValue(item.fieldGroup, item.formView.name, $event)\" />"
+        },
+        {
+          "line": 553,
+          "text": "[ngModel]=\"formInput\""
+        },
+        {
+          "line": 554,
+          "text": "(ngModelChange)=\"updateFieldValue(item.fieldGroup, item.formView.name, $event)\""
+        },
+        {
+          "line": 578,
+          "text": "[ngModel]=\"formInput\""
+        },
+        {
+          "line": 579,
+          "text": "(ngModelChange)=\"updateFieldValue(item.fieldGroup, item.formView.name, $event)\""
+        },
+        {
+          "line": 625,
+          "text": "[ngModel]=\"formInput\""
+        },
+        {
+          "line": 626,
+          "text": "(ngModelChange)=\"updateFieldValue(item.fieldGroup, item.formView.name, $event)\" />"
+        },
+        {
+          "line": 658,
+          "text": "[ngModel]=\"formInput\""
+        },
+        {
+          "line": 662,
+          "text": "(ngModelChange)=\"updateFieldValue(item.fieldGroup, item.formView.name, $event)\" />"
+        },
+        {
+          "line": 720,
+          "text": "[ngModel]=\"formInput\""
+        },
+        {
+          "line": 722,
+          "text": "(ngModelChange)=\"updateFieldValue(item.fieldGroup, item.formView.name, $event)\" />"
+        }
+      ]
+    },
+    {
+      "file": "projects/ngclient/src/app/backup/import-destination/destination/destination.component.html",
+      "reachableTemplate": true,
+      "lines": [
+        {
+          "line": 99,
+          "text": "<textarea id=\"targetUrl\" autocomplete=\"off\" [(ngModel)]=\"targetUrlCtrl\"></textarea>"
+        }
+      ]
+    },
+    {
+      "file": "projects/ngclient/src/app/backup/options/options-list/options-list.component.html",
+      "reachableTemplate": true,
+      "lines": [
+        {
+          "line": 75,
+          "text": "[ngModel]=\"settingsAsText()\""
+        },
+        {
+          "line": 76,
+          "text": "(ngModelChange)=\"updateSettingsFromText($event)\""
+        },
+        {
+          "line": 77,
+          "text": "[ngModelOptions]=\"{ updateOn: 'blur' }\""
+        },
+        {
+          "line": 125,
+          "text": "<input type=\"text\" [ngModel]=\"item.Name\" (ngModelChange)=\"updateFreeTextSettingName(item, $event)\" />"
+        },
+        {
+          "line": 283,
+          "text": "[ngModel]=\"item.Value\""
+        },
+        {
+          "line": 284,
+          "text": "(ngModelChange)=\"updateSettingValue(item, $event)\" />"
+        }
+      ]
+    },
+    {
+      "file": "projects/ngclient/src/app/backup/options/options.component.html",
+      "reachableTemplate": true,
+      "lines": [
+        {
+          "line": 5,
+          "text": "<app-size [customId]=\"'size'\" [(ngModel)]=\"optionsForm.remoteVolumeSize\">"
+        },
+        {
+          "line": 40,
+          "text": "<input type=\"text\" [ngModel]=\"optionsForm.backupRetention().value()\" (ngModelChange)=\"updateRetention($event)\" />"
+        }
+      ]
+    },
+    {
+      "file": "projects/ngclient/src/app/backup/purge-files/select-files/select-files.component.html",
+      "reachableTemplate": true,
+      "lines": [
+        {
+          "line": 19,
+          "text": "[ngModel]=\"selectedVersion()\""
+        },
+        {
+          "line": 20,
+          "text": "(ngModelChange)=\"onVersionChange($event)\""
+        },
+        {
+          "line": 21,
+          "text": "[ngModelOptions]=\"{ standalone: true }\" />"
+        },
+        {
+          "line": 50,
+          "text": "[(ngModel)]=\"searchQuery\""
+        },
+        {
+          "line": 51,
+          "text": "[ngModelOptions]=\"{ standalone: true }\""
+        },
+        {
+          "line": 96,
+          "text": "<input type=\"text\" id=\"path\" [(ngModel)]=\"selectedPaths\" [ngModelOptions]=\"{ standalone: true }\" />"
+        }
+      ]
+    },
+    {
+      "file": "projects/ngclient/src/app/backup/schedule/schedule.component.html",
+      "reachableTemplate": false,
+      "lines": [
+        {
+          "line": 6,
+          "text": "<input type=\"checkbox\" [(ngModel)]=\"scheduleFields.autoRun\" />"
+        },
+        {
+          "line": 20,
+          "text": "[(ngModel)]=\"scheduleFields.nextTime().time\""
+        },
+        {
+          "line": 31,
+          "text": "[(ngModel)]=\"scheduleFields.nextTime().date\""
+        },
+        {
+          "line": 40,
+          "text": "<input type=\"number\" id=\"repeatValue\" [(ngModel)]=\"scheduleFields.runAgain().repeatValue\" />"
+        },
+        {
+          "line": 44,
+          "text": "<input type=\"text\" id=\"repeatUnit\" [(ngModel)]=\"scheduleFields.runAgain().repeatUnit\" />"
+        },
+        {
+          "line": 54,
+          "text": "<input type=\"checkbox\" [(ngModel)]=\"scheduleFields.runAgain().allowedDays.mon\" />"
+        },
+        {
+          "line": 59,
+          "text": "<input type=\"checkbox\" [(ngModel)]=\"scheduleFields.runAgain().allowedDays.tue\" />"
+        },
+        {
+          "line": 64,
+          "text": "<input type=\"checkbox\" [(ngModel)]=\"scheduleFields.runAgain().allowedDays.wed\" />"
+        },
+        {
+          "line": 69,
+          "text": "<input type=\"checkbox\" [(ngModel)]=\"scheduleFields.runAgain().allowedDays.thu\" />"
+        },
+        {
+          "line": 74,
+          "text": "<input type=\"checkbox\" [(ngModel)]=\"scheduleFields.runAgain().allowedDays.fri\" />"
+        },
+        {
+          "line": 79,
+          "text": "<input type=\"checkbox\" [(ngModel)]=\"scheduleFields.runAgain().allowedDays.sat\" />"
+        },
+        {
+          "line": 84,
+          "text": "<input type=\"checkbox\" [(ngModel)]=\"scheduleFields.runAgain().allowedDays.sun\" />"
+        }
+      ]
+    },
+    {
+      "file": "projects/ngclient/src/app/backup/schedule-v2/schedule.component.html",
+      "reachableTemplate": true,
+      "lines": [
+        {
+          "line": 6,
+          "text": "[ngModel]=\"scheduleType()\""
+        },
+        {
+          "line": 7,
+          "text": "(ngModelChange)=\"updateScheduleType($event)\""
+        },
+        {
+          "line": 92,
+          "text": "[ngModel]=\"datepickerDate()\""
+        },
+        {
+          "line": 93,
+          "text": "(ngModelChange)=\"scheduleForm.nextTime.date().value.set($event)\" />"
+        },
+        {
+          "line": 163,
+          "text": "[ngModel]=\"runAfterBackupId()\""
+        },
+        {
+          "line": 164,
+          "text": "(ngModelChange)=\"setRunAfter($event)\""
+        },
+        {
+          "line": 176,
+          "text": "[ngModel]=\"runAfterAlways()\""
+        },
+        {
+          "line": 177,
+          "text": "(ngModelChange)=\"runAfterAlways.set($event)\" />"
+        }
+      ]
+    },
+    {
+      "file": "projects/ngclient/src/app/backup/source-data/filter/filter.component.html",
+      "reachableTemplate": false,
+      "lines": [
+        {
+          "line": 7,
+          "text": "[ngModel]=\"pathState()?.type\""
+        },
+        {
+          "line": 8,
+          "text": "(ngModelChange)=\"updateStateType($event)\" />"
+        },
+        {
+          "line": 13,
+          "text": "<input type=\"text\" [ngModel]=\"pathState()?.expression\" (ngModelChange)=\"updateStateExpression($event)\" />"
+        },
+        {
+          "line": 17,
+          "text": "<input type=\"text\" [ngModel]=\"pathState()?.expression\" (ngModelChange)=\"updateStateExpression($event)\" />"
+        }
+      ]
+    },
+    {
+      "file": "projects/ngclient/src/app/backup/source-data/include-picker-dialog/include-picker-dialog.html",
+      "reachableTemplate": true,
+      "lines": [
+        {
+          "line": 21,
+          "text": "<input type=\"text\" id=\"include-picker-path\" [(ngModel)]=\"path\" />"
+        }
+      ]
+    },
+    {
+      "file": "projects/ngclient/src/app/backup/source-data/new-filter/new-filter.component.html",
+      "reachableTemplate": true,
+      "lines": [
+        {
+          "line": 6,
+          "text": "[(ngModel)]=\"pathType\""
+        },
+        {
+          "line": 7,
+          "text": "(ngModelChange)=\"updateFilter()\" />"
+        },
+        {
+          "line": 18,
+          "text": "<input type=\"text\" [(ngModel)]=\"internalPath\" (ngModelChange)=\"updateFilter()\" />"
+        },
+        {
+          "line": 22,
+          "text": "<input type=\"text\" [(ngModel)]=\"internalPath\" (ngModelChange)=\"updateFilter()\" #textInput />"
+        }
+      ]
+    },
+    {
+      "file": "projects/ngclient/src/app/backup/source-data/source-data.component.html",
+      "reachableTemplate": true,
+      "lines": [
+        {
+          "line": 90,
+          "text": "[(ngModel)]=\"bulkPaths\""
+        },
+        {
+          "line": 91,
+          "text": "[ngModelOptions]=\"{ updateOn: 'blur', standalone: true }\""
+        },
+        {
+          "line": 93,
+          "text": "(ngModelChange)=\"savePathBulkEdit()\"></textarea>"
+        },
+        {
+          "line": 207,
+          "text": "[ngModel]=\"filesLargerThan()\""
+        },
+        {
+          "line": 208,
+          "text": "[ngModelOptions]=\"{ standalone: true }\""
+        },
+        {
+          "line": 209,
+          "text": "(ngModelChange)=\"updateFilesLargerThan($event)\"></app-size>"
+        }
+      ]
+    },
+    {
+      "file": "projects/ngclient/src/app/backup/source-data/target-disk-dialog/target-disk-dialog.html",
+      "reachableTemplate": true,
+      "lines": [
+        {
+          "line": 7,
+          "text": "<input type=\"text\" id=\"path\" i18n-placeholder placeholder=\"Path\" [(ngModel)]=\"path\" />"
+        }
+      ]
+    },
+    {
+      "file": "projects/ngclient/src/app/core/components/file-drop-textarea/file-drop-textarea.component.html",
+      "reachableTemplate": true,
+      "lines": [
+        {
+          "line": 9,
+          "text": "<textarea [placeholder]=\"placeholder()\" [(ngModel)]=\"content\" [disabled]=\"readonly()\" rows=\"10\"></textarea>"
+        }
+      ]
+    },
+    {
+      "file": "projects/ngclient/src/app/core/components/file-tree/file-tree.component.html",
+      "reachableTemplate": true,
+      "lines": [
+        {
+          "line": 270,
+          "text": "<textarea id=\"targetUrl\" autocomplete=\"off\" [(ngModel)]=\"createFolderPath\"></textarea>"
+        }
+      ]
+    },
+    {
+      "file": "projects/ngclient/src/app/core/components/size/size.component.html",
+      "reachableTemplate": true,
+      "lines": [
+        {
+          "line": 6,
+          "text": "<input type=\"number\" [id]=\"customId()\" [(ngModel)]=\"timespan\" [disabled]=\"readonly()\" />"
+        },
+        {
+          "line": 19,
+          "text": "<input type=\"text\" [(ngModel)]=\"unit\" />"
+        }
+      ]
+    },
+    {
+      "file": "projects/ngclient/src/app/core/components/timespan/timespan.component.html",
+      "reachableTemplate": true,
+      "lines": [
+        {
+          "line": 4,
+          "text": "<input type=\"number\" [id]=\"customId()\" [(ngModel)]=\"timespan\" [disabled]=\"readonly()\" />"
+        },
+        {
+          "line": 28,
+          "text": "<input type=\"text\" [(ngModel)]=\"unit\" />"
+        }
+      ]
+    },
+    {
+      "file": "projects/ngclient/src/app/destinations/destinations.html",
+      "reachableTemplate": true,
+      "lines": [
+        {
+          "line": 98,
+          "text": "<input [(ngModel)]=\"editName\" i18n-placeholder placeholder=\"Name\" />"
+        },
+        {
+          "line": 102,
+          "text": "<input [(ngModel)]=\"editDescription\" i18n-placeholder placeholder=\"Description (optional)\" />"
+        }
+      ]
+    },
+    {
+      "file": "projects/ngclient/src/app/home/start-all-dialog/start-all-dialog.html",
+      "reachableTemplate": true,
+      "lines": [
+        {
+          "line": 36,
+          "text": "<input type=\"text\" [ngModel]=\"afterAction()\" (ngModelChange)=\"setAfterAction($event)\" />"
+        }
+      ]
+    },
+    {
+      "file": "projects/ngclient/src/app/restore-flow/select-files/select-files.component.html",
+      "reachableTemplate": true,
+      "lines": [
+        {
+          "line": 14,
+          "text": "[(ngModel)]=\"selectOption\""
+        },
+        {
+          "line": 15,
+          "text": "[ngModelOptions]=\"{ standalone: true }\" />"
+        },
+        {
+          "line": 57,
+          "text": "[(ngModel)]=\"searchQuery\""
+        },
+        {
+          "line": 58,
+          "text": "[ngModelOptions]=\"{ standalone: true }\""
+        },
+        {
+          "line": 86,
+          "text": "[ngModel]=\"searchAllVersions()\""
+        },
+        {
+          "line": 87,
+          "text": "(ngModelChange)=\"searchAllVersions.set($event)\""
+        },
+        {
+          "line": 88,
+          "text": "[ngModelOptions]=\"{ standalone: true }\" />"
+        }
+      ]
+    },
+    {
+      "file": "projects/ngclient/src/app/settings/mcp-tokens/mcp-tokens.component.html",
+      "reachableTemplate": true,
+      "lines": [
+        {
+          "line": 11,
+          "text": "[ngModel]=\"selectedAgentId()\""
+        },
+        {
+          "line": 12,
+          "text": "(ngModelChange)=\"selectAgent($event)\""
+        },
+        {
+          "line": 13,
+          "text": "[ngModelOptions]=\"{ standalone: true }\" />"
+        },
+        {
+          "line": 90,
+          "text": "[ngModel]=\"form().name\""
+        },
+        {
+          "line": 91,
+          "text": "(ngModelChange)=\"updateForm({ name: $event })\""
+        },
+        {
+          "line": 92,
+          "text": "[ngModelOptions]=\"{ standalone: true }\" />"
+        },
+        {
+          "line": 99,
+          "text": "[ngModel]=\"form().level\""
+        },
+        {
+          "line": 100,
+          "text": "(ngModelChange)=\"selectLevel($event)\""
+        },
+        {
+          "line": 101,
+          "text": "[ngModelOptions]=\"{ standalone: true }\" />"
+        },
+        {
+          "line": 112,
+          "text": "[ngModel]=\"form().expiresIn\""
+        },
+        {
+          "line": 113,
+          "text": "(ngModelChange)=\"selectLifetime($event)\""
+        },
+        {
+          "line": 114,
+          "text": "[ngModelOptions]=\"{ standalone: true }\" />"
+        },
+        {
+          "line": 151,
+          "text": "[ngModel]=\"form().restoreRoots\""
+        },
+        {
+          "line": 152,
+          "text": "(ngModelChange)=\"updateForm({ restoreRoots: $event })\""
+        },
+        {
+          "line": 153,
+          "text": "[ngModelOptions]=\"{ standalone: true }\"></textarea>"
+        }
+      ]
+    },
+    {
+      "file": "projects/ngclient/src/app/settings/settings.component.html",
+      "reachableTemplate": true,
+      "lines": [
+        {
+          "line": 147,
+          "text": "[ngModel]=\"themePreferences.serverTheme()\""
+        },
+        {
+          "line": 148,
+          "text": "(ngModelChange)=\"themePreferences.saveServerTheme($event)\""
+        },
+        {
+          "line": 149,
+          "text": "[ngModelOptions]=\"{ standalone: true }\" />"
+        },
+        {
+          "line": 185,
+          "text": "[(ngModel)]=\"passphrase\" />"
+        },
+        {
+          "line": 197,
+          "text": "[(ngModel)]=\"repeatPassphrase\" />"
+        },
+        {
+          "line": 255,
+          "text": "<input type=\"text\" [ngModel]=\"idleLogoutCtrl()\" [ngModelOptions]=\"{ standalone: true }\" />"
+        },
+        {
+          "line": 274,
+          "text": "<input type=\"text\" [ngModel]=\"langCtrl()\" [ngModelOptions]=\"{ standalone: true }\" />"
+        },
+        {
+          "line": 354,
+          "text": "<textarea type=\"text\" id=\"allowedHostnames\" [(ngModel)]=\"allowedHostnames\"></textarea>"
+        },
+        {
+          "line": 429,
+          "text": "<input type=\"text\" id=\"postQueueScript\" autocomplete=\"off\" [(ngModel)]=\"postQueueScript\" />"
+        },
+        {
+          "line": 460,
+          "text": "[ngModel]=\"powerModeCtrl()\""
+        },
+        {
+          "line": 461,
+          "text": "(ngModelChange)=\"updatePowerMode($event)\""
+        },
+        {
+          "line": 462,
+          "text": "[ngModelOptions]=\"{ standalone: true }\" />"
+        },
+        {
+          "line": 488,
+          "text": "<input type=\"text\" [ngModel]=\"serverTimezone()\" [ngModelOptions]=\"{ standalone: true }\" />"
+        },
+        {
+          "line": 570,
+          "text": "[(ngModel)]=\"timeValue\""
+        },
+        {
+          "line": 571,
+          "text": "(ngModelChange)=\"updateTimeValue($event)\""
+        },
+        {
+          "line": 572,
+          "text": "[ngModelOptions]=\"{ standalone: true }\" />"
+        },
+        {
+          "line": 576,
+          "text": "<input type=\"text\" [ngModel]=\"timeType()\" (ngModelChange)=\"updateTimeType($event)\" />"
+        },
+        {
+          "line": 643,
+          "text": "[ngModel]=\"usageStatistics()\""
+        },
+        {
+          "line": 644,
+          "text": "(ngModelChange)=\"updateUsageStatistics($event)\""
+        },
+        {
+          "line": 645,
+          "text": "[ngModelOptions]=\"{ standalone: true }\" />"
+        }
+      ]
+    },
+    {
+      "file": "projects/ngclient/src/app/settings/ssl-certificate/ssl-certificate.component.html",
+      "reachableTemplate": true,
+      "lines": [
+        {
+          "line": 24,
+          "text": "[ngModel]=\"password()\""
+        },
+        {
+          "line": 25,
+          "text": "(ngModelChange)=\"password.set($event)\""
+        },
+        {
+          "line": 26,
+          "text": "[ngModelOptions]=\"{ standalone: true }\" />"
+        }
+      ]
+    }
+  ]
+}

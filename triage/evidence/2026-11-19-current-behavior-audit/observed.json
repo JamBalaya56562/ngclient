@@ -1,0 +1,69 @@
+{
+  "runtime": {
+    "version": "1.0.0.0 - debug",
+    "runtime": "11.0.0"
+  },
+  "validationContract": {
+    "commandCount": 216,
+    "withValidations": 0,
+    "argumentKeys": [
+      "Aliases",
+      "LongDescription",
+      "Name",
+      "ShortDescription",
+      "Type",
+      "ValidValues",
+      "DefaultValue",
+      "Typename",
+      "Deprecated",
+      "DeprecationMessage"
+    ]
+  },
+  "changelog": {
+    "rawTail": "m 11 to 12: Downgrade from this version requires \nmanually adjusting the version \nnumber in the database. The additions can be re-applied if the database is \nupgraded again later.\n",
+    "renderedTail": "from this version requires manually adjusting the version number in the database. The additions can be re-applied if the database is upgraded again later. (see https://angular.dev/best-practices/security#preventing-cross-site-scripting-xss)",
+    "rawHasDiagnostic": false,
+    "renderedHasDiagnostic": true
+  },
+  "coldDelete": {
+    "initialHeading": "Delete backup:",
+    "headingAfter3s": "Delete backup:",
+    "requests": [
+      "POST /api/v1/filesystem/validate"
+    ],
+    "deleteEnabled": true,
+    "body": "Delete backup:\nExport configuration\n\nIf you want to use the backup later, you can export the configuration before deleting it.\n\nExport configuration\ncaret-right\nCancel\nDelete backup"
+  },
+  "homeControls": [
+    {
+      "text": "play-circle Start",
+      "aria": "Start",
+      "title": null
+    },
+    {
+      "text": "pencil-simple",
+      "aria": "Edit",
+      "title": null
+    },
+    {
+      "text": "dots-three-vertical",
+      "aria": "More actions",
+      "title": null
+    }
+  ],
+  "throttle": {
+    "accessibleTree": "- button",
+    "attributes": {
+      "ariaLabel": null,
+      "title": null,
+      "text": "speedometer"
+    },
+    "tooltipText": [],
+    "openedDialog": "Throttle network speed"
+  },
+  "warmDelete": {
+    "heading": "Delete backup: Cold deletion audit",
+    "url": "http://127.0.0.1:13550/backup/1/delete"
+  },
+  "pageErrors": []
+}

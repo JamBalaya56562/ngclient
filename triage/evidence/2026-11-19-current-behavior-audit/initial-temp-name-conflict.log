@@ -1,0 +1,41 @@
+
+Running 2 tests using 1 worker
+
+(node:3416) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+{"runtime":{"version":"1.0.0.0 - debug","runtime":"11.0.0"},"validationContract":{"commandCount":216,"withValidations":0,"argumentKeys":["Aliases","LongDescription","Name","ShortDescription","Type","ValidValues","DefaultValue","Typename","Deprecated","DeprecationMessage"]},"changelog":{"rawTail":"m 11 to 12: Downgrade from this version requires \nmanually adjusting the version \nnumber in the database. The additions can be re-applied if the database is \nupgraded again later.\n","renderedTail":"from this version requires manually adjusting the version number in the database. The additions can be re-applied if the database is upgraded again later. (see https://angular.dev/best-practices/security#preventing-cross-site-scripting-xss)","rawHasDiagnostic":false,"renderedHasDiagnostic":true},"coldDelete":{"initialHeading":"Delete backup:","headingAfter3s":"Delete backup:","requests":["POST /api/v1/filesystem/validate"],"deleteEnabled":true,"body":"Delete backup:\nExport configuration\n\nIf you want to use the backup later, you can export the configuration before deleting it.\n\nExport configuration\ncaret-right\nCancel\nDelete backup"},"homeControls":[{"text":"play-circle Start","aria":"Start","title":null},{"text":"pencil-simple","aria":"Edit","title":null},{"text":"dots-three-vertical","aria":"More actions","title":null}],"throttle":{"accessibleTree":"- button","attributes":{"ariaLabel":null,"title":null,"text":"speedometer"},"tooltipText":[],"openedDialog":"Throttle network speed"},"warmDelete":{"heading":"Delete backup: Cold deletion audit","url":"http://127.0.0.1:14959/backup/1/delete"},"pageErrors":[]}
+  ok 1 [chromium] › tmp\substantive-triage-20261119\probe.spec.ts:6:1 › current production UI: changelog, cold delete, and exposed capabilities (8.7s)
+  x  2 [chromium] › tmp\substantive-triage-20261119\probe.spec.ts:77:1 › secondary restore design: a naive temporary URL swap does not select its stored credential (166ms)
+
+
+  1) [chromium] › tmp\substantive-triage-20261119\probe.spec.ts:77:1 › secondary restore design: a naive temporary URL swap does not select its stored credential 
+
+    Error: {"Error":"There already exists a backup with the name: Secondary contract audit","Code":409}
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+      93 |     job.Backup.TargetURL=selected;
+      94 |     const put=await api.put(`/api/v1/backup/${tempId}`,{data:job});
+    > 95 |     expect(put.ok(),await put.text()).toBe(true);
+         |                                       ^
+      96 |     const exported=await api.get(`/api/v1/backup/${tempId}/export-argsonly`,{params:{'export-passwords':'true'}});
+      97 |     expect(exported.ok(),await exported.text()).toBe(true);
+      98 |     const actual=(await exported.json()).Backend as string;
+        at C:\Users\Jam\Documents\ngclient\tmp\substantive-triage-20261119\probe.spec.ts:95:39
+
+    Error Context: tmp\substantive-triage-20261119\confirmed-results\probe-secondary-restore-de-939c6-elect-its-stored-credential-chromium\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    tmp\substantive-triage-20261119\confirmed-results\probe-secondary-restore-de-939c6-elect-its-stored-credential-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace tmp\substantive-triage-20261119\confirmed-results\probe-secondary-restore-de-939c6-elect-its-stored-credential-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [chromium] › tmp\substantive-triage-20261119\probe.spec.ts:77:1 › secondary restore design: a naive temporary URL swap does not select its stored credential 
+  1 passed (13.9s)

@@ -1,0 +1,11 @@
+{
+  "copyToTempSucceeded": true,
+  "putStatus": 500,
+  "putError": {
+    "Error": "Unable to save backup or schedule: The input string '59ac7a6e-02bf-4ae8-8649-1e36d04f4e70' was not in a correct format.",
+    "Code": 500
+  },
+  "originalJobUnchanged": true,
+  "noListOrRestoreOrBackupRequested": true,
+  "credentialBehavior": "unverified: temporary PUT failed before that comparison"
+}

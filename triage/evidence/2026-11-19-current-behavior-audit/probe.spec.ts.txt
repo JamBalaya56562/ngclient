@@ -1,0 +1,115 @@
+import { mkdir, writeFile } from 'node:fs/promises';
+import { join, sep } from 'node:path';
+import { pathToFileURL } from 'node:url';
+import { test, expect } from '../../e2e/live/fixture';
+
+test('current production UI: changelog, cold delete, and exposed capabilities', async ({ page, liveServer }, testInfo) => {
+  test.setTimeout(120_000);
+  const { api, directory, password } = liveServer;
+  const observed: Record<string, unknown> = {};
+  const errors: string[] = [];
+  page.on('pageerror', error => errors.push(error.message));
+  const info = await (await api.get('/api/v1/systeminfo')).json();
+  observed.runtime = { version: info.ServerVersionName, runtime: info.CLRVersion };
+  const commands = [...(info.Options ?? []), ...(info.BackendModules ?? []).flatMap((m: any) => m.SupportedCommands ?? [])];
+  observed.validationContract = { commandCount: commands.length, withValidations: commands.filter((c: any) => 'Validations' in c).length, argumentKeys: Object.keys(commands[0] ?? {}) };
+  await page.goto('/login');
+  await page.getByPlaceholder('Enter your password').fill(password);
+  await page.getByRole('button', { name: 'Login', exact: true }).click();
+  await expect(page).toHaveURL('/');
+  const notesResponse = await api.get('/api/v1/changelog');
+  expect(notesResponse.ok()).toBe(true);
+  const notes = await notesResponse.json();
+  await page.goto('/about/changelog');
+  const markdown = page.locator('.markdown-output');
+  await expect(markdown).not.toBeEmpty();
+  const text = await markdown.innerText();
+  observed.changelog = { rawTail: (notes.Changelog ?? '').slice(-180), renderedTail: text.slice(-240), rawHasDiagnostic: /SafeValue|g\.co\/ng\/security|angular\.dev\/best-practices\/security/.test(notes.Changelog ?? ''), renderedHasDiagnostic: /SafeValue|g\.co\/ng\/security|angular\.dev\/best-practices\/security/.test(text) };
+  await page.screenshot({ path: testInfo.outputPath('changelog.png'), fullPage: true });
+
+  const source = join(directory, 'audit-source'), remote = join(directory, 'audit-remote');
+  await mkdir(source); await mkdir(remote);
+  const created = await api.post('/api/v1/backups', { data: { Backup: { Name: 'Cold deletion audit', TargetURL: pathToFileURL(remote).href, Sources: [source + sep], Settings: [{Name: '--no-encryption', Value: 'true'}], Filters: [], Tags: [], Metadata: {} }, Schedule: null } });
+  expect(created.ok(), await created.text()).toBe(true);
+  const { ID: id } = await created.json();
+  try {
+    const calls: string[] = [];
+    page.on('request', request => { const url = new URL(request.url()); if (/\/api\/.*(?:backup|serverstate|filesystem)/.test(url.pathname)) calls.push(`${request.method()} ${url.pathname}`); });
+    await page.goto(`/backup/${id}/delete`);
+    const heading = page.getByRole('heading', { name: /^Delete backup:/ });
+    await expect(heading).toBeVisible();
+    const initialHeading = await heading.innerText();
+    await page.waitForTimeout(3000);
+    observed.coldDelete = { initialHeading, headingAfter3s: await heading.innerText(), requests: [...calls], deleteEnabled: await page.getByRole('button', { name: 'Delete backup', exact: true }).isEnabled(), body: (await page.locator('app-delete-backup').innerText()).slice(0, 700) };
+    await page.screenshot({ path: testInfo.outputPath('cold-delete.png'), fullPage: true });
+    // A real Home visit populates the shared list. Use the app's own SPA link
+    // to revisit Delete without re-creating the Angular application.
+    await page.goto('/');
+    const job = page.locator('.backups .backup').filter({ hasText: 'Cold deletion audit' });
+    await expect(job).toBeVisible();
+    const actionButtons = await job.getByRole('button').evaluateAll(buttons => buttons.map(b => ({text: b.textContent?.trim(), aria: b.getAttribute('aria-label'), title: b.getAttribute('title')})));
+    observed.homeControls = actionButtons;
+    const throttle = page.locator('.desktop-actions').getByRole('button').filter({has: page.locator('sh-icon').getByText('speedometer', {exact: true})});
+    const throttleBefore = await throttle.ariaSnapshot();
+    const attributes = await throttle.evaluate(button => ({ ariaLabel: button.getAttribute('aria-label'), title: button.getAttribute('title'), text: button.textContent?.trim() }));
+    await throttle.hover();
+    await page.waitForTimeout(400);
+    const tooltipText = await page.getByRole('tooltip').allTextContents();
+    await throttle.click();
+    await expect(page.getByRole('heading', {name: 'Throttle network speed'})).toBeVisible();
+    observed.throttle = { accessibleTree: throttleBefore, attributes, tooltipText, openedDialog: 'Throttle network speed' };
+    await page.getByRole('dialog').getByRole('button', {name: 'Cancel', exact: true}).click();
+    const more = job.getByRole('button', { name: /more|actions/i }).last();
+    await more.click();
+    await page.getByRole('button', { name: 'Delete', exact: true }).click();
+    await expect(heading).toBeVisible();
+    await page.waitForTimeout(1000);
+    observed.warmDelete = { heading: await heading.innerText(), url: page.url() };
+    await page.screenshot({ path: testInfo.outputPath('warm-delete.png'), fullPage: true });
+    observed.pageErrors = errors;
+  } finally {
+    await api.delete(`/api/v1/backup/${id}`, { params: { 'delete-local-db': 'false', 'delete-remote-files': 'false' } });
+    await writeFile(testInfo.outputPath('observed.json'), JSON.stringify(observed, null, 2));
+    console.log(JSON.stringify(observed));
+  }
+});
+
+test('secondary restore design: observe whether the existing temporary-copy API can change destination', async ({liveServer}, testInfo) => {
+  const {api, directory} = liveServer;
+  const source = join(directory, 'secondary-source');
+  await mkdir(source);
+  const primary = 's3://primary.example.invalid/archive?auth-password=primary-fixture-secret';
+  const secondary = 's3://secondary.example.invalid/archive?auth-password=secondary-fixture-secret';
+  const created = await api.post('/api/v1/backups', {data:{Backup:{Name:'Secondary contract audit',TargetURL:primary,Sources:[source+sep],Settings:[{Name:'--no-encryption',Value:'true'}],Filters:[],Tags:[],Metadata:{},AdditionalTargetURLs:[{UrlKey:'secondary-a',TargetUrl:secondary,Mode:'interval',Interval:'1h',Options:{}}]},Schedule:null}});
+  expect(created.ok(),await created.text()).toBe(true);
+  const {ID:id}=await created.json();
+  let tempId: string|undefined;
+  try {
+    const copy=await api.post(`/api/v1/backup/${id}/copytotemp`);
+    expect(copy.ok(),await copy.text()).toBe(true);
+    tempId=(await copy.json()).ID;
+    const job=await (await api.get(`/api/v1/backup/${tempId}`)).json();
+    const selected=job.Backup.AdditionalTargetURLs[0].TargetUrl;
+    job.Backup.TargetURL=selected;
+    job.Backup.Name='Temporary secondary contract audit';
+    const put=await api.put(`/api/v1/backup/${tempId}`,{data:job});
+    if(!put.ok()) {
+      const original=(await (await api.get(`/api/v1/backup/${id}/export-argsonly`,{params:{'export-passwords':'true'}})).json()).Backend;
+      const record={copyToTempSucceeded:true,putStatus:put.status(),putError:await put.json(),originalJobUnchanged:original===primary,noListOrRestoreOrBackupRequested:true,credentialBehavior:'unverified: temporary PUT failed before that comparison'};
+      await writeFile(testInfo.outputPath('secondary-contract.json'),JSON.stringify(record,null,2));
+      console.log(JSON.stringify(record));
+      expect(put.status()).toBe(500);
+      return;
+    }
+    const exported=await api.get(`/api/v1/backup/${tempId}/export-argsonly`,{params:{'export-passwords':'true'}});
+    expect(exported.ok(),await exported.text()).toBe(true);
+    const actual=(await exported.json()).Backend as string;
+    const original=(await (await api.get(`/api/v1/backup/${id}/export-argsonly`,{params:{'export-passwords':'true'}})).json()).Backend;
+    const record={selectedMaskedUrl:selected,actualTemporaryBackend:actual,usedPrimaryCredential:actual.includes('primary-fixture-secret'),usedSecondaryCredential:actual.includes('secondary-fixture-secret'),originalJobUnchanged:original===primary,noListOrRestoreOrBackupRequested:true};
+    await writeFile(testInfo.outputPath('secondary-contract.json'),JSON.stringify(record,null,2));
+    console.log(JSON.stringify(record));
+  } finally {
+    if(tempId) await api.delete(`/api/v1/backup/${tempId}`,{params:{'delete-local-db':'false','delete-remote-files':'false'}});
+    await api.delete(`/api/v1/backup/${id}`,{params:{'delete-local-db':'false','delete-remote-files':'false'}});
+  }
+});

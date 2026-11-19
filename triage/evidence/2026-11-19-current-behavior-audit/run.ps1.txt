@@ -1,0 +1,28 @@
+param([switch]$SkipBuild)
+$ErrorActionPreference='Stop'
+$root='tmp/substantive-triage-20261119'
+$node=(Get-Item "$env:USERPROFILE/AppData/Local/mise/installs/node/*/node.exe"|Sort-Object FullName|Select-Object -Last 1).FullName
+$bun=(Get-Item "$env:USERPROFILE/AppData/Local/mise/installs/bun/*/bin/bun.exe","$env:USERPROFILE/AppData/Local/mise/installs/bun/*/bun.exe" -ErrorAction SilentlyContinue|Sort-Object FullName|Select-Object -Last 1).FullName
+$dotnet=(Get-Item "$env:USERPROFILE/AppData/Local/mise/installs/dotnet/*/dotnet.exe"|Sort-Object FullName|Select-Object -Last 1).FullName
+$env:PATH=(Split-Path $node)+';'+(Split-Path $bun)+';'+$env:PATH
+if (-not $SkipBuild) {
+  & $bun run build:prod *> "$root/build.log"
+  if($LASTEXITCODE){throw 'build failed'}
+}
+$config=Join-Path $PWD 'playwright.config.ts'
+$bytes=[IO.File]::ReadAllBytes($config)
+try {
+  $text=[Text.Encoding]::UTF8.GetString($bytes).Replace("'./e2e/live'", "'./tmp/substantive-triage-20261119'")
+  [IO.File]::WriteAllText($config,$text)
+  $env:PLAYWRIGHT_MODE='live'
+  $env:DUPLICATI_SERVER_PATH=(Resolve-Path 'tmp/issue328-20261119/server/Duplicati.Server.exe').Path
+  $env:DOTNET_ROOT=Split-Path $dotnet
+  $env:DOTNET_ROOT_X64=Split-Path $dotnet
+  $env:DOTNET_ROLL_FORWARD='LatestMajor'
+  & $node node_modules/@playwright/test/cli.js test probe.spec.ts --reporter=list --output "$root/confirmed-results" *> "$root/probe.log"
+  $code=$LASTEXITCODE
+  Get-Content "$root/probe.log" -Tail 30
+} finally {
+  [IO.File]::WriteAllBytes($config,$bytes)
+}
+exit $code

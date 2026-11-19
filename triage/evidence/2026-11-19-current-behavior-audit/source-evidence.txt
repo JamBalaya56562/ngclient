@@ -1,0 +1,39 @@
+frontend-changelog
+30:        const changelog = this.#sanitizer.bypassSecurityTrustHtml(x.Changelog ?? '');
+31:        let stringLog = changelog.toString();
+37:        return this.#marked.parse(stringLog.replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, ''));
+frontend-delete
+29:  backup = computed(() => this.#backupsState.getBackupById(this.id()));
+30:  isSyncMode = computed(() => this.backup()?.Backup?.OperationType === 'Sync');
+32:    params: () => ({ dbPath: this.backup()?.Backup?.DBPath }),
+51:  isDeleting = signal(false);
+56:  deleteBackup() {
+57:    if (this.isDeleting()) return;
+60:    const deleteRemoteFiles = this.isSyncMode() ? undefined : this.deleteRemoteFiles();
+62:    this.isDeleting.set(true);
+72:          this.isDeleting.set(false);
+76:          .deleteBackup({
+83:          .pipe(finalize(() => this.isDeleting.set(false)))
+backup-cache
+182:  getBackupById(id: string) {
+183:    return this.#backups().find((x) => x.Backup?.ID === id) ?? null;
+throttle-button
+36:      <button shButton (click)="openThrottleSettingsDialog()">
+37:        <sh-icon>speedometer</sh-icon>
+67:          <button (click)="openThrottleSettingsDialog()">
+68:            <sh-icon>speedometer</sh-icon>
+copy-temporary
+99:        group.MapPost("/backup/{id}/copytotemp", ([FromServices] Connection connection, [FromRoute] string id)
+100:            => ExecuteCopyToTemp(GetBackup(connection, id), connection))
+234:    private static Dto.CreateBackupDto ExecuteCopyToTemp(IBackup backup, Connection connection)
+242:        var assignedId = connection.RegisterTemporaryBackup(ipx, null);
+268:            var assignedId = connection.RegisterTemporaryBackup(item.Backup, item.Schedule);
+delete-contract
+39:        group.MapDelete("/backup/{id}", ([FromServices] Connection connection, [FromServices] ISchedulerService schedulerService, [FromServices] IQueueRunnerService queueRunnerService, [FromServices] LiveControls liveControls, [FromServices] IHttpContextAccessor httpContextAccessor, [FromRoute] string id, [FromQuery(Name = "delete-remote-files")] bool? delete_remote_files, [FromQuery(Name = "delete-local-db")] bool? delete_local_db, [FromQuery] bool? force) =>
+200:            extra["delete-remote-files"] = "true";
+202:        return new Dto.DeleteBackupOutputDto("OK", null, queueRunnerService.AddTask(Runner.CreateDeleteTask(backup, extra, (_) => schedulerService.Reschedule())));
+runner-target
+1059:                // Map AdditionalTargetURLs to remote-sync-json-config option for backup operations
+1061:                    ApplyAdditionalTargetUrls(databaseConnection, backup, options);
+1927:        internal static void ApplyAdditionalTargetUrls(Connection databaseConnection, IBackup backup, Dictionary<string, string?> options)
+2130:            url = backup.TargetURL;

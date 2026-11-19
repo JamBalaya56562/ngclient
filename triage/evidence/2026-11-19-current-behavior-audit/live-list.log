@@ -1,0 +1,24 @@
+Listing tests:
+  [chromium] › auth-reconnect.spec.ts:10:7 › websocket › recovers from real token expiry without reloading
+  [chromium] › auth-reconnect.spec.ts:10:7 › websocket › recovers from real token expiry and one failed refresh without reloading
+  [chromium] › auth-reconnect.spec.ts:10:7 › longpoll › recovers from real token expiry without reloading
+  [chromium] › auth-reconnect.spec.ts:10:7 › longpoll › recovers from real token expiry and one failed refresh without reloading
+  [chromium] › backup-restore.spec.ts:15:3 › backs up unencrypted local files and restores original contents
+  [chromium] › backup-restore.spec.ts:15:3 › backs up AES-encrypted local files and restores original contents
+  [chromium] › backup-restore.spec.ts:15:3 › backs up AES-encrypted local files and restores original contents without saved settings
+  [chromium] › backup-restore.spec.ts:15:3 › backs up AES-encrypted local files and restores original contents after correcting a wrong passphrase
+  [chromium] › backup-restore.spec.ts:15:3 › backs up AES-encrypted local files and restores original contents after leaving the passphrase empty
+  [chromium] › backup-restore.spec.ts:15:3 › backs up AES-encrypted local files and restores original contents after creating it with the wizard
+  [chromium] › broken-files.spec.ts:9:1 › lists missing-volume damage without mutations until confirmation and restores the unaffected version after purge
+  [chromium] › cross-os-restore.spec.ts:7:1 › lists real foreign-OS folders as expandable and directly restores their selected contents
+  [chromium] › delete-versions.spec.ts:8:3 › deletes only the selected version and restores the survivors with compaction off
+  [chromium] › delete-versions.spec.ts:8:3 › deletes only the selected version and restores the survivors with compaction on
+  [chromium] › editor-persistence.spec.ts:6:1 › saves in place from all five existing-job pages and retains settings after reload
+  [chromium] › schedule-timezone.spec.ts:18:5 › spring-before › preserves the local editor day, UTC instant and actual LastRun through save and reload
+  [chromium] › schedule-timezone.spec.ts:18:5 › spring-after › preserves the local editor day, UTC instant and actual LastRun through save and reload
+  [chromium] › schedule-timezone.spec.ts:18:5 › fall-before › preserves the local editor day, UTC instant and actual LastRun through save and reload
+  [chromium] › schedule-timezone.spec.ts:18:5 › fall-after › preserves the local editor day, UTC instant and actual LastRun through save and reload
+  [chromium] › schedule-timezone.spec.ts:18:5 › utc-before › preserves the local editor day, UTC instant and actual LastRun through save and reload
+  [chromium] › schedule-timezone.spec.ts:18:5 › utc-after › preserves the local editor day, UTC instant and actual LastRun through save and reload
+  [chromium] › windows-destination-path.spec.ts:6:1 › keeps a Windows drive path intact while typing, saving and reloading
+Total: 22 tests in 8 files

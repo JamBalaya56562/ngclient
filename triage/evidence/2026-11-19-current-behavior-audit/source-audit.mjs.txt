@@ -1,0 +1,23 @@
+import { readdirSync, readFileSync, existsSync, writeFileSync } from 'node:fs';
+import { resolve, relative, dirname, join, extname } from 'node:path';
+const root = resolve('projects/ngclient/src');
+const all = [];
+function walk(p) { for (const x of readdirSync(p, {withFileTypes:true})) x.isDirectory() ? walk(join(p,x.name)) : all.push(join(p,x.name)); }
+walk(root);
+const reached = new Set(), templates = new Set();
+function visit(file) {
+  if(reached.has(file) || !file.startsWith(root) || !existsSync(file)) return;
+  reached.add(file);
+  const text = readFileSync(file,'utf8');
+  for(const m of text.matchAll(/templateUrl\s*:\s*['"]([^'"]+)['"]/g)) templates.add(resolve(dirname(file),m[1]));
+  for(const m of text.matchAll(/(?:from\s*|import\s*\()\s*['"](\.[^'"]+)['"]/g)) {
+    const p=resolve(dirname(file),m[1]);
+    const next=[p+'.ts',join(p,'index.ts'),p].find(x=>existsSync(x)&&extname(x)==='.ts');
+    if(next) visit(next);
+  }
+}
+visit(join(root,'main.ts'));
+const entries=all.filter(p=>p.endsWith('.html')).map(file=>({file:relative(process.cwd(),file).replaceAll('\\','/'), reachableTemplate:templates.has(file), lines:readFileSync(file,'utf8').split(/\r?\n/).flatMap((s,i)=>/ngModel/.test(s)?[{line:i+1,text:s.trim()}]:[])})).filter(x=>x.lines.length);
+const result={method:'static relative-import/templateUrl reachability, not runtime execution or a complete Angular compiler analysis', tsFilesReached:reached.size, templatesReached:templates.size, ngModelTemplates:entries.length, reachableNgModelTemplates:entries.filter(x=>x.reachableTemplate).length, entries};
+writeFileSync('tmp/substantive-triage-20261119/forms-inventory.json',JSON.stringify(result,null,2));
+console.log(JSON.stringify({...result,entries:entries.map(({file,reachableTemplate,lines})=>({file,reachableTemplate,matches:lines.length}))},null,2));
