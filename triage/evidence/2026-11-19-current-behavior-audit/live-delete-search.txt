@@ -1,0 +1,10 @@
+e2e/live\broken-files.spec.ts:270:          await api.delete(`/api/v1/backup/${jobId}`, {
+e2e/live\backup-restore.spec.ts:118:      const response = await api.delete(`/api/v1/backup/${id}`, {
+e2e/live\cross-os-restore.spec.ts:127:        await api.delete(`/api/v1/backup/${id}`, {
+e2e/live\delete-versions.spec.ts:93:        if (request.method() === 'POST' && new URL(request.url()).pathname === '/api/v2/backup/delete-versions')
+e2e/live\delete-versions.spec.ts:100:      await page.goto(`/backup/${id}/delete-versions`);
+e2e/live\delete-versions.spec.ts:127:          new URL(response.url()).pathname === '/api/v2/backup/delete-versions'
+e2e/live\delete-versions.spec.ts:208:      const deleted = await api.delete('/api/v1/backup/' + id, {
+e2e/live\editor-persistence.spec.ts:98:    const deleted = await api.delete(`/api/v1/backup/${ID}`, {
+e2e/live\windows-destination-path.spec.ts:98:        await api.delete(`/api/v1/backup/${id}`, {
+e2e/live\schedule-timezone.spec.ts:193:            await api.delete(`/api/v1/backup/${id}`, {

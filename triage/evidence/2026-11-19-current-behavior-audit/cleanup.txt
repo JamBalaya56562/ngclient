@@ -1,0 +1,4 @@
+Duplicati.Server.dll: tested copy hash unchanged
+Duplicati.WebserverCore.dll: tested copy hash unchanged
+Duplicati.Library.Utility.dll: tested copy hash unchanged
+Task server process count: 0

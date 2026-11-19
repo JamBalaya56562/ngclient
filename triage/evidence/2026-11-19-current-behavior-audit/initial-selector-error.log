@@ -1,0 +1,43 @@
+
+Running 1 test using 1 worker
+
+(node:23632) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+{"runtime":{"version":"1.0.0.0 - debug","runtime":"11.0.0"},"validationContract":{"commandCount":216,"withValidations":0,"argumentKeys":["Aliases","LongDescription","Name","ShortDescription","Type","ValidValues","DefaultValue","Typename","Deprecated","DeprecationMessage"]},"changelog":{"rawTail":"m 11 to 12: Downgrade from this version requires \nmanually adjusting the version \nnumber in the database. The additions can be re-applied if the database is \nupgraded again later.\n","renderedTail":"from this version requires manually adjusting the version number in the database. The additions can be re-applied if the database is upgraded again later. (see https://angular.dev/best-practices/security#preventing-cross-site-scripting-xss)","rawHasDiagnostic":false,"renderedHasDiagnostic":false},"coldDelete":{"initialHeading":"Delete backup:","headingAfter3s":"Delete backup:","requests":["POST /api/v1/filesystem/validate"],"deleteEnabled":true,"body":"Delete backup:\nExport configuration\n\nIf you want to use the backup later, you can export the configuration before deleting it.\n\nExport configuration\ncaret-right\nCancel\nDelete backup"},"homeControls":[{"text":"play-circle Start","aria":"Start","title":null},{"text":"pencil-simple","aria":"Edit","title":null},{"text":"dots-three-vertical","aria":"More actions","title":null}]}
+  x  1 [chromium] › tmp\substantive-triage-20261119\probe.spec.ts:6:1 › current production UI: changelog, cold delete, and exposed capabilities (2.0m)
+
+
+  1) [chromium] › tmp\substantive-triage-20261119\probe.spec.ts:6:1 › current production UI: changelog, cold delete, and exposed capabilities 
+
+    Test timeout of 120000ms exceeded.
+
+    Error: locator.click: Test timeout of 120000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Delete backup', exact: true })
+
+
+      52 |     const more = job.getByRole('button', { name: /more|actions/i }).last();
+      53 |     await more.click();
+    > 54 |     await page.getByRole('button', { name: 'Delete backup', exact: true }).click();
+         |                                                                            ^
+      55 |     await expect(heading).toBeVisible();
+      56 |     await page.waitForTimeout(1000);
+      57 |     observed.warmDelete = { heading: await heading.innerText(), url: page.url() };
+        at C:\Users\Jam\Documents\ngclient\tmp\substantive-triage-20261119\probe.spec.ts:54:76
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    tmp\substantive-triage-20261119\results\probe-current-production-U-f0d89-te-and-exposed-capabilities-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: tmp\substantive-triage-20261119\results\probe-current-production-U-f0d89-te-and-exposed-capabilities-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    tmp\substantive-triage-20261119\results\probe-current-production-U-f0d89-te-and-exposed-capabilities-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace tmp\substantive-triage-20261119\results\probe-current-production-U-f0d89-te-and-exposed-capabilities-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [chromium] › tmp\substantive-triage-20261119\probe.spec.ts:6:1 › current production UI: changelog, cold delete, and exposed capabilities 
