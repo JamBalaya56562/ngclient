@@ -6,7 +6,7 @@
 
 - 検証済み: upstream/fork mainは `5c520f1311b7805bd26cf2e4ff420127e46b1d72`。本体 upstream masterは `f21a2245713cffb4dd020d8573c77e63592cfb66`。両リポジトリでfetch済み。
 - ngclientのopen Issueは**7件**、open PRは**7件（#777〜783）**。#758〜776はすべてマージ済み。以前の#761/#766の先行マージ待ちは解消済み。
-- 実装ブランチは**12本＝公開中7本＋本体マージ待ち5本**。local/originのSHA一致を確認。画像・証拠の固定参照4本と別workspace `claude-fixes` は維持。
+- 実装ブランチは**13本＝公開中7本＋本体マージ待ち6本**。local/originのSHA一致を確認。画像・証拠の固定参照4本と別workspace `claude-fixes` は維持。
 - 利用者の追加指示によりNGT-117/116/121、NGT-119/122、NGT-118のUI削除E2Eを実装し、独立したPR #779〜783で公開。[修正と検証](evidence/2026-11-19-fix-batch/verification.md)。本体#460/#462/#126の対応は別セッション。
 
 ## 公開中のPR
@@ -78,9 +78,9 @@ READYは既知の外部ブロッカーなしであり、実装済み/動作検�
 | NGT-112        | INVESTIGATE | 設定なしのコマンド画面。#761/#766先行待ちは解消済み。利用要件/API契約と現行Commandline差分の照合が先。                                                                                                                                  |
 | NGT-008        | DEFERRED    | SSR・画像最適化等。導入根拠となる性能/UX課題は未観測。                                                                                                                                                                                  |
 
-## 実装済み・本体PRマージ待ち5本
+## 実装済み・本体PRマージ待ち6本
 
-検証済み: 5件ともOPEN・merged=false。各headは本体upstream masterの祖先ではない。新規ngclient PRはまだ出さない。本体merge後にAPI契約/実動作、重複、テスト・ビルド、本文のSHAとwhole-Issue範囲を再確認する。
+検証済み: NGT-125以外の5件はOPEN・merged=false。NGT-125の本体ブランチはpush済みでPR未提出。各headは本体upstream masterの祖先ではない。新規ngclient PRはまだ出さない。本体merge後にAPI契約/実動作、重複、テスト・ビルド、本文のSHAとwhole-Issue範囲を再確認する。
 
 | ID / 本体Issue           | ngclientブランチ / 現在head                                                          | 本体PR / 現在head                                                                                      |
 | ------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
@@ -89,6 +89,9 @@ READYは既知の外部ブロッカーなしであり、実装済み/動作検�
 | NGT-098 / duplicati#3397 | `feat/compact-progress` / `cfc57e5a48279cbf3cbc2d663dd3f0d97812cf4b`                 | [#7912](https://github.com/duplicati/duplicati/pull/7912) / `56376b7b5e6878e460f1974adda1d86e6d08ccba` |
 | NGT-100 / duplicati#5239 | `feat/restore-resume-drafts` / `8f154b8085838c7361d8730b2d1d28ad097c8811`            | [#7914](https://github.com/duplicati/duplicati/pull/7914) / `406d079d929165fc71fc5cbf488b017c8229f508` |
 | NGT-101 / duplicati#6611 | `feat/show-db-encryption-preload-paths` / `e63fe51df1118b48cc35884efed767f056448fcd` | [#7915](https://github.com/duplicati/duplicati/pull/7915) / `aadc206da7ee6496650dc391e1e2281bac667229` |
+| NGT-125 / duplicati#3188 | `feat/show-update-check-result` / `4592244d6b5df32dbdc7c042a02d1d16b5e1a889`         | PR未提出 / `feat/report-update-check-errors` / `28d5b2d579efa76aa3e49e199cff28a38a233802`              |
+
+NGT-125（2026-11-19）: Aboutの「Check for updates」を押した後、本体が返す`UpdateCheckFinished`が変わったら、失敗の理由か「最新版」を表示する。古い本体は終了時刻を返さないので何も出さない。検証済み: general.component.spec 14件緑（表示を消すと3件赤）、e2e/update-check.spec 3件緑（表示を消すと新テストが赤、ポート3000がWindows予約範囲のため3100の一時設定で実行）。本体側は統合テストと単体テストが緑、実サーバーのngaxで「Update checks are disabled」の表示を確認。ngclientを実サーバーにつないだ確認は未検証。
 
 NGT-086は#768の現行ダイアログへ統合済み。関連2ファイル10テスト・型・本番ビルドの過去記録はあるが、新ダイアログ経由の実サーバー操作は未検証。現在headの新規追試と取り違えない。
 
