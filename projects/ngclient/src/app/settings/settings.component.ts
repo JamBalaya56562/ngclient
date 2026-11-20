@@ -433,7 +433,7 @@ export default class SettingsComponent {
 
   #idleLogout = inject(IdleLogoutState);
   idleLogoutMinutes = this.#idleLogout.idleLogoutMinutes;
-  idleLogoutCtrl = computed(() => String(this.idleLogoutMinutes()));
+  idleLogoutField = form(linkedSignal(() => String(this.idleLogoutMinutes())));
   idleLogoutOptions = computed(() => toIdleLogoutOptions(this.idleLogoutMinutes()));
 
   updateIdleLogout(selected: unknown[]) {
