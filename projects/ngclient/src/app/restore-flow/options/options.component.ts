@@ -11,6 +11,7 @@ import { ShipIcon } from '@ship-ui/core/ship-icon';
 import { ShipRadio } from '@ship-ui/core/ship-radio';
 import { ShipToggle } from '@ship-ui/core/ship-toggle';
 import { OptionsListComponent } from '../../backup/options/options-list/options-list.component';
+import { NullableTextControl } from '../../backup/general/nullable-text-control';
 import { CustomRemotePermissionsDialog } from '../../backup/source-data/custom-remote-permissions-dialog/custom-remote-permissions-dialog';
 import { TargetUrlDialog } from '../../backup/source-data/target-url-dialog/target-url-dialog';
 import { POSTGRESQL_DEFAULT_SOURCE_URL, POSTGRESQL_SCHEME } from '../../backup/destination/destination.postgresql';
@@ -74,6 +75,7 @@ export const createRestoreOptionsForm = () => {
     NgTemplateOutlet,
     ReactiveFormsModule,
     FormField,
+    NullableTextControl,
     ToggleCardComponent,
     FileTreeComponent,
     OptionsListComponent,
@@ -96,6 +98,7 @@ export default class OptionsComponent {
   optionsForm = this.#restoreFlowState.optionsForm;
   handleExistingField = compatForm(signal({ handleExisting: this.optionsForm.controls.handleExisting })).handleExisting;
   restoreFromField = compatForm(signal({ restoreFrom: this.optionsForm.controls.restoreFrom })).restoreFrom;
+  restorePathField = compatForm(signal({ path: this.optionsForm.controls.restoreFromPath })).path;
   optionsFormSignal = this.#restoreFlowState.optionsFormSignal;
   isSubmitting = this.#restoreFlowState.isSubmitting;
   extendedData = this.#restoreFlowState.extendedDataType;

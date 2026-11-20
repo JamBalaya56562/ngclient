@@ -87,7 +87,7 @@ test('lists real foreign-OS folders as expandable and directly restores their se
     await page.getByRole('button', { name: 'Continue', exact: true }).click();
     await page.locator('sh-radio').filter({ hasText: 'Pick location' }).click();
     await page.getByRole('button', { name: 'Manually type path', exact: true }).click();
-    await page.locator('[formcontrolname=restoreFromPath]').fill(restored);
+    await page.locator('app-advanced-options-settings input#path').fill(restored);
     const sent = page.waitForRequest((r) => r.method() === 'POST' && new URL(r.url()).pathname.endsWith('/restore'));
     await page.getByRole('button', { name: 'Submit', exact: true }).click();
     const body = (await sent).postDataJSON();

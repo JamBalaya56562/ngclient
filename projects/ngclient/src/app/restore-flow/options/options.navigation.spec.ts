@@ -8,6 +8,7 @@ import { ShipButton } from '@ship-ui/core/ship-button';
 import { ShipDialogService } from '@ship-ui/core/ship-dialog';
 import { ShipIcon } from '@ship-ui/core/ship-icon';
 import { afterEach, describe, expect, it, vi } from 'vitest';
+import { NullableTextControl } from '../../backup/general/nullable-text-control';
 import { SysinfoState } from '../../core/states/sysinfo.state';
 import { RestoreFlowState } from '../restore-flow.state';
 import OptionsComponent, { createRestoreOptionsForm } from './options.component';
@@ -64,7 +65,7 @@ describe('Restore options back navigation', () => {
     });
     TestBed.overrideComponent(OptionsComponent, {
       set: {
-        imports: [ReactiveFormsModule, FormField, RouterLink, ShipButton, ShipIcon],
+        imports: [ReactiveFormsModule, FormField, NullableTextControl, RouterLink, ShipButton, ShipIcon],
         // Keep the actual template and native form controls; isolate unrelated custom child controls.
         schemas: [CUSTOM_ELEMENTS_SCHEMA],
       },

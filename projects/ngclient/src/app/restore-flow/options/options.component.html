@@ -109,7 +109,7 @@
           [enableCreateFolder]="true"
           [resolvePaths]="true">
           <label for="path">Path</label>
-          <input type="text" id="path" formControlName="restoreFromPath" />
+          <input type="text" id="path" appNullableText [formField]="restorePathField" />
         </app-file-tree>
       }
 
@@ -120,7 +120,7 @@
           [sourcePrefix]="remoteCustomSourcePrefix()"
           [destinationUrl]="customDestinationUrl()">
           <label for="path">Path</label>
-          <input type="text" id="path" formControlName="restoreFromPath" />
+          <input type="text" id="path" appNullableText [formField]="restorePathField" />
         </app-file-tree>
       }
 
@@ -236,7 +236,7 @@
         [enableCreateFolder]="true"
         [resolvePaths]="true">
         <label for="path">Path</label>
-        <input type="text" id="path" formControlName="restoreFromPath" />
+        <input type="text" id="path" appNullableText [formField]="restorePathField" />
       </app-file-tree>
 
       @if (canRestoreToDownload()) {
