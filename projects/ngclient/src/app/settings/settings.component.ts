@@ -1,4 +1,5 @@
 import { disabled, form, FormField } from '@angular/forms/signals';
+import { NullableTextControl } from '../backup/general/nullable-text-control';
 import { ChangeDetectionStrategy, Component, computed, effect, inject, signal, viewChild } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShipAlert } from '@ship-ui/core/ship-alert';
@@ -82,6 +83,7 @@ type TimeTypes = (typeof TIME_OPTIONS)[number]['value'];
   selector: 'app-settings',
   imports: [
     FormField,
+    NullableTextControl,
     FormsModule,
     ReactiveFormsModule,
     StatusBarComponent,
@@ -135,7 +137,7 @@ export default class SettingsComponent {
 
   editAs = signal<'list' | 'text'>('list');
   previousLang = this.#initLang;
-  langCtrl = signal<string>(this.#initLang);
+  languageField = form(signal<string>(this.#initLang));
   powerModeCtrl = signal<string>('');
   usageStatistics = signal<UsageStatisticsControlValue>('default');
   updatingUsageStatistics = signal(false);
@@ -463,9 +465,7 @@ export default class SettingsComponent {
     return timeType === 'h' ? [1, 24] : [1, 60];
   });
 
-  // Bound to the select's selection event rather than the input's ngModelChange:
-  // the inline search types into the same input, so ngModelChange would fire
-  // with search text (which can coincide with a language code such as "da").
+  // Only a selected option changes the locale. The same input also handles inline search.
   updateLocale(selected: unknown[]) {
     const newLocale = (selected[0] as { value?: string } | undefined)?.value;
     if (!newLocale || newLocale === this.previousLang) return;
