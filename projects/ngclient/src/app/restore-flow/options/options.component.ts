@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, effect, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { FormField } from '@angular/forms/signals';
+import { compatForm } from '@angular/forms/signals/compat';
 import { RouterLink } from '@angular/router';
 import { ShipButton } from '@ship-ui/core/ship-button';
 import { ShipDialogService } from '@ship-ui/core/ship-dialog';
@@ -8,6 +10,7 @@ import { ShipIcon } from '@ship-ui/core/ship-icon';
 import { ShipRadio } from '@ship-ui/core/ship-radio';
 import { ShipToggle } from '@ship-ui/core/ship-toggle';
 import { OptionsListComponent } from '../../backup/options/options-list/options-list.component';
+import { NullableTextControl } from '../../backup/general/nullable-text-control';
 import { CustomRemotePermissionsDialog } from '../../backup/source-data/custom-remote-permissions-dialog/custom-remote-permissions-dialog';
 import { TargetUrlDialog } from '../../backup/source-data/target-url-dialog/target-url-dialog';
 import { POSTGRESQL_DEFAULT_SOURCE_URL, POSTGRESQL_SCHEME } from '../../backup/destination/destination.postgresql';
@@ -66,6 +69,8 @@ export const createRestoreOptionsForm = () => {
   selector: 'app-advanced-options-settings',
   imports: [
     ReactiveFormsModule,
+    FormField,
+    NullableTextControl,
     ToggleCardComponent,
     FileTreeComponent,
     OptionsListComponent,
@@ -86,6 +91,7 @@ export default class OptionsComponent {
   #dialog = inject(ShipDialogService);
 
   optionsForm = this.#restoreFlowState.optionsForm;
+  restorePathField = compatForm(signal({ path: this.optionsForm.controls.restoreFromPath })).path;
   optionsFormSignal = this.#restoreFlowState.optionsFormSignal;
   isSubmitting = this.#restoreFlowState.isSubmitting;
   extendedData = this.#restoreFlowState.extendedDataType;
@@ -124,10 +130,14 @@ export default class OptionsComponent {
    * objects, indexes and constraints, which needs every table, so a selection of tables is loaded into
    * tables that exist.
    */
-  isDatabaseTablesOnly = computed(() => !isWholeDatabaseSelected(this.#selectedPaths(), this.remoteCustomSourcePrefix()));
+  isDatabaseTablesOnly = computed(
+    () => !isWholeDatabaseSelected(this.#selectedPaths(), this.remoteCustomSourcePrefix())
+  );
 
   /** The database the restore writes to, once one is chosen */
-  databaseTarget = computed(() => (this.isDatabaseTarget() ? parsePostgresqlTarget(this.customDestinationUrl()) : null));
+  databaseTarget = computed(() =>
+    this.isDatabaseTarget() ? parsePostgresqlTarget(this.customDestinationUrl()) : null
+  );
 
   /** Whether the restore writes a disk, either a physical disk or an image file */
   isDiskTarget = computed(() => {

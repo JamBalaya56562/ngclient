@@ -91,7 +91,7 @@
           [enableCreateFolder]="true"
           [resolvePaths]="true">
           <label for="path">Path</label>
-          <input type="text" id="path" formControlName="restoreFromPath" />
+          <input type="text" id="path" appNullableText [formField]="restorePathField" />
         </app-file-tree>
       }
 
@@ -102,7 +102,7 @@
           [sourcePrefix]="remoteCustomSourcePrefix()"
           [destinationUrl]="customDestinationUrl()">
           <label for="path">Path</label>
-          <input type="text" id="path" formControlName="restoreFromPath" />
+          <input type="text" id="path" appNullableText [formField]="restorePathField" />
         </app-file-tree>
       }
 
@@ -218,7 +218,7 @@
         [enableCreateFolder]="true"
         [resolvePaths]="true">
         <label for="path">Path</label>
-        <input type="text" id="path" formControlName="restoreFromPath" />
+        <input type="text" id="path" appNullableText [formField]="restorePathField" />
       </app-file-tree>
 
       @if (canRestoreToDownload()) {
@@ -244,8 +244,8 @@
       @if (isDatabaseTablesOnly()) {
         <p class="database-note" i18n>
           Only some of the database is selected, so the rows of the selected tables are loaded into tables that exist.
-          Indexes, constraints and sequence values are not changed. Select the whole database to restore it with all
-          of its objects.
+          Indexes, constraints and sequence values are not changed. Select the whole database to restore it with all of
+          its objects.
         </p>
 
         <sh-toggle class="raised primary" i18n>

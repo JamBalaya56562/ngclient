@@ -142,7 +142,7 @@ async function selectOlderFiles(page: Page) {
 async function chooseDestination(page: Page, destination: string) {
   await page.locator('sh-radio').filter({ hasText: 'Pick location' }).click();
   await page.getByRole('button', { name: 'Manually type path', exact: true }).click();
-  await page.locator('[formcontrolname=restoreFromPath]').fill(destination);
+  await page.locator('app-advanced-options-settings input#path').fill(destination);
 }
 
 async function completeTask(page: Page, restores: Route[], tasks: Route[], failed = false) {

@@ -304,7 +304,7 @@ for (const mode of ['unencrypted', 'aes-saved', 'aes-direct', 'aes-retry', 'aes-
       await page.getByRole('button', { name: 'Continue', exact: true }).click();
       await page.locator('sh-radio').filter({ hasText: 'Pick location' }).click();
       await page.getByRole('button', { name: 'Manually type path', exact: true }).click();
-      await page.locator('[formcontrolname=restoreFromPath]').fill(restored);
+      await page.locator('app-advanced-options-settings input#path').fill(restored);
       const copied = direct
         ? page.waitForResponse(
             (response) =>
