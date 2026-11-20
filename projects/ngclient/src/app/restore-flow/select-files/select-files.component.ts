@@ -1,4 +1,5 @@
 import { form, FormField } from '@angular/forms/signals';
+import { compatForm } from '@angular/forms/signals/compat';
 import { DatePipe, DecimalPipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
@@ -19,6 +20,7 @@ import { ShipIcon } from '@ship-ui/core/ship-icon';
 import { ShipProgressBar } from '@ship-ui/core/ship-progress-bar';
 import { ShipSelect } from '@ship-ui/core/ship-select';
 import { defer, finalize, Subject, Subscription, take, takeUntil } from 'rxjs';
+import { NullableTextControl } from '../../backup/general/nullable-text-control';
 import FileTreeComponent, { BackupSettings } from '../../core/components/file-tree/file-tree.component';
 import { ConfirmDialogComponent } from '../../core/components/confirm-dialog/confirm-dialog.component';
 import { DuplicatiServer, SearchEntriesItemDto, TreeNodeDto } from '../../core/openapi';
@@ -40,6 +42,7 @@ export const createRestoreSelectFilesForm = () => {
   selector: 'app-select-files',
   imports: [
     FormField,
+    NullableTextControl,
     FormsModule,
     ReactiveFormsModule,
     DatePipe,
@@ -74,6 +77,7 @@ export default class SelectFilesComponent {
   #activeRepairIds = signal<string[]>([]);
 
   selectFilesForm = this.#restoreFlowState.selectFilesForm;
+  selectedFilesField = compatForm(signal({ path: this.selectFilesForm.controls.filesToRestore })).path;
   selectFilesFormSignal = this.#restoreFlowState.selectFilesFormSignal;
   selectOption = this.#restoreFlowState.selectOption;
   backupId = this.#restoreFlowState.backupId;
@@ -447,7 +451,7 @@ export default class SelectFilesComponent {
     this.abortLoading$.next(true);
     this.selectOption.set(option.Version.toString());
     const path = result.IsDirectory && !/[\\/]$/.test(result.Path) ? result.Path + '/' : result.Path;
-    this.selectFilesForm.controls.filesToRestore.setValue(path);
+    this.selectedFilesField().value.set(path);
     this.clearSearch();
   }
 
