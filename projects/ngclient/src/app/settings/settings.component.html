@@ -251,7 +251,7 @@
         label="label"
         [isClearable]="false"
         (selectedOptionsChange)="updateIdleLogout($event)">
-        <input type="text" [ngModel]="idleLogoutCtrl()" [ngModelOptions]="{ standalone: true }" />
+        <input type="text" appNullableText [formField]="idleLogoutField" />
       </sh-select>
     </div>
   </section>

@@ -1,5 +1,15 @@
 import { disabled, form, FormField } from '@angular/forms/signals';
-import { ChangeDetectionStrategy, Component, computed, effect, inject, signal, viewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  effect,
+  inject,
+  linkedSignal,
+  signal,
+  viewChild,
+} from '@angular/core';
+import { NullableTextControl } from '../backup/general/nullable-text-control';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShipAlert } from '@ship-ui/core/ship-alert';
 import { ShipButton } from '@ship-ui/core/ship-button';
@@ -82,6 +92,7 @@ type TimeTypes = (typeof TIME_OPTIONS)[number]['value'];
   selector: 'app-settings',
   imports: [
     FormField,
+    NullableTextControl,
     FormsModule,
     ReactiveFormsModule,
     StatusBarComponent,
@@ -414,7 +425,7 @@ export default class SettingsComponent {
 
   #idleLogout = inject(IdleLogoutState);
   idleLogoutMinutes = this.#idleLogout.idleLogoutMinutes;
-  idleLogoutCtrl = computed(() => String(this.idleLogoutMinutes()));
+  idleLogoutField = form(linkedSignal(() => String(this.idleLogoutMinutes())));
   idleLogoutOptions = computed(() => toIdleLogoutOptions(this.idleLogoutMinutes()));
 
   updateIdleLogout(selected: unknown[]) {
