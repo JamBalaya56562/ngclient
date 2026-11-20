@@ -53,10 +53,10 @@ export const createRestoreOptionsForm = () => {
     // The url key of the secondary destination to read from; empty reads the primary destination
     restoreSource: fb.control<string>(''),
     handleExisting: fb.nonNullable.control<'overwrite' | 'saveTimestamp'>(RESTORE_OPTION_DEFAULTS.handleExisting),
-    permissions: fb.control<boolean>(RESTORE_OPTION_DEFAULTS.permissions),
-    includeMetadata: fb.control<boolean>(RESTORE_OPTION_DEFAULTS.includeMetadata),
+    permissions: fb.nonNullable.control<boolean>(RESTORE_OPTION_DEFAULTS.permissions),
+    includeMetadata: fb.nonNullable.control<boolean>(RESTORE_OPTION_DEFAULTS.includeMetadata),
     customRemoteIgnoreExisting: fb.control<boolean>(false),
-    registerRestoredItems: fb.control<boolean>(false),
+    registerRestoredItems: fb.nonNullable.control<boolean>(false),
     imageFolder: fb.control<string>(''),
     imageFileName: fb.control<string>(''),
     imageFormat: fb.control<ImageFileFormat>('raw'),
@@ -97,6 +97,13 @@ export default class OptionsComponent {
   handleExistingField = compatForm(signal({ handleExisting: this.optionsForm.controls.handleExisting })).handleExisting;
   restoreFromField = compatForm(signal({ restoreFrom: this.optionsForm.controls.restoreFrom })).restoreFrom;
   optionsFormSignal = this.#restoreFlowState.optionsFormSignal;
+  metadataFields = compatForm(
+    signal({
+      includeMetadata: this.optionsForm.controls.includeMetadata,
+      permissions: this.optionsForm.controls.permissions,
+      registerRestoredItems: this.optionsForm.controls.registerRestoredItems,
+    })
+  );
   isSubmitting = this.#restoreFlowState.isSubmitting;
   extendedData = this.#restoreFlowState.extendedDataType;
   advancedOptions = this.#restoreFlowState.advancedOptions;
