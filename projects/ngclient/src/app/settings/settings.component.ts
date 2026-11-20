@@ -1,5 +1,15 @@
 import { disabled, form, FormField } from '@angular/forms/signals';
-import { ChangeDetectionStrategy, Component, computed, effect, inject, signal, viewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  effect,
+  inject,
+  linkedSignal,
+  signal,
+  viewChild,
+} from '@angular/core';
+import { NullableTextControl } from '../backup/general/nullable-text-control';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShipAlert } from '@ship-ui/core/ship-alert';
 import { ShipButton } from '@ship-ui/core/ship-button';
@@ -82,6 +92,7 @@ type TimeTypes = (typeof TIME_OPTIONS)[number]['value'];
   selector: 'app-settings',
   imports: [
     FormField,
+    NullableTextControl,
     FormsModule,
     ReactiveFormsModule,
     StatusBarComponent,
@@ -138,6 +149,7 @@ export default class SettingsComponent {
   langCtrl = signal<string>(this.#initLang);
   powerModeCtrl = signal<string>('');
   usageStatistics = signal<UsageStatisticsControlValue>('default');
+  usageStatisticsField = form(linkedSignal<string>(() => this.usageStatistics()));
   updatingUsageStatistics = signal(false);
   remoteControlStatus = this.#remoteControlState.statusMessage;
   remoteControlState = this.#remoteControlState.state;
@@ -544,6 +556,11 @@ export default class SettingsComponent {
         // The service restores the previous settings and the HTTP interceptor reports the error.
         error: () => {},
       });
+  }
+
+  selectUsageStatistics(selected: unknown[]) {
+    const option = this.usageStatisticsOptions().find((entry) => entry === selected[0]);
+    if (option) this.updateUsageStatistics(option.value);
   }
 
   updatePowerMode(newPowerMode: string) {
