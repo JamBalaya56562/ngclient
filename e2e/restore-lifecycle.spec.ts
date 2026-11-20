@@ -221,6 +221,20 @@ for (const scenario of [
   });
 }
 
+test('submits the selected metadata and permissions options independently', async ({ page, serverApi }) => {
+  const { restores, tasks } = await openRestore(page, serverApi.loginRequests, '/', '/archive/');
+  await selectOlderFiles(page);
+  await page.getByRole('heading', { name: 'Metadata settings', exact: true }).click();
+  const toggle = (label: string) => page.locator('sh-toggle').filter({ hasText: label }).getByRole('checkbox');
+  const metadata = toggle('Restore file metadata');
+  const permissions = toggle('Restore read/write permissions');
+  await expect(metadata).toBeChecked();
+  await expect(permissions).not.toBeChecked();
+  await metadata.uncheck();
+  await permissions.check();
+  expect(await completeTask(page, restores, tasks)).toMatchObject({ skip_metadata: true, permissions: true });
+});
+
 test('restores to a browser download when the server offers it', async ({ page, serverApi }) => {
   const { restores, tasks } = await openRestore(page, serverApi.loginRequests, '/', '/archive/', [
     'v1:backup:restore-download',

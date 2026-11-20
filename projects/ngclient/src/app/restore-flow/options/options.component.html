@@ -244,8 +244,8 @@
       @if (isDatabaseTablesOnly()) {
         <p class="database-note" i18n>
           Only some of the database is selected, so the rows of the selected tables are loaded into tables that exist.
-          Indexes, constraints and sequence values are not changed. Select the whole database to restore it with all
-          of its objects.
+          Indexes, constraints and sequence values are not changed. Select the whole database to restore it with all of
+          its objects.
         </p>
 
         <sh-toggle class="raised primary" i18n>
@@ -312,12 +312,12 @@
 
         <sh-toggle class="primary raised" i18n>
           Restore file metadata
-          <input type="checkbox" formControlName="includeMetadata" />
+          <input type="checkbox" [formField]="metadataFields.includeMetadata" />
         </sh-toggle>
 
         <sh-toggle class="primary raised" i18n>
           Restore read/write permissions
-          <input type="checkbox" formControlName="permissions" />
+          <input type="checkbox" [formField]="metadataFields.permissions" />
         </sh-toggle>
       </app-toggle-card>
     }
@@ -328,7 +328,7 @@
 
         <sh-toggle class="primary raised" i18n>
           Register the restored virtual machines with Hyper-V
-          <input type="checkbox" formControlName="registerRestoredItems" />
+          <input type="checkbox" [formField]="metadataFields.registerRestoredItems" />
         </sh-toggle>
 
         <p i18n>
