@@ -6,8 +6,8 @@
 
 - 検証済み: upstream/fork mainは `aaccdfa0351ca507894fb2381dc7224fef5f5f4c`。本体 upstream masterは `ebf0a72e8a78eb9ab8c981f579856657bfac9894`。両リポジトリでfetch済み。
 - open Issueは6件（#126/#273/#409/#460/#462/#497、今回再取得）。PR #777〜783はすべてMERGED。#758〜776はすべてマージ済み。以前の#761/#766の先行マージ待ちは解消済み。
-- 本体マージ待ちの実装済みngclientブランチは0本（2026-11-21照合）。[マージ済みの本体連携](#本体連携が完了した実装)と[本体側の対応が必要な課題](#本体側の対応が必要な課題)を参照。
-- 利用者の追加指示によりNGT-117/116/121、NGT-119/122、NGT-118のUI削除E2Eを実装し、独立したPR #779〜783で公開。[修正と検証](evidence/2026-11-19-fix-batch/verification.md)。[#460・#462・#126の本体作業](#本体側の対応が必要な課題)は別セッション。
+- 本体マージ待ちの実装済みngclientブランチは0本（2026-11-21照合）。[マージ済みの本体連携](#本体連携が完了した実装)と[本体側の対応が必要な課題](#本体側の対応とngclientの再開条件)を参照。
+- 利用者の追加指示によりNGT-117/116/121、NGT-119/122、NGT-118のUI削除E2Eを実装し、独立したPR #779〜783で公開。[修正と検証](evidence/2026-11-19-fix-batch/verification.md)。[#460・#462・#126の本体作業](#本体側の対応とngclientの再開条件)は別セッション。
 
 ## 今回マージ済みのPR
 
@@ -25,9 +25,9 @@
 | [#273](https://github.com/duplicati/ngclient/issues/273) テスト整備            | NGT-081 / NGT-118                    | mainでlive 22ケース/8ファイルを列挙。作成・実行・復元・直接復元・世代削除・認証復帰等は既存。ジョブ自体のUI削除は#779へ追加済み（NGT-118）。通常CIはliveを除外。最小限のUI削除と継続live CIの範囲を揃え、既存成果を示してclose判断する。                                                               |
 | [#497](https://github.com/duplicati/ngclient/issues/497) Signal Forms          | NGT-007 / NGT-119 / NGT-122          | [NGT-007の残りの実装順と検証手順](#ngt-007-signal-forms) |
 | [#409](https://github.com/duplicati/ngclient/issues/409) UI改善一覧            | NGT-052 / INVESTIGATE                | 現行HomeのStart/Edit/More actionsは名前あり。global速度制限の名前/説明は#781で修正（NGT-121、マージ済み）。共有Tooltipの急速な再表示の問題はNGT-123へ分離。進捗/現在ファイルのロジックと単体は既存だが実行中の全表示・通知の実色・主観的な配色/余白は未再検証。一部改善で全closeにしない。             |
-| [#460](https://github.com/duplicati/ngclient/issues/460) secondary宛先から復元 | NGT-053 / 本体契約の対応が先 | [再開条件](#本体側の対応が必要な課題) |
-| [#462](https://github.com/duplicati/ngclient/issues/462) secondary宛先の削除   | NGT-054 / 本体契約の対応が先 | [再開条件](#本体側の対応が必要な課題) |
-| [#126](https://github.com/duplicati/ngclient/issues/126) 検証schema            | NGT-055 / 本体契約の対応が先 | [再開条件](#本体側の対応が必要な課題) |
+| [#460](https://github.com/duplicati/ngclient/issues/460) secondary宛先から復元 | NGT-053 / 本体マージ済み | [再開条件](#本体側の対応とngclientの再開条件) |
+| [#462](https://github.com/duplicati/ngclient/issues/462) secondary宛先の削除   | NGT-054 / 本体マージ済み | [再開条件](#本体側の対応とngclientの再開条件) |
+| [#126](https://github.com/duplicati/ngclient/issues/126) 検証schema            | NGT-055 / 本体契約の対応が先 | [再開条件](#本体側の対応とngclientの再開条件) |
 
 Issue一覧・既存コメントは前回調査時に取得した。返信・公開コメントは投稿していない。動作の確認範囲は各検証記録を参照。
 
@@ -90,14 +90,14 @@ READYは既知の外部ブロッカーなしであり、実装済み/動作検�
 
 [過去の更新・検証記録](evidence/2026-11-19-global-import-and-maintenance/verification.md)は当時のSHAでの記録。今回はマージとブランチ状態を照合した。
 
-## 本体側の対応が必要な課題
+## 本体側の対応とngclientの再開条件
 
-下記は本体APIの設計・対応から進める課題。対応する公開待ちのngclientブランチはローカル・`origin` の一覧にない。UI実装に着手する前に、本体側の進捗と確定したAPIを照合する。
+検証済み（2026-11-21）。本体PR #7929・#7928のマージを確認。両実装コミットは本体の `master@upstream` に含まれる。#126は本体側の設計・対応が先。
 
-| ID / Issue | 本体側で先に必要な作業 | ngclient側の再開条件 |
+| ID / Issue | 本体の状態とAPI契約 | ngclient側の作業 |
 | --- | --- | --- |
-| NGT-053 / [#460](https://github.com/duplicati/ngclient/issues/460) | 選択した副宛先で既存の直接復元を再利用する。隔離サーバーで副宛先に実在する世代だけを一覧・復元でき、元ジョブを変更しないことを確認する。以前の試験では `copytotemp` 後の宛先差替えPUTがHTTP 500。 | 本体PRのマージ後、確定APIで副宛先選択から一覧・復元まで検証する。 |
-| NGT-054 / [#462](https://github.com/duplicati/ngclient/issues/462) | 副宛先を識別して削除できるAPIを追加する。既存DELETEとの互換性、非選択宛先・共有DBの保持、一部失敗時の再試行を隔離サーバーで確認する。 | 本体PRのマージ後、対象をUIで明示し、選択した宛先だけが削除されることを確認する。 |
+| NGT-053 / [#460](https://github.com/duplicati/ngclient/issues/460) | [本体 #7929](https://github.com/duplicati/duplicati/pull/7929) マージ済み（`49723ef8f238`）。`copytotemp?destination=<UrlKey>` が副宛先を参照する一時ジョブを作る。 | [#839](https://github.com/duplicati/ngclient/pull/839) 公開済み（`42f921e35cd8`）。隔離実サーバーで主2世代・副1世代、副の1世代のみ表示、復元内容一致を確認。Chromium 1件、全体2,692件、本番ビルド成功。 |
+| NGT-054 / [#462](https://github.com/duplicati/ngclient/issues/462) | [本体 #7928](https://github.com/duplicati/duplicati/pull/7928) マージ済み（`53074e541edd`）。`DELETE /api/v1/backup/{id}` の `remote-destinations` で `primary` または副宛先の `UrlKey` を指定できる。 | 削除対象を画面で明示し、非選択の宛先が保持されることを隔離サーバーで確認する。 |
 | NGT-055 / [#126](https://github.com/duplicati/ngclient/issues/126) | Min・Max・Patternなどの共有検証スキーマを設計する。以前のsysteminfo調査では216個の定義に `Validations` がなかった。 | スキーマ合意と本体対応後、OpenAPI生成型とUIへ反映し、既存の型検証との互換性を確認する。 |
 
 ## NGT-007 Signal Forms
