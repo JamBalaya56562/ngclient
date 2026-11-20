@@ -1,5 +1,16 @@
-import { disabled, form, FormField } from '@angular/forms/signals';
-import { ChangeDetectionStrategy, Component, computed, effect, inject, signal, viewChild } from '@angular/core';
+import { disabled, form, FormField, max, min } from '@angular/forms/signals';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  DestroyRef,
+  effect,
+  inject,
+  linkedSignal,
+  signal,
+  viewChild,
+} from '@angular/core';
+import { NullableTextControl } from '../backup/general/nullable-text-control';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShipAlert } from '@ship-ui/core/ship-alert';
 import { ShipButton } from '@ship-ui/core/ship-button';
@@ -36,7 +47,6 @@ import {
   toServerTimezoneSetting,
 } from './server-timezone-settings';
 
-import { debounceSignal } from '../core/functions/debounce-signal';
 import { ConfirmDialogComponent } from '../core/components/confirm-dialog/confirm-dialog.component';
 import { FileTreeState } from '../core/states/file-tree.state';
 import { IdleLogoutState } from '../core/states/idle-logout.state';
@@ -82,6 +92,7 @@ type TimeTypes = (typeof TIME_OPTIONS)[number]['value'];
   selector: 'app-settings',
   imports: [
     FormField,
+    NullableTextControl,
     FormsModule,
     ReactiveFormsModule,
     StatusBarComponent,
@@ -456,12 +467,13 @@ export default class SettingsComponent {
 
   timeTypeOptions = signal(TIME_OPTIONS);
   timeType = signal<TimeTypes>('none');
-  timeValue = debounceSignal<number>(0, 300);
-  timeRange = computed(() => {
-    const timeType = this.timeType();
-
-    return timeType === 'h' ? [1, 24] : [1, 60];
+  timeValue = signal(0);
+  timeValueField = form(this.timeValue, (field) => {
+    disabled(field, () => this.timeType() === 'none');
+    min(field, 1);
+    max(field, () => (this.timeType() === 'h' ? 24 : 60));
   });
+  timeTypeField = form(linkedSignal(() => this.timeType()));
 
   // Bound to the select's selection event rather than the input's ngModelChange:
   // the inline search types into the same input, so ngModelChange would fire
@@ -494,25 +506,26 @@ export default class SettingsComponent {
       });
   }
 
-  updateTimeValue(newTimeValue: number) {
-    this.timeValue.set(newTimeValue);
-    this.#setStartupDelay();
-  }
-
-  updateTimeType(newTimeType: string) {
+  updateTimeType(selected: unknown[]) {
+    const option = this.timeTypeOptions().find((entry) => entry === selected[0]);
     const prevTimeType = this.timeType();
+    if (!option || option.value === prevTimeType) return;
 
     if (prevTimeType === 'none') {
       this.timeValue.set(1);
     }
 
-    this.timeType.set(newTimeType);
-    this.#setStartupDelay();
+    this.timeType.set(option.value);
+    this.scheduleStartupDelay();
   }
 
   #setStartupDelayTimeoutId?: ReturnType<typeof setTimeout>;
 
-  #setStartupDelay() {
+  constructor() {
+    inject(DestroyRef).onDestroy(() => clearTimeout(this.#setStartupDelayTimeoutId));
+  }
+
+  scheduleStartupDelay() {
     if (this.#setStartupDelayTimeoutId) {
       clearTimeout(this.#setStartupDelayTimeoutId);
     }
@@ -525,7 +538,7 @@ export default class SettingsComponent {
       const startupDelay = timeType === 'none' || timeValue === 0 ? '' : `${timeValue}${timeType}`;
       if (startupDelay === this.#serverSettingsService.serverSettings()?.['startup-delay']) return;
 
-      this.#serverSettingsService.setStartupDelay(startupDelay).subscribe();
+      this.#serverSettingsService.setStartupDelay(startupDelay).subscribe({ error: () => {} });
     }, 1000);
   }
 
