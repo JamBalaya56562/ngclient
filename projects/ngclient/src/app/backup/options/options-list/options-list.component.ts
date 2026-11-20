@@ -32,6 +32,7 @@ import { OPTIONS_LIST_CUSTOM_CONFIG } from './options-list.config';
 import { EmailReportsDialogComponent } from './email-reports-dialog/email-reports-dialog.component';
 import { applyEmailValues, EMAIL_OPTIONS, optionKey } from './email-reports-dialog/email-reports';
 import { isOptionTrue, optionDisplayValue, OptionValueControl, serializeOptionValue } from './option-value-control';
+import { NullableTextControl } from '../../general/nullable-text-control';
 
 type SettingItem = {
   Filter?: string | null;
@@ -48,6 +49,7 @@ type SettingItem = {
     FormsModule,
     FormField,
     OptionValueControl,
+    NullableTextControl,
     FileTreeComponent,
     SizeComponent,
     TimespanComponent,
@@ -73,15 +75,25 @@ export class OptionsListComponent {
   // Keep form metadata out of the DTO objects, and preserve absent/null values on load.
   settingValues = linkedSignal(() => this.options().map((setting) => setting.Value ?? null));
   settingsForm = form(this.settingValues);
-  #syncEditedValues = effect(() => {
+  settingNames = linkedSignal(() => this.options().map((setting) => setting.Name ?? null));
+  settingNamesForm = form(this.settingNames);
+  #syncEditedFields = effect(() => {
     const values = this.settingValues();
+    const names = this.settingNames();
     const settings = this.options();
-    if (settings.some((setting, index) => !Object.is(setting.Value ?? null, values[index]))) {
+    const hasEdit = (setting: SettingInputDto, index: number) =>
+      !Object.is(setting.Value ?? null, values[index]) || (setting.Name ?? null) !== names[index];
+    if (settings.some(hasEdit)) {
       untracked(() =>
         this.options.set(
-          settings.map((setting, index) =>
-            Object.is(setting.Value ?? null, values[index]) ? setting : { ...setting, Value: values[index] }
-          )
+          settings.map((setting, index) => {
+            if (!hasEdit(setting, index)) return setting;
+            return {
+              ...setting,
+              ...((setting.Name ?? null) === names[index] ? {} : { Name: names[index] }),
+              ...(Object.is(setting.Value ?? null, values[index]) ? {} : { Value: values[index] }),
+            };
+          })
         )
       );
     }
@@ -254,16 +266,6 @@ export class OptionsListComponent {
       const index = newSettings.findIndex((s) => s.Name === option.Name);
 
       newSettings[index].Value = serializeOptionValue(option.FormView, newValue);
-      return newSettings;
-    });
-  }
-
-  updateFreeTextSettingName(option: SettingItem, newValue: string) {
-    this.options.update((settings) => {
-      const newSettings = [...settings];
-      const index = newSettings.findIndex((s) => s.Name === option.Name);
-
-      newSettings[index].Name = newValue;
       return newSettings;
     });
   }

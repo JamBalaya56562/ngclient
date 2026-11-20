@@ -67,7 +67,8 @@ export class OptionValueControl implements FormValueControl<string | null> {
     } else {
       // Selects and the file tree can emit input events during initialization.
       if (element.value === String(displayed)) return;
-      this.value.set(serializeOptionValue(definition, element.value) ?? null);
+      const value = element.type === 'number' && element.value !== '' ? element.valueAsNumber : element.value;
+      this.value.set(serializeOptionValue(definition, value) ?? null);
     }
   }
 
