@@ -1,5 +1,15 @@
 import { disabled, form, FormField } from '@angular/forms/signals';
-import { ChangeDetectionStrategy, Component, computed, effect, inject, signal, viewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  effect,
+  inject,
+  linkedSignal,
+  signal,
+  viewChild,
+} from '@angular/core';
+import { NullableTextControl } from '../backup/general/nullable-text-control';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShipAlert } from '@ship-ui/core/ship-alert';
 import { ShipButton } from '@ship-ui/core/ship-button';
@@ -82,6 +92,7 @@ type TimeTypes = (typeof TIME_OPTIONS)[number]['value'];
   selector: 'app-settings',
   imports: [
     FormField,
+    NullableTextControl,
     FormsModule,
     ReactiveFormsModule,
     StatusBarComponent,
@@ -137,6 +148,7 @@ export default class SettingsComponent {
   previousLang = this.#initLang;
   langCtrl = signal<string>(this.#initLang);
   powerModeCtrl = signal<string>('');
+  powerModeField = form(linkedSignal(() => this.powerModeCtrl()));
   usageStatistics = signal<UsageStatisticsControlValue>('default');
   updatingUsageStatistics = signal(false);
   remoteControlStatus = this.#remoteControlState.statusMessage;
@@ -546,12 +558,14 @@ export default class SettingsComponent {
       });
   }
 
-  updatePowerMode(newPowerMode: string) {
-    const previousPowerMode = this.powerModeCtrl();
-    if (previousPowerMode === newPowerMode) return;
-    if (newPowerMode === 'default') newPowerMode = '';
+  updatePowerMode(selected: unknown[]) {
+    const option = this.powerModeOptions().find((entry) => entry === selected[0]);
+    if (!option || option.value === this.powerModeCtrl()) return;
 
-    this.#serverSettingsService.setPowerModeProvider(newPowerMode).subscribe();
+    this.#serverSettingsService.setPowerModeProvider(option.value === 'default' ? '' : option.value).subscribe({
+      // The service restores the previous value and the HTTP interceptor reports the failure.
+      error: () => {},
+    });
   }
 
   serverSettingsEffect = effect(() => {
