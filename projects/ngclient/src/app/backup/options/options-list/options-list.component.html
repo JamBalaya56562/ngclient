@@ -122,7 +122,7 @@
 
             <div>
               <sh-form-field>
-                <input type="text" [ngModel]="item.Name" (ngModelChange)="updateFreeTextSettingName(item, $event)" />
+                <input type="text" appNullableText [formField]="settingNamesForm[item.Index]!" />
 
                 <sh-icon prefix>rectangle-dashed</sh-icon>
               </sh-form-field>
@@ -280,8 +280,8 @@
             <input
               type="number"
               [id]="formId"
-              [ngModel]="item.Value"
-              (ngModelChange)="updateSettingValue(item, $event)" />
+              [appOptionValue]="item.FormView"
+              [formField]="settingsForm[item.Index]!" />
             <sh-icon prefix>numpad</sh-icon>
           </sh-form-field>
         } @else if (item.FormView.type === 'Boolean') {

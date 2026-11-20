@@ -76,6 +76,37 @@ describe('OptionsListComponent option editing', () => {
     expect(component.options().find((x) => x.Name === 'hidden')?.Value).toBe('keep');
   });
 
+  it('edits a custom name and integer value without changing the other settings', async () => {
+    const component = setup(
+      [
+        { Name: 'custom-name', Value: 'keep=value' },
+        { Name: 'retries', Value: '3' },
+        { Name: 'hidden', Value: null },
+      ],
+      true,
+      definitions
+    );
+    const root = fixture.nativeElement as HTMLElement;
+    const name = root.querySelector<HTMLInputElement>('input[appNullableText]')!;
+    const integer = root.querySelector<HTMLInputElement>('input[type="number"]')!;
+    expect(name.value).toBe('custom-name');
+    expect(integer.value).toBe('3');
+    for (const [input, value] of [
+      [name, 'custom-renamed'],
+      [integer, '08'],
+    ] as const) {
+      input.value = value;
+      input.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+    fixture.detectChanges();
+    await fixture.whenStable();
+    expect(component.options()).toEqual([
+      { Name: 'custom-renamed', Value: 'keep=value' },
+      { Name: 'retries', Value: '8' },
+      { Name: 'hidden', Value: null },
+    ]);
+  });
+
   it('adds typed defaults and makes removed options available again', () => {
     const component = setup([]);
     component.addSetting(definitions[0]);
