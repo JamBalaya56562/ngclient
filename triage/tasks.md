@@ -6,8 +6,8 @@
 
 - 検証済み: upstream/fork mainは `aaccdfa0351ca507894fb2381dc7224fef5f5f4c`。本体 upstream masterは `ebf0a72e8a78eb9ab8c981f579856657bfac9894`。両リポジトリでfetch済み。
 - open Issueは6件（#126/#273/#409/#460/#462/#497、今回再取得）。PR #777〜783はすべてMERGED。#758〜776はすべてマージ済み。以前の#761/#766の先行マージ待ちは解消済み。
-- 実装ブランチは**4本＝公開1本（#788）＋本体待ち3本**。local/originのSHA一致を確認。画像・証拠の固定参照4本と別workspace `claude-fixes` は維持。
-- 利用者の追加指示によりNGT-117/116/121、NGT-119/122、NGT-118のUI削除E2Eを実装し、独立したPR #779〜783で公開。[修正と検証](evidence/2026-11-19-fix-batch/verification.md)。本体#460/#462/#126の対応は別セッション。
+- 本体マージ待ちの実装済みngclientブランチは0本（2026-11-21照合）。[マージ済みの本体連携](#本体連携が完了した実装)と[本体側の対応が必要な課題](#本体側の対応が必要な課題)を参照。
+- 利用者の追加指示によりNGT-117/116/121、NGT-119/122、NGT-118のUI削除E2Eを実装し、独立したPR #779〜783で公開。[修正と検証](evidence/2026-11-19-fix-batch/verification.md)。[#460・#462・#126の本体作業](#本体側の対応が必要な課題)は別セッション。
 
 ## 今回マージ済みのPR
 
@@ -25,9 +25,9 @@
 | [#273](https://github.com/duplicati/ngclient/issues/273) テスト整備            | NGT-081 / NGT-118                    | mainでlive 22ケース/8ファイルを列挙。作成・実行・復元・直接復元・世代削除・認証復帰等は既存。ジョブ自体のUI削除は#779へ追加済み（NGT-118）。通常CIはliveを除外。最小限のUI削除と継続live CIの範囲を揃え、既存成果を示してclose判断する。                                                               |
 | [#497](https://github.com/duplicati/ngclient/issues/497) Signal Forms          | NGT-007 / NGT-119 / NGT-122          | [NGT-007の残りの実装順と検証手順](#ngt-007-signal-forms) |
 | [#409](https://github.com/duplicati/ngclient/issues/409) UI改善一覧            | NGT-052 / INVESTIGATE                | 現行HomeのStart/Edit/More actionsは名前あり。global速度制限の名前/説明は#781で修正（NGT-121、マージ済み）。共有Tooltipの急速な再表示の問題はNGT-123へ分離。進捗/現在ファイルのロジックと単体は既存だが実行中の全表示・通知の実色・主観的な配色/余白は未再検証。一部改善で全closeにしない。             |
-| [#460](https://github.com/duplicati/ngclient/issues/460) secondary宛先から復元 | NGT-053 / INVESTIGATE / 本体契約相談 | copytotempは成功するが、そのGUIDへ宛先を変えてPUTするとHTTP 500（整数変換）。元ジョブは不変。単純なtemp URL差替え案は使えなかった。選んだUrlKey・秘密値・独立DB・secondaryの版差を扱う本体API/代替手順の設計が先。別方式まで不可能とは未検証。NGT-100とRestore画面の編集が重なるため実装前に差分調整。 |
-| [#462](https://github.com/duplicati/ngclient/issues/462) secondary宛先の削除   | NGT-054 / INVESTIGATE / 本体契約相談 | 現行DELETEはdelete-remote-files/delete-local-db/forceのboolだけで宛先キーを選べない。Runnerのadditional設定展開はBackupOrSyncのみ。宛先単位の削除、非選択宛先/共有DB保持、部分失敗時のジョブ保持を本体と設計する。実削除の対象範囲は今回未検証。                                                       |
-| [#126](https://github.com/duplicati/ngclient/issues/126) 検証schema            | NGT-055 / INVESTIGATE / 本体契約相談 | 実systeminfoで調べた216個の定義にValidationsは0件。現行ICommandLineArgumentにも項目なし。Min/Max/Pattern等の共有schemaを合意して本体→生成型→UIの順に実装する。既存enum/flagsや型検証だけで全closeにはしない。                                                                                          |
+| [#460](https://github.com/duplicati/ngclient/issues/460) secondary宛先から復元 | NGT-053 / 本体契約の対応が先 | [再開条件](#本体側の対応が必要な課題) |
+| [#462](https://github.com/duplicati/ngclient/issues/462) secondary宛先の削除   | NGT-054 / 本体契約の対応が先 | [再開条件](#本体側の対応が必要な課題) |
+| [#126](https://github.com/duplicati/ngclient/issues/126) 検証schema            | NGT-055 / 本体契約の対応が先 | [再開条件](#本体側の対応が必要な課題) |
 
 Issue一覧・既存コメントは前回調査時に取得した。返信・公開コメントは投稿していない。動作の確認範囲は各検証記録を参照。
 
@@ -77,22 +77,28 @@ READYは既知の外部ブロッカーなしであり、実装済み/動作検�
 | NGT-112        | INVESTIGATE | 設定なしのコマンド画面。#761/#766先行待ちは解消済み。利用要件/API契約と現行Commandline差分の照合が先。                                                                                                                                  |
 | NGT-008        | DEFERRED    | SSR・画像最適化等。導入根拠となる性能/UX課題は未観測。                                                                                                                                                                                  |
 
-## 実装済み4本：公開1本・本体待ち3本
+## 本体連携が完了した実装
 
-検証済み: #784〜786はマージ・ブランチ削除済み。本体#7911もマージ済みでSkip UIは#788公開。本体#7907はレビューに合わせたimport時選択へ更新済み・未マージのためngclient PR保留。NGT-125/126は本体PR未提出。今回の[更新・全体検証](evidence/2026-11-19-global-import-and-maintenance/verification.md)参照。
+**検証済み（2026-11-21）**。upstream `main` の祖先に下記4件のマージコミットがあり、対応ブランチはローカル・`origin` とも整理済み。実装済みのngclientブランチで本体マージ待ちは0本。
 
-| ID / 本体Issue                                                                            | ngclientブランチ / 現在head                                                  | 本体PR / 現在head                                                                                      |
-| ----------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| NGT-085 / duplicati#2310                                                                  | `feat/export-global-options` / `3ad275090282438962be8f90069324b25dea8a94`    | [#7907](https://github.com/duplicati/duplicati/pull/7907) / `a652e9f71c2e0f5ee3f31dcd9e02ec8934654071` |
-| NGT-086 / duplicati#2701 / PR_OPEN [#788](https://github.com/duplicati/ngclient/pull/788) | `feat/skip-next-scheduled-run` / `21c309af628669c801fceadb3b8e9671bf84a9cf`  | [#7911](https://github.com/duplicati/duplicati/pull/7911) / `f38eabca182e8b8601c45c8271f05f1b3cd4534b` |
-| NGT-125 / duplicati#3188                                                                  | `feat/show-update-check-result` / `15acd674a16b91d38491648837574eff3c38f4f1` | PR未提出 / `feat/report-update-check-errors` / `28d5b2d579efa76aa3e49e199cff28a38a233802`              |
-| NGT-126 / duplicati#6221                                                                  | `feat/restore-download` / `cd72dfa35231134663b6f8e4b59d14cc6bc47b79`         | PR未提出 / `feat/restore-download` / `3f2e90abaa59028d8e07ca92862b700d082a58e0`                        |
+| ID / 本体Issue | ngclientのマージ済みPR | 範囲 |
+| --- | --- | --- |
+| NGT-085 / duplicati#2310 | [#803](https://github.com/duplicati/ngclient/pull/803) / `69b0f1d06797` | グローバル設定のインポート。本体 [#7907](https://github.com/duplicati/duplicati/pull/7907) に対応。 |
+| NGT-086 / duplicati#2701 | [#788](https://github.com/duplicati/ngclient/pull/788) / `e3990eec3078` | 次のスケジュール実行をスキップ。本体 [#7911](https://github.com/duplicati/duplicati/pull/7911) に対応。 |
+| NGT-125 / duplicati#3188 | [#805](https://github.com/duplicati/ngclient/pull/805) / `ac79f1e3b2b4` | Aboutから実行した更新確認の結果を表示。 |
+| NGT-126 / duplicati#6221 | [#804](https://github.com/duplicati/ngclient/pull/804) / `9d2534b831a8` | 復元結果をブラウザーでダウンロード。 |
 
-NGT-125（2026-11-19）: Aboutの「Check for updates」を押した後、本体が返す`UpdateCheckFinished`が変わったら、失敗の理由か「最新版」を表示する。古い本体は終了時刻を返さないので何も出さない。検証済み: general.component.spec 14件緑（表示を消すと3件赤）、e2e/update-check.spec 3件緑（表示を消すと新テストが赤、ポート3000がWindows予約範囲のため3100の一時設定で実行）。本体側は統合テストと単体テストが緑、実サーバーのngaxで「Update checks are disabled」の表示を確認。ngclientを実サーバーにつないだ確認は未検証。
+[過去の更新・検証記録](evidence/2026-11-19-global-import-and-maintenance/verification.md)は当時のSHAでの記録。今回はマージとブランチ状態を照合した。
 
-NGT-126（2026-11-19）: 復元オプションに「Download in the browser」を足し、選ぶと`download: true`・パスなしで復元を要求する。本体が拡張`v1:backup:restore-download`を報告するときだけ出す。完了時の通知（action `restore:download:{id}`）にDownloadボタンを出し、`restore-download`の単一操作トークンで`/api/v1/restore-download/{id}`を開く。検証済み: e2e restore-lifecycle・notifications・restore-destination-url・restore-saved-destinations 16件緑（要求のフラグと通知のボタンを外すと新テスト2件赤、選択肢を外すと復元のテストが赤。3100の一時設定で実行）、restore-flow・notificationsの単体spec 191件緑（options.navigation.specのSysinfoStateモックに`hasRestoreDownload`を追加）。本体側は結合テスト4件緑、実サーバーのngaxでzipの取得まで確認。ngclientを実サーバーにつないだ確認は未検証。
+## 本体側の対応が必要な課題
 
-NGT-086は#768の現行ダイアログへ統合済み。関連2ファイル10テスト・型・本番ビルドの過去記録はあるが、新ダイアログ経由の実サーバー操作は未検証。現在headの新規追試と取り違えない。
+下記は本体APIの設計・対応から進める課題。対応する公開待ちのngclientブランチはローカル・`origin` の一覧にない。UI実装に着手する前に、本体側の進捗と確定したAPIを照合する。
+
+| ID / Issue | 本体側で先に必要な作業 | ngclient側の再開条件 |
+| --- | --- | --- |
+| NGT-053 / [#460](https://github.com/duplicati/ngclient/issues/460) | 選択した副宛先で既存の直接復元を再利用する。隔離サーバーで副宛先に実在する世代だけを一覧・復元でき、元ジョブを変更しないことを確認する。以前の試験では `copytotemp` 後の宛先差替えPUTがHTTP 500。 | 本体PRのマージ後、確定APIで副宛先選択から一覧・復元まで検証する。 |
+| NGT-054 / [#462](https://github.com/duplicati/ngclient/issues/462) | 副宛先を識別して削除できるAPIを追加する。既存DELETEとの互換性、非選択宛先・共有DBの保持、一部失敗時の再試行を隔離サーバーで確認する。 | 本体PRのマージ後、対象をUIで明示し、選択した宛先だけが削除されることを確認する。 |
+| NGT-055 / [#126](https://github.com/duplicati/ngclient/issues/126) | Min・Max・Patternなどの共有検証スキーマを設計する。以前のsysteminfo調査では216個の定義に `Validations` がなかった。 | スキーマ合意と本体対応後、OpenAPI生成型とUIへ反映し、既存の型検証との互換性を確認する。 |
 
 ## NGT-007 Signal Forms
 
