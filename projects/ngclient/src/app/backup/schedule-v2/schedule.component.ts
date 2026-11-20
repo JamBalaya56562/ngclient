@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, linkedSignal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { FormField } from '@angular/forms/signals';
+import { form, FormField } from '@angular/forms/signals';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ShipButton } from '@ship-ui/core/ship-button';
 import { ShipDatepickerInput } from '@ship-ui/core/ship-datepicker';
@@ -13,6 +13,7 @@ import { DAYJS } from '../../core/providers/dayjs';
 import { BackupsState } from '../../core/states/backups.state';
 import { SysinfoState } from '../../core/states/sysinfo.state';
 import { BackupState } from '../backup.state';
+import { NullableTextControl } from '../general/nullable-text-control';
 import { getLocalDateParts, getNextRunDate, SCHEDULE_DEFAULT_OPTIONS } from '../models/schedule-form';
 import { getRunAfterOptions, hasOwnTrigger, isSameRunAfterOptions } from './run-after';
 import { formatAllowedDays } from './schedule-summary';
@@ -53,6 +54,7 @@ const UNIT_OPTIONS = [
   imports: [
     FormsModule,
     FormField,
+    NullableTextControl,
     ShipFormField,
     ShipToggle,
     ShipIcon,
@@ -110,6 +112,7 @@ export default class ScheduleComponent {
     return new Date(year, month, day);
   });
   scheduleType = this.#backupState.scheduleType;
+  scheduleTypeField = form(linkedSignal<string>(() => this.scheduleType()));
   scheduleOptions = SCHEDULE_DEFAULT_OPTIONS;
   scheduleSummary = computed(() => {
     if (!this.scheduleForm.autoRun().value()) {
@@ -137,6 +140,11 @@ export default class ScheduleComponent {
       }),
     };
   });
+
+  selectScheduleType(selected: unknown[]) {
+    const option = this.scheduleOptions.find((entry) => entry === selected[0]);
+    if (option && option.value !== this.scheduleType()) this.updateScheduleType(option.value);
+  }
 
   updateScheduleType(newType: string) {
     const predefinedType = SCHEDULE_DEFAULT_OPTIONS.find((x) => x.value === newType);
