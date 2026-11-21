@@ -39,7 +39,7 @@
   <img src="assets/images/console.avif" alt="" />
 </section>
 
-<sh-dialog [(isOpen)]="skipDialogOpen" [options]="{ maxWidth: '520px', width: '100%' }">
+<sh-dialog [(isOpen)]="skipDialogIsOpen" [options]="{ maxWidth: '520px', width: '100%' }">
   <header header>
     <h3 i18n>Are you sure?</h3>
   </header>
@@ -60,7 +60,7 @@
   </div>
 
   <footer footer>
-    <button type="button" shButton class="outlined" (click)="skipDialogOpen.set(false)" i18n>Cancel</button>
+    <button type="button" shButton class="outlined" (click)="skipDialogIsOpen.set(false)" i18n>Cancel</button>
     <button type="button" shButton class="outlined" (click)="setWelcomeShown()" i18n>Proceed without connecting</button>
   </footer>
 </sh-dialog>
