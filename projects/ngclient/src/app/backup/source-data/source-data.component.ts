@@ -241,7 +241,8 @@ export default class SourceDataComponent {
     this.#sysInfo.systemInfo()?.SourceProviderModules?.find((x) => x.Key == 'diskimage')
   );
 
-  filters = signal<string[]>([]);
+  filtersField = form(signal<string[]>([]));
+  filters = this.filtersField().value;
 
   // Source folders that only back up a chosen set of their contents
   pickedFolders = computed(() => {

@@ -91,7 +91,7 @@ describe('SourceDataComponent form contracts', () => {
     await render();
     expect(state.sourceDataForm.controls.path.value).toBe(original);
     expect(fixture.componentInstance.nonFilterPaths()).toEqual(['/documents/', '/music/']);
-    expect(fixture.componentInstance.filters()).toEqual(['-*.tmp']);
+    expect(fixture.componentInstance.filtersField().value()).toEqual(['-*.tmp']);
     expect(fixture.componentInstance.filesLargerThan()).toBe('12MB');
   });
 
