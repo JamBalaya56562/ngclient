@@ -96,7 +96,7 @@ export class McpTokensComponent {
     linkedSignal(() => Object.fromEntries(this.backups().map(({ id }) => [id, this.isBackupSelected(id)])))
   );
   #backupNames = computed(() => new Map(this.backups().map((x) => [x.id, x.name])));
-  formError = computed(() => getMcpTokenFormError(this.form()));
+  formError = computed(() => getMcpTokenFormError(this.tokenFields().value()));
 
   ngOnInit() {
     this.#backupsState.getBackups();
@@ -162,7 +162,7 @@ export class McpTokensComponent {
     if (this.isCreating() || this.formError() !== null) return;
 
     this.isCreating.set(true);
-    defer(() => this.#dupServer.postApiV2McpTokens({ body: toCreateMcpTokenRequest(this.form()) }))
+    defer(() => this.#dupServer.postApiV2McpTokens({ body: toCreateMcpTokenRequest(this.tokenFields().value()) }))
       .pipe(finalize(() => this.isCreating.set(false)))
       .subscribe({
         next: (res) => {
