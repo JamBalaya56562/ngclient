@@ -200,6 +200,8 @@ export default class FileTreeComponent {
   createFolderDialogOpen = signal(false);
   inputForm = form(signal({ createFolderPath: null as string | null }));
   createFolderPath = this.inputForm.createFolderPath().value;
+  createFolderDialogField = form(this.createFolderDialogOpen);
+  createFolderDialogIsOpen = this.createFolderDialogField().value;
   errorMessage = signal<string | null>(null);
   anyRemoteSourcesLoaded = signal(false);
 
@@ -1120,7 +1122,7 @@ export default class FileTreeComponent {
 
   // Escape restores the maximized tree; swallow the event so an enclosing dialog does not close as well.
   onDocumentEscape(event: Event) {
-    if (!this.maximized() || this.createFolderDialogOpen()) return;
+    if (!this.maximized() || this.createFolderDialogIsOpen()) return;
     event.preventDefault();
     event.stopImmediatePropagation();
     this.maximized.set(false);
@@ -1370,7 +1372,7 @@ export default class FileTreeComponent {
 
   openCreateFolderDialog() {
     this.createFolderPath.set(null);
-    this.createFolderDialogOpen.set(true);
+    this.createFolderDialogIsOpen.set(true);
     return false;
   }
 
@@ -1402,7 +1404,7 @@ export default class FileTreeComponent {
             setTimeout(() => {
               this.#findActiveNodeAndScrollTo();
             }, 500);
-            this.createFolderDialogOpen.set(false);
+            this.createFolderDialogIsOpen.set(false);
           },
           error: (err) => {
             const m = err?.message?.match(/user-information\s*:\s*(.*?)(?:\s*,|$)/i);
@@ -1420,7 +1422,7 @@ export default class FileTreeComponent {
         });
       }
     } else {
-      this.createFolderDialogOpen.set(false);
+      this.createFolderDialogIsOpen.set(false);
     }
     return false;
   }

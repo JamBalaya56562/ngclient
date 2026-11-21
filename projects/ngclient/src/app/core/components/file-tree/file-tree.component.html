@@ -253,8 +253,8 @@
   <sh-alert [color]="'error'">{{ errorMessage() }}</sh-alert>
 }
 
-@if (createFolderDialogOpen()) {
-  <sh-dialog [(isOpen)]="createFolderDialogOpen" [options]="{ maxWidth: '700px', width: '100%' }">
+@if (createFolderDialogIsOpen()) {
+  <sh-dialog [(isOpen)]="createFolderDialogIsOpen" [options]="{ maxWidth: '700px', width: '100%' }">
     <header header>
       <h2 i18n>Enter new folder path</h2>
     </header>
