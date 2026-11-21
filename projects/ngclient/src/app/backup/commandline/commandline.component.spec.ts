@@ -145,6 +145,8 @@ describe('command execution confirmation and arguments', () => {
   });
   it('keeps editor state in the URL and navigates to output only after an OK response', () => {
     const { component, confirm, response, navigate, saveState, route } = setup();
+    const options = [{ Name: '--retry-delay', Value: '10s' }];
+    component.settingsField().value.set(options);
     component.submit();
     confirm.mock.calls[0][0]();
     expect(saveState).toHaveBeenCalledWith(
@@ -153,6 +155,7 @@ describe('command execution confirmation and arguments', () => {
         targetUrl: 'file:///backup',
         backupId: '42',
         backupName: 'Documents',
+        options,
       })
     );
     expect(navigate).toHaveBeenCalledExactlyOnceWith([], {

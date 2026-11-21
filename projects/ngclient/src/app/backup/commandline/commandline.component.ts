@@ -93,7 +93,8 @@ export default class CommandlineComponent {
   backupId = this.#backupState.backupId;
   filtersField = form(signal<string[]>([]));
   filters = this.filtersField().value;
-  settings = this.#backupState.settings;
+  settingsField = form(this.#backupState.settings);
+  settings = this.settingsField().value;
 
   #e = effect(() => {
     const backupId = this.#routeParamsSignal()?.['id'];
