@@ -36,11 +36,13 @@ describe('start all dialog', () => {
   });
 
   it('emits only the picked backups, in the listed order', () => {
-    const { component, emitted } = setup();
+    const { fixture, component, emitted } = setup();
 
     component.selectNone();
-    component.toggle('3', true);
-    component.toggle('1', true);
+    fixture.detectChanges();
+    const checkboxes = fixture.nativeElement.querySelectorAll('input[type=checkbox]:not(.internal-input)');
+    checkboxes[2].click();
+    checkboxes[0].click();
     expect(component.allSelected()).toBe(false);
 
     component.submit();
