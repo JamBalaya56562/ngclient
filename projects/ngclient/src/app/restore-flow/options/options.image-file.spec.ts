@@ -80,10 +80,10 @@ describe('Restore options for an image file target', () => {
       restoreFrom: 'diskimage-file',
       imageFolder: '/images',
       imageFileName: 'sdb.img',
-      imageOverwrite: true,
-      imagePreallocate: true,
     });
 
+    component.imageFields.imageOverwrite().value.set(true);
+    component.imageFields.imagePreallocate().value.set(true);
     component.submit();
 
     expect(open).not.toHaveBeenCalled();

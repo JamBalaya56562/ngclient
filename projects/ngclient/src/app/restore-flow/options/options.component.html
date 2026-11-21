@@ -176,13 +176,13 @@
 
           <sh-toggle class="raised primary" i18n>
             Replace the image file if it exists
-            <input type="checkbox" formControlName="imageOverwrite" />
+            <input type="checkbox" [formField]="imageFields.imageOverwrite" />
           </sh-toggle>
 
           @if (optionsFormSignal()?.imageFormat === 'raw') {
             <sh-toggle class="raised primary" i18n>
               Reserve the full size of the image file
-              <input type="checkbox" formControlName="imagePreallocate" />
+              <input type="checkbox" [formField]="imageFields.imagePreallocate" />
             </sh-toggle>
           }
 
@@ -244,8 +244,8 @@
       @if (isDatabaseTablesOnly()) {
         <p class="database-note" i18n>
           Only some of the database is selected, so the rows of the selected tables are loaded into tables that exist.
-          Indexes, constraints and sequence values are not changed. Select the whole database to restore it with all
-          of its objects.
+          Indexes, constraints and sequence values are not changed. Select the whole database to restore it with all of
+          its objects.
         </p>
 
         <sh-toggle class="raised primary" i18n>
