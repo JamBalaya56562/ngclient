@@ -398,14 +398,17 @@
     </div>
 
     <div class="right">
-      <sh-toggle
-        class="primary raised"
-        [checked]="disableTrayIconLogin()"
-        (checkedChange)="saveDisableTrayIconLogin($event)">
+      <sh-toggle class="primary raised">
+        <input
+          type="checkbox"
+          id="disable-tray-icon-login"
+          [formField]="disableTrayIconLoginField"
+          (keydown.space)="$event.stopPropagation()"
+          (change)="saveDisableTrayIconLogin(disableTrayIconLogin())" />
         @if (disableTrayIconLogin()) {
-          <label i18n>Tray icon automatic log-in is disabled</label>
+          <label for="disable-tray-icon-login" i18n>Tray icon automatic log-in is disabled</label>
         } @else {
-          <label i18n>Tray icon automatic log-in is enabled</label>
+          <label for="disable-tray-icon-login" i18n>Tray icon automatic log-in is enabled</label>
         }
       </sh-toggle>
     </div>
