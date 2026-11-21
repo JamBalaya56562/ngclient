@@ -60,17 +60,20 @@
             }
           </sh-toggle>
 
-          <sh-toggle
-            class="primary raised"
-            [checked]="!hideConsoleConnectionStatus()"
-            (checkedChange)="saveHideConsoleConnectionStatus($event)">
+          <sh-toggle class="primary raised">
+            <input
+              id="hide-console-connection-status"
+              type="checkbox"
+              [formField]="consoleStatusVisibilityField"
+              (keydown.space)="$event.stopPropagation()"
+              (change)="saveHideConsoleConnectionStatus(consoleStatusVisibilityField().value())" />
             @if (hideConsoleConnectionStatus()) {
-              <label i18n>
+              <label for="hide-console-connection-status" i18n>
                 Console connection status is hidden
                 <sh-icon suffix [shTooltip]="connectionStatusIndicatorTooltip()">info</sh-icon>
               </label>
             } @else {
-              <label i18n>
+              <label for="hide-console-connection-status" i18n>
                 Console connection status is visible
                 <sh-icon suffix [shTooltip]="connectionStatusIndicatorTooltip()">info</sh-icon>
               </label>
@@ -86,14 +89,17 @@
         </div>
 
         <div class="right">
-          <sh-toggle
-            class="primary raised"
-            [checked]="!hideConsoleConnectionStatus()"
-            (checkedChange)="saveHideConsoleConnectionStatus($event)">
+          <sh-toggle class="primary raised">
+            <input
+              id="hide-console-connection-status"
+              type="checkbox"
+              [formField]="consoleStatusVisibilityField"
+              (keydown.space)="$event.stopPropagation()"
+              (change)="saveHideConsoleConnectionStatus(consoleStatusVisibilityField().value())" />
             @if (hideConsoleConnectionStatus()) {
-              <label i18n>Console connection status is hidden</label>
+              <label for="hide-console-connection-status" i18n>Console connection status is hidden</label>
             } @else {
-              <label i18n>Console connection status is visible</label>
+              <label for="hide-console-connection-status" i18n>Console connection status is visible</label>
             }
           </sh-toggle>
         </div>

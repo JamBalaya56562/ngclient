@@ -218,6 +218,7 @@ export default class SettingsComponent {
       : $localize`When switched on, every report leaving this machine carries log message ids, counters and dates only: no message text, file names or error messages. Bug reports cannot be created while it is on.`
   );
   hideConsoleConnectionStatus = this.#serverSettingsService.isConsoleConnectionStatusHidden;
+  consoleStatusVisibilityField = form(linkedSignal(() => !this.hideConsoleConnectionStatus()));
   isControllerIpcEnabled = this.#serverSettingsService.isControllerIpcEnabled;
   fileTreeFoldersFirst = this.#fileTreeState.foldersFirst;
   fileTreeCaseSensitiveSort = this.#fileTreeState.caseSensitiveSort;
