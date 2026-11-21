@@ -176,7 +176,8 @@ export default class DestinationComponent {
   inputForm = form(signal({ targetUrlCtrl: null as string | null }));
   targetUrlCtrl = this.inputForm.targetUrlCtrl().value;
   targetUrlInitial = signal<string | null>(null);
-  currentEditingIndex = signal<number | null>(null);
+  editingIndexField = form(signal<number | null>(null));
+  currentEditingIndex = this.editingIndexField().value;
   targetUrlDialogOpen = signal(false);
   showCustomList = signal(false);
   /** Which list is shown while a destination is being chosen; specifying one comes first */
