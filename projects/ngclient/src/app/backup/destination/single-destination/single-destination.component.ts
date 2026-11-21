@@ -1009,10 +1009,11 @@ export class SingleDestinationComponent {
     this.#remoteControlState.openConsole();
   }
 
-  #filenAuthValues = linkedSignal(() => ({
-    code: String(this.destinationForm().dynamic['two-factor-code'] ?? ''),
-  }));
-  filenAuthForm = form(this.#filenAuthValues);
+  filenAuthForm = form(
+    linkedSignal(() => ({
+      code: String(this.destinationForm().dynamic['two-factor-code'] ?? ''),
+    }))
+  );
 
   #performFilenAuth(url: string) {
     const backupId = this.#resolveBackupId();
