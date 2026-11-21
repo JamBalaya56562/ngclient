@@ -307,6 +307,10 @@ export default class SettingsComponent {
 
   isFileWatcherDisabled = this.#serverSettingsService.isFileWatcherDisabled;
   updatingFileWatcherState = signal(false);
+  fileWatcherField = form(
+    linkedSignal(() => !this.isFileWatcherDisabled()),
+    (field) => disabled(field, () => this.updatingFileWatcherState())
+  );
 
   saveFileWatcherState($event: boolean) {
     this.updatingFileWatcherState.set(true);

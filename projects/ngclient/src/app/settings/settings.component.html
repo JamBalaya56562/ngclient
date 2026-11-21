@@ -671,15 +671,17 @@
 
         @if (hasFileWatcher()) {
           <p i18n>File system watcher</p>
-          <sh-toggle
-            class="primary raised"
-            [checked]="!isFileWatcherDisabled()"
-            [disabled]="updatingFileWatcherState()"
-            (checkedChange)="saveFileWatcherState($event)">
+          <sh-toggle class="primary raised">
+            <input
+              id="file-watcher"
+              type="checkbox"
+              [formField]="fileWatcherField"
+              (keydown.space)="$event.stopPropagation()"
+              (change)="saveFileWatcherState(fileWatcherField().value())" />
             @if (isFileWatcherDisabled()) {
-              <label i18n>The file watcher is disabled for all backups</label>
+              <label for="file-watcher" i18n>The file watcher is disabled for all backups</label>
             } @else {
-              <label i18n>Backups can track changed files with the file watcher</label>
+              <label for="file-watcher" i18n>Backups can track changed files with the file watcher</label>
             }
           </sh-toggle>
         }
