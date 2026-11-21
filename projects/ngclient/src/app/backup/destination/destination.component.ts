@@ -334,7 +334,8 @@ export default class DestinationComponent {
     this.showCustomList.set(true);
   }
 
-  isAddingNew = signal(false);
+  addModeField = form(signal(false));
+  isAddingNew = this.addModeField().value;
 
   startAddingNew() {
     this.isAddingNew.set(true);
