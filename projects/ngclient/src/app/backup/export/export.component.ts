@@ -102,7 +102,8 @@ export default class ExportComponent {
   passwordVisibilityField = form(signal(false));
   showPassword = this.passwordVisibilityField().value;
   copiedPassword = signal(false);
-  showCopyPassword = signal(false);
+  copyPromptField = form(signal(false));
+  showCopyPassword = this.copyPromptField().value;
   calculatePasswordStrength = computed(() => {
     const form = this.exportFormSignal();
     const password = form?.password ?? '';
