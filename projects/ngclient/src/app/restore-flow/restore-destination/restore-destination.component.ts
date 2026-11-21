@@ -76,7 +76,8 @@ export default class RestoreDestinationComponent {
   targetUrlForm = form(signal<{ url: string | null }>({ url: null }));
   targetUrlCtrl = this.targetUrlForm.url().value;
   targetUrlInitial = signal<string | null>(null);
-  targetUrlDialogOpen = signal(false);
+  targetUrlDialogField = form(signal(false));
+  targetUrlDialogOpen = this.targetUrlDialogField().value;
   /** Which list is shown while no destination is chosen; entering one by hand comes first */
   destinationSource = signal<string | null>('new');
   showSavedDestinations = computed(() => this.savedDestinations().length > 0 && this.destinationSource() === 'saved');
