@@ -65,7 +65,11 @@ export default class VersionLabelsComponent {
     });
   }
 
-  changedItems = computed(() => this.versions().filter((v) => (v.Label ?? '') !== v.EditedLabel.trim()));
+  changedItems = computed(() =>
+    this.labelsForm()
+      .value()
+      .filter((v) => (v.Label ?? '') !== v.EditedLabel.trim())
+  );
 
   sortField = form(signal<OrderBy | null>('version'));
   sortByColumn = this.sortField().value;
