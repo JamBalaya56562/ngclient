@@ -272,6 +272,7 @@ export default class SettingsComponent {
 
   updatingDisableTrayIconLogin = signal(false);
   disableTrayIconLogin = signal(false);
+  disableTrayIconLoginField = form(this.disableTrayIconLogin);
 
   saveDisableTrayIconLogin($event: boolean) {
     const newValue = $event;
