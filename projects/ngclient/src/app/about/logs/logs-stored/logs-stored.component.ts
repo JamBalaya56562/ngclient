@@ -1,3 +1,4 @@
+import { form } from '@angular/forms/signals';
 import { DatePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, DestroyRef, effect, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -34,7 +35,8 @@ export default class LogsStoredComponent {
   #destroyRef = inject(DestroyRef);
 
   displayedColumns = signal(COLUMNS);
-  openRowIndex = signal<number | null>(null);
+  openRowIndexField = form(signal<number | null>(null));
+  openRowIndex = this.openRowIndexField().value;
 
   noMoreItems = signal(false);
   logsIsLoading = signal(false);
