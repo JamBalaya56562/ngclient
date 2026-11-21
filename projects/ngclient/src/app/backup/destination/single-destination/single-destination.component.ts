@@ -997,7 +997,8 @@ export class SingleDestinationComponent {
       !this.isRestoreFlow() &&
       !!(this.hasManualStorageOptions() || (this.isConnectedToConsole() && this.hasStorageApiKey()))
   );
-  storageIdEditable = linkedSignal({ source: this.#showStorageIdEditor, computation: () => false });
+  storageIdEditableField = form(linkedSignal({ source: this.#showStorageIdEditor, computation: () => false }));
+  storageIdEditable = this.storageIdEditableField().value;
   #storageIdValues = linkedSignal(() => ({
     backupId: String(this.destinationForm().dynamic['duplicati-backup-id'] ?? ''),
   }));
