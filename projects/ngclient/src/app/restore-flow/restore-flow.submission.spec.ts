@@ -146,7 +146,7 @@ describe('RestoreFlowState restore request submission', () => {
   });
   it('normalizes advanced option names while preserving their values', () => {
     const { state, restore } = setup();
-    state.advancedOptions.set([
+    state.advancedOptionsField().value.set([
       { Name: ' --retry-count ', Value: '7' },
       { Name: '--custom-option', Value: null },
       { Name: '---', Value: 'ignored' },
@@ -162,7 +162,7 @@ describe('RestoreFlowState restore request submission', () => {
   });
   it('omits advanced options when the server does not support them', () => {
     const { state, restore } = setup(false);
-    state.advancedOptions.set([{ Name: '--retry-count', Value: '7' }]);
+    state.advancedOptionsField().value.set([{ Name: '--retry-count', Value: '7' }]);
     state.submit();
     expect(restore).toHaveBeenCalledWith(
       expect.objectContaining({ body: expect.objectContaining({ options: undefined }) })
