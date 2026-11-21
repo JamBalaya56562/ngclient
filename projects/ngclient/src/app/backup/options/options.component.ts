@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, ElementRef, inject, signal, viewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { FormField } from '@angular/forms/signals';
+import { form, FormField } from '@angular/forms/signals';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ShipButton } from '@ship-ui/core/ship-button';
 import { ShipFormField } from '@ship-ui/core/ship-form-field';
@@ -59,7 +59,8 @@ export default class OptionsComponent {
   formRef = viewChild.required<ElementRef<HTMLFormElement>>('formRef');
 
   isSubmitting = this.#backupState.isSubmitting;
-  settings = this.#backupState.settings;
+  advancedOptionsField = form(this.#backupState.settings);
+  settings = this.advancedOptionsField().value;
   optionsForm = this.#backupState.optionsForm;
   applicationOptions = this.#backupState.applicationOptions;
   isSyncMode = this.#backupState.isSyncMode;
