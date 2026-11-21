@@ -192,8 +192,8 @@ describe('command execution confirmation and arguments', () => {
       targetUrl: 'file:///other',
       arguments: 'pattern with spaces',
     });
+    expect(component.backupIdField().value()).toBe('42');
     expect(component.standardFields.value).toEqual({
-      'backup-id': '42',
       'backup-name': 'Saved name',
       dbpath: '/other/db',
     });
