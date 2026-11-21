@@ -1,3 +1,4 @@
+import { form } from '@angular/forms/signals';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -30,7 +31,8 @@ export default class AdvancedOptionsSettingsComponent {
   #dupServer = inject(DuplicatiServer);
   formRef = viewChild.required<ElementRef<HTMLFormElement>>('formRef');
 
-  settings = signal<SettingDto[]>([]);
+  settingsField = form(signal<SettingDto[]>([]));
+  settings = this.settingsField().value;
   #save = new AsyncOperation<unknown>();
   #savedTimeout?: ReturnType<typeof setTimeout>;
   saveState = this.#save.state;
