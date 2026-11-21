@@ -8,7 +8,7 @@ import {
   signal,
   viewChild,
 } from '@angular/core';
-import { FormField, provideSignalFormsConfig } from '@angular/forms/signals';
+import { form, FormField, provideSignalFormsConfig } from '@angular/forms/signals';
 import { compatForm, NG_STATUS_CLASSES } from '@angular/forms/signals/compat';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ShipAlert } from '@ship-ui/core/ship-alert';
@@ -65,7 +65,8 @@ export default class GeneralComponent {
 
   showPassword = signal(false);
   copiedPassword = signal(false);
-  showCopyPassword = signal(false);
+  showCopyPasswordField = form(signal(false));
+  showCopyPassword = this.showCopyPasswordField().value;
   noneOptionKey = NONE_OPTION.Key;
 
   encryptionEffect = effect(() => {
