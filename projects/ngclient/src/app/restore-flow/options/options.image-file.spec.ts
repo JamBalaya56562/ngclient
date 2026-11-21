@@ -69,20 +69,21 @@ describe('Restore options for an image file target', () => {
     component.setImageFormat('vhdx');
     expect(optionsForm.controls.imageFileName.value).toBe('sdb.vhdx');
 
-    optionsForm.controls.imageFileName.setValue('server.vhd');
+    component.imageOutputFields.imageFileName().value.set('server.vhd');
     fixture.detectChanges();
-    expect(optionsForm.controls.imageFormat.value).toBe('vhd');
+    expect(component.imageOutputFields.imageFormat().value()).toBe('vhd');
   });
 
   it('restores to the image file in the chosen folder', () => {
     const { component, optionsForm, submit, open, setAlternateRestorePath } = setup([{ Key: 'diskimage-file' }]);
     optionsForm.patchValue({
       restoreFrom: 'diskimage-file',
-      imageFolder: '/images',
-      imageFileName: 'sdb.img',
+
       imageOverwrite: true,
       imagePreallocate: true,
     });
+    component.imageOutputFields.imageFolder().value.set('/images');
+    component.imageOutputFields.imageFileName().value.set('sdb.img');
 
     component.submit();
 

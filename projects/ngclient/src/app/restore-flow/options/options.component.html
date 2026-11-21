@@ -133,13 +133,13 @@
       @if (optionsFormSignal()?.restoreFrom === 'diskimage-file') {
         <app-file-tree [enableCreateFolder]="true" [resolvePaths]="true">
           <label for="imageFolder" i18n>Folder</label>
-          <input type="text" id="imageFolder" formControlName="imageFolder" />
+          <input type="text" id="imageFolder" appNullableText [formField]="imageOutputFields.imageFolder" />
         </app-file-tree>
 
         <div class="image-file">
           <sh-form-field>
             <label for="imageFileName" i18n>File name</label>
-            <input type="text" id="imageFileName" formControlName="imageFileName" />
+            <input type="text" id="imageFileName" appNullableText [formField]="imageOutputFields.imageFileName" />
           </sh-form-field>
 
           <div class="image-format" role="radiogroup" aria-label="Image format" i18n-aria-label>
@@ -147,9 +147,8 @@
               Raw image (.img)
               <input
                 type="radio"
-                name="imageFormat"
                 value="raw"
-                formControlName="imageFormat"
+                [formField]="imageOutputFields.imageFormat"
                 (change)="setImageFormat('raw')" />
             </sh-radio>
 
@@ -157,9 +156,8 @@
               VHD (.vhd)
               <input
                 type="radio"
-                name="imageFormat"
                 value="vhd"
-                formControlName="imageFormat"
+                [formField]="imageOutputFields.imageFormat"
                 (change)="setImageFormat('vhd')" />
             </sh-radio>
 
@@ -167,9 +165,8 @@
               VHDX (.vhdx)
               <input
                 type="radio"
-                name="imageFormat"
                 value="vhdx"
-                formControlName="imageFormat"
+                [formField]="imageOutputFields.imageFormat"
                 (change)="setImageFormat('vhdx')" />
             </sh-radio>
           </div>
@@ -244,8 +241,8 @@
       @if (isDatabaseTablesOnly()) {
         <p class="database-note" i18n>
           Only some of the database is selected, so the rows of the selected tables are loaded into tables that exist.
-          Indexes, constraints and sequence values are not changed. Select the whole database to restore it with all
-          of its objects.
+          Indexes, constraints and sequence values are not changed. Select the whole database to restore it with all of
+          its objects.
         </p>
 
         <sh-toggle class="raised primary" i18n>
