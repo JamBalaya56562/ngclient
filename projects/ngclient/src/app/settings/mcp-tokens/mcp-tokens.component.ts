@@ -50,7 +50,8 @@ export class McpTokensComponent {
   isLoading = signal(true);
   isCreating = signal(false);
   deletingId = signal<string | null>(null);
-  showForm = signal(false);
+  tokenEditorVisibilityField = form(signal(false));
+  showForm = this.tokenEditorVisibilityField().value;
   form = signal(emptyMcpTokenForm());
   tokenFields = form(this.form, (fields) => maxLength(fields.name, 100));
   /** The token that was just created; the server does not give it out again */
