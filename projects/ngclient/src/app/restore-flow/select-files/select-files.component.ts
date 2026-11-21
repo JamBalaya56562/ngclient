@@ -105,7 +105,8 @@ export default class SelectFilesComponent {
 
   inputForm = form(signal({ searchQuery: '', searchAllVersions: false }));
   searchAllVersions = this.inputForm.searchAllVersions().value;
-  searchPage = signal(0);
+  searchPageField = form(signal(0));
+  searchPage = this.searchPageField().value;
   searchPages = signal(0);
   searchError = signal(false);
   unavailableVersion = signal(false);
