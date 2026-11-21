@@ -147,7 +147,7 @@
 
             @if (showCopyPassword()) {
               <button shButton type="button" class="small copy" (click)="copyPassword()" i18n>
-                @if (copiedPassword()) {
+                @if (passwordCopied()) {
                   <sh-icon class="sh-success">check</sh-icon>
                   Copied password
                 } @else {
@@ -189,7 +189,7 @@
         i18n
         i18n-shTooltip
         shTooltip="Remember to copy the password"
-        [disabled]="generalForm().invalid() || (showCopyPassword() && !copiedPassword())">
+        [disabled]="generalForm().invalid() || (showCopyPassword() && !passwordCopied())">
         Continue
         <sh-icon>arrow-right</sh-icon>
       </button>
