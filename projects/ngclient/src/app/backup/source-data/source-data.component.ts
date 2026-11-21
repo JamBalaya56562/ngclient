@@ -229,8 +229,8 @@ export default class SourceDataComponent {
   );
 
   oldPath = signal<string | null>(null);
-  editingPath = signal<string | null>(null);
-  editingPathForm = form(this.editingPath);
+  editingPathForm = form(signal<string | null>(null));
+  editingPath = this.editingPathForm().value;
   addingNewPath = signal(false);
   bulkPathEditMode = signal(false);
   bulkPaths = signal('');
