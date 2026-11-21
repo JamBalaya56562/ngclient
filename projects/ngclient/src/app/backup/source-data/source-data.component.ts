@@ -392,16 +392,17 @@ export default class SourceDataComponent {
       this.bulkPathEditMode.set(false);
     } else {
       const paths = this.nonFilterPaths()?.join('\n') ?? '';
-      this.bulkPaths.set(paths);
+      this.bulkPathsForm().value.set(paths);
       this.bulkPathEditMode.set(true);
     }
   }
 
   savePathBulkEdit() {
-    if (this.bulkPaths() === (this.nonFilterPaths()?.join('\n') ?? '')) return;
+    if (this.bulkPathsForm().value() === (this.nonFilterPaths()?.join('\n') ?? '')) return;
 
     const newPaths =
-      this.bulkPaths()
+      this.bulkPathsForm()
+        .value()
         .split('\n')
         .filter((p) => p.trim() !== '') ?? [];
     const filters = this.pathArray();
