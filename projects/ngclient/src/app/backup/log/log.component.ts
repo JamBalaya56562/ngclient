@@ -1,5 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, inject, input, signal } from '@angular/core';
+import { form } from '@angular/forms/signals';
 import { RouterLink } from '@angular/router';
 import { ShipButton } from '@ship-ui/core/ship-button';
 import { ShipChip } from '@ship-ui/core/ship-chip';
@@ -37,7 +38,8 @@ export default class LogComponent {
   #backupsState = inject(BackupsState);
 
   MISSING_BACKUP_NAME = $localize`Backup name missing`;
-  activeTab = signal<'general' | 'destination'>('general');
+  logViewField = form(signal<'general' | 'destination'>('general'));
+  activeTab = this.logViewField().value;
   backupId = input.required<string>({ alias: 'id' });
   backup = computed(() => {
     const backupId = this.backupId();

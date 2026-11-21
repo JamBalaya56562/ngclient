@@ -56,7 +56,7 @@ describe('LogComponent route identity', () => {
 
   it('reuses the component for different jobs while retaining the selected tab', async () => {
     const { harness, component } = await setup();
-    component.activeTab.set('destination');
+    component.logViewField().value.set('destination');
     expect(await harness.navigateByUrl('/backup/43/log', LogComponent)).toBe(component);
     expect(component.backupId()).toBe('43');
     expect(component.backup()?.Backup.Name).toBe('Job 43');
