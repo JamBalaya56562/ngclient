@@ -306,7 +306,7 @@
 
       <sh-toggle class="raised primary" i18n>
         Ignore existing resources in the destination
-        <input type="checkbox" formControlName="customRemoteIgnoreExisting" />
+        <input type="checkbox" [formField]="ignoreExistingRemoteField" />
       </sh-toggle>
     </app-toggle-card>
   } @else if (!isDiskTarget()) {

@@ -18,6 +18,8 @@ describe('Restore options for a cloud restore target', () => {
       restoreFromPath: 'groups/group-1/',
       handleExisting: 'saveTimestamp',
     });
+    const optionsFormSignal = signal(optionsForm.value);
+    optionsForm.valueChanges.subscribe((value) => optionsFormSignal.set(value));
     const submit = vi.fn();
     const setAlternateRestorePath = vi.fn();
     TestBed.configureTestingModule({
@@ -27,7 +29,7 @@ describe('Restore options for a cloud restore target', () => {
           provide: RestoreFlowState,
           useValue: {
             optionsForm,
-            optionsFormSignal: signal(optionsForm.getRawValue()),
+            optionsFormSignal,
             isSubmitting: signal(false),
             extendedDataType: signal(type),
             advancedOptions: signal([]),
@@ -53,9 +55,9 @@ describe('Restore options for a cloud restore target', () => {
   }
 
   it.each([
-    ['o365', 'office365://?office365-tenant-id=t', '@office365://'],
-    ['gsuite', 'googleworkspace://?google-domain=d', '@googleworkspace://'],
-  ] as const)('submits a %s restore with overwrite set', (type, sourceUrl, restorePrefix) => {
+    ['o365', 'office365://?office365-tenant-id=t', '@office365://', 'office365-ignore-existing'],
+    ['gsuite', 'googleworkspace://?google-domain=d', '@googleworkspace://', 'google-ignore-existing'],
+  ] as const)('submits a %s restore with overwrite set', (type, sourceUrl, restorePrefix, flag) => {
     const { component, optionsForm, submit, setAlternateRestorePath } = setup(type, sourceUrl);
 
     component.submit();
@@ -64,5 +66,11 @@ describe('Restore options for a cloud restore target', () => {
     expect(setAlternateRestorePath.mock.calls[0][0]).toMatch(new RegExp(`^${restorePrefix}`));
     expect(optionsForm.controls.handleExisting.value).toBe('overwrite');
     expect(submit).toHaveBeenCalledTimes(1);
+    expect(setAlternateRestorePath.mock.calls[0][0]).toContain(flag + '=false');
+
+    component.ignoreExistingRemoteField().value.set(true);
+    component.submit();
+
+    expect(setAlternateRestorePath.mock.calls[1][0]).toContain(flag + '=true');
   });
 });
