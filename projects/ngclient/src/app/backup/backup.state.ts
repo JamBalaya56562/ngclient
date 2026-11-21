@@ -117,7 +117,8 @@ export class BackupState {
 
   targetUrlTestSignal = signal<TestState>(null);
   backupMetadata = signal<Record<string, string> | null>(null);
-  reusedDatabase = signal<{ url: string; path: string } | null>(null);
+  reusedDatabaseField = form(signal<{ url: string; path: string } | null>(null));
+  reusedDatabase = this.reusedDatabaseField().value;
 
   isDraft = signal(false);
   backupId = signal<string | null>(null);
