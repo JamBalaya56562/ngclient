@@ -221,6 +221,9 @@ export default class SettingsComponent {
   isControllerIpcEnabled = this.#serverSettingsService.isControllerIpcEnabled;
   fileTreeFoldersFirst = this.#fileTreeState.foldersFirst;
   fileTreeCaseSensitiveSort = this.#fileTreeState.caseSensitiveSort;
+  fileTreeSortingForm = form(
+    signal({ foldersFirst: this.fileTreeFoldersFirst(), caseSensitive: this.fileTreeCaseSensitiveSort() })
+  );
 
   setFileTreeFoldersFirst($event: boolean) {
     this.#fileTreeState.setFoldersFirst($event);
