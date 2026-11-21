@@ -2,17 +2,8 @@ import { FormBuilder } from '@angular/forms';
 
 const fb = new FormBuilder();
 
-export const createSourceDataForm = (
-  defaults = {
-    path: '',
-    filters: [],
-    excludes: {
-      filesLargerThan: null,
-    },
-  }
-) => {
+export const createSourceDataForm = () => {
   return fb.group({
-    path: fb.control<string>(defaults.path),
     excludes: fb.group({
       filesLargerThan: fb.group({
         size: fb.control<number | null>(null),
@@ -22,4 +13,4 @@ export const createSourceDataForm = (
   });
 };
 
-export type SourceDataFormValue = ReturnType<typeof createSourceDataForm>['value'];
+export type SourceDataFormValue = ReturnType<typeof createSourceDataForm>['value'] & { path?: string | null };

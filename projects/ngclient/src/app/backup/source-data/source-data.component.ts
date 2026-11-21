@@ -159,10 +159,9 @@ export default class SourceDataComponent {
     });
   });
   formRef = viewChild.required<ElementRef<HTMLFormElement>>('formRef');
-  // Keep the shared controls as the single source of truth during the staged migration.
+  sourcePathField = this.#backupState.sourcePathField;
   sourceForm = compatForm(
     signal({
-      path: this.#backupState.sourceDataForm.controls.path,
       filesLargerThan: this.#backupState.sourceDataForm.controls.excludes.controls.filesLargerThan,
     })
   );
@@ -215,7 +214,7 @@ export default class SourceDataComponent {
     });
   }
 
-  pathSignal = this.sourceForm.path().value;
+  pathSignal = this.sourcePathField().value;
   pathArray = computed(
     () =>
       (this.pathSignal()
@@ -250,7 +249,7 @@ export default class SourceDataComponent {
   });
 
   #pathList() {
-    return (this.sourceForm.path().value() ?? '').split('\0').filter((x) => x !== '');
+    return (this.sourcePathField().value() ?? '').split('\0').filter((x) => x !== '');
   }
 
   isPickedFolder(path: string) {
@@ -323,7 +322,7 @@ export default class SourceDataComponent {
 
       const separator = this.#sysInfo.systemInfo()?.DirectorySeparator ?? '/';
       const next = applyIncludePick(this.#pathList(), folder, result.picks, result.excludes, separator);
-      this.sourceForm.path().value.set(next.join('\0'));
+      this.sourcePathField().value.set(next.join('\0'));
     });
   }
 
@@ -407,7 +406,7 @@ export default class SourceDataComponent {
     const filters = this.pathArray();
     const combined = [...newPaths, ...filters];
     const distinct = [...new Set(combined)].join('\0');
-    this.sourceForm.path().value.set(distinct);
+    this.sourcePathField().value.set(distinct);
   }
 
   editPath(oldPath: string) {
@@ -441,8 +440,8 @@ export default class SourceDataComponent {
       if (!newPath) return;
 
       const newRemotePath = `${prefix}|diskimage://${newPath}`;
-      const currentPath = this.sourceForm.path().value();
-      this.sourceForm.path().value.set(currentPath?.replace(oldPath, newRemotePath) ?? '');
+      const currentPath = this.sourcePathField().value();
+      this.sourcePathField().value.set(currentPath?.replace(oldPath, newRemotePath) ?? '');
     });
   }
 
@@ -468,8 +467,8 @@ export default class SourceDataComponent {
 
       const newPath = `${prefix}|${targetUrl}`;
 
-      const currentPath = this.sourceForm.path().value();
-      this.sourceForm.path().value.set(currentPath?.replace(oldPath, newPath) ?? '');
+      const currentPath = this.sourcePathField().value();
+      this.sourcePathField().value.set(currentPath?.replace(oldPath, newPath) ?? '');
     });
   }
 
@@ -492,9 +491,9 @@ export default class SourceDataComponent {
       return;
     }
 
-    const currentPath = this.sourceForm.path().value();
+    const currentPath = this.sourcePathField().value();
 
-    this.sourceForm.path().value.set(currentPath?.replace(oldPath, newPath) ?? '');
+    this.sourcePathField().value.set(currentPath?.replace(oldPath, newPath) ?? '');
     this.oldPath.set(null);
     this.editingPath.set(null);
   }
@@ -505,7 +504,7 @@ export default class SourceDataComponent {
   }
 
   removePath(path: string) {
-    const currentPath = this.sourceForm.path().value() ?? '';
+    const currentPath = this.sourcePathField().value() ?? '';
     const paths = currentPath.split('\0');
     const indexOfPath = paths.indexOf(path);
 
@@ -514,24 +513,24 @@ export default class SourceDataComponent {
     paths.splice(indexOfPath, 1);
     const nonFilterPath = paths.filter((x) => x && x !== '').join('\0');
 
-    this.sourceForm.path().value.set(nonFilterPath);
+    this.sourcePathField().value.set(nonFilterPath);
   }
 
   addPath(path: string) {
-    const currentPath = this.sourceForm.path().value();
+    const currentPath = this.sourcePathField().value();
     const combined = [currentPath, path].filter((x) => x && x !== '').join('\0');
 
-    this.sourceForm.path().value.set(combined);
+    this.sourcePathField().value.set(combined);
   }
 
   updateFilters(newFilters: string[]) {
     const nonFilterPaths = this.nonFilterPaths() ?? [];
     const combined = [...nonFilterPaths, ...newFilters].filter((x) => x && x !== '').join('\0');
-    this.sourceForm.path().value.set(combined);
+    this.sourcePathField().value.set(combined);
   }
 
   getPath() {
-    return this.#backupState.sourceDataForm.value.path ?? null;
+    return this.pathSignal();
   }
 
   getBackendIcon(path: string | null | undefined) {
@@ -570,7 +569,7 @@ export default class SourceDataComponent {
   }
 
   addNewPath() {
-    const currentPath = this.sourceForm.path().value();
+    const currentPath = this.sourcePathField().value();
     const newPath = this.newPathForm().value();
 
     // TODO - Add path validation
@@ -579,7 +578,7 @@ export default class SourceDataComponent {
     if (newPath && !existing.includes(newPath)) existing.push(newPath);
 
     const updatedPath = existing.filter((x) => x && x !== '').join('\0');
-    this.sourceForm.path().value.set(updatedPath);
+    this.sourcePathField().value.set(updatedPath);
     this.newPathForm().value.set('');
   }
 
