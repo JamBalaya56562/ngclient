@@ -47,7 +47,7 @@ describe('backup save lifecycle', () => {
     state = TestBed.inject(BackupState);
     state.backupId.set('new');
     state.generalForm.patchValue({ name: 'Original name', encryption: '-' });
-    state.sourceDataForm.controls.path.setValue('/source/');
+    state.sourcePath.set('/source/');
     state.scheduleForm.autoRun().value.set(false);
     state.setTargetUrl('file:///backup');
     TestBed.tick();
@@ -128,7 +128,7 @@ describe('backup save lifecycle', () => {
     state.toggleSaveConnectionString(0);
     state.submit(true);
     state.generalForm.controls.name.setValue('Edited while waiting');
-    state.sourceDataForm.controls.path.setValue('/later/');
+    state.sourcePath.set('/later/');
     connection.next({ Data: { ID: 8 } });
     connection.complete();
     expect(create.mock.calls[0][0].body.Backup).toMatchObject({

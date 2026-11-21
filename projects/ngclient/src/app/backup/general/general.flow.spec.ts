@@ -169,7 +169,7 @@ describe('GeneralComponent editing contracts', () => {
     await setup('edit', true);
     state.generalForm.patchValue({ password: 'existing-secret', repeatPassword: 'existing-secret' });
     state.setTargetUrl('file:///backup');
-    state.sourceDataForm.controls.path.setValue('/documents');
+    state.sourcePath.set('/documents');
     state.mapScheduleToForm(null);
     await settle();
     expect(fixture.nativeElement.querySelector('sh-select')).toBeNull();

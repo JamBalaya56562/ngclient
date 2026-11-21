@@ -18,8 +18,8 @@ describe('backup form model boundaries', () => {
     expect(secondGeneral.controls.name.value).toBe('');
     const firstSource = createSourceDataForm();
     const secondSource = createSourceDataForm();
-    firstSource.controls.path.setValue('/first');
-    expect(secondSource.controls.path.value).toBe('');
+    firstSource.controls.excludes.controls.filesLargerThan.setValue({ size: 10, unit: 'MB' });
+    expect(secondSource.controls.excludes.controls.filesLargerThan.value).toEqual({ size: null, unit: null });
     const firstSchedule = SCHEDULE_FIELD_DEFAULTS();
     const secondSchedule = SCHEDULE_FIELD_DEFAULTS();
     firstSchedule.runAgain.allowedDays.mon = false;

@@ -92,6 +92,8 @@ export class BackupState {
 
   generalForm = createGeneralForm();
   sourceDataForm = createSourceDataForm();
+  sourcePathField = form(signal<string | null>(''));
+  sourcePath = this.sourcePathField().value;
   readonly scheduleModel = signal(SCHEDULE_FIELD_DEFAULTS());
   readonly scheduleForm = form(this.scheduleModel);
   scheduleType = signal<string>('daily');
@@ -160,7 +162,6 @@ export class BackupState {
 
   selectedOptions = signal<FormView[]>([]);
 
-  sourceDataFormSignal = toSignal(this.sourceDataForm.valueChanges);
   generalFormSignal = toSignal(this.generalForm.valueChanges);
   encryptionFieldSignal = toSignal(this.generalForm.controls.encryption.valueChanges);
   operationTypeFieldSignal = toSignal(this.generalForm.controls.operationType.valueChanges);
@@ -464,7 +465,9 @@ export class BackupState {
   }
 
   mapSourceDataToForm(backup: BackupDto) {
-    this.sourceDataForm.patchValue(mapBackupToSourceDataForm(backup));
+    const { path, ...sourceData } = mapBackupToSourceDataForm(backup);
+    this.sourceDataForm.patchValue(sourceData);
+    this.sourcePath.set(path);
   }
 
   mapDestinationToForm(backup: BackupDto) {
@@ -566,7 +569,7 @@ export class BackupState {
   #mapFormsToBackup() {
     const backup = mapBackupFormToDto({
       general: this.generalForm.value,
-      sourceData: this.sourceDataForm.value,
+      sourceData: { ...this.sourceDataForm.value, path: this.sourcePath() },
       schedule: this.getScheduleFormValue(),
       runAfter: this.#sysinfo.hasBackupRunAfter()
         ? { backupId: this.runAfterBackupId(), always: this.runAfterAlways() }
@@ -718,6 +721,7 @@ export class BackupState {
     this.reusedDatabase.set(null);
     this.generalForm.reset({ operationType: 'Backup' });
     this.sourceDataForm.reset();
+    this.sourcePathField().reset(null);
     this.scheduleForm().reset(SCHEDULE_FIELD_DEFAULTS());
     this.runAfterBackupId.set(null);
     this.runAfterAlways.set(false);

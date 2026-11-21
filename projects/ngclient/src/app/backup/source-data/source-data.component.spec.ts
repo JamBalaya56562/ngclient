@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ShipDialogService } from '@ship-ui/core/ship-dialog';
 import { of, Subject } from 'rxjs';
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { DuplicatiServer } from '../../core/openapi';
+import { BackupDto, DuplicatiServer } from '../../core/openapi';
 import { TimespanLiteralsService } from '../../core/services/timespan-literals.service';
 import { WebModulesService } from '../../core/services/webmodules.service';
 import { ConnectionStringsState } from '../../core/states/connection-strings.state';
@@ -67,7 +67,7 @@ describe('SourceDataComponent form contracts', () => {
     });
     state = TestBed.inject(BackupState);
     state.backupId.set('new');
-    state.sourceDataForm.controls.path.setValue(paths);
+    state.sourcePath.set(paths);
     state.sourceDataForm.controls.excludes.controls.filesLargerThan.setValue({ size: 12, unit: 'MB' });
     fixture = TestBed.createComponent(SourceDataComponent);
     await settle();
@@ -89,7 +89,13 @@ describe('SourceDataComponent form contracts', () => {
 
   it('loads paths, filters and size exclusion without rewriting the shared form', async () => {
     await render();
-    expect(state.sourceDataForm.controls.path.value).toBe(original);
+    state.mapSourceDataToForm({
+      Sources: ['/documents/', '/music/'],
+      Filters: [{ Include: false, Expression: '*.tmp', Order: 0 }],
+      Settings: [{ Name: '--skip-files-larger-than', Value: '12MB' }],
+    } as BackupDto);
+    await settle();
+    expect(state.sourcePath()).toBe(original);
     expect(fixture.componentInstance.nonFilterPaths()).toEqual(['/documents/', '/music/']);
     expect(fixture.componentInstance.filters()).toEqual(['-*.tmp']);
     expect(fixture.componentInstance.filesLargerThan()).toBe('12MB');
@@ -106,7 +112,7 @@ describe('SourceDataComponent form contracts', () => {
       '%HOME%',
       '/documents/',
     ]);
-    expect(state.sourceDataForm.controls.path.value).toBe('%HOME%\0/documents/');
+    expect(state.sourcePath()).toBe('%HOME%\0/documents/');
   });
 
   it('shows the resolved server folder for a subfolder of a shortcut source', async () => {
@@ -157,10 +163,12 @@ describe('SourceDataComponent form contracts', () => {
     const hypervCalls = () =>
       listFilesystem.mock.calls.filter((call) => (call[0] as { body: { path: string } }).body.path === '%HYPERV%');
     listFilesystem.mockImplementation((options: unknown) =>
-      (options as { body: { path: string } }).body.path !== '%HYPERV%' ? of([]) : of([
-        { id: '%HYPERV%\\AAAA-1111\\', text: 'AAAA-1111', Metadata: { 'hyperv:Name': 'Web server' } },
-        { id: '%HYPERV%\\bbbb-2222', text: 'Build agent' },
-      ])
+      (options as { body: { path: string } }).body.path !== '%HYPERV%'
+        ? of([])
+        : of([
+            { id: '%HYPERV%\\AAAA-1111\\', text: 'AAAA-1111', Metadata: { 'hyperv:Name': 'Web server' } },
+            { id: '%HYPERV%\\bbbb-2222', text: 'Build agent' },
+          ])
     );
     await render('%HYPERV%\\aaaa-1111\0%HYPERV%\\bbbb-2222\\disk.vhdx\0%HYPERV%\\cccc-3333');
     expect(hypervCalls()).toHaveLength(1);
@@ -182,12 +190,12 @@ describe('SourceDataComponent form contracts', () => {
     await input('input[placeholder="Add a direct path"]', '/pictures/');
     fixture.componentInstance.addNewPath();
     await settle();
-    expect(state.sourceDataForm.controls.path.value).toBe(original + '\0/pictures/');
+    expect(state.sourcePath()).toBe(original + '\0/pictures/');
     expect(fixture.nativeElement.querySelector('input[placeholder="Add a direct path"]').value).toBe('');
     await input('input[placeholder="Add a direct path"]', '/pictures/');
     fixture.componentInstance.addNewPath();
     await settle();
-    expect(state.sourceDataForm.controls.path.value).toBe(original + '\0/pictures/');
+    expect(state.sourcePath()).toBe(original + '\0/pictures/');
   });
 
   it('commits an edited path and discards a cancelled edit', async () => {
@@ -197,13 +205,13 @@ describe('SourceDataComponent form contracts', () => {
     await input('input[placeholder="Edit path"]', '/edited/');
     fixture.componentInstance.cancelEditPath();
     await settle();
-    expect(state.sourceDataForm.controls.path.value).toBe(original);
+    expect(state.sourcePath()).toBe(original);
     fixture.componentInstance.editPath('/documents/');
     await settle();
     await input('input[placeholder="Edit path"]', '/edited/');
     fixture.componentInstance.updatePath();
     await settle();
-    expect(state.sourceDataForm.controls.path.value).toBe('/edited/\0/music/\0-*.tmp');
+    expect(state.sourcePath()).toBe('/edited/\0/music/\0-*.tmp');
   });
 
   it('commits bulk paths only on blur and keeps the existing filters', async () => {
@@ -211,10 +219,10 @@ describe('SourceDataComponent form contracts', () => {
     fixture.componentInstance.togglePathBulkEdit();
     await settle();
     const textarea = await input('textarea.bulk-textarea', '/new/\n/other/\n/new/');
-    expect(state.sourceDataForm.controls.path.value).toBe(original);
+    expect(state.sourcePath()).toBe(original);
     textarea.dispatchEvent(new Event('blur'));
     await settle();
-    expect(state.sourceDataForm.controls.path.value).toBe('/new/\0/other/\0-*.tmp');
+    expect(state.sourcePath()).toBe('/new/\0/other/\0-*.tmp');
   });
 
   it('round-trips size edits and clearing through the existing shared controls', async () => {
