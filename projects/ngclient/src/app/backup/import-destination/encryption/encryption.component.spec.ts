@@ -42,7 +42,7 @@ describe('Import destination preparation', () => {
       add: { imports: [OptionsStub] },
     });
     const state = TestBed.inject(ImportDestinationState);
-    state.destinationTargetUrl.set('file:///archive');
+    state.destinationUrlField().value.set('file:///archive');
     const fixture = TestBed.createComponent(EncryptionComponent);
     fixture.detectChanges();
     const component = fixture.componentInstance;
