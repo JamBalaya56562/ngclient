@@ -144,7 +144,8 @@ export default class SettingsComponent {
   updatingChannel = signal(false);
   updateChannel = signal<UpdateChannel>('');
   isUsingRelay = this.#relayConfigState.relayIsEnabled;
-  defaultClient = signal(this.#getDefaultClient());
+  defaultClientField = form(signal(this.#getDefaultClient()));
+  defaultClient = this.defaultClientField().value;
   hasIpcController = this.#sysinfo.hasIpcController;
   hasFileWatcher = this.#sysinfo.hasFileWatcher;
   usageStatisticsDisabled = computed(() => {
