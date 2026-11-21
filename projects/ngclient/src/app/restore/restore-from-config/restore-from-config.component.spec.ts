@@ -105,6 +105,7 @@ describe('restore from configuration Signal Form', () => {
     component.onFileDropped({ target: { files: { item: () => file } } } as unknown as Event);
     await vi.waitFor(() => expect(component.importForm.config().value()).toBe('AAH/'));
     expect(component.importForm.passphrase().value()).toBe('retained');
+    expect(component.selectedFileField().value()).toBe(file);
     expect(component.isSecureFile()).toBe(true);
   });
 
