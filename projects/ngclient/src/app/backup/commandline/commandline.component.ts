@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, effect, inject, signal } from '@angular/core';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { FormBuilder } from '@angular/forms';
-import { FormField, provideSignalFormsConfig } from '@angular/forms/signals';
+import { form, FormField, provideSignalFormsConfig } from '@angular/forms/signals';
 import { compatForm, NG_STATUS_CLASSES } from '@angular/forms/signals/compat';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { defer } from 'rxjs';
@@ -94,7 +94,8 @@ export default class CommandlineComponent {
   finishedLoading = this.#backupState.finishedLoading;
   backupId = this.#backupState.backupId;
   filters = signal<string[]>([]);
-  settings = this.#backupState.settings;
+  settingsField = form(this.#backupState.settings);
+  settings = this.settingsField().value;
 
   updateFilters(newFilters: string[]) {
     this.standardFields.controls.filters.clear();
