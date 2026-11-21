@@ -232,7 +232,8 @@ export default class SourceDataComponent {
   editingPath = signal<string | null>(null);
   editingPathForm = form(this.editingPath);
   addingNewPath = signal(false);
-  bulkPathEditMode = signal(false);
+  bulkPathEditModeField = form(signal(false));
+  bulkPathEditMode = this.bulkPathEditModeField().value;
   bulkPaths = signal('');
   bulkPathsForm = form(this.bulkPaths);
   mobileMenuOpen = signal(false);
