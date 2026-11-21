@@ -1,3 +1,4 @@
+import { form } from '@angular/forms/signals';
 import { DatePipe, JsonPipe, NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
@@ -165,7 +166,8 @@ export class GeneralLogComponent {
     computation: (): LogPagination => ({ offset: undefined, pagesize: 100, previousOffsets: [] }),
   });
   isSuppressingWarning = signal(false);
-  copied = linkedSignal({ source: this.pagination, computation: (): string | null => null });
+  copiedField = form(linkedSignal({ source: this.pagination, computation: (): string | null => null }));
+  copied = this.copiedField().value;
 
   // Resource to fetch backup data for checking suppressed warnings
   backupResource = resource({
