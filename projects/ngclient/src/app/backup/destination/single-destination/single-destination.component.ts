@@ -617,18 +617,19 @@ export class SingleDestinationComponent {
 
   pasteUrlPlaceholder = $localize`Pick a server, or paste a URL from your provider`;
 
-  #freeTextValues = linkedSignal(() => {
-    const values = this.destinationForm();
-    const config = this.destinationFormConfig();
-    const fields = (group: keyof DestinationFormValues): Record<string, string> =>
-      Object.fromEntries(
-        (config?.[group] ?? [])
-          .filter((field) => field.type === 'NonValidatedSelectableString')
-          .map(({ name }) => [name, String(values[group][name] ?? '')])
-      );
-    return { custom: fields('custom'), dynamic: fields('dynamic'), advanced: fields('advanced') };
-  });
-  #freeTextForm = form(this.#freeTextValues);
+  #freeTextForm = form(
+    linkedSignal(() => {
+      const values = this.destinationForm();
+      const config = this.destinationFormConfig();
+      const fields = (group: keyof DestinationFormValues): Record<string, string> =>
+        Object.fromEntries(
+          (config?.[group] ?? [])
+            .filter((field) => field.type === 'NonValidatedSelectableString')
+            .map(({ name }) => [name, String(values[group][name] ?? '')])
+        );
+      return { custom: fields('custom'), dynamic: fields('dynamic'), advanced: fields('advanced') };
+    })
+  );
 
   destinationFreeTextField(group: keyof DestinationFormValues, name: string) {
     return this.#freeTextForm[group][name];
