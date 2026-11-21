@@ -840,18 +840,19 @@ export class SingleDestinationComponent {
     );
   }
 
-  #folderValues = linkedSignal(() => {
-    const values = this.destinationForm();
-    const config = this.destinationFormConfig();
-    const folders = (group: keyof DestinationFormValues): Record<string, string | null> =>
-      Object.fromEntries(
-        (config?.[group] ?? [])
-          .filter(({ type }) => type === 'FolderTree')
-          .map(({ name }) => [name, String(values[group][name] ?? '')])
-      );
-    return { custom: folders('custom'), dynamic: folders('dynamic'), advanced: folders('advanced') };
-  });
-  #folderForm = form(this.#folderValues);
+  #folderForm = form(
+    linkedSignal(() => {
+      const values = this.destinationForm();
+      const config = this.destinationFormConfig();
+      const folders = (group: keyof DestinationFormValues): Record<string, string | null> =>
+        Object.fromEntries(
+          (config?.[group] ?? [])
+            .filter(({ type }) => type === 'FolderTree')
+            .map(({ name }) => [name, String(values[group][name] ?? '')])
+        );
+      return { custom: folders('custom'), dynamic: folders('dynamic'), advanced: folders('advanced') };
+    })
+  );
 
   destinationFolderField(group: keyof DestinationFormValues, name: string) {
     return this.#folderForm[group][name];
