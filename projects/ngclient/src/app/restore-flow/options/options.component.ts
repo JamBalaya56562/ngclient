@@ -1,4 +1,5 @@
 import { NgTemplateOutlet } from '@angular/common';
+import { form as destinationForm } from '@angular/forms/signals';
 import { ChangeDetectionStrategy, Component, computed, effect, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { FormField } from '@angular/forms/signals';
@@ -106,7 +107,8 @@ export default class OptionsComponent {
   /** A Sync job copies files back as they are on the destination, without backup metadata or engine options */
   isSync = computed(() => this.#restoreFlowState.backup()?.Backup?.OperationType === 'Sync');
 
-  remoteCustomTargetUrl = signal<string | null>(null);
+  remoteCustomTargetUrlField = destinationForm(signal<string | null>(null));
+  remoteCustomTargetUrl = this.remoteCustomTargetUrlField().value;
 
   /** The secondary destinations the restore can read from instead of the primary destination */
   secondaryDestinations = this.#restoreFlowState.secondaryDestinations;
