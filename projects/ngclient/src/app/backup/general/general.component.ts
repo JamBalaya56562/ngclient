@@ -8,7 +8,7 @@ import {
   signal,
   viewChild,
 } from '@angular/core';
-import { FormField, provideSignalFormsConfig } from '@angular/forms/signals';
+import { form, FormField, provideSignalFormsConfig } from '@angular/forms/signals';
 import { compatForm, NG_STATUS_CLASSES } from '@angular/forms/signals/compat';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ShipAlert } from '@ship-ui/core/ship-alert';
@@ -63,7 +63,8 @@ export default class GeneralComponent {
   canEditEncryption = computed(() => this.isNew() || this.isDraft());
   syncModeSupported = this.#sysinfo.hasSyncMode;
 
-  showPassword = signal(false);
+  passwordVisibilityField = form(signal(false));
+  showPassword = this.passwordVisibilityField().value;
   copiedPassword = signal(false);
   showCopyPassword = signal(false);
   noneOptionKey = NONE_OPTION.Key;
