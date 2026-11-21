@@ -1,3 +1,4 @@
+import { form } from '@angular/forms/signals';
 import { DatePipe, JsonPipe, NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
@@ -202,6 +203,9 @@ export class GeneralLogComponent {
     computation: (): ReadonlySet<string> => new Set(),
   });
   openSection = linkedSignal({ source: this.pagination, computation: (): 'errors' | 'warnings' | null => null });
+
+  expandedLogLinesField = form(this.expandedLogLines);
+  expandedLines = this.expandedLogLinesField().value;
 
   resource = rxResource({
     params: () => ({ id: this.backupId(), offset: this.pagination().offset, pagesize: this.pagination().pagesize }),
@@ -411,7 +415,7 @@ export class GeneralLogComponent {
 
   toggleOpenEntry(item: LogEntryEvaluated) {
     const id = item.id;
-    this.expandedLogLines.set(new Set());
+    this.expandedLines.set(new Set());
     if (this.openEntry() === id) {
       this.openEntry.set(null);
       this.openSection.set(null);
@@ -439,7 +443,7 @@ export class GeneralLogComponent {
   }
 
   toggleLogLine(key: string) {
-    this.expandedLogLines.update((expanded) => {
+    this.expandedLines.update((expanded) => {
       const next = new Set(expanded);
       if (!next.delete(key)) next.add(key);
       return next;
