@@ -1,7 +1,9 @@
 import { ChangeDetectionStrategy, Component, computed, effect, input, output, signal } from '@angular/core';
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { form, FormField } from '@angular/forms/signals';
 import { ShipFormField } from '@ship-ui/core/ship-form-field';
 import { ShipSelect } from '@ship-ui/core/ship-select';
+import { NullableTextControl } from '../../../backup/general/nullable-text-control';
 import { splitSize } from '../../functions/parse-size';
 
 const PER_SECOND_FIELDS = ['throttle-upload', 'throttle-download'];
@@ -35,7 +37,7 @@ export const SIZE_OPTIONS = [
 
 @Component({
   selector: 'app-size',
-  imports: [ShipSelect, ShipFormField, FormsModule],
+  imports: [ShipSelect, ShipFormField, FormsModule, FormField, NullableTextControl],
   templateUrl: './size.component.html',
   styleUrl: './size.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -53,7 +55,8 @@ export class SizeComponent implements ControlValueAccessor {
   sizeChange = output<string>();
 
   timespan = signal(0);
-  unit = signal('MB');
+  unit = signal<string | null>('MB');
+  unitField = form(this.unit);
   sizeOptions = signal(SIZE_OPTIONS);
   readonly = signal(false);
   hasPerSecond = computed(() => {
