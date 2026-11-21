@@ -24,7 +24,7 @@ describe('PurgeVersionScopeComponent removal confirmation', () => {
         { provide: Router, useValue: { navigate } },
         { provide: ActivatedRoute, useValue: {} },
       ],
-    }).overrideComponent(PurgeVersionScopeComponent, { set: { template: '', imports: [] } });
+    });
     const fixture = TestBed.createComponent(PurgeVersionScopeComponent);
     const state = TestBed.inject(PurgeFilesState);
     TestBed.inject(SysinfoState).systemInfo.set({ APIExtensions: extensions } as SystemInfoDto);
@@ -32,7 +32,7 @@ describe('PurgeVersionScopeComponent removal confirmation', () => {
     state.selectedVersion.set('7');
     state.selectedPaths.set('/data/file.txt\0/data/folder/\0C:\\data\\folder\\');
     fixture.detectChanges();
-    return { component: fixture.componentInstance, state, response, purge, open, navigate };
+    return { component: fixture.componentInstance, state, response, purge, open, navigate, fixture };
   }
   it.each(['paths', 'versions'])('does not prompt or delete without selected %s', (missing) => {
     const { component, state, open, purge } = setup();
@@ -81,8 +81,10 @@ describe('PurgeVersionScopeComponent removal confirmation', () => {
     }
   );
   it.each([true, false])('submits the compact choice captured for confirmation (%s)', (compact) => {
-    const { component, state, open, purge } = setup();
-    state.performCompact.set(compact);
+    const { component, state, open, purge, fixture } = setup();
+    const checkbox = fixture.nativeElement.querySelector('input[type=checkbox]') as HTMLInputElement;
+    checkbox.checked = compact;
+    checkbox.dispatchEvent(new Event('input'));
     component.purgeFiles();
     state.performCompact.set(!compact);
     open.mock.calls[0][1].closed(true);
