@@ -348,7 +348,7 @@
 
         <sh-toggle class="primary raised" i18n>
           Register the restored virtual machines with Hyper-V
-          <input type="checkbox" formControlName="registerRestoredItems" />
+          <input type="checkbox" [formField]="registerRestoredItemsField" />
         </sh-toggle>
 
         <p i18n>

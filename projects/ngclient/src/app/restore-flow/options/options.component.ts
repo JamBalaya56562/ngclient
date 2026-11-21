@@ -56,7 +56,7 @@ export const createRestoreOptionsForm = () => {
     permissions: fb.control<boolean>(RESTORE_OPTION_DEFAULTS.permissions),
     includeMetadata: fb.control<boolean>(RESTORE_OPTION_DEFAULTS.includeMetadata),
     customRemoteIgnoreExisting: fb.control<boolean>(false),
-    registerRestoredItems: fb.control<boolean>(false),
+    registerRestoredItems: fb.nonNullable.control(false),
     imageFolder: fb.control<string>(''),
     imageFileName: fb.control<string>(''),
     imageFormat: fb.control<ImageFileFormat>('raw'),
@@ -96,6 +96,9 @@ export default class OptionsComponent {
   optionsForm = this.#restoreFlowState.optionsForm;
   handleExistingField = compatForm(signal({ handleExisting: this.optionsForm.controls.handleExisting })).handleExisting;
   restoreFromField = compatForm(signal({ restoreFrom: this.optionsForm.controls.restoreFrom })).restoreFrom;
+  registerRestoredItemsField = compatForm(
+    signal({ registerRestoredItems: this.optionsForm.controls.registerRestoredItems })
+  ).registerRestoredItems;
   optionsFormSignal = this.#restoreFlowState.optionsFormSignal;
   isSubmitting = this.#restoreFlowState.isSubmitting;
   extendedData = this.#restoreFlowState.extendedDataType;
