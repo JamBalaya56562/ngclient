@@ -763,18 +763,19 @@ export class SingleDestinationComponent {
 
   #oauthInProgress = signal(false);
 
-  #pathValues = linkedSignal(() => {
-    const values = this.destinationForm();
-    const config = this.destinationFormConfig();
-    const paths = (group: keyof DestinationFormValues): Record<string, string | null> =>
-      Object.fromEntries(
-        (config?.[group] ?? [])
-          .filter(({ type }) => type === 'FileTree')
-          .map(({ name }) => [name, String(values[group][name] ?? '')])
-      );
-    return { custom: paths('custom'), dynamic: paths('dynamic'), advanced: paths('advanced') };
-  });
-  #pathForm = form(this.#pathValues);
+  #pathForm = form(
+    linkedSignal(() => {
+      const values = this.destinationForm();
+      const config = this.destinationFormConfig();
+      const paths = (group: keyof DestinationFormValues): Record<string, string | null> =>
+        Object.fromEntries(
+          (config?.[group] ?? [])
+            .filter(({ type }) => type === 'FileTree')
+            .map(({ name }) => [name, String(values[group][name] ?? '')])
+        );
+      return { custom: paths('custom'), dynamic: paths('dynamic'), advanced: paths('advanced') };
+    })
+  );
 
   destinationPathField(group: keyof DestinationFormValues, name: string) {
     return this.#pathForm[group][name];
