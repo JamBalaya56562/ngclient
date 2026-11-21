@@ -14,24 +14,27 @@ describe('pause dialog request options and acknowledgement', () => {
       imports: [PauseDialogComponent],
       providers: [{ provide: DuplicatiServer, useValue: { postApiV1ServerstatePause: pause } }],
     });
-    TestBed.overrideComponent(PauseDialogComponent, { set: { template: '', imports: [] } });
+
     const fixture = TestBed.createComponent(PauseDialogComponent);
     fixture.detectChanges();
     const component = fixture.componentInstance;
     component.closed.subscribe(closed);
-    return { component, pause, response, closed };
+    return { fixture, component, pause, response, closed };
   }
   it.each(['5m', '1h', undefined])('preserves the selected pause duration %s', (duration) => {
-    const { component, pause, response } = setup();
-    component.pauseOption.set(duration);
+    const { fixture, component, pause, response } = setup();
+    const radio = fixture.nativeElement.querySelector(
+      `input[type=radio][value="${duration ?? ''}"]`
+    ) as HTMLInputElement;
+    radio.click();
     component.submit();
     expect(pause).toHaveBeenCalledExactlyOnceWith({ query: { duration, pauseTransfers: null } });
     response.complete();
   });
   it('requests transfer pausing only when explicitly selected', () => {
-    const { component, pause, response } = setup();
-    component.pauseTransfers.set(true);
-    component.pauseOption.set('24h');
+    const { fixture, component, pause, response } = setup();
+    (fixture.nativeElement.querySelector('input[type=checkbox]') as HTMLInputElement).click();
+    (fixture.nativeElement.querySelector('input[value="24h"]') as HTMLInputElement).click();
     component.submit();
     expect(pause).toHaveBeenCalledExactlyOnceWith({ query: { duration: '24h', pauseTransfers: true } });
     response.complete();

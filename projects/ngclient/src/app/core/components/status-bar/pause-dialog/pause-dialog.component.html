@@ -5,17 +5,18 @@
 <div content>
   <div class="radios">
     @for (option of pauseOptions(); track $index) {
-      <sh-radio
-        [checked]="pauseOption() === option.value"
-        class="primary raised"
-        (checkedChange)="pauseOption.set(option.value)">
+      <sh-radio class="primary raised">
         {{ option.label }}
+        <input type="radio" [value]="option.value" [formField]="pauseDurationField" />
       </sh-radio>
     }
   </div>
 
   <div class="check-wrap">
-    <sh-checkbox [(checked)]="pauseTransfers" class="primary raised" i18n>Also pause transfers</sh-checkbox>
+    <sh-checkbox class="primary raised" i18n>
+      Also pause transfers
+      <input type="checkbox" [formField]="pauseTransfersField" />
+    </sh-checkbox>
 
     <sh-alert type="warning" i18n>If you pause transfers they could time out and cause retries or failures.</sh-alert>
   </div>

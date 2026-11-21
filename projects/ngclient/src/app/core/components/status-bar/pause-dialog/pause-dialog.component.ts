@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject, output, signal } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { form, FormField } from '@angular/forms/signals';
 import { ShipAlert } from '@ship-ui/core/ship-alert';
 import { ShipButton } from '@ship-ui/core/ship-button';
 import { ShipCheckbox } from '@ship-ui/core/ship-checkbox';
@@ -16,12 +16,12 @@ const PAUSE_OPTIONS = [
   { label: $localize`4 hours`, value: '4h' },
   { label: $localize`8 hours`, value: '8h' },
   { label: $localize`24 hours`, value: '24h' },
-  { label: $localize`Until resumed`, value: undefined },
+  { label: $localize`Until resumed`, value: '' },
 ];
 
 @Component({
   selector: 'app-pause-dialog',
-  imports: [FormsModule, ShipRadio, ShipCheckbox, ShipAlert, ShipButton],
+  imports: [FormField, ShipRadio, ShipCheckbox, ShipAlert, ShipButton],
   templateUrl: './pause-dialog.component.html',
   styleUrl: './pause-dialog.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -34,13 +34,15 @@ export class PauseDialogComponent {
   closed = output<void>();
   isSubmitting = signal<boolean>(false);
   pauseTransfers = signal<boolean>(false);
-  pauseOption = signal<string | undefined>(undefined);
+  pauseOption = signal('');
+  pauseDurationField = form(this.pauseOption);
+  pauseTransfersField = form(this.pauseTransfers);
 
   submit() {
     this.isSubmitting.set(true);
 
     const pauseTransfers = this.pauseTransfers() || null;
-    const duration = this.pauseOption();
+    const duration = this.pauseOption() || undefined;
 
     defer(() =>
       this.#dupServer.postApiV1ServerstatePause({
