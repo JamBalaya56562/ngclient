@@ -163,7 +163,8 @@ export default class DestinationComponent {
   targetUrlInitial = signal<string | null>(null);
   currentEditingIndex = signal<number | null>(null);
   targetUrlDialogOpen = signal(false);
-  showCustomList = signal(false);
+  customDestinationListField = form(signal(false));
+  showCustomList = this.customDestinationListField().value;
   isConnectionStringSaved = this.#backupState.isConnectionStringSaved;
 
   destinations = this.#connectionStringsState.destinations;
