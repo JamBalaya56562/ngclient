@@ -1,3 +1,4 @@
+import { form } from '@angular/forms/signals';
 import { DatePipe, JsonPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, input, signal } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
@@ -41,7 +42,8 @@ export class RemoteLogComponent {
 
   backupId = input.required<string>();
 
-  openEntry = signal<number | null>(null);
+  openEntryField = form(signal<number | null>(null));
+  openEntry = this.openEntryField().value;
   pagination = signal({
     offset: 0,
     pagesize: 100,
