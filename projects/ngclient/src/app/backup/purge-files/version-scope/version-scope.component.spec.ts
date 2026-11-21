@@ -1,3 +1,4 @@
+import { DecimalPipe } from '@angular/common';
 import { TestBed } from '@angular/core/testing';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ShipDialogService } from '@ship-ui/core/ship-dialog';
@@ -18,13 +19,14 @@ describe('PurgeVersionScopeComponent removal confirmation', () => {
     TestBed.configureTestingModule({
       imports: [PurgeVersionScopeComponent],
       providers: [
+        DecimalPipe,
         PurgeFilesState,
         { provide: DuplicatiServer, useValue: { postApiV2BackupPurgeFiles: purge } },
         { provide: ShipDialogService, useValue: { open } },
         { provide: Router, useValue: { navigate } },
         { provide: ActivatedRoute, useValue: {} },
       ],
-    }).overrideComponent(PurgeVersionScopeComponent, { set: { template: '', imports: [] } });
+    });
     const fixture = TestBed.createComponent(PurgeVersionScopeComponent);
     const state = TestBed.inject(PurgeFilesState);
     TestBed.inject(SysinfoState).systemInfo.set({ APIExtensions: extensions } as SystemInfoDto);
@@ -32,7 +34,7 @@ describe('PurgeVersionScopeComponent removal confirmation', () => {
     state.selectedVersion.set('7');
     state.selectedPaths.set('/data/file.txt\0/data/folder/\0C:\\data\\folder\\');
     fixture.detectChanges();
-    return { component: fixture.componentInstance, state, response, purge, open, navigate };
+    return { component: fixture.componentInstance, state, response, purge, open, navigate, fixture };
   }
   it.each(['paths', 'versions'])('does not prompt or delete without selected %s', (missing) => {
     const { component, state, open, purge } = setup();
@@ -117,10 +119,25 @@ describe('PurgeVersionScopeComponent removal confirmation', () => {
     expect(navigate).toHaveBeenCalledExactlyOnceWith(['/']);
   });
   it('adds and removes individual versions without clearing the other selections', () => {
-    const { component, state } = setup();
+    const { component, state, fixture } = setup();
+    state.versionScope.set('specific');
+    state.versions.set(
+      [2, 7, 9].map((Version) => ({
+        Version,
+        Time: '2026-10-01T12:00:00Z',
+        IsFullBackup: true,
+        FileCount: 1,
+        FileSizes: 1,
+      }))
+    );
     state.specificVersions.set([2, 9]);
-    component.toggleVersion(7, true);
-    component.toggleVersion(2, false);
+    fixture.detectChanges();
+
+    const select = (version: number) =>
+      fixture.nativeElement.querySelector(`input[aria-label="${version}"]`) as HTMLInputElement;
+    select(7).click();
+    fixture.detectChanges();
+    select(2).click();
     expect(state.specificVersions()).toEqual([9, 7]);
     expect(component.isVersionSelected(7)).toBe(true);
     expect(component.isVersionSelected(2)).toBe(false);

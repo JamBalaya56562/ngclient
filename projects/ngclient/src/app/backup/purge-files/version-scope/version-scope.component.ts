@@ -1,5 +1,6 @@
 import { DatePipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, linkedSignal, signal } from '@angular/core';
+import { form, FormField } from '@angular/forms/signals';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ShipAlert } from '@ship-ui/core/ship-alert';
 import { ShipButton } from '@ship-ui/core/ship-button';
@@ -16,7 +17,7 @@ import { PurgeFilesState } from '../purge-files.state';
 
 @Component({
   selector: 'app-purge-version-scope',
-  imports: [DatePipe, ShipAlert, ShipButton, ShipCheckbox, ShipIcon, ShipRadio, BytesPipe],
+  imports: [DatePipe, ShipAlert, ShipButton, ShipCheckbox, ShipIcon, ShipRadio, BytesPipe, FormField],
   templateUrl: './version-scope.component.html',
   styleUrl: './version-scope.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -32,6 +33,11 @@ export default class PurgeVersionScopeComponent {
   versions = this.#state.versions;
   versionScope = this.#state.versionScope;
   specificVersions = this.#state.specificVersions;
+  specificVersionsForm = form(
+    linkedSignal(() =>
+      Object.fromEntries(this.versions().map(({ Version }) => [String(Version), this.isVersionSelected(Version)]))
+    )
+  );
   selectedVersion = this.#state.selectedVersion;
   selectedVersionItem = this.#state.selectedVersionItem;
   selectedPathsArray = this.#state.selectedPathsArray;
