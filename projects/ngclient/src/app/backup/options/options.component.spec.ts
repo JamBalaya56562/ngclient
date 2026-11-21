@@ -41,7 +41,7 @@ describe('OptionsComponent form bindings', () => {
     input.dispatchEvent(new FocusEvent('focusout', { bubbles: true, relatedTarget: document.createElement('button') }));
     fixture.detectChanges();
     expect(select.isOpen()).toBe(false);
-    expect(state.optionsModel().backupRetention).toBe('all');
+    expect(state.optionsForm().value().backupRetention).toBe('all');
   });
 
   async function render(settings: { Name: string; Value: string }[], sync = false) {
@@ -137,8 +137,8 @@ describe('OptionsComponent form bindings', () => {
   it('keeps an empty number null and resets the form without disconnecting the rendered input', async () => {
     await render([{ Name: 'keep-versions', Value: '5' }]);
     await input('#backupRetentionVersions', '');
-    expect(state.optionsModel().backupRetentionVersions).toBeNull();
-    state.optionsForm().reset({ ...state.optionsModel(), backupRetentionVersions: 12 });
+    expect(state.optionsForm().value().backupRetentionVersions).toBeNull();
+    state.optionsForm().reset({ ...state.optionsForm().value(), backupRetentionVersions: 12 });
     fixture.detectChanges();
     await fixture.whenStable();
     expect(fixture.nativeElement.querySelector('#backupRetentionVersions').value).toBe('12');

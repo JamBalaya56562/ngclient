@@ -97,18 +97,20 @@ export class BackupState {
   runAfterBackupId = signal<string | null>(null);
   runAfterAlways = signal(false);
   settings = signal<SettingInputDto[]>([]);
-  readonly optionsModel = signal<BackupOptionsFormValue>({
-    backupRetention: 'all',
-    backupRetentionTime: '',
-    backupRetentionVersions: 0,
-    backupRetentionCustom: '',
-    syncSnapshotFolders: false,
-    syncKeepSnapshots: 0,
-    syncSnapshotDisableHardlinks: false,
-  });
-  readonly optionsForm = form(this.optionsModel, (path) => {
-    min(path.syncKeepSnapshots, 0);
-  });
+  readonly optionsForm = form(
+    signal<BackupOptionsFormValue>({
+      backupRetention: 'all',
+      backupRetentionTime: '',
+      backupRetentionVersions: 0,
+      backupRetentionCustom: '',
+      syncSnapshotFolders: false,
+      syncKeepSnapshots: 0,
+      syncSnapshotDisableHardlinks: false,
+    }),
+    (path) => {
+      min(path.syncKeepSnapshots, 0);
+    }
+  );
 
   targetUrls = signal<BackupTargetUrl[]>([]);
   targetUrlModel = computed(() => this.targetUrls()[0]?.url ?? null);
@@ -582,6 +584,8 @@ export class BackupState {
     backup.Backup!.Description = this.descriptionField().value();
     return backup;
   }
+
+  readonly optionsModel = this.optionsForm().value;
 
   mapFormsToSettings(settingsIgnoreList: string[] = []) {
     return mapBackupFormToSettings(
