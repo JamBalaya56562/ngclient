@@ -346,7 +346,7 @@ describe('StatusPageState history', () => {
     vi.advanceTimersByTime(10 * 60_000);
     push(makeSnapshot(0, 0));
     expect(state.visibleHistory().length).toBe(1);
-    state.historyWindow.set('15m');
+    state.historyFilterForm.window().value.set('15m');
     expect(state.visibleHistory().length).toBe(2);
     vi.advanceTimersByTime(10 * 60_000);
     push(makeSnapshot(0, 0));
