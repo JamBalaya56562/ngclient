@@ -14,7 +14,7 @@ describe('RestoreFlowState restore request submission', () => {
     TestBed.resetTestingModule();
     vi.restoreAllMocks();
   });
-  function setup(hasOptions = true) {
+  function setup(hasOptions = true, hasRegisterRestoredItems = false) {
     const response = new Subject<{ ID: number }>();
     const restore = vi.fn((_request: unknown) => response);
     const navigate = vi.fn();
@@ -28,7 +28,10 @@ describe('RestoreFlowState restore request submission', () => {
         { provide: DuplicatiServer, useValue: { postApiV1BackupByIdRestore: restore } },
         {
           provide: SysinfoState,
-          useValue: { hasRestoreOptions: signal(hasOptions), hasRegisterRestoredItems: signal(false) },
+          useValue: {
+            hasRestoreOptions: signal(hasOptions),
+            hasRegisterRestoredItems: signal(hasRegisterRestoredItems),
+          },
         },
         { provide: ServerSettingsService, useValue: { serverSettings: signal({}) } },
       ],
@@ -88,6 +91,27 @@ describe('RestoreFlowState restore request submission', () => {
     expect(state.isSubmitting()).toBe(false);
     expect(navigate).toHaveBeenCalledExactlyOnceWith(['./123', 'progress'], { relativeTo: route });
   });
+  it.each([
+    { supported: true, enabled: true, sent: { 'register-restored-items': 'true' } },
+    { supported: true, enabled: false, sent: null },
+    { supported: false, enabled: true, sent: null },
+  ])(
+    'sends Hyper-V registration only when requested and supported ($supported, $enabled)',
+    ({ supported, enabled, sent }) => {
+      const { state, restore } = setup(true, supported);
+      state.selectFilesForm.controls.filesToRestore.setValue('\\\\duplicati\\hyperv\\vm\\');
+      state.optionsForm.controls.registerRestoredItems.setValue(enabled);
+
+      state.submit();
+
+      expect(restore).toHaveBeenCalledWith(
+        expect.objectContaining({
+          body: expect.objectContaining({ options: sent }),
+        })
+      );
+    }
+  );
+
   it('maps overwrite and metadata flags independently', () => {
     const { state, restore } = setup();
     state.optionsForm.patchValue({ handleExisting: 'overwrite', includeMetadata: false, permissions: true });
