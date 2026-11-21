@@ -40,11 +40,13 @@ export default class RestoreFromConfigComponent {
     }>({ config: '', cmdline: false, importMetadata: false, direct: false, passphrase: '' })
   );
 
-  selectedFile = signal<File | null>(null);
+  selectedFileField = form(signal<File | null>(null));
 
   onFileDropped(event: Event) {
     const files = (event.target as HTMLInputElement)?.files;
-    const file = files?.item(0);
+    const selection = this.selectedFileField().value;
+    selection.set(files?.item(0) ?? null);
+    const file = selection();
 
     if (file) {
       const reader = new FileReader();
