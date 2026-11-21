@@ -657,14 +657,17 @@
       <div class="right multiple">
         @if (hasIpcController()) {
           <p>Backup process isolation</p>
-          <sh-toggle
-            class="primary raised"
-            [checked]="isControllerIpcEnabled()"
-            (checkedChange)="saveControllerIpcState($event)">
+          <sh-toggle class="primary raised">
+            <input
+              id="use-out-of-process-controller"
+              type="checkbox"
+              [formField]="controllerIpcField"
+              (keydown.space)="$event.stopPropagation()"
+              (change)="saveControllerIpcState(controllerIpcField().value())" />
             @if (isControllerIpcEnabled()) {
-              <label i18n>Operations run in an isolated process</label>
+              <label for="use-out-of-process-controller" i18n>Operations run in an isolated process</label>
             } @else {
-              <label i18n>Operations run inside the server process</label>
+              <label for="use-out-of-process-controller" i18n>Operations run inside the server process</label>
             }
           </sh-toggle>
         }

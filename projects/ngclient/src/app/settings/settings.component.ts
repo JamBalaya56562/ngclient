@@ -219,6 +219,7 @@ export default class SettingsComponent {
   );
   hideConsoleConnectionStatus = this.#serverSettingsService.isConsoleConnectionStatusHidden;
   isControllerIpcEnabled = this.#serverSettingsService.isControllerIpcEnabled;
+  controllerIpcField = form(linkedSignal(() => this.isControllerIpcEnabled()));
   fileTreeFoldersFirst = this.#fileTreeState.foldersFirst;
   fileTreeCaseSensitiveSort = this.#fileTreeState.caseSensitiveSort;
 
