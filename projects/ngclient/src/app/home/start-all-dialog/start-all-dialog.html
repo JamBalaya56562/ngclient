@@ -19,11 +19,9 @@
 
   <div class="options">
     @for (backup of backups(); track backup.id) {
-      <sh-checkbox
-        class="primary raised"
-        [checked]="selected().has(backup.id)"
-        (checkedChange)="toggle(backup.id, $event)">
+      <sh-checkbox class="primary raised">
         {{ backup.name }}
+        <input type="checkbox" [formField]="selectionForm[backup.id]!" />
       </sh-checkbox>
     }
   </div>
@@ -43,6 +41,6 @@
   <button shButton type="button" (click)="closed.emit(null)" i18n>Cancel</button>
   <button shButton type="button" class="raised primary" [disabled]="noneSelected()" (click)="submit()" i18n>
     Start
-    {selected().size, plural, =1 {1 backup} other {{{selected().size}} backups}}
+    {selectedIds().length, plural, =1 {1 backup} other {{{selectedIds().length}} backups}}
   </button>
 </footer>

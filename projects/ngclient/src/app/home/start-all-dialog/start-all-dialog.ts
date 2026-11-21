@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, effect, input, output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input, linkedSignal, output, signal } from '@angular/core';
 import { form, FormField } from '@angular/forms/signals';
 import { ShipButton } from '@ship-ui/core/ship-button';
 import { ShipCheckbox } from '@ship-ui/core/ship-checkbox';
@@ -42,32 +42,30 @@ export class StartAllDialog {
     { value: 'None', label: $localize`Do nothing` },
     ...this.supportedAfterActions(),
   ]);
-  selected = signal<ReadonlySet<string>>(new Set());
-  allSelected = computed(() => this.selected().size === this.backups().length);
-  noneSelected = computed(() => this.selected().size === 0);
+  selected = linkedSignal(() => this.selectionForAll(true));
+  selectionForm = form(this.selected);
+  selectedIds = computed(() =>
+    this.backups()
+      .filter(({ id }) => this.selected()[id])
+      .map(({ id }) => id)
+  );
+  allSelected = computed(() => this.selectedIds().length === this.backups().length);
+  noneSelected = computed(() => this.selectedIds().length === 0);
 
   readonly afterActionModel = signal({ afterAction: 'None' });
   readonly afterActionForm = form(this.afterActionModel);
   readonly afterAction = this.afterActionForm.afterAction().value;
 
-  // Every backup starts out picked, so confirming right away starts them all
-  dataEffect = effect(() => {
-    this.selected.set(new Set(this.backups().map((x) => x.id)));
-  });
-
-  toggle(id: string, checked: boolean) {
-    const next = new Set(this.selected());
-    if (checked) next.add(id);
-    else next.delete(id);
-    this.selected.set(next);
+  private selectionForAll(checked: boolean): Record<string, boolean> {
+    return Object.fromEntries(this.backups().map(({ id }) => [id, checked]));
   }
 
   selectAll() {
-    this.selected.set(new Set(this.backups().map((x) => x.id)));
+    this.selected.set(this.selectionForAll(true));
   }
 
   selectNone() {
-    this.selected.set(new Set());
+    this.selected.set(this.selectionForAll(false));
   }
 
   setAfterAction(action: QueueCompletionAction | null) {
@@ -76,13 +74,11 @@ export class StartAllDialog {
 
   submit() {
     // Emit in the listed order, as the backups are queued one after another
-    const selected = this.selected();
+
     const afterAction =
       this.supportedAfterActions().find((option) => option.value === this.afterAction())?.value ?? 'None';
     this.closed.emit({
-      ids: this.backups()
-        .map((x) => x.id)
-        .filter((id) => selected.has(id)),
+      ids: this.selectedIds(),
       afterAction,
     });
   }
