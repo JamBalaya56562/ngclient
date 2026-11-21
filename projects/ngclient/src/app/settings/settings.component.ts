@@ -212,6 +212,10 @@ export default class SettingsComponent {
 
   updatingReducedReporting = signal(false);
   reducedReporting = this.#serverSettingsService.reducedReporting;
+  reducedReportingField = form(
+    linkedSignal(() => this.reducedReporting().active),
+    (field) => disabled(field, () => this.updatingReducedReporting() || !this.reducedReporting().canDisable)
+  );
   reducedReportingTooltip = computed(() =>
     this.reducedReporting().console
       ? $localize`Reduced reporting is enforced by the console for this machine and cannot be switched off here.`
