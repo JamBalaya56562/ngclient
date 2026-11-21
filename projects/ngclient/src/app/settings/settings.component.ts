@@ -372,7 +372,8 @@ export default class SettingsComponent {
   }
 
   #auth = inject(AppAuthState);
-  showPassphraseForm = signal(false);
+  passphraseEditorVisibilityField = form(signal(false));
+  showPassphraseForm = this.passphraseEditorVisibilityField().value;
   isUpdating = signal(false);
   inputForm = form(signal({ passphrase: '', repeatPassphrase: '' }), (fields) =>
     disabled(fields.repeatPassphrase, ({ valueOf }) => valueOf(fields.passphrase).length === 0)
