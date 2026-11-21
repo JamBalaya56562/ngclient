@@ -1,3 +1,4 @@
+import { form } from '@angular/forms/signals';
 import { isPlatformBrowser } from '@angular/common';
 import { DOCUMENT, DestroyRef, Injectable, PLATFORM_ID, computed, effect, inject, signal } from '@angular/core';
 import { ShipSidenavType } from '@ship-ui/core/ship-sidenav';
@@ -56,7 +57,8 @@ export class LayoutState {
   #currentWidth = signal(this.#window.innerWidth);
   isMobile = computed(() => this.#currentWidth() < 1024);
   sidenavType = signal<ShipSidenavType>(this.isMobile() ? 'overlay' : '');
-  isNavOpen = signal(false);
+  navOpenField = form(signal(false));
+  isNavOpen = this.navOpenField().value;
 
   isDarkMode = computed(() => {
     const mode = this.themeMode();
