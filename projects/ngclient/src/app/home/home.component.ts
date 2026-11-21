@@ -192,7 +192,8 @@ export default class HomeComponent {
 
   #taskStopRequested = signal(-1);
 
-  viewMode = localStorageSignal<'list' | 'details'>('viewMode', 'list');
+  viewModeField = form(localStorageSignal<'list' | 'details'>('viewMode', 'list'));
+  viewMode = this.viewModeField().value;
 
   sortByColumn = signal<OrderBy | null>(this.#backupsState.orderBy());
   loadingId = signal<string | null>(null);
