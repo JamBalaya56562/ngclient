@@ -13,7 +13,11 @@ describe('TargetUrlDialog workspace tools', () => {
   let fixture: ComponentFixture<TargetUrlDialog>;
   const open = vi.fn();
 
-  function render(targetUrlModel: string, sourcePrefix: string | null, moduleType: RemoteDestinationType = 'SourceProvider') {
+  function render(
+    targetUrlModel: string,
+    sourcePrefix: string | null,
+    moduleType: RemoteDestinationType = 'SourceProvider'
+  ) {
     TestBed.configureTestingModule({
       imports: [TargetUrlDialog],
       providers: [{ provide: ShipDialogService, useValue: { open } }],
@@ -44,6 +48,20 @@ describe('TargetUrlDialog workspace tools', () => {
     });
     fixture.detectChanges();
   }
+
+  it('initializes the URL field and submits the edited value', () => {
+    render('file:///original', null, 'Backend');
+    const component = fixture.componentInstance;
+    const submitted = vi.fn();
+    component.closed.subscribe(submitted);
+    expect(component.targetUrlField().value()).toBe('file:///original');
+
+    component.targetUrlField().value.set('file:///updated');
+    finishTest();
+    component.submit();
+
+    expect(submitted).toHaveBeenCalledExactlyOnceWith('file:///updated');
+  });
 
   afterEach(() => {
     TestBed.resetTestingModule();

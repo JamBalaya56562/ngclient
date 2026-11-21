@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed, effect, inject, input, output, signal } from '@angular/core';
+import { form } from '@angular/forms/signals';
 import { ShipButton } from '@ship-ui/core/ship-button';
 import { ShipDialogService } from '@ship-ui/core/ship-dialog';
 import { ShipIcon } from '@ship-ui/core/ship-icon';
@@ -44,7 +45,8 @@ export class TargetUrlDialog {
   }>();
   closed = output<string | null>();
 
-  targetUrlModel = signal<string | null>(null);
+  targetUrlField = form(signal<string | null>(null));
+  targetUrlModel = this.targetUrlField().value;
   moduleType = signal<RemoteDestinationType>('Backend');
   askToCreate = signal<boolean>(false);
   expectedResult = signal<TestExpectation>('any');
