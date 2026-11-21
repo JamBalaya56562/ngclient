@@ -26,11 +26,11 @@
     </button>
 
     <div class="connection-link-label">
-      <sh-checkbox [(checked)]="hasConnectionLink" class="primary raised connection-link-check"></sh-checkbox>
-      <span i18n>I have a connection link</span>
-      <sh-icon [shTooltip]="'Connection links are used for Enterprise and large-scale installations'">
-        info
-      </sh-icon>
+      <sh-checkbox class="primary raised connection-link-check">
+        <input type="checkbox" aria-labelledby="connection-link-label" [formField]="connectionLinkField" />
+      </sh-checkbox>
+      <span id="connection-link-label" i18n>I have a connection link</span>
+      <sh-icon [shTooltip]="'Connection links are used for Enterprise and large-scale installations'">info</sh-icon>
     </div>
   </div>
 </section>
