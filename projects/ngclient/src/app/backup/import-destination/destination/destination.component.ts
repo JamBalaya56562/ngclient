@@ -65,7 +65,8 @@ export default class DestinationComponent {
   inputForm = form(signal({ targetUrlCtrl: null as string | null }));
   targetUrlCtrl = this.inputForm.targetUrlCtrl().value;
   targetUrlInitial = signal<string | null>(null);
-  targetUrlDialogOpen = signal(false);
+  targetUrlDialogField = form(signal(false));
+  targetUrlDialogOpen = this.targetUrlDialogField().value;
   toggleNewDestination = signal(true);
 
   selectedDestinationType = computed(() => {
