@@ -1,5 +1,6 @@
 import { KeyboardActionDirective } from '../../core/directives/keyboard-action.directive';
 import { ChangeDetectionStrategy, Component, effect, inject, signal } from '@angular/core';
+import { form, FormField } from '@angular/forms/signals';
 import { Router } from '@angular/router';
 import { ShipButton } from '@ship-ui/core/ship-button';
 import { ShipCheckbox } from '@ship-ui/core/ship-checkbox';
@@ -11,7 +12,7 @@ import { ServerSettingsService } from '../../settings/server-settings.service';
 
 @Component({
   selector: 'app-select',
-  imports: [KeyboardActionDirective, ShipButton, ShipCheckbox, ShipDialog, ShipIcon, ShipTooltip],
+  imports: [KeyboardActionDirective, ShipButton, ShipCheckbox, ShipDialog, ShipIcon, ShipTooltip, FormField],
   templateUrl: './select.html',
   styleUrl: './select.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -24,6 +25,7 @@ export default class Select {
   hoveringConnect = signal(false);
   skipDialogOpen = signal(false);
   hasConnectionLink = signal(false);
+  connectionLinkField = form(this.hasConnectionLink);
 
   primaryBenefits = [
     $localize`Zero-configuration cloud storage`,
