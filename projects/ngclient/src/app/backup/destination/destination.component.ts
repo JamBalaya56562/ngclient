@@ -220,16 +220,19 @@ export default class DestinationComponent {
     if (url) navigator.clipboard.writeText(url);
   }
 
+  targetUrlDialogField = form(this.targetUrlDialogOpen);
+  targetUrlDialogIsOpen = this.targetUrlDialogField().value;
+
   openTargetUrlDialog(index: number = 0) {
     const targetUrl = this.targetUrls()[index]?.url ?? null;
     this.targetUrlCtrl.set(targetUrl);
     this.targetUrlInitial.set(targetUrl);
     this.currentEditingIndex.set(index);
-    this.targetUrlDialogOpen.set(true);
+    this.targetUrlDialogIsOpen.set(true);
   }
 
   closeTargetUrlDialog(submit = false) {
-    this.targetUrlDialogOpen.set(false);
+    this.targetUrlDialogIsOpen.set(false);
 
     const targetUrl = this.targetUrlCtrl();
     const initialTargetUrl = this.targetUrlInitial();
