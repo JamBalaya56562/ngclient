@@ -484,7 +484,7 @@
     <div class="log-lines">
       @for (line of $any(lines); track $index) {
         @let lineKey = key + '-' + $index;
-        @let expanded = expandedLogLines().has(lineKey);
+        @let expanded = expandedLines().has(lineKey);
         <div class="log-line" [class.expanded]="expanded">
           <button type="button" class="log-line-row" (click)="toggleLogLine(lineKey)" [attr.aria-expanded]="expanded">
             <sh-icon class="log-caret">caret-right</sh-icon>
