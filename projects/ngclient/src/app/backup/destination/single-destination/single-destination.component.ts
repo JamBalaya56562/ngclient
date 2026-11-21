@@ -977,10 +977,12 @@ export class SingleDestinationComponent {
       .join('\n');
   });
 
-  #settingsTextDraft = linkedSignal(() => ({ text: this.settingsAsText() }));
-  settingsTextForm = form(this.#settingsTextDraft, (fields) => {
-    debounce(fields.text, 'blur');
-  });
+  settingsTextForm = form(
+    linkedSignal(() => ({ text: this.settingsAsText() })),
+    (fields) => {
+      debounce(fields.text, 'blur');
+    }
+  );
 
   updateSettingsFromText(newValue: string) {
     if (newValue === this.settingsAsText()) return;
