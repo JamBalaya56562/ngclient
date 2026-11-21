@@ -63,6 +63,7 @@ export default class SelectConfigComponent implements OnInit {
   isLoading = this.#load.pending;
   isImporting = signal(false);
   configs = signal<ConfigOption[]>([]);
+  configsForm = form(this.configs);
   selectionForm = form(signal({ saveNow: false, importMetadata: false, searchTerm: '' }));
   saveNow = this.selectionForm.saveNow().value;
   importMetadata = this.selectionForm.importMetadata().value;
@@ -73,7 +74,11 @@ export default class SelectConfigComponent implements OnInit {
   configsSorted = computed(() => {
     const searchTerm = this.searchTerm().toLowerCase();
     return this.configs()
-      .map((c) => ({ ...c, Match: searchTerm ? c.Name?.toLowerCase().includes(searchTerm) : null }))
+      .map((c, sourceIndex) => ({
+        ...c,
+        sourceIndex,
+        Match: searchTerm ? c.Name?.toLowerCase().includes(searchTerm) : null,
+      }))
       .sort((a, b) => (a.Name ?? '').localeCompare(b.Name ?? ''))
       .sort((a, b) => (a.Match === b.Match ? 0 : a.Match ? -1 : 1));
   });

@@ -63,6 +63,19 @@ describe('restore configurations from a destination', () => {
     expect(list).not.toHaveBeenCalled();
     expect(navigate).toHaveBeenCalledExactlyOnceWith(['/backup/import-destination/destination']);
   });
+  it('keeps a sorted selection bound to its original configuration', () => {
+    const { component } = setup('temp-42', [
+      { BackupId: 'z', Name: 'Zulu' },
+      { BackupId: 'a', Name: 'Alpha' },
+    ]);
+    const [first] = component.configsSorted();
+    expect(first.BackupId).toBe('a');
+
+    component.configsForm[first.sourceIndex]!.Selected().value.set(true);
+
+    expect(component.selectedItems().map((item) => item.BackupId)).toEqual(['a']);
+  });
+
   it('selects a sole configuration automatically but imports nothing for an empty selection', () => {
     const sole = setup('temp-42', [{ BackupId: 'only', Name: 'Only' }]);
     expect(sole.list).toHaveBeenCalledExactlyOnceWith({ path: { id: 'temp-42' } });
