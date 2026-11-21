@@ -252,10 +252,11 @@ export class SingleDestinationComponent {
   hasAttemptedToLoadBackupIdOptions = signal('');
   loadedBackupIdOptions = signal<string[]>([]);
 
-  #restoreBackupSelection = linkedSignal(() => ({
-    backupId: String(this.destinationForm().dynamic['duplicati-backup-id'] ?? ''),
-  }));
-  restoreBackupForm = form(this.#restoreBackupSelection);
+  restoreBackupForm = form(
+    linkedSignal(() => ({
+      backupId: String(this.destinationForm().dynamic['duplicati-backup-id'] ?? ''),
+    }))
+  );
 
   isConnectedToConsole = computed(() => {
     return this.#remoteControlState.state() === 'connected';
