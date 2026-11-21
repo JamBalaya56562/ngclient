@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, effect, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { form } from '@angular/forms/signals';
 import { ShipButton } from '@ship-ui/core/ship-button';
 import { ShipDialog } from '@ship-ui/core/ship-dialog';
 import { ShipIcon } from '@ship-ui/core/ship-icon';
@@ -62,12 +63,15 @@ export default class LibrariesComponent {
   dialogIsOpen = signal(false);
   dialogLicense = signal<LicenseDto | null>(null);
 
+  licenseDialogField = form(this.dialogIsOpen);
+  licenseDialogIsOpen = this.licenseDialogField().value;
+
   #dialogEffect = effect(() => {
     const license = this.dialogLicense();
 
     if (!license) return;
 
-    this.dialogIsOpen.set(true);
+    this.licenseDialogIsOpen.set(true);
   });
 
   openLicense(license: LicenseDto) {
@@ -75,7 +79,7 @@ export default class LibrariesComponent {
   }
 
   closeLicense() {
-    this.dialogIsOpen.set(false);
+    this.licenseDialogIsOpen.set(false);
     this.dialogLicense.set(null);
   }
 
