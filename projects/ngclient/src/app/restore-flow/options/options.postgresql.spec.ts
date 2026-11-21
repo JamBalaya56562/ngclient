@@ -62,7 +62,14 @@ describe('Restore options for a PostgreSQL backup', () => {
     }).overrideComponent(OptionsComponent, { set: { template: '', imports: [] } });
     const fixture = TestBed.createComponent(OptionsComponent);
     fixture.detectChanges();
-    return { component: fixture.componentInstance, optionsForm, submit, setAlternateRestorePath, setAdditionalRestorePaths, open };
+    return {
+      component: fixture.componentInstance,
+      optionsForm,
+      submit,
+      setAlternateRestorePath,
+      setAdditionalRestorePaths,
+      open,
+    };
   }
 
   it('offers a database as the target only when the server can restore to one', () => {
@@ -110,11 +117,12 @@ describe('Restore options for a PostgreSQL backup', () => {
   });
 
   it('restores a version from a failed backup only when asked', () => {
-    const { component, setAlternateRestorePath, setAdditionalRestorePaths } = setup(
-      { restoreFrom: 'same-custom', databaseAllowMixedVersions: true, databaseCreateTables: true },
-      ['postgresql']
-    );
+    const { component, setAlternateRestorePath, setAdditionalRestorePaths } = setup({ restoreFrom: 'same-custom' }, [
+      'postgresql',
+    ]);
 
+    component.databaseFields.databaseCreateTables().value.set(true);
+    component.databaseFields.databaseAllowMixedVersions().value.set(true);
     expect(component.isDatabaseTablesOnly()).toBe(false);
     component.submit();
 
@@ -144,11 +152,13 @@ describe('Restore options for a PostgreSQL backup', () => {
 
   it('creates missing tables and replaces rows when asked', () => {
     const { component, optionsForm, setAlternateRestorePath } = setup(
-      { restoreFrom: 'same-custom', databaseCreateTables: true, databaseOverwrite: true, handleExisting: 'saveTimestamp' },
+      { restoreFrom: 'same-custom', handleExisting: 'saveTimestamp' },
       ['postgresql'],
       '/backup/tables/'
     );
 
+    component.databaseFields.databaseCreateTables().value.set(true);
+    component.databaseFields.databaseOverwrite().value.set(true);
     component.submit();
 
     expect(setAlternateRestorePath).toHaveBeenCalledWith(
@@ -174,9 +184,7 @@ describe('Restore options for a PostgreSQL backup', () => {
   });
 
   it('does not start a restore to another database before one is chosen', () => {
-    const { component, submit, setAlternateRestorePath, open } = setup({ restoreFrom: 'other-custom' }, [
-      'postgresql',
-    ]);
+    const { component, submit, setAlternateRestorePath, open } = setup({ restoreFrom: 'other-custom' }, ['postgresql']);
 
     component.submit();
 

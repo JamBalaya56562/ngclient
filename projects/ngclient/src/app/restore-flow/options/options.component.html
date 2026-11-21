@@ -244,18 +244,18 @@
       @if (isDatabaseTablesOnly()) {
         <p class="database-note" i18n>
           Only some of the database is selected, so the rows of the selected tables are loaded into tables that exist.
-          Indexes, constraints and sequence values are not changed. Select the whole database to restore it with all
-          of its objects.
+          Indexes, constraints and sequence values are not changed. Select the whole database to restore it with all of
+          its objects.
         </p>
 
         <sh-toggle class="raised primary" i18n>
           Create the tables that are missing
-          <input type="checkbox" formControlName="databaseCreateTables" />
+          <input type="checkbox" [formField]="databaseFields.databaseCreateTables" />
         </sh-toggle>
 
         <sh-toggle class="raised primary" i18n>
           Replace the rows of the tables
-          <input type="checkbox" formControlName="databaseOverwrite" />
+          <input type="checkbox" [formField]="databaseFields.databaseOverwrite" />
         </sh-toggle>
 
         <p class="database-note" i18n>
@@ -264,7 +264,7 @@
       } @else {
         <sh-toggle class="raised primary" i18n>
           Replace the tables that exist in the database
-          <input type="checkbox" formControlName="databaseOverwrite" />
+          <input type="checkbox" [formField]="databaseFields.databaseOverwrite" />
         </sh-toggle>
 
         <p class="database-note" i18n>
@@ -273,7 +273,7 @@
 
         <sh-toggle class="raised primary" i18n>
           Restore a version where a backup failed part-way
-          <input type="checkbox" formControlName="databaseAllowMixedVersions" />
+          <input type="checkbox" [formField]="databaseFields.databaseAllowMixedVersions" />
         </sh-toggle>
 
         <p class="database-note" i18n>
