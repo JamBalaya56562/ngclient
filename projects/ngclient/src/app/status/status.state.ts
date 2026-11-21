@@ -1,4 +1,5 @@
 import { DestroyRef, Injectable, computed, effect, inject, signal } from '@angular/core';
+import { form } from '@angular/forms/signals';
 import { defer, finalize, Subscription } from 'rxjs';
 import { StatusBarState } from '../core/components/status-bar/status-bar.state';
 import { ActiveFile, ActiveTransfer, DuplicatiServer, IProgressEventData } from '../core/openapi';
@@ -88,7 +89,8 @@ export class StatusPageState {
   #transferTotals = signal<TransferTotals>({ taskId: null, uploaded: 0, downloaded: 0 });
   transferTotals = this.#transferTotals.asReadonly();
 
-  historyWindow = signal<HistoryWindow>('5m');
+  historyFilterForm = form(signal<{ window: HistoryWindow }>({ window: '5m' }));
+  historyWindow = this.historyFilterForm.window().value;
   historyWindowMs = computed(() => HISTORY_WINDOW_MS[this.historyWindow()]);
 
   #viewActivatedAt: Date | null = null;
