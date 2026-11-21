@@ -1,5 +1,14 @@
 import { disabled, form, FormField } from '@angular/forms/signals';
-import { ChangeDetectionStrategy, Component, computed, effect, inject, signal, viewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  effect,
+  inject,
+  linkedSignal,
+  signal,
+  viewChild,
+} from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShipAlert } from '@ship-ui/core/ship-alert';
 import { ShipButton } from '@ship-ui/core/ship-button';
@@ -193,6 +202,10 @@ export default class SettingsComponent {
 
   updatingReducedReporting = signal(false);
   reducedReporting = this.#serverSettingsService.reducedReporting;
+  reducedReportingField = form(
+    linkedSignal(() => this.reducedReporting().active),
+    (field) => disabled(field, () => this.updatingReducedReporting() || !this.reducedReporting().canDisable)
+  );
   reducedReportingTooltip = computed(() =>
     this.reducedReporting().console
       ? $localize`Reduced reporting is enforced by the console for this machine and cannot be switched off here.`

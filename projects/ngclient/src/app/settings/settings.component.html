@@ -593,17 +593,19 @@
 
     <div class="right">
       <div class="info-holder">
-        <sh-toggle
-          class="primary raised"
-          [checked]="reducedReporting().active"
-          [disabled]="updatingReducedReporting() || !reducedReporting().canDisable"
-          (checkedChange)="toggleReducedReporting($event)">
+        <sh-toggle class="primary raised">
+          <input
+            id="reduced-reporting"
+            type="checkbox"
+            [formField]="reducedReportingField"
+            (keydown.space)="$event.stopPropagation()"
+            (change)="toggleReducedReporting(reducedReportingField().value())" />
           @if (reducedReporting().console) {
-            <label i18n>Reduced reporting enforced by the console</label>
+            <label for="reduced-reporting" i18n>Reduced reporting enforced by the console</label>
           } @else if (reducedReporting().active) {
-            <label i18n>Reduced reporting enabled</label>
+            <label for="reduced-reporting" i18n>Reduced reporting enabled</label>
           } @else {
-            <label i18n>Reduced reporting disabled</label>
+            <label for="reduced-reporting" i18n>Reduced reporting disabled</label>
           }
         </sh-toggle>
         <sh-icon suffix [shTooltip]="reducedReportingTooltip()">info</sh-icon>
