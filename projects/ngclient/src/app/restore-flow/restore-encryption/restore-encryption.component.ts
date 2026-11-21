@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
-import { FormField } from '@angular/forms/signals';
+import { form, FormField } from '@angular/forms/signals';
 import { NullableTextControl } from '../../backup/general/nullable-text-control';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ShipButton } from '@ship-ui/core/ship-button';
@@ -28,7 +28,8 @@ export default class RestoreEncryptionComponent {
 
   encryptionForm = this.#restoreFlowState.encryptionForm;
   creatingTemporaryBackup = signal(false);
-  settings = signal<SettingInputDto[]>([]);
+  settingsField = form(signal<SettingInputDto[]>([]));
+  settings = this.settingsField().value;
   hasEncryptedBackup = computed(() => {
     const testSignal = this.#restoreFlowState.destinationTestSignal();
     if (testSignal === 'testing' || typeof testSignal === 'string') return true;
