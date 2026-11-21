@@ -678,21 +678,22 @@ export class SingleDestinationComponent {
     });
   }
 
-  #choiceValues = linkedSignal(() => {
-    const values = this.destinationForm();
-    const config = this.destinationFormConfig();
-    const choices = (group: keyof DestinationFormValues): Record<string, string> =>
-      Object.fromEntries(
-        (config?.[group] ?? [])
-          .filter((field) => field.type === 'Enumeration')
-          .map(({ name }) => [name, String(values[group][name] ?? '')])
-      );
-    return { custom: choices('custom'), dynamic: choices('dynamic'), advanced: choices('advanced') };
-  });
-  #choiceForm = form(this.#choiceValues);
+  #choiceForm = form(
+    linkedSignal(() => {
+      const values = this.destinationForm();
+      const config = this.destinationFormConfig();
+      const choices = (group: keyof DestinationFormValues): Record<string, string> =>
+        Object.fromEntries(
+          (config?.[group] ?? [])
+            .filter((field) => field.type === 'Enumeration')
+            .map(({ name }) => [name, String(values[group][name] ?? '')])
+        );
+      return { custom: choices('custom'), dynamic: choices('dynamic'), advanced: choices('advanced') };
+    })
+  );
 
   destinationChoiceField(group: keyof DestinationFormValues, name: string) {
-    if (!Object.hasOwn(this.#choiceValues()[group], name)) return undefined;
+    if (!Object.hasOwn(this.#choiceForm().value()[group], name)) return undefined;
     return this.#choiceForm[group][name];
   }
 
