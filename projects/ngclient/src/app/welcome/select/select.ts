@@ -6,6 +6,7 @@ import { ShipCheckbox } from '@ship-ui/core/ship-checkbox';
 import { ShipDialog } from '@ship-ui/core/ship-dialog';
 import { ShipIcon } from '@ship-ui/core/ship-icon';
 import { ShipTooltip } from '@ship-ui/core/ship-tooltip';
+import { form as signalForm } from '@angular/forms/signals';
 import { RemoteControlState } from '../../settings/remote-control/remote-control.state';
 import { ServerSettingsService } from '../../settings/server-settings.service';
 
@@ -24,6 +25,9 @@ export default class Select {
   hoveringConnect = signal(false);
   skipDialogOpen = signal(false);
   hasConnectionLink = signal(false);
+
+  skipDialogField = signalForm(this.skipDialogOpen);
+  skipDialogIsOpen = this.skipDialogField().value;
 
   primaryBenefits = [
     $localize`Zero-configuration cloud storage`,
@@ -53,7 +57,7 @@ export default class Select {
   }
 
   openSkipDialog() {
-    this.skipDialogOpen.set(true);
+    this.skipDialogIsOpen.set(true);
   }
 
   connect() {
