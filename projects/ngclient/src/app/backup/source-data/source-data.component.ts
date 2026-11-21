@@ -235,7 +235,8 @@ export default class SourceDataComponent {
   bulkPathEditMode = signal(false);
   bulkPaths = signal('');
   bulkPathsForm = form(this.bulkPaths);
-  mobileMenuOpen = signal(false);
+  mobileMenuOpenField = form(signal(false));
+  mobileMenuOpen = this.mobileMenuOpenField().value;
   backupId = this.#backupState.backupId();
   isLocalDiskSupported = computed(() =>
     this.#sysInfo.systemInfo()?.SourceProviderModules?.find((x) => x.Key == 'diskimage')
