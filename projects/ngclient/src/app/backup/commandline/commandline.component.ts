@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, effect, inject, signal } from '@angular/core';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { FormBuilder } from '@angular/forms';
-import { FormField, provideSignalFormsConfig } from '@angular/forms/signals';
+import { form, FormField, provideSignalFormsConfig } from '@angular/forms/signals';
 import { compatForm, NG_STATUS_CLASSES } from '@angular/forms/signals/compat';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { defer } from 'rxjs';
@@ -65,7 +65,6 @@ export default class CommandlineComponent {
   optionsForm = this.#backupState.optionsForm;
 
   standardFields = fb.group({
-    'backup-id': fb.control(''),
     'backup-name': fb.control(''),
     dbpath: fb.control(''),
     filters: fb.array<string>([]),
@@ -79,6 +78,7 @@ export default class CommandlineComponent {
 
   commandFields = compatForm(signal(this.baseCmdForm.controls));
   metadataFields = compatForm(signal(this.standardFields.controls));
+  backupIdField = form(signal<string | null>(''));
 
   // The backup sources, which are the arguments of the backup command only
   #sources = '';
@@ -132,9 +132,9 @@ export default class CommandlineComponent {
   }
 
   mapStandardFieldsToForm(backup: BackupDto) {
+    this.backupIdField().value.set(backup.ID);
     this.standardFields.patchValue({
       dbpath: backup.DBPath,
-      'backup-id': backup.ID,
       'backup-name': backup.Name,
     });
 
@@ -169,7 +169,7 @@ export default class CommandlineComponent {
       ...args,
       `--backup-name=${stdForm['backup-name']}`,
       `--dbpath=${stdForm.dbpath}`,
-      `--backup-id=${stdForm['backup-id']}`,
+      `--backup-id=${this.backupIdField().value()}`,
       ...filters.filter((x) => x).map((x) => (x!.startsWith('-') ? `--exclude=${x?.slice(1)}` : `--include=${x}`)),
       ...this.#backupState
         .mapFormsToSettings(['backup-id', 'backup-name', 'dbpath'])
@@ -217,7 +217,7 @@ export default class CommandlineComponent {
       command: baseCmd.command!,
       targetUrl: baseCmd.targetUrl!,
       arguments: baseCmd.arguments!,
-      backupId: stdForm['backup-id']!,
+      backupId: this.backupIdField().value()!,
       backupName: stdForm['backup-name']!,
       dbpath: stdForm.dbpath!,
       filters: filters as string[],
@@ -249,8 +249,8 @@ export default class CommandlineComponent {
       arguments: state.arguments,
     });
 
+    this.backupIdField().value.set(state.backupId);
     this.standardFields.patchValue({
-      'backup-id': state.backupId,
       'backup-name': state.backupName,
       dbpath: state.dbpath,
     });

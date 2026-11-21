@@ -41,6 +41,7 @@ test('command fields preserve edited arguments, failure retry and saved URL stat
   await editor.locator('#arguments').fill('4');
   await editor.locator('#targetUrl').fill('file:///folder with spaces');
   await editor.locator('#backup-name').fill('Edited name');
+  await editor.locator('#backup-id').fill('99');
   await editor.getByRole('button', { name: 'Run "test" command now', exact: true }).click();
   await expect.poll(() => runs.length).toBe(1);
   expect(runs[0].request().postDataJSON().slice(0, 4)).toEqual([
@@ -49,6 +50,7 @@ test('command fields preserve edited arguments, failure retry and saved URL stat
     '4',
     '--backup-name=Edited name',
   ]);
+  expect(runs[0].request().postDataJSON()).toContain('--backup-id=99');
   await runs[0].fulfill({ status: 500, json: { Error: 'Fixture command failure' } });
   await expect(editor.getByRole('button', { name: 'Run "test" command now', exact: true })).not.toHaveClass(/loading/);
   await editor.getByRole('link', { name: 'Back', exact: true }).click();
@@ -57,5 +59,6 @@ test('command fields preserve edited arguments, failure retry and saved URL stat
   await expect(editor.locator('#arguments')).toHaveValue('4');
   await expect(editor.locator('#targetUrl')).toHaveValue('file:///folder with spaces');
   await expect(editor.locator('#backup-name')).toHaveValue('Edited name');
+  await expect(editor.locator('#backup-id')).toHaveValue('99');
   expect(runs).toHaveLength(1);
 });
