@@ -154,7 +154,7 @@ describe('restore temporary job encryption', () => {
   });
   it('normalizes advanced options without losing their values', () => {
     const { component, create } = setup();
-    component.settings.set([
+    component.settingsField().value.set([
       { Name: ' retry-count ', Value: '7' },
       { Name: '--custom', Value: null },
       { Name: '--', Value: 'ignored' },
