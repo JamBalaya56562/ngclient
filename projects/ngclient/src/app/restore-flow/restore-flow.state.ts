@@ -86,7 +86,8 @@ export class RestoreFlowState implements OnDestroy {
   alternateRestorePathSourcePrefix = signal<string | null>(null);
   // Entries a restore target needs besides the ones that were selected
   additionalRestorePaths = signal<string[]>([]);
-  advancedOptions = signal<SettingInputDto[]>([]);
+  advancedOptionsField = form(signal<SettingInputDto[]>([]));
+  advancedOptions = this.advancedOptionsField().value;
 
   // Hyper-V machines are stored below this virtual root in a backup
   #hyperVRoot = '\\\\duplicati\\hyperv\\';
