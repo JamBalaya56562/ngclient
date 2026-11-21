@@ -178,7 +178,8 @@ export default class DestinationComponent {
   targetUrlInitial = signal<string | null>(null);
   currentEditingIndex = signal<number | null>(null);
   targetUrlDialogOpen = signal(false);
-  showCustomList = signal(false);
+  customDestinationListField = form(signal(false));
+  showCustomList = this.customDestinationListField().value;
   /** Which list is shown while a destination is being chosen; specifying one comes first */
   destinationSource = signal<string | null>('new');
   showSavedDestinations = computed(() => this.destinations().length > 0 && this.destinationSource() === 'saved');
