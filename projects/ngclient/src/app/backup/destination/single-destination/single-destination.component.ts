@@ -889,18 +889,19 @@ export class SingleDestinationComponent {
     });
   }
 
-  #passwordValues = linkedSignal(() => {
-    const values = this.destinationForm();
-    const config = this.destinationFormConfig();
-    const passwords = (group: keyof DestinationFormValues): Record<string, string> =>
-      Object.fromEntries(
-        (config?.[group] ?? [])
-          .filter(({ type }) => type === 'Password')
-          .map(({ name }) => [name, String(values[group][name] ?? '')])
-      );
-    return { custom: passwords('custom'), dynamic: passwords('dynamic'), advanced: passwords('advanced') };
-  });
-  #passwordForm = form(this.#passwordValues);
+  #passwordForm = form(
+    linkedSignal(() => {
+      const values = this.destinationForm();
+      const config = this.destinationFormConfig();
+      const passwords = (group: keyof DestinationFormValues): Record<string, string> =>
+        Object.fromEntries(
+          (config?.[group] ?? [])
+            .filter(({ type }) => type === 'Password')
+            .map(({ name }) => [name, String(values[group][name] ?? '')])
+        );
+      return { custom: passwords('custom'), dynamic: passwords('dynamic'), advanced: passwords('advanced') };
+    })
+  );
 
   destinationPasswordField(group: keyof DestinationFormValues, name: string) {
     return this.#passwordForm[group][name];
