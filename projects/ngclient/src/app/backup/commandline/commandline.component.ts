@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, effect, inject, signal } from '@angular/core';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { FormBuilder } from '@angular/forms';
-import { FormField, provideSignalFormsConfig } from '@angular/forms/signals';
+import { form, FormField, provideSignalFormsConfig } from '@angular/forms/signals';
 import { compatForm, NG_STATUS_CLASSES } from '@angular/forms/signals/compat';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { defer } from 'rxjs';
@@ -68,7 +68,6 @@ export default class CommandlineComponent {
     'backup-id': fb.control(''),
     'backup-name': fb.control(''),
     dbpath: fb.control(''),
-    filters: fb.array<string>([]),
   });
 
   baseCmdForm = fb.group({
@@ -93,14 +92,9 @@ export default class CommandlineComponent {
 
   finishedLoading = this.#backupState.finishedLoading;
   backupId = this.#backupState.backupId;
-  filters = signal<string[]>([]);
+  filtersField = form(signal<string[]>([]));
+  filters = this.filtersField().value;
   settings = this.#backupState.settings;
-
-  updateFilters(newFilters: string[]) {
-    this.standardFields.controls.filters.clear();
-    newFilters.forEach((f) => this.standardFields.controls.filters.push(fb.control(f)));
-    this.filters.set(newFilters);
-  }
 
   #e = effect(() => {
     const backupId = this.#routeParamsSignal()?.['id'];
@@ -138,16 +132,8 @@ export default class CommandlineComponent {
       'backup-name': backup.Name,
     });
 
-    this.standardFields.controls.filters.clear();
-    if (backup.Filters && backup.Filters.length) {
-      const filterValues = backup.Filters.map((x) => `${x.Include ? '' : '-'}${x.Expression}`);
-      filterValues.forEach((f) => {
-        this.standardFields.controls.filters.push(fb.control(f));
-      });
-      this.filters.set(filterValues);
-    } else {
-      this.filters.set([]);
-    }
+    const filterValues = (backup.Filters ?? []).map((filter) => (filter.Include ? '' : '-') + filter.Expression);
+    this.filters.set(filterValues);
   }
 
   submit() {
@@ -162,7 +148,7 @@ export default class CommandlineComponent {
     const baseArgs = (baseCmd.arguments ?? '').split('\n') ?? [];
     const args = [targetUrl, ...baseArgs].filter((x) => x.length > 0);
     const stdForm = this.standardFields.value;
-    const filters = stdForm.filters ?? ([] as string[]);
+    const filters = this.filters();
 
     const command = [
       baseCmd.command!,
@@ -210,7 +196,7 @@ export default class CommandlineComponent {
   updateUrl() {
     const baseCmd = this.baseCmdForm.value;
     const stdForm = this.standardFields.value;
-    const filters = stdForm.filters ?? [];
+    const filters = this.filters();
     const options = this.settings();
 
     const stateId = this.#commandlineService.saveState({
@@ -220,7 +206,7 @@ export default class CommandlineComponent {
       backupId: stdForm['backup-id']!,
       backupName: stdForm['backup-name']!,
       dbpath: stdForm.dbpath!,
-      filters: filters as string[],
+      filters,
       options: options,
     });
 
@@ -257,10 +243,6 @@ export default class CommandlineComponent {
 
     // Handle filters
     if (state.filters) {
-      this.standardFields.controls.filters.clear();
-      state.filters.forEach((f: string) => {
-        this.standardFields.controls.filters.push(fb.control(f));
-      });
       this.filters.set(state.filters);
     }
 

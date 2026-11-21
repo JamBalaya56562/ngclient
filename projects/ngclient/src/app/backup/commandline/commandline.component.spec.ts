@@ -120,7 +120,7 @@ describe('command execution confirmation and arguments', () => {
       command: 'test',
       arguments: ['/source path', '', '/second'].join(String.fromCharCode(10)),
     });
-    component.updateFilters(['*.txt', '-cache/*', '']);
+    component.filtersField().value.set(['*.txt', '-cache/*', '']);
     component.submit();
     confirm.mock.calls[0][0]();
     expect(state.mapFormsToSettings).toHaveBeenCalledExactlyOnceWith(['backup-id', 'backup-name', 'dbpath']);
@@ -195,7 +195,6 @@ describe('command execution confirmation and arguments', () => {
       'backup-id': '42',
       'backup-name': 'Saved name',
       dbpath: '/other/db',
-      filters: ['-*.tmp'],
     });
     expect(component.filters()).toEqual(['-*.tmp']);
     expect(state.settings()).toEqual(saved.options);
