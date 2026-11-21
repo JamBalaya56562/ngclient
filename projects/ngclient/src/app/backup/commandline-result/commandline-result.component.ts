@@ -1,3 +1,4 @@
+import { form } from '@angular/forms/signals';
 import {
   afterRenderEffect,
   ChangeDetectionStrategy,
@@ -47,7 +48,8 @@ export default class CommandlineResultComponent implements OnDestroy {
   status = signal<Status>('starting');
   messageLog = signal<string[]>([]);
   logOutput = viewChild.required<ElementRef<HTMLElement>>('logOutput');
-  autoScrollEnabled = signal(true);
+  autoScrollField = form(signal(true));
+  autoScrollEnabled = this.autoScrollField().value;
 
   scrollToBottomEffect = afterRenderEffect(() => {
     this.messageLog();
