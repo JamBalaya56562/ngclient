@@ -10,7 +10,8 @@ import { form } from '@angular/forms/signals';
 export class ImportDestinationState {
   #dialog = inject(ShipDialogService);
 
-  destinationTargetUrl = signal<string | null>(null);
+  destinationUrlField = form(signal<string | null>(null));
+  destinationTargetUrl = this.destinationUrlField().value;
   destinationTestSignal = signal<TestState>(null);
   encryptionForm = form(signal<{ passphrase: string | null }>({ passphrase: '' }));
 
