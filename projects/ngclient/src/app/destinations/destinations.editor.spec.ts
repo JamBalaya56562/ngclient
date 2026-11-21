@@ -139,7 +139,7 @@ describe('saved destination editor actions', () => {
     component.selectDestination(destination);
     component.editName.set('Renamed');
     component.editDescription.set('New description');
-    component.editBaseUrl.set('file:///new');
+    component.inputForm.editBaseUrl().value.set('file:///new');
     component.save();
     expect(save).toHaveBeenCalledExactlyOnceWith(destination, {
       Name: 'Renamed',
