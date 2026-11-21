@@ -143,6 +143,7 @@ export default class SettingsComponent {
   remoteControlState = this.#remoteControlState.state;
   updatingChannel = signal(false);
   updateChannel = signal<UpdateChannel>('');
+  updateChannelField = form(this.updateChannel);
   isUsingRelay = this.#relayConfigState.relayIsEnabled;
   defaultClient = signal(this.#getDefaultClient());
   hasIpcController = this.#sysinfo.hasIpcController;
