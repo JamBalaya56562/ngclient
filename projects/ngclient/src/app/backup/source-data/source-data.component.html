@@ -195,12 +195,14 @@
       <ng-container title i18n>Exclude</ng-container>
       <p description i18n>Choose any files you want to exclude.</p>
 
-      <sh-toggle
-        class="raised primary"
-        [checked]="filesLargerThan() !== null"
-        (checkedChange)="toggleFilesLargerThan($event)"
-        i18n>
-        Files larger than
+      <sh-toggle class="raised primary">
+        <label for="enable-file-size-exclusion" i18n>Files larger than</label>
+        <input
+          id="enable-file-size-exclusion"
+          type="checkbox"
+          [formField]="filesLargerThanEnabled"
+          (keydown.space)="$event.stopPropagation()"
+          (change)="toggleFilesLargerThan(filesLargerThanEnabled().value())" />
       </sh-toggle>
 
       @if (filesLargerThan()) {

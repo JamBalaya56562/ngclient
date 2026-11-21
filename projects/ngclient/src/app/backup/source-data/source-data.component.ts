@@ -5,6 +5,7 @@ import {
   effect,
   ElementRef,
   inject,
+  linkedSignal,
   signal,
   viewChild,
 } from '@angular/core';
@@ -552,6 +553,8 @@ export default class SourceDataComponent {
     if (url.startsWith('diskimage://')) return url.slice('diskimage://'.length);
     return getSimplePath(url);
   }
+
+  filesLargerThanEnabled = form(linkedSignal(() => this.filesLargerThan() !== null));
 
   toggleFilesLargerThan($event: boolean) {
     if ($event) {

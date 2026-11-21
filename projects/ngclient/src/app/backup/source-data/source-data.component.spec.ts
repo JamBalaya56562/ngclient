@@ -87,6 +87,21 @@ describe('SourceDataComponent form contracts', () => {
     vi.clearAllMocks();
   });
 
+  it('enables and clears the size exclusion from the checkbox', async () => {
+    await render();
+    const checkbox = fixture.nativeElement.querySelector('#enable-file-size-exclusion') as HTMLInputElement;
+    if (checkbox.checked) {
+      checkbox.click();
+      await settle();
+    }
+    checkbox.click();
+    await settle();
+    expect(fixture.componentInstance.filesLargerThan()).toBe('50MB');
+    checkbox.click();
+    await settle();
+    expect(fixture.componentInstance.filesLargerThan()).toBeNull();
+  });
+
   it('loads paths, filters and size exclusion without rewriting the shared form', async () => {
     await render();
     expect(state.sourceDataForm.controls.path.value).toBe(original);
