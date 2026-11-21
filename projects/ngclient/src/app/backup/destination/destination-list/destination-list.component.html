@@ -14,7 +14,10 @@
         [formField]="inputForm.destinationSearchTerm" />
     }
   </sh-form-field>
-  <sh-toggle [(checked)]="showAllDestinations" class="raised primary" i18n>Show&nbsp;all</sh-toggle>
+  <sh-toggle class="raised primary" i18n>
+    Show&nbsp;all
+    <input type="checkbox" [formField]="inputForm.showAllDestinations" />
+  </sh-toggle>
 </div>
 
 <div class="list">

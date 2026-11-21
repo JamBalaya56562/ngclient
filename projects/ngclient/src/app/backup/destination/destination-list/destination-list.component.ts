@@ -33,9 +33,9 @@ export class DestinationListComponent {
   moduleType = input<RemoteDestinationType>('Backend');
   setDestination = output<string>();
 
-  inputForm = form(signal({ destinationSearchTerm: '' }));
+  inputForm = form(signal({ destinationSearchTerm: '', showAllDestinations: false }));
   destinationSearchTerm = this.inputForm.destinationSearchTerm().value;
-  showAllDestinations = signal(false);
+  showAllDestinations = this.inputForm.showAllDestinations().value;
 
   destinationTypeOptions = computed(() => {
     const type = this.moduleType();
