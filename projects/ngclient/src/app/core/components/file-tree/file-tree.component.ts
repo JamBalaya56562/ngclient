@@ -136,7 +136,7 @@ const LOAD_MORE_ID_SUFFIX = '\0load-more';
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     '[class.disabled]': 'disabled()',
-    '[class.maximized]': 'maximized()',
+    '[class.maximized]': 'isMaximized()',
     '(document:keydown.escape)': 'onDocumentEscape($event)',
   },
 })
@@ -210,6 +210,8 @@ export default class FileTreeComponent {
   #inputRef = signal<HTMLInputElement | null>(null);
   treeSearchQuery = signal<string>('');
   treeNodes = signal<TreeNode[]>([]);
+  maximizeField = form(this.maximized);
+  isMaximized = this.maximizeField().value;
   pathDelimiter = computed(() => this.#sysInfo.systemInfo()?.DirectorySeparator ?? '');
 
   // Boolean guard to prevent remote eval from being called when not needed
@@ -1114,7 +1116,7 @@ export default class FileTreeComponent {
   }
 
   toggleMaximized() {
-    this.maximized.update((value) => !value);
+    this.isMaximized.update((value) => !value);
   }
 
   // Escape restores the maximized tree; swallow the event so an enclosing dialog does not close as well.
@@ -1122,7 +1124,7 @@ export default class FileTreeComponent {
     if (!this.maximized() || this.createFolderDialogOpen()) return;
     event.preventDefault();
     event.stopImmediatePropagation();
-    this.maximized.set(false);
+    this.isMaximized.set(false);
   }
 
   rememberTreeFocus(node: FileTreeNode) {
