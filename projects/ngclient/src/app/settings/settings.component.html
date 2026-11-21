@@ -282,10 +282,11 @@
     </div>
 
     <div class="right multiple">
-      <sh-toggle
-        class="primary raised"
-        [checked]="fileTreeFoldersFirst()"
-        (checkedChange)="setFileTreeFoldersFirst($event)">
+      <sh-toggle class="primary raised">
+        <input
+          type="checkbox"
+          [formField]="fileTreeSortingForm.foldersFirst"
+          (change)="setFileTreeFoldersFirst(fileTreeSortingForm.foldersFirst().value())" />
         @if (fileTreeFoldersFirst()) {
           <label i18n>Folders are shown before files</label>
         } @else {
@@ -293,10 +294,11 @@
         }
       </sh-toggle>
 
-      <sh-toggle
-        class="primary raised"
-        [checked]="fileTreeCaseSensitiveSort()"
-        (checkedChange)="setFileTreeCaseSensitiveSort($event)">
+      <sh-toggle class="primary raised">
+        <input
+          type="checkbox"
+          [formField]="fileTreeSortingForm.caseSensitive"
+          (change)="setFileTreeCaseSensitiveSort(fileTreeSortingForm.caseSensitive().value())" />
         @if (fileTreeCaseSensitiveSort()) {
           <label i18n>Sorting is case sensitive</label>
         } @else {
