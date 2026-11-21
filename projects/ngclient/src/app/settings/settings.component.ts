@@ -209,6 +209,7 @@ export default class SettingsComponent {
   updatingAllowedHosts = signal(false);
   updatingConsoleControl = signal(false);
   consoleControlDisabled = signal(false);
+  consoleControlField = form(linkedSignal(() => !this.consoleControlDisabled()));
 
   updatingReducedReporting = signal(false);
   reducedReporting = this.#serverSettingsService.reducedReporting;

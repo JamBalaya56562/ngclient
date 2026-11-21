@@ -43,17 +43,20 @@
         </div>
 
         <div class="right multiple">
-          <sh-toggle
-            class="primary raised"
-            [checked]="!consoleControlDisabled()"
-            (checkedChange)="toggleConsoleControl($event)">
+          <sh-toggle class="primary raised">
+            <input
+              id="disable-console-control"
+              type="checkbox"
+              [formField]="consoleControlField"
+              (keydown.space)="$event.stopPropagation()"
+              (change)="toggleConsoleControl(consoleControlField().value())" />
             @if (consoleControlDisabled()) {
-              <label i18n>
+              <label for="disable-console-control" i18n>
                 Remote control disabled
                 <sh-icon suffix [shTooltip]="remoteControlTooltip()">info</sh-icon>
               </label>
             } @else {
-              <label i18n>
+              <label for="disable-console-control" i18n>
                 Remote control enabled
                 <sh-icon suffix [shTooltip]="remoteControlTooltip()">info</sh-icon>
               </label>
