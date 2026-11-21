@@ -81,10 +81,16 @@ export default class Destinations {
     this.selectedDestination() !== 'new' ? (this.selectedDestination() as ConnectionStringDto).ID : null
   );
 
-  inputForm = form(signal({ editName: null as string | null, editDescription: null as string | null }));
+  inputForm = form(
+    signal({
+      editName: null as string | null,
+      editDescription: null as string | null,
+      editBaseUrl: null as string | null,
+    })
+  );
   editName = this.inputForm.editName().value;
   editDescription = this.inputForm.editDescription().value;
-  editBaseUrl = signal<string | null>(null);
+  editBaseUrl = this.inputForm.editBaseUrl().value;
   initialBaseUrl = signal<string | null>(null);
 
   isUrlChanged = computed(() => {
