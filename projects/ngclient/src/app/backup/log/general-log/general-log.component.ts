@@ -1,3 +1,4 @@
+import { form } from '@angular/forms/signals';
 import { DatePipe, JsonPipe, NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
@@ -201,7 +202,10 @@ export class GeneralLogComponent {
     source: this.pagination,
     computation: (): ReadonlySet<string> => new Set(),
   });
-  openSection = linkedSignal({ source: this.pagination, computation: (): 'errors' | 'warnings' | null => null });
+  openSectionField = form(
+    linkedSignal({ source: this.pagination, computation: (): 'errors' | 'warnings' | null => null })
+  );
+  openSection = this.openSectionField().value;
 
   resource = rxResource({
     params: () => ({ id: this.backupId(), offset: this.pagination().offset, pagesize: this.pagination().pagesize }),
