@@ -16,11 +16,11 @@
       shButton
       type="button"
       class="icon small maximize-toggle"
-      [attr.aria-pressed]="maximized()"
-      [attr.aria-label]="maximized() ? maximizeLabels.restore : maximizeLabels.maximize"
-      [shTooltip]="maximized() ? maximizeLabels.restore : maximizeLabels.maximize"
+      [attr.aria-pressed]="isMaximized()"
+      [attr.aria-label]="isMaximized() ? maximizeLabels.restore : maximizeLabels.maximize"
+      [shTooltip]="isMaximized() ? maximizeLabels.restore : maximizeLabels.maximize"
       (click)="toggleMaximized()">
-      @if (maximized()) {
+      @if (isMaximized()) {
         <sh-icon>corners-in</sh-icon>
       } @else {
         <sh-icon>corners-out</sh-icon>
