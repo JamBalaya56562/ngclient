@@ -76,7 +76,8 @@ export default class Destinations {
   isLoading = this.#connectionStringsState.resourceDestinations.isLoading;
   testUrl = viewChild(TestUrl);
 
-  selectedDestination = signal<ConnectionStringDto | 'new' | null>(null);
+  selectedDestinationField = form(signal<ConnectionStringDto | 'new' | null>(null));
+  selectedDestination = this.selectedDestinationField().value;
   selectedDestinationId = computed(() =>
     this.selectedDestination() !== 'new' ? (this.selectedDestination() as ConnectionStringDto).ID : null
   );
