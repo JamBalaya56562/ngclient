@@ -184,6 +184,7 @@ export default class SettingsComponent {
   }
 
   allowRemoteAccess = signal(false); // if true then send 'any' if false then send 'loopback'
+  allowRemoteAccessField = form(this.allowRemoteAccess);
   allowedHostnamesForm = form(signal({ hostnames: '' }));
   loadedAllowedHostnames = signal<string>('');
   updatingRemoteAccess = signal(false);

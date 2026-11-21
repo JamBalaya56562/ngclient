@@ -343,8 +343,14 @@
     </div>
 
     <div class="right remote-access-form">
-      <sh-toggle class="primary raised" [checked]="allowRemoteAccess()" (checkedChange)="updateRemoteAccess($event)">
-        <label i18n>Allow remote access</label>
+      <sh-toggle class="primary raised">
+        <input
+          id="allow-remote-access"
+          type="checkbox"
+          [formField]="allowRemoteAccessField"
+          (keydown.space)="$event.stopPropagation()"
+          (change)="updateRemoteAccess(allowRemoteAccess())" />
+        <label for="allow-remote-access" i18n>Allow remote access</label>
       </sh-toggle>
 
       @if (allowRemoteAccess()) {
