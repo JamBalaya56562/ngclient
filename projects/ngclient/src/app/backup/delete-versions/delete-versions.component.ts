@@ -1,3 +1,4 @@
+import { form, FormField } from '@angular/forms/signals';
 import { ChangeDetectionStrategy, Component, computed, DestroyRef, effect, inject, input, signal } from '@angular/core';
 import { rxResource, takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Router, RouterLink } from '@angular/router';
@@ -22,7 +23,7 @@ type OrderBy = 'version' | 'size' | 'files';
 
 @Component({
   selector: 'app-delete-versions',
-  imports: [ShipButton, ShipCheckbox, ShipProgressBar, ShipTable, BytesPipe, RelativeTimePipe, RouterLink],
+  imports: [ShipButton, ShipCheckbox, ShipProgressBar, ShipTable, BytesPipe, RelativeTimePipe, RouterLink, FormField],
   templateUrl: './delete-versions.component.html',
   styleUrl: './delete-versions.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -49,6 +50,7 @@ export default class DeleteVersionsComponent {
   isDeleting = signal(false);
   performCompact = signal(true);
   versions = signal<VersionOption[]>([]);
+  versionsForm = form(this.versions);
 
   constructor() {
     effect(() => {
