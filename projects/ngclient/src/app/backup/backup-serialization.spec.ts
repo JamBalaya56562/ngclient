@@ -151,7 +151,7 @@ describe('BackupState saved DTO contracts', () => {
   it('saves a Sync job without encryption or retention and with scheduling disabled', () => {
     state.backupId.set('new');
     load();
-    state.generalForm.controls.operationType.setValue('Sync');
+    state.operationType.set('Sync');
     state.mapScheduleToForm(null);
     state.submit(true);
     expect(create).toHaveBeenCalledExactlyOnceWith({
@@ -196,7 +196,7 @@ describe('BackupState saved DTO contracts', () => {
       encryption: 'aes',
       password: '',
       repeatPassword: '',
-      operationType: 'Backup',
     });
+    expect(state.operationTypeField().value()).toBe('Backup');
   });
 });
