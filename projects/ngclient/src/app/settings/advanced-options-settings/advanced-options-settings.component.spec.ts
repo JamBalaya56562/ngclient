@@ -63,7 +63,7 @@ describe('Advanced options settings save', async () => {
 
   it('preserves option names, values, removal nulls and excludes ordinary server settings', async () => {
     const { component, patch } = await render();
-    component.settings.set([option('retry-delay', '10s'), option('--custom-option', 'special & value')]);
+    component.settingsField().value.set([option('retry-delay', '10s'), option('--custom-option', 'special & value')]);
     component.submit();
     expect(patch).toHaveBeenCalledExactlyOnceWith({
       body: {
@@ -76,7 +76,7 @@ describe('Advanced options settings save', async () => {
 
   it('shows errors, retains edits and retries current values without reporting success', async () => {
     const { fixture, component, element, response, patch, refreshServerSettings } = await render();
-    component.settings.set([option('retry-delay', '10s')]);
+    component.settingsField().value.set([option('retry-delay', '10s')]);
     component.submit();
     response.error(new Error('Save rejected'));
     fixture.detectChanges();
@@ -87,7 +87,7 @@ describe('Advanced options settings save', async () => {
     expect(refreshServerSettings).not.toHaveBeenCalled();
     const retry = new Subject<unknown>();
     patch.mockReturnValue(retry);
-    component.settings.set([option('retry-delay', '20s')]);
+    component.settingsField().value.set([option('retry-delay', '20s')]);
     component.submit();
     fixture.detectChanges();
     expect(element.querySelector('[role=alert]')).toBeNull();
