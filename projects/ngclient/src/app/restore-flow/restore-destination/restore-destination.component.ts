@@ -74,7 +74,8 @@ export default class RestoreDestinationComponent {
   targetUrlForm = form(signal<{ url: string | null }>({ url: null }));
   targetUrlCtrl = this.targetUrlForm.url().value;
   targetUrlInitial = signal<string | null>(null);
-  targetUrlDialogOpen = signal(false);
+  targetUrlDialogField = form(signal(false));
+  targetUrlDialogOpen = this.targetUrlDialogField().value;
   toggleNewDestination = signal(true);
 
   selectedDestinationType = computed(() => {
