@@ -46,8 +46,7 @@ export class StartAllDialog {
   allSelected = computed(() => this.selected().size === this.backups().length);
   noneSelected = computed(() => this.selected().size === 0);
 
-  readonly afterActionModel = signal({ afterAction: 'None' });
-  readonly afterActionForm = form(this.afterActionModel);
+  readonly afterActionForm = form(signal({ afterAction: 'None' }));
   readonly afterAction = this.afterActionForm.afterAction().value;
 
   // Every backup starts out picked, so confirming right away starts them all
