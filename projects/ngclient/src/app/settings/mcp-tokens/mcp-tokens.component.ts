@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, linkedSignal, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { form, FormField, maxLength } from '@angular/forms/signals';
 import { ShipAlert } from '@ship-ui/core/ship-alert';
@@ -76,6 +76,9 @@ export class McpTokensComponent {
       .backups()
       .map((x) => ({ id: x.Backup?.ID ?? '', name: x.Backup?.Name ?? '' }))
       .filter((x) => x.id !== '')
+  );
+  backupScopeForm = form(
+    linkedSignal(() => Object.fromEntries(this.backups().map(({ id }) => [id, this.isBackupSelected(id)])))
   );
   #backupNames = computed(() => new Map(this.backups().map((x) => [x.id, x.name])));
   formError = computed(() => getMcpTokenFormError(this.form()));
