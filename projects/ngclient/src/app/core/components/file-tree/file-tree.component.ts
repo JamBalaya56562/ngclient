@@ -951,7 +951,8 @@ export default class FileTreeComponent {
   #treeId = randomUUID();
   #focusedTreePath = signal<string | null>(null);
   // Folders whose listing has been fetched, so an empty folder still counts as expanded.
-  #expandedPaths = signal<ReadonlySet<string>>(new Set());
+  #expandedPathsField = form(signal<ReadonlySet<string>>(new Set()));
+  #expandedPaths = this.#expandedPathsField().value;
   #typeAhead = '';
   #typeAheadTime = 0;
 
