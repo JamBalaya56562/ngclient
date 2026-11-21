@@ -228,8 +228,8 @@
   </sh-dialog>
 }
 
-@if (targetUrlDialogOpen()) {
-  <sh-dialog [(isOpen)]="targetUrlDialogOpen" [options]="{ maxWidth: '700px', width: '100%' }">
+@if (targetUrlDialogIsOpen()) {
+  <sh-dialog [(isOpen)]="targetUrlDialogIsOpen" [options]="{ maxWidth: '700px', width: '100%' }">
     <header header>
       <div class="target-dialog-header">
         @if (!hasDestination) {
