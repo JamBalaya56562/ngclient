@@ -118,12 +118,14 @@ describe('Import destination preparation', () => {
   it('preserves the temporary-backup payload and accepts only the first result', () => {
     const { component, state, response, post, navigate } = render();
     state.encryptionForm.passphrase().value.set('secret & value');
-    component.settings.set([
-      { Name: ' retry-delay ', Value: '5s' },
-      { Name: '--number-of-retries', Value: '3' },
-      { Name: '--' },
-      { Name: ' ' },
-    ]);
+    component
+      .settingsField()
+      .value.set([
+        { Name: ' retry-delay ', Value: '5s' },
+        { Name: '--number-of-retries', Value: '3' },
+        { Name: '--' },
+        { Name: ' ' },
+      ]);
     component.next();
     expect(post).toHaveBeenCalledWith({
       body: {

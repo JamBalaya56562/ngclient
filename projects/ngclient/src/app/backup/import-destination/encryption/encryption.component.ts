@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed, DestroyRef, inject, signal } from '@angular/core';
-import { FormField } from '@angular/forms/signals';
+import { form, FormField } from '@angular/forms/signals';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ShipButton } from '@ship-ui/core/ship-button';
 import { ShipFormField } from '@ship-ui/core/ship-form-field';
@@ -29,7 +29,8 @@ export default class EncryptionComponent {
   #preparation = new AsyncOperation<string>();
   preparationState = this.#preparation.state;
   creatingTemporaryBackup = this.#preparation.pending;
-  settings = signal<SettingInputDto[]>([]);
+  settingsField = form(signal<SettingInputDto[]>([]));
+  settings = this.settingsField().value;
   hasEncryptedBackup = computed(() => {
     const testSignal = this.#importDestinationState.destinationTestSignal();
     if (testSignal === 'testing' || typeof testSignal === 'string') return true;
