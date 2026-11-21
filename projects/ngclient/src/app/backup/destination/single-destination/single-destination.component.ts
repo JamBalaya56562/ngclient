@@ -744,18 +744,19 @@ export class SingleDestinationComponent {
     return options;
   }
 
-  #flagValues = linkedSignal(() => {
-    const values = this.destinationForm();
-    const config = this.destinationFormConfig();
-    const flags = (group: keyof DestinationFormValues): Record<string, string> =>
-      Object.fromEntries(
-        (config?.[group] ?? [])
-          .filter((field) => field.type === 'Flags')
-          .map(({ name }) => [name, String(values[group][name] ?? '')])
-      );
-    return { custom: flags('custom'), dynamic: flags('dynamic'), advanced: flags('advanced') };
-  });
-  #flagsForm = form(this.#flagValues);
+  #flagsForm = form(
+    linkedSignal(() => {
+      const values = this.destinationForm();
+      const config = this.destinationFormConfig();
+      const flags = (group: keyof DestinationFormValues): Record<string, string> =>
+        Object.fromEntries(
+          (config?.[group] ?? [])
+            .filter((field) => field.type === 'Flags')
+            .map(({ name }) => [name, String(values[group][name] ?? '')])
+        );
+      return { custom: flags('custom'), dynamic: flags('dynamic'), advanced: flags('advanced') };
+    })
+  );
 
   destinationFlagsField(group: keyof DestinationFormValues, name: string) {
     return this.#flagsForm[group][name];
