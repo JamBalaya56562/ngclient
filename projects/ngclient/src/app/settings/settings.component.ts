@@ -1,5 +1,14 @@
 import { disabled, form, FormField } from '@angular/forms/signals';
-import { ChangeDetectionStrategy, Component, computed, effect, inject, signal, viewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  effect,
+  inject,
+  linkedSignal,
+  signal,
+  viewChild,
+} from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShipAlert } from '@ship-ui/core/ship-alert';
 import { ShipButton } from '@ship-ui/core/ship-button';
@@ -199,6 +208,7 @@ export default class SettingsComponent {
       : $localize`When switched on, every report leaving this machine carries log message ids, counters and dates only: no message text, file names or error messages. Bug reports cannot be created while it is on.`
   );
   hideConsoleConnectionStatus = this.#serverSettingsService.isConsoleConnectionStatusHidden;
+  consoleStatusVisibilityField = form(linkedSignal(() => !this.hideConsoleConnectionStatus()));
   isControllerIpcEnabled = this.#serverSettingsService.isControllerIpcEnabled;
   fileTreeFoldersFirst = this.#fileTreeState.foldersFirst;
   fileTreeCaseSensitiveSort = this.#fileTreeState.caseSensitiveSort;
