@@ -1,3 +1,4 @@
+import { form } from '@angular/forms/signals';
 import { DatePipe, JsonPipe, NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
@@ -195,7 +196,8 @@ export class GeneralLogComponent {
     computation: (): { id: number; text: string } | null => null,
   });
 
-  openEntry = linkedSignal({ source: this.pagination, computation: (): number | null => null });
+  openEntryField = form(linkedSignal({ source: this.pagination, computation: (): number | null => null }));
+  openEntry = this.openEntryField().value;
   // Keys of the log line rows the user has expanded, cleared when another entry is opened
   expandedLogLines = linkedSignal({
     source: this.pagination,
