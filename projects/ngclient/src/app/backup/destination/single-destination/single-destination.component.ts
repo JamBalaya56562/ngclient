@@ -243,7 +243,8 @@ export class SingleDestinationComponent {
     return this.destinationTextForm[group][name];
   }
 
-  showTextArea = signal(false);
+  advancedOptionsDisplayField = form(signal(false));
+  showTextArea = this.advancedOptionsDisplayField().value;
   hasV2ListBackendOperations = this.#sysinfo.hasV2ListBackendOperations;
 
   isLoadingRestoreBackupIdOptions = signal(false);
