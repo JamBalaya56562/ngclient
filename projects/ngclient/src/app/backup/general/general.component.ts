@@ -8,7 +8,7 @@ import {
   signal,
   viewChild,
 } from '@angular/core';
-import { FormField, provideSignalFormsConfig } from '@angular/forms/signals';
+import { form, FormField, provideSignalFormsConfig } from '@angular/forms/signals';
 import { compatForm, NG_STATUS_CLASSES } from '@angular/forms/signals/compat';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ShipAlert } from '@ship-ui/core/ship-alert';
@@ -68,11 +68,14 @@ export default class GeneralComponent {
   showCopyPassword = signal(false);
   noneOptionKey = NONE_OPTION.Key;
 
+  passwordCopyField = form(this.copiedPassword);
+  passwordCopied = this.passwordCopyField().value;
+
   encryptionEffect = effect(() => {
     const encryptionField = this.encryptionFieldSignal();
 
     if (encryptionField === NONE_OPTION.Key) {
-      this.copiedPassword.set(false);
+      this.passwordCopied.set(false);
       this.showCopyPassword.set(false);
     }
   });
@@ -101,7 +104,7 @@ export default class GeneralComponent {
 
     await this.#copyToClipboard(pass ?? '');
 
-    this.copiedPassword.set(true);
+    this.passwordCopied.set(true);
   }
 
   async #copyToClipboard(text: string) {
@@ -124,7 +127,7 @@ export default class GeneralComponent {
   }
 
   generatePassword() {
-    this.copiedPassword.set(false);
+    this.passwordCopied.set(false);
 
     const newPass = this.#passwordGeneratorService.generate(41);
     this.generalForm.password().value.set(newPass);
