@@ -197,14 +197,14 @@ export default class FileTreeComponent {
     restore: $localize`Restore file tree size`,
   };
   createFolderDialogOpen = signal(false);
-  inputForm = form(signal({ createFolderPath: null as string | null }));
+  inputForm = form(signal({ createFolderPath: null as string | null, discoveryMethod: 'browse' as 'browse' | 'path' }));
   createFolderPath = this.inputForm.createFolderPath().value;
   errorMessage = signal<string | null>(null);
   anyRemoteSourcesLoaded = signal(false);
 
   treeContainerRef = viewChild<ElementRef<HTMLDivElement>>('treeContainer');
   formRef = viewChild<ElementRef<HTMLFormElement>>('formRef');
-  pathDiscoveryMethod = signal<'browse' | 'path'>('browse');
+  pathDiscoveryMethod = this.inputForm.discoveryMethod().value;
   isLoading = signal<string | null>(null);
   currentPath = signal<string>('');
   #inputRef = signal<HTMLInputElement | null>(null);
