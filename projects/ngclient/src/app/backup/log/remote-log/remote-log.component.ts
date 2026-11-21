@@ -1,3 +1,4 @@
+import { form } from '@angular/forms/signals';
 import { DatePipe, JsonPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, input, signal } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
@@ -47,7 +48,8 @@ export class RemoteLogComponent {
     pagesize: 100,
   });
 
-  copiedFromIndex = signal<number | null>(null);
+  copiedFromIndexField = form(signal<number | null>(null));
+  copiedFromIndex = this.copiedFromIndexField().value;
 
   resource = rxResource({
     params: () => ({ id: this.backupId()!, ...this.pagination() }),
