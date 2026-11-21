@@ -60,8 +60,8 @@ export const createRestoreOptionsForm = () => {
     imageFolder: fb.control<string>(''),
     imageFileName: fb.control<string>(''),
     imageFormat: fb.control<ImageFileFormat>('raw'),
-    imageOverwrite: fb.control<boolean>(false),
-    imagePreallocate: fb.control<boolean>(false),
+    imageOverwrite: fb.nonNullable.control(false),
+    imagePreallocate: fb.nonNullable.control(false),
     databaseOverwrite: fb.control<boolean>(false),
     databaseCreateTables: fb.control<boolean>(false),
     databaseAllowMixedVersions: fb.control<boolean>(false),
@@ -96,6 +96,12 @@ export default class OptionsComponent {
   optionsForm = this.#restoreFlowState.optionsForm;
   handleExistingField = compatForm(signal({ handleExisting: this.optionsForm.controls.handleExisting })).handleExisting;
   restoreFromField = compatForm(signal({ restoreFrom: this.optionsForm.controls.restoreFrom })).restoreFrom;
+  imageFields = compatForm(
+    signal({
+      imageOverwrite: this.optionsForm.controls.imageOverwrite,
+      imagePreallocate: this.optionsForm.controls.imagePreallocate,
+    })
+  );
   optionsFormSignal = this.#restoreFlowState.optionsFormSignal;
   isSubmitting = this.#restoreFlowState.isSubmitting;
   extendedData = this.#restoreFlowState.extendedDataType;
