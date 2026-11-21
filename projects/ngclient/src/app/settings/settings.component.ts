@@ -1,5 +1,14 @@
 import { disabled, form, FormField } from '@angular/forms/signals';
-import { ChangeDetectionStrategy, Component, computed, effect, inject, signal, viewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  effect,
+  inject,
+  linkedSignal,
+  signal,
+  viewChild,
+} from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShipAlert } from '@ship-ui/core/ship-alert';
 import { ShipButton } from '@ship-ui/core/ship-button';
@@ -288,6 +297,10 @@ export default class SettingsComponent {
 
   isFileWatcherDisabled = this.#serverSettingsService.isFileWatcherDisabled;
   updatingFileWatcherState = signal(false);
+  fileWatcherField = form(
+    linkedSignal(() => !this.isFileWatcherDisabled()),
+    (field) => disabled(field, () => this.updatingFileWatcherState())
+  );
 
   saveFileWatcherState($event: boolean) {
     this.updatingFileWatcherState.set(true);

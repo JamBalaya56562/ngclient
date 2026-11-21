@@ -191,6 +191,10 @@ async function setupAuthentication(
     sendServerStatus,
     sendNotifications,
     sendRemoteControlStatus,
+    setServerOnlyOptions: (names: string[]) =>
+      Object.assign(getResponses['/api/v1/systeminfo'] as object, {
+        ServerOnlyOptions: names.map((Name) => ({ Name })),
+      }),
   };
 }
 
