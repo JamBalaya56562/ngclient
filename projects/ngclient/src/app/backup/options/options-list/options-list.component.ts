@@ -85,8 +85,9 @@ export class OptionsListComponent {
   hiddenOptions = input<string[]>([]);
   hasFreeTextSettings = input(false);
   applicationOptions = input<SettingDto[] | null | undefined>();
-  showTextArea = signal(false);
-  showOptionNames = signal(false);
+  displayForm = form(signal({ showTextArea: false, showOptionNames: false }));
+  showTextArea = this.displayForm.showTextArea().value;
+  showOptionNames = this.displayForm.showOptionNames().value;
 
   allOptionsGrouped = this.#sysInfo.allOptionsGrouped;
   allOptions = this.#sysInfo.allOptions;
