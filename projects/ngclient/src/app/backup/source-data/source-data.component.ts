@@ -555,6 +555,8 @@ export default class SourceDataComponent {
     return getSimplePath(url);
   }
 
+  filesLargerThanEnabled = form(linkedSignal(() => this.filesLargerThan() !== null));
+
   toggleFilesLargerThan($event: boolean) {
     if ($event) {
       this.sourceForm.filesLargerThan().value.set({
