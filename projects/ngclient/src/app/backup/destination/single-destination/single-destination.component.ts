@@ -239,7 +239,7 @@ export class SingleDestinationComponent {
 
   destinationTextField(group: 'custom' | 'dynamic' | 'advanced', name: string) {
     // Field-tree lookup itself is untracked. Recheck when the provider adds or removes a field.
-    this.#destinationTextValues();
+    this.destinationTextForm().value();
     return this.destinationTextForm[group][name];
   }
 
@@ -998,12 +998,14 @@ export class SingleDestinationComponent {
       !!(this.hasManualStorageOptions() || (this.isConnectedToConsole() && this.hasStorageApiKey()))
   );
   storageIdEditable = linkedSignal({ source: this.#showStorageIdEditor, computation: () => false });
-  #storageIdValues = linkedSignal(() => ({
-    backupId: String(this.destinationForm().dynamic['duplicati-backup-id'] ?? ''),
-  }));
-  storageIdForm = form(this.#storageIdValues, (fields) => {
-    disabled(fields.backupId, () => !this.storageIdEditable());
-  });
+  storageIdForm = form(
+    linkedSignal(() => ({
+      backupId: String(this.destinationForm().dynamic['duplicati-backup-id'] ?? ''),
+    })),
+    (fields) => {
+      disabled(fields.backupId, () => !this.storageIdEditable());
+    }
+  );
 
   openConsole() {
     this.#remoteControlState.openConsole();
