@@ -1,0 +1,18 @@
+<header header>
+  <h3 i18n>Missing Local Database</h3>
+</header>
+
+<div content>
+  <p i18n>
+    The local database for this backup is missing. Recreating it reads the files at the destination and can take a
+    while. You can also restore without it: the restore then builds a temporary database with only what it needs.
+  </p>
+</div>
+
+<footer footer>
+  <button shButton type="button" (click)="closed.emit(null)" i18n>Cancel</button>
+  <button shButton type="button" (click)="closed.emit('temporary')" i18n>Restore without database</button>
+  <button shButton type="button" class="raised primary" (click)="closed.emit('recreate')" i18n>
+    Recreate database
+  </button>
+</footer>

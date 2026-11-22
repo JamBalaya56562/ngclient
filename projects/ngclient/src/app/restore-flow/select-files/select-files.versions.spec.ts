@@ -39,6 +39,7 @@ describe('restore version list', () => {
       backupId: signal('42'),
       versionOptionsLoading: signal(false),
       waitingForBackup: signal(false),
+      recreatingDatabase: signal(false),
       versionOptions: signal(versionOptions),
       isFileRestore: signal(true),
       extendedDataType: signal<string | null>(null),

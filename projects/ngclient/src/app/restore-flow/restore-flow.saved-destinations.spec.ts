@@ -5,6 +5,7 @@ import { ShipDialogService } from '@ship-ui/core/ship-dialog';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { DuplicatiServer } from '../core/openapi';
 import { SysinfoState } from '../core/states/sysinfo.state';
+import { ServerStateService } from '../core/services/server-state.service';
 import { ServerSettingsService } from '../settings/server-settings.service';
 import { RestoreFlowState } from './restore-flow.state';
 
@@ -20,6 +21,7 @@ describe('direct restore saved destination selection', () => {
         { provide: ShipDialogService, useValue: { open: vi.fn() } },
         { provide: DuplicatiServer, useValue: {} },
         { provide: ServerSettingsService, useValue: { serverSettings: signal(undefined) } },
+        { provide: ServerStateService, useValue: { waitForTaskToComplete: vi.fn() } },
       ],
     });
     return TestBed.inject(RestoreFlowState);

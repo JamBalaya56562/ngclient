@@ -6,6 +6,7 @@ import { Subject } from 'rxjs';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { DuplicatiServer } from '../core/openapi';
 import { SysinfoState } from '../core/states/sysinfo.state';
+import { ServerStateService } from '../core/services/server-state.service';
 import { ServerSettingsService } from '../settings/server-settings.service';
 import { RestoreFlowState } from './restore-flow.state';
 
@@ -31,6 +32,7 @@ describe('RestoreFlowState restore request submission', () => {
           useValue: { hasRestoreOptions: signal(hasOptions), hasRegisterRestoredItems: signal(false) },
         },
         { provide: ServerSettingsService, useValue: { serverSettings: signal({}) } },
+        { provide: ServerStateService, useValue: { waitForTaskToComplete: vi.fn() } },
       ],
     });
     const state = TestBed.inject(RestoreFlowState);

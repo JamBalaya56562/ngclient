@@ -5,16 +5,18 @@ import { TestBed } from '@angular/core/testing';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ShipAlertService } from '@ship-ui/core/ship-alert';
 import { ShipDialogService } from '@ship-ui/core/ship-dialog';
-import { defer } from 'rxjs';
+import { defer, Subject, take } from 'rxjs';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { ENVIRONMENT_TOKEN } from '../../environments/environment-token';
 import { httpInterceptor } from '../core/interceptors/http.interceptor';
-import { DuplicatiServer } from '../core/openapi';
+import { DuplicatiServer, GetTaskStateDto } from '../core/openapi';
 import { client } from '../core/openapi/client.gen';
 import { LOCALSTORAGE } from '../core/services/localstorage.token';
+import { ServerStateService } from '../core/services/server-state.service';
 import { AppAuthState } from '../core/states/app-auth.state';
 import { SysinfoState } from '../core/states/sysinfo.state';
 import { ServerSettingsService } from '../settings/server-settings.service';
+import { MissingDatabaseChoice, MissingDatabaseDialog } from './missing-database-dialog/missing-database-dialog';
 import { RestoreFlowState } from './restore-flow.state';
 
 const backupUrl = '/api/v1/backup/42';
@@ -66,6 +68,8 @@ describe('RestoreFlowState fileset/backup HTTP ordering', () => {
     const open = vi.fn();
     const navigate = vi.fn();
     const alert = vi.fn();
+    const task = new Subject<GetTaskStateDto>();
+    const wait = vi.fn(() => task.pipe(take(1)));
     TestBed.configureTestingModule({
       providers: [
         provideHttpClient(withInterceptors([httpInterceptor])),
@@ -91,6 +95,7 @@ describe('RestoreFlowState fileset/backup HTTP ordering', () => {
           },
         },
         { provide: ServerSettingsService, useValue: { serverSettings: signal({}) } },
+        { provide: ServerStateService, useValue: { waitForTaskToComplete: wait } },
       ],
     });
     http = TestBed.inject(HttpTestingController);
@@ -132,6 +137,8 @@ describe('RestoreFlowState fileset/backup HTTP ordering', () => {
       flushFilesets,
       activityReads,
       setActive: (value: boolean) => (active = value),
+      task,
+      wait,
     };
   }
   const settle = async () => {
@@ -162,28 +169,85 @@ describe('RestoreFlowState fileset/backup HTTP ordering', () => {
     expect(state.versionOptionsLoading()).toBe(false);
   });
 
-  it('still reports a genuinely missing database and opens the existing repair route', async () => {
-    const { state, open, navigate, flushBackup, flushFilesets } = setup();
-    state.getBackup();
+  async function reportMissingDatabase(ctx: ReturnType<typeof setup>) {
+    ctx.state.getBackup();
     await settle();
-    flushBackup(false);
-    flushFilesets();
+    ctx.flushBackup(false);
+    ctx.flushFilesets();
     await settle();
-    flushBackup(false);
+    ctx.flushBackup(false);
     await settle();
-    expect(open).toHaveBeenCalledTimes(1);
-    expect(open.mock.calls[0][1].data).toEqual({
-      title: 'Missing Local Database',
-      message:
-        'The local database for this backup is missing. Please repair or recreate the local database before restoring.',
-      confirmText: 'OK',
-      cancelText: undefined,
-    });
-    expect(navigate).not.toHaveBeenCalled();
-    open.mock.calls[0][1].closed(true);
-    expect(navigate).toHaveBeenCalledExactlyOnceWith(['/backup', '42', 'database']);
-    expect(state.versionOptions()).toEqual([]);
-    expect(state.versionOptionsLoading()).toBe(false);
+    expect(ctx.open).toHaveBeenCalledTimes(1);
+    expect(ctx.open.mock.calls[0][0]).toBe(MissingDatabaseDialog);
+    return ctx.open.mock.calls[0][1].closed as (choice: MissingDatabaseChoice | null | undefined) => void;
+  }
+
+  it('asks about a genuinely missing database and opens the repair route when the question is dismissed', async () => {
+    const ctx = setup();
+    const closed = await reportMissingDatabase(ctx);
+    expect(ctx.navigate).not.toHaveBeenCalled();
+    closed(undefined);
+    expect(ctx.navigate).toHaveBeenCalledExactlyOnceWith(['/backup', '42', 'database']);
+    expect(ctx.state.versionOptions()).toEqual([]);
+    expect(ctx.state.versionOptionsLoading()).toBe(false);
+  });
+
+  it('recreates a missing database and then lists the versions from it', async () => {
+    const ctx = setup();
+    const closed = await reportMissingDatabase(ctx);
+    closed('recreate');
+    await settle();
+    const repair = http.expectOne(`${backupUrl}/repair`);
+    expect(repair.request.method).toBe('POST');
+    expect(repair.request.body).toEqual({});
+    repair.flush({ Status: 'OK', ID: 7 });
+    await settle();
+    expect(ctx.wait).toHaveBeenCalledExactlyOnceWith(7);
+    expect(ctx.state.recreatingDatabase()).toBe(true);
+    expect(ctx.state.versionOptionsLoading()).toBe(true);
+    ctx.task.next({ ID: 7, Status: 'Completed' });
+    await settle();
+    expect(ctx.state.recreatingDatabase()).toBe(false);
+    ctx.flushFilesets();
+    await settle();
+    ctx.flushBackup(true);
+    await settle();
+    expect(ctx.open).toHaveBeenCalledTimes(1);
+    expect(ctx.navigate).not.toHaveBeenCalled();
+    expect(ctx.state.versionOptions()).toEqual([fileset]);
+    expect(ctx.state.versionOptionsLoading()).toBe(false);
+  });
+
+  it('reports a failed recreate instead of listing again', async () => {
+    const ctx = setup();
+    const closed = await reportMissingDatabase(ctx);
+    closed('recreate');
+    await settle();
+    http.expectOne(`${backupUrl}/repair`).flush({ Status: 'OK', ID: 8 });
+    await settle();
+    ctx.task.next({ ID: 8, Status: 'Failed', ErrorMessage: 'No filesets found on remote target' });
+    await settle();
+    http.expectNone(filesetsUrl);
+    expect(ctx.open).toHaveBeenCalledTimes(2);
+    expect(ctx.open.mock.calls[1][1].data.message).toBe(
+      'The local database could not be recreated: No filesets found on remote target'
+    );
+    expect(ctx.state.recreatingDatabase()).toBe(false);
+    expect(ctx.state.versionOptionsLoading()).toBe(false);
+  });
+
+  it('restores without the database through a temporary copy of the backup', async () => {
+    const ctx = setup();
+    const closed = await reportMissingDatabase(ctx);
+    closed('temporary');
+    await settle();
+    const copy = http.expectOne(`${backupUrl}/copytotemp`);
+    expect(copy.request.method).toBe('POST');
+    copy.flush({ ID: 'temp-9', Temporary: true });
+    await settle();
+    http.expectNone(`${backupUrl}/repair`);
+    expect(ctx.wait).not.toHaveBeenCalled();
+    expect(ctx.navigate).toHaveBeenCalledExactlyOnceWith(['/restore', 'temp-9', 'select-files']);
   });
 
   it('does not report a missing database for a temporary backup', async () => {
