@@ -1,6 +1,7 @@
 export const STATUS_STATES: Record<string, string> = {
   Starting_Operation: $localize`Starting operation …`,
   Backup_Begin: $localize`Starting backup …`,
+  Backup_VerifyDatabase: $localize`Verifying local database …`,
   Backup_PreBackupVerify: $localize`Verifying backend data …`,
   Backup_PostBackupTest: $localize`Verifying remote data …`,
   Backup_PreviousBackupFinalize: $localize`Completing previous backup …`,

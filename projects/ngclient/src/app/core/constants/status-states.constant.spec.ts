@@ -11,6 +11,10 @@ describe('status text resolution', () => {
     expect(resolveStatusText('Backup_ProcessingFiles')).toBe('Processing files to backup …');
   });
 
+  it('names the check of the local database apart from the check of the remote data', () => {
+    expect(resolveStatusText('Backup_VerifyDatabase')).toBe('Verifying local database …');
+    expect(resolveStatusText('Backup_PreBackupVerify')).toBe('Verifying backend data …');
+  });
   it('preserves unknown phases for forward compatibility', () => {
     expect(resolveStatusText('FutureOperation_Running')).toBe('FutureOperation_Running');
   });
