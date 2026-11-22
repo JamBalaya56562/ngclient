@@ -224,22 +224,23 @@ export class SingleDestinationComponent {
   destinationFormConfig = signal<DestinationConfig | null>(null);
 
   // Keep unedited provider defaults and URL tokens out of the input model's writes.
-  #destinationTextValues = linkedSignal(() => {
-    const values = this.destinationForm();
-    const config = this.destinationFormConfig();
-    const fields = (group: 'custom' | 'dynamic' | 'advanced') => {
-      // Unknown saved advanced options also get a text editor.
-      const names = new Set([...Object.keys(values[group]), ...(config?.[group] ?? []).map(({ name }) => name)]);
-      return Object.fromEntries([...names].map((name) => [name, String(values[group][name] ?? '')]));
-    };
+  destinationTextForm = form(
+    linkedSignal(() => {
+      const values = this.destinationForm();
+      const config = this.destinationFormConfig();
+      const fields = (group: 'custom' | 'dynamic' | 'advanced') => {
+        // Unknown saved advanced options also get a text editor.
+        const names = new Set([...Object.keys(values[group]), ...(config?.[group] ?? []).map(({ name }) => name)]);
+        return Object.fromEntries([...names].map((name) => [name, String(values[group][name] ?? '')]));
+      };
 
-    return { custom: fields('custom'), dynamic: fields('dynamic'), advanced: fields('advanced') };
-  });
-  destinationTextForm = form(this.#destinationTextValues);
+      return { custom: fields('custom'), dynamic: fields('dynamic'), advanced: fields('advanced') };
+    })
+  );
 
   destinationTextField(group: 'custom' | 'dynamic' | 'advanced', name: string) {
     // Field-tree lookup itself is untracked. Recheck when the provider adds or removes a field.
-    this.#destinationTextValues();
+    this.destinationTextForm().value();
     return this.destinationTextForm[group][name];
   }
 
