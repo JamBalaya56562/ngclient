@@ -42,7 +42,7 @@ NGT-117/116/121/118/119/122は実装済みで重ねて着手しない。NGT-123�
 | 後続1    | NGT-118 / #273 | MERGED / #779へ同梱 | 実サーバーで作成/実行後のジョブをcold routeからUI削除。取消で不変、DB保持/削除2ケース、宛先SHA256保持。ngclientだけで完結し本体待ちなし。                                                                                                                                                                  |
 | 後続2    | NGT-119 / #497 | MERGED / #782       | after-actionを公式form/FormFieldへ移行。既存8件維持、実UI選択/取消確認、本番ビルド成功。selected Setは通常状態のまま。                                                                                                                                                                                     |
 | 評価     | NGT-005        | READY               | Aria/CDK適合評価。ツリーのARIA・選択・キーボード契約を照合し、導入で解決できる観測課題を確認。一括置換を目的にしない。先行PRはマージ済み。                                                                                                                                                                 |
-| 後続 | NGT-081 / #273 | READY | Vitest と Playwright は導入済み。固定版 Duplicati の配布物を SHA-256 で検証し、手動 CI で既存の実サーバーE2E（バックアップ作成・実行・復元・ジョブ削除）を隔離実行する。失敗時は診断を保存し、成功を確認したら PR に `Closes #273`。追加のE2Eは個別に扱う。 |
+| 後続 | NGT-081 / #273 | OPEN / #841 | Vitest と Playwright は導入済み。固定版 Duplicati の配布物を SHA-256 で検証し、手動 CI で既存の実サーバーE2E（バックアップ作成・実行・復元・ジョブ削除）を隔離実行する。失敗時は診断を保存し、Windowsの主要8件とLinuxの[手動CI](https://github.com/JamBalaya56562/ngclient/actions/runs/44967667072)は成功。[#841](https://github.com/duplicati/ngclient/pull/841) に `Closes #273` を記載。追加のE2Eは個別に扱う。 |
 
 追加の独立候補（今回登録、未実装）:
 
