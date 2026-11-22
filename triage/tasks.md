@@ -81,9 +81,16 @@ READYは既知の外部ブロッカーなしであり、実装済み/動作検�
 
 残りの確認と公開順。
 
-1. #842 のマージ後、準備済み6本を最新mainと照合して順次公開する。仮統合では `backup-progress.component.spec.ts` の同じ挿入位置で #842 と進捗バー修正のテストが競合した。両方を残して解消すると単体73件、関連Playwright 27件、本番ビルドが成功した。公開時も両テストを残す。部分対応PRは `Refs #409`。
-2. 月アイコンは実サーバーで検証済み。ホバーと読み上げ名はいずれも `Theme: Dark`。Enter・下矢印・Enter でダークからライトへ切り替わる。修正不要。
-3. 旧UIのようなログ中心の画面構成やUI全体の配色・メニュー・余白は、今回の具体的な修正より広い要望。統合後の画面を提示し、メンテナに残したい具体項目があるか確認してcloseを判断する。
+#842 のマージ後、各ブランチを最新 main と照合し、以下の順で公開する。仮統合では `backup-progress.component.spec.ts` の同じ挿入位置で #842 と進捗バー修正のテストが競合した。両テストを残して解消すると単体73件、関連Playwright 27件、本番ビルドが成功した。公開時も両テストを残す。
+
+1. `codex/stabilize-backup-progress-bar`（進捗バーと操作位置）、`Refs #409`
+2. `codex/job-log-keyboard-expansion`（ログのキーボード操作）、`Refs #409`
+3. `codex/notification-severity-contrast`（警告・エラーの視認性）、`Refs #409`
+4. `codex/reopen-tooltip-during-cleanup`（ツールチップの再表示）、`Refs #409`
+5. `codex/service-hub-icon-labels`（通知アイコンの名前とフォーカス）、`Refs #409`
+6. `codex/home-visible-job-actions`（Home の操作列と余白）。1〜5のマージを確認してから公開し、本文に `Fixes #409` を入れる。
+
+月アイコンは実サーバーで検証済み。ホバーと読み上げ名はいずれも `Theme: Dark`。Enter・下矢印・Enter でダークからライトへ切り替わる。修正不要。ログ中心の画面構成やUI全体の配色に追加要望が出た場合は、具体化して別件で扱う。
 - 削除checkboxの既存アクセシビリティ名はNGT-005の監査対象。今回の実削除E2Eは既存テストと同じ節見出しでスコープした。名前の修正を同じPRに混ぜていない。
 
 ## その他の調査・保留
@@ -117,6 +124,8 @@ READYは既知の外部ブロッカーなしであり、実装済み/動作検�
 | NGT-053 / [#460](https://github.com/duplicati/ngclient/issues/460) | [本体 #7929](https://github.com/duplicati/duplicati/pull/7929) マージ済み（`49723ef8f238`）。`copytotemp?destination=<UrlKey>` が副宛先を参照する一時ジョブを作る。 | [#839](https://github.com/duplicati/ngclient/pull/839) 公開済み（`42f921e35cd8`）。隔離実サーバーで主2世代・副1世代、副の1世代のみ表示、復元内容一致を確認。Chromium 1件、全体2,692件、本番ビルド成功。 |
 | NGT-054 / [#462](https://github.com/duplicati/ngclient/issues/462) | [本体 #7928](https://github.com/duplicati/duplicati/pull/7928) マージ済み（`53074e541edd`）。`DELETE /api/v1/backup/{id}` の `remote-destinations` で `primary` または副宛先の `UrlKey` を指定できる。 | 削除対象を画面で明示し、非選択の宛先が保持されることを隔離サーバーで確認する。 |
 | NGT-055 / [#126](https://github.com/duplicati/ngclient/issues/126) | Min・Max・Patternなどの共有検証スキーマを設計する。以前のsysteminfo調査では216個の定義に `Validations` がなかった。 | スキーマ合意と本体対応後、OpenAPI生成型とUIへ反映し、既存の型検証との互換性を確認する。 |
+| NGT-127 / duplicati#4671 | 本体 `feat/database-verify-phase`（`feb14ad92dad`、fork に push、PR 未作成）。バックアップ前のローカル DB の確認を新しい段階 `Backup_VerifyDatabase` にし、リモートの確認から `Backup_PreBackupVerify`。 | `feat/database-verify-phase`（`d43c09c6915c`、fork に push、PR 未作成）。`status-states.constant.ts` に「Verifying local database …」。spec 8 件緑、表示を外すと新しい 1 件が赤（検証済み 2026-11-22）。本体 PR の後に出す。 |
+| NGT-128 / duplicati#5932 | 本体側の変更なし。設定を取り込んだ新しいマシンで「復元」すると、ローカル DB が無いので「Missing Local Database」が出て DB の画面へ送られるだけだった（実サーバーで再現、検証済み 2026-11-23）。kenkendk が 11-22 に「作り直すか DB なしで続けるかを聞く UI の課題」と返答。 | `feat/restore-missing-database`（`7ec957dd7c8c`、fork に push、PR 未作成）。ダイアログに「Recreate database」（repair → タスク完了を待って一覧）と「Restore without database」（copytotemp → 一時バックアップで復元）を追加、Cancel は従来どおり DB の画面。restore-flow の spec 191 件緑、旧ダイアログに戻すと新しい 4 件が赤。実画面で両方とも完了まで確認（検証済み 2026-11-23）。PR は保留中の本体 PR が出てから。 |
 
 ## NGT-007 Signal Forms
 
@@ -167,7 +176,7 @@ READYは既知の外部ブロッカーなしであり、実装済み/動作検�
 
 ## 運用
 
-- IDは固定・再利用しない。次の新規IDは**NGT-127**。
+- IDは固定・再利用しない。次の新規IDは**NGT-129**。
 - 状態: READY / INVESTIGATE / PR_OPEN / MERGED / BLOCKED / WAITING / DEFERRED。着手時はACTIVE・担当・日付・ブックマークを記録。
 - 最新mainから独立して実装し、triageを実装の親にしない。stack後段は前段merge後に公開。画像固定参照4本と別workspaceを維持。
 - 主張は検証済み／ドキュメント根拠／推測に分け、未確認は未検証と明記。過去の試験を現在SHAで再実行したと書かない。
