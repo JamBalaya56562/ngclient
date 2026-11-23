@@ -24,7 +24,7 @@
 | ------------------------------------------------------------------------------ | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | [#273](https://github.com/duplicati/ngclient/issues/273) テスト整備            | NGT-081 / NGT-118                    | mainでlive 22ケース/8ファイルを列挙。作成・実行・復元・直接復元・世代削除・認証復帰等は既存。ジョブ自体のUI削除は#779へ追加済み（NGT-118）。通常CIはliveを除外。最小限のUI削除と継続live CIの範囲を揃え、既存成果を示してclose判断する。                                                               |
 | [#497](https://github.com/duplicati/ngclient/issues/497) Signal Forms          | NGT-007 / NGT-119 / NGT-122          | [NGT-007の残りの実装順と検証手順](#ngt-007-signal-forms) |
-| [#409](https://github.com/duplicati/ngclient/issues/409) UI改善一覧 | NGT-052 / #842 OPEN・後続6本準備済み | [要望・検証・残作業](#ngt-052-home-ui)。#842 がマージされるまで後続PRは公開しない。 |
+| [#409](https://github.com/duplicati/ngclient/issues/409) UI改善一覧 | NGT-052 / #842 MERGED・後続5件公開済み | [要望・検証・残作業](#ngt-052-home-ui)。最終のHome改善PRは先行5件のマージ待ち。 |
 | [#460](https://github.com/duplicati/ngclient/issues/460) secondary宛先から復元 | NGT-053 / 本体マージ済み | [再開条件](#本体側の対応とngclientの再開条件) |
 | [#462](https://github.com/duplicati/ngclient/issues/462) secondary宛先の削除   | NGT-054 / 本体マージ済み | [再開条件](#本体側の対応とngclientの再開条件) |
 | [#126](https://github.com/duplicati/ngclient/issues/126) 検証schema            | NGT-055 / 本体契約の対応が先 | [再開条件](#本体側の対応とngclientの再開条件) |
@@ -71,7 +71,7 @@ READYは既知の外部ブロッカーなしであり、実装済み/動作検�
 
 | 要望 | 状態と変更 | 検証済み |
 | --- | --- | --- |
-| Home に現在のファイルを表示 | [#842](https://github.com/duplicati/ngclient/pull/842) OPEN。 `codex/home-current-file-progress` (`cc897d06`) | 実行中にファイル名とそのファイルのサイズを表示。回帰5件が赤→緑、関連単体72件、本番ビルド。 |
+| Home に現在のファイルを表示 | [#842](https://github.com/duplicati/ngclient/pull/842) MERGED。 `codex/home-current-file-progress` (`cc897d06`) | 実行中にファイル名とそのファイルのサイズを表示。回帰5件が赤→緑、関連単体72件、本番ビルド。 |
 | 警告とエラーを見分ける | `codex/notification-severity-contrast` (`bbacf111`) | 実通知でライト・ダークを計測。本文のコントラスト比はライト警告1.98→17.69、エラー3.22→16.66。ダーク警告16.30、エラー19.34（修正後）。関連E2E 11件、本番ビルド。 |
 | 直近・過去の実行結果と失敗詳細へ移動 | `codex/job-log-keyboard-expansion` (`db5ce39c`) | 通知の Show Log と、通知削除後の Home → More actions → Log を確認。過去の成功2件と最新の失敗、Enter による失敗詳細（exit code 5）を確認。関連単体74件、E2E 2件、本番ビルド。 |
 | 進捗バーと操作位置 | `codex/stabilize-backup-progress-bar` (`41a3d1e0`) | 幅360 px。実バックアップで開始・スキャン・転送待ち・検証・完了を観測。メニュー位置固定、不明な進捗は不定表示、転送待ち90%、完了100%。関連単体72件、E2E 4件、本番ビルド。 |
@@ -81,13 +81,13 @@ READYは既知の外部ブロッカーなしであり、実装済み/動作検�
 
 残りの確認と公開順。
 
-#842 のマージ後、各ブランチを最新 main と照合し、以下の順で公開する。仮統合では `backup-progress.component.spec.ts` の同じ挿入位置で #842 と進捗バー修正のテストが競合した。両テストを残して解消すると単体73件、関連Playwright 27件、本番ビルドが成功した。公開時も両テストを残す。
+#842 はマージ済み。先行5件を `1e99f48f` から下記の順で公開した。仮統合では `backup-progress.component.spec.ts` の同じ挿入位置で #842 と進捗バー修正のテストが競合した。両テストを残して解消すると単体73件、関連Playwright 27件、本番ビルドが成功した。公開した進捗バーPRでも両テストを保持した。
 
-1. `codex/stabilize-backup-progress-bar`（進捗バーと操作位置）、`Refs #409`
-2. `codex/job-log-keyboard-expansion`（ログのキーボード操作）、`Refs #409`
-3. `codex/notification-severity-contrast`（警告・エラーの視認性）、`Refs #409`
-4. `codex/reopen-tooltip-during-cleanup`（ツールチップの再表示）、`Refs #409`
-5. `codex/service-hub-icon-labels`（通知アイコンの名前とフォーカス）、`Refs #409`
+1. [#844](https://github.com/duplicati/ngclient/pull/844) `codex/stabilize-backup-progress-bar`（進捗バーと操作位置）、`Refs #409`
+2. [#845](https://github.com/duplicati/ngclient/pull/845) `codex/job-log-keyboard-expansion`（ログのキーボード操作）、`Refs #409`
+3. [#846](https://github.com/duplicati/ngclient/pull/846) `codex/notification-severity-contrast`（警告・エラーの視認性）、`Refs #409`
+4. [#847](https://github.com/duplicati/ngclient/pull/847) `codex/reopen-tooltip-during-cleanup`（ツールチップの再表示）、`Refs #409`
+5. [#848](https://github.com/duplicati/ngclient/pull/848) `codex/service-hub-icon-labels`（通知アイコンの名前とフォーカス）、`Refs #409`
 6. `codex/home-visible-job-actions`（Home の操作列と余白）。1〜5のマージを確認してから公開し、本文に `Fixes #409` を入れる。
 
 月アイコンは実サーバーで検証済み。ホバーと読み上げ名はいずれも `Theme: Dark`。Enter・下矢印・Enter でダークからライトへ切り替わる。修正不要。ログ中心の画面構成やUI全体の配色に追加要望が出た場合は、具体化して別件で扱う。
