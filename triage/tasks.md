@@ -76,7 +76,7 @@ READYは既知の外部ブロッカーなしであり、実装済み/動作検�
 | 直近・過去の実行結果と失敗詳細へ移動 | `codex/job-log-keyboard-expansion` (`db5ce39c`) | 通知の Show Log と、通知削除後の Home → More actions → Log を確認。過去の成功2件と最新の失敗、Enter による失敗詳細（exit code 5）を確認。関連単体74件、E2E 2件、本番ビルド。 |
 | 進捗バーと操作位置 | `codex/stabilize-backup-progress-bar` (`41a3d1e0`) | 幅360 px。実バックアップで開始・スキャン・転送待ち・検証・完了を観測。メニュー位置固定、不明な進捗は不定表示、転送待ち90%、完了100%。関連単体72件、E2E 4件、本番ビルド。 |
 | アイコンの意味とキーボード操作 | [#781](https://github.com/duplicati/ngclient/pull/781) マージ済み。 `codex/service-hub-icon-labels` (`98a67578`) | Home の Edit・More actions と上部の速度制限を実画面で確認。Alerts・Notifications の名前、ホバー説明、開閉状態、閉じた後のフォーカス復帰を追加。関連E2E 12件、本番ビルド。 |
-| ツールチップの再ホバー（NGT-123） | `codex/reopen-tooltip-during-cleanup` (`4078489d`) | ShipTooltip の限定 Bun パッチ。実サーバーで60 ms再ホバーを確認。回帰の赤→緑、関連E2E 12件、本番ビルド、Docker本番ビルド。配布版を更新する際にパッチの要否を再確認する。 |
+| ツールチップの再ホバー（NGT-123） | [#847](https://github.com/duplicati/ngclient/pull/847) マージ済み / **WAITING** | ShipTooltip の暫定 Bun パッチ。実サーバーで60 ms再ホバーを確認。回帰の赤→緑、関連E2E 12件、本番ビルド、Docker本番ビルド。根本修正は [ShipUI #30](https://github.com/shipuicom/core/issues/30)。[修正版公開後の手順](#ngt-123-shipui)を参照。 |
 | Home のメニュー・余白 | `codex/home-visible-job-actions` (`f5353229`) | 1280 px・360 pxの一覧と詳細で操作列を実測。横スクロールせず More actions が見え、Enter で Log に到達。関連単体32件、E2E 8件、本番ビルド。 |
 
 残りの確認と公開順。
@@ -89,6 +89,16 @@ READYは既知の外部ブロッカーなしであり、実装済み/動作検�
 4. [#847](https://github.com/duplicati/ngclient/pull/847) `codex/reopen-tooltip-during-cleanup`（ツールチップの再表示）、`Refs #409`
 5. [#848](https://github.com/duplicati/ngclient/pull/848) `codex/service-hub-icon-labels`（通知アイコンの名前とフォーカス）、`Refs #409`
 6. `codex/home-visible-job-actions`（Home の操作列と余白）。1〜5のマージを確認してから公開し、本文に `Fixes #409` を入れる。
+
+<a id="ngt-123-shipui"></a>
+
+### NGT-123 ShipTooltip の暫定パッチ撤去
+
+- **WAITING**（2026-11-28）。[メンテナのコメント](https://github.com/duplicati/ngclient/pull/847#issuecomment-7132582330)を受け、根本修正は [ShipUI #30](https://github.com/shipuicom/core/issues/30) で追跡する。ShipUI への修正提出は ShipUI の作業セッションで進める。
+- 着手条件は、修正を含む `@ship-ui/core` が npm に公開されていること。Issue のクローズや PR のマージだけでは着手せず、配布版に修正が入っていることを確認する。
+- 公開後、最新 ngclient main から別ブランチで `@ship-ui/core` と `bun.lock` を更新する。`package.json` の該当 `patchedDependencies` エントリと `patches/@ship-ui%2Fcore@0.23.5.patch` を削除する。Dockerfile のパッチコピーは、他のパッチが利用していなければ削除する。
+- `e2e/throttle-settings.spec.ts` の再ホバー回帰テストは残す。クリーンインストール、該当 Playwright テスト、本番ビルド、Docker 本番ビルドを通し、公開された修正版で再表示できることを確認してから ngclient 側のPRを作る。
+
 
 月アイコンは実サーバーで検証済み。ホバーと読み上げ名はいずれも `Theme: Dark`。Enter・下矢印・Enter でダークからライトへ切り替わる。修正不要。ログ中心の画面構成やUI全体の配色に追加要望が出た場合は、具体化して別件で扱う。
 - 削除checkboxの既存アクセシビリティ名はNGT-005の監査対象。今回の実削除E2Eは既存テストと同じ節見出しでスコープした。名前の修正を同じPRに混ぜていない。
