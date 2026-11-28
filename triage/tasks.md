@@ -94,7 +94,7 @@ READYは既知の外部ブロッカーなしであり、実装済み/動作検�
 
 ### NGT-123 ShipTooltip の暫定パッチ撤去
 
-- **WAITING**（2026-11-28）。[メンテナのコメント](https://github.com/duplicati/ngclient/pull/847#issuecomment-7132582330)を受け、根本修正は [ShipUI #30](https://github.com/shipuicom/core/issues/30) で追跡する。ShipUI への修正提出は ShipUI の作業セッションで進める。
+- **WAITING**（2026-11-28）。[メンテナのコメント](https://github.com/duplicati/ngclient/pull/847#issuecomment-7132582330)を受け、根本修正は [ShipUI #30](https://github.com/shipuicom/core/issues/30) で追跡する。根本修正の PR は [ShipUI #31](https://github.com/shipuicom/core/pull/31)（2026-11-28 時点 OPEN）。
 - 着手条件は、修正を含む `@ship-ui/core` が npm に公開されていること。Issue のクローズや PR のマージだけでは着手せず、配布版に修正が入っていることを確認する。
 - 公開後、最新 ngclient main から別ブランチで `@ship-ui/core` と `bun.lock` を更新する。`package.json` の該当 `patchedDependencies` エントリと `patches/@ship-ui%2Fcore@0.23.5.patch` を削除する。Dockerfile のパッチコピーは、他のパッチが利用していなければ削除する。
 - `e2e/throttle-settings.spec.ts` の再ホバー回帰テストは残す。クリーンインストール、該当 Playwright テスト、本番ビルド、Docker 本番ビルドを通し、公開された修正版で再表示できることを確認してから ngclient 側のPRを作る。
